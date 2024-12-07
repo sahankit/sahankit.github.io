@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Professional word counter tool to count words, characters, and paragraphs in multiple languages for accurate text analysis.">
+    <meta name="keywords" content="word counter, word count, character count, paragraph counter, text analysis, multilingual word counter, language support, writing tools, SEO tools, free word counter">
+    <meta name="author" content="Your Name or Company">
+    
+    <!-- Open Graph Meta Tags for better social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Professional Word Counter - Count Words, Characters & Paragraphs">
+    <meta property="og:description" content="Use our professional word counter tool to count words, characters, and paragraphs across multiple languages for precise text analysis.">
+    <meta property="og:image" content="https://yourwebsite.com/images/word-counter-image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional Word Counter - Count Words, Characters & Paragraphs">
+    <meta name="twitter:description" content="Use our professional word counter tool to count words, characters, and paragraphs across multiple languages for precise text analysis.">
+    <meta name="twitter:image" content="https://yourwebsite.com/images/word-counter-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com">
+
+    <!-- Structured Data (JSON-LD Schema Markup for SEO) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Professional Word Counter",
+            "description": "A tool for counting words, characters, and paragraphs in multiple languages.",
+            "url": "https://yourwebsite.com",
+            "mainEntityOfPage": "https://yourwebsite.com",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Your Company",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://yourwebsite.com/logo.png"
+                }
+            }
+        }
+    </script>
+
+    <!-- Title -->
+    <title>Professional Word Counter - Count Words, Characters & Paragraphs</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+
+         margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative; /* Added for positioning of the ad placeholders */
+        }
+
+        /* Container for all content */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 10; /* Ensure content is above the ads */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Textarea Styling */
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out;
+            resize: none;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #0072ff;
+            box-shadow: 0 0 8px rgba(0, 114, 255, 0.4);
+        }
+
+        /* Button Styling */
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #0072ff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #005bb5;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #003f7f;
+            transform: translateY(2px);
+        }
+
+        /* Select dropdown for language */
+        select {
+            padding: 12px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #0072ff;
+            box-shadow: 0 0 8px rgba(0, 114, 255, 0.4);
+        }
+
+        /* Info Display Section */
+        .info {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+            margin-top: 20px;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info span {
+            font-weight: 700;
+            color: #0072ff;
+        }
+
+        /* Google AdSense Placeholders */
+        .adsense-placeholder {
+            width: 250px;
+            height: 250px;
+            background-color: #f1f1f1;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: absolute;
+        }
+
+        /* Left side ad */
+        .adsense-left {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Right side ad */
+        .adsense-right {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Bottom side ad - Adjusted position */
+        .adsense-bottom {
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 100px;
+        }
+
+        /* Placeholder for multiple ad blocks */
+        .adsense-placeholder-large {
+            width: 100%;
+            height: 600px; /* For large ad sizes */
+            background-color: #f1f1f1;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+
+            textarea {
+                font-size: 14px;
+            }
+
+            select {
+                font-size: 14px;
+            }
+
+            .info {
+                font-size: 1rem;
+            }
+
+            .adsense-placeholder {
+                height: 200px;
+            }
+
+            .adsense-placeholder-large {
+                height: 400px;
+            }
+
+            .adsense-placeholder-small {
+                height: 80px;
+            }
+
+            .adsense-left, .adsense-right, .adsense-bottom {
+                position: static;
+                transform: none;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Word Counter</h1>
+        <textarea id="textArea" placeholder="Type or paste your text here..." oninput="countWords()"></textarea>
+
+        <!-- Google AdSense Placeholders on Left, Right, and Bottom -->
+        <div class="adsense-placeholder adsense-left">
+            <p>Google AdSense ad will be here (Left side)</p>
+        </div>
+        
+        <div class="adsense-placeholder adsense-right">
+            <p>Google AdSense ad will be here (Right side)</p>
+        </div>
+
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <select id="languageSelector" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <option value="ar">العربية</option>
+                <option value="hi">हिंदी</option>
+                <option value="zh">中文 (简体)</option>
+            </select>
+        </div>
+        <div class="info" id="wordCount">Word Count: <span>0</span></div>
+        <div class="info" id="charCount">Character Count: <span>0</span></div>
+        <div class="info" id="paraCount">Paragraph Count: <span>0</span></div>
+        <div class="adsense-placeholder adsense-bottom">
+            <p>Google AdSense ad will be here (Bottom)</p>
+        </div>
+    </div>
+  
+    <script>
+        const translations = {
+            en: {
+                title: "Word Counter",
+                placeholder: "Type or paste your text here...",
+                wordCount: "Word Count",
+                charCount: "Character Count",
+                paraCount: "Paragraph Count"
+            },
+            es: {
+                title: "Contador de Palabras",
+                placeholder: "Escribe o pega tu texto aquí...",
+                wordCount: "Recuento de Palabras",
+                charCount: "Contador de Caracteres",
+                paraCount: "Contador de Párrafos"
+            },
+            fr: {
+                title: "Compteur de Mots",
+                placeholder: "Tapez ou collez votre texte ici...",
+                wordCount: "Nombre de Mots",
+                charCount: "Nombre de Caractères",
+                paraCount: "Nombre de Paragraphes"
+            },
+            de: {
+                title: "Wortzähler",
+                placeholder: "Geben Sie hier Ihren Text ein...",
+                wordCount: "Wortanzahl",
+                charCount: "Zeichenanzahl",
+                paraCount: "Absatzanzahl"
+            },
+            it: {
+                title: "Contatore di Parole",
+                placeholder: "Scrivi o incolla il tuo testo qui...",
+                wordCount: "Conteggio Parole",
+                charCount: "Conteggio Caratteri",
+                paraCount: "Conteggio Paragrafi"
+            },
+            ar: {
+                title: "عداد الكلمات",
+                placeholder: "اكتب أو الصق النص هنا...",
+                wordCount: "عدد الكلمات",
+                charCount: "عدد الأحرف",
+                paraCount: "عدد الفقرات"
+            },
+            hi: {
+                title: "शब्द गिनने वाला",
+                placeholder: "अपना पाठ यहां टाइप करें या पेस्ट करें...",
+                wordCount: "शब्द गणना",
+                charCount: "अक्षर गणना",
+                paraCount: "अनुच्छेद गणना"
+            },
+            zh: {
+                title: "单词计数器",
+                placeholder: "在这里输入或粘贴您的文本...",
+                wordCount: "单词数",
+                charCount: "字符数",
+                paraCount: "段落数"
+            }
+        };
+
+        // Get language code from the URL (path)
+        const urlPath = window.location.pathname.split('/')[1];
+        const defaultLang = 'en';  // Default to English if no language is specified
+        const lang = translations[urlPath] ? urlPath : defaultLang;
+
+        // Update language selector to match the URL language
+        document.getElementById("languageSelector").value = lang;
+
+        // Update the page content based on the selected language
+        changeLanguage();
+
+        function changeLanguage() {
+            const language = document.getElementById("languageSelector").value;
+            const { title, placeholder, wordCount, charCount, paraCount } = translations[language];
+
+            document.getElementById("title").textContent = title;
+            document.getElementById("textArea").placeholder = placeholder;
+            document.getElementById("wordCount").textContent = `${wordCount}: 0`;
+            document.getElementById("charCount").textContent = `${charCount}: 0`;
+            document.getElementById("paraCount").textContent = `${paraCount}: 0`;
+            countWords();
+            updateURL(language);
+        }
+
+        // Update URL to reflect the selected language
+        function updateURL(language) {
+            const currentPath = window.location.pathname.split('/')[0];
+            window.history.pushState({}, '', `/${language}`);
+        }
+
+        function countWords() {
+            const text = document.getElementById("textArea").value;
+            const language = document.getElementById("languageSelector").value;
+
+            // Word Count
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            const wordCountText = translations[language].wordCount;
+            document.getElementById("wordCount").innerHTML = `${wordCountText}: ${words.length}`;
+
+            // Character Count
+            const charCountText = translations[language].charCount;
+            document.getElementById("charCount").innerHTML = `${charCountText}: ${text.length}`;
+
+            // Paragraph Count
+            const paragraphs = text.trim().split(/\n+/).filter(para => para.length > 0);
+            const paraCountText = translations[language].paraCount;
+            document.getElementById("paraCount").innerHTML = `${paraCountText}: ${paragraphs.length}`;
+        }
+    </script>
+</body>
+</html>
