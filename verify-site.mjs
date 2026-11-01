@@ -76,6 +76,8 @@ console.log("→ node osint-username.test.mjs");
 execSync("node osint-username.test.mjs", { cwd: ROOT, stdio: "inherit" });
 console.log("→ node income-tax.test.mjs");
 execSync("node income-tax.test.mjs", { cwd: ROOT, stdio: "inherit" });
+console.log("→ node quiz-hourly.test.mjs");
+execSync("node quiz-hourly.test.mjs", { cwd: ROOT, stdio: "inherit" });
 
 const sitemap = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
@@ -99,6 +101,23 @@ for (const loc of locs) {
   if (!html.includes("</html>")) errors.push(`${rel}: truncated HTML`);
   if (!/<title>[^<]+<\/title>/.test(html)) errors.push(`${rel}: empty title`);
 
+  if (html.includes('"applicationCategory":"UtilitiesApplication"')) {
+    const desc = html.match(/name="description" content="([^"]*)"/)?.[1] || "";
+    if (desc.length < 70) errors.push(`${rel}: meta description too short (${desc.length} chars)`);
+    if (!html.includes('name="keywords"')) errors.push(`${rel}: missing meta keywords`);
+    if (!html.includes('class="page-guide"')) errors.push(`${rel}: missing on-page guide/FAQ block`);
+    if (!html.includes('class="related-tools"')) errors.push(`${rel}: missing related tools section`);
+    if ((html.match(/<h1[\s>]/g) || []).length !== 1) errors.push(`${rel}: expected exactly one <h1>`);
+    if (!html.includes("FAQPage")) errors.push(`${rel}: missing FAQ JSON-LD`);
+    if (!html.includes("HowTo")) errors.push(`${rel}: missing HowTo JSON-LD`);
+    const canon = html.match(/rel="canonical" href="([^"]*)"/)?.[1] || "";
+    if (canon && !canon.endsWith("/")) errors.push(`${rel}: canonical should use trailing slash`);
+    if (!html.includes("ad-slot")) errors.push(`${rel}: missing AdSense ad slot`);
+    if (!html.includes("google-adsense-account")) errors.push(`${rel}: missing AdSense account meta`);
+    if (!html.includes("/assets/ads.js")) errors.push(`${rel}: missing ads.js`);
+    if (!html.includes("ad-slot--below")) errors.push(`${rel}: missing below-tool ad slot`);
+  }
+
   for (const href of collectInternalHrefs(html)) {
     const target = resolveHref(href);
     if (!target) continue;
@@ -115,7 +134,16 @@ for (const loc of locs) {
   }
 }
 
-const assetFiles = ["assets/site.css", "assets/ads.js", "assets/ads.json", "assets/og.svg"];
+const assetFiles = [
+  "assets/site.css",
+  "assets/ads.js",
+  "assets/ads.json",
+  "assets/tool-busy.js",
+  "assets/og.png",
+  "assets/favicon.svg",
+  "assets/apple-touch-icon.png",
+  "favicon.ico",
+];
 for (const a of assetFiles) {
   if (!fs.existsSync(path.join(ROOT, a))) errors.push(`Missing asset ${a}`);
 }
@@ -152,6 +180,15 @@ if (process.env.SKIP_BROWSER !== "1") {
   console.log("\n→ node smoke-browser.mjs");
   try {
     execSync("node smoke-browser.mjs", { cwd: ROOT, stdio: "inherit" });
+  } catch {
+    process.exit(1);
+  }
+}
+
+if (process.env.SKIP_VISUAL !== "1") {
+  console.log("\n→ node visual-test.mjs");
+  try {
+    execSync("node visual-test.mjs", { cwd: ROOT, stdio: "inherit" });
   } catch {
     process.exit(1);
   }

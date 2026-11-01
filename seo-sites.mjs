@@ -165,8 +165,11 @@ export const sitePageSeo = {
   },
   "quiz/index.html": {
     keywords: "free online quiz, trivia browser",
-    sections: [{ h2: "Quick trivia quiz", paragraphs: ["Ten questions on general knowledge, tech, and this site's tools. Refresh to replay."] }],
-    faqs: [{ q: "Is score saved?", a: "No. Everything runs locally in one session." }],
+    sections: [{ h2: "Quick trivia quiz", paragraphs: ["Ten questions on general knowledge, tech, and this site's tools. The set changes at the start of each hour in your timezone—same hour, same quiz for everyone locally."] }],
+    faqs: [
+      { q: "When does the quiz change?", a: "At the start of each hour on your device clock. Reload after the hour rolls over for a new set of ten questions." },
+      { q: "Is score saved?", a: "No. Everything runs locally in one session." },
+    ],
     related: [{ href: "/student/", label: "Student hub" }],
   },
 };

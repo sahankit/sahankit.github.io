@@ -2,38 +2,12 @@
 /** Browser smoke: load each sitemap page locally and fail on console errors. */
 import fs from "fs";
 import path from "path";
-import http from "http";
 import { fileURLToPath } from "url";
-import { execSync, spawn } from "child_process";
+import { startStaticServer } from "./test-http-server.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const BASE = "https://sahankit.github.io";
 const PORT = 8765;
-
-function contentType(file) {
-  if (file.endsWith(".css")) return "text/css";
-  if (file.endsWith(".js")) return "application/javascript";
-  if (file.endsWith(".svg")) return "image/svg+xml";
-  if (file.endsWith(".json")) return "application/json";
-  if (file.endsWith(".xml")) return "application/xml";
-  return "text/html; charset=utf-8";
-}
-
-function startServer() {
-  return http.createServer((req, res) => {
-    let p = decodeURIComponent(req.url.split("?")[0]);
-    if (p === "/") p = "/index.html";
-    if (p.endsWith("/")) p += "index.html";
-    const file = path.join(ROOT, p.replace(/^\//, ""));
-    if (!file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
-      res.writeHead(404);
-      res.end("Not found");
-      return;
-    }
-    res.writeHead(200, { "Content-Type": contentType(file) });
-    fs.createReadStream(file).pipe(res);
-  }).listen(PORT);
-}
 
 async function main() {
   let chromium;
@@ -50,7 +24,7 @@ async function main() {
     m[0].replace("<loc>", "").replace("</loc>", "").replace(BASE, ""),
   );
 
-  const server = startServer();
+  const server = startStaticServer(PORT);
   await new Promise((r) => server.once("listening", r));
 
   const browser = await chromium.launch({ headless: true });

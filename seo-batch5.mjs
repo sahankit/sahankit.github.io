@@ -6,7 +6,10 @@ export const batch5PageSeo = {
   "morse-code.html": t("morse code translator online", "Morse code", "Encode messages for learning and hobby radio."),
   "text-to-binary.html": t("text to binary converter", "Binary encoding", "UTF-8 bytes as 8-bit groups."),
   "hex-encoder.html": t("text to hex converter", "Hex encoding", "View UTF-8 bytes in hexadecimal."),
-  "regex-tester.html": t("regex tester online", "Test regular expressions", "See matches and indexes in sample text."),
+  "regex-tester.html": {
+    ...t("regex tester online", "Test regular expressions", "See matches and indexes in sample text."),
+    related: [{ href: "/regex-builder/", label: "Regex builder" }],
+  },
   "password-strength.html": t("password strength checker", "Password hygiene", "Local checklist—not a crack tool."),
   "luhn-checker.html": t("luhn algorithm credit card check", "Luhn checksum", "Format check only; not issuer validation."),
   "split-bill.html": t("split bill calculator tip", "Split with tip", "Divide total including tip by headcount."),

@@ -29,8 +29,14 @@ window.ChromeAi = {
 
   setProgress(el, pct) {
     if (!el) return;
-    if (pct >= 0 && pct < 1) el.textContent = "Downloading on-device model… " + Math.round(pct * 100) + "%";
-    else if (pct >= 1) el.textContent = "Model ready.";
+    const msg =
+      pct >= 0 && pct < 1
+        ? "Downloading on-device model… " + Math.round(pct * 100) + "%"
+        : pct >= 1
+          ? "Model ready."
+          : "";
+    if (window.ToolBusy?.setMessage) window.ToolBusy.setMessage(el, msg);
+    else el.textContent = msg;
   },
 
   async unavailableMessage(apiName) {

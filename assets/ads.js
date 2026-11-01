@@ -6,6 +6,11 @@
     : "/assets/";
   const cfgUrl = base + "ads.json";
 
+  function clientFromMeta() {
+    const m = document.querySelector('meta[name="google-adsense-account"]');
+    return String(m?.getAttribute("content") || "").trim();
+  }
+
   function boot(client, autoAds) {
     if (!/^ca-pub-\d+$/.test(client)) return;
     window.adsbygoogle = window.adsbygoogle || [];
@@ -24,6 +29,11 @@
     if (!slot) return;
     document.querySelectorAll(".ad-slot[data-ad]").forEach((host) => {
       if (host.querySelector("ins.adsbygoogle")) return;
+      host.hidden = false;
+      if (!host.getBoundingClientRect().width) {
+        host.hidden = true;
+        return;
+      }
       const label = document.createElement("p");
       label.className = "ad-label";
       label.textContent = "Advertisement";
@@ -44,15 +54,17 @@
     });
   }
 
+  function start(cfg) {
+    const client = String(cfg?.client || clientFromMeta() || "").trim();
+    const slot = String(cfg?.slot || "").trim();
+    boot(client, cfg?.autoAds);
+    const run = () => fillSlots(client, slot);
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+    else run();
+  }
+
   fetch(cfgUrl)
     .then((r) => (r.ok ? r.json() : null))
-    .then((cfg) => {
-      const client = String(cfg?.client || "").trim();
-      const slot = String(cfg?.slot || "").trim();
-      boot(client, cfg?.autoAds);
-      const run = () => fillSlots(client, slot);
-      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
-      else run();
-    })
-    .catch(() => {});
+    .then((cfg) => start(cfg || {}))
+    .catch(() => start({}));
 })();

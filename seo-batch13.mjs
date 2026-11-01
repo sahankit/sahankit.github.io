@@ -30,8 +30,14 @@ export const batch13PageSeo = {
     metaTitle: "Text Summarizer — Chrome AI Summarizer",
     metaDescription: "Summarize articles with Chrome’s Summarizer API. Key points, TL;DR, headline modes.",
     keywords: "text summarizer chrome ai, summarize article online",
-    sections: [{ h2: "On-device summarization", paragraphs: [aiNote] }],
-    related: [{ href: "/reading-time/", label: "Reading time" }, { href: "/ai-writing/", label: "AI writing hub" }],
+    canonicalPath: "/summariser/",
+    sections: [
+      {
+        h2: "On-device summarization",
+        paragraphs: [aiNote, 'Prefer the full experience? Use the <a href="/summariser/">AI summariser</a> page (same Chrome Summarizer API).'],
+      },
+    ],
+    related: [{ href: "/summariser/", label: "AI summariser" }, { href: "/ai-writing/", label: "AI writing hub" }],
   },
   "text-rewriter.html": {
     metaTitle: "Text Rewriter — Chrome AI Rewriter",

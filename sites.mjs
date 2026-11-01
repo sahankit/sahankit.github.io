@@ -1,6 +1,9 @@
 /** Micro-site hubs (separate landing “sites” on the same domain). */
 
 import { canonicalFromFile } from "./seo-build.mjs";
+import { HUB_ICON, iconSvg, iconTile, toolCardHtml } from "./ui-icons.mjs";
+import { QUIZ_BANK } from "./quiz-bank.mjs";
+import { generateQuizClientScript } from "./quiz-hourly.mjs";
 
 export const micrositeDefs = [
   {
@@ -12,11 +15,17 @@ export const micrositeDefs = [
     blurb: "Browser-only tools for invoices, tax math, loans, and savings estimates. Not financial advice.",
     toolPaths: [
       "/income-tax-calculator.html",
+      "/hra-calculator.html",
+      "/home-loan-calculator.html",
+      "/gst-inclusive-calculator.html",
       "/gst-calculator.html",
       "/india-invoice.html",
       "/inr-words.html",
       "/sip-calculator.html",
+      "/step-up-sip-calculator.html",
+      "/retirement-calculator.html",
       "/emi-calculator.html",
+      "/home-loan-calculator.html",
       "/fd-calculator.html",
       "/rd-calculator.html",
       "/compound-interest.html",
@@ -35,6 +44,13 @@ export const micrositeDefs = [
     hero: "Developer utilities",
     blurb: "Encode, hash, and generate identifiers locally—nothing sent to a server.",
     toolPaths: [
+      "/what-is-my-ip.html",
+      "/regex-builder.html",
+      "/regex-tester.html",
+      "/jwt-generator.html",
+      "/jwt-decoder.html",
+      "/iban-validator.html",
+      "/test-credit-card-generator.html",
       "/hash-generator.html",
       "/base64-encoder.html",
       "/uuid-generator.html",
@@ -64,6 +80,8 @@ export const micrositeDefs = [
     hero: "SEO lab",
     blurb: "Research domains and tune on-page content length before you publish.",
     toolPaths: [
+      "/keyword-density-checker.html",
+      "/meta-description-checker.html",
       "/osint-search.html",
       "/domain-age.html",
       "/meta-tag-generator.html",
@@ -113,6 +131,10 @@ export const micrositeDefs = [
     blurb: "Tax, IDs, invoices, and savings calculators for India—browser-only, not government official.",
     toolPaths: [
       "/income-tax-calculator.html",
+      "/hra-calculator.html",
+      "/home-loan-calculator.html",
+      "/step-up-sip-calculator.html",
+      "/gst-inclusive-calculator.html",
       "/gst-calculator.html",
       "/gratuity-calculator.html",
       "/ppf-calculator.html",
@@ -170,7 +192,13 @@ export const micrositeDefs = [
       "/gradient-generator.html",
       "/qr-code-generator.html",
       "/pdf-merge.html",
+      "/split-pdf.html",
+      "/pdf-to-word.html",
+      "/word-to-pdf.html",
       "/image-compress.html",
+      "/image-converter.html",
+      "/video-to-mp3.html",
+      "/image-resizer.html",
       "/aspect-ratio.html",
     ],
     guidePaths: ["/guides/design-pdf-tools.html"],
@@ -184,6 +212,9 @@ export const micrositeDefs = [
     hero: "Student toolkit",
     blurb: "Calculators for school and college plus free browser chat for study groups.",
     toolPaths: [
+      "/resume-builder.html",
+      "/gpa-calculator.html",
+      "/pregnancy-due-date-calculator.html",
       "/cgpa-calculator.html",
       "/typing-test.html",
       "/word-counter.html",
@@ -216,8 +247,8 @@ export const micrositeDefs = [
     hero: "Chrome AI writing",
     blurb: "Uses Chrome built-in AI when available—private on-device processing. Splitters work in any browser.",
     toolPaths: [
+      "/summariser.html",
       "/grammar-checker.html",
-      "/text-summarizer.html",
       "/text-rewriter.html",
       "/ai-writer.html",
       "/language-detector.html",
@@ -239,13 +270,15 @@ export const micrositeDefs = [
     hero: "Writing toolkit",
     blurb: "Count, clean, and preview text before you publish.",
     toolPaths: [
+      "/summariser.html",
       "/grammar-checker.html",
       "/sentence-splitter.html",
-      "/text-summarizer.html",
       "/word-counter.html",
       "/character-counter.html",
       "/reading-time.html",
       "/markdown-preview.html",
+      "/html-to-markdown.html",
+      "/markdown-to-text.html",
       "/sort-lines.html",
       "/dedupe-lines.html",
       "/reverse-text.html",
@@ -267,6 +300,8 @@ export const micrositeDefs = [
     hero: "Productivity",
     blurb: "Type faster, plan meetings, and run quick everyday calculations.",
     toolPaths: [
+      "/resume-builder.html",
+      "/video-to-mp3.html",
       "/typing-test.html",
       "/meeting-planner.html",
       "/pomodoro-timer.html",
@@ -283,38 +318,44 @@ export const micrositeDefs = [
 
 export function micrositeMain(def, ad, tools, guides) {
   const byPath = (p) => tools.find((t) => t.path === p);
-  const cards = (def.toolPaths || [])
+  const cards = [...new Set(def.toolPaths || [])]
     .map(byPath)
     .filter(Boolean)
-    .map(
-      (t) =>
-        `<a class="card" href="${canonicalFromFile(t.file)}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
+    .map((t) =>
+      toolCardHtml({ href: canonicalFromFile(t.file), title: t.card, desc: t.cardDesc, category: t.category }),
     )
     .join("");
   const extra = (def.extraLinks || [])
-    .map((l) => `<a class="card" href="${l.href}"><h2>${l.card}</h2><p>${l.cardDesc}</p></a>`)
+    .map((l) => toolCardHtml({ href: l.href, title: l.card, desc: l.cardDesc, category: "chat" }))
     .join("");
   const gcards = (def.guidePaths || [])
     .map((p) => guides.find((g) => g.path === p))
     .filter(Boolean)
     .map(
       (g) =>
-        `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 72)}…</p></a>`,
+        `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc.slice(0, 72)}…</p></span></a>`,
     )
     .join("");
-  return `<div class="hero"><h1>${def.hero}</h1><p>${def.blurb}</p><p><a href="/">← Tools</a></p></div>
+  const tone = (HUB_ICON[def.slug] || ["book", "violet"])[1];
+  return `<header class="page-hero hub-hero">
+<span class="eyebrow tone-${tone}">${iconSvg((HUB_ICON[def.slug] || ["book"])[0])}Topic hub · ${new Set(def.toolPaths || []).size} tools</span>
+<h1>${def.hero}</h1>
+<p class="page-lead">${def.blurb}</p>
+</header>
 ${ad}
-<section><div class="grid">${cards}${extra}</div></section>
-${gcards ? `<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${gcards}</div></section>` : ""}`;
+<section class="home-section" aria-labelledby="hub-tools-heading">
+<h2 id="hub-tools-heading">Tools in this hub</h2>
+<div class="grid grid--compact">${cards}${extra}</div></section>
+${gcards ? `<section class="home-section" aria-labelledby="hub-guides-heading"><h2 id="hub-guides-heading">Guides</h2><div class="grid grid--compact">${gcards}</div></section>` : ""}`;
 }
 
 /** Inshorts-style headline reader (News / Sports / Business). */
 export function briefSiteBody(ad) {
-  return `<div class="hero">
-  <h1>News brief</h1>
-  <p>Latest headlines in short cards—News, Sports, and Business. Tap a story to read the full article at the publisher.</p>
-  <p style="font-size:0.88rem"><a href="/">← Tools</a></p>
-</div>
+  return `<header class="page-hero hub-hero">
+<span class="eyebrow tone-red">Topic hub · live headlines</span>
+<h1>News brief</h1>
+<p class="page-lead">Latest headlines in short cards—News, Sports, and Business. Tap a story to read the full article at the publisher.</p>
+</header>
 ${ad}
 <div class="brief-toolbar">
   <span id="brief-updated">Loading headlines…</span>
@@ -446,7 +487,11 @@ loadFeed('news');
 }
 
 export function quizSiteBody(ad) {
-  return `<div class="hero"><h1>Quick quiz</h1><p>Free trivia in your browser. <a href="/">← Tools</a></p></div>${ad}
+  return `<header class="page-hero hub-hero">
+<span class="eyebrow tone-green">Topic hub · hourly</span>
+<h1>Quick quiz</h1>
+<p class="page-lead">Ten new questions every hour (your local time).</p>
+</header>${ad}
 <div class="tool-panel">
   <p id="meta"></p>
   <p id="q" style="font-size:1.1rem;font-weight:600"></p>
@@ -455,54 +500,6 @@ export function quizSiteBody(ad) {
   <button type="button" class="primary" id="next" hidden>Next question</button>
 </div>
 <script>
-const bank=[
-  {q:"What does GST stand for in India?",o:["Goods and Services Tax","General Sales Tax","Government Service Tariff","Gross State Tax"],c:0},
-  {q:"SHA-256 is a…",o:["Hash function","Compression codec","Encryption key","Database index"],c:0},
-  {q:"1 lakh equals…",o:["100,000","10,000","1,000,000","10,000,000"],c:0},
-  {q:"RDAP is used for…",o:["Domain registration data","Email routing","CDN caching","SSL issuance"],c:0},
-  {q:"A UUID v4 is primarily…",o:["Random identifier","Sequential counter","MAC address","IP address"],c:0},
-  {q:"Typical blog reading speed used online is about…",o:["200 WPM","50 WPM","500 WPM","1000 WPM"],c:0},
-  {q:"Base64 encoding represents binary data as…",o:["ASCII text","Hexadecimal only","Unicode code points","JPEG pixels"],c:0},
-  {q:"EMI stands for…",o:["Equated Monthly Installment","Estimated Market Index","Electronic Money Interface","Export Margin Income"],c:0},
-  {q:"Which tool checks domain registration age on this site?",o:["Domain age checker","Tip calculator","PAN format","BMI calculator"],c:0},
-  {q:"Y-Chat runs mainly under which path?",o:["/y-chat/","/chat-server/","/api/chat","/rooms.exe"],c:0},
-];
-let idx=0, correct=0, picked=null;
-function render(){
-  const item=bank[idx];
-  document.getElementById('meta').textContent='Question '+(idx+1)+' of '+bank.length;
-  document.getElementById('q').textContent=item.q;
-  const box=document.getElementById('opts'); box.innerHTML='';
-  item.o.forEach((text,i)=>{
-    const b=document.createElement('button');
-    b.type='button'; b.className='primary'; b.style.width='100%'; b.textContent=text;
-    b.onclick=()=>{
-      if(picked!==null) return;
-      picked=i;
-      const ok=i===item.c;
-      if(ok) correct++;
-      b.style.outline=ok?'3px solid #0d6b3a':'3px solid #b00020';
-      document.getElementById('score').textContent=ok?'Correct!':'Wrong — correct: '+item.o[item.c];
-      document.getElementById('next').hidden=false;
-    };
-    box.appendChild(b);
-  });
-  document.getElementById('next').hidden=true;
-  document.getElementById('score').textContent='';
-  picked=null;
-}
-document.getElementById('next').onclick=()=>{
-  idx++;
-  if(idx>=bank.length){
-    document.getElementById('q').textContent='Done!';
-    document.getElementById('opts').innerHTML='';
-    document.getElementById('score').textContent='You scored '+correct+' / '+bank.length;
-    document.getElementById('next').hidden=true;
-    document.getElementById('meta').textContent='Play again by refreshing the page.';
-    return;
-  }
-  render();
-};
-render();
+${generateQuizClientScript(QUIZ_BANK)}
 </script>`;
 }

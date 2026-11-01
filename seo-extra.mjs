@@ -43,14 +43,21 @@ export const extraPageSeo = {
     "Private image compression",
     "Images never leave your device—we draw to a canvas and export JPEG at your chosen quality.",
     [{ q: "PNG support?", a: "Output is JPEG for smaller size; upload PNG or JPG sources." }],
-    [{ href: "/pdf-merge.html", label: "Merge PDF" }],
+    [
+      { href: "/image-converter.html", label: "Image converter" },
+      { href: "/pdf-merge.html", label: "Merge PDF" },
+    ],
   ),
   "pdf-merge.html": toolSeo(
     "merge pdf online, combine pdf free, pdf join browser",
     "Merge PDFs without uploading to a cloud",
     "pdf-lib runs locally to stitch pages in the order you select files.",
     [{ q: "Is there a file limit?", a: "Limited by your browser memory—keep batches modest on mobile." }],
-    [{ href: "/india-invoice.html", label: "GST invoice" }],
+    [
+      { href: "/pdf-to-word.html", label: "PDF to Word" },
+      { href: "/word-to-pdf.html", label: "Word to PDF" },
+      { href: "/india-invoice.html", label: "GST invoice" },
+    ],
   ),
   "meeting-planner.html": toolSeo(
     "time zone meeting planner, world clock meeting",

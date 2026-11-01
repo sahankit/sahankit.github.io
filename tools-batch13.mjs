@@ -20,7 +20,7 @@ ${ad}
 <div class="tool-panel">
   <textarea id="text" rows="8" spellcheck="false">I seen him yesterday at the store, and he bought two loafs of bread.</textarea>
   <button type="button" class="primary" id="go">Check grammar</button>
-  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <p id="status" class="tool-feedback" role="status" aria-live="polite"></p>
   <div id="out"></div>
 </div>
 ${AI_SCRIPT}
@@ -37,7 +37,7 @@ document.getElementById('go').onclick=async()=>{
     status.textContent='Proofreader API not found. Use desktop Chrome and enable chrome://flags/#proofreader-api';
     return;
   }
-  status.className='prose';
+  status.className='tool-feedback';
   status.textContent='Checking…';
   try{
     const avail=await ChromeAi.availability('Proofreader',{expectedInputLanguages:['en']});
@@ -165,6 +165,7 @@ document.getElementById('go').click();
       cardDesc: "Chrome Summarizer.",
       body: `
 <h1>Text summarizer</h1>
+<p class="prose" style="font-size:0.9rem">This page is kept for bookmarks. For the full UI see <a href="/summariser/">AI summariser (Chrome)</a>.</p>
 ${AI_HINT}
 ${ad}
 <div class="tool-panel">
@@ -174,7 +175,7 @@ ${ad}
   <label for="len">Length</label>
   <select id="len"><option value="short">Short</option><option value="medium" selected>Medium</option><option value="long">Long</option></select>
   <button type="button" class="primary" id="go">Summarize</button>
-  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <p id="status" class="tool-feedback" role="status" aria-live="polite"></p>
   <textarea id="out" rows="8" readonly></textarea>
 </div>
 ${AI_SCRIPT}
@@ -190,7 +191,7 @@ document.getElementById('go').onclick=async()=>{
     status.textContent='Summarizer API not found. Use Chrome 138+ desktop.';
     return;
   }
-  status.className='prose';
+  status.className='tool-feedback';
   status.textContent='Summarizing…';
   try{
     const opts={
@@ -232,7 +233,7 @@ ${ad}
   <label for="length">Length</label>
   <select id="length"><option value="as-is">As-is</option><option value="shorter">Shorter</option><option value="longer">Longer</option></select>
   <button type="button" class="primary" id="go">Rewrite</button>
-  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <p id="status" class="tool-feedback" role="status" aria-live="polite"></p>
   <textarea id="out" rows="8" readonly></textarea>
 </div>
 ${AI_SCRIPT}
@@ -291,7 +292,7 @@ ${ad}
   <label for="length">Length</label>
   <select id="length"><option value="short">Short</option><option value="medium" selected>Medium</option><option value="long">Long</option></select>
   <button type="button" class="primary" id="go">Write</button>
-  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <p id="status" class="tool-feedback" role="status" aria-live="polite"></p>
   <textarea id="out" rows="10" readonly></textarea>
 </div>
 ${AI_SCRIPT}
@@ -343,7 +344,7 @@ ${ad}
 <div class="tool-panel">
   <textarea id="text" rows="5">Bonjour, comment allez-vous?</textarea>
   <button type="button" class="primary" id="go">Detect</button>
-  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <p id="status" class="tool-feedback" role="status" aria-live="polite"></p>
   <ul id="out" class="prose"></ul>
 </div>
 ${AI_SCRIPT}

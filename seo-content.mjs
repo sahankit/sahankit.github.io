@@ -3,26 +3,31 @@ import { SITE_NAME } from "./seo-build.mjs";
 
 export function renderSeoHtml(seo) {
   if (!seo) return "";
-  let html = '<section class="prose seo-content" aria-label="Guide and FAQ">';
-  for (const s of seo.sections || []) {
-    html += `<h2>${s.h2}</h2>`;
-    for (const p of s.paragraphs || []) html += `<p>${p}</p>`;
-    if (s.list) {
-      html += "<ul>";
-      for (const li of s.list) html += `<li>${li}</li>`;
-      html += "</ul>";
+  let html = '<section class="page-guide" aria-label="Guide and FAQ">';
+  if (seo.sections?.length) {
+    html += '<div class="prose seo-content">';
+    for (const s of seo.sections) {
+      html += `<h2>${s.h2}</h2>`;
+      for (const p of s.paragraphs || []) html += `<p>${p}</p>`;
+      if (s.list) {
+        html += "<ul>";
+        for (const li of s.list) html += `<li>${li}</li>`;
+        html += "</ul>";
+      }
     }
+    html += "</div>";
   }
   if (seo.faqs?.length) {
-    html += "<h2>Frequently asked questions</h2>";
-    for (const f of seo.faqs) {
-      html += `<h3>${f.q}</h3><p>${f.a}</p>`;
-    }
+    html += '<div class="faq"><h2>Frequently asked questions</h2>';
+    seo.faqs.forEach((f, i) => {
+      html += `<details class="faq-item"${i === 0 ? " open" : ""}><summary><h3>${f.q}</h3></summary><div class="faq-answer"><p>${f.a}</p></div></details>`;
+    });
+    html += "</div>";
   }
   if (seo.related?.length) {
-    html += "<h2>Related free tools</h2><ul>";
+    html += '<div class="prose"><h2>Related free tools</h2><ul class="link-list">';
     for (const r of seo.related) html += `<li><a href="${r.href}">${r.label}</a></li>`;
-    html += "</ul>";
+    html += "</ul></div>";
   }
   html += "</section>";
   return html;
@@ -129,6 +134,10 @@ export const indexSeo = {
     },
   ],
   faqs: [
+    {
+      q: "How do I find a specific tool?",
+      a: "Use the search box at the top of the home page, or open a topic hub (Finance, Developer, India, and others) for a shorter list.",
+    },
     {
       q: "Are these tools free?",
       a: "Yes. Every calculator and text tool on this site is free to use in the browser.",

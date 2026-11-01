@@ -220,7 +220,7 @@ document.getElementById('go').onclick=()=>{
   <label for="files">PDF files (order = merge order)</label>
   <input id="files" type="file" accept="application/pdf" multiple />
   <button type="button" class="primary" id="go" disabled>Merge &amp; download</button>
-  <p id="msg" class="ok"></p>
+  <p id="msg" class="tool-feedback" role="status" aria-live="polite"></p>
 </div>
 <script type="module">
 const inp=document.getElementById('files'), btn=document.getElementById('go');

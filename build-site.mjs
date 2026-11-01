@@ -34,7 +34,22 @@ import { batch12Tools } from "./tools-batch12.mjs";
 import { batch12PageSeo } from "./seo-batch12.mjs";
 import { batch13Tools } from "./tools-batch13.mjs";
 import { batch13PageSeo } from "./seo-batch13.mjs";
+import { batch14Tools } from "./tools-batch14.mjs";
+import { batch14PageSeo } from "./seo-batch14.mjs";
+import { batch15Tools } from "./tools-batch15.mjs";
+import { batch15PageSeo } from "./seo-batch15.mjs";
+import { batch16Tools } from "./tools-batch16.mjs";
+import { batch16PageSeo } from "./seo-batch16.mjs";
+import { batch17Tools } from "./tools-batch17.mjs";
+import { batch17PageSeo } from "./seo-batch17.mjs";
+import { batch20Tools } from "./tools-batch20.mjs";
+import { batch20PageSeo } from "./seo-batch20.mjs";
+import { batch21Tools } from "./tools-batch21.mjs";
+import { batch21PageSeo } from "./seo-batch21.mjs";
+import { batch22Tools } from "./tools-batch22.mjs";
+import { batch22PageSeo } from "./seo-batch22.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
+import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
 import {
   OG_IMAGE,
   SITE_NAME,
@@ -45,6 +60,9 @@ import {
   webPageNode,
   fallbackToolSeo,
   fallbackGuideSeo,
+  enrichToolSeo,
+  enrichContentSeo,
+  buildMetaDescription,
 } from "./seo-build.mjs";
 
 const pageSeo = {
@@ -61,6 +79,13 @@ const pageSeo = {
   ...batch11PageSeo,
   ...batch12PageSeo,
   ...batch13PageSeo,
+  ...batch14PageSeo,
+  ...batch15PageSeo,
+  ...batch16PageSeo,
+  ...batch17PageSeo,
+  ...batch20PageSeo,
+  ...batch21PageSeo,
+  ...batch22PageSeo,
   ...sitePageSeo,
 };
 
@@ -69,20 +94,54 @@ const BASE = "https://sahankit.github.io";
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 const nav = `
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
-  <a class="brand" href="/">${SITE_NAME}</a>
-  <ul class="site-nav">
-    <li><a href="/">All tools</a></li>
-    <li><a href="/guides/writing-tools.html">Guides</a></li>
-    <li><a href="/y-chat/">Y-Chat</a></li>
-  </ul>
+  <div class="site-header-inner">
+    <a class="brand" href="/" aria-label="${SITE_NAME} home"><span class="brand-mark" aria-hidden="true">T</span><span>${SITE_NAME}</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/#find-tool">Search</a>
+      <a href="/#hubs">Hubs</a>
+      <a href="/finance/">Finance</a>
+      <a href="/dev/">Developer</a>
+      <a href="/guides/writing-tools/">Guides</a>
+      <a href="/quiz/">Quiz</a>
+      <a href="/brief/">News</a>
+    </nav>
+  </div>
 </header>`;
 
-const footer = `
+const FOOTER_POPULAR = [
+  ["/word-counter/", "Word counter"],
+  ["/income-tax-calculator/", "Income tax calculator"],
+  ["/gst-calculator/", "GST calculator"],
+  ["/emi-calculator/", "EMI calculator"],
+  ["/pdf-merge/", "Merge PDF"],
+  ["/qr-code-generator/", "QR code generator"],
+];
+
+function footerHtml() {
+  const list = (items) => items.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("");
+  const hubs = micrositeDefs.slice(0, 8).map((s) => [`/${s.slug}/`, s.hero]);
+  return `
 <footer class="site-footer">
-  <p>Free browser tools · <a href="${BASE}/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
-  <p><a href="${BASE}/sitemap.xml">Sitemap</a></p>
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="/" aria-label="${SITE_NAME} home"><span class="brand-mark" aria-hidden="true">T</span><span>${SITE_NAME}</span></a>
+      <p>${tools.length}+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
+    </div>
+    <nav class="footer-col" aria-label="Popular tools"><h2>Popular</h2><ul>${list(FOOTER_POPULAR)}</ul></nav>
+    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul>${list(hubs)}</ul></nav>
+    <nav class="footer-col" aria-label="Site"><h2>Site</h2><ul>${list([
+      ["/guides/writing-tools/", "Guides"],
+      ["/about/", "About"],
+      ["/privacy/", "Privacy policy"],
+      ["/y-chat/", "Y-Chat"],
+      ["/sitemap.xml", "Sitemap"],
+    ])}</ul></nav>
+  </div>
+  <p class="footer-note">Estimates are for information only—not financial, tax, legal, or medical advice. Not affiliated with Google or Yahoo.</p>
 </footer>`;
+}
 
 const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   const t = escapeMeta(title);
@@ -98,7 +157,11 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta name="robots" content="${robots}" />
   <meta name="author" content="${SITE_NAME}" />
   <meta name="theme-color" content="#720e9e" />
+  <meta name="color-scheme" content="light" />
   <title>${t}</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <meta name="description" content="${d}" />
   ${k ? `<meta name="keywords" content="${k}" />` : ""}
   <link rel="canonical" href="${canonical}" />
@@ -110,13 +173,17 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta property="og:url" content="${canonical}" />
   <meta property="og:locale" content="${opts.ogLocale || "en_US"}" />
   <meta property="og:image" content="${ogImage}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="${SITE_NAME} — free online calculators and utilities" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${t}" />
   <meta name="twitter:description" content="${d}" />
   <meta name="twitter:image" content="${ogImage}" />
   <link rel="stylesheet" href="/assets/site.css" />
-  <script src="/assets/ads.js" defer></script>`;
+  <script src="/assets/ads.js" defer></script>
+  <script src="/assets/tool-busy.js" defer></script>
+  <script src="/assets/site-ui.js" defer></script>`;
 };
 
 function buildJsonLd(title, desc, canonicalPath, opts = {}) {
@@ -158,16 +225,29 @@ ${buildJsonLd(title, desc, canonicalPath, opts)}
 </head>
 <body>
 ${nav}
-<main class="wrap">
+<main class="wrap" id="main">
 ${breadcrumb}
 ${mainHtml}
 </main>
-${footer}
+${footerHtml()}
 </body>
 </html>`;
 }
 
-const ad = `<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>`;
+const ad = `<aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>`;
+const adBelow = `<aside class="ad-slot ad-slot--below" data-ad hidden aria-label="Advertisement"></aside>`;
+
+/** Every tool page gets AdSense slots even if a template omits \${ad}. */
+function ensureToolAds(body) {
+  let html = body;
+  if (!html.includes("ad-slot")) {
+    const hero = html.match(/<header class="page-hero"[\s\S]*?<\/header>/);
+    if (hero) html = html.replace(hero[0], `${hero[0]}\n${ad}`);
+    else html = html.replace(/(<h1>[\s\S]*?<\/h1>)/, `$1\n${ad}`);
+  }
+  if (!html.includes("ad-slot--below")) html = `${html.trimEnd()}\n${adBelow}\n`;
+  return html;
+}
 
 const HUB_CATEGORIES = [
   { id: "writing", title: "Text & writing" },
@@ -181,23 +261,122 @@ const HUB_CATEGORIES = [
   { id: "chat", title: "Free chat (Y-Chat)" },
 ];
 
+const CATEGORY_HUB = {
+  writing: { href: "/writing/", label: "Writing toolkit" },
+  calculators: { href: "/finance/", label: "Finance & calculators" },
+  india: { href: "/india/", label: "India utilities" },
+  productivity: { href: "/productivity/", label: "Productivity hub" },
+  design: { href: "/design/", label: "Design & media" },
+  documents: { href: "/design/", label: "PDF & images" },
+  seo: { href: "/seo-lab/", label: "SEO lab" },
+  developer: { href: "/dev/", label: "Developer utilities" },
+  chat: { href: "/chat/", label: "Free chat (Y-Chat)" },
+};
+
+const FEATURED_HUB_SLUGS = ["finance", "india", "dev", "osint", "ai-writing", "student", "brief", "quiz"];
+
+const POPULAR_TOOL_FILES = [
+  "word-counter.html",
+  "income-tax-calculator.html",
+  "gst-calculator.html",
+  "qr-code-generator.html",
+  "pdf-merge.html",
+  "json-formatter.html",
+  "password-generator.html",
+  "typing-test.html",
+  "grammar-checker.html",
+  "osint-search.html",
+];
+
+function normalizeToolBody(body, t) {
+  const hub = CATEGORY_HUB[t.category];
+  const icon = CATEGORY_ICON[t.category];
+  const eyebrow = hub
+    ? `<a class="eyebrow tone-${icon?.[1] || "violet"}" href="${hub.href}">${iconSvg(icon?.[0])}${hub.label}</a>`
+    : "";
+  const lead = escapeMeta(t.desc || t.cardDesc);
+  if (!/<h1>/.test(body)) return body;
+  return body.replace(
+    /<h1>([^<]*)<\/h1>/,
+    `<header class="page-hero">${eyebrow}<h1>$1</h1><p class="page-lead">${lead}</p></header>`,
+  );
+}
+
+function breadcrumbHtml(items) {
+  const lis = items
+    .map((it, i) =>
+      i === items.length - 1 || !it.url
+        ? `<li aria-current="page">${it.name}</li>`
+        : `<li><a href="${it.url}">${it.name}</a></li>`,
+    )
+    .join("");
+  return `<nav class="breadcrumb" aria-label="Breadcrumb"><ol>${lis}</ol></nav>`;
+}
+
+function relatedCardsHtml(related, self) {
+  const cards = [];
+  for (const r of related || []) {
+    if (!r?.href || r.href === "/" || r.href === self) continue;
+    const t = tools.find((x) => canonicalFromFile(x.file) === r.href);
+    const hub = micrositeDefs.find((s) => `/${s.slug}/` === r.href);
+    if (hub) {
+      cards.push(hubCardHtml({ slug: hub.slug, title: r.label, desc: hub.blurb }));
+    } else if (r.href.startsWith("/guides/")) {
+      cards.push(
+        `<a class="card tool-card" href="${r.href}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${r.label}</h3><p>Guide</p></span></a>`,
+      );
+    } else {
+      cards.push(toolCardHtml({ href: r.href, title: r.label, desc: t?.cardDesc || "", category: t?.category }));
+    }
+    if (cards.length >= 6) break;
+  }
+  if (!cards.length) return "";
+  return `<section class="related-tools" aria-labelledby="related-heading">
+<h2 id="related-heading">Related tools</h2>
+<div class="grid grid--compact">${cards.join("")}</div>
+</section>`;
+}
+
 function hubSectionsHtml() {
   const blocks = HUB_CATEGORIES.map(({ id, title }) => {
     const list = tools.filter((t) => t.category === id);
     if (!list.length) return null;
-    return { title, list };
+    return { id, title, list };
   }).filter(Boolean);
-  return blocks
-    .map(({ title, list }, i) => {
-      const mt = i === 0 ? "" : ' style="margin-top:24px"';
-      return `<section${mt}><h2>${title}</h2><div class="grid">${list
-        .map((t) => {
-          const href = canonicalFromFile(t.file);
-          return `<a class="card" href="${href}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`;
-        })
-        .join("")}</div></section>`;
+  const panels = blocks
+    .map(({ id, title, list }) => {
+      return `<details class="category-panel">
+<summary>${iconTile(CATEGORY_ICON[id], "icon-tile--sm")}<span class="category-panel-title">${title}</span><span class="category-panel-count">${list.length}</span></summary>
+<div class="grid grid--compact">${list
+        .map((t) =>
+          toolCardHtml({ href: canonicalFromFile(t.file), title: t.card, desc: t.cardDesc, category: t.category }),
+        )
+        .join("")}</div>
+</details>`;
     })
     .join("\n");
+  return `<section id="all-tools" class="catalog" aria-labelledby="catalog-heading">
+<h2 id="catalog-heading">All tools by topic</h2>
+<p class="section-hint">Open a category below, or use search above to jump straight to a tool.</p>
+${panels}
+</section>`;
+}
+
+function micrositeCard(s) {
+  const blurb = s.blurb.length > 100 ? `${s.blurb.slice(0, 97)}…` : s.blurb;
+  return hubCardHtml({ slug: s.slug, title: s.hero, desc: blurb });
+}
+
+function toolFinderHtml() {
+  return `<section id="find-tool" class="tool-finder" aria-labelledby="finder-heading">
+<h2 id="finder-heading" class="sr-only">Find a tool</h2>
+<div id="tool-finder">
+<label class="sr-only" for="tool-search-input">Search tools</label>
+<input type="search" id="tool-search-input" name="q" placeholder="Search ${tools.length} tools…" autocomplete="off" enterkeyhint="search" />
+<div class="search-results" data-results aria-live="polite"></div>
+<p class="search-empty" data-empty hidden>Type to search 210+ tools by name or topic.</p>
+</div>
+</section>`;
 }
 
 const tools = [
@@ -652,7 +831,7 @@ document.getElementById('go').click();
   <div class="row">
     <button type="button" class="primary" id="go">Look up</button>
   </div>
-  <p id="out" aria-live="polite"></p>
+  <p id="out" class="tool-feedback" role="status" aria-live="polite"></p>
   <div class="stats" id="stats" hidden>
     <div class="stat"><strong id="created">—</strong>Registered</div>
     <div class="stat"><strong id="age">—</strong>Age</div>
@@ -690,7 +869,8 @@ document.getElementById('go').onclick=async()=>{
     out.textContent='Enter a valid domain (e.g. example.com).';
     return;
   }
-  out.textContent='Looking up RDAP…';
+  if(window.ToolBusy) ToolBusy.start(document.querySelector('.tool-panel'), document.getElementById('go'), out, 'Looking up domain…');
+  else out.textContent='Looking up RDAP…';
   try{
     const res=await fetch('https://rdap.org/domain/'+encodeURIComponent(domain),{headers:{Accept:'application/rdap+json, application/json'}});
     if(!res.ok) throw new Error(res.status===404?'Domain not found in RDAP.':('Lookup failed ('+res.status+'). Try again later.'));
@@ -710,6 +890,8 @@ document.getElementById('go').onclick=async()=>{
   }catch(err){
     out.className='error';
     out.textContent=err.message||'Lookup failed.';
+  }finally{
+    if(window.ToolBusy) ToolBusy.stop(document.querySelector('.tool-panel'), document.getElementById('go'), out);
   }
 };
 document.getElementById('domain').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('go').click(); });
@@ -863,6 +1045,13 @@ document.getElementById('go').click();
   ...batch11Tools(ad),
   ...batch12Tools(ad),
   ...batch13Tools(ad),
+  ...batch14Tools(ad),
+  ...batch15Tools(ad),
+  ...batch16Tools(ad),
+  ...batch17Tools(ad),
+  ...batch20Tools(ad),
+  ...batch21Tools(ad),
+  ...batch22Tools(ad),
 ];
 
 const guides = [
@@ -907,7 +1096,7 @@ const guides = [
     title: "Design, PDF & Image Tools — Colors, QR, Merge",
     desc: "Free design and document tools: gradients, color contrast, QR codes, PDF merge, and image compression.",
     body: `<h1>Design & document tools</h1>${ad}
-<p>Try the <a href="/color-picker.html">color picker</a>, <a href="/gradient-generator.html">gradient generator</a>, <a href="/qr-code-generator.html">QR generator</a>, <a href="/pdf-merge.html">PDF merge</a>, and <a href="/image-compress.html">image compressor</a>. Files stay on your device where tools run locally.</p>`,
+<p>Try the <a href="/color-picker.html">color picker</a>, <a href="/gradient-generator.html">gradient generator</a>, <a href="/qr-code-generator.html">QR generator</a>, <a href="/pdf-merge.html">PDF merge</a>, <a href="/pdf-to-word.html">PDF to Word</a>, <a href="/word-to-pdf.html">Word to PDF</a>, <a href="/image-converter.html">image converter</a>, and <a href="/image-compress.html">image compressor</a>. Files stay on your device where tools run locally.</p>`,
   },
   {
     path: "/guides/y-chat-guide.html",
@@ -920,41 +1109,69 @@ const guides = [
   },
 ];
 
+let canonicalHtmlFiles = null;
+
+/** Point internal links at canonical /slug/ URLs instead of the duplicate .html copies. */
+function canonicalizeLinks(html) {
+  canonicalHtmlFiles ??= new Set([...tools, ...guides].map((x) => x.file));
+  return html.replace(/href="\/([a-z0-9][a-z0-9\-/]*)\.html(#[^"]*)?"/g, (m, slug, hash = "") =>
+    canonicalHtmlFiles.has(`${slug}.html`) ? `href="/${slug}/${hash}"` : m,
+  );
+}
+
 function write(rel, content) {
   const full = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(full), { recursive: true });
-  fs.writeFileSync(full, content);
+  fs.writeFileSync(full, rel.endsWith(".html") ? canonicalizeLinks(content) : content);
 }
 
 const hubCards = tools.map((t) =>
   `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
 ).join("\n");
 
-const micrositeCards = micrositeDefs
-  .map(
-    (s) =>
-      `<a class="card" href="/${s.slug}/"><h2>${s.hero}</h2><p>${s.blurb.slice(0, 90)}…</p></a>`,
-  )
-  .concat(
-    `<a class="card" href="/brief/"><h2>News brief</h2><p>Latest News, Sports &amp; Business headlines in short cards.</p></a>`,
-    `<a class="card" href="/ai-writing/"><h2>Chrome AI writing</h2><p>Grammar, summarize, rewrite—on-device in Chrome.</p></a>`,
-    `<a class="card" href="/quiz/"><h2>Quick quiz</h2><p>Free trivia in your browser—10 questions.</p></a>`,
-  )
-  .join("");
+const featuredHubSet = new Set(FEATURED_HUB_SLUGS);
+const featuredHubCards = micrositeDefs.filter((s) => featuredHubSet.has(s.slug)).map(micrositeCard).join("\n");
+const otherHubCards = micrositeDefs.filter((s) => !featuredHubSet.has(s.slug)).map(micrositeCard).join("\n");
 
-const indexMain = `<div class="hero"><h1>Free online tools</h1><p>Calculators and writing utilities in your browser. Also try <a href="/y-chat/">Y-Chat</a> — free chat rooms.</p></div>
+const popularCards = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
+  .filter(Boolean)
+  .map((t) => toolCardHtml({ href: canonicalFromFile(t.file), title: t.card, desc: t.cardDesc, category: t.category }))
+  .join("\n");
+
+const indexMain = `<div class="hero">
+<p class="hero-kicker">${tools.length} free tools · no signup</p>
+<h1>Free online calculators &amp; tools</h1>
+<p class="hero-lead">India finance, PDF, writing, developer and everyday calculators. Most tools run entirely in your browser, so your data stays on your device.</p>
+${toolFinderHtml()}
+<ul class="trust-strip" aria-label="How it works">
+<li>Free forever</li>
+<li>No account</li>
+<li>Works on mobile</li>
+</ul>
+</div>
 ${ad}
-<section style="margin-top:8px"><h2>Specialized sites</h2><div class="grid">${micrositeCards}</div></section>
-<section aria-label="Tool categories"><h2 class="sr-only">Categories</h2>
+<section id="hubs" class="home-section" aria-labelledby="hubs-heading">
+<h2 id="hubs-heading">Start with a topic hub</h2>
+<p class="section-hint">Curated collections—easier than scrolling the full list.</p>
+<div class="grid grid--scroll">${featuredHubCards}</div>
+${otherHubCards ? `<details class="more-hubs"><summary>More topic hubs</summary><div class="grid grid--compact">${otherHubCards}</div></details>` : ""}
+</section>
+<section class="home-section" aria-labelledby="popular-heading">
+<h2 id="popular-heading">Popular tools</h2>
+<p class="section-hint">Most-used pages—open one and start typing.</p>
+<div class="grid grid--compact">${popularCards}</div>
+</section>
 ${hubSectionsHtml()}
-<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${canonicalFromFile(g.file)}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>
+<section class="home-section" aria-labelledby="guides-heading">
+<h2 id="guides-heading">Guides</h2>
+<div class="grid grid--compact">${guides.map((g) => `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc.slice(0, 80)}…</p></span></a>`).join("")}</div>
 </section>
 ${renderSeoHtml(indexSeo)}`;
 
 const indexHtml = page(
   "/",
-  "Tools — 170+ Free Online Calculators & Utilities",
-  "News brief (Inshorts-style), India tax, OSINT, finance, and 170+ free browser tools—no signup.",
+  `Free Online Calculators & Tools — ${tools.length}+ Utilities | ${SITE_NAME}`,
+  `${tools.length}+ free online tools: income tax, GST, EMI, PDF merge, word counter, QR codes, and more. Fast, private, no signup—works in your browser.`,
   indexMain,
   "",
   {
@@ -968,11 +1185,30 @@ const indexHtml = page(
 
 write("index.html", indexHtml);
 
+const searchIndex = tools.map((t) => ({
+  name: t.card,
+  desc: t.cardDesc,
+  href: canonicalFromFile(t.file),
+  cat: HUB_CATEGORIES.find((c) => c.id === t.category)?.title || t.category,
+}));
+write("assets/tools-search.json", `${JSON.stringify(searchIndex)}\n`);
+
 function resolveSeo(file, toolOrGuide) {
-  if (pageSeo[file]) return pageSeo[file];
-  if (toolOrGuide?.card) return fallbackToolSeo(toolOrGuide);
-  if (toolOrGuide?.title) return fallbackGuideSeo(toolOrGuide);
-  return null;
+  let seo = pageSeo[file] ? { ...pageSeo[file] } : null;
+  if (!seo && toolOrGuide?.card) seo = fallbackToolSeo(toolOrGuide);
+  if (!seo && toolOrGuide?.title) seo = fallbackGuideSeo(toolOrGuide);
+  if (!seo) return null;
+  if (toolOrGuide?.card) {
+    return enrichToolSeo(seo, toolOrGuide, { allTools: tools, categoryHub: CATEGORY_HUB });
+  }
+  if (toolOrGuide?.title && file.startsWith("guides/")) {
+    return enrichContentSeo(seo, {
+      title: toolOrGuide.title,
+      desc: toolOrGuide.desc,
+      faqs: seo.faqs,
+    });
+  }
+  return seo;
 }
 
 function pageOpts(file, entity) {
@@ -989,29 +1225,39 @@ function pageOpts(file, entity) {
 
 function pageTitleDesc(file, entity) {
   const seo = resolveSeo(file, entity);
+  const label = entity.card || entity.title?.split("—")[0]?.trim() || "tool";
   return {
     title: seo?.metaTitle || entity.title,
-    desc: seo?.metaDescription || entity.desc,
+    desc: buildMetaDescription(seo?.metaDescription || entity.desc, label),
   };
 }
 
 function fullMain(file, entity) {
   const seo = resolveSeo(file, entity);
-  return entity.body + (seo ? renderSeoHtml(seo) : "");
+  let body = entity.body;
+  if (entity.card && entity.category) body = normalizeToolBody(body, entity);
+  if (!entity.card) return body + (seo ? renderSeoHtml(seo) : "");
+  body = ensureToolAds(body);
+  const related = relatedCardsHtml(seo?.related, canonicalFromFile(file));
+  return body + related + (seo ? renderSeoHtml({ ...seo, related: [] }) : "");
 }
 
 for (const t of tools) {
-  const canonical = canonicalFromFile(t.file);
+  const seo = resolveSeo(t.file, t);
+  const canonical = seo?.canonicalPath || canonicalFromFile(t.file);
   const { title, desc } = pageTitleDesc(t.file, t);
-  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="${canonical}">${t.card}</a></nav>`;
+  const hub = CATEGORY_HUB[t.category];
+  const crumbs = [
+    { name: "Home", url: "/" },
+    ...(hub ? [{ name: hub.label, url: hub.href }] : []),
+    { name: t.card, url: canonical },
+  ];
+  const bc = breadcrumbHtml(crumbs);
   const main = fullMain(t.file, t);
   const opts = {
     ...pageOpts(t.file, t),
     canonical,
-    breadcrumbs: [
-      { name: "Home", url: "/" },
-      { name: t.card, url: canonical },
-    ],
+    breadcrumbs: crumbs,
   };
   write(t.file, page(t.path, title, desc, main, bc, opts));
   write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, title, desc, main, bc, opts));
@@ -1020,7 +1266,11 @@ for (const t of tools) {
 for (const g of guides) {
   const canonical = canonicalFromFile(g.file);
   const short = g.title.split("—")[0].trim();
-  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/guides/writing-tools.html">Guides</a> / <span>${short}</span></nav>`;
+  const bc = breadcrumbHtml([
+    { name: "Home", url: "/" },
+    { name: "Guides", url: "/guides/writing-tools/" },
+    { name: short },
+  ]);
   const main = fullMain(g.file, g);
   const opts = {
     ...pageOpts(g.file, g),
@@ -1041,13 +1291,18 @@ for (const def of micrositeDefs) {
   const file = `${def.slug}/index.html`;
   const urlPath = `/${def.slug}/`;
   micrositeUrls.push(urlPath);
-  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / ${def.hero}</nav>`;
+  const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: def.hero }]);
   const body = micrositeMain(def, ad, tools, guides);
-  const seo = pageSeo[file];
-  const main = body + (seo ? renderSeoHtml(seo) : "");
+  const seo = enrichContentSeo(pageSeo[file], {
+    title: def.title,
+    desc: def.desc,
+    keywords: def.keywords,
+    faqs: def.faqs,
+  });
+  const main = body + renderSeoHtml(seo);
   const opts = {
-    keywords: seo?.keywords,
-    faqs: def.faqs?.length ? def.faqs : seo?.faqs,
+    keywords: seo.keywords,
+    faqs: seo.faqs,
     canonical: urlPath,
     breadcrumbs: [
       { name: "Home", url: "/" },
@@ -1064,12 +1319,15 @@ for (const def of micrositeDefs) {
   const title = "Sahankit Brief — News, Sports & Business Headlines";
   const desc =
     "Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser.";
-  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / News brief</nav>`;
-  const main = briefSiteBody(ad) + renderSeoHtml(pageSeo[file]);
+  const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: "News brief" }]);
+  const briefSeo = enrichContentSeo(pageSeo[file], { title, desc, faqs: pageSeo[file]?.faqs });
+  const main = briefSiteBody(ad) + renderSeoHtml(briefSeo);
   write(
     file,
-    page(urlPath, title, desc, main, bc, {
-      ...pageOpts(file),
+    page(urlPath, title, buildMetaDescription(desc, "news brief"), main, bc, {
+      keywords: briefSeo.keywords,
+      faqs: briefSeo.faqs,
+      softwareApp: false,
       canonical: urlPath,
       breadcrumbs: [
         { name: "Home", url: "/" },
@@ -1084,17 +1342,78 @@ for (const def of micrositeDefs) {
   const urlPath = "/quiz/";
   micrositeUrls.push(urlPath);
   const title = "Sahankit Quiz — Free Online Trivia";
-  const desc = "Ten-question trivia quiz in your browser. General knowledge and tech.";
-  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Quiz</nav>`;
-  const main = quizSiteBody(ad) + renderSeoHtml(pageSeo[file]);
+  const desc = "Hourly ten-question trivia in your browser. New set each local hour—general knowledge and tech.";
+  const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: "Quiz" }]);
+  const quizSeo = enrichContentSeo(pageSeo[file], { title, desc, faqs: pageSeo[file]?.faqs });
+  const main = quizSiteBody(ad) + renderSeoHtml(quizSeo);
   write(
     file,
-    page(urlPath, title, desc, main, bc, {
-      ...pageOpts(file),
+    page(urlPath, title, buildMetaDescription(desc, "quiz"), main, bc, {
+      keywords: quizSeo.keywords,
+      faqs: quizSeo.faqs,
+      softwareApp: false,
       canonical: urlPath,
       breadcrumbs: [
         { name: "Home", url: "/" },
         { name: "Quiz", url: urlPath },
+      ],
+    }),
+  );
+}
+
+const infoPages = [
+  {
+    slug: "about",
+    name: "About",
+    title: `About ${SITE_NAME} — Free Browser Calculators & Utilities`,
+    desc: `What ${SITE_NAME} is, how the free tools work, and how calculations and files are handled in your browser.`,
+    body: `<header class="page-hero"><h1>About ${SITE_NAME}</h1>
+<p class="page-lead">A collection of ${tools.length}+ free calculators and utilities for everyday work—finance, documents, writing, development, and study.</p></header>
+<div class="prose prose--page">
+<h2>How the tools work</h2>
+<p>Most tools run as JavaScript in your browser. Text you type and files you open (PDFs, images, Word documents, videos) are processed on your device and are not uploaded to this website.</p>
+<p>A few tools need a public service to answer a question—for example the domain age checker queries public RDAP records and the IP lookup asks ipify.org for your public IP address.</p>
+<h2>Accuracy</h2>
+<p>Calculators give estimates based on the formulas and rates shown on each page. They are not financial, tax, legal, or medical advice—confirm important numbers with a qualified professional or the official source.</p>
+<h2>Cost</h2>
+<p>Every tool is free with no account. The site is supported by advertising; see the <a href="/privacy/">privacy policy</a> for how ads work.</p>
+<h2>Start here</h2>
+<ul><li><a href="/finance/">India finance calculators</a></li><li><a href="/design/">PDF, image &amp; design tools</a></li><li><a href="/writing/">Writing tools</a></li><li><a href="/dev/">Developer utilities</a></li></ul>
+</div>`,
+  },
+  {
+    slug: "privacy",
+    name: "Privacy policy",
+    title: `Privacy Policy — ${SITE_NAME}`,
+    desc: `How ${SITE_NAME} handles your data: browser-based processing, advertising cookies from Google AdSense, and third-party services.`,
+    body: `<header class="page-hero"><h1>Privacy policy</h1>
+<p class="page-lead">Short version: tools process your input in your browser, and this site shows ads from Google, which may use cookies.</p></header>
+<div class="prose prose--page">
+<h2>Data you enter in tools</h2>
+<p>Text, numbers, and files you use in the tools are processed locally in your browser and are not sent to or stored by this website. Some tools load open-source libraries from a public CDN (jsDelivr) to do this work; the libraries run on your device.</p>
+<p>A few tools need an outside service: the domain age checker queries public RDAP servers (rdap.org), the IP lookup asks ipify.org for your public IP, and the news brief loads Google News RSS feeds through the allorigins.win proxy. Those requests go from your browser directly to that service.</p>
+<h2>Advertising and cookies</h2>
+<p>This site uses Google AdSense to show ads. Google and its partners may use cookies or similar technologies to serve ads based on your visits to this and other websites. You can learn how Google uses this information at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from sites that use its services</a>, and you can turn off personalised ads in <a href="https://adssettings.google.com/" rel="noopener">Google Ads Settings</a>.</p>
+<h2>Local storage</h2>
+<p>A few tools (for example the resume builder) can save drafts in your browser's local storage so you don't lose work. That data stays on your device; clear it any time from your browser settings.</p>
+<h2>Accounts</h2>
+<p>The tools need no account and collect no names or email addresses. Y-Chat is a separate chat app with its own terms.</p>
+<h2>Changes</h2>
+<p>If this policy changes, the updated version will be posted on this page.</p>
+</div>`,
+  },
+];
+
+for (const p of infoPages) {
+  const urlPath = `/${p.slug}/`;
+  write(
+    `${p.slug}/index.html`,
+    page(urlPath, p.title, p.desc, p.body, breadcrumbHtml([{ name: "Home", url: "/" }, { name: p.name }]), {
+      canonical: urlPath,
+      softwareApp: false,
+      breadcrumbs: [
+        { name: "Home", url: "/" },
+        { name: p.name, url: urlPath },
       ],
     }),
   );
@@ -1131,6 +1450,7 @@ const sitemapEntries = [
     priority: "0.7",
     changefreq: "monthly",
   })),
+  ...infoPages.map((p) => ({ loc: `/${p.slug}/`, priority: "0.3", changefreq: "yearly" })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
