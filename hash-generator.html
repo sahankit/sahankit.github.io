@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>SHA-256 Hash Generator — Text to Hash Online</title>
+  <meta name="description" content="Generate SHA-256 hashes from text in the browser. Free online hash calculator using Web Crypto." />
+  <meta name="keywords" content="SHA-256 online, hash generator, text to hash, Web Crypto" />
+  <link rel="canonical" href="https://sahankit.github.io/hash-generator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="SHA-256 Hash Generator — Text to Hash Online" />
+  <meta property="og:description" content="Generate SHA-256 hashes from text in the browser. Free online hash calculator using Web Crypto." />
+  <meta property="og:url" content="https://sahankit.github.io/hash-generator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="SHA-256 Hash Generator — Text to Hash Online" />
+  <meta name="twitter:description" content="Generate SHA-256 hashes from text in the browser. Free online hash calculator using Web Crypto." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"SHA-256 Hash Generator — Text to Hash Online","description":"Generate SHA-256 hashes from text in the browser. Free online hash calculator using Web Crypto.","url":"https://sahankit.github.io/hash-generator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my text sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Hashing uses Web Crypto in your browser."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SHA-256 Hash Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generate SHA-256 hashes from text in the browser. Free online hash calculator using Web Crypto.","url":"https://sahankit.github.io/hash-generator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / SHA-256 hash</nav>
+
+<h1>SHA-256 hash generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="text">Text</label>
+  <textarea id="text" spellcheck="false" placeholder="Enter string to hash…"></textarea>
+  <button type="button" class="primary" id="go">Hash</button>
+  <label for="out">SHA-256 (hex)</label>
+  <input id="out" type="text" readonly spellcheck="false" />
+</div>
+<script>
+async function hash(){
+  const s=document.getElementById('text').value;
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+  document.getElementById('out').value=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+document.getElementById('go').onclick=hash;
+document.getElementById('text').addEventListener('input',()=>{ document.getElementById('out').value=''; });
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>When to use SHA-256</h2><p>SHA-256 produces a fixed-length fingerprint of text—handy for checksums, API signatures, and learning how hashing works. It is not encryption; do not hash passwords for login systems without proper salting and slow algorithms.</p><h2>Frequently asked questions</h2><h3>Is my text sent to a server?</h3><p>No. Hashing uses Web Crypto in your browser.</p><h2>Related free tools</h2><ul><li><a href="/base64-encoder.html">Base64 encoder</a></li><li><a href="/uuid-generator.html">UUID generator</a></li><li><a href="/json-formatter.html">JSON formatter</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

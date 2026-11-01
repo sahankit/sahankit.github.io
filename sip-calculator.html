@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>SIP Calculator — Mutual Fund Returns Estimate</title>
+  <meta name="description" content="Estimate maturity value for monthly SIP with expected annual return. Free India SIP calculator in browser." />
+  <meta name="keywords" content="SIP calculator, mutual fund SIP, monthly SIP returns India" />
+  <link rel="canonical" href="https://sahankit.github.io/sip-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="SIP Calculator — Mutual Fund Returns Estimate" />
+  <meta property="og:description" content="Estimate maturity value for monthly SIP with expected annual return. Free India SIP calculator in browser." />
+  <meta property="og:url" content="https://sahankit.github.io/sip-calculator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="SIP Calculator — Mutual Fund Returns Estimate" />
+  <meta name="twitter:description" content="Estimate maturity value for monthly SIP with expected annual return. Free India SIP calculator in browser." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"SIP Calculator — Mutual Fund Returns Estimate","description":"Estimate maturity value for monthly SIP with expected annual return. Free India SIP calculator in browser.","url":"https://sahankit.github.io/sip-calculator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this include tax or exit load?","acceptedAnswer":{"@type":"Answer","text":"No. It shows gross estimated maturity before fees and taxes."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SIP Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate maturity value for monthly SIP with expected annual return. Free India SIP calculator in browser.","url":"https://sahankit.github.io/sip-calculator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / SIP calculator</nav>
+
+<h1>SIP calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="p">Monthly SIP (₹)</label><input id="p" type="number" value="5000" />
+  <label for="y">Years</label><input id="y" type="number" min="1" max="40" value="10" />
+  <label for="r">Expected return (% per year)</label><input id="r" type="number" step="0.1" value="12" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <div class="stats">
+    <div class="stat"><strong id="inv">—</strong>Invested</div>
+    <div class="stat"><strong id="fv">—</strong>Est. maturity</div>
+    <div class="stat"><strong id="gain">—</strong>Est. gains</div>
+  </div>
+  <p class="prose" style="margin-top:12px;font-size:0.85rem">Illustration only—not investment advice. Returns are not guaranteed.</p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const P=Number(document.getElementById('p').value);
+  const years=Number(document.getElementById('y').value);
+  const ann=Number(document.getElementById('r').value)/100;
+  const n=years*12, i=ann/12;
+  if(!P||!years||!Number.isFinite(i)) return;
+  const fv=i===0?P*n:P*((Math.pow(1+i,n)-1)/i)*(1+i);
+  const inv=P*n;
+  const fmt=x=>'₹'+Math.round(x).toLocaleString('en-IN');
+  document.getElementById('inv').textContent=fmt(inv);
+  document.getElementById('fv').textContent=fmt(fv);
+  document.getElementById('gain').textContent=fmt(fv-inv);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>How SIP maturity is estimated</h2><p>The calculator assumes a fixed monthly investment and a constant annual return, compounded monthly. Real mutual fund returns vary; use this for illustration and planning only.</p><h2>Frequently asked questions</h2><h3>Does this include tax or exit load?</h3><p>No. It shows gross estimated maturity before fees and taxes.</p><h2>Related free tools</h2><ul><li><a href="/emi-calculator.html">EMI calculator</a></li><li><a href="/gst-calculator.html">GST calculator</a></li><li><a href="/percentage-calculator.html">Percentage calculator</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

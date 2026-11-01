@@ -81,19 +81,26 @@ const rel = {
   ifsc: { href: "/ifsc-format.html", label: "IFSC format checker" },
   pan: { href: "/pan-format.html", label: "PAN format checker" },
   domain: { href: "/domain-age.html", label: "Domain age checker" },
+  reading: { href: "/reading-time.html", label: "Reading time calculator" },
+  gst: { href: "/gst-calculator.html", label: "GST calculator" },
+  sip: { href: "/sip-calculator.html", label: "SIP calculator" },
+  hash: { href: "/hash-generator.html", label: "SHA-256 hash generator" },
+  b64: { href: "/base64-encoder.html", label: "Base64 encoder" },
+  uuid: { href: "/uuid-generator.html", label: "UUID generator" },
+  pwd: { href: "/password-generator.html", label: "Password generator" },
   writing: { href: "/guides/writing-tools.html", label: "Writing tools guide" },
   seo: { href: "/guides/seo-checklist.html", label: "SEO checklist" },
   india: { href: "/guides/india-id-formats.html", label: "India ID formats guide" },
 };
 
 export const indexSeo = {
-  keywords: "free online tools, word counter, EMI calculator, JSON formatter, domain age checker, BMI calculator, writing tools",
+  keywords: "free online tools, word counter, GST calculator, SIP calculator, hash generator, EMI calculator, JSON formatter, domain age checker",
   sections: [
     {
       h2: "Free browser tools for writing, math, and everyday tasks",
       paragraphs: [
         "Sahankit Tools is a collection of lightweight calculators and text utilities that run entirely in your browser. There is no app install, no account, and no server-side storage of what you type into a tool.",
-        "Use the word and character counters for essays, SEO meta tags, and social posts. Use the EMI, BMI, tip, and percentage calculators for quick estimates. IFSC and PAN checkers validate common Indian ID formats only—they do not connect to banks or the Income Tax department.",
+        "Use the word and character counters for essays, SEO meta tags, and social posts. Use the EMI, SIP, GST, BMI, tip, and percentage calculators for quick estimates. Developer utilities hash text, encode Base64, generate UUIDs and passwords locally. IFSC and PAN checkers validate common Indian ID formats only—they do not connect to banks or the Income Tax department.",
       ],
     },
     {
@@ -391,6 +398,112 @@ export const pageSeo = {
       },
     ],
     related: [rel.seo, rel.epoch, rel.word],
+  },
+  "reading-time.html": {
+    keywords: "reading time calculator, blog read time, words per minute, article length",
+    sections: [
+      {
+        h2: "Why show reading time on posts?",
+        paragraphs: [
+          "Readers choose articles partly by time commitment. A “5 min read” label sets expectations and can improve engagement when it matches your actual word count.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "What WPM should I use?", a: "200 words per minute is a common default for English prose; adjust down for dense or technical content." },
+    ],
+    related: [rel.word, rel.char, rel.writing],
+  },
+  "gst-calculator.html": {
+    keywords: "GST calculator India, add GST, remove GST, 18 percent GST calculator",
+    sections: [
+      {
+        h2: "Exclusive vs inclusive GST",
+        paragraphs: [
+          "If your amount excludes GST, the tool adds tax on top. If the amount already includes GST, it backs out the taxable value and tax component—useful for invoices marked GST-inclusive.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Which GST rates are supported?", a: "Quick presets for 5%, 12%, 18%, and 28%—common slab rates in India." },
+      { q: "Is this for filing returns?", a: "No. Use official GST portals and your CA for compliance; this is a quick math helper." },
+    ],
+    related: [rel.emi, rel.sip, rel.india],
+  },
+  "sip-calculator.html": {
+    keywords: "SIP calculator, mutual fund SIP, monthly SIP returns India",
+    sections: [
+      {
+        h2: "How SIP maturity is estimated",
+        paragraphs: [
+          "The calculator assumes a fixed monthly investment and a constant annual return, compounded monthly. Real mutual fund returns vary; use this for illustration and planning only.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Does this include tax or exit load?", a: "No. It shows gross estimated maturity before fees and taxes." },
+    ],
+    related: [rel.emi, rel.gst, rel.pct],
+  },
+  "hash-generator.html": {
+    keywords: "SHA-256 online, hash generator, text to hash, Web Crypto",
+    sections: [
+      {
+        h2: "When to use SHA-256",
+        paragraphs: [
+          "SHA-256 produces a fixed-length fingerprint of text—handy for checksums, API signatures, and learning how hashing works. It is not encryption; do not hash passwords for login systems without proper salting and slow algorithms.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Is my text sent to a server?", a: "No. Hashing uses Web Crypto in your browser." },
+    ],
+    related: [rel.b64, rel.uuid, rel.json],
+  },
+  "base64-encoder.html": {
+    keywords: "Base64 encode, Base64 decode, Base64 online, Unicode Base64",
+    sections: [
+      {
+        h2: "Base64 in APIs and configs",
+        paragraphs: [
+          "Base64 encodes binary data as ASCII text—common in JSON web tokens, data URLs, and email. This tool handles Unicode text via UTF-8 before encoding.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Why did decode fail?", a: "Input must be valid Base64 (padding and character set). Remove stray spaces or line breaks if pasted from logs." },
+    ],
+    related: [rel.hash, rel.json, rel.uuid],
+  },
+  "uuid-generator.html": {
+    keywords: "UUID generator, UUID v4, random UUID online",
+    sections: [
+      {
+        h2: "What is UUID v4?",
+        paragraphs: [
+          "Version 4 UUIDs are random 128-bit identifiers, often used as database primary keys or correlation IDs. Collisions are astronomically unlikely for practical apps.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Are these cryptographically random?", a: "They use crypto.getRandomValues in the browser—suitable for app IDs; use platform APIs for security tokens if your framework provides them." },
+    ],
+    related: [rel.pwd, rel.hash, rel.b64],
+  },
+  "password-generator.html": {
+    keywords: "password generator, strong password, random password online",
+    sections: [
+      {
+        h2: "Strong password tips",
+        paragraphs: [
+          "Long passwords beat short complex ones. Use a password manager, enable two-factor authentication, and never reuse passwords across sites.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Are generated passwords stored?", a: "No. They exist only in your browser until you copy or refresh the page." },
+    ],
+    related: [rel.uuid, rel.hash],
   },
   "guides/india-id-formats.html": {
     keywords: "IFSC format, PAN format India, bank IFSC structure",

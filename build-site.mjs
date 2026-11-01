@@ -80,10 +80,30 @@ ${footer}
 
 const ad = `<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>`;
 
+const HUB_CATEGORIES = [
+  { id: "writing", title: "Text & writing" },
+  { id: "calculators", title: "Calculators" },
+  { id: "india", title: "India utilities" },
+  { id: "seo", title: "SEO & web" },
+  { id: "developer", title: "Developer utilities" },
+];
+
+function hubSectionsHtml() {
+  return HUB_CATEGORIES.map(({ id, title }, i) => {
+    const list = tools.filter((t) => t.category === id);
+    if (!list.length) return "";
+    const mt = i === 0 ? "" : ' style="margin-top:24px"';
+    return `<section${mt}><h2>${title}</h2><div class="grid">${list
+      .map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`)
+      .join("")}</div></section>`;
+  }).join("\n");
+}
+
 const tools = [
   {
     path: "/word-counter.html",
     file: "word-counter.html",
+    category: "writing",
     title: "Free Word Counter — Count Words, Characters & Paragraphs",
     desc: "Count words, characters, sentences, and paragraphs in your text. Free online word counter for writers and SEO.",
     card: "Word counter",
@@ -116,6 +136,7 @@ t.addEventListener('input',upd); upd();
   {
     path: "/character-counter.html",
     file: "character-counter.html",
+    category: "writing",
     title: "Character Counter — Letters & Bytes Online",
     desc: "Count characters with and without spaces. Free character counter for tweets, SMS, and forms.",
     card: "Character counter",
@@ -144,6 +165,7 @@ t.oninput=()=>{
   {
     path: "/case-converter.html",
     file: "case-converter.html",
+    category: "writing",
     title: "Case Converter — Upper, Lower, Title Case",
     desc: "Convert text to UPPERCASE, lowercase, or Title Case online for free.",
     card: "Case converter",
@@ -173,6 +195,7 @@ document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{
   {
     path: "/json-formatter.html",
     file: "json-formatter.html",
+    category: "writing",
     title: "JSON Formatter & Validator — Pretty Print Online",
     desc: "Format and validate JSON in the browser. Free JSON pretty printer with error messages.",
     card: "JSON formatter",
@@ -197,8 +220,40 @@ document.getElementById('min').onclick=()=>run(0);
 </script>`,
   },
   {
+    path: "/reading-time.html",
+    file: "reading-time.html",
+    category: "writing",
+    title: "Reading Time Calculator — Words to Minutes",
+    desc: "Estimate how long it takes to read your article from word count. Free reading time calculator for blogs and SEO.",
+    card: "Reading time",
+    cardDesc: "Blog read time from word count.",
+    body: `
+<h1>Reading time calculator</h1>${ad}
+<div class="tool-panel">
+  <label for="text">Paste article text</label>
+  <textarea id="text" placeholder="Paste your blog post…"></textarea>
+  <label for="wpm">Reading speed (words per minute)</label>
+  <input id="wpm" type="number" min="100" max="400" value="200" />
+  <p id="out" class="ok"></p>
+</div>
+<script>
+function upd(){
+  const s=document.getElementById('text').value;
+  const wpm=Math.max(100,Number(document.getElementById('wpm').value)||200);
+  const words=(s.trim().match(/\\S+/g)||[]).length;
+  const min=words/wpm;
+  const o=document.getElementById('out');
+  if(!words){ o.textContent=''; return; }
+  o.textContent=words.toLocaleString()+' words · about '+ (min<1?Math.ceil(min*60)+' sec':min.toFixed(1)+' min')+' at '+wpm+' wpm';
+}
+document.getElementById('text').addEventListener('input',upd);
+document.getElementById('wpm').addEventListener('input',upd);
+</script>`,
+  },
+  {
     path: "/epoch-converter.html",
     file: "epoch-converter.html",
+    category: "calculators",
     title: "Unix Epoch Converter — Timestamp to Date",
     desc: "Convert Unix timestamps to local date and time. Free epoch seconds and milliseconds tool.",
     card: "Epoch converter",
@@ -226,6 +281,7 @@ document.getElementById('now').onclick=()=>{ document.getElementById('ts').value
   {
     path: "/bmi-calculator.html",
     file: "bmi-calculator.html",
+    category: "calculators",
     title: "BMI Calculator — Body Mass Index Online",
     desc: "Calculate BMI from height and weight. Free BMI calculator with metric units.",
     card: "BMI calculator",
@@ -251,6 +307,7 @@ document.getElementById('go').onclick=()=>{
   {
     path: "/percentage-calculator.html",
     file: "percentage-calculator.html",
+    category: "calculators",
     title: "Percentage Calculator — X% of Y",
     desc: "Find what percentage one number is of another, or X percent of a value. Free online.",
     card: "Percentage calculator",
@@ -272,6 +329,7 @@ document.getElementById('go').onclick=()=>{
   {
     path: "/emi-calculator.html",
     file: "emi-calculator.html",
+    category: "calculators",
     title: "EMI Calculator — Loan Monthly Payment India",
     desc: "Estimate monthly EMI from loan amount, annual interest rate, and tenure in months.",
     card: "EMI calculator",
@@ -297,6 +355,7 @@ document.getElementById('go').onclick=()=>{
   {
     path: "/tip-calculator.html",
     file: "tip-calculator.html",
+    category: "calculators",
     title: "Tip Calculator — Split Bill & Gratuity",
     desc: "Calculate tip and split a restaurant bill between people. Free tip calculator.",
     card: "Tip calculator",
@@ -321,6 +380,7 @@ document.getElementById('go').onclick=()=>{
   {
     path: "/age-calculator.html",
     file: "age-calculator.html",
+    category: "calculators",
     title: "Age Calculator — Years from Birth Date",
     desc: "Calculate age in years, months, and days from your date of birth.",
     card: "Age calculator",
@@ -346,6 +406,7 @@ document.getElementById('go').onclick=()=>{
   {
     path: "/ifsc-format.html",
     file: "ifsc-format.html",
+    category: "india",
     title: "IFSC Format Checker — Validate IFSC Pattern",
     desc: "Check if an IFSC code matches the standard 11-character format. Does not verify with RBI.",
     card: "IFSC format check",
@@ -371,6 +432,7 @@ document.getElementById('go').onclick=()=>{
   {
     path: "/pan-format.html",
     file: "pan-format.html",
+    category: "india",
     title: "PAN Format Checker — Validate PAN Pattern",
     desc: "Check if a PAN matches the standard format AAAAA9999A. Not an official Income Tax verification.",
     card: "PAN format check",
@@ -393,8 +455,90 @@ document.getElementById('go').onclick=()=>{
 </script>`,
   },
   {
+    path: "/gst-calculator.html",
+    file: "gst-calculator.html",
+    category: "india",
+    title: "GST Calculator India — Add or Remove GST",
+    desc: "Calculate GST amount and total for 5%, 12%, 18%, or 28% rates. Exclusive or inclusive GST in rupees.",
+    card: "GST calculator",
+    cardDesc: "Add/remove GST at common India rates.",
+    body: `
+<h1>GST calculator (India)</h1>${ad}
+<div class="tool-panel">
+  <label for="amt">Amount (₹)</label><input id="amt" type="number" min="0" step="0.01" value="1000" />
+  <label for="rate">GST rate (%)</label>
+  <select id="rate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select>
+  <fieldset class="row" style="border:none;padding:0;margin:12px 0">
+    <label><input type="radio" name="mode" value="ex" checked /> Amount excludes GST</label>
+    <label><input type="radio" name="mode" value="in" /> Amount includes GST</label>
+  </fieldset>
+  <button type="button" class="primary" id="go">Calculate</button>
+  <div class="stats" id="stats">
+    <div class="stat"><strong id="base">—</strong>Taxable value</div>
+    <div class="stat"><strong id="gst">—</strong>GST</div>
+    <div class="stat"><strong id="total">—</strong>Total</div>
+  </div>
+</div>
+<script>
+const fmt=n=>'₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+document.getElementById('go').onclick=()=>{
+  const raw=Number(document.getElementById('amt').value);
+  const r=Number(document.getElementById('rate').value)/100;
+  const inc=document.querySelector('input[name=mode]:checked').value==='in';
+  if(!Number.isFinite(raw)||raw<0) return;
+  let base,gst,total;
+  if(inc){ total=raw; base=total/(1+r); gst=total-base; }
+  else{ base=raw; gst=base*r; total=base+gst; }
+  document.getElementById('base').textContent=fmt(base);
+  document.getElementById('gst').textContent=fmt(gst);
+  document.getElementById('total').textContent=fmt(total);
+};
+document.getElementById('go').click();
+</script>`,
+  },
+  {
+    path: "/sip-calculator.html",
+    file: "sip-calculator.html",
+    category: "calculators",
+    title: "SIP Calculator — Mutual Fund Returns Estimate",
+    desc: "Estimate maturity value for monthly SIP with expected annual return. Free India SIP calculator in browser.",
+    card: "SIP calculator",
+    cardDesc: "Monthly SIP maturity estimate.",
+    body: `
+<h1>SIP calculator</h1>${ad}
+<div class="tool-panel">
+  <label for="p">Monthly SIP (₹)</label><input id="p" type="number" value="5000" />
+  <label for="y">Years</label><input id="y" type="number" min="1" max="40" value="10" />
+  <label for="r">Expected return (% per year)</label><input id="r" type="number" step="0.1" value="12" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <div class="stats">
+    <div class="stat"><strong id="inv">—</strong>Invested</div>
+    <div class="stat"><strong id="fv">—</strong>Est. maturity</div>
+    <div class="stat"><strong id="gain">—</strong>Est. gains</div>
+  </div>
+  <p class="prose" style="margin-top:12px;font-size:0.85rem">Illustration only—not investment advice. Returns are not guaranteed.</p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const P=Number(document.getElementById('p').value);
+  const years=Number(document.getElementById('y').value);
+  const ann=Number(document.getElementById('r').value)/100;
+  const n=years*12, i=ann/12;
+  if(!P||!years||!Number.isFinite(i)) return;
+  const fv=i===0?P*n:P*((Math.pow(1+i,n)-1)/i)*(1+i);
+  const inv=P*n;
+  const fmt=x=>'₹'+Math.round(x).toLocaleString('en-IN');
+  document.getElementById('inv').textContent=fmt(inv);
+  document.getElementById('fv').textContent=fmt(fv);
+  document.getElementById('gain').textContent=fmt(fv-inv);
+};
+document.getElementById('go').click();
+</script>`,
+  },
+  {
     path: "/domain-age.html",
     file: "domain-age.html",
+    category: "seo",
     title: "Domain Age Checker — Registration Date & Site Age",
     desc: "Find when a domain was registered and how old it is. Free RDAP lookup for SEO and due diligence.",
     card: "Domain age checker",
@@ -470,6 +614,140 @@ document.getElementById('go').onclick=async()=>{
 document.getElementById('domain').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('go').click(); });
 </script>`,
   },
+  {
+    path: "/hash-generator.html",
+    file: "hash-generator.html",
+    category: "developer",
+    title: "SHA-256 Hash Generator — Text to Hash Online",
+    desc: "Generate SHA-256 hashes from text in the browser. Free online hash calculator using Web Crypto.",
+    card: "SHA-256 hash",
+    cardDesc: "Hash text with Web Crypto.",
+    body: `
+<h1>SHA-256 hash generator</h1>${ad}
+<div class="tool-panel">
+  <label for="text">Text</label>
+  <textarea id="text" spellcheck="false" placeholder="Enter string to hash…"></textarea>
+  <button type="button" class="primary" id="go">Hash</button>
+  <label for="out">SHA-256 (hex)</label>
+  <input id="out" type="text" readonly spellcheck="false" />
+</div>
+<script>
+async function hash(){
+  const s=document.getElementById('text').value;
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+  document.getElementById('out').value=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+document.getElementById('go').onclick=hash;
+document.getElementById('text').addEventListener('input',()=>{ document.getElementById('out').value=''; });
+</script>`,
+  },
+  {
+    path: "/base64-encoder.html",
+    file: "base64-encoder.html",
+    category: "developer",
+    title: "Base64 Encoder & Decoder — Online",
+    desc: "Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool.",
+    card: "Base64 encode/decode",
+    cardDesc: "Encode and decode Base64 text.",
+    body: `
+<h1>Base64 encoder / decoder</h1>${ad}
+<div class="tool-panel">
+  <label for="text">Text</label>
+  <textarea id="text" spellcheck="false"></textarea>
+  <div class="row">
+    <button type="button" class="primary" id="enc">Encode</button>
+    <button type="button" class="primary" id="dec">Decode</button>
+  </div>
+  <p id="msg" class="error" hidden></p>
+</div>
+<script>
+const t=document.getElementById('text'), msg=document.getElementById('msg');
+function encUnicode(s){
+  const bytes=new TextEncoder().encode(s);
+  let bin=''; bytes.forEach(b=>bin+=String.fromCharCode(b));
+  return btoa(bin);
+}
+function decUnicode(b64){
+  const bin=atob(b64.replace(/\\s/g,''));
+  const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+document.getElementById('enc').onclick=()=>{ msg.hidden=true; try{ t.value=encUnicode(t.value); }catch(e){ msg.textContent=e.message; msg.hidden=false; } };
+document.getElementById('dec').onclick=()=>{ msg.hidden=true; try{ t.value=decUnicode(t.value); }catch(e){ msg.textContent='Invalid Base64.'; msg.hidden=false; } };
+</script>`,
+  },
+  {
+    path: "/uuid-generator.html",
+    file: "uuid-generator.html",
+    category: "developer",
+    title: "UUID Generator — Random UUID v4 Online",
+    desc: "Generate random UUID v4 identifiers. Copy one or many UUIDs. Free browser-based generator.",
+    card: "UUID generator",
+    cardDesc: "Random UUID v4 values.",
+    body: `
+<h1>UUID generator</h1>${ad}
+<div class="tool-panel">
+  <label for="n">How many</label><input id="n" type="number" min="1" max="50" value="5" style="width:5rem" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <label for="out">UUIDs</label>
+  <textarea id="out" readonly spellcheck="false" rows="6"></textarea>
+  <button type="button" class="primary" id="copy">Copy all</button>
+</div>
+<script>
+function uuid(){
+  const a=new Uint8Array(16); crypto.getRandomValues(a);
+  a[6]=(a[6]&15)|64; a[8]=(a[8]&63)|128;
+  const h=[...a].map(b=>b.toString(16).padStart(2,'0')).join('');
+  return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);
+}
+document.getElementById('go').onclick=()=>{
+  const n=Math.min(50,Math.max(1,Number(document.getElementById('n').value)||1));
+  document.getElementById('out').value=Array.from({length:n},uuid).join('\\n');
+};
+document.getElementById('copy').onclick=async()=>{
+  const o=document.getElementById('out'); await navigator.clipboard.writeText(o.value); };
+document.getElementById('go').click();
+</script>`,
+  },
+  {
+    path: "/password-generator.html",
+    file: "password-generator.html",
+    category: "developer",
+    title: "Password Generator — Strong Random Passwords",
+    desc: "Create strong random passwords with custom length and character sets. Generated locally in your browser.",
+    card: "Password generator",
+    cardDesc: "Strong random passwords.",
+    body: `
+<h1>Password generator</h1>${ad}
+<div class="tool-panel">
+  <label for="len">Length</label><input id="len" type="number" min="8" max="128" value="16" />
+  <div class="row">
+    <label><input type="checkbox" id="u" checked /> A–Z</label>
+    <label><input type="checkbox" id="l" checked /> a–z</label>
+    <label><input type="checkbox" id="d" checked /> 0–9</label>
+    <label><input type="checkbox" id="s" checked /> Symbols</label>
+  </div>
+  <button type="button" class="primary" id="go">Generate</button>
+  <label for="out">Password</label>
+  <input id="out" type="text" readonly spellcheck="false" autocomplete="off" />
+  <button type="button" class="primary" id="copy">Copy</button>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  let pool='';
+  if(document.getElementById('u').checked) pool+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if(document.getElementById('l').checked) pool+='abcdefghijklmnopqrstuvwxyz';
+  if(document.getElementById('d').checked) pool+='0123456789';
+  if(document.getElementById('s').checked) pool+='!@#$%^&*()-_=+[]{};:,.?';
+  const len=Math.min(128,Math.max(8,Number(document.getElementById('len').value)||16));
+  if(!pool){ document.getElementById('out').value=''; return; }
+  const arr=new Uint32Array(len); crypto.getRandomValues(arr);
+  document.getElementById('out').value=Array.from(arr,x=>pool[x%pool.length]).join('');
+};
+document.getElementById('copy').onclick=async()=>{ await navigator.clipboard.writeText(document.getElementById('out').value); };
+document.getElementById('go').click();
+</script>`,
+  },
 ];
 
 const guides = [
@@ -479,7 +757,7 @@ const guides = [
     title: "Free Online Writing Tools — Word Count & More",
     desc: "Overview of free writing tools: word counter, character counter, and case converter.",
     body: `<h1>Free writing tools online</h1>${ad}
-<p>Use our <a href="/word-counter.html">word counter</a>, <a href="/character-counter.html">character counter</a>, and <a href="/case-converter.html">case converter</a> in the browser. No signup, no upload to a server.</p>
+<p>Use our <a href="/word-counter.html">word counter</a>, <a href="/character-counter.html">character counter</a>, <a href="/case-converter.html">case converter</a>, and <a href="/reading-time.html">reading time calculator</a> in the browser. No signup, no upload to a server.</p>
 <h2>For SEO and social</h2><p>Character limits matter for titles, meta descriptions, and posts. Count first, then publish.</p>`,
   },
   {
@@ -497,7 +775,7 @@ const guides = [
     title: "India IFSC & PAN Format Guide",
     desc: "How IFSC and PAN formats work, and what format-only checkers can and cannot do.",
     body: `<h1>IFSC and PAN formats (India)</h1>${ad}
-<p><a href="/ifsc-format.html">IFSC checker</a> — 11 characters. <a href="/pan-format.html">PAN checker</a> — 10 characters. These tools do not verify with government databases.</p>`,
+<p><a href="/ifsc-format.html">IFSC checker</a> — 11 characters. <a href="/pan-format.html">PAN checker</a> — 10 characters. <a href="/gst-calculator.html">GST calculator</a> for invoice math. These tools do not verify with government databases.</p>`,
   },
 ];
 
@@ -514,10 +792,7 @@ const hubCards = tools.map((t) =>
 const indexMain = `<div class="hero"><h1>Free online tools</h1><p>Calculators and writing utilities in your browser. Also try <a href="/y-chat/">Y-Chat</a> — free chat rooms.</p></div>
 ${ad}
 <section aria-label="Tool categories"><h2 class="sr-only">Categories</h2>
-<section><h2>Text &amp; writing</h2><div class="grid">${tools.slice(0, 4).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
-<section style="margin-top:24px"><h2>Calculators</h2><div class="grid">${tools.slice(4, 10).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
-<section style="margin-top:24px"><h2>India utilities</h2><div class="grid">${tools.slice(10, 12).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
-<section style="margin-top:24px"><h2>SEO &amp; web</h2><div class="grid">${tools.slice(12).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
+${hubSectionsHtml()}
 <section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>
 </section>
 ${renderSeoHtml(indexSeo)}`;
@@ -525,7 +800,7 @@ ${renderSeoHtml(indexSeo)}`;
 const indexHtml = page(
   "/",
   "Sahankit Tools — Free Calculators & Writing Utilities",
-  "Free online tools: word counter, JSON formatter, EMI calculator, BMI, epoch converter, IFSC/PAN format checkers, and guides.",
+  "Free online tools: word counter, GST and SIP calculators, hash and Base64 utilities, domain age, EMI, JSON formatter, and guides.",
   indexMain,
   "",
   { keywords: indexSeo.keywords, faqs: indexSeo.faqs },

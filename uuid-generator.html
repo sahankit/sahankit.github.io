@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>UUID Generator — Random UUID v4 Online</title>
+  <meta name="description" content="Generate random UUID v4 identifiers. Copy one or many UUIDs. Free browser-based generator." />
+  <meta name="keywords" content="UUID generator, UUID v4, random UUID online" />
+  <link rel="canonical" href="https://sahankit.github.io/uuid-generator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="UUID Generator — Random UUID v4 Online" />
+  <meta property="og:description" content="Generate random UUID v4 identifiers. Copy one or many UUIDs. Free browser-based generator." />
+  <meta property="og:url" content="https://sahankit.github.io/uuid-generator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="UUID Generator — Random UUID v4 Online" />
+  <meta name="twitter:description" content="Generate random UUID v4 identifiers. Copy one or many UUIDs. Free browser-based generator." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"UUID Generator — Random UUID v4 Online","description":"Generate random UUID v4 identifiers. Copy one or many UUIDs. Free browser-based generator.","url":"https://sahankit.github.io/uuid-generator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these cryptographically random?","acceptedAnswer":{"@type":"Answer","text":"They use crypto.getRandomValues in the browser—suitable for app IDs; use platform APIs for security tokens if your framework provides them."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"UUID Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generate random UUID v4 identifiers. Copy one or many UUIDs. Free browser-based generator.","url":"https://sahankit.github.io/uuid-generator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / UUID generator</nav>
+
+<h1>UUID generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="n">How many</label><input id="n" type="number" min="1" max="50" value="5" style="width:5rem" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <label for="out">UUIDs</label>
+  <textarea id="out" readonly spellcheck="false" rows="6"></textarea>
+  <button type="button" class="primary" id="copy">Copy all</button>
+</div>
+<script>
+function uuid(){
+  const a=new Uint8Array(16); crypto.getRandomValues(a);
+  a[6]=(a[6]&15)|64; a[8]=(a[8]&63)|128;
+  const h=[...a].map(b=>b.toString(16).padStart(2,'0')).join('');
+  return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);
+}
+document.getElementById('go').onclick=()=>{
+  const n=Math.min(50,Math.max(1,Number(document.getElementById('n').value)||1));
+  document.getElementById('out').value=Array.from({length:n},uuid).join('\n');
+};
+document.getElementById('copy').onclick=async()=>{
+  const o=document.getElementById('out'); await navigator.clipboard.writeText(o.value); };
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>What is UUID v4?</h2><p>Version 4 UUIDs are random 128-bit identifiers, often used as database primary keys or correlation IDs. Collisions are astronomically unlikely for practical apps.</p><h2>Frequently asked questions</h2><h3>Are these cryptographically random?</h3><p>They use crypto.getRandomValues in the browser—suitable for app IDs; use platform APIs for security tokens if your framework provides them.</p><h2>Related free tools</h2><ul><li><a href="/password-generator.html">Password generator</a></li><li><a href="/hash-generator.html">SHA-256 hash generator</a></li><li><a href="/base64-encoder.html">Base64 encoder</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

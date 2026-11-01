@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Reading Time Calculator — Words to Minutes</title>
+  <meta name="description" content="Estimate how long it takes to read your article from word count. Free reading time calculator for blogs and SEO." />
+  <meta name="keywords" content="reading time calculator, blog read time, words per minute, article length" />
+  <link rel="canonical" href="https://sahankit.github.io/reading-time.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Reading Time Calculator — Words to Minutes" />
+  <meta property="og:description" content="Estimate how long it takes to read your article from word count. Free reading time calculator for blogs and SEO." />
+  <meta property="og:url" content="https://sahankit.github.io/reading-time.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Reading Time Calculator — Words to Minutes" />
+  <meta name="twitter:description" content="Estimate how long it takes to read your article from word count. Free reading time calculator for blogs and SEO." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Reading Time Calculator — Words to Minutes","description":"Estimate how long it takes to read your article from word count. Free reading time calculator for blogs and SEO.","url":"https://sahankit.github.io/reading-time.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What WPM should I use?","acceptedAnswer":{"@type":"Answer","text":"200 words per minute is a common default for English prose; adjust down for dense or technical content."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Reading Time Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate how long it takes to read your article from word count. Free reading time calculator for blogs and SEO.","url":"https://sahankit.github.io/reading-time.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Reading time</nav>
+
+<h1>Reading time calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="text">Paste article text</label>
+  <textarea id="text" placeholder="Paste your blog post…"></textarea>
+  <label for="wpm">Reading speed (words per minute)</label>
+  <input id="wpm" type="number" min="100" max="400" value="200" />
+  <p id="out" class="ok"></p>
+</div>
+<script>
+function upd(){
+  const s=document.getElementById('text').value;
+  const wpm=Math.max(100,Number(document.getElementById('wpm').value)||200);
+  const words=(s.trim().match(/\S+/g)||[]).length;
+  const min=words/wpm;
+  const o=document.getElementById('out');
+  if(!words){ o.textContent=''; return; }
+  o.textContent=words.toLocaleString()+' words · about '+ (min<1?Math.ceil(min*60)+' sec':min.toFixed(1)+' min')+' at '+wpm+' wpm';
+}
+document.getElementById('text').addEventListener('input',upd);
+document.getElementById('wpm').addEventListener('input',upd);
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Why show reading time on posts?</h2><p>Readers choose articles partly by time commitment. A “5 min read” label sets expectations and can improve engagement when it matches your actual word count.</p><h2>Frequently asked questions</h2><h3>What WPM should I use?</h3><p>200 words per minute is a common default for English prose; adjust down for dense or technical content.</p><h2>Related free tools</h2><ul><li><a href="/word-counter.html">Word counter</a></li><li><a href="/character-counter.html">Character counter</a></li><li><a href="/guides/writing-tools.html">Writing tools guide</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

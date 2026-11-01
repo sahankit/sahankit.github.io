@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>GST Calculator India — Add or Remove GST</title>
+  <meta name="description" content="Calculate GST amount and total for 5%, 12%, 18%, or 28% rates. Exclusive or inclusive GST in rupees." />
+  <meta name="keywords" content="GST calculator India, add GST, remove GST, 18 percent GST calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/gst-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="GST Calculator India — Add or Remove GST" />
+  <meta property="og:description" content="Calculate GST amount and total for 5%, 12%, 18%, or 28% rates. Exclusive or inclusive GST in rupees." />
+  <meta property="og:url" content="https://sahankit.github.io/gst-calculator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="GST Calculator India — Add or Remove GST" />
+  <meta name="twitter:description" content="Calculate GST amount and total for 5%, 12%, 18%, or 28% rates. Exclusive or inclusive GST in rupees." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"GST Calculator India — Add or Remove GST","description":"Calculate GST amount and total for 5%, 12%, 18%, or 28% rates. Exclusive or inclusive GST in rupees.","url":"https://sahankit.github.io/gst-calculator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which GST rates are supported?","acceptedAnswer":{"@type":"Answer","text":"Quick presets for 5%, 12%, 18%, and 28%—common slab rates in India."}},{"@type":"Question","name":"Is this for filing returns?","acceptedAnswer":{"@type":"Answer","text":"No. Use official GST portals and your CA for compliance; this is a quick math helper."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GST Calculator India","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate GST amount and total for 5%, 12%, 18%, or 28% rates. Exclusive or inclusive GST in rupees.","url":"https://sahankit.github.io/gst-calculator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / GST calculator</nav>
+
+<h1>GST calculator (India)</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="amt">Amount (₹)</label><input id="amt" type="number" min="0" step="0.01" value="1000" />
+  <label for="rate">GST rate (%)</label>
+  <select id="rate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select>
+  <fieldset class="row" style="border:none;padding:0;margin:12px 0">
+    <label><input type="radio" name="mode" value="ex" checked /> Amount excludes GST</label>
+    <label><input type="radio" name="mode" value="in" /> Amount includes GST</label>
+  </fieldset>
+  <button type="button" class="primary" id="go">Calculate</button>
+  <div class="stats" id="stats">
+    <div class="stat"><strong id="base">—</strong>Taxable value</div>
+    <div class="stat"><strong id="gst">—</strong>GST</div>
+    <div class="stat"><strong id="total">—</strong>Total</div>
+  </div>
+</div>
+<script>
+const fmt=n=>'₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+document.getElementById('go').onclick=()=>{
+  const raw=Number(document.getElementById('amt').value);
+  const r=Number(document.getElementById('rate').value)/100;
+  const inc=document.querySelector('input[name=mode]:checked').value==='in';
+  if(!Number.isFinite(raw)||raw<0) return;
+  let base,gst,total;
+  if(inc){ total=raw; base=total/(1+r); gst=total-base; }
+  else{ base=raw; gst=base*r; total=base+gst; }
+  document.getElementById('base').textContent=fmt(base);
+  document.getElementById('gst').textContent=fmt(gst);
+  document.getElementById('total').textContent=fmt(total);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Exclusive vs inclusive GST</h2><p>If your amount excludes GST, the tool adds tax on top. If the amount already includes GST, it backs out the taxable value and tax component—useful for invoices marked GST-inclusive.</p><h2>Frequently asked questions</h2><h3>Which GST rates are supported?</h3><p>Quick presets for 5%, 12%, 18%, and 28%—common slab rates in India.</p><h3>Is this for filing returns?</h3><p>No. Use official GST portals and your CA for compliance; this is a quick math helper.</p><h2>Related free tools</h2><ul><li><a href="/emi-calculator.html">EMI calculator</a></li><li><a href="/sip-calculator.html">SIP calculator</a></li><li><a href="/guides/india-id-formats.html">India ID formats guide</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
