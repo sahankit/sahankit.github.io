@@ -7,11 +7,12 @@ export function batch11Tools(ad) {
       category: "india",
       title: "Income Tax Calculator India — New vs Old Regime",
       desc: "Compare tax under India's new and old regimes for salaried income. See which regime saves more.",
-      card: "Income tax (India)",
-      cardDesc: "New vs old regime.",
+      card: "Income tax calculator",
+      cardDesc: "FY 2025-26 · new vs old regime.",
       body: `
-<h1>Income tax calculator — new vs old regime</h1>
-<p class="prose" style="font-size:0.9rem">Resident individual, salaried. Slabs per <strong>FY 2025–26</strong> (AY 2026–27). Illustration only—not tax advice.</p>
+<h1>Income tax calculator India — new vs old regime (FY 2025–26)</h1>
+<p class="prose">Compare <strong>new tax regime</strong> and <strong>old tax regime</strong> side by side for salaried income. Enter gross salary, 80C, HRA, and 80D to see estimated tax, monthly in-hand, and <strong>which regime saves more money</strong>. Part of our <a href="/finance/">India finance tools</a>.</p>
+<p class="prose" style="font-size:0.9rem">Resident individual below 60 · Illustration only—not tax or legal advice.</p>
 ${ad}
 <div class="tool-panel">
   <label for="gross">Annual gross salary / income (₹)</label>

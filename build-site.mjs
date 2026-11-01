@@ -101,7 +101,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta property="og:title" content="${t}" />
   <meta property="og:description" content="${d}" />
   <meta property="og:url" content="${canonical}" />
-  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale" content="${opts.ogLocale || "en_US"}" />
   <meta property="og:image" content="${ogImage}" />
   <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -124,6 +124,19 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
     graph.push({
       ...softwareAppLd(title, desc, canonicalPath, BASE),
       url: `${BASE}${canonicalPath}`,
+    });
+  }
+  if (opts.howTo?.steps?.length) {
+    graph.push({
+      "@type": "HowTo",
+      name: opts.howTo.name || title,
+      description: opts.howTo.description || desc,
+      step: opts.howTo.steps.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.name,
+        text: s.text,
+      })),
     });
   }
   return jsonLdGraph([{ "@context": "https://schema.org", "@graph": graph }]);
@@ -954,8 +967,18 @@ function pageOpts(file, entity) {
   return {
     keywords: seo?.keywords,
     faqs: seo?.faqs,
+    howTo: seo?.howTo,
+    ogLocale: seo?.ogLocale,
     softwareApp: !file.startsWith("guides/"),
     seoBlock: seo,
+  };
+}
+
+function pageTitleDesc(file, entity) {
+  const seo = resolveSeo(file, entity);
+  return {
+    title: seo?.metaTitle || entity.title,
+    desc: seo?.metaDescription || entity.desc,
   };
 }
 
@@ -966,6 +989,7 @@ function fullMain(file, entity) {
 
 for (const t of tools) {
   const canonical = canonicalFromFile(t.file);
+  const { title, desc } = pageTitleDesc(t.file, t);
   const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="${canonical}">${t.card}</a></nav>`;
   const main = fullMain(t.file, t);
   const opts = {
@@ -976,8 +1000,8 @@ for (const t of tools) {
       { name: t.card, url: canonical },
     ],
   };
-  write(t.file, page(t.path, t.title, t.desc, main, bc, opts));
-  write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, t.title, t.desc, main, bc, opts));
+  write(t.file, page(t.path, title, desc, main, bc, opts));
+  write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, title, desc, main, bc, opts));
 }
 
 for (const g of guides) {
@@ -1050,6 +1074,7 @@ const notFound = page(
 <ul>
   <li><a href="/word-counter/">Word counter</a></li>
   <li><a href="/emi-calculator/">EMI calculator</a></li>
+  <li><a href="/income-tax-calculator/">Income tax calculator (India)</a></li>
   <li><a href="/guides/writing-tools/">Writing tools guide</a></li>
 </ul>`,
   "",
@@ -1063,8 +1088,8 @@ const sitemapEntries = [
   ...micrositeUrls.map((u) => ({ loc: u, priority: "0.9", changefreq: "weekly" })),
   ...tools.map((t) => ({
     loc: canonicalFromFile(t.file),
-    priority: "0.8",
-    changefreq: "monthly",
+    priority: pageSeo[t.file]?.sitemapPriority || "0.8",
+    changefreq: pageSeo[t.file]?.sitemapChangefreq || "monthly",
   })),
   ...guides.map((g) => ({
     loc: canonicalFromFile(g.file),

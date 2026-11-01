@@ -3,12 +3,13 @@
 export const micrositeDefs = [
   {
     slug: "finance",
-    title: "Sahankit Finance — India GST, SIP, FD & EMI Tools",
-    desc: "Free India finance calculators: GST, SIP, FD, RD, EMI, invoice template, salary estimate, and rupees in words.",
-    keywords: "India finance calculator, GST SIP FD EMI, Sahankit Finance",
+    title: "Sahankit Finance — Income Tax, GST, SIP, FD & EMI Tools",
+    desc: "Free India finance calculators: income tax new vs old regime, GST, SIP, FD, RD, EMI, salary, invoice, and rupees in words.",
+    keywords: "India finance calculator, income tax calculator, GST SIP FD EMI, Sahankit Finance",
     hero: "India finance calculators",
     blurb: "Browser-only tools for invoices, tax math, loans, and savings estimates. Not financial advice.",
     toolPaths: [
+      "/income-tax-calculator.html",
       "/gst-calculator.html",
       "/india-invoice.html",
       "/inr-words.html",
