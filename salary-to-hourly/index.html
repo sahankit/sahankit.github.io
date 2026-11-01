@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Salary to Hourly Calculator</title>
+  <meta name="description" content="Convert annual salary to hourly rate by hours worked per week." />
+  <meta name="keywords" content="salary to hourly calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/salary-to-hourly/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Salary to Hourly Calculator" />
+  <meta property="og:description" content="Convert annual salary to hourly rate by hours worked per week." />
+  <meta property="og:url" content="https://sahankit.github.io/salary-to-hourly/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Salary to Hourly Calculator" />
+  <meta name="twitter:description" content="Convert annual salary to hourly rate by hours worked per week." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/salary-to-hourly/#webpage","name":"Salary to Hourly Calculator","description":"Convert annual salary to hourly rate by hours worked per week.","url":"https://sahankit.github.io/salary-to-hourly/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Salary → hourly","item":"https://sahankit.github.io/salary-to-hourly/"}]},{"@type":"SoftwareApplication","name":"Salary to Hourly Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert annual salary to hourly rate by hours worked per week.","url":"https://sahankit.github.io/salary-to-hourly/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/salary-to-hourly/">Salary → hourly</a></nav>
+
+<h1>Salary to hourly</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="sal">Annual salary</label><input id="sal" type="number" value="1200000" />
+  <label for="hrs">Hours per week</label><input id="hrs" type="number" value="40" />
+  <label for="wks">Weeks per year</label><input id="wks" type="number" value="52" />
+  <button type="button" class="primary" id="go">Convert</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const sal=+document.getElementById('sal').value, hrs=+document.getElementById('hrs').value, wks=+document.getElementById('wks').value;
+  const h=hrs*wks;
+  document.getElementById('out').textContent=h?('≈ '+(sal/h).toFixed(2)+' per hour'):'—';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Hourly rate</h2><p>Divide annual pay by working hours per year.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Inflation Calculator — Future Value of Money</title>
+  <meta name="description" content="Estimate how much money needs to grow to match inflation over years." />
+  <meta name="keywords" content="inflation calculator purchasing power" />
+  <link rel="canonical" href="https://sahankit.github.io/inflation-calculator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Inflation Calculator — Future Value of Money" />
+  <meta property="og:description" content="Estimate how much money needs to grow to match inflation over years." />
+  <meta property="og:url" content="https://sahankit.github.io/inflation-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Inflation Calculator — Future Value of Money" />
+  <meta name="twitter:description" content="Estimate how much money needs to grow to match inflation over years." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/inflation-calculator/#webpage","name":"Inflation Calculator — Future Value of Money","description":"Estimate how much money needs to grow to match inflation over years.","url":"https://sahankit.github.io/inflation-calculator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Inflation estimate","item":"https://sahankit.github.io/inflation-calculator/"}]},{"@type":"SoftwareApplication","name":"Inflation Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate how much money needs to grow to match inflation over years.","url":"https://sahankit.github.io/inflation-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/inflation-calculator/">Inflation estimate</a></nav>
+
+<h1>Inflation calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="amt">Amount today</label><input id="amt" type="number" value="10000" />
+  <label for="rate">Inflation (% per year)</label><input id="rate" type="number" step="0.1" value="6" />
+  <label for="y">Years</label><input id="y" type="number" value="10" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const a=+document.getElementById('amt').value, r=+document.getElementById('rate').value/100, y=+document.getElementById('y').value;
+  const fv=a*Math.pow(1+r,y);
+  document.getElementById('out').textContent='Need ≈ '+fv.toFixed(2)+' for same buying power';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Inflation estimate</h2><p>Compound inflation illustration.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

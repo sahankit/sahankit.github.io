@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>camelCase, snake_case, kebab-case Converter</title>
+  <meta name="description" content="Convert identifiers between camelCase, PascalCase, snake_case, and kebab-case." />
+  <meta name="keywords" content="camelcase snake_case converter" />
+  <link rel="canonical" href="https://sahankit.github.io/string-case-converter/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="camelCase, snake_case, kebab-case Converter" />
+  <meta property="og:description" content="Convert identifiers between camelCase, PascalCase, snake_case, and kebab-case." />
+  <meta property="og:url" content="https://sahankit.github.io/string-case-converter/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="camelCase, snake_case, kebab-case Converter" />
+  <meta name="twitter:description" content="Convert identifiers between camelCase, PascalCase, snake_case, and kebab-case." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/string-case-converter/#webpage","name":"camelCase, snake_case, kebab-case Converter","description":"Convert identifiers between camelCase, PascalCase, snake_case, and kebab-case.","url":"https://sahankit.github.io/string-case-converter/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Case styles","item":"https://sahankit.github.io/string-case-converter/"}]},{"@type":"SoftwareApplication","name":"camelCase, snake_case, kebab-case Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert identifiers between camelCase, PascalCase, snake_case, and kebab-case.","url":"https://sahankit.github.io/string-case-converter/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/string-case-converter/">Case styles</a></nav>
+
+<h1>String case converter</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="text">Text</label><input id="text" value="hello world example" />
+  <div class="row">
+    <button type="button" class="primary" data-m="camel">camelCase</button>
+    <button type="button" class="primary" data-m="pascal">PascalCase</button>
+    <button type="button" class="primary" data-m="snake">snake_case</button>
+    <button type="button" class="primary" data-m="kebab">kebab-case</button>
+  </div>
+  <input id="out" readonly />
+</div>
+<script>
+const parts=s=>s.trim().split(/[\s_\-]+/).filter(Boolean).map(w=>w.toLowerCase());
+document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{
+  const p=parts(document.getElementById('text').value);
+  let o='';
+  if(b.dataset.m==='camel') o=p.map((w,i)=>i?w[0].toUpperCase()+w.slice(1):w).join('');
+  if(b.dataset.m==='pascal') o=p.map(w=>w[0].toUpperCase()+w.slice(1)).join('');
+  if(b.dataset.m==='snake') o=p.join('_');
+  if(b.dataset.m==='kebab') o=p.join('-');
+  document.getElementById('out').value=o;
+});
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Developer naming</h2><p>Switch identifier styles for code.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

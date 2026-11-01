@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>WiFi QR Code Generator</title>
+  <meta name="description" content="Create a QR code to join a WiFi network (WPA)." />
+  <meta name="keywords" content="wifi qr code generator" />
+  <link rel="canonical" href="https://sahankit.github.io/wifi-qr-generator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="WiFi QR Code Generator" />
+  <meta property="og:description" content="Create a QR code to join a WiFi network (WPA)." />
+  <meta property="og:url" content="https://sahankit.github.io/wifi-qr-generator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WiFi QR Code Generator" />
+  <meta name="twitter:description" content="Create a QR code to join a WiFi network (WPA)." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/wifi-qr-generator/#webpage","name":"WiFi QR Code Generator","description":"Create a QR code to join a WiFi network (WPA).","url":"https://sahankit.github.io/wifi-qr-generator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"WiFi QR code","item":"https://sahankit.github.io/wifi-qr-generator/"}]},{"@type":"SoftwareApplication","name":"WiFi QR Code Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Create a QR code to join a WiFi network (WPA).","url":"https://sahankit.github.io/wifi-qr-generator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/wifi-qr-generator/">WiFi QR code</a></nav>
+
+<h1>WiFi QR code</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="ssid">Network name (SSID)</label><input id="ssid" value="MyNetwork" />
+  <label for="pass">Password</label><input id="pass" type="password" autocomplete="off" />
+  <label for="auth">Security</label><select id="auth"><option>WPA</option><option>WEP</option><option>NOPASS</option></select>
+  <button type="button" class="primary" id="go">Generate QR</button>
+  <div id="box"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script>
+document.getElementById('go').onclick=async()=>{
+  const s=document.getElementById('ssid').value, p=document.getElementById('pass').value, a=document.getElementById('auth').value;
+  const esc=x=>x.replace(/([\\;,:"])/g,'\\$1');
+  const payload='WIFI:T:'+a+';S:'+esc(s)+';'+(a==='NOPASS'?'':'P:'+esc(p)+';')+';';
+  const box=document.getElementById('box'); box.innerHTML='';
+  const c=document.createElement('canvas');
+  await QRCode.toCanvas(c,payload,{width:256});
+  box.appendChild(c);
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Join WiFi by QR</h2><p>WIFI: QR payload for phones.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

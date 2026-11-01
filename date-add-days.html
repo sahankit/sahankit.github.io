@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Date Calculator — Add or Subtract Days</title>
+  <meta name="description" content="Add days to a date or find date N days from today." />
+  <meta name="keywords" content="date calculator add days" />
+  <link rel="canonical" href="https://sahankit.github.io/date-add-days/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Date Calculator — Add or Subtract Days" />
+  <meta property="og:description" content="Add days to a date or find date N days from today." />
+  <meta property="og:url" content="https://sahankit.github.io/date-add-days/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Date Calculator — Add or Subtract Days" />
+  <meta name="twitter:description" content="Add days to a date or find date N days from today." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/date-add-days/#webpage","name":"Date Calculator — Add or Subtract Days","description":"Add days to a date or find date N days from today.","url":"https://sahankit.github.io/date-add-days/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Date +/- days","item":"https://sahankit.github.io/date-add-days/"}]},{"@type":"SoftwareApplication","name":"Date Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Add days to a date or find date N days from today.","url":"https://sahankit.github.io/date-add-days/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/date-add-days/">Date +/- days</a></nav>
+
+<h1>Date calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="d">Start date</label><input id="d" type="date" />
+  <label for="n">Days to add (negative subtracts)</label><input id="n" type="number" value="30" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('d').value=new Date().toISOString().slice(0,10);
+document.getElementById('go').onclick=()=>{
+  const dt=new Date(document.getElementById('d').value+'T12:00:00');
+  dt.setDate(dt.getDate()+(+document.getElementById('n').value));
+  document.getElementById('out').textContent=dt.toLocaleDateString(undefined,{dateStyle:'full'});
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Calendar math</h2><p>Add or subtract whole days.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
