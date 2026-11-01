@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow" />
+  <title>BMI Calculator — Body Mass Index Online</title>
+  <meta name="description" content="Calculate BMI from height and weight. Free BMI calculator with metric units." />
+  <link rel="canonical" href="https://sahankit.github.io/bmi-calculator/" />
+  <meta property="og:title" content="BMI Calculator — Body Mass Index Online" />
+  <meta property="og:description" content="Calculate BMI from height and weight. Free BMI calculator with metric units." />
+  <meta property="og:url" content="https://sahankit.github.io/bmi-calculator/" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / BMI calculator</nav>
+
+<h1>BMI calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="h">Height (cm)</label><input id="h" type="number" min="50" max="250" value="170" />
+  <label for="w">Weight (kg)</label><input id="w" type="number" min="20" max="300" value="70" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const h=Number(document.getElementById('h').value)/100, w=Number(document.getElementById('w').value);
+  if(!h||!w) return;
+  const bmi=(w/(h*h)).toFixed(1);
+  let cat='Normal'; if(bmi<18.5) cat='Underweight'; else if(bmi>=25&&bmi<30) cat='Overweight'; else if(bmi>=30) cat='Obese';
+  document.getElementById('out').textContent='BMI: '+bmi+' ('+cat+') — for adults; not medical advice.';
+};
+</script>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

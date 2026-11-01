@@ -7,11 +7,11 @@ const BASE = "https://sahankit.github.io";
 
 const nav = `
 <header class="site-header">
-  <a class="brand" href="${BASE}/">Sahankit Tools</a>
+  <a class="brand" href="/">Sahankit Tools</a>
   <ul class="site-nav">
-    <li><a href="${BASE}/">All tools</a></li>
-    <li><a href="${BASE}/guides/writing-tools.html">Guides</a></li>
-    <li><a href="${BASE}/y-chat/">Y-Chat</a></li>
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
   </ul>
 </header>`;
 
@@ -424,15 +424,42 @@ write("index.html", indexHtml);
 
 for (const t of tools) {
   const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / ${t.card}</nav>`;
-  write(t.file, page(t.path, t.title, t.desc, t.body, bc));
+  const html = page(t.path, t.title, t.desc, t.body, bc);
+  write(t.file, html);
+  const slug = t.file.replace(/\.html$/, "");
+  const dirPath = `/${slug}/`;
+  write(`${slug}/index.html`, page(dirPath, t.title, t.desc, t.body, bc));
 }
 
 for (const g of guides) {
   const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / Guides</nav>`;
-  write(g.file, page(g.path, g.title, g.desc, g.body, bc));
+  const html = page(g.path, g.title, g.desc, g.body, bc);
+  write(g.file, html);
+  const slug = g.file.replace(/\.html$/, "");
+  const dirPath = `/${slug}/`;
+  write(`${slug}/index.html`, page(dirPath, g.title, g.desc, g.body, bc));
 }
 
-const urls = ["/", ...tools.map((t) => t.path), ...guides.map((g) => g.path)];
+const notFound = page(
+  "/404.html",
+  "Page not found — Sahankit Tools",
+  "This tool page was not found. Browse free calculators and writing tools on the home page.",
+  `<h1>Page not found</h1>
+<p>That URL is not on this site. Try the <a href="/">tools home</a> or <a href="/y-chat/">Y-Chat</a>.</p>
+<ul>
+  <li><a href="/word-counter.html">Word counter</a></li>
+  <li><a href="/emi-calculator.html">EMI calculator</a></li>
+  <li><a href="/guides/writing-tools.html">Writing tools guide</a></li>
+</ul>`,
+);
+write("404.html", notFound);
+write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirect</title></head><body><p><a href="/">Go to Sahankit Tools</a></p></body></html>`);
+
+const urls = [
+  "/",
+  ...tools.flatMap((t) => [t.path, `/${t.file.replace(/\.html$/, "")}/`]),
+  ...guides.flatMap((g) => [g.path, `/${g.file.replace(/\.html$/, "")}/`]),
+];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${BASE}${u === "/" ? "/" : u}</loc><changefreq>monthly</changefreq></url>`).join("\n")}

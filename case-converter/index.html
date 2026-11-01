@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow" />
+  <title>Case Converter — Upper, Lower, Title Case</title>
+  <meta name="description" content="Convert text to UPPERCASE, lowercase, or Title Case online for free." />
+  <link rel="canonical" href="https://sahankit.github.io/case-converter/" />
+  <meta property="og:title" content="Case Converter — Upper, Lower, Title Case" />
+  <meta property="og:description" content="Convert text to UPPERCASE, lowercase, or Title Case online for free." />
+  <meta property="og:url" content="https://sahankit.github.io/case-converter/" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Case converter</nav>
+
+<h1>Case converter</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="text">Text</label>
+  <textarea id="text"></textarea>
+  <div class="row">
+    <button type="button" class="primary" data-m="upper">UPPERCASE</button>
+    <button type="button" class="primary" data-m="lower">lowercase</button>
+    <button type="button" class="primary" data-m="title">Title Case</button>
+  </div>
+</div>
+<script>
+const t=document.getElementById('text');
+document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{
+  let s=t.value;
+  if(b.dataset.m==='upper') s=s.toUpperCase();
+  if(b.dataset.m==='lower') s=s.toLowerCase();
+  if(b.dataset.m==='title') s=s.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+  t.value=s;
+});
+</script>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

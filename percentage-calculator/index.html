@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow" />
+  <title>Percentage Calculator — X% of Y</title>
+  <meta name="description" content="Find what percentage one number is of another, or X percent of a value. Free online." />
+  <link rel="canonical" href="https://sahankit.github.io/percentage-calculator/" />
+  <meta property="og:title" content="Percentage Calculator — X% of Y" />
+  <meta property="og:description" content="Find what percentage one number is of another, or X percent of a value. Free online." />
+  <meta property="og:url" content="https://sahankit.github.io/percentage-calculator/" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Percentage calculator</nav>
+
+<h1>Percentage calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label>What is <input id="pct" type="number" value="10" style="width:4rem" />% of <input id="of" type="number" value="200" style="width:5rem" />?</label>
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const p=Number(document.getElementById('pct').value), o=Number(document.getElementById('of').value);
+  document.getElementById('out').textContent=(p/100*o).toLocaleString(undefined,{maximumFractionDigits:4});
+};
+</script>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

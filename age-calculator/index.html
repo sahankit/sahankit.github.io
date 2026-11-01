@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow" />
+  <title>Age Calculator — Years from Birth Date</title>
+  <meta name="description" content="Calculate age in years, months, and days from your date of birth." />
+  <link rel="canonical" href="https://sahankit.github.io/age-calculator/" />
+  <meta property="og:title" content="Age Calculator — Years from Birth Date" />
+  <meta property="og:description" content="Calculate age in years, months, and days from your date of birth." />
+  <meta property="og:url" content="https://sahankit.github.io/age-calculator/" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Age calculator</nav>
+
+<h1>Age calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="dob">Date of birth</label><input id="dob" type="date" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const d=document.getElementById('dob').value; if(!d) return;
+  const b=new Date(d+'T00:00:00'), n=new Date();
+  let y=n.getFullYear()-b.getFullYear(), m=n.getMonth()-b.getMonth(), day=n.getDate()-b.getDate();
+  if(day<0){ m--; day+=new Date(n.getFullYear(),n.getMonth(),0).getDate(); }
+  if(m<0){ y--; m+=12; }
+  document.getElementById('out').textContent=y+' years, '+m+' months, '+day+' days';
+};
+</script>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
