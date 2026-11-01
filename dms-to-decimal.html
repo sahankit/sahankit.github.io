@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>DMS to Decimal Degrees Converter</title>
+  <meta name="description" content="Convert degrees, minutes, seconds to decimal latitude or longitude." />
+  <meta name="keywords" content="dms to decimal degrees" />
+  <link rel="canonical" href="https://sahankit.github.io/dms-to-decimal/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="DMS to Decimal Degrees Converter" />
+  <meta property="og:description" content="Convert degrees, minutes, seconds to decimal latitude or longitude." />
+  <meta property="og:url" content="https://sahankit.github.io/dms-to-decimal/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DMS to Decimal Degrees Converter" />
+  <meta name="twitter:description" content="Convert degrees, minutes, seconds to decimal latitude or longitude." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/dms-to-decimal/#webpage","name":"DMS to Decimal Degrees Converter","description":"Convert degrees, minutes, seconds to decimal latitude or longitude.","url":"https://sahankit.github.io/dms-to-decimal/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"DMS → decimal","item":"https://sahankit.github.io/dms-to-decimal/"}]},{"@type":"SoftwareApplication","name":"DMS to Decimal Degrees Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert degrees, minutes, seconds to decimal latitude or longitude.","url":"https://sahankit.github.io/dms-to-decimal/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/dms-to-decimal/">DMS → decimal</a></nav>
+
+<h1>DMS to decimal</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label>D° <input id="d" type="number" value="28" /> M' <input id="m" type="number" value="36" /> S" <input id="s" type="number" step="any" value="50" /></label>
+  <label><select id="hem"><option value="1">N / E</option><option value="-1">S / W</option></select></label>
+  <button type="button" class="primary" id="go">Convert</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const d=+document.getElementById('d').value, m=+document.getElementById('m').value, s=+document.getElementById('s').value;
+  const h=+document.getElementById('hem').value;
+  const dec=h*(d+m/60+s/3600);
+  document.getElementById('out').textContent=dec.toFixed(6)+'°';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Coordinate conversion</h2><p>Degrees minutes seconds to decimal.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

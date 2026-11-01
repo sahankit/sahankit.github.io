@@ -26,6 +26,8 @@ import { batch8Tools } from "./tools-batch8.mjs";
 import { batch8PageSeo } from "./seo-batch8.mjs";
 import { batch9Tools } from "./tools-batch9.mjs";
 import { batch9PageSeo } from "./seo-batch9.mjs";
+import { batch10Tools } from "./tools-batch10.mjs";
+import { batch10PageSeo } from "./seo-batch10.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
 import {
   OG_IMAGE,
@@ -48,6 +50,7 @@ const pageSeo = {
   ...batch7PageSeo,
   ...batch8PageSeo,
   ...batch9PageSeo,
+  ...batch10PageSeo,
   ...sitePageSeo,
 };
 
@@ -831,6 +834,7 @@ document.getElementById('go').click();
   ...batch7Tools(ad),
   ...batch8Tools(ad),
   ...batch9Tools(ad),
+  ...batch10Tools(ad),
 ];
 
 const guides = [
@@ -919,8 +923,8 @@ ${renderSeoHtml(indexSeo)}`;
 
 const indexHtml = page(
   "/",
-  "Sahankit Tools — 150+ Free Online Calculators & Utilities",
-  "Free browser tools: CAGR, UPI format, gratuity, CPM/CTR, cooking converter, IPv4, ISBN, and 150+ utilities—no signup.",
+  "Sahankit Tools — 170+ Free Online Calculators & Utilities",
+  "Free browser tools: Haversine, PPF, NPS/churn, semver, SHA-1, Maps/Telegram links, and 170+ utilities—no signup.",
   indexMain,
   "",
   {

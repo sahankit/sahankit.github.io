@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>SHA-1 Hash Generator</title>
+  <meta name="description" content="Compute SHA-1 hex digest of text in the browser." />
+  <meta name="keywords" content="sha1 hash generator online" />
+  <link rel="canonical" href="https://sahankit.github.io/sha1-hash/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="SHA-1 Hash Generator" />
+  <meta property="og:description" content="Compute SHA-1 hex digest of text in the browser." />
+  <meta property="og:url" content="https://sahankit.github.io/sha1-hash/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SHA-1 Hash Generator" />
+  <meta name="twitter:description" content="Compute SHA-1 hex digest of text in the browser." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/sha1-hash/#webpage","name":"SHA-1 Hash Generator","description":"Compute SHA-1 hex digest of text in the browser.","url":"https://sahankit.github.io/sha1-hash/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"SHA-1 hash","item":"https://sahankit.github.io/sha1-hash/"}]},{"@type":"SoftwareApplication","name":"SHA-1 Hash Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Compute SHA-1 hex digest of text in the browser.","url":"https://sahankit.github.io/sha1-hash/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/sha1-hash/">SHA-1 hash</a></nav>
+
+<h1>SHA-1 hash</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text">hello</textarea>
+  <button type="button" class="primary" id="go">Hash</button>
+  <input id="out" readonly spellcheck="false" />
+</div>
+<script>
+document.getElementById('go').onclick=async()=>{
+  const buf=await crypto.subtle.digest('SHA-1', new TextEncoder().encode(document.getElementById('text').value));
+  document.getElementById('out').value=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>SHA-1 digest</h2><p>Browser Web Crypto SHA-1.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

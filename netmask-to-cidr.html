@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Subnet Mask to CIDR Prefix</title>
+  <meta name="description" content="Convert dotted subnet mask to CIDR prefix length." />
+  <meta name="keywords" content="subnet mask to cidr" />
+  <link rel="canonical" href="https://sahankit.github.io/netmask-to-cidr/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Subnet Mask to CIDR Prefix" />
+  <meta property="og:description" content="Convert dotted subnet mask to CIDR prefix length." />
+  <meta property="og:url" content="https://sahankit.github.io/netmask-to-cidr/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Subnet Mask to CIDR Prefix" />
+  <meta name="twitter:description" content="Convert dotted subnet mask to CIDR prefix length." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/netmask-to-cidr/#webpage","name":"Subnet Mask to CIDR Prefix","description":"Convert dotted subnet mask to CIDR prefix length.","url":"https://sahankit.github.io/netmask-to-cidr/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Mask → CIDR","item":"https://sahankit.github.io/netmask-to-cidr/"}]},{"@type":"SoftwareApplication","name":"Subnet Mask to CIDR Prefix","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert dotted subnet mask to CIDR prefix length.","url":"https://sahankit.github.io/netmask-to-cidr/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/netmask-to-cidr/">Mask → CIDR</a></nav>
+
+<h1>Netmask to CIDR</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="mask">Subnet mask</label><input id="mask" value="255.255.255.0" spellcheck="false" />
+  <button type="button" class="primary" id="go">Convert</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const p=document.getElementById('mask').value.trim().split('.').map(Number);
+  if(p.length!==4||p.some(x=>x<0||x>255)) { document.getElementById('out').textContent='Invalid mask'; return; }
+  const bits=p.map(o=>(o>>>0).toString(2).padStart(8,'0')).join('');
+  if(!/^1*0*$/.test(bits)) { document.getElementById('out').textContent='Not a valid netmask'; return; }
+  document.getElementById('out').textContent='/'+bits.replace(/0/g,'').length;
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Prefix length</h2><p>Valid contiguous netmasks only.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

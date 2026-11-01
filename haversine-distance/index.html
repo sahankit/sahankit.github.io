@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Haversine Distance — km Between Coordinates</title>
+  <meta name="description" content="Great-circle distance between two latitude/longitude points." />
+  <meta name="keywords" content="haversine distance calculator km" />
+  <link rel="canonical" href="https://sahankit.github.io/haversine-distance/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Haversine Distance — km Between Coordinates" />
+  <meta property="og:description" content="Great-circle distance between two latitude/longitude points." />
+  <meta property="og:url" content="https://sahankit.github.io/haversine-distance/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Haversine Distance — km Between Coordinates" />
+  <meta name="twitter:description" content="Great-circle distance between two latitude/longitude points." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/haversine-distance/#webpage","name":"Haversine Distance — km Between Coordinates","description":"Great-circle distance between two latitude/longitude points.","url":"https://sahankit.github.io/haversine-distance/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"GPS distance","item":"https://sahankit.github.io/haversine-distance/"}]},{"@type":"SoftwareApplication","name":"Haversine Distance","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Great-circle distance between two latitude/longitude points.","url":"https://sahankit.github.io/haversine-distance/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/haversine-distance/">GPS distance</a></nav>
+
+<h1>Haversine distance</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label>Point A lat <input id="lat1" type="number" step="any" value="28.6139" /> lon <input id="lon1" type="number" step="any" value="77.209" /></label>
+  <label>Point B lat <input id="lat2" type="number" step="any" value="19.076" /> lon <input id="lon2" type="number" step="any" value="72.8777" /></label>
+  <button type="button" class="primary" id="go">Distance</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+const R=6371;
+function rad(d){ return d*Math.PI/180; }
+document.getElementById('go').onclick=()=>{
+  const a1=+document.getElementById('lat1').value, o1=+document.getElementById('lon1').value;
+  const a2=+document.getElementById('lat2').value, o2=+document.getElementById('lon2').value;
+  const dLat=rad(a2-a1), dLon=rad(o2-o1);
+  const x=Math.sin(dLat/2)**2+Math.cos(rad(a1))*Math.cos(rad(a2))*Math.sin(dLon/2)**2;
+  const km=2*R*Math.asin(Math.sqrt(x));
+  document.getElementById('out').textContent=km.toFixed(2)+' km ('+(km*0.621371).toFixed(2)+' mi)';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>GPS distance</h2><p>Great-circle distance between two coordinates.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

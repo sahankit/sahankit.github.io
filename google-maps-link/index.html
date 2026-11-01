@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Google Maps Link Generator — Lat Long</title>
+  <meta name="description" content="Build a Google Maps URL from coordinates or a place query." />
+  <meta name="keywords" content="google maps link generator coordinates" />
+  <link rel="canonical" href="https://sahankit.github.io/google-maps-link/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Google Maps Link Generator — Lat Long" />
+  <meta property="og:description" content="Build a Google Maps URL from coordinates or a place query." />
+  <meta property="og:url" content="https://sahankit.github.io/google-maps-link/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Google Maps Link Generator — Lat Long" />
+  <meta name="twitter:description" content="Build a Google Maps URL from coordinates or a place query." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/google-maps-link/#webpage","name":"Google Maps Link Generator — Lat Long","description":"Build a Google Maps URL from coordinates or a place query.","url":"https://sahankit.github.io/google-maps-link/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Maps link","item":"https://sahankit.github.io/google-maps-link/"}]},{"@type":"SoftwareApplication","name":"Google Maps Link Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Build a Google Maps URL from coordinates or a place query.","url":"https://sahankit.github.io/google-maps-link/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/google-maps-link/">Maps link</a></nav>
+
+<h1>Google Maps link</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="q">Place or address</label><input id="q" placeholder="India Gate, Delhi" />
+  <label for="lat">Or lat</label><input id="lat" type="number" step="any" placeholder="28.6129" />
+  <label for="lng">lng</label><input id="lng" type="number" step="any" placeholder="77.2295" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <input id="url" readonly spellcheck="false" />
+  <button type="button" class="primary" id="copy">Copy</button>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const q=document.getElementById('q').value.trim();
+  const lat=document.getElementById('lat').value, lng=document.getElementById('lng').value;
+  let u;
+  if(lat!==''&&lng!=='') u='https://www.google.com/maps?q='+encodeURIComponent(lat+','+lng);
+  else if(q) u='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+  else return;
+  document.getElementById('url').value=u;
+};
+document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(document.getElementById('url').value);
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Share a map</h2><p>Build maps.google.com URLs.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

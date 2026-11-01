@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>PPF Maturity Calculator India — 15 Year Estimate</title>
+  <meta name="description" content="Estimate Public Provident Fund maturity with fixed annual deposit (simplified)." />
+  <meta name="keywords" content="ppf calculator india maturity" />
+  <link rel="canonical" href="https://sahankit.github.io/ppf-calculator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="PPF Maturity Calculator India — 15 Year Estimate" />
+  <meta property="og:description" content="Estimate Public Provident Fund maturity with fixed annual deposit (simplified)." />
+  <meta property="og:url" content="https://sahankit.github.io/ppf-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PPF Maturity Calculator India — 15 Year Estimate" />
+  <meta name="twitter:description" content="Estimate Public Provident Fund maturity with fixed annual deposit (simplified)." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/ppf-calculator/#webpage","name":"PPF Maturity Calculator India — 15 Year Estimate","description":"Estimate Public Provident Fund maturity with fixed annual deposit (simplified).","url":"https://sahankit.github.io/ppf-calculator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"PPF calculator","item":"https://sahankit.github.io/ppf-calculator/"}]},{"@type":"SoftwareApplication","name":"PPF Maturity Calculator India","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate Public Provident Fund maturity with fixed annual deposit (simplified).","url":"https://sahankit.github.io/ppf-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/ppf-calculator/">PPF calculator</a></nav>
+
+<h1>PPF calculator (India)</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="y">Annual deposit (₹)</label><input id="y" type="number" value="150000" />
+  <label for="r">Interest rate (% p.a.)</label><input id="r" type="number" step="0.1" value="7.1" />
+  <label for="t">Years</label><input id="t" type="number" value="15" />
+  <button type="button" class="primary" id="go">Maturity</button>
+  <p id="out" class="ok"></p>
+  <p class="prose" style="font-size:0.85rem">Annual compounding illustration—not official bank quote.</p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const P=+document.getElementById('y').value, r=+document.getElementById('r').value/100, t=+document.getElementById('t').value;
+  let bal=0;
+  for(let i=0;i<t;i++){ bal=(bal+P)*(1+r); }
+  document.getElementById('out').textContent='≈ ₹'+Math.round(bal).toLocaleString('en-IN')+' after '+t+' years';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>India PPF estimate</h2><p>Illustrative annual deposit model.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
