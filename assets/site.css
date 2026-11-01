@@ -1119,7 +1119,9 @@ span.ok { color: #047857; font-weight: 700; }
   cursor: pointer;
   color: var(--ink);
 }
-.brief-tabs button[aria-selected="true"] { background: #c0392b; border-color: #c0392b; color: #fff; }
+.brief-tabs button[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+.brief-refresh-btn { padding: 8px 14px; font-size: 0.85rem; margin: 0; flex-shrink: 0; }
+.brief-note { font-size: 0.8rem; margin-top: 20px; color: var(--muted); }
 .brief-toolbar {
   display: flex;
   align-items: center;

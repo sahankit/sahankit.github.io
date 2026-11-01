@@ -359,7 +359,7 @@ export function briefSiteBody(ad) {
 ${ad}
 <div class="brief-toolbar">
   <span id="brief-updated">Loading headlines…</span>
-  <button type="button" class="primary" id="brief-refresh" style="padding:8px 14px;font-size:0.85rem">Refresh</button>
+  <button type="button" class="primary brief-refresh-btn" id="brief-refresh">Refresh</button>
 </div>
 <div class="brief-tabs" role="tablist" aria-label="Categories">
   <button type="button" role="tab" id="tab-news" data-feed="news" aria-selected="true">News</button>
@@ -368,7 +368,7 @@ ${ad}
 </div>
 <p id="brief-err" class="error" hidden></p>
 <div id="brief-feed" class="brief-feed" aria-live="polite"></div>
-<p class="prose" style="font-size:0.8rem;margin-top:20px">Headlines via public RSS (Google News). Sahankit does not write or host news content. Not affiliated with Inshorts.</p>
+<p class="brief-note">Headlines from Google News RSS. We show a cached snapshot on load; Refresh tries a live fetch. Not affiliated with Inshorts.</p>
 <script>
 const FEEDS={
   news:'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
@@ -376,6 +376,7 @@ const FEEDS={
   business:'https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en',
 };
 let active='news';
+let bundle={ updated:null, feeds:{} };
 
 function stripHtml(s){
   const d=document.createElement('div');
@@ -405,27 +406,42 @@ function timeAgo(pubDate){
   return d.toLocaleDateString(undefined,{dateStyle:'medium'});
 }
 
-async function fetchRss(url){
-  const proxy='https://api.allorigins.win/get?url='+encodeURIComponent(url);
-  const res=await fetch(proxy);
-  if(!res.ok) throw new Error('Could not load feed ('+res.status+').');
-  const data=await res.json();
-  if(!data.contents) throw new Error('Empty feed response.');
-  return new DOMParser().parseFromString(data.contents,'text/xml');
+function normalizeItem(it){
+  if(!it||!it.title||!it.link) return null;
+  return {
+    title: it.title,
+    link: it.link,
+    pub: it.pub || it.pubDate || '',
+    source: it.source || it.author || 'News',
+    summary: it.summary || inshort(stripHtml(it.description||it.content||it.title)),
+  };
 }
 
-function itemsFromXml(doc){
-  const items=[...doc.querySelectorAll('item')];
-  return items.map(el=>{
-    const rawTitle=el.querySelector('title')?.textContent||'';
-    const {title,source}=parseTitle(rawTitle);
-    const link=el.querySelector('link')?.textContent?.trim()||'';
-    const pub=el.querySelector('pubDate')?.textContent||'';
-    const desc=stripHtml(el.querySelector('description')?.textContent||'');
-    const srcEl=el.querySelector('source');
-    const srcName=srcEl?.textContent?.trim()||source;
-    return { title, link, pub, summary:inshort(desc||title), source:srcName };
-  }).filter(x=>x.title&&x.link);
+async function loadBundle(force){
+  const url='/assets/brief-feeds.json'+(force?'?t='+Date.now():'');
+  const res=await fetch(url,{cache:force?'no-store':'default'});
+  if(!res.ok) throw new Error('Could not load headline snapshot.');
+  bundle=await res.json();
+  if(!bundle.feeds) throw new Error('Invalid headline snapshot.');
+  return bundle;
+}
+
+async function fetchLiveItems(rssUrl){
+  const api='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rssUrl);
+  const res=await fetch(api);
+  if(!res.ok) throw new Error('Live feed unavailable ('+res.status+').');
+  const data=await res.json();
+  if(data.status!=='ok') throw new Error(data.message||'Live feed error.');
+  return (data.items||[]).map(it=>{
+    const {title,source}=parseTitle(it.title||'');
+    return normalizeItem({
+      title,
+      link: it.link,
+      pub: it.pubDate,
+      source: it.author||source,
+      summary: inshort(stripHtml(it.description||it.content||title)),
+    });
+  }).filter(Boolean);
 }
 
 function renderCards(list){
@@ -456,7 +472,15 @@ function renderCards(list){
   }
 }
 
-async function loadFeed(key){
+function setUpdatedLine(list, mode){
+  const when=bundle.updated?new Date(bundle.updated):new Date();
+  const stamp=when.toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'});
+  const tag=mode==='live'?'Live · ':mode==='cached'?'Snapshot · ':'';
+  document.getElementById('brief-updated').textContent=tag+stamp+' · '+list.length+' stories';
+}
+
+async function loadFeed(key, opts){
+  opts=opts||{};
   active=key;
   document.querySelectorAll('.brief-tabs [role=tab]').forEach(b=>{
     b.setAttribute('aria-selected', b.dataset.feed===key?'true':'false');
@@ -465,24 +489,43 @@ async function loadFeed(key){
   err.hidden=true;
   document.getElementById('brief-updated').textContent='Loading '+key+'…';
   document.getElementById('brief-feed').innerHTML='<p class="prose">Fetching headlines…</p>';
+  const refreshBtn=document.getElementById('brief-refresh');
+  if(refreshBtn) refreshBtn.disabled=true;
   try{
-    const doc=await fetchRss(FEEDS[key]);
-    const list=itemsFromXml(doc);
+    let list=[];
+    let mode='cached';
+    if(opts.live){
+      try{
+        list=await fetchLiveItems(FEEDS[key]);
+        mode='live';
+      }catch(liveErr){
+        await loadBundle(true);
+        list=(bundle.feeds[key]||[]).map(normalizeItem).filter(Boolean);
+        if(!list.length) throw liveErr;
+        err.textContent='Live refresh failed — showing latest snapshot. '+liveErr.message;
+        err.hidden=false;
+      }
+    }else{
+      if(!bundle.feeds[key]) await loadBundle(false);
+      list=(bundle.feeds[key]||[]).map(normalizeItem).filter(Boolean);
+    }
     renderCards(list.slice(0,25));
-    document.getElementById('brief-updated').textContent='Updated '+new Date().toLocaleTimeString(undefined,{timeStyle:'short'})+' · '+list.length+' stories';
+    setUpdatedLine(list, mode);
   }catch(e){
     err.textContent=e.message||'Failed to load headlines.';
     err.hidden=false;
     document.getElementById('brief-feed').replaceChildren();
-    document.getElementById('brief-updated').textContent='Could not update';
+    document.getElementById('brief-updated').textContent='Could not load headlines';
+  }finally{
+    if(refreshBtn) refreshBtn.disabled=false;
   }
 }
 
 document.querySelectorAll('.brief-tabs [role=tab]').forEach(btn=>{
   btn.onclick=()=>loadFeed(btn.dataset.feed);
 });
-document.getElementById('brief-refresh').onclick=()=>loadFeed(active);
-loadFeed('news');
+document.getElementById('brief-refresh').onclick=()=>loadFeed(active,{live:true});
+loadBundle(false).then(()=>loadFeed('news')).catch(()=>loadFeed('news',{live:true}));
 </script>`;
 }
 

@@ -144,19 +144,19 @@ export const sitePageSeo = {
       {
         h2: "Short news cards — News, Sports, Business",
         paragraphs: [
-          "Sahankit Brief shows latest headlines in a quick, card-style feed similar to short-news apps. Switch tabs for general news, sports, or business. Each card summarizes the story in a few lines and links to the original publisher.",
+          "News brief shows latest India headlines in a quick, card-style feed similar to short-news apps. Switch tabs for general news, sports, or business. Each card summarizes the story in a few lines and links to the original publisher.",
         ],
       },
       {
         h2: "How it works",
         paragraphs: [
-          "Headlines are loaded from public RSS feeds in your browser via a read-only proxy. We do not host article text or replace the publisher link. Refresh to pull newer stories.",
+          "On load, headlines come from a snapshot file updated when the site is built (and hourly via GitHub Actions). Tap Refresh to try a live RSS fetch through rss2json.com. We do not host full article text.",
         ],
       },
     ],
     faqs: [
-      { q: "Is this the Inshorts app?", a: "No. This is an independent Sahankit page inspired by short headline UX. Content comes from RSS, not Inshorts." },
-      { q: "Why do headlines not load?", a: "Ad blockers or network limits on the RSS proxy can block feeds. Try Refresh or another network." },
+      { q: "Is this the Inshorts app?", a: "No. This is an independent Tools page inspired by short headline UX. Content comes from Google News RSS, not Inshorts." },
+      { q: "Why do headlines not load?", a: "If the snapshot file is missing or Refresh is blocked (ad blockers, rss2json limits), try again later or reload the page." },
     ],
     related: [
       { href: "/osint-search/", label: "OSINT search" },

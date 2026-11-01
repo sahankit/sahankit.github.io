@@ -49,6 +49,7 @@ import { batch21PageSeo } from "./seo-batch21.mjs";
 import { batch22Tools } from "./tools-batch22.mjs";
 import { batch22PageSeo } from "./seo-batch22.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
+import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
 import {
   OG_IMAGE,
@@ -1316,7 +1317,7 @@ for (const def of micrositeDefs) {
   const file = "brief/index.html";
   const urlPath = "/brief/";
   micrositeUrls.push(urlPath);
-  const title = "Sahankit Brief — News, Sports & Business Headlines";
+  const title = "News brief — India headlines (News, Sports & Business) | Tools";
   const desc =
     "Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser.";
   const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: "News brief" }]);
@@ -1391,7 +1392,7 @@ const infoPages = [
 <div class="prose prose--page">
 <h2>Data you enter in tools</h2>
 <p>Text, numbers, and files you use in the tools are processed locally in your browser and are not sent to or stored by this website. Some tools load open-source libraries from a public CDN (jsDelivr) to do this work; the libraries run on your device.</p>
-<p>A few tools need an outside service: the domain age checker queries public RDAP servers (rdap.org), the IP lookup asks ipify.org for your public IP, and the news brief loads Google News RSS feeds through the allorigins.win proxy. Those requests go from your browser directly to that service.</p>
+<p>A few tools need an outside service: the domain age checker queries public RDAP servers (rdap.org), the IP lookup asks ipify.org for your public IP, and the news brief may call rss2json.com when you tap Refresh (otherwise it uses a snapshot file on this site). Those requests go from your browser directly to that service.</p>
 <h2>Advertising and cookies</h2>
 <p>This site uses Google AdSense to show ads. Google and its partners may use cookies or similar technologies to serve ads based on your visits to this and other websites. You can learn how Google uses this information at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from sites that use its services</a>, and you can turn off personalised ads in <a href="https://adssettings.google.com/" rel="noopener">Google Ads Settings</a>.</p>
 <h2>Local storage</h2>
@@ -1475,5 +1476,18 @@ Sitemap: ${BASE}/sitemap.xml
 );
 write(".nojekyll", "");
 write("google34da527c15058477.html", "google-site-verification: google34da527c15058477.html\n");
+
+try {
+  const brief = await buildBriefFeedsJson();
+  write("assets/brief-feeds.json", `${JSON.stringify(brief, null, 2)}\n`);
+  console.log(
+    "Brief feeds:",
+    Object.entries(brief.feeds)
+      .map(([k, v]) => `${k}=${v.length}`)
+      .join(", "),
+  );
+} catch (e) {
+  console.warn("Brief feeds: fetch failed (keeping existing assets/brief-feeds.json if present):", e.message);
+}
 
 console.log("Built", tools.length, "tools,", guides.length, "guides,", micrositeUrls.length, "microsites");

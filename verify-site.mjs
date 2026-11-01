@@ -139,6 +139,7 @@ const assetFiles = [
   "assets/ads.js",
   "assets/ads.json",
   "assets/tool-busy.js",
+  "assets/brief-feeds.json",
   "assets/og.png",
   "assets/favicon.svg",
   "assets/apple-touch-icon.png",
@@ -146,6 +147,15 @@ const assetFiles = [
 ];
 for (const a of assetFiles) {
   if (!fs.existsSync(path.join(ROOT, a))) errors.push(`Missing asset ${a}`);
+}
+try {
+  const brief = JSON.parse(fs.readFileSync(path.join(ROOT, "assets/brief-feeds.json"), "utf8"));
+  for (const key of ["news", "sports", "business"]) {
+    const n = brief.feeds?.[key]?.length ?? 0;
+    if (n < 1) errors.push(`brief-feeds.json: ${key} has no items`);
+  }
+} catch (e) {
+  errors.push(`brief-feeds.json invalid: ${e.message}`);
 }
 
 console.log("\n--- Summary ---");
