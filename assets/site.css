@@ -161,7 +161,21 @@ button.primary:hover { background: var(--purple-dark); }
 
 .prose { margin-top: 28px; font-size: 0.95rem; }
 .prose h2 { font-size: 1.2rem; margin-top: 24px; }
+.prose h3 { font-size: 1.05rem; margin-top: 16px; color: var(--ink); }
 .prose ul { padding-left: 1.2rem; }
+.seo-content { border-top: 1px solid var(--line); padding-top: 8px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .ad-slot {
   margin: 16px 0;

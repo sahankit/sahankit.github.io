@@ -4,15 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <title>Unix Epoch Converter — Timestamp to Date</title>
   <meta name="description" content="Convert Unix timestamps to local date and time. Free epoch seconds and milliseconds tool." />
+  <meta name="keywords" content="unix timestamp converter, epoch to date, timestamp to human readable" />
   <link rel="canonical" href="https://sahankit.github.io/epoch-converter/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
   <meta property="og:title" content="Unix Epoch Converter — Timestamp to Date" />
   <meta property="og:description" content="Convert Unix timestamps to local date and time. Free epoch seconds and milliseconds tool." />
   <meta property="og:url" content="https://sahankit.github.io/epoch-converter/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unix Epoch Converter — Timestamp to Date" />
+  <meta name="twitter:description" content="Convert Unix timestamps to local date and time. Free epoch seconds and milliseconds tool." />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Unix Epoch Converter — Timestamp to Date","description":"Convert Unix timestamps to local date and time. Free epoch seconds and milliseconds tool.","url":"https://sahankit.github.io/epoch-converter/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What timezone is shown?","acceptedAnswer":{"@type":"Answer","text":"The converter uses your browser local timezone when displaying the date string."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Unix Epoch Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert Unix timestamps to local date and time. Free epoch seconds and milliseconds tool.","url":"https://sahankit.github.io/epoch-converter/"}]}</script>
 </head>
 <body>
 
@@ -44,7 +52,7 @@ function convert(){
 }
 document.getElementById('go').onclick=convert;
 document.getElementById('now').onclick=()=>{ document.getElementById('ts').value=Math.floor(Date.now()/1000); convert(); };
-</script>
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Unix time in seconds and milliseconds</h2><p>Timestamps from logs and APIs are often Unix epoch values. Values below 1,000,000,000,000 are treated as seconds and multiplied by 1,000. Larger values are treated as milliseconds.</p><h2>Frequently asked questions</h2><h3>What timezone is shown?</h3><p>The converter uses your browser local timezone when displaying the date string.</p><h2>Related free tools</h2><ul><li><a href="/json-formatter.html">JSON formatter</a></li><li><a href="/age-calculator.html">Age calculator</a></li></ul></section>
 </div>
 
 <footer class="site-footer">

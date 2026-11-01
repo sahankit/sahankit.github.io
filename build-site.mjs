@@ -1,6 +1,15 @@
 #!/usr/bin/env node
 import fs from "fs";
 import path from "path";
+import {
+  renderSeoHtml,
+  jsonLdGraph,
+  webPageLd,
+  faqLd,
+  softwareAppLd,
+  indexSeo,
+  pageSeo,
+} from "./seo-content.mjs";
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
@@ -21,24 +30,42 @@ const footer = `
   <p><a href="${BASE}/sitemap.xml">Sitemap</a></p>
 </footer>`;
 
-const headCommon = (title, desc, urlPath) => `
+const headCommon = (title, desc, urlPath, keywords = "") => `
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <title>${title}</title>
   <meta name="description" content="${desc}" />
+  ${keywords ? `<meta name="keywords" content="${keywords}" />` : ""}
   <link rel="canonical" href="${BASE}${urlPath}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${desc}" />
   <meta property="og:url" content="${BASE}${urlPath}" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="${title}" />
+  <meta name="twitter:description" content="${desc}" />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/ads.js" defer></script>`;
 
-function page(urlPath, title, desc, mainHtml, breadcrumb = "") {
+function buildJsonLd(title, desc, urlPath, opts = {}) {
+  const graph = [
+    { ...webPageLd(title, desc, urlPath, BASE) },
+  ];
+  const faq = faqLd(opts.faqs);
+  if (faq) graph.push(faq);
+  if (opts.softwareApp) graph.push(softwareAppLd(title, desc, urlPath, BASE));
+  return jsonLdGraph(graph.map((node) => ({ "@context": "https://schema.org", ...node })));
+}
+
+function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${headCommon(title, desc, urlPath)}
+<head>${headCommon(title, desc, urlPath, opts.keywords || "")}
+${buildJsonLd(title, desc, urlPath, opts)}
 </head>
 <body>
 ${nav}
@@ -84,8 +111,7 @@ function upd(){
   document.getElementById('paras').textContent=s.trim()?s.trim().split(/\\n+/).filter(Boolean).length:0;
 }
 t.addEventListener('input',upd); upd();
-</script>
-<div class="prose"><h2>Why use a word counter?</h2><p>Writers, students, and SEO editors use word counts for essays, meta descriptions, and social posts. This tool runs in your browser; nothing is uploaded.</p></div>`,
+</script>`,
   },
   {
     path: "/character-counter.html",
@@ -356,7 +382,6 @@ document.getElementById('go').onclick=()=>{
   <button type="button" class="primary" id="go">Check format</button>
   <p id="out"></p>
 </div>
-<p class="prose">Format-only check (5 letters, 4 digits, 1 letter). Not linked to Income Tax records.</p>
 <script>
 document.getElementById('go').onclick=()=>{
   const s=document.getElementById('pan').value.trim().toUpperCase();
@@ -408,36 +433,58 @@ const hubCards = tools.map((t) =>
   `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
 ).join("\n");
 
+const indexMain = `<div class="hero"><h1>Free online tools</h1><p>Calculators and writing utilities in your browser. Also try <a href="/y-chat/">Y-Chat</a> — free chat rooms.</p></div>
+${ad}
+<section aria-label="Tool categories"><h2 class="sr-only">Categories</h2>
+<section><h2>Text &amp; writing</h2><div class="grid">${tools.slice(0, 4).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
+<section style="margin-top:24px"><h2>Calculators</h2><div class="grid">${tools.slice(4, 10).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
+<section style="margin-top:24px"><h2>India utilities</h2><div class="grid">${tools.slice(10).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
+<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>
+</section>
+${renderSeoHtml(indexSeo)}`;
+
 const indexHtml = page(
   "/",
   "Sahankit Tools — Free Calculators & Writing Utilities",
   "Free online tools: word counter, JSON formatter, EMI calculator, BMI, epoch converter, IFSC/PAN format checkers, and guides.",
-  `<div class="hero"><h1>Free online tools</h1><p>Calculators and writing utilities in your browser. Also try <a href="/y-chat/">Y-Chat</a> — free chat rooms.</p></div>
-${ad}
-<section><h2>Text &amp; writing</h2><div class="grid">${tools.slice(0, 4).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
-<section style="margin-top:24px"><h2>Calculators</h2><div class="grid">${tools.slice(4, 10).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
-<section style="margin-top:24px"><h2>India utilities</h2><div class="grid">${tools.slice(10).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
-<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>`,
+  indexMain,
+  "",
+  { keywords: indexSeo.keywords, faqs: indexSeo.faqs },
 );
 
 write("index.html", indexHtml);
 
+function pageOpts(file) {
+  const seo = pageSeo[file];
+  return {
+    keywords: seo?.keywords,
+    faqs: seo?.faqs,
+    softwareApp: !file.startsWith("guides/"),
+  };
+}
+
+function fullMain(file, body) {
+  return body + renderSeoHtml(pageSeo[file]);
+}
+
 for (const t of tools) {
   const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / ${t.card}</nav>`;
-  const html = page(t.path, t.title, t.desc, t.body, bc);
-  write(t.file, html);
+  const main = fullMain(t.file, t.body);
+  const opts = pageOpts(t.file);
+  write(t.file, page(t.path, t.title, t.desc, main, bc, opts));
   const slug = t.file.replace(/\.html$/, "");
   const dirPath = `/${slug}/`;
-  write(`${slug}/index.html`, page(dirPath, t.title, t.desc, t.body, bc));
+  write(`${slug}/index.html`, page(dirPath, t.title, t.desc, main, bc, opts));
 }
 
 for (const g of guides) {
   const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / Guides</nav>`;
-  const html = page(g.path, g.title, g.desc, g.body, bc);
-  write(g.file, html);
+  const main = fullMain(g.file, g.body);
+  const opts = pageOpts(g.file);
+  write(g.file, page(g.path, g.title, g.desc, main, bc, opts));
   const slug = g.file.replace(/\.html$/, "");
   const dirPath = `/${slug}/`;
-  write(`${slug}/index.html`, page(dirPath, g.title, g.desc, g.body, bc));
+  write(`${slug}/index.html`, page(dirPath, g.title, g.desc, main, bc, opts));
 }
 
 const notFound = page(
