@@ -114,6 +114,23 @@ const pageSeo = {
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
+const ANALYTICS_CONFIG_PATH = path.join(ROOT, "assets/analytics.json");
+
+/** Optional: GA_MEASUREMENT_ID env overrides analytics.json at build time (CI-friendly). */
+function applyAnalyticsEnv() {
+  const fromEnv = process.env.GA_MEASUREMENT_ID?.trim();
+  if (!fromEnv) return;
+  let cfg = { measurementId: "", anonymizeIp: true, sendPageView: true };
+  try {
+    cfg = { ...cfg, ...JSON.parse(fs.readFileSync(ANALYTICS_CONFIG_PATH, "utf8")) };
+  } catch {
+    /* new file */
+  }
+  cfg.measurementId = fromEnv;
+  fs.writeFileSync(ANALYTICS_CONFIG_PATH, `${JSON.stringify(cfg, null, 2)}\n`);
+}
+
+applyAnalyticsEnv();
 
 const nav = `
 <a class="skip-link" href="#main">Skip to content</a>
@@ -203,6 +220,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta name="twitter:description" content="${d}" />
   <meta name="twitter:image" content="${ogImage}" />
   <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/analytics.js" defer></script>
   <script src="/assets/ads.js" defer></script>
   <script src="/assets/tool-busy.js" defer></script>
   <script src="/assets/site-ui.js" defer></script>`;
@@ -1416,11 +1434,13 @@ const infoPages = [
     title: `Privacy Policy — ${SITE_NAME}`,
     desc: `How ${SITE_NAME} handles your data: browser-based processing, advertising cookies from Google AdSense, and third-party services.`,
     body: `<header class="page-hero"><h1>Privacy policy</h1>
-<p class="page-lead">Short version: tools process your input in your browser, and this site shows ads from Google, which may use cookies.</p></header>
+<p class="page-lead">Short version: tools process your input in your browser. This site uses Google Analytics and AdSense, which may use cookies.</p></header>
 <div class="prose prose--page">
 <h2>Data you enter in tools</h2>
 <p>Text, numbers, and files you use in the tools are processed locally in your browser and are not sent to or stored by this website. Some tools load open-source libraries from a public CDN (jsDelivr) to do this work; the libraries run on your device.</p>
 <p>A few tools need an outside service: the domain age checker queries public RDAP servers (rdap.org), the IP lookup asks ipify.org for your public IP, and the news brief may call rss2json.com when you tap Refresh (otherwise it uses a snapshot file on this site). Those requests go from your browser directly to that service.</p>
+<h2>Analytics</h2>
+<p>We use <a href="https://analytics.google.com/" rel="noopener">Google Analytics 4</a> to understand aggregate traffic (pages viewed, approximate location, device type). Analytics runs via Google’s gtag.js script; page URLs and referrer may be sent to Google when the measurement ID is configured. You can opt out with a browser add-on such as the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Google Analytics Opt-out Browser Add-on</a>, or block analytics scripts in your browser.</p>
 <h2>Advertising and cookies</h2>
 <p>This site uses Google AdSense to show ads. Google and its partners may use cookies or similar technologies to serve ads based on your visits to this and other websites. You can learn how Google uses this information at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from sites that use its services</a>, and you can turn off personalised ads in <a href="https://adssettings.google.com/" rel="noopener">Google Ads Settings</a>.</p>
 <h2>Local storage</h2>

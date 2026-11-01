@@ -115,6 +115,7 @@ for (const loc of locs) {
     if (!html.includes("ad-slot")) errors.push(`${rel}: missing AdSense ad slot`);
     if (!html.includes("google-adsense-account")) errors.push(`${rel}: missing AdSense account meta`);
     if (!html.includes("/assets/ads.js")) errors.push(`${rel}: missing ads.js`);
+    if (!html.includes("/assets/analytics.js")) errors.push(`${rel}: missing analytics.js`);
     if (!html.includes("ad-slot--below")) errors.push(`${rel}: missing below-tool ad slot`);
   }
 
@@ -138,6 +139,8 @@ const assetFiles = [
   "assets/site.css",
   "assets/ads.js",
   "assets/ads.json",
+  "assets/analytics.js",
+  "assets/analytics.json",
   "assets/tool-busy.js",
   "assets/brief-feeds.json",
   "assets/og.png",
