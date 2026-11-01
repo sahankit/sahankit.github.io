@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Text Diff — Compare Two Texts</title>
+  <meta name="description" content="Line-by-line diff of two text blocks." />
+  <meta name="keywords" content="text diff online, compare two texts" />
+  <link rel="canonical" href="https://sahankit.github.io/text-diff/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Text Diff — Compare Two Texts" />
+  <meta property="og:description" content="Line-by-line diff of two text blocks." />
+  <meta property="og:url" content="https://sahankit.github.io/text-diff/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Text Diff — Compare Two Texts" />
+  <meta name="twitter:description" content="Line-by-line diff of two text blocks." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/text-diff/#webpage","name":"Text Diff — Compare Two Texts","description":"Line-by-line diff of two text blocks.","url":"https://sahankit.github.io/text-diff/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Text diff","item":"https://sahankit.github.io/text-diff/"}]},{"@type":"SoftwareApplication","name":"Text Diff","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Line-by-line diff of two text blocks.","url":"https://sahankit.github.io/text-diff/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/text-diff/">Text diff</a></nav>
+
+<h1>Text diff</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="a">Text A</label><textarea id="a" rows="6"></textarea>
+  <label for="b">Text B</label><textarea id="b" rows="6"></textarea>
+  <button type="button" class="primary" id="go">Compare</button>
+  <pre id="out" style="white-space:pre-wrap;background:#faf7ff;padding:12px;border-radius:10px"></pre>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const A=document.getElementById('a').value.split(/\n/), B=document.getElementById('b').value.split(/\n/);
+  const n=Math.max(A.length,B.length); const lines=[];
+  for(let i=0;i<n;i++){
+    const a=A[i]??'', b=B[i]??'';
+    if(a===b) lines.push('  '+a);
+    else{ if(a) lines.push('- '+a); if(b) lines.push('+ '+b); }
+  }
+  document.getElementById('out').textContent=lines.join('\n')||'(identical)';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Simple diff</h2><p>Line-based +/- comparison.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

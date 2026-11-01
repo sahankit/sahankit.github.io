@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Flesch Reading Ease Score</title>
+  <meta name="description" content="Estimate reading ease from word and sentence counts." />
+  <meta name="keywords" content="flesch reading ease" />
+  <link rel="canonical" href="https://sahankit.github.io/flesch-reading/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Flesch Reading Ease Score" />
+  <meta property="og:description" content="Estimate reading ease from word and sentence counts." />
+  <meta property="og:url" content="https://sahankit.github.io/flesch-reading/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Flesch Reading Ease Score" />
+  <meta name="twitter:description" content="Estimate reading ease from word and sentence counts." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/flesch-reading/#webpage","name":"Flesch Reading Ease Score","description":"Estimate reading ease from word and sentence counts.","url":"https://sahankit.github.io/flesch-reading/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Flesch score","item":"https://sahankit.github.io/flesch-reading/"}]},{"@type":"SoftwareApplication","name":"Flesch Reading Ease Score","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate reading ease from word and sentence counts.","url":"https://sahankit.github.io/flesch-reading/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/flesch-reading/">Flesch score</a></nav>
+
+<h1>Flesch reading ease</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text" rows="8">The quick brown fox jumps over the lazy dog. Short sentences help readability.</textarea>
+  <button type="button" class="primary" id="go">Score</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const t=document.getElementById('text').value.trim();
+  const words=(t.match(/\S+/g)||[]).length;
+  const sentences=(t.match(/[.!?]+/g)||[]).length||1;
+  const syll=Math.max(1,Math.round(words*1.4));
+  const score=206.835-1.015*(words/sentences)-84.6*(syll/words);
+  document.getElementById('out').textContent='Score: '+score.toFixed(1)+' (approx syllables) · '+words+' words';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Readability score</h2><p>Rough score for blog editing; syllables approximated.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

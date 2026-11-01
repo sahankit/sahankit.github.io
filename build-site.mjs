@@ -18,6 +18,10 @@ import { batch4Tools } from "./tools-batch4.mjs";
 import { batch4PageSeo } from "./seo-batch4.mjs";
 import { batch5Tools } from "./tools-batch5.mjs";
 import { batch5PageSeo } from "./seo-batch5.mjs";
+import { batch6Tools } from "./tools-batch6.mjs";
+import { batch6PageSeo } from "./seo-batch6.mjs";
+import { batch7Tools } from "./tools-batch7.mjs";
+import { batch7PageSeo } from "./seo-batch7.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
 import {
   OG_IMAGE,
@@ -30,7 +34,16 @@ import {
   fallbackGuideSeo,
 } from "./seo-build.mjs";
 
-const pageSeo = { ...corePageSeo, ...extraPageSeo, ...morePageSeo, ...batch4PageSeo, ...batch5PageSeo, ...sitePageSeo };
+const pageSeo = {
+  ...corePageSeo,
+  ...extraPageSeo,
+  ...morePageSeo,
+  ...batch4PageSeo,
+  ...batch5PageSeo,
+  ...batch6PageSeo,
+  ...batch7PageSeo,
+  ...sitePageSeo,
+};
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
@@ -808,6 +821,8 @@ document.getElementById('go').click();
   ...moreTools(ad),
   ...batch4Tools(ad),
   ...batch5Tools(ad),
+  ...batch6Tools(ad),
+  ...batch7Tools(ad),
 ];
 
 const guides = [
@@ -896,8 +911,8 @@ ${renderSeoHtml(indexSeo)}`;
 
 const indexHtml = page(
   "/",
-  "Sahankit Tools — 88+ Free Online Calculators & Utilities",
-  "Free browser tools: India GST, EMI, SIP, word counter, QR codes, PDF merge, domain age, developer utilities, chat, and mini-sites—no signup.",
+  "Sahankit Tools — 120+ Free Online Calculators & Utilities",
+  "Free browser tools: EMI, BMR, URL parser, CIDR, world clock, India PIN, WhatsApp links, YAML/JSON, and 120+ utilities—no signup.",
   indexMain,
   "",
   {

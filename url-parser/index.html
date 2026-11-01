@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>URL Parser — Split URL Components</title>
+  <meta name="description" content="Parse a URL into protocol, host, path, and query parameters." />
+  <meta name="keywords" content="url parser online, parse url components" />
+  <link rel="canonical" href="https://sahankit.github.io/url-parser/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="URL Parser — Split URL Components" />
+  <meta property="og:description" content="Parse a URL into protocol, host, path, and query parameters." />
+  <meta property="og:url" content="https://sahankit.github.io/url-parser/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="URL Parser — Split URL Components" />
+  <meta name="twitter:description" content="Parse a URL into protocol, host, path, and query parameters." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/url-parser/#webpage","name":"URL Parser — Split URL Components","description":"Parse a URL into protocol, host, path, and query parameters.","url":"https://sahankit.github.io/url-parser/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"URL parser","item":"https://sahankit.github.io/url-parser/"}]},{"@type":"SoftwareApplication","name":"URL Parser","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Parse a URL into protocol, host, path, and query parameters.","url":"https://sahankit.github.io/url-parser/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/url-parser/">URL parser</a></nav>
+
+<h1>URL parser</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="url">URL</label>
+  <input id="url" type="url" value="https://sahankit.github.io/word-counter/?ref=home" />
+  <button type="button" class="primary" id="go">Parse</button>
+  <pre id="out"></pre>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  try{
+    const u=new URL(document.getElementById('url').value);
+    const params=[...u.searchParams.entries()].map(([k,v])=>k+'='+v).join('\n')||'(none)';
+    document.getElementById('out').textContent=
+      'Protocol: '+u.protocol+'\nHost: '+u.host+'\nPath: '+u.pathname+'\nHash: '+(u.hash||'(none)')+'\nQuery params:\n'+params;
+  }catch(e){ document.getElementById('out').textContent='Invalid URL: '+e.message; }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Understand URLs</h2><p>Inspect query strings and paths for debugging and SEO.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

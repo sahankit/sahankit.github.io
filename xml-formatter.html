@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>XML Formatter — Pretty Print XML</title>
+  <meta name="description" content="Format and indent XML in the browser." />
+  <meta name="keywords" content="xml formatter online" />
+  <link rel="canonical" href="https://sahankit.github.io/xml-formatter/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="XML Formatter — Pretty Print XML" />
+  <meta property="og:description" content="Format and indent XML in the browser." />
+  <meta property="og:url" content="https://sahankit.github.io/xml-formatter/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="XML Formatter — Pretty Print XML" />
+  <meta name="twitter:description" content="Format and indent XML in the browser." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/xml-formatter/#webpage","name":"XML Formatter — Pretty Print XML","description":"Format and indent XML in the browser.","url":"https://sahankit.github.io/xml-formatter/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"XML formatter","item":"https://sahankit.github.io/xml-formatter/"}]},{"@type":"SoftwareApplication","name":"XML Formatter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Format and indent XML in the browser.","url":"https://sahankit.github.io/xml-formatter/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/xml-formatter/">XML formatter</a></nav>
+
+<h1>XML formatter</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="xml" rows="8" spellcheck="false"><root><item id="1">Hello</item></root></textarea>
+  <button type="button" class="primary" id="go">Format</button>
+  <textarea id="out" rows="10" readonly spellcheck="false"></textarea>
+  <p id="err" class="error" hidden></p>
+</div>
+<script>
+function fmt(node, indent){
+  if(node.nodeType===3) return node.textContent.trim()?indent+node.textContent.trim()+'\n':'';
+  if(node.nodeType!==1) return '';
+  let s=indent+'<'+node.nodeName;
+  for(const a of node.attributes||[]) s+=' '+a.name+'="'+a.value+'"';
+  const kids=[...node.childNodes].filter(n=>n.nodeType!==3||n.textContent.trim());
+  if(!kids.length) return s+'/>\n';
+  s+='>\n';
+  for(const k of kids) s+=fmt(k, indent+'  ');
+  return s+indent+'</'+node.nodeName+'>\n';
+}
+document.getElementById('go').onclick=()=>{
+  const err=document.getElementById('err'); err.hidden=true;
+  try{
+    const doc=new DOMParser().parseFromString(document.getElementById('xml').value,'application/xml');
+    if(doc.querySelector('parsererror')) throw new Error('Invalid XML');
+    document.getElementById('out').value=fmt(doc.documentElement,'');
+  }catch(e){ err.textContent=e.message; err.hidden=false; }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Pretty XML</h2><p>DOMParser-based indent.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

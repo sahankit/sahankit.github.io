@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Weighted Grade Calculator</title>
+  <meta name="description" content="Calculate course grade from weighted assignments." />
+  <meta name="keywords" content="weighted grade calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/grade-calculator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Weighted Grade Calculator" />
+  <meta property="og:description" content="Calculate course grade from weighted assignments." />
+  <meta property="og:url" content="https://sahankit.github.io/grade-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Weighted Grade Calculator" />
+  <meta name="twitter:description" content="Calculate course grade from weighted assignments." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/grade-calculator/#webpage","name":"Weighted Grade Calculator","description":"Calculate course grade from weighted assignments.","url":"https://sahankit.github.io/grade-calculator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Grade calculator","item":"https://sahankit.github.io/grade-calculator/"}]},{"@type":"SoftwareApplication","name":"Weighted Grade Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate course grade from weighted assignments.","url":"https://sahankit.github.io/grade-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/grade-calculator/">Grade calculator</a></nav>
+
+<h1>Weighted grade calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <p>Enter score and weight % per line: <code>score weight</code></p>
+  <textarea id="rows">90 40
+85 30
+78 30</textarea>
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  let wSum=0, wx=0;
+  for(const line of document.getElementById('rows').value.split(/\n/)){
+    const [s,w]=line.trim().split(/\s+/).map(Number);
+    if(!Number.isFinite(s)||!Number.isFinite(w)) continue;
+    wx+=s*w; wSum+=w;
+  }
+  document.getElementById('out').textContent=wSum?('Grade: '+(wx/wSum).toFixed(2)+'% (weights sum '+wSum+'%)'):'Add rows';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Course grades</h2><p>Combine assignment weights to one percentage.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

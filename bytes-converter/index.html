@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Bytes Converter — KB, MB, GB</title>
+  <meta name="description" content="Convert data sizes between bytes, KB, MB, GB, and TB." />
+  <meta name="keywords" content="bytes to mb converter, kb gb calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/bytes-converter/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Bytes Converter — KB, MB, GB" />
+  <meta property="og:description" content="Convert data sizes between bytes, KB, MB, GB, and TB." />
+  <meta property="og:url" content="https://sahankit.github.io/bytes-converter/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bytes Converter — KB, MB, GB" />
+  <meta name="twitter:description" content="Convert data sizes between bytes, KB, MB, GB, and TB." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/bytes-converter/#webpage","name":"Bytes Converter — KB, MB, GB","description":"Convert data sizes between bytes, KB, MB, GB, and TB.","url":"https://sahankit.github.io/bytes-converter/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Bytes converter","item":"https://sahankit.github.io/bytes-converter/"}]},{"@type":"SoftwareApplication","name":"Bytes Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert data sizes between bytes, KB, MB, GB, and TB.","url":"https://sahankit.github.io/bytes-converter/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/bytes-converter/">Bytes converter</a></nav>
+
+<h1>Bytes converter</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="n">Value</label><input id="n" type="number" value="1048576" />
+  <label for="from">From</label>
+  <select id="from"><option value="1">Bytes</option><option value="1024">KB</option><option value="1048576" selected>MB</option><option value="1073741824">GB</option></select>
+  <label for="to">To</label>
+  <select id="to"><option value="1024">KB</option><option value="1048576">MB</option><option value="1073741824" selected>GB</option><option value="1099511627776">TB</option></select>
+  <button type="button" class="primary" id="go">Convert</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const v=Number(document.getElementById('n').value);
+  const from=Number(document.getElementById('from').value), to=Number(document.getElementById('to').value);
+  const bytes=v*from;
+  document.getElementById('out').textContent=(bytes/to).toLocaleString(undefined,{maximumFractionDigits:6});
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>File size units</h2><p>Binary 1024-based sizes common for storage.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

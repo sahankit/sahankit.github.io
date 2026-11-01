@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>YAML to JSON Converter</title>
+  <meta name="description" content="Convert YAML to JSON in the browser." />
+  <meta name="keywords" content="yaml to json converter" />
+  <link rel="canonical" href="https://sahankit.github.io/yaml-to-json/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="YAML to JSON Converter" />
+  <meta property="og:description" content="Convert YAML to JSON in the browser." />
+  <meta property="og:url" content="https://sahankit.github.io/yaml-to-json/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="YAML to JSON Converter" />
+  <meta name="twitter:description" content="Convert YAML to JSON in the browser." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/yaml-to-json/#webpage","name":"YAML to JSON Converter","description":"Convert YAML to JSON in the browser.","url":"https://sahankit.github.io/yaml-to-json/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"YAML → JSON","item":"https://sahankit.github.io/yaml-to-json/"}]},{"@type":"SoftwareApplication","name":"YAML to JSON Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert YAML to JSON in the browser.","url":"https://sahankit.github.io/yaml-to-json/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/yaml-to-json/">YAML → JSON</a></nav>
+
+<h1>YAML to JSON</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="yaml" rows="8" spellcheck="false">name: Sahankit
+tools: 88
+online: true</textarea>
+  <button type="button" class="primary" id="go">Convert</button>
+  <textarea id="json" rows="10" readonly spellcheck="false"></textarea>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+<script>
+document.getElementById('go').onclick=()=>{
+  try{
+    const obj=jsyaml.load(document.getElementById('yaml').value);
+    document.getElementById('json').value=JSON.stringify(obj,null,2);
+  }catch(e){ document.getElementById('json').value='Error: '+e.message; }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>YAML parse</h2><p>Uses js-yaml in the browser.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

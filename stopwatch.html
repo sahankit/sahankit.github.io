@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Stopwatch — Online Lap Timer</title>
+  <meta name="description" content="Free stopwatch with lap times in your browser." />
+  <meta name="keywords" content="stopwatch online, lap timer" />
+  <link rel="canonical" href="https://sahankit.github.io/stopwatch/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Stopwatch — Online Lap Timer" />
+  <meta property="og:description" content="Free stopwatch with lap times in your browser." />
+  <meta property="og:url" content="https://sahankit.github.io/stopwatch/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Stopwatch — Online Lap Timer" />
+  <meta name="twitter:description" content="Free stopwatch with lap times in your browser." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/stopwatch/#webpage","name":"Stopwatch — Online Lap Timer","description":"Free stopwatch with lap times in your browser.","url":"https://sahankit.github.io/stopwatch/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Stopwatch","item":"https://sahankit.github.io/stopwatch/"}]},{"@type":"SoftwareApplication","name":"Stopwatch","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free stopwatch with lap times in your browser.","url":"https://sahankit.github.io/stopwatch/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/stopwatch/">Stopwatch</a></nav>
+
+<h1>Stopwatch</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <p id="clock" style="font-size:2.5rem;font-weight:800;text-align:center">00:00.0</p>
+  <div class="row">
+    <button type="button" class="primary" id="start">Start</button>
+    <button type="button" class="primary" id="lap">Lap</button>
+    <button type="button" class="primary" id="reset">Reset</button>
+  </div>
+  <ul id="laps"></ul>
+</div>
+<script>
+let t0=0, running=false, id=null, laps=[];
+function ms(){ return running?performance.now()-t0:0; }
+function fmt(x){
+  const s=Math.floor(x/1000), m=Math.floor(s/60), r=s%60, d=Math.floor((x%1000)/100);
+  return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0')+'.'+d;
+}
+function tick(){ document.getElementById('clock').textContent=fmt(ms()); }
+document.getElementById('start').onclick=()=>{
+  if(!running){ t0=performance.now()-ms(); running=true; id=setInterval(tick,100); tick(); }
+  else{ running=false; clearInterval(id); }
+  document.getElementById('start').textContent=running?'Pause':'Start';
+};
+document.getElementById('lap').onclick=()=>{
+  if(!running) return;
+  laps.unshift(fmt(ms()));
+  document.getElementById('laps').innerHTML=laps.map(x=>'<li>'+x+'</li>').join('');
+};
+document.getElementById('reset').onclick=()=>{
+  running=false; clearInterval(id); t0=0; laps=[]; document.getElementById('laps').innerHTML='';
+  document.getElementById('start').textContent='Start'; document.getElementById('clock').textContent='00:00.0';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Browser stopwatch</h2><p>Time tasks and record lap splits.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

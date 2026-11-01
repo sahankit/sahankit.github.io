@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Running Pace Calculator — Min per km</title>
+  <meta name="description" content="Calculate pace from distance and time." />
+  <meta name="keywords" content="running pace calculator min per km" />
+  <link rel="canonical" href="https://sahankit.github.io/running-pace/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Running Pace Calculator — Min per km" />
+  <meta property="og:description" content="Calculate pace from distance and time." />
+  <meta property="og:url" content="https://sahankit.github.io/running-pace/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Running Pace Calculator — Min per km" />
+  <meta name="twitter:description" content="Calculate pace from distance and time." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/running-pace/#webpage","name":"Running Pace Calculator — Min per km","description":"Calculate pace from distance and time.","url":"https://sahankit.github.io/running-pace/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Running pace","item":"https://sahankit.github.io/running-pace/"}]},{"@type":"SoftwareApplication","name":"Running Pace Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate pace from distance and time.","url":"https://sahankit.github.io/running-pace/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/running-pace/">Running pace</a></nav>
+
+<h1>Running pace calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="km">Distance (km)</label><input id="km" type="number" step="0.01" value="5" />
+  <label for="min">Time (minutes)</label><input id="min" type="number" step="0.1" value="28" />
+  <button type="button" class="primary" id="go">Pace</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const km=Number(document.getElementById('km').value), min=Number(document.getElementById('min').value);
+  if(!km) return;
+  const pace=min/km, m=Math.floor(pace), s=Math.round((pace-m)*60);
+  document.getElementById('out').textContent=m+':'+String(s).padStart(2,'0')+' min/km · '+(km/min*60).toFixed(2)+' km/h';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Pace from time & distance</h2><p>For runners tracking km splits.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

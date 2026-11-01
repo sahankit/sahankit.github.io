@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Standard Deviation Calculator</title>
+  <meta name="description" content="Calculate sample standard deviation and variance from a list of numbers." />
+  <meta name="keywords" content="standard deviation calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/standard-deviation/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Standard Deviation Calculator" />
+  <meta property="og:description" content="Calculate sample standard deviation and variance from a list of numbers." />
+  <meta property="og:url" content="https://sahankit.github.io/standard-deviation/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Standard Deviation Calculator" />
+  <meta name="twitter:description" content="Calculate sample standard deviation and variance from a list of numbers." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/standard-deviation/#webpage","name":"Standard Deviation Calculator","description":"Calculate sample standard deviation and variance from a list of numbers.","url":"https://sahankit.github.io/standard-deviation/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Std deviation","item":"https://sahankit.github.io/standard-deviation/"}]},{"@type":"SoftwareApplication","name":"Standard Deviation Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate sample standard deviation and variance from a list of numbers.","url":"https://sahankit.github.io/standard-deviation/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/standard-deviation/">Std deviation</a></nav>
+
+<h1>Standard deviation</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="nums">2, 4, 4, 4, 5, 5, 7, 9</textarea>
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const a=document.getElementById('nums').value.split(/[\s,]+/).map(Number).filter(n=>Number.isFinite(n));
+  if(a.length<2){ document.getElementById('out').textContent='Need 2+ numbers'; return; }
+  const mean=a.reduce((x,y)=>x+y,0)/a.length;
+  const varSample=a.reduce((s,x)=>s+(x-mean)**2,0)/(a.length-1);
+  document.getElementById('out').textContent='Mean '+mean.toFixed(4)+' · SD '+Math.sqrt(varSample).toFixed(4)+' · Variance '+varSample.toFixed(4);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Sample SD</h2><p>Statistics for small datasets in the browser.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>vCard Generator — Contact Card Text</title>
+  <meta name="description" content="Generate a vCard 3.0 string for contacts." />
+  <meta name="keywords" content="vcard generator vcf" />
+  <link rel="canonical" href="https://sahankit.github.io/vcard-generator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="vCard Generator — Contact Card Text" />
+  <meta property="og:description" content="Generate a vCard 3.0 string for contacts." />
+  <meta property="og:url" content="https://sahankit.github.io/vcard-generator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="vCard Generator — Contact Card Text" />
+  <meta name="twitter:description" content="Generate a vCard 3.0 string for contacts." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/vcard-generator/#webpage","name":"vCard Generator — Contact Card Text","description":"Generate a vCard 3.0 string for contacts.","url":"https://sahankit.github.io/vcard-generator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"vCard generator","item":"https://sahankit.github.io/vcard-generator/"}]},{"@type":"SoftwareApplication","name":"vCard Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generate a vCard 3.0 string for contacts.","url":"https://sahankit.github.io/vcard-generator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/vcard-generator/">vCard generator</a></nav>
+
+<h1>vCard generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="name">Full name</label><input id="name" value="Ada Lovelace" />
+  <label for="org">Organization</label><input id="org" value="Example Co" />
+  <label for="phone">Phone</label><input id="phone" value="+1-555-0100" />
+  <label for="email">Email</label><input id="email" type="email" value="ada@example.com" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <textarea id="out" rows="8" readonly></textarea>
+  <button type="button" class="primary" id="dl">Download .vcf</button>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const n=document.getElementById('name').value.split(' ');
+  const fn=n[0]||'', ln=n.slice(1).join(' ')||'';
+  const v=['BEGIN:VCARD','VERSION:3.0','FN:'+document.getElementById('name').value,'N:'+ln+';'+fn+';;;',
+    'ORG:'+document.getElementById('org').value,'TEL:'+document.getElementById('phone').value,
+    'EMAIL:'+document.getElementById('email').value,'END:VCARD'].join('\n');
+  document.getElementById('out').value=v;
+};
+document.getElementById('dl').onclick=()=>{
+  document.getElementById('go').click();
+  const b=new Blob([document.getElementById('out').value],{type:'text/vcard'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='contact.vcf'; a.click();
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Contact cards</h2><p>Export .vcf for phone contacts.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

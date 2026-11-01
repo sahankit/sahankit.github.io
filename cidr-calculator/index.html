@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>CIDR Calculator — Subnet Mask &amp; Range</title>
+  <meta name="description" content="IPv4 CIDR notation: network address, mask, and host count." />
+  <meta name="keywords" content="cidr calculator subnet" />
+  <link rel="canonical" href="https://sahankit.github.io/cidr-calculator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="CIDR Calculator — Subnet Mask &amp; Range" />
+  <meta property="og:description" content="IPv4 CIDR notation: network address, mask, and host count." />
+  <meta property="og:url" content="https://sahankit.github.io/cidr-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CIDR Calculator — Subnet Mask &amp; Range" />
+  <meta name="twitter:description" content="IPv4 CIDR notation: network address, mask, and host count." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/cidr-calculator/#webpage","name":"CIDR Calculator — Subnet Mask & Range","description":"IPv4 CIDR notation: network address, mask, and host count.","url":"https://sahankit.github.io/cidr-calculator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"CIDR calculator","item":"https://sahankit.github.io/cidr-calculator/"}]},{"@type":"SoftwareApplication","name":"CIDR Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"IPv4 CIDR notation: network address, mask, and host count.","url":"https://sahankit.github.io/cidr-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/cidr-calculator/">CIDR calculator</a></nav>
+
+<h1>CIDR calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="cidr">IPv4 CIDR</label><input id="cidr" value="192.168.1.0/24" spellcheck="false" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <pre id="out"></pre>
+</div>
+<script>
+function parseIp(s){
+  const p=s.split('.').map(Number);
+  if(p.length!==4||p.some(x=>x<0||x>255)) throw new Error('Invalid IPv4');
+  return ((p[0]<<24)>>>0)+((p[1]<<16)>>>0)+((p[2]<<8)>>>0)+p[3];
+}
+function ipStr(n){ return [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.'); }
+document.getElementById('go').onclick=()=>{
+  try{
+    const [ip,prefix]=document.getElementById('cidr').value.split('/');
+    const p=Number(prefix);
+    if(p<0||p>32) throw new Error('Prefix must be 0–32');
+    const mask=p===0?0:(0xffffffff<<(32-p))>>>0;
+    const base=parseIp(ip.trim())&mask;
+    const hosts=Math.max(0,2**(32-p)-2);
+    document.getElementById('out').textContent='Network: '+ipStr(base)+'/'+p+'\nMask: '+ipStr(mask)+'\nUsable hosts (approx): '+hosts;
+  }catch(e){ document.getElementById('out').textContent=e.message; }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>IPv4 subnets</h2><p>Network mask and host count from CIDR.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
