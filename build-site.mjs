@@ -909,5 +909,6 @@ ${urls.map((u) => `  <url><loc>${BASE}${u === "/" ? "/" : u}</loc><changefreq>mo
 write("sitemap.xml", sitemap);
 write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${BASE}/sitemap.xml\n`);
 write(".nojekyll", "");
+write("google34da527c15058477.html", "google-site-verification: google34da527c15058477.html\n");
 
 console.log("Built", tools.length, "tools,", guides.length, "guides");
