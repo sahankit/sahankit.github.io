@@ -28,14 +28,14 @@ export const batch12PageSeo = {
       {
         h2: "Ethics and legal use",
         paragraphs: [
-          "Do not use OSINT techniques to harass, stalk, or access private data without permission. Laws vary by country; when in doubt, get written authorization or stick to your own assets and public bug-bounty programs. Sahankit Tools is not responsible for how third-party sites use your queries.",
+          "Do not use OSINT techniques to harass, stalk, or access private data without permission. Laws vary by country; when in doubt, get written authorization or stick to your own assets and public bug-bounty programs. This site is not responsible for how third-party sites use your queries.",
         ],
       },
     ],
     faqs: [
       {
         q: "Does this OSINT tool search automatically?",
-        a: "No. It only generates links. You click through to each external site. No queries are sent to Sahankit servers.",
+        a: "No. It only generates links. You click through to each external site. No queries are sent to our servers.",
       },
       {
         q: "Is OSINT legal?",

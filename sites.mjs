@@ -276,7 +276,7 @@ export function micrositeMain(def, ad, tools, guides) {
         `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 72)}…</p></a>`,
     )
     .join("");
-  return `<div class="hero"><h1>${def.hero}</h1><p>${def.blurb}</p><p><a href="/">← All Sahankit Tools</a></p></div>
+  return `<div class="hero"><h1>${def.hero}</h1><p>${def.blurb}</p><p><a href="/">← Tools</a></p></div>
 ${ad}
 <section><div class="grid">${cards}${extra}</div></section>
 ${gcards ? `<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${gcards}</div></section>` : ""}`;
@@ -287,7 +287,7 @@ export function briefSiteBody(ad) {
   return `<div class="hero">
   <h1>News brief</h1>
   <p>Latest headlines in short cards—News, Sports, and Business. Tap a story to read the full article at the publisher.</p>
-  <p style="font-size:0.88rem"><a href="/">← Sahankit Tools</a></p>
+  <p style="font-size:0.88rem"><a href="/">← Tools</a></p>
 </div>
 ${ad}
 <div class="brief-toolbar">
@@ -420,7 +420,7 @@ loadFeed('news');
 }
 
 export function quizSiteBody(ad) {
-  return `<div class="hero"><h1>Quick quiz</h1><p>Free trivia in your browser. <a href="/">← Sahankit Tools</a></p></div>${ad}
+  return `<div class="hero"><h1>Quick quiz</h1><p>Free trivia in your browser. <a href="/">← Tools</a></p></div>${ad}
 <div class="tool-panel">
   <p id="meta"></p>
   <p id="q" style="font-size:1.1rem;font-weight:600"></p>

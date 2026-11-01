@@ -1,6 +1,8 @@
 /** SEO helpers used by build-site.mjs (meta escaping, canonicals, JSON-LD). */
 
 export const OG_IMAGE = "/assets/og.svg";
+/** Site brand shown in header, meta, and JSON-LD. */
+export const SITE_NAME = "Tools";
 
 export function escapeMeta(text) {
   return String(text ?? "")
@@ -20,13 +22,13 @@ export function webSiteLd(base) {
   return {
     "@type": "WebSite",
     "@id": `${base}/#website`,
-    name: "Sahankit Tools",
+    name: SITE_NAME,
     url: `${base}/`,
     description:
       "Free online calculators, India finance tools, developer utilities, and browser-based text tools.",
     publisher: {
       "@type": "Organization",
-      name: "Sahankit Tools",
+      name: SITE_NAME,
       url: `${base}/`,
     },
   };
@@ -66,7 +68,7 @@ export function fallbackToolSeo(tool) {
   const name = tool.card;
   const key = name.toLowerCase();
   return {
-    keywords: `${key}, free ${key} online, ${key} calculator, Sahankit Tools`,
+    keywords: `${key}, free ${key} online, ${key} calculator, ${SITE_NAME}`,
     sections: [
       {
         h2: `How to use the ${key}`,
@@ -76,7 +78,7 @@ export function fallbackToolSeo(tool) {
     faqs: [
       {
         q: `Is this ${key} free?`,
-        a: "Yes. Sahankit Tools are free to use in the browser.",
+        a: "Yes. These tools are free to use in the browser.",
       },
       {
         q: "Is my data uploaded?",
@@ -90,7 +92,7 @@ export function fallbackToolSeo(tool) {
 export function fallbackGuideSeo(guide) {
   const short = guide.title.split("—")[0].trim();
   return {
-    keywords: `${short}, free online guide, Sahankit Tools`,
+    keywords: `${short}, free online guide, ${SITE_NAME}`,
     sections: [
       {
         h2: "Guide overview",

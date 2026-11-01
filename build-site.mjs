@@ -35,6 +35,7 @@ import { batch12PageSeo } from "./seo-batch12.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import {
   OG_IMAGE,
+  SITE_NAME,
   escapeMeta,
   canonicalFromFile,
   webSiteLd,
@@ -66,7 +67,7 @@ const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 const nav = `
 <header class="site-header">
-  <a class="brand" href="/">Sahankit Tools</a>
+  <a class="brand" href="/">${SITE_NAME}</a>
   <ul class="site-nav">
     <li><a href="/">All tools</a></li>
     <li><a href="/guides/writing-tools.html">Guides</a></li>
@@ -92,7 +93,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
   <meta name="robots" content="${robots}" />
-  <meta name="author" content="Sahankit Tools" />
+  <meta name="author" content="${SITE_NAME}" />
   <meta name="theme-color" content="#720e9e" />
   <title>${t}</title>
   <meta name="description" content="${d}" />
@@ -100,13 +101,13 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <link rel="canonical" href="${canonical}" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="${BASE}/sitemap.xml" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:site_name" content="${SITE_NAME}" />
   <meta property="og:title" content="${t}" />
   <meta property="og:description" content="${d}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:locale" content="${opts.ogLocale || "en_US"}" />
   <meta property="og:image" content="${ogImage}" />
-  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta property="og:image:alt" content="${SITE_NAME} — free online calculators and utilities" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${t}" />
   <meta name="twitter:description" content="${d}" />
@@ -947,7 +948,7 @@ ${renderSeoHtml(indexSeo)}`;
 
 const indexHtml = page(
   "/",
-  "Sahankit Tools — 170+ Free Online Calculators & Utilities",
+  "Tools — 170+ Free Online Calculators & Utilities",
   "News brief (Inshorts-style), India tax, OSINT, finance, and 170+ free browser tools—no signup.",
   indexMain,
   "",
@@ -1096,7 +1097,7 @@ for (const def of micrositeDefs) {
 
 const notFound = page(
   "/404.html",
-  "Page not found — Sahankit Tools",
+  "Page not found — Tools",
   "This tool page was not found. Browse free calculators and writing tools on the home page.",
   `<h1>Page not found</h1>
 <p>That URL is not on this site. Try the <a href="/">tools home</a> or <a href="/y-chat/">Y-Chat</a>.</p>
@@ -1110,7 +1111,7 @@ const notFound = page(
   { noindex: true, canonical: "/404.html" },
 );
 write("404.html", notFound);
-write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirect</title></head><body><p><a href="/">Go to Sahankit Tools</a></p></body></html>`);
+write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirect</title></head><body><p><a href="/">Go to ${SITE_NAME}</a></p></body></html>`);
 
 const sitemapEntries = [
   { loc: "/", priority: "1.0", changefreq: "weekly" },

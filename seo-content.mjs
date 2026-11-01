@@ -1,4 +1,5 @@
 /** SEO prose, FAQs, and keywords per page (used by build-site.mjs). */
+import { SITE_NAME } from "./seo-build.mjs";
 
 export function renderSeoHtml(seo) {
   if (!seo) return "";
@@ -39,7 +40,7 @@ export function webPageLd(title, desc, urlPath, base) {
     name: title,
     description: desc,
     url: `${base}${urlPath}`,
-    isPartOf: { "@type": "WebSite", name: "Sahankit Tools", url: `${base}/` },
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: `${base}/` },
   };
 }
 
@@ -99,7 +100,7 @@ export const indexSeo = {
     {
       h2: "Free browser tools for writing, math, and everyday tasks",
       paragraphs: [
-        "Sahankit Tools is a collection of lightweight calculators and text utilities that run entirely in your browser. There is no app install, no account, and no server-side storage of what you type into a tool.",
+        "Tools is a collection of lightweight calculators and text utilities that run entirely in your browser. There is no app install, no account, and no server-side storage of what you type into a tool.",
         "Use word counters, typing tests, QR codes, PDF merge, and image tools without uploading to our servers. India pages cover GST, invoices, FD/RD/SIP, CGPA, and salary estimates. Chat landing pages link to free Y-Chat rooms at /y-chat/. IFSC and PAN checkers validate format only—not government records.",
       ],
     },
@@ -134,7 +135,7 @@ export const indexSeo = {
     },
     {
       q: "Do I need to create an account?",
-      a: "No account is required for any Sahankit Tool page.",
+      a: "No account is required for any tool page.",
     },
     {
       q: "Where is the sitemap for search engines?",

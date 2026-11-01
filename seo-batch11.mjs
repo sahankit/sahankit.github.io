@@ -100,7 +100,7 @@ export const batch11PageSeo = {
       },
       {
         q: "Is this an official Income Tax Department calculator?",
-        a: "No. Sahankit Tools is independent and not affiliated with the CBDT or Income Tax India. Use official portals for filing and legal advice.",
+        a: "No. This site is independent and not affiliated with the CBDT or Income Tax India. Use official portals for filing and legal advice.",
       },
     ],
     related: [
