@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Morse Code Translator — Text to Morse</title>
+  <meta name="description" content="Encode and decode Morse code for letters and numbers." />
+  <meta name="keywords" content="morse code translator online" />
+  <link rel="canonical" href="https://sahankit.github.io/morse-code/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Morse Code Translator — Text to Morse" />
+  <meta property="og:description" content="Encode and decode Morse code for letters and numbers." />
+  <meta property="og:url" content="https://sahankit.github.io/morse-code/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Morse Code Translator — Text to Morse" />
+  <meta name="twitter:description" content="Encode and decode Morse code for letters and numbers." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Morse Code Translator — Text to Morse","description":"Encode and decode Morse code for letters and numbers.","url":"https://sahankit.github.io/morse-code/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Morse Code Translator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Encode and decode Morse code for letters and numbers.","url":"https://sahankit.github.io/morse-code/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Morse code</nav>
+
+<h1>Morse code translator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="text">Text</label><textarea id="text">SOS</textarea>
+  <div class="row">
+    <button type="button" class="primary" id="enc">To Morse</button>
+    <button type="button" class="primary" id="dec">To text</button>
+  </div>
+  <textarea id="out" rows="4" readonly></textarea>
+</div>
+<script>
+const M={A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..','0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.'};
+const R=Object.fromEntries(Object.entries(M).map(([k,v])=>[v,k]));
+document.getElementById('enc').onclick=()=>{
+  const s=document.getElementById('text').value.toUpperCase().split(/\s+/).join(' ');
+  document.getElementById('out').value=s.split('').map(c=>M[c]||(c===' '?'/':'')).filter(Boolean).join(' ');
+};
+document.getElementById('dec').onclick=()=>{
+  const s=document.getElementById('text').value.trim().split(/\s+/);
+  document.getElementById('out').value=s.map(x=>x==='/'?' ':R[x]||'?').join('');
+};
+document.getElementById('enc').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Morse code</h2><p>Encode messages for learning and hobby radio.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>RGB to Hex Color Converter</title>
+  <meta name="description" content="Convert RGB values to hex color codes and back." />
+  <meta name="keywords" content="rgb to hex converter" />
+  <link rel="canonical" href="https://sahankit.github.io/rgb-hex-converter.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="RGB to Hex Color Converter" />
+  <meta property="og:description" content="Convert RGB values to hex color codes and back." />
+  <meta property="og:url" content="https://sahankit.github.io/rgb-hex-converter.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RGB to Hex Color Converter" />
+  <meta name="twitter:description" content="Convert RGB values to hex color codes and back." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"RGB to Hex Color Converter","description":"Convert RGB values to hex color codes and back.","url":"https://sahankit.github.io/rgb-hex-converter.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"RGB to Hex Color Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert RGB values to hex color codes and back.","url":"https://sahankit.github.io/rgb-hex-converter.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / RGB ↔ hex</nav>
+
+<h1>RGB ↔ hex</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label>R <input id="r" type="number" min="0" max="255" value="114" /></label>
+  <label>G <input id="g" type="number" min="0" max="255" value="14" /></label>
+  <label>B <input id="b" type="number" min="0" max="255" value="158" /></label>
+  <label>Hex <input id="hex" value="#720E9E" spellcheck="false" /></label>
+  <div id="sw" style="height:48px;border-radius:8px;margin:12px 0"></div>
+  <button type="button" class="primary" id="fromRgb">RGB → hex</button>
+  <button type="button" class="primary" id="fromHex">Hex → RGB</button>
+</div>
+<script>
+function paint(){
+  const r=+document.getElementById('r').value,g=+document.getElementById('g').value,b=+document.getElementById('b').value;
+  document.getElementById('sw').style.background='rgb('+r+','+g+','+b+')';
+}
+document.getElementById('fromRgb').onclick=()=>{
+  const r=Math.min(255,Math.max(0,+document.getElementById('r').value));
+  const g=Math.min(255,Math.max(0,+document.getElementById('g').value));
+  const b=Math.min(255,Math.max(0,+document.getElementById('b').value));
+  document.getElementById('hex').value='#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('').toUpperCase();
+  paint();
+};
+document.getElementById('fromHex').onclick=()=>{
+  const h=document.getElementById('hex').value.replace('#','');
+  if(h.length!==6) return;
+  document.getElementById('r').value=parseInt(h.slice(0,2),16);
+  document.getElementById('g').value=parseInt(h.slice(2,4),16);
+  document.getElementById('b').value=parseInt(h.slice(4,6),16);
+  paint();
+};
+document.getElementById('fromRgb').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Color codes</h2><p>Convert RGB channels to #RRGGBB.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

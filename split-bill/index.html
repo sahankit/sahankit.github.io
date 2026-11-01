@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Split Bill Calculator — Tip & Per Person</title>
+  <meta name="description" content="Split restaurant bill with tip across people." />
+  <meta name="keywords" content="split bill calculator tip" />
+  <link rel="canonical" href="https://sahankit.github.io/split-bill/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Split Bill Calculator — Tip & Per Person" />
+  <meta property="og:description" content="Split restaurant bill with tip across people." />
+  <meta property="og:url" content="https://sahankit.github.io/split-bill/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Split Bill Calculator — Tip & Per Person" />
+  <meta name="twitter:description" content="Split restaurant bill with tip across people." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Split Bill Calculator — Tip & Per Person","description":"Split restaurant bill with tip across people.","url":"https://sahankit.github.io/split-bill/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Split Bill Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Split restaurant bill with tip across people.","url":"https://sahankit.github.io/split-bill/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Split bill</nav>
+
+<h1>Split bill calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="bill">Bill total</label><input id="bill" type="number" value="2000" />
+  <label for="tip">Tip (%)</label><input id="tip" type="number" value="10" />
+  <label for="p">People</label><input id="p" type="number" min="1" value="4" />
+  <button type="button" class="primary" id="go">Split</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const b=Number(document.getElementById('bill').value);
+  const t=b*(Number(document.getElementById('tip').value)/100);
+  const n=Math.max(1,Number(document.getElementById('p').value));
+  const each=(b+t)/n;
+  document.getElementById('out').textContent='Each pays ₹'+each.toFixed(2)+' (total with tip ₹'+(b+t).toFixed(2)+')';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Split with tip</h2><p>Divide total including tip by headcount.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Text to Hex Converter — Hex Encode</title>
+  <meta name="description" content="Encode text to hexadecimal bytes and decode hex to text." />
+  <meta name="keywords" content="text to hex converter" />
+  <link rel="canonical" href="https://sahankit.github.io/hex-encoder.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Text to Hex Converter — Hex Encode" />
+  <meta property="og:description" content="Encode text to hexadecimal bytes and decode hex to text." />
+  <meta property="og:url" content="https://sahankit.github.io/hex-encoder.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Text to Hex Converter — Hex Encode" />
+  <meta name="twitter:description" content="Encode text to hexadecimal bytes and decode hex to text." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Text to Hex Converter — Hex Encode","description":"Encode text to hexadecimal bytes and decode hex to text.","url":"https://sahankit.github.io/hex-encoder.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Text to Hex Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Encode text to hexadecimal bytes and decode hex to text.","url":"https://sahankit.github.io/hex-encoder.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Text ↔ hex</nav>
+
+<h1>Text to hex</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text">Hello</textarea>
+  <div class="row">
+    <button type="button" class="primary" id="enc">To hex</button>
+    <button type="button" class="primary" id="dec">To text</button>
+  </div>
+  <textarea id="out" rows="3" spellcheck="false"></textarea>
+</div>
+<script>
+document.getElementById('enc').onclick=()=>{
+  const bytes=new TextEncoder().encode(document.getElementById('text').value);
+  document.getElementById('out').value=[...bytes].map(b=>b.toString(16).padStart(2,'0')).join(' ');
+};
+document.getElementById('dec').onclick=()=>{
+  try{
+    const bytes=Uint8Array.from(document.getElementById('out').value.trim().split(/\s+/).map(h=>parseInt(h,16)));
+    document.getElementById('text').value=new TextDecoder().decode(bytes);
+  }catch(e){ alert('Invalid hex'); }
+};
+document.getElementById('enc').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Hex encoding</h2><p>View UTF-8 bytes in hexadecimal.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Credit Card Luhn Checker — Format Only</title>
+  <meta name="description" content="Validate card number checksum with Luhn algorithm. Not a bank check." />
+  <meta name="keywords" content="luhn algorithm credit card check" />
+  <link rel="canonical" href="https://sahankit.github.io/luhn-checker/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Credit Card Luhn Checker — Format Only" />
+  <meta property="og:description" content="Validate card number checksum with Luhn algorithm. Not a bank check." />
+  <meta property="og:url" content="https://sahankit.github.io/luhn-checker/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Credit Card Luhn Checker — Format Only" />
+  <meta name="twitter:description" content="Validate card number checksum with Luhn algorithm. Not a bank check." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Credit Card Luhn Checker — Format Only","description":"Validate card number checksum with Luhn algorithm. Not a bank check.","url":"https://sahankit.github.io/luhn-checker/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Credit Card Luhn Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Validate card number checksum with Luhn algorithm. Not a bank check.","url":"https://sahankit.github.io/luhn-checker/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Luhn checker</nav>
+
+<h1>Luhn checker</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="n">Card number (digits only)</label>
+  <input id="n" inputmode="numeric" placeholder="4111111111111111" />
+  <button type="button" class="primary" id="go">Check</button>
+  <p id="out"></p>
+  <p class="prose" style="font-size:0.85rem">Passes Luhn only—does not verify with issuers.</p>
+</div>
+<script>
+function luhn(s){
+  s=s.replace(/\D/g,'');
+  let sum=0, alt=false;
+  for(let i=s.length-1;i>=0;i--){
+    let d=+s[i];
+    if(alt){ d*=2; if(d>9) d-=9; }
+    sum+=d; alt=!alt;
+  }
+  return sum%10===0&&s.length>=13;
+}
+document.getElementById('go').onclick=()=>{
+  const ok=luhn(document.getElementById('n').value);
+  const o=document.getElementById('out');
+  o.className=ok?'ok':'error';
+  o.textContent=ok?'Luhn check passed.':'Failed Luhn check.';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Luhn checksum</h2><p>Format check only; not issuer validation.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

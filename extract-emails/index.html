@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Extract Email Addresses from Text</title>
+  <meta name="description" content="Find email addresses in pasted text." />
+  <meta name="keywords" content="extract emails from text" />
+  <link rel="canonical" href="https://sahankit.github.io/extract-emails/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Extract Email Addresses from Text" />
+  <meta property="og:description" content="Find email addresses in pasted text." />
+  <meta property="og:url" content="https://sahankit.github.io/extract-emails/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Extract Email Addresses from Text" />
+  <meta name="twitter:description" content="Find email addresses in pasted text." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Extract Email Addresses from Text","description":"Find email addresses in pasted text.","url":"https://sahankit.github.io/extract-emails/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Extract Email Addresses from Text","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Find email addresses in pasted text.","url":"https://sahankit.github.io/extract-emails/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Extract emails</nav>
+
+<h1>Extract emails</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text" rows="8"></textarea>
+  <button type="button" class="primary" id="go">Extract</button>
+  <textarea id="out" rows="6" readonly></textarea>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const m=document.getElementById('text').value.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g)||[];
+  document.getElementById('out').value=[...new Set(m)].join('\n');
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Find emails</h2><p>Regex extraction; handle data responsibly.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Factorial Calculator — n!</title>
+  <meta name="description" content="Compute factorial for n up to 170." />
+  <meta name="keywords" content="factorial calculator n factorial" />
+  <link rel="canonical" href="https://sahankit.github.io/factorial-calculator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Factorial Calculator — n!" />
+  <meta property="og:description" content="Compute factorial for n up to 170." />
+  <meta property="og:url" content="https://sahankit.github.io/factorial-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Factorial Calculator — n!" />
+  <meta name="twitter:description" content="Compute factorial for n up to 170." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Factorial Calculator — n!","description":"Compute factorial for n up to 170.","url":"https://sahankit.github.io/factorial-calculator/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Factorial Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Compute factorial for n up to 170.","url":"https://sahankit.github.io/factorial-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Factorial n!</nav>
+
+<h1>Factorial calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="n">n</label><input id="n" type="number" min="0" max="170" value="10" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok" style="word-break:break-all"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  let n=Number(document.getElementById('n').value);
+  if(n<0||n>170){ document.getElementById('out').textContent='Use 0–170'; return; }
+  let r=1n;
+  for(let i=2n;i<=BigInt(n);i++) r*=i;
+  document.getElementById('out').textContent=String(r);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Factorial</h2><p>Uses BigInt for large results.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

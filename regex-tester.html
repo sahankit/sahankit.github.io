@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Regex Tester — Regular Expression Online</title>
+  <meta name="description" content="Test regular expressions against sample text with match highlights." />
+  <meta name="keywords" content="regex tester online" />
+  <link rel="canonical" href="https://sahankit.github.io/regex-tester.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Regex Tester — Regular Expression Online" />
+  <meta property="og:description" content="Test regular expressions against sample text with match highlights." />
+  <meta property="og:url" content="https://sahankit.github.io/regex-tester.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Regex Tester — Regular Expression Online" />
+  <meta name="twitter:description" content="Test regular expressions against sample text with match highlights." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Regex Tester — Regular Expression Online","description":"Test regular expressions against sample text with match highlights.","url":"https://sahankit.github.io/regex-tester.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Regex Tester","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Test regular expressions against sample text with match highlights.","url":"https://sahankit.github.io/regex-tester.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Regex tester</nav>
+
+<h1>Regex tester</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="re">Pattern</label><input id="re" value="\\w+" spellcheck="false" />
+  <label><input type="checkbox" id="g" checked /> global</label>
+  <label><input type="checkbox" id="i" /> ignore case</label>
+  <label for="text">Text</label><textarea id="text" rows="5">hello world 123</textarea>
+  <button type="button" class="primary" id="go">Test</button>
+  <p id="msg" class="ok"></p>
+  <pre id="matches"></pre>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  let flags=''; if(document.getElementById('g').checked) flags+='g'; if(document.getElementById('i').checked) flags+='i';
+  try{
+    const re=new RegExp(document.getElementById('re').value, flags);
+    const text=document.getElementById('text').value;
+    const m=[...text.matchAll(re)];
+    document.getElementById('msg').textContent=m.length+' match(es)';
+    document.getElementById('matches').textContent=m.map(x=>x[0]+' @'+x.index).join('\n')||'(none)';
+  }catch(e){
+    document.getElementById('msg').className='error';
+    document.getElementById('msg').textContent=e.message;
+  }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Test regular expressions</h2><p>See matches and indexes in sample text.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

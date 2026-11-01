@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>GCD & LCM Calculator</title>
+  <meta name="description" content="Find greatest common divisor and least common multiple." />
+  <meta name="keywords" content="gcd lcm calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/gcd-lcm-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="GCD & LCM Calculator" />
+  <meta property="og:description" content="Find greatest common divisor and least common multiple." />
+  <meta property="og:url" content="https://sahankit.github.io/gcd-lcm-calculator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="GCD & LCM Calculator" />
+  <meta name="twitter:description" content="Find greatest common divisor and least common multiple." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"GCD & LCM Calculator","description":"Find greatest common divisor and least common multiple.","url":"https://sahankit.github.io/gcd-lcm-calculator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GCD & LCM Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Find greatest common divisor and least common multiple.","url":"https://sahankit.github.io/gcd-lcm-calculator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / GCD & LCM</nav>
+
+<h1>GCD & LCM</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="a">A</label><input id="a" type="number" value="48" />
+  <label for="b">B</label><input id="b" type="number" value="18" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+function gcd(x,y){ while(y){ const t=y; y=x%y; x=t; } return Math.abs(x); }
+document.getElementById('go').onclick=()=>{
+  const a=Number(document.getElementById('a').value), b=Number(document.getElementById('b').value);
+  const g=gcd(a,b);
+  document.getElementById('out').textContent='GCD='+g+' · LCM='+(g?Math.abs(a*b)/g:0);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>GCD and LCM</h2><p>Euclidean algorithm for two integers.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

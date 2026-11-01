@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Average Calculator — Mean of Numbers</title>
+  <meta name="description" content="Calculate average (mean) from a list of numbers." />
+  <meta name="keywords" content="average calculator mean" />
+  <link rel="canonical" href="https://sahankit.github.io/average-calculator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Average Calculator — Mean of Numbers" />
+  <meta property="og:description" content="Calculate average (mean) from a list of numbers." />
+  <meta property="og:url" content="https://sahankit.github.io/average-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Average Calculator — Mean of Numbers" />
+  <meta name="twitter:description" content="Calculate average (mean) from a list of numbers." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Average Calculator — Mean of Numbers","description":"Calculate average (mean) from a list of numbers.","url":"https://sahankit.github.io/average-calculator/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Average Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate average (mean) from a list of numbers.","url":"https://sahankit.github.io/average-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Average calculator</nav>
+
+<h1>Average calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="nums">Numbers (comma or space separated)</label>
+  <textarea id="nums">10, 20, 30, 40</textarea>
+  <button type="button" class="primary" id="go">Average</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const a=document.getElementById('nums').value.split(/[\s,]+/).map(Number).filter(n=>Number.isFinite(n));
+  const avg=a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
+  document.getElementById('out').textContent='Average: '+avg+' (n='+a.length+')';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Mean average</h2><p>Paste a list of numbers.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
