@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>RD Calculator India — Recurring Deposit</title>
+  <meta name="description" content="Estimate recurring deposit maturity for monthly deposits. Free RD calculator." />
+  <meta name="keywords" content="RD calculator India, recurring deposit calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/rd-calculator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="RD Calculator India — Recurring Deposit" />
+  <meta property="og:description" content="Estimate recurring deposit maturity for monthly deposits. Free RD calculator." />
+  <meta property="og:url" content="https://sahankit.github.io/rd-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RD Calculator India — Recurring Deposit" />
+  <meta name="twitter:description" content="Estimate recurring deposit maturity for monthly deposits. Free RD calculator." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"RD Calculator India — Recurring Deposit","description":"Estimate recurring deposit maturity for monthly deposits. Free RD calculator.","url":"https://sahankit.github.io/rd-calculator/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"RD Calculator India","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate recurring deposit maturity for monthly deposits. Free RD calculator.","url":"https://sahankit.github.io/rd-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / RD calculator</nav>
+
+<h1>RD calculator (India)</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="p">Monthly deposit (₹)</label><input id="p" type="number" value="5000" />
+  <label for="r">Rate (% p.a.)</label><input id="r" type="number" step="0.1" value="6.5" />
+  <label for="m">Months</label><input id="m" type="number" value="36" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const P=Number(document.getElementById('p').value), m=Number(document.getElementById('m').value);
+  const i=Number(document.getElementById('r').value)/100/12;
+  const fv=i===0?P*m:P*((Math.pow(1+i,m)-1)/i)*(1+i);
+  document.getElementById('out').textContent='Maturity ≈ ₹'+Math.round(fv).toLocaleString('en-IN')+' (deposited ₹'+(P*m).toLocaleString('en-IN')+')';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Recurring deposit estimate</h2><p>Models equal monthly deposits with monthly compounding at the stated annual rate.</p><h2>Related free tools</h2><ul><li><a href="/fd-calculator.html">FD calculator</a></li><li><a href="/sip-calculator.html">SIP calculator</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

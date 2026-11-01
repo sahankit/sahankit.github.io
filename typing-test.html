@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Typing Speed Test — WPM & Accuracy</title>
+  <meta name="description" content="1-minute typing test. Measure words per minute and accuracy in the browser." />
+  <meta name="keywords" content="typing test, typing speed test, WPM test online" />
+  <link rel="canonical" href="https://sahankit.github.io/typing-test.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Typing Speed Test — WPM & Accuracy" />
+  <meta property="og:description" content="1-minute typing test. Measure words per minute and accuracy in the browser." />
+  <meta property="og:url" content="https://sahankit.github.io/typing-test.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Typing Speed Test — WPM & Accuracy" />
+  <meta name="twitter:description" content="1-minute typing test. Measure words per minute and accuracy in the browser." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Typing Speed Test — WPM & Accuracy","description":"1-minute typing test. Measure words per minute and accuracy in the browser.","url":"https://sahankit.github.io/typing-test.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good WPM?","acceptedAnswer":{"@type":"Answer","text":"40–60 WPM is typical for everyday use; 70+ is fast for office work."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Typing Speed Test","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"1-minute typing test. Measure words per minute and accuracy in the browser.","url":"https://sahankit.github.io/typing-test.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Typing speed test</nav>
+
+<h1>Typing speed test</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <p id="prompt" class="ok"></p>
+  <label for="input">Type here</label>
+  <textarea id="input" rows="4" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
+  <div class="stats">
+    <div class="stat"><strong id="time">60</strong>Seconds</div>
+    <div class="stat"><strong id="wpm">0</strong>WPM</div>
+    <div class="stat"><strong id="acc">100</strong>Accuracy</div>
+  </div>
+  <button type="button" class="primary" id="again">New test</button>
+</div>
+<script>
+const words='the quick brown fox jumps over lazy dog time test typing speed practice keyboard skill online free tool'.split(' ');
+function sample(n){ const a=[]; for(let i=0;i<n;i++) a.push(words[Math.floor(Math.random()*words.length)]); return a.join(' '); }
+let target='', started=0, timer=null, left=60;
+function reset(){
+  clearInterval(timer); timer=null; started=0; left=60;
+  target=sample(35);
+  document.getElementById('prompt').textContent=target;
+  const inp=document.getElementById('input'); inp.value=''; inp.disabled=false; inp.focus();
+  document.getElementById('time').textContent='60';
+  document.getElementById('wpm').textContent='0';
+  document.getElementById('acc').textContent='100';
+}
+function score(){
+  const typed=document.getElementById('input').value;
+  const tw=typed.trim().split(/\s+/).filter(Boolean).length;
+  const elapsed=(60-left)||1;
+  const wpm=Math.round(tw/(elapsed/60));
+  const ref=target.split(' ');
+  const ty=typed.trim().split(/\s+/);
+  let ok=0; for(let i=0;i<ty.length;i++) if(ty[i]===ref[i]) ok++;
+  const acc=ty.length?Math.round(100*ok/ty.length):100;
+  document.getElementById('wpm').textContent=String(wpm);
+  document.getElementById('acc').textContent=String(acc);
+}
+document.getElementById('input').oninput=()=>{
+  if(!started){ started=Date.now(); timer=setInterval(()=>{
+    left--; document.getElementById('time').textContent=String(left); score();
+    if(left<=0){ clearInterval(timer); document.getElementById('input').disabled=true; score(); }
+  },1000); }
+  score();
+};
+document.getElementById('again').onclick=reset; reset();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Improve typing speed with timed tests</h2><p>A one-minute test using common English words gives a rough WPM and accuracy score. Practice regularly; accuracy matters more than speed for real work.</p><h2>Frequently asked questions</h2><h3>What is a good WPM?</h3><p>40–60 WPM is typical for everyday use; 70+ is fast for office work.</p><h2>Related free tools</h2><ul><li><a href="/word-counter.html">Word counter</a></li><li><a href="/reading-time.html">Reading time</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

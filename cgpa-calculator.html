@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>CGPA to Percentage Calculator — 10 Point Scale</title>
+  <meta name="description" content="Convert CGPA to percentage using common Indian formulas. Illustration for students." />
+  <meta name="keywords" content="CGPA to percentage, CGPA calculator India" />
+  <link rel="canonical" href="https://sahankit.github.io/cgpa-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="CGPA to Percentage Calculator — 10 Point Scale" />
+  <meta property="og:description" content="Convert CGPA to percentage using common Indian formulas. Illustration for students." />
+  <meta property="og:url" content="https://sahankit.github.io/cgpa-calculator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CGPA to Percentage Calculator — 10 Point Scale" />
+  <meta name="twitter:description" content="Convert CGPA to percentage using common Indian formulas. Illustration for students." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"CGPA to Percentage Calculator — 10 Point Scale","description":"Convert CGPA to percentage using common Indian formulas. Illustration for students.","url":"https://sahankit.github.io/cgpa-calculator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CGPA to Percentage Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert CGPA to percentage using common Indian formulas. Illustration for students.","url":"https://sahankit.github.io/cgpa-calculator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / CGPA to %</nav>
+
+<h1>CGPA to percentage</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="cgpa">CGPA (0–10)</label><input id="cgpa" type="number" step="0.01" max="10" value="8.2" />
+  <label for="mult">Formula</label>
+  <select id="mult"><option value="9.5">CGPA × 9.5 (common)</option><option value="10">CGPA × 10</option><option value="custom">Custom multiplier</option></select>
+  <label for="custom" hidden>Multiplier</label><input id="custom" type="number" step="0.1" value="9.5" hidden />
+  <button type="button" class="primary" id="go">Convert</button>
+  <p id="out" class="ok"></p>
+  <p class="prose" style="font-size:0.85rem">Universities use different rules—check your transcript.</p>
+</div>
+<script>
+document.getElementById('mult').onchange=()=>{
+  const c=document.getElementById('mult').value==='custom';
+  document.getElementById('custom').hidden=!c;
+};
+document.getElementById('go').onclick=()=>{
+  const g=Number(document.getElementById('cgpa').value);
+  let m=document.getElementById('mult').value;
+  if(m==='custom') m=Number(document.getElementById('custom').value);
+  else m=Number(m);
+  document.getElementById('out').textContent='≈ '+(g*m).toFixed(2)+'%';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>CGPA conversion formulas</h2><p>Schools use different multipliers (9.5× and 10× are common). Confirm with your institution.</p><h2>Related free tools</h2><ul><li><a href="/percentage-calculator.html">Percentage calculator</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

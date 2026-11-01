@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Color Picker & Contrast — Hex & RGB</title>
+  <meta name="description" content="Pick colors, copy HEX and RGB, and check contrast ratio against a second color." />
+  <meta name="keywords" content="color picker, contrast ratio, hex rgb tool" />
+  <link rel="canonical" href="https://sahankit.github.io/color-picker.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Color Picker & Contrast — Hex & RGB" />
+  <meta property="og:description" content="Pick colors, copy HEX and RGB, and check contrast ratio against a second color." />
+  <meta property="og:url" content="https://sahankit.github.io/color-picker.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Color Picker & Contrast — Hex & RGB" />
+  <meta name="twitter:description" content="Pick colors, copy HEX and RGB, and check contrast ratio against a second color." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Color Picker & Contrast — Hex & RGB","description":"Pick colors, copy HEX and RGB, and check contrast ratio against a second color.","url":"https://sahankit.github.io/color-picker.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Color Picker & Contrast","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Pick colors, copy HEX and RGB, and check contrast ratio against a second color.","url":"https://sahankit.github.io/color-picker.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Color picker</nav>
+
+<h1>Color picker</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label>Foreground <input id="fg" type="color" value="#720e9e" /></label>
+  <label>Background <input id="bg" type="color" value="#ffffff" /></label>
+  <p id="hex"></p>
+  <p id="contrast"></p>
+  <div id="swatch" style="padding:24px;border-radius:12px;margin-top:12px">Sample text</div>
+</div>
+<script>
+function lum(hex){
+  const n=parseInt(hex.slice(1),16);
+  const r=((n>>16)&255)/255,g=((n>>8)&255)/255,b=(n&255)/255;
+  const f=c=>c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);
+  return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b);
+}
+function upd(){
+  const fg=document.getElementById('fg').value, bg=document.getElementById('bg').value;
+  const n=parseInt(fg.slice(1),16);
+  document.getElementById('hex').textContent='HEX '+fg+' · RGB '+(n>>16&255)+', '+(n>>8&255)+', '+(n&255);
+  const L1=Math.max(lum(fg),lum(bg)), L2=Math.min(lum(fg),lum(bg));
+  const ratio=((L1+0.05)/(L2+0.05)).toFixed(2);
+  document.getElementById('contrast').textContent='Contrast ratio: '+ratio+' (aim ≥ 4.5 for body text)';
+  const s=document.getElementById('swatch');
+  s.style.color=fg; s.style.background=bg;
+}
+document.getElementById('fg').oninput=upd;
+document.getElementById('bg').oninput=upd;
+upd();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Accessible color contrast</h2><p>WCAG suggests at least 4.5:1 contrast for normal text. Use the ratio readout when picking text and background colors for sites and slides.</p><h2>Related free tools</h2><ul><li><a href="/gradient-generator.html">Gradient generator</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

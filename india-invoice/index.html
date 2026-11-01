@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Simple GST Invoice Generator India — Print</title>
+  <meta name="description" content="Create a simple printable GST invoice for small businesses. Browser-only invoice template." />
+  <meta name="keywords" content="GST invoice generator India, simple invoice print, invoice template" />
+  <link rel="canonical" href="https://sahankit.github.io/india-invoice/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Simple GST Invoice Generator India — Print" />
+  <meta property="og:description" content="Create a simple printable GST invoice for small businesses. Browser-only invoice template." />
+  <meta property="og:url" content="https://sahankit.github.io/india-invoice/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Simple GST Invoice Generator India — Print" />
+  <meta name="twitter:description" content="Create a simple printable GST invoice for small businesses. Browser-only invoice template." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Simple GST Invoice Generator India — Print","description":"Create a simple printable GST invoice for small businesses. Browser-only invoice template.","url":"https://sahankit.github.io/india-invoice/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this legally valid?","acceptedAnswer":{"@type":"Answer","text":"Use your CA and official billing software for compliance; this is a starter layout."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Simple GST Invoice Generator India","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Create a simple printable GST invoice for small businesses. Browser-only invoice template.","url":"https://sahankit.github.io/india-invoice/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / GST invoice</nav>
+
+<h1>Simple GST invoice (India)</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel no-print">
+  <label>Seller name<input id="seller" value="Your Business Pvt Ltd" /></label>
+  <label>GSTIN<input id="gstin" placeholder="22AAAAA0000A1Z5" /></label>
+  <label>Buyer<input id="buyer" value="Customer name" /></label>
+  <label>Description<input id="desc" value="Services / goods" /></label>
+  <label>Amount (₹, ex-GST)<input id="amt" type="number" value="1000" /></label>
+  <label>GST %<select id="rate"><option>5</option><option>12</option><option selected>18</option><option>28</option></select></label>
+  <label>Invoice #<input id="inv" value="INV-001" /></label>
+  <button type="button" class="primary" id="fill">Update preview</button>
+  <button type="button" class="primary" id="print">Print / Save PDF</button>
+</div>
+<div id="invout" class="tool-panel invoice-print"></div>
+<style>
+@media print{ .site-header,.site-footer,.ad-slot,.no-print,.breadcrumb,.seo-content{ display:none!important } body{ background:#fff } }
+.invoice-print h2{ margin:0 0 8px } .invoice-print table{ width:100%; border-collapse:collapse; margin-top:12px }
+.invoice-print td,.invoice-print th{ border:1px solid #ccc; padding:8px; text-align:left }
+</style>
+<script>
+function fmt(n){ return '₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fill(){
+  const base=Number(document.getElementById('amt').value)||0;
+  const r=Number(document.getElementById('rate').value)/100;
+  const gst=base*r, total=base+gst;
+  document.getElementById('invout').innerHTML='<h2>Tax invoice</h2><p><strong>'+document.getElementById('seller').value+'</strong><br>GSTIN: '+document.getElementById('gstin').value+'</p><p>Bill to: '+document.getElementById('buyer').value+'</p><p>Invoice: '+document.getElementById('inv').value+' · Date: '+new Date().toLocaleDateString('en-IN')+'</p><table><tr><th>Description</th><th>Taxable</th><th>GST</th><th>Total</th></tr><tr><td>'+document.getElementById('desc').value+'</td><td>'+fmt(base)+'</td><td>'+fmt(gst)+'</td><td>'+fmt(total)+'</td></tr></table><p><small>Template only—not legal advice. Use your CA for compliance.</small></p>';
+}
+document.getElementById('fill').onclick=fill;
+document.getElementById('print').onclick=()=>{ fill(); window.print(); };
+fill();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Printable invoice template</h2><p>Fill seller, buyer, GSTIN, and line items then print or save as PDF from the browser. Not a GST filing system.</p><h2>Frequently asked questions</h2><h3>Is this legally valid?</h3><p>Use your CA and official billing software for compliance; this is a starter layout.</p><h2>Related free tools</h2><ul><li><a href="/gst-calculator.html">GST calculator</a></li><li><a href="/inr-words.html">INR in words</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

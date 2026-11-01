@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Merge PDF Files — Combine PDFs Online</title>
+  <meta name="description" content="Combine multiple PDF files into one in the browser. Private merge with pdf-lib." />
+  <meta name="keywords" content="merge pdf online, combine pdf free, pdf join browser" />
+  <link rel="canonical" href="https://sahankit.github.io/pdf-merge.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Merge PDF Files — Combine PDFs Online" />
+  <meta property="og:description" content="Combine multiple PDF files into one in the browser. Private merge with pdf-lib." />
+  <meta property="og:url" content="https://sahankit.github.io/pdf-merge.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Merge PDF Files — Combine PDFs Online" />
+  <meta name="twitter:description" content="Combine multiple PDF files into one in the browser. Private merge with pdf-lib." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Merge PDF Files — Combine PDFs Online","description":"Combine multiple PDF files into one in the browser. Private merge with pdf-lib.","url":"https://sahankit.github.io/pdf-merge.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there a file limit?","acceptedAnswer":{"@type":"Answer","text":"Limited by your browser memory—keep batches modest on mobile."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Merge PDF Files","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Combine multiple PDF files into one in the browser. Private merge with pdf-lib.","url":"https://sahankit.github.io/pdf-merge.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Merge PDF</nav>
+
+<h1>Merge PDF files</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="files">PDF files (order = merge order)</label>
+  <input id="files" type="file" accept="application/pdf" multiple />
+  <button type="button" class="primary" id="go" disabled>Merge &amp; download</button>
+  <p id="msg" class="ok"></p>
+</div>
+<script type="module">
+import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
+const inp=document.getElementById('files'), btn=document.getElementById('go');
+inp.onchange=()=>{ btn.disabled=!inp.files.length; };
+btn.onclick=async()=>{
+  const out=await PDFDocument.create();
+  for(const f of inp.files){
+    const bytes=await f.arrayBuffer();
+    const doc=await PDFDocument.load(bytes);
+    const pages=await out.copyPages(doc, doc.getPageIndices());
+    pages.forEach(p=>out.addPage(p));
+  }
+  const merged=await out.save();
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([merged],{type:'application/pdf'}));
+  a.download='merged.pdf'; a.click();
+  document.getElementById('msg').textContent='Merged '+inp.files.length+' file(s).';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Merge PDFs without uploading to a cloud</h2><p>pdf-lib runs locally to stitch pages in the order you select files.</p><h2>Frequently asked questions</h2><h3>Is there a file limit?</h3><p>Limited by your browser memory—keep batches modest on mobile.</p><h2>Related free tools</h2><ul><li><a href="/india-invoice.html">GST invoice</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

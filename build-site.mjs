@@ -8,8 +8,12 @@ import {
   faqLd,
   softwareAppLd,
   indexSeo,
-  pageSeo,
+  pageSeo as corePageSeo,
 } from "./seo-content.mjs";
+import { extraPageSeo } from "./seo-extra.mjs";
+import { extraTools } from "./tools-extra.mjs";
+
+const pageSeo = { ...corePageSeo, ...extraPageSeo };
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
@@ -84,19 +88,28 @@ const HUB_CATEGORIES = [
   { id: "writing", title: "Text & writing" },
   { id: "calculators", title: "Calculators" },
   { id: "india", title: "India utilities" },
+  { id: "productivity", title: "Productivity" },
+  { id: "design", title: "Design & color" },
+  { id: "documents", title: "PDF & images" },
   { id: "seo", title: "SEO & web" },
   { id: "developer", title: "Developer utilities" },
+  { id: "chat", title: "Free chat (Y-Chat)" },
 ];
 
 function hubSectionsHtml() {
-  return HUB_CATEGORIES.map(({ id, title }, i) => {
+  const blocks = HUB_CATEGORIES.map(({ id, title }) => {
     const list = tools.filter((t) => t.category === id);
-    if (!list.length) return "";
-    const mt = i === 0 ? "" : ' style="margin-top:24px"';
-    return `<section${mt}><h2>${title}</h2><div class="grid">${list
-      .map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`)
-      .join("")}</div></section>`;
-  }).join("\n");
+    if (!list.length) return null;
+    return { title, list };
+  }).filter(Boolean);
+  return blocks
+    .map(({ title, list }, i) => {
+      const mt = i === 0 ? "" : ' style="margin-top:24px"';
+      return `<section${mt}><h2>${title}</h2><div class="grid">${list
+        .map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`)
+        .join("")}</div></section>`;
+    })
+    .join("\n");
 }
 
 const tools = [
@@ -748,6 +761,7 @@ document.getElementById('copy').onclick=async()=>{ await navigator.clipboard.wri
 document.getElementById('go').click();
 </script>`,
   },
+  ...extraTools(ad),
 ];
 
 const guides = [
@@ -777,6 +791,32 @@ const guides = [
     body: `<h1>IFSC and PAN formats (India)</h1>${ad}
 <p><a href="/ifsc-format.html">IFSC checker</a> — 11 characters. <a href="/pan-format.html">PAN checker</a> — 10 characters. <a href="/gst-calculator.html">GST calculator</a> for invoice math. These tools do not verify with government databases.</p>`,
   },
+  {
+    path: "/guides/india-finance-tools.html",
+    file: "guides/india-finance-tools.html",
+    title: "India Finance Calculators — GST, SIP, FD & Salary",
+    desc: "Overview of free India finance tools: GST, SIP, FD, RD, invoice, and salary estimators.",
+    body: `<h1>India finance tools</h1>${ad}
+<p>Use the <a href="/gst-calculator.html">GST calculator</a>, <a href="/sip-calculator.html">SIP calculator</a>, <a href="/fd-calculator.html">FD</a> / <a href="/rd-calculator.html">RD</a> tools, <a href="/india-invoice.html">invoice template</a>, and <a href="/inr-words.html">amount in words</a> for quick estimates—all in the browser.</p>
+<p>None of these replace professional tax or investment advice.</p>`,
+  },
+  {
+    path: "/guides/design-pdf-tools.html",
+    file: "guides/design-pdf-tools.html",
+    title: "Design, PDF & Image Tools — Colors, QR, Merge",
+    desc: "Free design and document tools: gradients, color contrast, QR codes, PDF merge, and image compression.",
+    body: `<h1>Design & document tools</h1>${ad}
+<p>Try the <a href="/color-picker.html">color picker</a>, <a href="/gradient-generator.html">gradient generator</a>, <a href="/qr-code-generator.html">QR generator</a>, <a href="/pdf-merge.html">PDF merge</a>, and <a href="/image-compress.html">image compressor</a>. Files stay on your device where tools run locally.</p>`,
+  },
+  {
+    path: "/guides/y-chat-guide.html",
+    file: "guides/y-chat-guide.html",
+    title: "Y-Chat Guide — Free Browser Chat Rooms",
+    desc: "How to use Y-Chat: free chat rooms, terms, and links from the tools hub.",
+    body: `<h1>Y-Chat guide</h1>${ad}
+<p><a href="/y-chat/">Y-Chat</a> is free browser chat with public rooms and private IM. You must accept 18+ terms before use.</p>
+<p>SEO landing pages: <a href="/free-online-chat.html">free online chat</a>, <a href="/hindi-chat.html">Hindi chat</a>, <a href="/study-chat.html">study chat</a>.</p>`,
+  },
 ];
 
 function write(rel, content) {
@@ -800,7 +840,7 @@ ${renderSeoHtml(indexSeo)}`;
 const indexHtml = page(
   "/",
   "Sahankit Tools — Free Calculators & Writing Utilities",
-  "Free online tools: word counter, GST and SIP calculators, hash and Base64 utilities, domain age, EMI, JSON formatter, and guides.",
+  "Free online tools: QR codes, GST invoice, typing test, PDF merge, India FD/RD/SIP, chat rooms, domain age, and 40+ browser utilities.",
   indexMain,
   "",
   { keywords: indexSeo.keywords, faqs: indexSeo.faqs },

@@ -100,7 +100,7 @@ export const indexSeo = {
       h2: "Free browser tools for writing, math, and everyday tasks",
       paragraphs: [
         "Sahankit Tools is a collection of lightweight calculators and text utilities that run entirely in your browser. There is no app install, no account, and no server-side storage of what you type into a tool.",
-        "Use the word and character counters for essays, SEO meta tags, and social posts. Use the EMI, SIP, GST, BMI, tip, and percentage calculators for quick estimates. Developer utilities hash text, encode Base64, generate UUIDs and passwords locally. IFSC and PAN checkers validate common Indian ID formats only—they do not connect to banks or the Income Tax department.",
+        "Use word counters, typing tests, QR codes, PDF merge, and image tools without uploading to our servers. India pages cover GST, invoices, FD/RD/SIP, CGPA, and salary estimates. Chat landing pages link to free Y-Chat rooms at /y-chat/. IFSC and PAN checkers validate format only—not government records.",
       ],
     },
     {

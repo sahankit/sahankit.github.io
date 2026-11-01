@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Compound Interest Calculator — Lump Sum</title>
+  <meta name="description" content="Calculate maturity value for lump sum investment with compound interest. Free online calculator." />
+  <meta name="keywords" content="compound interest calculator, lump sum investment India" />
+  <link rel="canonical" href="https://sahankit.github.io/compound-interest/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Compound Interest Calculator — Lump Sum" />
+  <meta property="og:description" content="Calculate maturity value for lump sum investment with compound interest. Free online calculator." />
+  <meta property="og:url" content="https://sahankit.github.io/compound-interest/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Compound Interest Calculator — Lump Sum" />
+  <meta name="twitter:description" content="Calculate maturity value for lump sum investment with compound interest. Free online calculator." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Compound Interest Calculator — Lump Sum","description":"Calculate maturity value for lump sum investment with compound interest. Free online calculator.","url":"https://sahankit.github.io/compound-interest/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Compound Interest Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate maturity value for lump sum investment with compound interest. Free online calculator.","url":"https://sahankit.github.io/compound-interest/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Compound interest</nav>
+
+<h1>Compound interest calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="p">Principal (₹)</label><input id="p" type="number" value="100000" />
+  <label for="r">Annual rate (%)</label><input id="r" type="number" step="0.1" value="8" />
+  <label for="y">Years</label><input id="y" type="number" value="5" />
+  <label for="n">Compounds per year</label><select id="n"><option value="1">Yearly</option><option value="4" selected>Quarterly</option><option value="12">Monthly</option></select>
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const P=Number(document.getElementById('p').value), r=Number(document.getElementById('r').value)/100;
+  const y=Number(document.getElementById('y').value), n=Number(document.getElementById('n').value);
+  const fv=P*Math.pow(1+r/n,n*y);
+  document.getElementById('out').textContent='Maturity: ₹'+Math.round(fv).toLocaleString('en-IN')+' (interest ₹'+Math.round(fv-P).toLocaleString('en-IN')+')';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Compound growth on a single deposit</h2><p>Choose compounding frequency to model FD-like or investment growth. Illustration only.</p><h2>Related free tools</h2><ul><li><a href="/fd-calculator.html">FD calculator</a></li><li><a href="/sip-calculator.html">SIP calculator</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

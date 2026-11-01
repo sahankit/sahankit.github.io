@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>CSS Gradient Generator — Linear Gradients</title>
+  <meta name="description" content="Build linear CSS gradients and copy the background code. Free gradient generator." />
+  <meta name="keywords" content="CSS gradient generator, linear gradient online" />
+  <link rel="canonical" href="https://sahankit.github.io/gradient-generator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="CSS Gradient Generator — Linear Gradients" />
+  <meta property="og:description" content="Build linear CSS gradients and copy the background code. Free gradient generator." />
+  <meta property="og:url" content="https://sahankit.github.io/gradient-generator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CSS Gradient Generator — Linear Gradients" />
+  <meta name="twitter:description" content="Build linear CSS gradients and copy the background code. Free gradient generator." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"CSS Gradient Generator — Linear Gradients","description":"Build linear CSS gradients and copy the background code. Free gradient generator.","url":"https://sahankit.github.io/gradient-generator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CSS Gradient Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Build linear CSS gradients and copy the background code. Free gradient generator.","url":"https://sahankit.github.io/gradient-generator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / CSS gradient</nav>
+
+<h1>CSS gradient generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label>Color 1 <input id="c1" type="color" value="#720e9e" /></label>
+  <label>Color 2 <input id="c2" type="color" value="#f4f1ec" /></label>
+  <label for="deg">Angle (deg)</label><input id="deg" type="number" value="135" />
+  <div id="preview" style="height:120px;border-radius:14px;margin:12px 0"></div>
+  <label for="css">CSS</label>
+  <input id="css" type="text" readonly />
+  <button type="button" class="primary" id="copy">Copy CSS</button>
+</div>
+<script>
+function upd(){
+  const c1=document.getElementById('c1').value,c2=document.getElementById('c2').value,d=document.getElementById('deg').value;
+  const css='linear-gradient('+d+'deg, '+c1+', '+c2+')';
+  document.getElementById('preview').style.background=css;
+  document.getElementById('css').value='background: '+css+';';
+}
+document.getElementById('c1').oninput=upd; document.getElementById('c2').oninput=upd; document.getElementById('deg').oninput=upd;
+document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(document.getElementById('css').value);
+upd();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Copy-paste gradients for CSS</h2><p>Linear gradients add depth to headers and cards. Copy the generated background property into your stylesheet.</p><h2>Related free tools</h2><ul><li><a href="/color-picker.html">Color picker</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

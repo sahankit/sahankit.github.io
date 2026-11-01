@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>QR Code Generator — Free Online QR</title>
+  <meta name="description" content="Create QR codes from URL or text. Download PNG. Free QR code generator in your browser." />
+  <meta name="keywords" content="QR code generator, free QR code online, URL to QR" />
+  <link rel="canonical" href="https://sahankit.github.io/qr-code-generator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="QR Code Generator — Free Online QR" />
+  <meta property="og:description" content="Create QR codes from URL or text. Download PNG. Free QR code generator in your browser." />
+  <meta property="og:url" content="https://sahankit.github.io/qr-code-generator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="QR Code Generator — Free Online QR" />
+  <meta name="twitter:description" content="Create QR codes from URL or text. Download PNG. Free QR code generator in your browser." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"QR Code Generator — Free Online QR","description":"Create QR codes from URL or text. Download PNG. Free QR code generator in your browser.","url":"https://sahankit.github.io/qr-code-generator/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do QR codes expire?","acceptedAnswer":{"@type":"Answer","text":"Static QR codes do not expire—the data is in the image. If you change the URL later, generate a new code."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"QR Code Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Create QR codes from URL or text. Download PNG. Free QR code generator in your browser.","url":"https://sahankit.github.io/qr-code-generator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / QR code generator</nav>
+
+<h1>QR code generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="txt">URL or text</label>
+  <input id="txt" type="url" placeholder="https://example.com" value="https://sahankit.github.io/" />
+  <label for="size">Size (px)</label><input id="size" type="number" min="128" max="512" value="256" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <div id="box" style="margin-top:16px"></div>
+  <p id="dl" hidden><a id="link" download="qrcode.png">Download PNG</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script>
+document.getElementById('go').onclick=async()=>{
+  const text=document.getElementById('txt').value.trim();
+  const size=Math.min(512,Math.max(128,Number(document.getElementById('size').value)||256));
+  const box=document.getElementById('box'); box.innerHTML='';
+  if(!text) return;
+  const canvas=document.createElement('canvas');
+  await QRCode.toCanvas(canvas,text,{width:size,margin:2});
+  box.appendChild(canvas);
+  const a=document.getElementById('link');
+  a.href=canvas.toDataURL('image/png');
+  document.getElementById('dl').hidden=false;
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Create QR codes for menus, posters, and links</h2><p>QR codes encode a URL or short text so phones can scan and open instantly. Generation happens in your browser; download PNG for print.</p><h2>Frequently asked questions</h2><h3>Do QR codes expire?</h3><p>Static QR codes do not expire—the data is in the image. If you change the URL later, generate a new code.</p><h2>Related free tools</h2><ul><li><a href="/json-formatter.html">JSON formatter</a></li><li><a href="/guides/seo-checklist.html">SEO checklist</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

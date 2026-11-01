@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Time Zone Meeting Planner — Compare Times</title>
+  <meta name="description" content="Compare meeting times across time zones. Free timezone planner for remote teams." />
+  <meta name="keywords" content="time zone meeting planner, world clock meeting" />
+  <link rel="canonical" href="https://sahankit.github.io/meeting-planner.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Time Zone Meeting Planner — Compare Times" />
+  <meta property="og:description" content="Compare meeting times across time zones. Free timezone planner for remote teams." />
+  <meta property="og:url" content="https://sahankit.github.io/meeting-planner.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Time Zone Meeting Planner — Compare Times" />
+  <meta name="twitter:description" content="Compare meeting times across time zones. Free timezone planner for remote teams." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Time Zone Meeting Planner — Compare Times","description":"Compare meeting times across time zones. Free timezone planner for remote teams.","url":"https://sahankit.github.io/meeting-planner.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Time Zone Meeting Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Compare meeting times across time zones. Free timezone planner for remote teams.","url":"https://sahankit.github.io/meeting-planner.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Meeting time zones</nav>
+
+<h1>Time zone meeting planner</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="when">Your local date &amp; time</label>
+  <input id="when" type="datetime-local" />
+  <label for="tz">Compare zone</label>
+  <select id="tz"></select>
+  <button type="button" class="primary" id="go">Compare</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+const zones=['America/New_York','America/Los_Angeles','Europe/London','Europe/Paris','Asia/Kolkata','Asia/Singapore','Asia/Tokyo','Australia/Sydney','UTC'];
+const sel=document.getElementById('tz');
+zones.forEach(z=>{ const o=document.createElement('option'); o.value=z; o.textContent=z; sel.appendChild(o); });
+const now=new Date(); document.getElementById('when').value=now.toISOString().slice(0,16);
+document.getElementById('go').onclick=()=>{
+  const local=new Date(document.getElementById('when').value);
+  const tz=sel.value;
+  const fmt=new Intl.DateTimeFormat('en-GB',{dateStyle:'full',timeStyle:'short',timeZone:tz});
+  document.getElementById('out').textContent='In '+tz+': '+fmt.format(local);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Schedule across time zones</h2><p>Pick your local time and compare how it appears in another IANA time zone—handy for remote teams.</p><h2>Related free tools</h2><ul><li><a href="/epoch-converter.html">Epoch converter</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
