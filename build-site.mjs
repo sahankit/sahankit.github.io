@@ -30,6 +30,8 @@ import { batch10Tools } from "./tools-batch10.mjs";
 import { batch10PageSeo } from "./seo-batch10.mjs";
 import { batch11Tools } from "./tools-batch11.mjs";
 import { batch11PageSeo } from "./seo-batch11.mjs";
+import { batch12Tools } from "./tools-batch12.mjs";
+import { batch12PageSeo } from "./seo-batch12.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
 import {
   OG_IMAGE,
@@ -54,6 +56,7 @@ const pageSeo = {
   ...batch9PageSeo,
   ...batch10PageSeo,
   ...batch11PageSeo,
+  ...batch12PageSeo,
   ...sitePageSeo,
 };
 
@@ -706,6 +709,8 @@ document.getElementById('go').onclick=async()=>{
   }
 };
 document.getElementById('domain').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('go').click(); });
+const prefill=new URLSearchParams(location.search).get('q');
+if(prefill){ document.getElementById('domain').value=prefill; document.getElementById('go').click(); }
 </script>`,
   },
   {
@@ -852,6 +857,7 @@ document.getElementById('go').click();
   ...batch9Tools(ad),
   ...batch10Tools(ad),
   ...batch11Tools(ad),
+  ...batch12Tools(ad),
 ];
 
 const guides = [

@@ -62,6 +62,7 @@ export const micrositeDefs = [
     hero: "SEO lab",
     blurb: "Research domains and tune on-page content length before you publish.",
     toolPaths: [
+      "/osint-search.html",
       "/domain-age.html",
       "/meta-tag-generator.html",
       "/robots-txt-generator.html",

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>OSINT Search Hub — Free Username, Domain &amp; Google Dork Links</title>
+  <meta name="description" content="Free OSINT search page: build public links for username profiles, domain certs, DNS, IP info, breach checks, Google dorks, and Wayback. Runs in your browser." />
+  <meta name="keywords" content="osint search, osint tools free, username search osint, google dork generator, domain osint, public records search, security research" />
+  <link rel="canonical" href="https://sahankit.github.io/osint-search/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="OSINT Search Hub — Free Username, Domain &amp; Google Dork Links" />
+  <meta property="og:description" content="Free OSINT search page: build public links for username profiles, domain certs, DNS, IP info, breach checks, Google dorks, and Wayback. Runs in your browser." />
+  <meta property="og:url" content="https://sahankit.github.io/osint-search/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OSINT Search Hub — Free Username, Domain &amp; Google Dork Links" />
+  <meta name="twitter:description" content="Free OSINT search page: build public links for username profiles, domain certs, DNS, IP info, breach checks, Google dorks, and Wayback. Runs in your browser." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/osint-search/#webpage","name":"OSINT Search Hub — Free Username, Domain & Google Dork Links","description":"Free OSINT search page: build public links for username profiles, domain certs, DNS, IP info, breach checks, Google dorks, and Wayback. Runs in your browser.","url":"https://sahankit.github.io/osint-search/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"OSINT search","item":"https://sahankit.github.io/osint-search/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this OSINT tool search automatically?","acceptedAnswer":{"@type":"Answer","text":"No. It only generates links. You click through to each external site. No queries are sent to Sahankit servers."}},{"@type":"Question","name":"Is OSINT legal?","acceptedAnswer":{"@type":"Answer","text":"Research on publicly published information is often legal, but context matters. Unauthorized access to systems, bypassing paywalls, or misusing personal data can be illegal. Use ethical guidelines and local law."}},{"@type":"Question","name":"Can I find someone's private email password here?","acceptedAnswer":{"@type":"Answer","text":"No. This page does not provide password cracking, breach downloads, or access to non-public databases."}},{"@type":"Question","name":"What is a Google dork?","acceptedAnswer":{"@type":"Answer","text":"Advanced search operators (site:, filetype:, intitle:, etc.) that help find public pages indexed by Google. Use only on systems you may test."}}]},{"@type":"SoftwareApplication","name":"OSINT Search Hub","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free OSINT search page: build public links for username profiles, domain certs, DNS, IP info, breach checks, Google dorks, and Wayback. Runs in your browser.","url":"https://sahankit.github.io/osint-search/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/osint-search/">OSINT search</a></nav>
+
+<h1>OSINT search hub</h1>
+<p class="prose">Build links to <strong>public</strong> sources for security research, brand monitoring, and journalism. Use only on targets you are allowed to investigate. Sahankit does not run lookups on a server—links open third-party sites in a new tab.</p>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<nav class="prose" aria-label="OSINT sections" style="margin:16px 0">
+  <a href="#username">Username</a> ·
+  <a href="#domain">Domain</a> ·
+  <a href="#email">Email</a> ·
+  <a href="#ip">IP</a> ·
+  <a href="#dork">Google dork</a> ·
+  <a href="#archive">Archive</a>
+</nav>
+
+<section id="username" class="tool-panel">
+  <h2>Username search</h2>
+  <p class="prose" style="font-size:0.9rem">Checks whether a public profile URL exists—you still open each site manually.</p>
+  <label for="user">Username</label>
+  <input id="user" placeholder="octocat" autocapitalize="none" autocomplete="off" spellcheck="false" />
+  <button type="button" class="primary" id="userLinks">Build links</button>
+  <ul id="userOut" class="prose" style="list-style:none;padding:0"></ul>
+</section>
+
+<section id="domain" class="tool-panel" style="margin-top:20px">
+  <h2>Domain &amp; certificate OSINT</h2>
+  <label for="dom">Domain</label>
+  <input id="dom" placeholder="example.com" autocapitalize="none" spellcheck="false" />
+  <button type="button" class="primary" id="domLinks">Build links</button>
+  <ul id="domOut" class="prose" style="list-style:none;padding:0"></ul>
+</section>
+
+<section id="email" class="tool-panel" style="margin-top:20px">
+  <h2>Email (public breach index)</h2>
+  <label for="email">Email address</label>
+  <input id="email" type="email" placeholder="you@example.com" autocapitalize="none" />
+  <button type="button" class="primary" id="emailLinks">Build links</button>
+  <ul id="emailOut" class="prose" style="list-style:none;padding:0"></ul>
+</section>
+
+<section id="ip" class="tool-panel" style="margin-top:20px">
+  <h2>IP address</h2>
+  <label for="ip">IPv4 or IPv6</label>
+  <input id="ip" placeholder="8.8.8.8" spellcheck="false" />
+  <button type="button" class="primary" id="ipLinks">Build links</button>
+  <ul id="ipOut" class="prose" style="list-style:none;padding:0"></ul>
+</section>
+
+<section id="dork" class="tool-panel" style="margin-top:20px">
+  <h2>Google dork builder</h2>
+  <label for="site">site: (optional)</label>
+  <input id="site" placeholder="example.com" spellcheck="false" />
+  <label for="dorkExtra">Extra operators</label>
+  <input id="dorkExtra" placeholder='filetype:pdf OR intitle:"index of"' spellcheck="false" />
+  <label for="dorkQ">Keywords</label>
+  <input id="dorkQ" placeholder="password backup" spellcheck="false" />
+  <button type="button" class="primary" id="dorkGo">Open Google search</button>
+  <p id="dorkPreview" class="prose" style="font-size:0.85rem"></p>
+</section>
+
+<section id="archive" class="tool-panel" style="margin-top:20px">
+  <h2>Wayback Machine</h2>
+  <label for="archiveUrl">Full URL</label>
+  <input id="archiveUrl" placeholder="https://example.com/" spellcheck="false" />
+  <button type="button" class="primary" id="archiveGo">Open archive history</button>
+</section>
+
+<script>
+function esc(s){ return encodeURIComponent(String(s).trim()); }
+function li(name, href){
+  const a=document.createElement('a');
+  a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
+  a.textContent=name+' → '+href.replace(/^https:\/\//,'');
+  const li=document.createElement('li');
+  li.style.margin='8px 0';
+  li.appendChild(a);
+  return li;
+}
+function fillList(el, pairs){
+  el.replaceChildren();
+  for(const [n,u] of pairs) el.appendChild(li(n,u));
+}
+
+document.getElementById('userLinks').onclick=()=>{
+  const u=document.getElementById('user').value.trim();
+  if(!u) return;
+  const e=esc(u);
+  fillList(document.getElementById('userOut'), [
+    ['GitHub','https://github.com/'+e],
+    ['GitLab','https://gitlab.com/'+e],
+    ['Reddit','https://www.reddit.com/user/'+e],
+    ['X (Twitter)','https://x.com/'+e],
+    ['Hacker News','https://news.ycombinator.com/user?id='+e],
+    ['Keybase','https://keybase.io/'+e],
+    ['Pastebin search','https://www.google.com/search?q='+esc('site:pastebin.com '+u)],
+    ['Google','https://www.google.com/search?q='+esc('"'+u+'" profile OR account')],
+  ]);
+};
+
+document.getElementById('domLinks').onclick=()=>{
+  let d=document.getElementById('dom').value.trim().replace(/^https?:\/\//,'').split('/')[0];
+  if(!d) return;
+  const e=esc(d);
+  fillList(document.getElementById('domOut'), [
+    ['Domain age (Sahankit)','/domain-age/?q='+e],
+    ['crt.sh certificates','https://crt.sh/?q='+e],
+    ['Google Public DNS','https://dns.google/query?name='+e+'&type=A'],
+    ['SecurityTrails (web)','https://securitytrails.com/domain/'+e],
+    ['WHOIS (who.is)','https://who.is/whois/'+e],
+    ['VirusTotal domain','https://www.virustotal.com/gui/domain/'+e],
+    ['Google site: search','https://www.google.com/search?q='+esc('site:'+d)],
+    ['Subdomain Google dork','https://www.google.com/search?q='+esc('site:*.'+d+' -www')],
+  ]);
+};
+
+document.getElementById('emailLinks').onclick=()=>{
+  const m=document.getElementById('email').value.trim();
+  if(!m||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)) {
+    document.getElementById('emailOut').replaceChildren();
+    const p=document.createElement('p');
+    p.className='error'; p.textContent='Enter a valid email.'; 
+    document.getElementById('emailOut').appendChild(p);
+    return;
+  }
+  const e=esc(m);
+  fillList(document.getElementById('emailOut'), [
+    ['Have I Been Pwned','https://haveibeenpwned.com/account/'+e],
+    ['Google exact email','https://www.google.com/search?q='+esc('"'+m+'"')],
+    ['Hunter.io (web)','https://hunter.io/email-verifier/'+e],
+  ]);
+};
+
+document.getElementById('ipLinks').onclick=()=>{
+  const ip=document.getElementById('ip').value.trim();
+  if(!ip) return;
+  const e=esc(ip);
+  fillList(document.getElementById('ipOut'), [
+    ['ipinfo.io','https://ipinfo.io/'+e],
+    ['BGP.he.net','https://bgp.he.net/ip/'+e],
+    ['VirusTotal IP','https://www.virustotal.com/gui/ip-address/'+e],
+    ['Shodan (login may be required)','https://www.shodan.io/host/'+e],
+    ['AbuseIPDB (web)','https://www.abuseipdb.com/check/'+e],
+  ]);
+};
+
+document.getElementById('dorkGo').onclick=()=>{
+  const parts=[];
+  const site=document.getElementById('site').value.trim();
+  const extra=document.getElementById('dorkExtra').value.trim();
+  const q=document.getElementById('dorkQ').value.trim();
+  if(site) parts.push('site:'+site);
+  if(extra) parts.push(extra);
+  if(q) parts.push(q);
+  const query=parts.join(' ').trim()||'site:example.com';
+  document.getElementById('dorkPreview').textContent='Query: '+query;
+  window.open('https://www.google.com/search?q='+esc(query), '_blank', 'noopener,noreferrer');
+};
+
+document.getElementById('archiveGo').onclick=()=>{
+  let u=document.getElementById('archiveUrl').value.trim();
+  if(!u) return;
+  if(!/^https?:\/\//i.test(u)) u='https://'+u;
+  window.open('https://web.archive.org/web/*/'+esc(u), '_blank', 'noopener,noreferrer');
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>What is this OSINT search page?</h2><p>OSINT (open-source intelligence) means gathering information from publicly available sources—websites, DNS, certificate transparency logs, search engines, and archives. This hub does not scrape data or bypass logins. It builds URLs you can open in a new tab to continue research on third-party services.</p><p>Use it for legitimate purposes: securing your own accounts, bug-bounty scope checks, journalism, fraud investigation with authorization, and competitive research on public marketing sites.</p><h2>Sections in the OSINT hub</h2><p>Each block targets a common OSINT workflow:</p><ul><li><strong>Username search</strong> — Quick links to public profile URLs on GitHub, Reddit, X, and similar sites, plus a Google query for pasted leaks (public index only).</li><li><strong>Domain OSINT</strong> — Certificate search (crt.sh), DNS, WHOIS-style pages, VirusTotal, and our <a href="/domain-age/">domain age checker</a>.</li><li><strong>Email</strong> — Link to Have I Been Pwned and public search helpers (not verification of mailbox access).</li><li><strong>IP</strong> — Routing and reputation pages such as ipinfo.io and BGP tools.</li><li><strong>Google dork builder</strong> — Compose site: and filetype: style queries for authorized testing.</li><li><strong>Wayback Machine</strong> — Historical snapshots of a URL on archive.org.</li></ul><h2>Ethics and legal use</h2><p>Do not use OSINT techniques to harass, stalk, or access private data without permission. Laws vary by country; when in doubt, get written authorization or stick to your own assets and public bug-bounty programs. Sahankit Tools is not responsible for how third-party sites use your queries.</p><h2>Frequently asked questions</h2><h3>Does this OSINT tool search automatically?</h3><p>No. It only generates links. You click through to each external site. No queries are sent to Sahankit servers.</p><h3>Is OSINT legal?</h3><p>Research on publicly published information is often legal, but context matters. Unauthorized access to systems, bypassing paywalls, or misusing personal data can be illegal. Use ethical guidelines and local law.</p><h3>Can I find someone's private email password here?</h3><p>No. This page does not provide password cracking, breach downloads, or access to non-public databases.</p><h3>What is a Google dork?</h3><p>Advanced search operators (site:, filetype:, intitle:, etc.) that help find public pages indexed by Google. Use only on systems you may test.</p><h2>Related free tools</h2><ul><li><a href="/seo-lab/">SEO lab hub</a></li><li><a href="/domain-age.html">Domain age checker</a></li><li><a href="/extract-urls.html">Extract URLs from text</a></li><li><a href="/extract-emails.html">Extract emails from text</a></li><li><a href="/url-parser.html">URL parser</a></li><li><a href="/user-agent.html">User-agent string</a></li></ul></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
