@@ -947,7 +947,7 @@ ${renderSeoHtml(indexSeo)}`;
 const indexHtml = page(
   "/",
   "Sahankit Tools — 170+ Free Online Calculators & Utilities",
-  "Free browser tools: India income tax new vs old regime, PPF, Haversine, semver, and 170+ utilities—no signup.",
+  "Free mini-sites for India, OSINT, security, finance, dev, and writing—170+ browser tools, no signup.",
   indexMain,
   "",
   {

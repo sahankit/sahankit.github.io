@@ -1,5 +1,7 @@
 /** Micro-site hubs (separate landing “sites” on the same domain). */
 
+import { canonicalFromFile } from "./seo-build.mjs";
+
 export const micrositeDefs = [
   {
     slug: "finance",
@@ -75,6 +77,86 @@ export const micrositeDefs = [
     ],
     guidePaths: ["/guides/seo-checklist.html"],
     faqs: [{ q: "Does domain age guarantee rankings?", a: "No. Content quality and relevance matter more." }],
+  },
+  {
+    slug: "osint",
+    title: "Sahankit OSINT — Username, Domain & Public Search Tools",
+    desc: "Free OSINT hub: username links, domain certs, DNS, IP lookups, Google dorks, and breach index links. Public sources only.",
+    keywords: "osint tools, osint search hub, domain investigation, username search",
+    hero: "OSINT research hub",
+    blurb: "Build links to public OSINT sources. For authorized security research and due diligence only.",
+    toolPaths: [
+      "/osint-search.html",
+      "/domain-age.html",
+      "/extract-urls.html",
+      "/extract-emails.html",
+      "/extract-phone-numbers.html",
+      "/url-parser.html",
+      "/cidr-calculator.html",
+      "/netmask-to-cidr.html",
+      "/ipv4-to-decimal.html",
+      "/user-agent.html",
+    ],
+    faqs: [
+      {
+        q: "Does this hub run OSINT scans?",
+        a: "No. It lists tools and link builders. Lookups happen on third-party sites you open yourself.",
+      },
+    ],
+  },
+  {
+    slug: "india",
+    title: "Sahankit India — Tax, GST, UPI, PAN & Finance Tools",
+    desc: "India toolkit: income tax new vs old regime, GST, PPF, gratuity, UPI/PAN/IFSC checks, invoices, SIP, EMI, and rupees in words.",
+    keywords: "India tools online, income tax India, GST calculator, UPI PAN IFSC",
+    hero: "India utilities",
+    blurb: "Tax, IDs, invoices, and savings calculators for India—browser-only, not government official.",
+    toolPaths: [
+      "/income-tax-calculator.html",
+      "/gst-calculator.html",
+      "/gratuity-calculator.html",
+      "/ppf-calculator.html",
+      "/upi-id-format.html",
+      "/pan-format.html",
+      "/ifsc-format.html",
+      "/pincode-format.html",
+      "/india-invoice.html",
+      "/inr-words.html",
+      "/sip-calculator.html",
+      "/emi-calculator.html",
+      "/fd-calculator.html",
+      "/rd-calculator.html",
+      "/electricity-bill.html",
+    ],
+    faqs: [
+      { q: "Are PAN or UPI checks official?", a: "No. Format and pattern helpers only—not NPCI or Income Tax verification." },
+    ],
+  },
+  {
+    slug: "security",
+    title: "Sahankit Security — Hash, JWT, Passwords & Crypto Tools",
+    desc: "Security utilities in the browser: SHA-256, SHA-1, MD5, HMAC, JWT decode, password generator, Luhn, and API keys.",
+    keywords: "security tools online, hash generator, jwt decoder, password strength",
+    hero: "Security & crypto tools",
+    blurb: "Hash, encode, and audit strings locally. Secrets stay on your device unless you paste them elsewhere.",
+    toolPaths: [
+      "/hash-generator.html",
+      "/sha1-hash.html",
+      "/md5-hash.html",
+      "/hmac-generator.html",
+      "/jwt-decoder.html",
+      "/password-generator.html",
+      "/password-strength.html",
+      "/api-key-generator.html",
+      "/luhn-checker.html",
+      "/base64-encoder.html",
+      "/base32-encoder.html",
+      "/rot13-encoder.html",
+      "/hex-encoder.html",
+    ],
+    faqs: [
+      { q: "Are hashes sent to a server?", a: "No for Web Crypto tools on this site—they run in your browser." },
+    ],
   },
   {
     slug: "design",
@@ -179,7 +261,8 @@ export function micrositeMain(def, ad, tools, guides) {
     .map(byPath)
     .filter(Boolean)
     .map(
-      (t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
+      (t) =>
+        `<a class="card" href="${canonicalFromFile(t.file)}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
     )
     .join("");
   const extra = (def.extraLinks || [])

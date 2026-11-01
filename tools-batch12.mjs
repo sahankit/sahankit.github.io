@@ -11,7 +11,7 @@ export function batch12Tools(ad) {
       cardDesc: "Public lookup links.",
       body: `
 <h1>OSINT search hub</h1>
-<p class="prose">Build links to <strong>public</strong> sources for security research, brand monitoring, and journalism. Use only on targets you are allowed to investigate. Sahankit does not run lookups on a server—links open third-party sites in a new tab.</p>
+<p class="prose">Build links to <strong>public</strong> sources for security research, brand monitoring, and journalism. Use only on targets you are allowed to investigate. More tools on the <a href="/osint/">OSINT mini-site</a>. Sahankit does not run lookups on a server—links open third-party sites in a new tab.</p>
 ${ad}
 <nav class="prose" aria-label="OSINT sections" style="margin:16px 0">
   <a href="#username">Username</a> ·
