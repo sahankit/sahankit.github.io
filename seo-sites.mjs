@@ -113,6 +113,19 @@ export const sitePageSeo = {
     faqs: [],
     related: [{ href: "/y-chat/", label: "Y-Chat" }],
   },
+  "ai-writing/index.html": {
+    keywords: "chrome ai writing tools, proofreader summarizer rewriter",
+    sections: [
+      {
+        h2: "Writing tools with Chrome built-in AI",
+        paragraphs: [
+          "Grammar check, summarize, rewrite, and generate text using APIs built into desktop Chrome. Models run on your device after a one-time download.",
+        ],
+      },
+    ],
+    faqs: [{ q: "Is Summarizer the same as ChatGPT?", a: "No. These APIs use Google’s on-device model in Chrome, not a cloud chat service." }],
+    related: [{ href: "/grammar-checker/", label: "Grammar checker" }, { href: "/writing/", label: "All writing tools" }],
+  },
   "writing/index.html": {
     keywords: "writing tools hub, text utilities markdown",
     sections: [{ h2: "Writing mini-site", paragraphs: ["All text and Markdown helpers in one hub."] }],

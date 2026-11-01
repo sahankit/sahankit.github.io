@@ -32,6 +32,8 @@ import { batch11Tools } from "./tools-batch11.mjs";
 import { batch11PageSeo } from "./seo-batch11.mjs";
 import { batch12Tools } from "./tools-batch12.mjs";
 import { batch12PageSeo } from "./seo-batch12.mjs";
+import { batch13Tools } from "./tools-batch13.mjs";
+import { batch13PageSeo } from "./seo-batch13.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import {
   OG_IMAGE,
@@ -58,6 +60,7 @@ const pageSeo = {
   ...batch10PageSeo,
   ...batch11PageSeo,
   ...batch12PageSeo,
+  ...batch13PageSeo,
   ...sitePageSeo,
 };
 
@@ -859,6 +862,7 @@ document.getElementById('go').click();
   ...batch10Tools(ad),
   ...batch11Tools(ad),
   ...batch12Tools(ad),
+  ...batch13Tools(ad),
 ];
 
 const guides = [
@@ -933,6 +937,7 @@ const micrositeCards = micrositeDefs
   )
   .concat(
     `<a class="card" href="/brief/"><h2>News brief</h2><p>Latest News, Sports &amp; Business headlines in short cards.</p></a>`,
+    `<a class="card" href="/ai-writing/"><h2>Chrome AI writing</h2><p>Grammar, summarize, rewrite—on-device in Chrome.</p></a>`,
     `<a class="card" href="/quiz/"><h2>Quick quiz</h2><p>Free trivia in your browser—10 questions.</p></a>`,
   )
   .join("");

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>AI Writer — Chrome Writer API</title>
+  <meta name="description" content="Generate drafts from a prompt using Chrome’s Writer API on supported desktops." />
+  <meta name="keywords" content="ai writer chrome built-in, write email ai browser" />
+  <link rel="canonical" href="https://sahankit.github.io/ai-writer/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tools" />
+  <meta property="og:title" content="AI Writer — Chrome Writer API" />
+  <meta property="og:description" content="Generate drafts from a prompt using Chrome’s Writer API on supported desktops." />
+  <meta property="og:url" content="https://sahankit.github.io/ai-writer/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Writer — Chrome Writer API" />
+  <meta name="twitter:description" content="Generate drafts from a prompt using Chrome’s Writer API on supported desktops." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/ai-writer/#webpage","name":"AI Writer — Chrome Writer API","description":"Generate drafts from a prompt using Chrome’s Writer API on supported desktops.","url":"https://sahankit.github.io/ai-writer/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"AI writer","item":"https://sahankit.github.io/ai-writer/"}]},{"@type":"SoftwareApplication","name":"AI Writer","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generate drafts from a prompt using Chrome’s Writer API on supported desktops.","url":"https://sahankit.github.io/ai-writer/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/ai-writer/">AI writer</a></nav>
+
+<h1>AI writer</h1>
+<p id="ai-hint" class="prose" style="font-size:0.85rem"></p>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="prompt">What should I write?</label>
+  <textarea id="prompt" rows="3">A polite email declining a meeting but suggesting next week.</textarea>
+  <label for="context">Context (optional)</label>
+  <input id="context" placeholder="Work email to a client" />
+  <label for="tone">Tone</label>
+  <select id="tone"><option value="neutral">Neutral</option><option value="formal">Formal</option><option value="casual">Casual</option></select>
+  <label for="length">Length</label>
+  <select id="length"><option value="short">Short</option><option value="medium" selected>Medium</option><option value="long">Long</option></select>
+  <button type="button" class="primary" id="go">Write</button>
+  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <textarea id="out" rows="10" readonly></textarea>
+</div>
+<script src="/assets/chrome-ai-helper.js"></script>
+<script>
+document.getElementById('ai-hint').innerHTML=ChromeAi.hintHtml;
+document.getElementById('go').onclick=async()=>{
+  const prompt=document.getElementById('prompt').value.trim();
+  const status=document.getElementById('status');
+  document.getElementById('out').value='';
+  if(!prompt) return;
+  if(!ChromeAi.has('Writer')){
+    status.className='error';
+    status.textContent='Writer API not found. Enable chrome://flags/#writer-api in Chrome.';
+    return;
+  }
+  status.textContent='Writing…';
+  try{
+    const opts={
+      tone:document.getElementById('tone').value,
+      length:document.getElementById('length').value,
+      format:'plain-text',
+    };
+    const avail=await ChromeAi.availability('Writer',opts);
+    if(avail==='unavailable'){ status.className='error'; status.textContent=await ChromeAi.unavailableMessage('Writer'); return; }
+    const writer=await ChromeAi.create('Writer',opts,p=>ChromeAi.setProgress(status,p));
+    const ctx=document.getElementById('context').value.trim();
+    document.getElementById('out').value=await writer.write(prompt, ctx?{context:ctx}:{});
+    status.textContent='Done.';
+    writer.destroy?.();
+  }catch(e){
+    status.className='error';
+    status.textContent=e.message||String(e);
+  }
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Generate text locally</h2><p>Requires desktop Chrome with built-in AI (Gemini Nano) and enough free disk space. Processing happens on your device.</p><h2>Related free tools</h2><ul><li><a href="/lorem-ipsum/">Lorem ipsum</a></li></ul></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

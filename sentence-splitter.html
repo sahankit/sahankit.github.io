@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Sentence Splitter — One Sentence Per Line</title>
+  <meta name="description" content="Split paragraphs into sentences using the browser Intl Segmenter. Free, works in Chrome, Safari, and Firefox." />
+  <meta name="keywords" content="sentence splitter online" />
+  <link rel="canonical" href="https://sahankit.github.io/sentence-splitter/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tools" />
+  <meta property="og:title" content="Sentence Splitter — One Sentence Per Line" />
+  <meta property="og:description" content="Split paragraphs into sentences using the browser Intl Segmenter. Free, works in Chrome, Safari, and Firefox." />
+  <meta property="og:url" content="https://sahankit.github.io/sentence-splitter/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sentence Splitter — One Sentence Per Line" />
+  <meta name="twitter:description" content="Split paragraphs into sentences using the browser Intl Segmenter. Free, works in Chrome, Safari, and Firefox." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/sentence-splitter/#webpage","name":"Sentence Splitter — One Sentence Per Line","description":"Split paragraphs into sentences using the browser Intl Segmenter. Free, works in Chrome, Safari, and Firefox.","url":"https://sahankit.github.io/sentence-splitter/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Sentence splitter","item":"https://sahankit.github.io/sentence-splitter/"}]},{"@type":"SoftwareApplication","name":"Sentence Splitter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Split paragraphs into sentences using the browser Intl Segmenter. Free, works in Chrome, Safari, and Firefox.","url":"https://sahankit.github.io/sentence-splitter/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/sentence-splitter/">Sentence splitter</a></nav>
+
+<h1>Sentence splitter</h1>
+<p class="prose">Split text into sentences (one per line). Uses <code>Intl.Segmenter</code>—no upload.</p>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="lang">Language</label>
+  <input id="lang" value="en" maxlength="10" />
+  <textarea id="text" rows="8">Hello world. This is a test! Does it work? Yes.</textarea>
+  <button type="button" class="primary" id="go">Split</button>
+  <textarea id="out" rows="10" readonly></textarea>
+  <p id="count" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const text=document.getElementById('text').value;
+  const lang=document.getElementById('lang').value.trim()||'en';
+  let lines=[];
+  if(typeof Intl!=='undefined'&&Intl.Segmenter){
+    const seg=new Intl.Segmenter(lang,{granularity:'sentence'});
+    lines=[...seg.segment(text)].map(s=>s.segment.trim()).filter(Boolean);
+  } else {
+    lines=text.split(/(?<=[.!?…])\s+/).map(s=>s.trim()).filter(Boolean);
+  }
+  document.getElementById('out').value=lines.join('\n');
+  document.getElementById('count').textContent=lines.length+' sentence(s)';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Split into sentences</h2><p>Uses Intl.Segmenter when available—works in most modern browsers without AI.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

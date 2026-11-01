@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Language Detector — Chrome AI</title>
+  <meta name="description" content="Detect text language with Chrome’s Language Detector API." />
+  <meta name="keywords" content="language detector online chrome ai" />
+  <link rel="canonical" href="https://sahankit.github.io/language-detector/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tools" />
+  <meta property="og:title" content="Language Detector — Chrome AI" />
+  <meta property="og:description" content="Detect text language with Chrome’s Language Detector API." />
+  <meta property="og:url" content="https://sahankit.github.io/language-detector/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Language Detector — Chrome AI" />
+  <meta name="twitter:description" content="Detect text language with Chrome’s Language Detector API." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/language-detector/#webpage","name":"Language Detector — Chrome AI","description":"Detect text language with Chrome’s Language Detector API.","url":"https://sahankit.github.io/language-detector/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Language detector","item":"https://sahankit.github.io/language-detector/"}]},{"@type":"SoftwareApplication","name":"Language Detector","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Detect text language with Chrome’s Language Detector API.","url":"https://sahankit.github.io/language-detector/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/language-detector/">Language detector</a></nav>
+
+<h1>Language detector</h1>
+<p id="ai-hint" class="prose" style="font-size:0.85rem"></p>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text" rows="5">Bonjour, comment allez-vous?</textarea>
+  <button type="button" class="primary" id="go">Detect</button>
+  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <ul id="out" class="prose"></ul>
+</div>
+<script src="/assets/chrome-ai-helper.js"></script>
+<script>
+document.getElementById('ai-hint').innerHTML=ChromeAi.hintHtml;
+document.getElementById('go').onclick=async()=>{
+  const text=document.getElementById('text').value.trim();
+  const out=document.getElementById('out');
+  const status=document.getElementById('status');
+  out.replaceChildren();
+  if(!text) return;
+  if(!ChromeAi.has('LanguageDetector')){
+    status.className='error';
+    status.textContent='LanguageDetector API not found. Use Chrome 138+ desktop.';
+    return;
+  }
+  status.textContent='Detecting…';
+  try{
+    const avail=await ChromeAi.availability('LanguageDetector');
+    if(avail==='unavailable'){ status.className='error'; status.textContent=await ChromeAi.unavailableMessage('LanguageDetector'); return; }
+    const det=await ChromeAi.create('LanguageDetector',{},p=>ChromeAi.setProgress(status,p));
+    const results=await det.detect(text);
+    for(const r of results){
+      const li=document.createElement('li');
+      const pct=r.confidence!=null?(' ('+Math.round(r.confidence*100)+'%)'):'';
+      li.textContent=(r.detectedLanguage||r.language||'?')+pct;
+      out.appendChild(li);
+    }
+    status.textContent=results.length?'Done.':'No result.';
+    det.destroy?.();
+  }catch(e){
+    status.className='error';
+    status.textContent=e.message||String(e);
+  }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Detect language</h2><p>Requires desktop Chrome with built-in AI (Gemini Nano) and enough free disk space. Processing happens on your device.</p><h2>Related free tools</h2><ul><li><a href="/word-counter/">Word counter</a></li></ul></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

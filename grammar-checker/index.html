@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Grammar Checker — Chrome AI Proofreader Online</title>
+  <meta name="description" content="Check grammar and spelling with Chrome’s Proofreader API. On-device proofreading when supported—private and free." />
+  <meta name="keywords" content="grammar checker online, chrome ai proofreader, spell check browser" />
+  <link rel="canonical" href="https://sahankit.github.io/grammar-checker/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tools" />
+  <meta property="og:title" content="Grammar Checker — Chrome AI Proofreader Online" />
+  <meta property="og:description" content="Check grammar and spelling with Chrome’s Proofreader API. On-device proofreading when supported—private and free." />
+  <meta property="og:url" content="https://sahankit.github.io/grammar-checker/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grammar Checker — Chrome AI Proofreader Online" />
+  <meta name="twitter:description" content="Check grammar and spelling with Chrome’s Proofreader API. On-device proofreading when supported—private and free." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/grammar-checker/#webpage","name":"Grammar Checker — Chrome AI Proofreader Online","description":"Check grammar and spelling with Chrome’s Proofreader API. On-device proofreading when supported—private and free.","url":"https://sahankit.github.io/grammar-checker/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Grammar checker","item":"https://sahankit.github.io/grammar-checker/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this upload my text?","acceptedAnswer":{"@type":"Answer","text":"No. The Proofreader model runs locally in Chrome when available."}}]},{"@type":"SoftwareApplication","name":"Grammar Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Check grammar and spelling with Chrome’s Proofreader API. On-device proofreading when supported—private and free.","url":"https://sahankit.github.io/grammar-checker/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/grammar-checker/">Grammar checker</a></nav>
+
+<h1>Grammar checker</h1>
+<p class="prose">Fix grammar and spelling using Chrome’s on-device <strong>Proofreader</strong> API when available.</p>
+<p id="ai-hint" class="prose" style="font-size:0.85rem"></p>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text" rows="8" spellcheck="false">I seen him yesterday at the store, and he bought two loafs of bread.</textarea>
+  <button type="button" class="primary" id="go">Check grammar</button>
+  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <div id="out"></div>
+</div>
+<script src="/assets/chrome-ai-helper.js"></script>
+<script>
+document.getElementById('ai-hint').innerHTML=ChromeAi.hintHtml;
+document.getElementById('go').onclick=async()=>{
+  const text=document.getElementById('text').value;
+  const status=document.getElementById('status');
+  const out=document.getElementById('out');
+  out.replaceChildren();
+  if(!text.trim()) return;
+  if(!ChromeAi.has('Proofreader')){
+    status.className='error';
+    status.textContent='Proofreader API not found. Use desktop Chrome and enable chrome://flags/#proofreader-api';
+    return;
+  }
+  status.className='prose';
+  status.textContent='Checking…';
+  try{
+    const avail=await ChromeAi.availability('Proofreader',{expectedInputLanguages:['en']});
+    if(avail==='unavailable'){ status.className='error'; status.textContent=await ChromeAi.unavailableMessage('Proofreader'); return; }
+    const proofreader=await ChromeAi.create('Proofreader',{expectedInputLanguages:['en']},p=>ChromeAi.setProgress(status,p));
+    const result=await proofreader.proofread(text);
+    const corrected=result.correctedText||result.text||text;
+    if(corrected&&corrected!==text){
+      const p=document.createElement('p');
+      p.className='ok';
+      p.innerHTML='<strong>Suggested text:</strong><br>';
+      const ta=document.createElement('textarea');
+      ta.rows=6; ta.style.width='100%'; ta.value=corrected;
+      out.append(p,ta);
+    }
+    const fixes=result.corrections||result.matches||[];
+    if(fixes.length){
+      const ul=document.createElement('ul');
+      ul.className='prose';
+      for(const c of fixes){
+        const li=document.createElement('li');
+        li.textContent=(c.message||c.description||c.type||'Fix')+': '+(c.correction||c.suggestion||c.replacement||'');
+        ul.appendChild(li);
+      }
+      out.appendChild(ul);
+    } else if(!out.children.length){
+      out.innerHTML='<p class="ok">No corrections returned—text may already be fine.</p>';
+    }
+    status.textContent='Done.';
+    proofreader.destroy?.();
+  }catch(e){
+    status.className='error';
+    status.textContent=e.message||String(e);
+  }
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Chrome built-in grammar check</h2><p>Requires desktop Chrome with built-in AI (Gemini Nano) and enough free disk space. Processing happens on your device.</p><p>Paste text and run Check grammar to see suggested fixes from the Proofreader API.</p><h2>Frequently asked questions</h2><h3>Does this upload my text?</h3><p>No. The Proofreader model runs locally in Chrome when available.</p><h2>Related free tools</h2><ul><li><a href="/ai-writing/">Chrome AI writing hub</a></li><li><a href="/text-rewriter/">AI rewriter</a></li></ul></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

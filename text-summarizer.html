@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Text Summarizer — Chrome AI Summarizer</title>
+  <meta name="description" content="Summarize articles with Chrome’s Summarizer API. Key points, TL;DR, headline modes." />
+  <meta name="keywords" content="text summarizer chrome ai, summarize article online" />
+  <link rel="canonical" href="https://sahankit.github.io/text-summarizer/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tools" />
+  <meta property="og:title" content="Text Summarizer — Chrome AI Summarizer" />
+  <meta property="og:description" content="Summarize articles with Chrome’s Summarizer API. Key points, TL;DR, headline modes." />
+  <meta property="og:url" content="https://sahankit.github.io/text-summarizer/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Text Summarizer — Chrome AI Summarizer" />
+  <meta name="twitter:description" content="Summarize articles with Chrome’s Summarizer API. Key points, TL;DR, headline modes." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/text-summarizer/#webpage","name":"Text Summarizer — Chrome AI Summarizer","description":"Summarize articles with Chrome’s Summarizer API. Key points, TL;DR, headline modes.","url":"https://sahankit.github.io/text-summarizer/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"AI summarizer","item":"https://sahankit.github.io/text-summarizer/"}]},{"@type":"SoftwareApplication","name":"Text Summarizer","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Summarize articles with Chrome’s Summarizer API. Key points, TL;DR, headline modes.","url":"https://sahankit.github.io/text-summarizer/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/text-summarizer/">AI summarizer</a></nav>
+
+<h1>Text summarizer</h1>
+<p id="ai-hint" class="prose" style="font-size:0.85rem"></p>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text" rows="10">Paste an article or notes here.</textarea>
+  <label for="type">Summary type</label>
+  <select id="type"><option value="key-points">Key points</option><option value="tldr">TL;DR</option><option value="headline">Headline</option><option value="teaser">Teaser</option></select>
+  <label for="len">Length</label>
+  <select id="len"><option value="short">Short</option><option value="medium" selected>Medium</option><option value="long">Long</option></select>
+  <button type="button" class="primary" id="go">Summarize</button>
+  <p id="status" class="prose" style="font-size:0.88rem"></p>
+  <textarea id="out" rows="8" readonly></textarea>
+</div>
+<script src="/assets/chrome-ai-helper.js"></script>
+<script>
+document.getElementById('ai-hint').innerHTML=ChromeAi.hintHtml;
+document.getElementById('go').onclick=async()=>{
+  const text=document.getElementById('text').value.trim();
+  const status=document.getElementById('status');
+  document.getElementById('out').value='';
+  if(!text) return;
+  if(!ChromeAi.has('Summarizer')){
+    status.className='error';
+    status.textContent='Summarizer API not found. Use Chrome 138+ desktop.';
+    return;
+  }
+  status.className='prose';
+  status.textContent='Summarizing…';
+  try{
+    const opts={
+      type:document.getElementById('type').value,
+      format:'markdown',
+      length:document.getElementById('len').value,
+      expectedInputLanguages:['en'],
+    };
+    const avail=await ChromeAi.availability('Summarizer',opts);
+    if(avail==='unavailable'){ status.className='error'; status.textContent=await ChromeAi.unavailableMessage('Summarizer'); return; }
+    const summarizer=await ChromeAi.create('Summarizer',opts,p=>ChromeAi.setProgress(status,p));
+    const summary=await summarizer.summarize(text);
+    document.getElementById('out').value=summary;
+    status.textContent='Done.';
+    summarizer.destroy?.();
+  }catch(e){
+    status.className='error';
+    status.textContent=e.message||String(e);
+  }
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>On-device summarization</h2><p>Requires desktop Chrome with built-in AI (Gemini Nano) and enough free disk space. Processing happens on your device.</p><h2>Related free tools</h2><ul><li><a href="/reading-time/">Reading time</a></li><li><a href="/ai-writing/">AI writing hub</a></li></ul></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
