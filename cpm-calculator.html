@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>CPM Calculator — Cost Per Thousand Impressions</title>
+  <meta name="description" content="Calculate CPM from ad spend and impressions." />
+  <meta name="keywords" content="cpm calculator advertising" />
+  <link rel="canonical" href="https://sahankit.github.io/cpm-calculator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="CPM Calculator — Cost Per Thousand Impressions" />
+  <meta property="og:description" content="Calculate CPM from ad spend and impressions." />
+  <meta property="og:url" content="https://sahankit.github.io/cpm-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CPM Calculator — Cost Per Thousand Impressions" />
+  <meta name="twitter:description" content="Calculate CPM from ad spend and impressions." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/cpm-calculator/#webpage","name":"CPM Calculator — Cost Per Thousand Impressions","description":"Calculate CPM from ad spend and impressions.","url":"https://sahankit.github.io/cpm-calculator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"CPM calculator","item":"https://sahankit.github.io/cpm-calculator/"}]},{"@type":"SoftwareApplication","name":"CPM Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate CPM from ad spend and impressions.","url":"https://sahankit.github.io/cpm-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/cpm-calculator/">CPM calculator</a></nav>
+
+<h1>CPM calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="spend">Spend</label><input id="spend" type="number" value="100" />
+  <label for="imp">Impressions</label><input id="imp" type="number" value="50000" />
+  <button type="button" class="primary" id="go">CPM</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const s=+document.getElementById('spend').value, i=+document.getElementById('imp').value;
+  document.getElementById('out').textContent=i?('CPM = '+(s/i*1000).toFixed(2)):'—';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Cost per mille</h2><p>Spend per thousand impressions.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

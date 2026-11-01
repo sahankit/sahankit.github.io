@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>ISBN-10 &amp; ISBN-13 Validator</title>
+  <meta name="description" content="Validate ISBN checksum for 10 or 13 digit books codes." />
+  <meta name="keywords" content="isbn validator isbn 13 check" />
+  <link rel="canonical" href="https://sahankit.github.io/isbn-validator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="ISBN-10 &amp; ISBN-13 Validator" />
+  <meta property="og:description" content="Validate ISBN checksum for 10 or 13 digit books codes." />
+  <meta property="og:url" content="https://sahankit.github.io/isbn-validator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ISBN-10 &amp; ISBN-13 Validator" />
+  <meta name="twitter:description" content="Validate ISBN checksum for 10 or 13 digit books codes." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/isbn-validator/#webpage","name":"ISBN-10 & ISBN-13 Validator","description":"Validate ISBN checksum for 10 or 13 digit books codes.","url":"https://sahankit.github.io/isbn-validator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"ISBN validator","item":"https://sahankit.github.io/isbn-validator/"}]},{"@type":"SoftwareApplication","name":"ISBN-10 & ISBN-13 Validator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Validate ISBN checksum for 10 or 13 digit books codes.","url":"https://sahankit.github.io/isbn-validator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/isbn-validator/">ISBN validator</a></nav>
+
+<h1>ISBN validator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <input id="isbn" placeholder="9780306406157" spellcheck="false" />
+  <button type="button" class="primary" id="go">Validate</button>
+  <p id="out"></p>
+</div>
+<script>
+function clean(s){ return s.replace(/[^0-9Xx]/g,''); }
+function isbn10(s){
+  if(s.length!==10) return false;
+  let sum=0;
+  for(let i=0;i<9;i++) sum+=(10-i)*+s[i];
+  const c=s[9].toUpperCase()==='X'?10:+s[9];
+  return (sum+c)%11===0;
+}
+function isbn13(s){
+  if(s.length!==13) return false;
+  let sum=0;
+  for(let i=0;i<12;i++) sum+=+s[i]*(i%2?3:1);
+  const check=(10-(sum%10))%10;
+  return check===+s[12];
+}
+document.getElementById('go').onclick=()=>{
+  const s=clean(document.getElementById('isbn').value);
+  const ok=(s.length===10&&isbn10(s))||(s.length===13&&isbn13(s));
+  const o=document.getElementById('out');
+  o.className=ok?'ok':'error';
+  o.textContent=ok?'Valid ISBN checksum.':'Invalid ISBN.';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>ISBN checksum</h2><p>Validate 10 or 13 digit ISBN.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

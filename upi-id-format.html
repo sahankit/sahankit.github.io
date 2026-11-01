@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>UPI ID Format Checker</title>
+  <meta name="description" content="Check if a UPI VPA matches common name@bank format." />
+  <meta name="keywords" content="upi id format validator vpa" />
+  <link rel="canonical" href="https://sahankit.github.io/upi-id-format/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="UPI ID Format Checker" />
+  <meta property="og:description" content="Check if a UPI VPA matches common name@bank format." />
+  <meta property="og:url" content="https://sahankit.github.io/upi-id-format/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="UPI ID Format Checker" />
+  <meta name="twitter:description" content="Check if a UPI VPA matches common name@bank format." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/upi-id-format/#webpage","name":"UPI ID Format Checker","description":"Check if a UPI VPA matches common name@bank format.","url":"https://sahankit.github.io/upi-id-format/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"UPI format check","item":"https://sahankit.github.io/upi-id-format/"}]},{"@type":"SoftwareApplication","name":"UPI ID Format Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Check if a UPI VPA matches common name@bank format.","url":"https://sahankit.github.io/upi-id-format/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/upi-id-format/">UPI format check</a></nav>
+
+<h1>UPI ID format checker</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="upi">UPI ID</label><input id="upi" placeholder="name@oksbi" autocapitalize="none" />
+  <button type="button" class="primary" id="go">Check</button>
+  <p id="out"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const s=document.getElementById('upi').value.trim().toLowerCase();
+  const ok=/^[a-z0-9.\-_]{2,256}@[a-z]{2,64}$/.test(s);
+  const o=document.getElementById('out');
+  o.className=ok?'ok':'error';
+  o.textContent=ok?'Format looks valid.':'Invalid UPI format (expected user@psp).';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>UPI VPA pattern</h2><p>Not NPCI verification.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

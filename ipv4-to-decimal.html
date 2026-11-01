@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>IPv4 to Decimal Converter</title>
+  <meta name="description" content="Convert dotted IPv4 address to decimal integer and back." />
+  <meta name="keywords" content="ipv4 to decimal converter" />
+  <link rel="canonical" href="https://sahankit.github.io/ipv4-to-decimal/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="IPv4 to Decimal Converter" />
+  <meta property="og:description" content="Convert dotted IPv4 address to decimal integer and back." />
+  <meta property="og:url" content="https://sahankit.github.io/ipv4-to-decimal/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IPv4 to Decimal Converter" />
+  <meta name="twitter:description" content="Convert dotted IPv4 address to decimal integer and back." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/ipv4-to-decimal/#webpage","name":"IPv4 to Decimal Converter","description":"Convert dotted IPv4 address to decimal integer and back.","url":"https://sahankit.github.io/ipv4-to-decimal/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"IPv4 ↔ decimal","item":"https://sahankit.github.io/ipv4-to-decimal/"}]},{"@type":"SoftwareApplication","name":"IPv4 to Decimal Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert dotted IPv4 address to decimal integer and back.","url":"https://sahankit.github.io/ipv4-to-decimal/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/ipv4-to-decimal/">IPv4 ↔ decimal</a></nav>
+
+<h1>IPv4 to decimal</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="ip">IPv4</label><input id="ip" value="192.168.0.1" spellcheck="false" />
+  <button type="button" class="primary" id="toDec">To decimal</button>
+  <label for="dec">Decimal</label><input id="dec" inputmode="numeric" />
+  <button type="button" class="primary" id="toIp">To IPv4</button>
+</div>
+<script>
+function toDec(s){
+  const p=s.trim().split('.').map(Number);
+  if(p.length!==4||p.some(x=>x<0||x>255)) throw new Error('bad ip');
+  return ((p[0]<<24)>>>0)+((p[1]<<16)>>>0)+((p[2]<<8)>>>0)+p[3];
+}
+function toIp(n){
+  n=Number(n)>>>0;
+  return [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.');
+}
+document.getElementById('toDec').onclick=()=>{ try{ document.getElementById('dec').value=toDec(document.getElementById('ip').value); }catch(e){ alert(e.message); } };
+document.getElementById('toIp').onclick=()=>{ document.getElementById('ip').value=toIp(document.getElementById('dec').value); };
+document.getElementById('toDec').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>IP integer form</h2><p>Useful for databases and range checks.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

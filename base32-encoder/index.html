@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Base32 Encode &amp; Decode</title>
+  <meta name="description" content="Encode or decode Base32 text in the browser." />
+  <meta name="keywords" content="base32 encode decode online" />
+  <link rel="canonical" href="https://sahankit.github.io/base32-encoder/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Base32 Encode &amp; Decode" />
+  <meta property="og:description" content="Encode or decode Base32 text in the browser." />
+  <meta property="og:url" content="https://sahankit.github.io/base32-encoder/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base32 Encode &amp; Decode" />
+  <meta name="twitter:description" content="Encode or decode Base32 text in the browser." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/base32-encoder/#webpage","name":"Base32 Encode & Decode","description":"Encode or decode Base32 text in the browser.","url":"https://sahankit.github.io/base32-encoder/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Base32","item":"https://sahankit.github.io/base32-encoder/"}]},{"@type":"SoftwareApplication","name":"Base32 Encode & Decode","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Encode or decode Base32 text in the browser.","url":"https://sahankit.github.io/base32-encoder/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/base32-encoder/">Base32</a></nav>
+
+<h1>Base32 encoder</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text" spellcheck="false">hi</textarea>
+  <div class="row">
+    <button type="button" class="primary" id="enc">Encode</button>
+    <button type="button" class="primary" id="dec">Decode</button>
+  </div>
+  <p id="msg" class="error" hidden></p>
+</div>
+<script>
+const alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+function encBytes(bytes){
+  let bits=0,val=0,out='';
+  for(const b of bytes){
+    val=(val<<8)|b; bits+=8;
+    while(bits>=5){ bits-=5; out+=alphabet[(val>>bits)&31]; }
+  }
+  if(bits>0) out+=alphabet[(val<<(5-bits))&31];
+  return out;
+}
+function decStr(s){
+  s=s.toUpperCase().replace(/=+$/,'').replace(/\s/g,'');
+  let bits=0,val=0,out=[];
+  for(const c of s){
+    const i=alphabet.indexOf(c); if(i<0) throw new Error('invalid char');
+    val=(val<<5)|i; bits+=5;
+    if(bits>=8){ bits-=8; out.push((val>>bits)&255); }
+  }
+  return new Uint8Array(out);
+}
+document.getElementById('enc').onclick=()=>{
+  document.getElementById('msg').hidden=true;
+  document.getElementById('text').value=encBytes(new TextEncoder().encode(document.getElementById('text').value));
+};
+document.getElementById('dec').onclick=()=>{
+  document.getElementById('msg').hidden=true;
+  try{
+    document.getElementById('text').value=new TextDecoder().decode(decStr(document.getElementById('text').value));
+  }catch(e){ document.getElementById('msg').textContent=e.message; document.getElementById('msg').hidden=false; }
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Base32</h2><p>Common for secrets and tokens.</p></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
