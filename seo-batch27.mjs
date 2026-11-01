@@ -1,0 +1,148 @@
+/** SEO metadata for batch 27 tools. */
+
+export const batch27PageSeo = {
+  "reddit-title-character-counter.html": {
+    metaTitle: "Reddit Title Character Counter — Post Title Length",
+    metaDescription: "Count Reddit post title characters with ~300 character guidance. Free Reddit title counter online.",
+    keywords: "reddit title character limit, reddit title counter, reddit post title length",
+    related: [{ href: "/twitter-character-counter/", label: "Twitter counter" }, { href: "/seo-lab/", label: "SEO lab" }],
+  },
+  "ebay-title-character-counter.html": {
+    metaTitle: "eBay Title Character Counter — 80 Character Listing Limit",
+    metaDescription: "Count eBay listing title characters with 80-character seller guidance. Free eBay title counter.",
+    keywords: "ebay title character limit, ebay title counter, ebay listing title length",
+    related: [{ href: "/amazon-title-character-counter/", label: "Amazon title counter" }, { href: "/etsy-title-character-counter/", label: "Etsy title counter" }],
+  },
+  "etsy-title-character-counter.html": {
+    metaTitle: "Etsy Title Character Counter — Listing Title Length",
+    metaDescription: "Count Etsy product title characters for SEO-friendly listings. Free Etsy title counter.",
+    keywords: "etsy title character limit, etsy title counter, etsy listing title length",
+    related: [{ href: "/ebay-title-character-counter/", label: "eBay title counter" }, { href: "/seo-lab/", label: "SEO lab" }],
+  },
+  "meta-keywords-from-text.html": {
+    metaTitle: "Meta Keywords Generator — Keywords from Page Text",
+    metaDescription: "Extract meta keyword ideas from article text by word frequency. Free SEO keyword list generator.",
+    keywords: "meta keywords generator, keywords from text, extract keywords from article",
+    related: [{ href: "/keyword-density-checker/", label: "Keyword density" }, { href: "/youtube-tags-generator/", label: "YouTube tags" }],
+  },
+  "pounds-to-stone-converter.html": {
+    metaTitle: "Pounds to Stone Converter — UK Weight st lb",
+    metaDescription: "Convert pounds to stone and pounds (st lb) and back. Free UK weight converter online.",
+    keywords: "pounds to stone, stone to pounds, lb to st converter uk",
+    related: [{ href: "/kg-to-lbs-converter/", label: "KG to lbs" }, { href: "/bmi-calculator/", label: "BMI calculator" }],
+  },
+  "pool-volume-calculator.html": {
+    metaTitle: "Pool Volume Calculator — Gallons in Rectangular Pool",
+    metaDescription: "Calculate swimming pool volume in gallons from length, width, and depth. Free pool gallon calculator.",
+    keywords: "pool volume calculator, pool gallons calculator, swimming pool volume",
+    related: [{ href: "/liter-to-gallon-converter/", label: "Liter to gallon" }, { href: "/square-footage-calculator/", label: "Square footage" }],
+  },
+  "wallpaper-calculator.html": {
+    metaTitle: "Wallpaper Calculator — How Many Rolls Do I Need",
+    metaDescription: "Estimate wallpaper rolls from wall area and roll coverage. Free wallpaper quantity calculator.",
+    keywords: "wallpaper calculator, how much wallpaper do i need, wallpaper rolls calculator",
+    related: [{ href: "/paint-calculator/", label: "Paint calculator" }, { href: "/square-footage-calculator/", label: "Square footage" }],
+  },
+  "brick-calculator.html": {
+    metaTitle: "Brick Calculator — Bricks Needed for a Wall",
+    metaDescription: "Estimate number of bricks for a wall from area and brick size. Free masonry brick calculator.",
+    keywords: "brick calculator, how many bricks do i need, brick wall calculator",
+    related: [{ href: "/concrete-calculator/", label: "Concrete calculator" }, { href: "/square-footage-calculator/", label: "Square footage" }],
+  },
+  "roofing-calculator.html": {
+    metaTitle: "Roofing Calculator — Squares of Shingles from Sq Ft",
+    metaDescription: "Convert roof square footage to roofing squares and shingle bundles. Free roofing estimator.",
+    keywords: "roofing calculator, roofing squares calculator, shingles calculator square feet",
+    related: [{ href: "/square-footage-calculator/", label: "Square footage" }, { href: "/paint-calculator/", label: "Paint calculator" }],
+  },
+  "npv-calculator.html": {
+    metaTitle: "NPV Calculator — Net Present Value Online",
+    metaDescription: "Calculate net present value from investment, discount rate, and cash flows. Free NPV calculator.",
+    keywords: "npv calculator, net present value calculator, npv formula calculator",
+    related: [{ href: "/present-value-calculator/", label: "Present value" }, { href: "/compound-interest/", label: "Compound interest" }],
+  },
+  "present-value-calculator.html": {
+    metaTitle: "Present Value Calculator — PV of Future Value",
+    metaDescription: "Calculate present value from future value, rate, and years. Free PV calculator for finance.",
+    keywords: "present value calculator, pv calculator, future value to present value",
+    related: [{ href: "/npv-calculator/", label: "NPV calculator" }, { href: "/compound-interest/", label: "Compound interest" }],
+  },
+  "lumpsum-investment-calculator.html": {
+    metaTitle: "Lumpsum Calculator India — Mutual Fund One-Time Investment",
+    metaDescription: "Calculate future value of lumpsum mutual fund investment with expected return. Free India lumpsum calculator.",
+    keywords: "lumpsum calculator, lumpsum mutual fund calculator india, one time investment calculator",
+    related: [{ href: "/sip-calculator/", label: "SIP calculator" }, { href: "/step-up-sip-calculator/", label: "Step-up SIP" }],
+  },
+  "speed-distance-time-calculator.html": {
+    metaTitle: "Speed Distance Time Calculator — Travel Math",
+    metaDescription: "Calculate speed, distance, or time when you know two values. Free speed distance time calculator.",
+    keywords: "speed distance time calculator, travel time calculator, mph distance time",
+    related: [{ href: "/fuel-cost-calculator/", label: "Fuel cost" }, { href: "/unit-converter/", label: "Unit converter" }],
+  },
+  "kw-to-hp-converter.html": {
+    metaTitle: "KW to HP Converter — Kilowatts to Horsepower",
+    metaDescription: "Convert kilowatts to horsepower and hp to kW. Free kW HP power converter.",
+    keywords: "kw to hp, kilowatts to horsepower, hp to kw converter",
+    related: [{ href: "/unit-converter/", label: "Unit converter" }, { href: "/kw-to-hp-converter/", label: "kW to HP" }],
+  },
+  "bar-to-psi-converter.html": {
+    metaTitle: "Bar to PSI Converter — Pressure Unit Conversion",
+    metaDescription: "Convert bar to PSI and pounds per square inch to bar. Free pressure converter.",
+    keywords: "bar to psi, psi to bar, pressure converter bar psi",
+    related: [{ href: "/unit-converter/", label: "Unit converter" }, { href: "/bar-to-psi-converter/", label: "Bar to PSI" }],
+  },
+  "emergency-fund-calculator.html": {
+    metaTitle: "Emergency Fund Calculator — Months of Expenses Saved",
+    metaDescription: "Calculate emergency fund target from monthly expenses and months of coverage. Free savings goal calculator.",
+    keywords: "emergency fund calculator, how much emergency fund, months of expenses saved",
+    related: [{ href: "/compound-interest/", label: "Compound interest" }, { href: "/finance/", label: "Finance hub" }],
+  },
+  "age-in-days-calculator.html": {
+    metaTitle: "Age in Days Calculator — How Many Days Old Am I",
+    metaDescription: "Calculate exact age in days from date of birth. Free age in days counter online.",
+    keywords: "age in days calculator, how many days old am i, days since birth",
+    related: [{ href: "/age-calculator/", label: "Age calculator" }, { href: "/days-between-dates/", label: "Days between dates" }],
+  },
+  "calories-burned-running-calculator.html": {
+    metaTitle: "Calories Burned Running Calculator — By Distance",
+    metaDescription: "Estimate calories burned running from weight and distance. Free running calorie calculator.",
+    keywords: "calories burned running calculator, running calorie calculator, calories burned jogging",
+    related: [{ href: "/calorie-deficit-calculator/", label: "Calorie deficit" }, { href: "/calories-burned-walking-calculator/", label: "Walking calories" }],
+  },
+  "protein-intake-calculator.html": {
+    metaTitle: "Protein Intake Calculator — Daily Protein Grams",
+    metaDescription: "Estimate daily protein grams from body weight and activity. Free protein calculator for fitness.",
+    keywords: "protein intake calculator, daily protein calculator, how much protein per day",
+    related: [{ href: "/macro-calculator/", label: "Macro calculator" }, { href: "/bmi-calculator/", label: "BMI calculator" }],
+  },
+  "cap-rate-calculator.html": {
+    metaTitle: "Cap Rate Calculator — Capitalization Rate Real Estate",
+    metaDescription: "Calculate cap rate from NOI and property value. Free rental property cap rate calculator.",
+    keywords: "cap rate calculator, capitalization rate calculator, rental property cap rate",
+    related: [{ href: "/home-loan-calculator/", label: "Home loan EMI" }, { href: "/house-affordability-calculator/", label: "House affordability" }],
+  },
+  "ohms-law-calculator.html": {
+    metaTitle: "Ohm's Law Calculator — Voltage Current Resistance",
+    metaDescription: "Calculate voltage, current, or resistance with V = I × R. Free Ohm's law calculator.",
+    keywords: "ohms law calculator, voltage current resistance calculator, ohm law calculator",
+    related: [{ href: "/unit-converter/", label: "Unit converter" }, { href: "/number-base-converter/", label: "Number base" }],
+  },
+  "title-case-converter.html": {
+    metaTitle: "Title Case Converter — Capitalize Headlines Online",
+    metaDescription: "Convert text to title case for headlines and blog titles. Free title capitalization tool.",
+    keywords: "title case converter, capitalize title, headline capitalization tool",
+    related: [{ href: "/case-converter/", label: "Case converter" }, { href: "/slug-generator/", label: "Slug generator" }],
+  },
+  "px-to-rem-converter.html": {
+    metaTitle: "PX to REM Converter — CSS Font Size Units",
+    metaDescription: "Convert pixels to rem and rem to px with custom root font size. Free CSS px rem converter.",
+    keywords: "px to rem, rem to px, css px to rem converter",
+    related: [{ href: "/aspect-ratio/", label: "Aspect ratio" }, { href: "/design/", label: "Design hub" }],
+  },
+  "passphrase-generator.html": {
+    metaTitle: "Passphrase Generator — Random Word Passphrases",
+    metaDescription: "Generate memorable random passphrases from words in your browser. Free passphrase generator.",
+    keywords: "passphrase generator, random passphrase, word passphrase generator",
+    related: [{ href: "/password-generator/", label: "Password generator" }, { href: "/password-strength/", label: "Password strength" }],
+  },
+};

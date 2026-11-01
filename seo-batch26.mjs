@@ -1,0 +1,130 @@
+/** SEO metadata for batch 26 tools. */
+
+export const batch26PageSeo = {
+  "decimal-to-percent-converter.html": {
+    metaTitle: "Decimal to Percent Converter — Convert to Percentage",
+    metaDescription: "Convert decimal to percent and percent to decimal instantly. Free online decimal percentage converter.",
+    keywords: "decimal to percent, convert decimal to percentage, percent to decimal calculator",
+    related: [{ href: "/fraction-to-percent-converter/", label: "Fraction to percent" }, { href: "/percentage-calculator/", label: "Percentage calculator" }],
+  },
+  "fraction-to-percent-converter.html": {
+    metaTitle: "Fraction to Percent Converter — Fraction as Percentage",
+    metaDescription: "Convert any fraction to a percentage. Free fraction to percent calculator for math and homework.",
+    keywords: "fraction to percent, convert fraction to percentage, fraction percent calculator",
+    related: [{ href: "/fraction-calculator/", label: "Fraction calculator" }, { href: "/decimal-to-percent-converter/", label: "Decimal to percent" }],
+  },
+  "week-number-calculator.html": {
+    metaTitle: "Week Number Calculator — ISO Week of Year from Date",
+    metaDescription: "Find ISO week number for any calendar date. Free week of year calculator.",
+    keywords: "week number calculator, iso week number, what week of the year",
+    related: [{ href: "/days-between-dates/", label: "Days between dates" }, { href: "/work-days/", label: "Work days" }],
+  },
+  "dog-age-calculator.html": {
+    metaTitle: "Dog Age Calculator — Dog Years to Human Years",
+    metaDescription: "Convert dog years to human years with size adjustment. Free dog age calculator online.",
+    keywords: "dog age calculator, dog years to human years, how old is my dog in human years",
+    related: [{ href: "/cat-age-calculator/", label: "Cat age calculator" }, { href: "/age-calculator/", label: "Age calculator" }],
+  },
+  "cat-age-calculator.html": {
+    metaTitle: "Cat Age Calculator — Cat Years to Human Years",
+    metaDescription: "Convert cat years to approximate human years. Free feline age calculator.",
+    keywords: "cat age calculator, cat years to human years, how old is my cat",
+    related: [{ href: "/dog-age-calculator/", label: "Dog age calculator" }],
+  },
+  "mulch-calculator.html": {
+    metaTitle: "Mulch Calculator — Cubic Yards & Bags for Garden Beds",
+    metaDescription: "Calculate mulch cubic yards and bag count from bed area and depth. Free mulch estimator.",
+    keywords: "mulch calculator, how much mulch do i need, mulch cubic yards",
+    related: [{ href: "/gravel-calculator/", label: "Gravel calculator" }, { href: "/square-footage-calculator/", label: "Square footage" }],
+  },
+  "btu-calculator.html": {
+    metaTitle: "BTU Calculator — Air Conditioner Size for Room",
+    metaDescription: "Estimate BTU cooling capacity from room square feet. Free AC BTU calculator (rule of thumb).",
+    keywords: "btu calculator, air conditioner btu calculator, room ac btu size",
+    related: [{ href: "/square-footage-calculator/", label: "Square footage" }, { href: "/electricity-bill/", label: "Electricity bill (India)" }],
+  },
+  "mm-to-inches-converter.html": {
+    metaTitle: "MM to Inches Converter — Millimeters to Inches",
+    metaDescription: "Convert mm to inches and inches to millimeters. Free metric imperial converter.",
+    keywords: "mm to inches, millimeters to inches converter, inch to mm",
+    related: [{ href: "/cm-to-feet-converter/", label: "CM to feet" }, { href: "/unit-converter/", label: "Unit converter" }],
+  },
+  "fluid-ounces-to-ml-converter.html": {
+    metaTitle: "Ounces to ML Converter — US Fluid Ounces to Milliliters",
+    metaDescription: "Convert US fluid ounces to ml and ml to fl oz. Free kitchen volume converter.",
+    keywords: "ounces to ml, fl oz to ml, fluid ounces to milliliters converter",
+    related: [{ href: "/liter-to-gallon-converter/", label: "Liter to gallon" }, { href: "/cooking-converter/", label: "Cooking converter" }],
+  },
+  "commission-calculator.html": {
+    metaTitle: "Commission Calculator — Sales Commission Amount",
+    metaDescription: "Calculate commission from sale price and rate percent. Free sales commission calculator.",
+    keywords: "commission calculator, sales commission calculator, calculate commission",
+    related: [{ href: "/profit-margin/", label: "Profit margin" }, { href: "/markup-calculator/", label: "Markup calculator" }],
+  },
+  "pro-rata-calculator.html": {
+    metaTitle: "Pro Rata Calculator — Prorated Salary or Rent",
+    metaDescription: "Calculate pro-rata amount for partial months from full amount and days. Free prorate calculator.",
+    keywords: "pro rata calculator, prorate calculator, prorated salary calculator",
+    related: [{ href: "/salary-calculator/", label: "Salary calculator" }, { href: "/rent-affordability/", label: "Rent affordability" }],
+  },
+  "swp-calculator.html": {
+    metaTitle: "SWP Calculator India — Systematic Withdrawal Plan",
+    metaDescription: "Estimate how long mutual fund corpus lasts with monthly SWP and returns. Free India SWP calculator.",
+    keywords: "swp calculator, systematic withdrawal plan calculator, mutual fund swp india",
+    related: [{ href: "/sip-calculator/", label: "SIP calculator" }, { href: "/finance/", label: "Finance hub" }],
+  },
+  "speaking-time-calculator.html": {
+    metaTitle: "Speaking Time Calculator — Speech Length from Words",
+    metaDescription: "Estimate speech or presentation time from word count and WPM. Free speaking duration calculator.",
+    keywords: "speaking time calculator, speech length calculator, words to minutes speech",
+    related: [{ href: "/reading-time/", label: "Reading time" }, { href: "/word-counter/", label: "Word counter" }],
+  },
+  "paragraph-counter.html": {
+    metaTitle: "Paragraph Counter — Count Paragraphs in Text",
+    metaDescription: "Count paragraphs and words in essays and articles. Free online paragraph counter.",
+    keywords: "paragraph counter, count paragraphs, how many paragraphs",
+    related: [{ href: "/sentence-counter/", label: "Sentence counter" }, { href: "/word-counter/", label: "Word counter" }],
+  },
+  "youtube-tags-generator.html": {
+    metaTitle: "YouTube Tags Generator — Video SEO Tag Ideas",
+    metaDescription: "Generate YouTube tag ideas from your video keywords. Free comma-separated tags for video SEO.",
+    keywords: "youtube tags generator, youtube tag generator, video tags seo",
+    related: [{ href: "/youtube-title-character-counter/", label: "YouTube title counter" }, { href: "/hashtag-generator/", label: "Hashtag generator" }],
+  },
+  "hreflang-tag-generator.html": {
+    metaTitle: "Hreflang Tag Generator — Multilingual SEO HTML",
+    metaDescription: "Build hreflang link tags for alternate language pages. Free international SEO tag generator.",
+    keywords: "hreflang tag generator, hreflang generator, alternate language seo tags",
+    related: [{ href: "/canonical-tag-generator/", label: "Canonical tag" }, { href: "/sitemap-xml-generator/", label: "Sitemap generator" }],
+  },
+  "amazon-title-character-counter.html": {
+    metaTitle: "Amazon Title Character Counter — Product Listing Length",
+    metaDescription: "Count Amazon product title characters with ~200 char seller guidance. Free listing title counter.",
+    keywords: "amazon title character limit, amazon product title counter, amazon listing length",
+    related: [{ href: "/serp-snippet-preview/", label: "SERP preview" }, { href: "/seo-lab/", label: "SEO lab" }],
+  },
+  "otp-generator.html": {
+    metaTitle: "OTP Generator — Random 6-Digit Code Online",
+    metaDescription: "Generate random numeric OTP codes for testing. Free OTP generator in the browser.",
+    keywords: "otp generator, 6 digit otp generator, one time password generator test",
+    related: [{ href: "/random-string-generator/", label: "Random string" }, { href: "/password-generator/", label: "Password generator" }],
+  },
+  "wind-chill-calculator.html": {
+    metaTitle: "Wind Chill Calculator — Feels-Like Cold Temperature",
+    metaDescription: "Calculate wind chill from temperature and wind speed (°F). Free weather wind chill calculator.",
+    keywords: "wind chill calculator, feels like temperature wind, wind chill formula",
+    related: [{ href: "/heat-index-calculator/", label: "Heat index" }, { href: "/celsius-to-fahrenheit/", label: "°C to °F" }],
+  },
+  "heat-index-calculator.html": {
+    metaTitle: "Heat Index Calculator — Feels-Like Hot Weather",
+    metaDescription: "Estimate heat index from air temperature and humidity. Free summer heat index calculator.",
+    keywords: "heat index calculator, feels like temperature humidity, heat index formula",
+    related: [{ href: "/wind-chill-calculator/", label: "Wind chill" }, { href: "/celsius-to-fahrenheit/", label: "Temperature converter" }],
+  },
+  "pdf-rotate.html": {
+    metaTitle: "Rotate PDF Online — Turn PDF Pages 90 Degrees Free",
+    metaDescription: "Rotate all PDF pages 90° or 180° in your browser. Private PDF rotation—no server upload.",
+    keywords: "rotate pdf, rotate pdf online, turn pdf sideways, pdf rotate 90 degrees",
+    related: [{ href: "/split-pdf/", label: "Split PDF" }, { href: "/pdf-merge/", label: "Merge PDF" }],
+  },
+};
