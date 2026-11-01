@@ -392,6 +392,84 @@ document.getElementById('go').onclick=()=>{
 };
 </script>`,
   },
+  {
+    path: "/domain-age.html",
+    file: "domain-age.html",
+    title: "Domain Age Checker — Registration Date & Site Age",
+    desc: "Find when a domain was registered and how old it is. Free RDAP lookup for SEO and due diligence.",
+    card: "Domain age checker",
+    cardDesc: "Registration date and age via public RDAP.",
+    body: `
+<h1>Domain age checker</h1>${ad}
+<div class="tool-panel">
+  <label for="domain">Domain or URL</label>
+  <input id="domain" type="text" inputmode="url" autocomplete="off" placeholder="example.com" spellcheck="false" />
+  <div class="row">
+    <button type="button" class="primary" id="go">Look up</button>
+  </div>
+  <p id="out" aria-live="polite"></p>
+  <div class="stats" id="stats" hidden>
+    <div class="stat"><strong id="created">—</strong>Registered</div>
+    <div class="stat"><strong id="age">—</strong>Age</div>
+    <div class="stat"><strong id="expires">—</strong>Expires</div>
+    <div class="stat"><strong id="changed">—</strong>Last changed</div>
+  </div>
+</div>
+<script>
+function normDomain(raw){
+  let s=String(raw||'').trim().toLowerCase();
+  try{ if(s.includes('://')) s=new URL(s).hostname; }catch(_){}
+  s=s.replace(/^www\\./,'').split('/')[0].split(':')[0];
+  return s;
+}
+function eventDate(events,action){
+  const e=(events||[]).find(x=>x.eventAction===action||(x.eventAction||'').includes(action));
+  return e&&e.eventDate?new Date(e.eventDate):null;
+}
+function ageFrom(d){
+  const n=new Date();
+  let y=n.getFullYear()-d.getFullYear(), m=n.getMonth()-d.getMonth(), day=n.getDate()-d.getDate();
+  if(day<0){ m--; day+=new Date(n.getFullYear(),n.getMonth(),0).getDate(); }
+  if(m<0){ y--; m+=12; }
+  const days=Math.floor((n-d)/864e5);
+  return {y,m,day,days};
+}
+const fmt=d=>d.toLocaleDateString(undefined,{dateStyle:'long'});
+document.getElementById('go').onclick=async()=>{
+  const domain=normDomain(document.getElementById('domain').value);
+  const out=document.getElementById('out'), stats=document.getElementById('stats');
+  stats.hidden=true;
+  out.className='';
+  if(!domain||!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/.test(domain)){
+    out.className='error';
+    out.textContent='Enter a valid domain (e.g. example.com).';
+    return;
+  }
+  out.textContent='Looking up RDAP…';
+  try{
+    const res=await fetch('https://rdap.org/domain/'+encodeURIComponent(domain),{headers:{Accept:'application/rdap+json, application/json'}});
+    if(!res.ok) throw new Error(res.status===404?'Domain not found in RDAP.':('Lookup failed ('+res.status+'). Try again later.'));
+    const data=await res.json();
+    const reg=eventDate(data.events,'registration');
+    if(!reg||isNaN(reg)) throw new Error('Registration date not published for this domain.');
+    const exp=eventDate(data.events,'expiration');
+    const ch=eventDate(data.events,'last changed')||eventDate(data.events,'last updated');
+    const a=ageFrom(reg);
+    out.className='ok';
+    out.textContent=domain;
+    document.getElementById('created').textContent=fmt(reg);
+    document.getElementById('age').textContent=a.y+' yr, '+a.m+' mo · '+a.days.toLocaleString()+' days';
+    document.getElementById('expires').textContent=exp&&!isNaN(exp)?fmt(exp):'Not listed';
+    document.getElementById('changed').textContent=ch&&!isNaN(ch)?fmt(ch):'Not listed';
+    stats.hidden=false;
+  }catch(err){
+    out.className='error';
+    out.textContent=err.message||'Lookup failed.';
+  }
+};
+document.getElementById('domain').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('go').click(); });
+</script>`,
+  },
 ];
 
 const guides = [
@@ -410,7 +488,7 @@ const guides = [
     title: "Simple SEO Checklist for Small Sites",
     desc: "A short SEO checklist: titles, sitemap, Search Console, and useful content.",
     body: `<h1>Simple SEO checklist</h1>${ad}
-<ol><li>Unique title and description on every page</li><li>Submit sitemap in Google Search Console</li><li>Fast, mobile-friendly pages</li><li>Internal links between related tools</li><li>Useful content, not duplicate spam</li></ol>
+<ol><li>Unique title and description on every page</li><li>Submit sitemap in Google Search Console</li><li>Fast, mobile-friendly pages</li><li>Internal links between related tools</li><li>Useful content, not duplicate spam</li><li>Check competitor domain history with the <a href="/domain-age.html">domain age checker</a> when doing research</li></ol>
 <p>Example project: <a href="/y-chat/">Y-Chat</a> on GitHub Pages with sitemap and guides.</p>`,
   },
   {
@@ -438,7 +516,8 @@ ${ad}
 <section aria-label="Tool categories"><h2 class="sr-only">Categories</h2>
 <section><h2>Text &amp; writing</h2><div class="grid">${tools.slice(0, 4).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
 <section style="margin-top:24px"><h2>Calculators</h2><div class="grid">${tools.slice(4, 10).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
-<section style="margin-top:24px"><h2>India utilities</h2><div class="grid">${tools.slice(10).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
+<section style="margin-top:24px"><h2>India utilities</h2><div class="grid">${tools.slice(10, 12).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
+<section style="margin-top:24px"><h2>SEO &amp; web</h2><div class="grid">${tools.slice(12).map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`).join("")}</div></section>
 <section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>
 </section>
 ${renderSeoHtml(indexSeo)}`;

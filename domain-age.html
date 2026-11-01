@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Domain Age Checker — Registration Date & Site Age</title>
+  <meta name="description" content="Find when a domain was registered and how old it is. Free RDAP lookup for SEO and due diligence." />
+  <meta name="keywords" content="domain age checker, how old is a website, domain registration date, RDAP lookup, SEO domain age" />
+  <link rel="canonical" href="https://sahankit.github.io/domain-age.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Domain Age Checker — Registration Date & Site Age" />
+  <meta property="og:description" content="Find when a domain was registered and how old it is. Free RDAP lookup for SEO and due diligence." />
+  <meta property="og:url" content="https://sahankit.github.io/domain-age.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Domain Age Checker — Registration Date & Site Age" />
+  <meta name="twitter:description" content="Find when a domain was registered and how old it is. Free RDAP lookup for SEO and due diligence." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Domain Age Checker — Registration Date & Site Age","description":"Find when a domain was registered and how old it is. Free RDAP lookup for SEO and due diligence.","url":"https://sahankit.github.io/domain-age.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is domain age a Google ranking factor?","acceptedAnswer":{"@type":"Answer","text":"Google has said domain age alone is not a major direct factor. Helpful content, relevance, and reputation matter more than how old the registration is."}},{"@type":"Question","name":"Why does lookup fail for some domains?","acceptedAnswer":{"@type":"Answer","text":"Some TLDs block RDAP, rate-limit requests, or omit registration dates. Privacy services may also limit public data."}},{"@type":"Question","name":"Do you store the domains I check?","acceptedAnswer":{"@type":"Answer","text":"No. The lookup runs from your browser to public RDAP servers; this static site has no backend database for searches."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Domain Age Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Find when a domain was registered and how old it is. Free RDAP lookup for SEO and due diligence.","url":"https://sahankit.github.io/domain-age.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Domain age checker</nav>
+
+<h1>Domain age checker</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="domain">Domain or URL</label>
+  <input id="domain" type="text" inputmode="url" autocomplete="off" placeholder="example.com" spellcheck="false" />
+  <div class="row">
+    <button type="button" class="primary" id="go">Look up</button>
+  </div>
+  <p id="out" aria-live="polite"></p>
+  <div class="stats" id="stats" hidden>
+    <div class="stat"><strong id="created">—</strong>Registered</div>
+    <div class="stat"><strong id="age">—</strong>Age</div>
+    <div class="stat"><strong id="expires">—</strong>Expires</div>
+    <div class="stat"><strong id="changed">—</strong>Last changed</div>
+  </div>
+</div>
+<script>
+function normDomain(raw){
+  let s=String(raw||'').trim().toLowerCase();
+  try{ if(s.includes('://')) s=new URL(s).hostname; }catch(_){}
+  s=s.replace(/^www\./,'').split('/')[0].split(':')[0];
+  return s;
+}
+function eventDate(events,action){
+  const e=(events||[]).find(x=>x.eventAction===action||(x.eventAction||'').includes(action));
+  return e&&e.eventDate?new Date(e.eventDate):null;
+}
+function ageFrom(d){
+  const n=new Date();
+  let y=n.getFullYear()-d.getFullYear(), m=n.getMonth()-d.getMonth(), day=n.getDate()-d.getDate();
+  if(day<0){ m--; day+=new Date(n.getFullYear(),n.getMonth(),0).getDate(); }
+  if(m<0){ y--; m+=12; }
+  const days=Math.floor((n-d)/864e5);
+  return {y,m,day,days};
+}
+const fmt=d=>d.toLocaleDateString(undefined,{dateStyle:'long'});
+document.getElementById('go').onclick=async()=>{
+  const domain=normDomain(document.getElementById('domain').value);
+  const out=document.getElementById('out'), stats=document.getElementById('stats');
+  stats.hidden=true;
+  out.className='';
+  if(!domain||!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/.test(domain)){
+    out.className='error';
+    out.textContent='Enter a valid domain (e.g. example.com).';
+    return;
+  }
+  out.textContent='Looking up RDAP…';
+  try{
+    const res=await fetch('https://rdap.org/domain/'+encodeURIComponent(domain),{headers:{Accept:'application/rdap+json, application/json'}});
+    if(!res.ok) throw new Error(res.status===404?'Domain not found in RDAP.':('Lookup failed ('+res.status+'). Try again later.'));
+    const data=await res.json();
+    const reg=eventDate(data.events,'registration');
+    if(!reg||isNaN(reg)) throw new Error('Registration date not published for this domain.');
+    const exp=eventDate(data.events,'expiration');
+    const ch=eventDate(data.events,'last changed')||eventDate(data.events,'last updated');
+    const a=ageFrom(reg);
+    out.className='ok';
+    out.textContent=domain;
+    document.getElementById('created').textContent=fmt(reg);
+    document.getElementById('age').textContent=a.y+' yr, '+a.m+' mo · '+a.days.toLocaleString()+' days';
+    document.getElementById('expires').textContent=exp&&!isNaN(exp)?fmt(exp):'Not listed';
+    document.getElementById('changed').textContent=ch&&!isNaN(ch)?fmt(ch):'Not listed';
+    stats.hidden=false;
+  }catch(err){
+    out.className='error';
+    out.textContent=err.message||'Lookup failed.';
+  }
+};
+document.getElementById('domain').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('go').click(); });
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>What is domain age?</h2><p>Domain age usually means how long ago a domain name was first registered. Search engines and buyers sometimes treat older domains as more established, but age alone does not guarantee rankings or trust—you still need good content and links.</p><p>This tool reads public registration metadata from RDAP (Registration Data Access Protocol), the modern replacement for classic WHOIS. Results depend on what the registry publishes; some TLDs hide or redact dates.</p><h2>How to use the checker</h2><p>Enter a domain like <code>example.com</code> or paste a full URL—we strip paths and optional <code>www</code>. Click Look up to see the registration date, approximate age in years and days, expiration if available, and last-changed date when the registry provides it.</p><ul><li>Useful for quick SEO research and due diligence before buying a domain.</li><li>Not a legal record—always confirm with the registrar for contracts.</li><li>Lookup goes to the public RDAP network; we do not store domains you search.</li></ul><h2>Frequently asked questions</h2><h3>Is domain age a Google ranking factor?</h3><p>Google has said domain age alone is not a major direct factor. Helpful content, relevance, and reputation matter more than how old the registration is.</p><h3>Why does lookup fail for some domains?</h3><p>Some TLDs block RDAP, rate-limit requests, or omit registration dates. Privacy services may also limit public data.</p><h3>Do you store the domains I check?</h3><p>No. The lookup runs from your browser to public RDAP servers; this static site has no backend database for searches.</p><h2>Related free tools</h2><ul><li><a href="/guides/seo-checklist.html">SEO checklist</a></li><li><a href="/epoch-converter.html">Epoch converter</a></li><li><a href="/word-counter.html">Word counter</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -80,13 +80,14 @@ const rel = {
   age: { href: "/age-calculator.html", label: "Age calculator" },
   ifsc: { href: "/ifsc-format.html", label: "IFSC format checker" },
   pan: { href: "/pan-format.html", label: "PAN format checker" },
+  domain: { href: "/domain-age.html", label: "Domain age checker" },
   writing: { href: "/guides/writing-tools.html", label: "Writing tools guide" },
   seo: { href: "/guides/seo-checklist.html", label: "SEO checklist" },
   india: { href: "/guides/india-id-formats.html", label: "India ID formats guide" },
 };
 
 export const indexSeo = {
-  keywords: "free online tools, word counter, EMI calculator, JSON formatter, BMI calculator, writing tools",
+  keywords: "free online tools, word counter, EMI calculator, JSON formatter, domain age checker, BMI calculator, writing tools",
   sections: [
     {
       h2: "Free browser tools for writing, math, and everyday tasks",
@@ -351,7 +352,45 @@ export const pageSeo = {
     faqs: [
       { q: "How long until Google indexes a new tool page?", a: "Often days to a few weeks for new sites. Request indexing in Search Console after publishing." },
     ],
-    related: [rel.writing, rel.word],
+    related: [rel.domain, rel.writing, rel.word],
+  },
+  "domain-age.html": {
+    keywords: "domain age checker, how old is a website, domain registration date, RDAP lookup, SEO domain age",
+    sections: [
+      {
+        h2: "What is domain age?",
+        paragraphs: [
+          "Domain age usually means how long ago a domain name was first registered. Search engines and buyers sometimes treat older domains as more established, but age alone does not guarantee rankings or trust—you still need good content and links.",
+          "This tool reads public registration metadata from RDAP (Registration Data Access Protocol), the modern replacement for classic WHOIS. Results depend on what the registry publishes; some TLDs hide or redact dates.",
+        ],
+      },
+      {
+        h2: "How to use the checker",
+        paragraphs: [
+          "Enter a domain like <code>example.com</code> or paste a full URL—we strip paths and optional <code>www</code>. Click Look up to see the registration date, approximate age in years and days, expiration if available, and last-changed date when the registry provides it.",
+        ],
+        list: [
+          "Useful for quick SEO research and due diligence before buying a domain.",
+          "Not a legal record—always confirm with the registrar for contracts.",
+          "Lookup goes to the public RDAP network; we do not store domains you search.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is domain age a Google ranking factor?",
+        a: "Google has said domain age alone is not a major direct factor. Helpful content, relevance, and reputation matter more than how old the registration is.",
+      },
+      {
+        q: "Why does lookup fail for some domains?",
+        a: "Some TLDs block RDAP, rate-limit requests, or omit registration dates. Privacy services may also limit public data.",
+      },
+      {
+        q: "Do you store the domains I check?",
+        a: "No. The lookup runs from your browser to public RDAP servers; this static site has no backend database for searches.",
+      },
+    ],
+    related: [rel.seo, rel.epoch, rel.word],
   },
   "guides/india-id-formats.html": {
     keywords: "IFSC format, PAN format India, bank IFSC structure",
