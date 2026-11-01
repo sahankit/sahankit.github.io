@@ -5,22 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <title>Base64 Encoder & Decoder — Online</title>
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Base64 Encoder &amp; Decoder — Online</title>
   <meta name="description" content="Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool." />
   <meta name="keywords" content="Base64 encode, Base64 decode, Base64 online, Unicode Base64" />
   <link rel="canonical" href="https://sahankit.github.io/base64-encoder/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sahankit Tools" />
-  <meta property="og:title" content="Base64 Encoder & Decoder — Online" />
+  <meta property="og:title" content="Base64 Encoder &amp; Decoder — Online" />
   <meta property="og:description" content="Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool." />
   <meta property="og:url" content="https://sahankit.github.io/base64-encoder/" />
   <meta property="og:locale" content="en_US" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Base64 Encoder & Decoder — Online" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64 Encoder &amp; Decoder — Online" />
   <meta name="twitter:description" content="Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/ads.js" defer></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Base64 Encoder & Decoder — Online","description":"Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool.","url":"https://sahankit.github.io/base64-encoder/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why did decode fail?","acceptedAnswer":{"@type":"Answer","text":"Input must be valid Base64 (padding and character set). Remove stray spaces or line breaks if pasted from logs."}}]},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Base64 Encoder & Decoder","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool.","url":"https://sahankit.github.io/base64-encoder/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/base64-encoder/#webpage","name":"Base64 Encoder & Decoder — Online","description":"Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool.","url":"https://sahankit.github.io/base64-encoder/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Base64 encode/decode","item":"https://sahankit.github.io/base64-encoder/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why did decode fail?","acceptedAnswer":{"@type":"Answer","text":"Input must be valid Base64 (padding and character set). Remove stray spaces or line breaks if pasted from logs."}}]},{"@type":"SoftwareApplication","name":"Base64 Encoder & Decoder","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Encode or decode Base64 text in the browser. Supports Unicode strings. Free Base64 tool.","url":"https://sahankit.github.io/base64-encoder/"}]}</script>
 </head>
 <body>
 
@@ -32,8 +38,8 @@
     <li><a href="/y-chat/">Y-Chat</a></li>
   </ul>
 </header>
-<div class="wrap">
-<nav class="breadcrumb"><a href="/">Tools</a> / Base64 encode/decode</nav>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/base64-encoder/">Base64 encode/decode</a></nav>
 
 <h1>Base64 encoder / decoder</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
 <div class="tool-panel">
@@ -60,7 +66,7 @@ function decUnicode(b64){
 document.getElementById('enc').onclick=()=>{ msg.hidden=true; try{ t.value=encUnicode(t.value); }catch(e){ msg.textContent=e.message; msg.hidden=false; } };
 document.getElementById('dec').onclick=()=>{ msg.hidden=true; try{ t.value=decUnicode(t.value); }catch(e){ msg.textContent='Invalid Base64.'; msg.hidden=false; } };
 </script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Base64 in APIs and configs</h2><p>Base64 encodes binary data as ASCII text—common in JSON web tokens, data URLs, and email. This tool handles Unicode text via UTF-8 before encoding.</p><h2>Frequently asked questions</h2><h3>Why did decode fail?</h3><p>Input must be valid Base64 (padding and character set). Remove stray spaces or line breaks if pasted from logs.</p><h2>Related free tools</h2><ul><li><a href="/hash-generator.html">SHA-256 hash generator</a></li><li><a href="/json-formatter.html">JSON formatter</a></li><li><a href="/uuid-generator.html">UUID generator</a></li></ul></section>
-</div>
+</main>
 
 <footer class="site-footer">
   <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>

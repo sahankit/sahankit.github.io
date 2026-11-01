@@ -94,7 +94,7 @@ const rel = {
 };
 
 export const indexSeo = {
-  keywords: "free online tools, word counter, GST calculator, SIP calculator, hash generator, EMI calculator, JSON formatter, domain age checker",
+  keywords: "free online tools, calculators, India GST EMI, word counter, developer utilities, SEO tools, Sahankit",
   sections: [
     {
       h2: "Free browser tools for writing, math, and everyday tasks",

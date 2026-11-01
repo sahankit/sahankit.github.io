@@ -4,7 +4,6 @@ import path from "path";
 import {
   renderSeoHtml,
   jsonLdGraph,
-  webPageLd,
   faqLd,
   softwareAppLd,
   indexSeo,
@@ -20,11 +19,22 @@ import { batch4PageSeo } from "./seo-batch4.mjs";
 import { batch5Tools } from "./tools-batch5.mjs";
 import { batch5PageSeo } from "./seo-batch5.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
+import {
+  OG_IMAGE,
+  escapeMeta,
+  canonicalFromFile,
+  webSiteLd,
+  breadcrumbLd,
+  webPageNode,
+  fallbackToolSeo,
+  fallbackGuideSeo,
+} from "./seo-build.mjs";
 
 const pageSeo = { ...corePageSeo, ...extraPageSeo, ...morePageSeo, ...batch4PageSeo, ...batch5PageSeo, ...sitePageSeo };
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 const nav = `
 <header class="site-header">
@@ -42,49 +52,71 @@ const footer = `
   <p><a href="${BASE}/sitemap.xml">Sitemap</a></p>
 </footer>`;
 
-const headCommon = (title, desc, urlPath, keywords = "") => `
+const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
+  const t = escapeMeta(title);
+  const d = escapeMeta(desc);
+  const k = keywords ? escapeMeta(keywords) : "";
+  const canonical = `${BASE}${canonicalPath}`;
+  const ogImage = `${BASE}${OG_IMAGE}`;
+  const robots = opts.noindex ? "noindex, follow" : "index, follow, max-image-preview:large";
+  return `
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <title>${title}</title>
-  <meta name="description" content="${desc}" />
-  ${keywords ? `<meta name="keywords" content="${keywords}" />` : ""}
-  <link rel="canonical" href="${BASE}${urlPath}" />
+  <meta name="robots" content="${robots}" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>${t}</title>
+  <meta name="description" content="${d}" />
+  ${k ? `<meta name="keywords" content="${k}" />` : ""}
+  <link rel="canonical" href="${canonical}" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="${BASE}/sitemap.xml" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sahankit Tools" />
-  <meta property="og:title" content="${title}" />
-  <meta property="og:description" content="${desc}" />
-  <meta property="og:url" content="${BASE}${urlPath}" />
+  <meta property="og:title" content="${t}" />
+  <meta property="og:description" content="${d}" />
+  <meta property="og:url" content="${canonical}" />
   <meta property="og:locale" content="en_US" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="${title}" />
-  <meta name="twitter:description" content="${desc}" />
+  <meta property="og:image" content="${ogImage}" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${t}" />
+  <meta name="twitter:description" content="${d}" />
+  <meta name="twitter:image" content="${ogImage}" />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/ads.js" defer></script>`;
+};
 
-function buildJsonLd(title, desc, urlPath, opts = {}) {
-  const graph = [
-    { ...webPageLd(title, desc, urlPath, BASE) },
-  ];
+function buildJsonLd(title, desc, canonicalPath, opts = {}) {
+  const graph = [];
+  if (opts.isHome) graph.push(webSiteLd(BASE));
+  graph.push(webPageNode(title, desc, canonicalPath, BASE));
+  const bc = breadcrumbLd(opts.breadcrumbs, BASE, canonicalPath);
+  if (bc) graph.push(bc);
   const faq = faqLd(opts.faqs);
   if (faq) graph.push(faq);
-  if (opts.softwareApp) graph.push(softwareAppLd(title, desc, urlPath, BASE));
-  return jsonLdGraph(graph.map((node) => ({ "@context": "https://schema.org", ...node })));
+  if (opts.softwareApp) {
+    graph.push({
+      ...softwareAppLd(title, desc, canonicalPath, BASE),
+      url: `${BASE}${canonicalPath}`,
+    });
+  }
+  return jsonLdGraph([{ "@context": "https://schema.org", "@graph": graph }]);
 }
 
 function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
+  const canonicalPath = opts.canonical || urlPath;
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${headCommon(title, desc, urlPath, opts.keywords || "")}
-${buildJsonLd(title, desc, urlPath, opts)}
+<head>${headCommon(title, desc, canonicalPath, opts.keywords || "", opts)}
+${buildJsonLd(title, desc, canonicalPath, opts)}
 </head>
 <body>
 ${nav}
-<div class="wrap">
+<main class="wrap">
 ${breadcrumb}
 ${mainHtml}
-</div>
+</main>
 ${footer}
 </body>
 </html>`;
@@ -114,7 +146,10 @@ function hubSectionsHtml() {
     .map(({ title, list }, i) => {
       const mt = i === 0 ? "" : ' style="margin-top:24px"';
       return `<section${mt}><h2>${title}</h2><div class="grid">${list
-        .map((t) => `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`)
+        .map((t) => {
+          const href = canonicalFromFile(t.file);
+          return `<a class="card" href="${href}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`;
+        })
         .join("")}</div></section>`;
     })
     .join("\n");
@@ -855,52 +890,82 @@ ${ad}
 <section style="margin-top:8px"><h2>Specialized sites</h2><div class="grid">${micrositeCards}</div></section>
 <section aria-label="Tool categories"><h2 class="sr-only">Categories</h2>
 ${hubSectionsHtml()}
-<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>
+<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${canonicalFromFile(g.file)}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>
 </section>
 ${renderSeoHtml(indexSeo)}`;
 
 const indexHtml = page(
   "/",
-  "Sahankit Tools — Free Calculators & Writing Utilities",
-  "Free online tools: QR codes, GST invoice, typing test, PDF merge, India FD/RD/SIP, chat rooms, domain age, and 40+ browser utilities.",
+  "Sahankit Tools — 88+ Free Online Calculators & Utilities",
+  "Free browser tools: India GST, EMI, SIP, word counter, QR codes, PDF merge, domain age, developer utilities, chat, and mini-sites—no signup.",
   indexMain,
   "",
-  { keywords: indexSeo.keywords, faqs: indexSeo.faqs },
+  {
+    keywords: indexSeo.keywords,
+    faqs: indexSeo.faqs,
+    isHome: true,
+    canonical: "/",
+    breadcrumbs: [{ name: "Home", url: "/" }],
+  },
 );
 
 write("index.html", indexHtml);
 
-function pageOpts(file) {
-  const seo = pageSeo[file];
+function resolveSeo(file, toolOrGuide) {
+  if (pageSeo[file]) return pageSeo[file];
+  if (toolOrGuide?.card) return fallbackToolSeo(toolOrGuide);
+  if (toolOrGuide?.title) return fallbackGuideSeo(toolOrGuide);
+  return null;
+}
+
+function pageOpts(file, entity) {
+  const seo = resolveSeo(file, entity);
   return {
     keywords: seo?.keywords,
     faqs: seo?.faqs,
     softwareApp: !file.startsWith("guides/"),
+    seoBlock: seo,
   };
 }
 
-function fullMain(file, body) {
-  return body + renderSeoHtml(pageSeo[file]);
+function fullMain(file, entity) {
+  const seo = resolveSeo(file, entity);
+  return entity.body + (seo ? renderSeoHtml(seo) : "");
 }
 
 for (const t of tools) {
-  const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / ${t.card}</nav>`;
-  const main = fullMain(t.file, t.body);
-  const opts = pageOpts(t.file);
+  const canonical = canonicalFromFile(t.file);
+  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="${canonical}">${t.card}</a></nav>`;
+  const main = fullMain(t.file, t);
+  const opts = {
+    ...pageOpts(t.file, t),
+    canonical,
+    breadcrumbs: [
+      { name: "Home", url: "/" },
+      { name: t.card, url: canonical },
+    ],
+  };
   write(t.file, page(t.path, t.title, t.desc, main, bc, opts));
-  const slug = t.file.replace(/\.html$/, "");
-  const dirPath = `/${slug}/`;
-  write(`${slug}/index.html`, page(dirPath, t.title, t.desc, main, bc, opts));
+  write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, t.title, t.desc, main, bc, opts));
 }
 
 for (const g of guides) {
-  const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / Guides</nav>`;
-  const main = fullMain(g.file, g.body);
-  const opts = pageOpts(g.file);
+  const canonical = canonicalFromFile(g.file);
+  const short = g.title.split("—")[0].trim();
+  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/guides/writing-tools.html">Guides</a> / <span>${short}</span></nav>`;
+  const main = fullMain(g.file, g);
+  const opts = {
+    ...pageOpts(g.file, g),
+    canonical,
+    softwareApp: false,
+    breadcrumbs: [
+      { name: "Home", url: "/" },
+      { name: "Guides", url: "/guides/writing-tools/" },
+      { name: short, url: canonical },
+    ],
+  };
   write(g.file, page(g.path, g.title, g.desc, main, bc, opts));
-  const slug = g.file.replace(/\.html$/, "");
-  const dirPath = `/${slug}/`;
-  write(`${slug}/index.html`, page(dirPath, g.title, g.desc, main, bc, opts));
+  write(`${g.file.replace(/\.html$/, "")}/index.html`, page(canonical, g.title, g.desc, main, bc, opts));
 }
 
 const micrositeUrls = [];
@@ -908,11 +973,19 @@ for (const def of micrositeDefs) {
   const file = `${def.slug}/index.html`;
   const urlPath = `/${def.slug}/`;
   micrositeUrls.push(urlPath);
-  const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / ${def.hero}</nav>`;
+  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / ${def.hero}</nav>`;
   const body = micrositeMain(def, ad, tools, guides);
   const seo = pageSeo[file];
   const main = body + (seo ? renderSeoHtml(seo) : "");
-  const opts = { keywords: seo?.keywords, faqs: def.faqs?.length ? def.faqs : seo?.faqs };
+  const opts = {
+    keywords: seo?.keywords,
+    faqs: def.faqs?.length ? def.faqs : seo?.faqs,
+    canonical: urlPath,
+    breadcrumbs: [
+      { name: "Home", url: "/" },
+      { name: def.hero, url: urlPath },
+    ],
+  };
   write(file, page(urlPath, def.title, def.desc, main, bc, opts));
 }
 
@@ -922,9 +995,19 @@ for (const def of micrositeDefs) {
   micrositeUrls.push(urlPath);
   const title = "Sahankit Quiz — Free Online Trivia";
   const desc = "Ten-question trivia quiz in your browser. General knowledge and tech.";
-  const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / Quiz</nav>`;
+  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Quiz</nav>`;
   const main = quizSiteBody(ad) + renderSeoHtml(pageSeo[file]);
-  write(file, page(urlPath, title, desc, main, bc, pageOpts(file)));
+  write(
+    file,
+    page(urlPath, title, desc, main, bc, {
+      ...pageOpts(file),
+      canonical: urlPath,
+      breadcrumbs: [
+        { name: "Home", url: "/" },
+        { name: "Quiz", url: urlPath },
+      ],
+    }),
+  );
 }
 
 const notFound = page(
@@ -934,27 +1017,51 @@ const notFound = page(
   `<h1>Page not found</h1>
 <p>That URL is not on this site. Try the <a href="/">tools home</a> or <a href="/y-chat/">Y-Chat</a>.</p>
 <ul>
-  <li><a href="/word-counter.html">Word counter</a></li>
-  <li><a href="/emi-calculator.html">EMI calculator</a></li>
-  <li><a href="/guides/writing-tools.html">Writing tools guide</a></li>
+  <li><a href="/word-counter/">Word counter</a></li>
+  <li><a href="/emi-calculator/">EMI calculator</a></li>
+  <li><a href="/guides/writing-tools/">Writing tools guide</a></li>
 </ul>`,
+  "",
+  { noindex: true, canonical: "/404.html" },
 );
 write("404.html", notFound);
 write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirect</title></head><body><p><a href="/">Go to Sahankit Tools</a></p></body></html>`);
 
-const urls = [
-  "/",
-  ...micrositeUrls,
-  ...tools.flatMap((t) => [t.path, `/${t.file.replace(/\.html$/, "")}/`]),
-  ...guides.flatMap((g) => [g.path, `/${g.file.replace(/\.html$/, "")}/`]),
+const sitemapEntries = [
+  { loc: "/", priority: "1.0", changefreq: "weekly" },
+  ...micrositeUrls.map((u) => ({ loc: u, priority: "0.9", changefreq: "weekly" })),
+  ...tools.map((t) => ({
+    loc: canonicalFromFile(t.file),
+    priority: "0.8",
+    changefreq: "monthly",
+  })),
+  ...guides.map((g) => ({
+    loc: canonicalFromFile(g.file),
+    priority: "0.7",
+    changefreq: "monthly",
+  })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${BASE}${u === "/" ? "/" : u}</loc><changefreq>monthly</changefreq></url>`).join("\n")}
+${sitemapEntries
+  .map(
+    (e) =>
+      `  <url><loc>${BASE}${e.loc}</loc><lastmod>${BUILD_DATE}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
+  )
+  .join("\n")}
 </urlset>
 `;
 write("sitemap.xml", sitemap);
-write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${BASE}/sitemap.xml\n`);
+write(
+  "robots.txt",
+  `User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /tools/
+
+Sitemap: ${BASE}/sitemap.xml
+`,
+);
 write(".nojekyll", "");
 write("google34da527c15058477.html", "google-site-verification: google34da527c15058477.html\n");
 
