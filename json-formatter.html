@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow" />
+  <title>JSON Formatter & Validator — Pretty Print Online</title>
+  <meta name="description" content="Format and validate JSON in the browser. Free JSON pretty printer with error messages." />
+  <link rel="canonical" href="https://sahankit.github.io/json-formatter.html" />
+  <meta property="og:title" content="JSON Formatter & Validator — Pretty Print Online" />
+  <meta property="og:description" content="Format and validate JSON in the browser. Free JSON pretty printer with error messages." />
+  <meta property="og:url" content="https://sahankit.github.io/json-formatter.html" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="https://sahankit.github.io/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="https://sahankit.github.io/">All tools</a></li>
+    <li><a href="https://sahankit.github.io/guides/writing-tools.html">Guides</a></li>
+    <li><a href="https://sahankit.github.io/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / JSON formatter</nav>
+
+<h1>JSON formatter</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="json">JSON</label>
+  <textarea id="json" spellcheck="false" placeholder='{"hello":"world"}'></textarea>
+  <div class="row"><button type="button" class="primary" id="fmt">Format</button><button type="button" class="primary" id="min">Minify</button></div>
+  <p id="msg" class="error" hidden></p>
+</div>
+<script>
+const j=document.getElementById('json'), msg=document.getElementById('msg');
+function run(spaces){
+  msg.hidden=true;
+  try{ j.value=JSON.stringify(JSON.parse(j.value),null,spaces); }
+  catch(e){ msg.textContent=e.message; msg.hidden=false; }
+}
+document.getElementById('fmt').onclick=()=>run(2);
+document.getElementById('min').onclick=()=>run(0);
+</script>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

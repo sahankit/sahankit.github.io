@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow" />
+  <title>PAN Format Checker — Validate PAN Pattern</title>
+  <meta name="description" content="Check if a PAN matches the standard format AAAAA9999A. Not an official Income Tax verification." />
+  <link rel="canonical" href="https://sahankit.github.io/pan-format.html" />
+  <meta property="og:title" content="PAN Format Checker — Validate PAN Pattern" />
+  <meta property="og:description" content="Check if a PAN matches the standard format AAAAA9999A. Not an official Income Tax verification." />
+  <meta property="og:url" content="https://sahankit.github.io/pan-format.html" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="https://sahankit.github.io/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="https://sahankit.github.io/">All tools</a></li>
+    <li><a href="https://sahankit.github.io/guides/writing-tools.html">Guides</a></li>
+    <li><a href="https://sahankit.github.io/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / PAN format check</nav>
+
+<h1>PAN format checker</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="pan">PAN</label><input id="pan" maxlength="10" placeholder="ABCDE1234F" autocapitalize="characters" />
+  <button type="button" class="primary" id="go">Check format</button>
+  <p id="out"></p>
+</div>
+<p class="prose">Format-only check (5 letters, 4 digits, 1 letter). Not linked to Income Tax records.</p>
+<script>
+document.getElementById('go').onclick=()=>{
+  const s=document.getElementById('pan').value.trim().toUpperCase();
+  const ok=/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(s);
+  const o=document.getElementById('out');
+  o.className=ok?'ok':'error';
+  o.textContent=ok?'Format looks valid.':'Invalid PAN format.';
+};
+</script>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

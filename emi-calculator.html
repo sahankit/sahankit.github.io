@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow" />
+  <title>EMI Calculator — Loan Monthly Payment India</title>
+  <meta name="description" content="Estimate monthly EMI from loan amount, annual interest rate, and tenure in months." />
+  <link rel="canonical" href="https://sahankit.github.io/emi-calculator.html" />
+  <meta property="og:title" content="EMI Calculator — Loan Monthly Payment India" />
+  <meta property="og:description" content="Estimate monthly EMI from loan amount, annual interest rate, and tenure in months." />
+  <meta property="og:url" content="https://sahankit.github.io/emi-calculator.html" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="https://sahankit.github.io/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="https://sahankit.github.io/">All tools</a></li>
+    <li><a href="https://sahankit.github.io/guides/writing-tools.html">Guides</a></li>
+    <li><a href="https://sahankit.github.io/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / EMI calculator</nav>
+
+<h1>EMI calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="p">Principal (₹)</label><input id="p" type="number" value="500000" />
+  <label for="r">Annual interest (%)</label><input id="r" type="number" step="0.1" value="10.5" />
+  <label for="n">Tenure (months)</label><input id="n" type="number" value="60" />
+  <button type="button" class="primary" id="go">Calculate EMI</button>
+  <p id="out"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const P=Number(document.getElementById('p').value), ann=Number(document.getElementById('r').value)/100/12, n=Number(document.getElementById('n').value);
+  if(!P||!n) return;
+  const emi= ann? P*ann*Math.pow(1+ann,n)/(Math.pow(1+ann,n)-1): P/n;
+  document.getElementById('out').textContent='EMI ≈ ₹'+emi.toFixed(2)+' (estimate only, not a bank offer)';
+};
+</script>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
