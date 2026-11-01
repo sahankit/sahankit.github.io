@@ -592,5 +592,79 @@ document.getElementById('go').click();
 <p><a href="/y-chat/">Join Y-Chat</a> and pick or create a room for your subject.</p>
 <p>Pair with our <a href="/typing-test.html">typing test</a>, <a href="/word-counter.html">word counter</a>, and <a href="/cgpa-calculator.html">CGPA tool</a>.</p>`,
     },
+    {
+      path: "/lorem-ipsum.html",
+      file: "lorem-ipsum.html",
+      category: "writing",
+      title: "Lorem Ipsum Generator — Placeholder Text",
+      desc: "Generate lorem ipsum placeholder paragraphs for mockups and design.",
+      card: "Lorem ipsum",
+      cardDesc: "Placeholder paragraphs.",
+      body: `
+<h1>Lorem ipsum generator</h1>${ad}
+<div class="tool-panel">
+  <label for="p">Paragraphs</label><input id="p" type="number" min="1" max="10" value="3" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <textarea id="out" rows="10" readonly></textarea>
+  <button type="button" class="primary" id="copy">Copy</button>
+</div>
+<script>
+const base='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.';
+document.getElementById('go').onclick=()=>{
+  const n=Math.min(10,Math.max(1,Number(document.getElementById('p').value)||1));
+  document.getElementById('out').value=Array.from({length:n},(_,i)=>base+' Paragraph '+(i+1)+'.').join('\\n\\n');
+};
+document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(document.getElementById('out').value);
+document.getElementById('go').click();
+</script>`,
+    },
+    {
+      path: "/url-encoder.html",
+      file: "url-encoder.html",
+      category: "developer",
+      title: "URL Encoder & Decoder — Percent Encoding",
+      desc: "Encode or decode URLs and query strings with encodeURIComponent.",
+      card: "URL encode/decode",
+      cardDesc: "Percent-encode URLs.",
+      body: `
+<h1>URL encoder / decoder</h1>${ad}
+<div class="tool-panel">
+  <label for="text">Text</label><textarea id="text" spellcheck="false"></textarea>
+  <div class="row">
+    <button type="button" class="primary" id="enc">Encode</button>
+    <button type="button" class="primary" id="dec">Decode</button>
+  </div>
+</div>
+<script>
+const t=document.getElementById('text');
+document.getElementById('enc').onclick=()=>{ t.value=encodeURIComponent(t.value); };
+document.getElementById('dec').onclick=()=>{ try{ t.value=decodeURIComponent(t.value); }catch(e){ alert('Invalid encoding'); } };
+</script>`,
+    },
+    {
+      path: "/html-entities.html",
+      file: "html-entities.html",
+      category: "developer",
+      title: "HTML Entity Encoder & Decoder",
+      desc: "Escape or unescape HTML entities for safe markup and snippets.",
+      card: "HTML entities",
+      cardDesc: "Escape HTML text.",
+      body: `
+<h1>HTML entity encoder</h1>${ad}
+<div class="tool-panel">
+  <label for="text">Text</label><textarea id="text" spellcheck="false"></textarea>
+  <div class="row">
+    <button type="button" class="primary" id="enc">Encode</button>
+    <button type="button" class="primary" id="dec">Decode</button>
+  </div>
+</div>
+<script>
+const t=document.getElementById('text');
+function enc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function dec(s){ const d=document.createElement('div'); d.innerHTML=s; return d.textContent; }
+document.getElementById('enc').onclick=()=>{ t.value=enc(t.value); };
+document.getElementById('dec').onclick=()=>{ t.value=dec(t.value); };
+</script>`,
+    },
   ];
 }

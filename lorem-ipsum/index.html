@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Lorem Ipsum Generator — Placeholder Text</title>
+  <meta name="description" content="Generate lorem ipsum placeholder paragraphs for mockups and design." />
+  <meta name="keywords" content="lorem ipsum generator, placeholder text" />
+  <link rel="canonical" href="https://sahankit.github.io/lorem-ipsum/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Lorem Ipsum Generator — Placeholder Text" />
+  <meta property="og:description" content="Generate lorem ipsum placeholder paragraphs for mockups and design." />
+  <meta property="og:url" content="https://sahankit.github.io/lorem-ipsum/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lorem Ipsum Generator — Placeholder Text" />
+  <meta name="twitter:description" content="Generate lorem ipsum placeholder paragraphs for mockups and design." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Lorem Ipsum Generator — Placeholder Text","description":"Generate lorem ipsum placeholder paragraphs for mockups and design.","url":"https://sahankit.github.io/lorem-ipsum/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Lorem Ipsum Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generate lorem ipsum placeholder paragraphs for mockups and design.","url":"https://sahankit.github.io/lorem-ipsum/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Lorem ipsum</nav>
+
+<h1>Lorem ipsum generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="p">Paragraphs</label><input id="p" type="number" min="1" max="10" value="3" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <textarea id="out" rows="10" readonly></textarea>
+  <button type="button" class="primary" id="copy">Copy</button>
+</div>
+<script>
+const base='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.';
+document.getElementById('go').onclick=()=>{
+  const n=Math.min(10,Math.max(1,Number(document.getElementById('p').value)||1));
+  document.getElementById('out').value=Array.from({length:n},(_,i)=>base+' Paragraph '+(i+1)+'.').join('\n\n');
+};
+document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(document.getElementById('out').value);
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Placeholder copy for mockups</h2><p>Generate neutral Latin filler for wireframes and design comps.</p><h2>Related free tools</h2><ul><li><a href="/word-counter.html">Word counter</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

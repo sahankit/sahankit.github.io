@@ -11,9 +11,11 @@ import {
   pageSeo as corePageSeo,
 } from "./seo-content.mjs";
 import { extraPageSeo } from "./seo-extra.mjs";
+import { sitePageSeo } from "./seo-sites.mjs";
 import { extraTools } from "./tools-extra.mjs";
+import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
 
-const pageSeo = { ...corePageSeo, ...extraPageSeo };
+const pageSeo = { ...corePageSeo, ...extraPageSeo, ...sitePageSeo };
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
@@ -829,8 +831,19 @@ const hubCards = tools.map((t) =>
   `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
 ).join("\n");
 
+const micrositeCards = micrositeDefs
+  .map(
+    (s) =>
+      `<a class="card" href="/${s.slug}/"><h2>${s.hero}</h2><p>${s.blurb.slice(0, 90)}…</p></a>`,
+  )
+  .concat(
+    `<a class="card" href="/quiz/"><h2>Quick quiz</h2><p>Free trivia in your browser—10 questions.</p></a>`,
+  )
+  .join("");
+
 const indexMain = `<div class="hero"><h1>Free online tools</h1><p>Calculators and writing utilities in your browser. Also try <a href="/y-chat/">Y-Chat</a> — free chat rooms.</p></div>
 ${ad}
+<section style="margin-top:8px"><h2>Specialized sites</h2><div class="grid">${micrositeCards}</div></section>
 <section aria-label="Tool categories"><h2 class="sr-only">Categories</h2>
 ${hubSectionsHtml()}
 <section style="margin-top:24px"><h2>Guides</h2><div class="grid">${guides.map((g) => `<a class="card" href="${g.path}"><h2>${g.title.split("—")[0].trim()}</h2><p>${g.desc.slice(0, 80)}…</p></a>`).join("")}</div></section>
@@ -881,6 +894,30 @@ for (const g of guides) {
   write(`${slug}/index.html`, page(dirPath, g.title, g.desc, main, bc, opts));
 }
 
+const micrositeUrls = [];
+for (const def of micrositeDefs) {
+  const file = `${def.slug}/index.html`;
+  const urlPath = `/${def.slug}/`;
+  micrositeUrls.push(urlPath);
+  const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / ${def.hero}</nav>`;
+  const body = micrositeMain(def, ad, tools, guides);
+  const seo = pageSeo[file];
+  const main = body + (seo ? renderSeoHtml(seo) : "");
+  const opts = { keywords: seo?.keywords, faqs: def.faqs?.length ? def.faqs : seo?.faqs };
+  write(file, page(urlPath, def.title, def.desc, main, bc, opts));
+}
+
+{
+  const file = "quiz/index.html";
+  const urlPath = "/quiz/";
+  micrositeUrls.push(urlPath);
+  const title = "Sahankit Quiz — Free Online Trivia";
+  const desc = "Ten-question trivia quiz in your browser. General knowledge and tech.";
+  const bc = `<nav class="breadcrumb"><a href="/">Tools</a> / Quiz</nav>`;
+  const main = quizSiteBody(ad) + renderSeoHtml(pageSeo[file]);
+  write(file, page(urlPath, title, desc, main, bc, pageOpts(file)));
+}
+
 const notFound = page(
   "/404.html",
   "Page not found — Sahankit Tools",
@@ -898,6 +935,7 @@ write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="u
 
 const urls = [
   "/",
+  ...micrositeUrls,
   ...tools.flatMap((t) => [t.path, `/${t.file.replace(/\.html$/, "")}/`]),
   ...guides.flatMap((g) => [g.path, `/${g.file.replace(/\.html$/, "")}/`]),
 ];
@@ -911,4 +949,4 @@ write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${BASE}/sitemap.xml\n`)
 write(".nojekyll", "");
 write("google34da527c15058477.html", "google-site-verification: google34da527c15058477.html\n");
 
-console.log("Built", tools.length, "tools,", guides.length, "guides");
+console.log("Built", tools.length, "tools,", guides.length, "guides,", micrositeUrls.length, "microsites");

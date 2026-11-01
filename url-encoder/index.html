@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>URL Encoder & Decoder — Percent Encoding</title>
+  <meta name="description" content="Encode or decode URLs and query strings with encodeURIComponent." />
+  <meta name="keywords" content="URL encode, decodeURIComponent online" />
+  <link rel="canonical" href="https://sahankit.github.io/url-encoder/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="URL Encoder & Decoder — Percent Encoding" />
+  <meta property="og:description" content="Encode or decode URLs and query strings with encodeURIComponent." />
+  <meta property="og:url" content="https://sahankit.github.io/url-encoder/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="URL Encoder & Decoder — Percent Encoding" />
+  <meta name="twitter:description" content="Encode or decode URLs and query strings with encodeURIComponent." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"URL Encoder & Decoder — Percent Encoding","description":"Encode or decode URLs and query strings with encodeURIComponent.","url":"https://sahankit.github.io/url-encoder/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"URL Encoder & Decoder","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Encode or decode URLs and query strings with encodeURIComponent.","url":"https://sahankit.github.io/url-encoder/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / URL encode/decode</nav>
+
+<h1>URL encoder / decoder</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="text">Text</label><textarea id="text" spellcheck="false"></textarea>
+  <div class="row">
+    <button type="button" class="primary" id="enc">Encode</button>
+    <button type="button" class="primary" id="dec">Decode</button>
+  </div>
+</div>
+<script>
+const t=document.getElementById('text');
+document.getElementById('enc').onclick=()=>{ t.value=encodeURIComponent(t.value); };
+document.getElementById('dec').onclick=()=>{ try{ t.value=decodeURIComponent(t.value); }catch(e){ alert('Invalid encoding'); } };
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>When to URL-encode</h2><p>Use encoding for query parameters and special characters in URLs.</p><h2>Related free tools</h2><ul><li><a href="/base64-encoder.html">Base64</a></li></ul></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

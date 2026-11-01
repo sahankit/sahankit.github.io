@@ -115,6 +115,12 @@ export const indexSeo = {
       ],
     },
     {
+      h2: "Specialized mini-sites",
+      paragraphs: [
+        'Browse focused hubs: <a href="/finance/">Finance (India)</a>, <a href="/dev/">Developer</a>, <a href="/seo-lab/">SEO lab</a>, <a href="/design/">Design</a>, <a href="/student/">Student</a>, <a href="/chat/">Chat</a>, and <a href="/quiz/">Quiz</a>.',
+      ],
+    },
+    {
       h2: "Also try Y-Chat",
       paragraphs: [
         'Looking for conversation? <a href="/y-chat/">Y-Chat</a> offers free Yahoo-style chat rooms and a private messenger in the browser on the same GitHub Pages site under <code>/y-chat/</code>.',

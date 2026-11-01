@@ -157,6 +157,27 @@ export const extraPageSeo = {
     [],
     [{ href: "/qr-code-generator.html", label: "QR generator" }],
   ),
+  "lorem-ipsum.html": toolSeo(
+    "lorem ipsum generator, placeholder text",
+    "Placeholder copy for mockups",
+    "Generate neutral Latin filler for wireframes and design comps.",
+    [],
+    [{ href: "/word-counter.html", label: "Word counter" }],
+  ),
+  "url-encoder.html": toolSeo(
+    "URL encode, decodeURIComponent online",
+    "When to URL-encode",
+    "Use encoding for query parameters and special characters in URLs.",
+    [],
+    [{ href: "/base64-encoder.html", label: "Base64" }],
+  ),
+  "html-entities.html": toolSeo(
+    "HTML entity encoder, escape HTML online",
+    "Escape user content",
+    "Prevent accidental HTML injection when pasting text into templates.",
+    [],
+    [{ href: "/json-formatter.html", label: "JSON formatter" }],
+  ),
   "guides/y-chat-guide.html": toolSeo(
     "Y-Chat guide, free chat rooms browser",
     "Using Y-Chat",
