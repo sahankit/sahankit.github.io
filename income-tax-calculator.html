@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Income Tax Calculator India — New vs Old Regime</title>
+  <meta name="description" content="Compare tax under India's new and old regimes for salaried income. See which regime saves more." />
+  <meta name="keywords" content="income tax calculator india, new tax regime vs old regime, section 115BAC, 80C HRA, FY 2025-26 salaried" />
+  <link rel="canonical" href="https://sahankit.github.io/income-tax-calculator/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Income Tax Calculator India — New vs Old Regime" />
+  <meta property="og:description" content="Compare tax under India's new and old regimes for salaried income. See which regime saves more." />
+  <meta property="og:url" content="https://sahankit.github.io/income-tax-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Income Tax Calculator India — New vs Old Regime" />
+  <meta name="twitter:description" content="Compare tax under India's new and old regimes for salaried income. See which regime saves more." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/income-tax-calculator/#webpage","name":"Income Tax Calculator India — New vs Old Regime","description":"Compare tax under India's new and old regimes for salaried income. See which regime saves more.","url":"https://sahankit.github.io/income-tax-calculator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"Income tax (India)","item":"https://sahankit.github.io/income-tax-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I switch between new and old regime every year?","acceptedAnswer":{"@type":"Answer","text":"Salaried employees can generally choose each financial year when filing or via employer declaration, subject to current IT rules. Business income has stricter lock-in once you leave the old regime."}},{"@type":"Question","name":"Is HRA allowed in the new regime?","acceptedAnswer":{"@type":"Answer","text":"No. HRA exemption under section 10(13A) is not available in the new tax regime. Enter HRA only for the old-regime column."}},{"@type":"Question","name":"Why does the new regime show zero tax below ₹7 lakh?","acceptedAnswer":{"@type":"Answer","text":"Section 87A provides a rebate that can reduce tax to nil when total income (after standard deduction) does not exceed ₹7 lakh under the new regime, for eligible residents."}}]},{"@type":"SoftwareApplication","name":"Income Tax Calculator India","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Compare tax under India's new and old regimes for salaried income. See which regime saves more.","url":"https://sahankit.github.io/income-tax-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/income-tax-calculator/">Income tax (India)</a></nav>
+
+<h1>Income tax calculator — new vs old regime</h1>
+<p class="prose" style="font-size:0.9rem">Resident individual, salaried. Slabs per <strong>FY 2025–26</strong> (AY 2026–27). Illustration only—not tax advice.</p>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="gross">Annual gross salary / income (₹)</label>
+  <input id="gross" type="number" value="1200000" step="1000" />
+
+  <details open style="margin:12px 0">
+    <summary><strong>Deductions (old regime only)</strong></summary>
+    <label for="c80c">80C + 80CCC + 80CCD(1) (max ₹1.5L)</label>
+    <input id="c80c" type="number" value="150000" max="150000" />
+    <label for="nps">80CCD(1B) — extra NPS (max ₹50k)</label>
+    <input id="nps" type="number" value="0" max="50000" />
+    <label for="d80d">80D — health insurance</label>
+    <input id="d80d" type="number" value="25000" />
+    <label for="hra">HRA exemption (₹)</label>
+    <input id="hra" type="number" value="120000" />
+    <label for="other">Other Chapter VI-A (80E, 80G, etc.)</label>
+    <input id="other" type="number" value="0" />
+  </details>
+
+  <button type="button" class="primary" id="go">Compare regimes</button>
+
+  <div id="verdict" class="ok" style="font-size:1.05rem;margin-top:12px"></div>
+
+  <table class="prose" style="width:100%;margin-top:16px;border-collapse:collapse;font-size:0.95rem" aria-label="Tax comparison">
+    <thead>
+      <tr><th style="text-align:left;border-bottom:1px solid #ccc;padding:6px"></th><th style="border-bottom:1px solid #ccc;padding:6px">New regime</th><th style="border-bottom:1px solid #ccc;padding:6px">Old regime</th></tr>
+    </thead>
+    <tbody id="tbl"></tbody>
+  </table>
+  <p id="hint" class="prose" style="font-size:0.85rem;margin-top:12px"></p>
+</div>
+<script>
+const STD_NEW = 75000;
+const STD_OLD = 50000;
+const CESS = 0.04;
+
+const NEW_SLABS = [[300000,0],[700000,0.05],[1000000,0.10],[1200000,0.15],[1500000,0.20],[Infinity,0.30]];
+const OLD_SLABS = [[250000,0],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
+
+function slabTax(taxable, slabs){
+  if(taxable<=0) return 0;
+  let tax=0, lower=0;
+  for(const [upper, rate] of slabs){
+    if(taxable<=lower) break;
+    tax += (Math.min(taxable, upper)-lower)*rate;
+    lower=upper;
+    if(taxable<=upper) break;
+  }
+  return tax;
+}
+
+function rebate87A(tax, incomeForRebate, regime){
+  if(regime==='new'){
+    if(incomeForRebate<=700000) return tax;
+    return 0;
+  }
+  if(incomeForRebate<=500000) return Math.min(tax, 12500);
+  return 0;
+}
+
+function calcRegime(gross, regime, ded){
+  const std = regime==='new' ? STD_NEW : STD_OLD;
+  let taxable = gross - std;
+  if(regime==='old'){
+    const cap80c = Math.min(Math.max(ded.c80c,0), 150000);
+    const capNps = Math.min(Math.max(ded.nps,0), 50000);
+    taxable -= cap80c + capNps + Math.max(ded.d80d,0) + Math.max(ded.hra,0) + Math.max(ded.other,0);
+  }
+  taxable = Math.max(0, taxable);
+  const incomeForRebate = taxable;
+  const slabs = regime==='new' ? NEW_SLABS : OLD_SLABS;
+  const raw = slabTax(taxable, slabs);
+  const reb = rebate87A(raw, incomeForRebate, regime);
+  const afterReb = Math.max(0, raw - reb);
+  const cessAmt = afterReb * CESS;
+  const total = afterReb + cessAmt;
+  return { taxable, raw, reb, afterReb, cessAmt, total };
+}
+
+function fmt(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+
+function row(label, a, b){
+  return '<tr><td style="padding:6px;border-bottom:1px solid #eee">'+label+'</td><td style="padding:6px;border-bottom:1px solid #eee">'+a+'</td><td style="padding:6px;border-bottom:1px solid #eee">'+b+'</td></tr>';
+}
+
+document.getElementById('go').onclick=()=>{
+  const gross = +document.getElementById('gross').value;
+  const ded = {
+    c80c: +document.getElementById('c80c').value,
+    nps: +document.getElementById('nps').value,
+    d80d: +document.getElementById('d80d').value,
+    hra: +document.getElementById('hra').value,
+    other: +document.getElementById('other').value,
+  };
+  const neu = calcRegime(gross, 'new', ded);
+  const old = calcRegime(gross, 'old', ded);
+  const saveNew = old.total - neu.total;
+  const v = document.getElementById('verdict');
+  if(Math.abs(saveNew)<1){
+    v.textContent='Both regimes result in about the same tax.';
+    v.className='ok';
+  } else if(saveNew>0){
+    v.textContent='New regime is better — you save '+fmt(saveNew)+' per year ('+fmt(saveNew/12)+'/month less tax).';
+    v.className='ok';
+  } else {
+    v.textContent='Old regime is better — you save '+fmt(-saveNew)+' per year ('+fmt(-saveNew/12)+'/month less tax).';
+    v.className='ok';
+  }
+  const netNew = gross - neu.total;
+  const netOld = gross - old.total;
+  document.getElementById('tbl').innerHTML =
+    row('Taxable income', fmt(neu.taxable), fmt(old.taxable)) +
+    row('Tax before rebate', fmt(neu.raw), fmt(old.raw)) +
+    row('Rebate u/s 87A', fmt(neu.reb), fmt(old.reb)) +
+    row('Tax after rebate', fmt(neu.afterReb), fmt(old.afterReb)) +
+    row('Health & education cess (4%)', fmt(neu.cessAmt), fmt(old.cessAmt)) +
+    row('<strong>Total tax</strong>', '<strong>'+fmt(neu.total)+'</strong>', '<strong>'+fmt(old.total)+'</strong>') +
+    row('Net in-hand (annual)', fmt(netNew), fmt(netOld)) +
+    row('Net in-hand (monthly)', fmt(netNew/12), fmt(netOld/12));
+
+  const hint = document.getElementById('hint');
+  const dedSum = Math.min(ded.c80c,150000)+Math.min(ded.nps,50000)+ded.d80d+ded.hra+ded.other;
+  if(saveNew>0 && dedSum<50000){
+    hint.textContent='With few deductions, the new regime often wins because of higher standard deduction (₹75,000) and lower rates on middle incomes.';
+  } else if(saveNew<=0){
+    hint.textContent='Old regime wins when Chapter VI-A deductions (80C, HRA, 80D, home loan interest u/s 24(b) if included in “other”, etc.) reduce taxable income enough to offset higher slab rates.';
+  } else {
+    hint.textContent='Try increasing or decreasing deductions to see when the old regime overtakes the new one for your salary.';
+  }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>New vs old tax regime in India</h2><p>From FY 2023–24 onward, the new tax regime under section 115BAC is the default for many salaried employees, but you can still opt for the old regime if it lowers your tax. The new regime offers a higher standard deduction for salary (₹75,000 from FY 2024–25) and simplified slabs, with most Chapter VI-A deductions unavailable. The old regime keeps deductions such as 80C (up to ₹1.5 lakh), 80D, HRA exemption, and home loan interest, but uses the classic slab structure and a ₹50,000 standard deduction.</p><h2>Which regime is advantageous?</h2><p>There is no single answer: the better regime depends on your gross income and total deductions. Lower deductions (little 80C, no HRA, minimal 80D) often favour the new regime, especially for incomes up to about ₹7–12 lakh where rebates and slabs are favourable. Higher deductions—large HRA in metro cities, full 80C, NPS 80CCD(1B), 80D for family, and housing loan interest—frequently make the old regime cheaper. This calculator compares both side by side for one salary figure so you can see estimated tax, cess, and monthly in-hand.</p><h2>What this calculator includes</h2><p>It uses FY 2025–26 slab rates for resident individuals below 60, standard deduction amounts for salaried income, section 87A rebate limits (₹7 lakh total income under the new regime, ₹5 lakh taxable under the old regime), and 4% health and education cess. It does not model surcharge, marginal relief, senior citizen slabs, business income, or capital gains. Verify figures with your employer, CA, or the Income Tax portal before choosing a regime.</p><h2>Frequently asked questions</h2><h3>Can I switch between new and old regime every year?</h3><p>Salaried employees can generally choose each financial year when filing or via employer declaration, subject to current IT rules. Business income has stricter lock-in once you leave the old regime.</p><h3>Is HRA allowed in the new regime?</h3><p>No. HRA exemption under section 10(13A) is not available in the new tax regime. Enter HRA only for the old-regime column.</p><h3>Why does the new regime show zero tax below ₹7 lakh?</h3><p>Section 87A provides a rebate that can reduce tax to nil when total income (after standard deduction) does not exceed ₹7 lakh under the new regime, for eligible residents.</p><h2>Related free tools</h2><ul><li><a href="/salary-calculator.html">Salary in-hand (before tax)</a></li><li><a href="/ppf-calculator.html">PPF maturity estimate</a></li><li><a href="/gratuity-calculator.html">Gratuity calculator</a></li><li><a href="/gst-calculator.html">GST calculator</a></li></ul></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

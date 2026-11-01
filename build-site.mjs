@@ -28,6 +28,8 @@ import { batch9Tools } from "./tools-batch9.mjs";
 import { batch9PageSeo } from "./seo-batch9.mjs";
 import { batch10Tools } from "./tools-batch10.mjs";
 import { batch10PageSeo } from "./seo-batch10.mjs";
+import { batch11Tools } from "./tools-batch11.mjs";
+import { batch11PageSeo } from "./seo-batch11.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
 import {
   OG_IMAGE,
@@ -51,6 +53,7 @@ const pageSeo = {
   ...batch8PageSeo,
   ...batch9PageSeo,
   ...batch10PageSeo,
+  ...batch11PageSeo,
   ...sitePageSeo,
 };
 
@@ -835,6 +838,7 @@ document.getElementById('go').click();
   ...batch8Tools(ad),
   ...batch9Tools(ad),
   ...batch10Tools(ad),
+  ...batch11Tools(ad),
 ];
 
 const guides = [
@@ -924,7 +928,7 @@ ${renderSeoHtml(indexSeo)}`;
 const indexHtml = page(
   "/",
   "Sahankit Tools — 170+ Free Online Calculators & Utilities",
-  "Free browser tools: Haversine, PPF, NPS/churn, semver, SHA-1, Maps/Telegram links, and 170+ utilities—no signup.",
+  "Free browser tools: India income tax new vs old regime, PPF, Haversine, semver, and 170+ utilities—no signup.",
   indexMain,
   "",
   {
