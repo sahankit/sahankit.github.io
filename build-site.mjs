@@ -32,7 +32,7 @@ import { batch11Tools } from "./tools-batch11.mjs";
 import { batch11PageSeo } from "./seo-batch11.mjs";
 import { batch12Tools } from "./tools-batch12.mjs";
 import { batch12PageSeo } from "./seo-batch12.mjs";
-import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
+import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import {
   OG_IMAGE,
   escapeMeta,
@@ -931,6 +931,7 @@ const micrositeCards = micrositeDefs
       `<a class="card" href="/${s.slug}/"><h2>${s.hero}</h2><p>${s.blurb.slice(0, 90)}…</p></a>`,
   )
   .concat(
+    `<a class="card" href="/brief/"><h2>News brief</h2><p>Latest News, Sports &amp; Business headlines in short cards.</p></a>`,
     `<a class="card" href="/quiz/"><h2>Quick quiz</h2><p>Free trivia in your browser—10 questions.</p></a>`,
   )
   .join("");
@@ -947,7 +948,7 @@ ${renderSeoHtml(indexSeo)}`;
 const indexHtml = page(
   "/",
   "Sahankit Tools — 170+ Free Online Calculators & Utilities",
-  "Free mini-sites for India, OSINT, security, finance, dev, and writing—170+ browser tools, no signup.",
+  "News brief (Inshorts-style), India tax, OSINT, finance, and 170+ free browser tools—no signup.",
   indexMain,
   "",
   {
@@ -1048,6 +1049,28 @@ for (const def of micrositeDefs) {
     ],
   };
   write(file, page(urlPath, def.title, def.desc, main, bc, opts));
+}
+
+{
+  const file = "brief/index.html";
+  const urlPath = "/brief/";
+  micrositeUrls.push(urlPath);
+  const title = "Sahankit Brief — News, Sports & Business Headlines";
+  const desc =
+    "Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser.";
+  const bc = `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / News brief</nav>`;
+  const main = briefSiteBody(ad) + renderSeoHtml(pageSeo[file]);
+  write(
+    file,
+    page(urlPath, title, desc, main, bc, {
+      ...pageOpts(file),
+      canonical: urlPath,
+      breadcrumbs: [
+        { name: "Home", url: "/" },
+        { name: "News brief", url: urlPath },
+      ],
+    }),
+  );
 }
 
 {

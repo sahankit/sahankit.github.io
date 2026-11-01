@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sahankit Tools" />
+  <meta name="theme-color" content="#720e9e" />
+  <title>Sahankit Brief — News, Sports &amp; Business Headlines</title>
+  <meta name="description" content="Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser." />
+  <meta name="keywords" content="news headlines India, sports news brief, business news short, inshorts style reader" />
+  <link rel="canonical" href="https://sahankit.github.io/brief/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sahankit.github.io/sitemap.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Sahankit Brief — News, Sports &amp; Business Headlines" />
+  <meta property="og:description" content="Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser." />
+  <meta property="og:url" content="https://sahankit.github.io/brief/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://sahankit.github.io/assets/og.svg" />
+  <meta property="og:image:alt" content="Sahankit Tools — free online calculators and utilities" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sahankit Brief — News, Sports &amp; Business Headlines" />
+  <meta name="twitter:description" content="Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser." />
+  <meta name="twitter:image" content="https://sahankit.github.io/assets/og.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/brief/#webpage","name":"Sahankit Brief — News, Sports & Business Headlines","description":"Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser.","url":"https://sahankit.github.io/brief/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"News brief","item":"https://sahankit.github.io/brief/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this the Inshorts app?","acceptedAnswer":{"@type":"Answer","text":"No. This is an independent Sahankit page inspired by short headline UX. Content comes from RSS, not Inshorts."}},{"@type":"Question","name":"Why do headlines not load?","acceptedAnswer":{"@type":"Answer","text":"Ad blockers or network limits on the RSS proxy can block feeds. Try Refresh or another network."}}]},{"@type":"SoftwareApplication","name":"Sahankit Brief","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Read latest India headlines in short cards. News, Sports, and Business tabs—Inshorts-style brief, free in your browser.","url":"https://sahankit.github.io/brief/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / News brief</nav>
+<div class="hero">
+  <h1>News brief</h1>
+  <p>Latest headlines in short cards—News, Sports, and Business. Tap a story to read the full article at the publisher.</p>
+  <p style="font-size:0.88rem"><a href="/">← Sahankit Tools</a></p>
+</div>
+<aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="brief-toolbar">
+  <span id="brief-updated">Loading headlines…</span>
+  <button type="button" class="primary" id="brief-refresh" style="padding:8px 14px;font-size:0.85rem">Refresh</button>
+</div>
+<div class="brief-tabs" role="tablist" aria-label="Categories">
+  <button type="button" role="tab" id="tab-news" data-feed="news" aria-selected="true">News</button>
+  <button type="button" role="tab" id="tab-sports" data-feed="sports" aria-selected="false">Sports</button>
+  <button type="button" role="tab" id="tab-business" data-feed="business" aria-selected="false">Business</button>
+</div>
+<p id="brief-err" class="error" hidden></p>
+<div id="brief-feed" class="brief-feed" aria-live="polite"></div>
+<p class="prose" style="font-size:0.8rem;margin-top:20px">Headlines via public RSS (Google News). Sahankit does not write or host news content. Not affiliated with Inshorts.</p>
+<script>
+const FEEDS={
+  news:'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
+  sports:'https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-IN&gl=IN&ceid=IN:en',
+  business:'https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en',
+};
+let active='news';
+
+function stripHtml(s){
+  const d=document.createElement('div');
+  d.innerHTML=s||'';
+  return (d.textContent||'').replace(/\s+/g,' ').trim();
+}
+function inshort(text, maxWords=55){
+  const w=text.split(/\s+/).filter(Boolean);
+  if(w.length<=maxWords) return text;
+  return w.slice(0,maxWords).join(' ')+'…';
+}
+function parseTitle(raw){
+  const t=stripHtml(raw);
+  const i=t.lastIndexOf(' - ');
+  if(i>0) return { title:t.slice(0,i).trim(), source:t.slice(i+3).trim() };
+  return { title:t, source:'' };
+}
+function timeAgo(pubDate){
+  if(!pubDate) return '';
+  const d=new Date(pubDate);
+  if(isNaN(d)) return '';
+  const m=Math.round((Date.now()-d)/60000);
+  if(m<1) return 'Just now';
+  if(m<60) return m+'m ago';
+  const h=Math.round(m/60);
+  if(h<48) return h+'h ago';
+  return d.toLocaleDateString(undefined,{dateStyle:'medium'});
+}
+
+async function fetchRss(url){
+  const proxy='https://api.allorigins.win/get?url='+encodeURIComponent(url);
+  const res=await fetch(proxy);
+  if(!res.ok) throw new Error('Could not load feed ('+res.status+').');
+  const data=await res.json();
+  if(!data.contents) throw new Error('Empty feed response.');
+  return new DOMParser().parseFromString(data.contents,'text/xml');
+}
+
+function itemsFromXml(doc){
+  const items=[...doc.querySelectorAll('item')];
+  return items.map(el=>{
+    const rawTitle=el.querySelector('title')?.textContent||'';
+    const {title,source}=parseTitle(rawTitle);
+    const link=el.querySelector('link')?.textContent?.trim()||'';
+    const pub=el.querySelector('pubDate')?.textContent||'';
+    const desc=stripHtml(el.querySelector('description')?.textContent||'');
+    const srcEl=el.querySelector('source');
+    const srcName=srcEl?.textContent?.trim()||source;
+    return { title, link, pub, summary:inshort(desc||title), source:srcName };
+  }).filter(x=>x.title&&x.link);
+}
+
+function renderCards(list){
+  const box=document.getElementById('brief-feed');
+  box.replaceChildren();
+  if(!list.length){
+    box.innerHTML='<p class="prose">No stories found. Try Refresh.</p>';
+    return;
+  }
+  for(const it of list){
+    const art=document.createElement('article');
+    art.className='brief-card';
+    const h=document.createElement('h2');
+    h.textContent=it.title;
+    const p=document.createElement('p');
+    p.textContent=it.summary;
+    const meta=document.createElement('div');
+    meta.className='brief-meta';
+    meta.innerHTML='<span>'+(it.source?it.source:'News')+'</span><span>'+timeAgo(it.pub)+'</span>';
+    const a=document.createElement('a');
+    a.className='brief-read';
+    a.href=it.link;
+    a.target='_blank';
+    a.rel='noopener noreferrer';
+    a.textContent='Read full story';
+    art.append(h,p,meta,a);
+    box.appendChild(art);
+  }
+}
+
+async function loadFeed(key){
+  active=key;
+  document.querySelectorAll('.brief-tabs [role=tab]').forEach(b=>{
+    b.setAttribute('aria-selected', b.dataset.feed===key?'true':'false');
+  });
+  const err=document.getElementById('brief-err');
+  err.hidden=true;
+  document.getElementById('brief-updated').textContent='Loading '+key+'…';
+  document.getElementById('brief-feed').innerHTML='<p class="prose">Fetching headlines…</p>';
+  try{
+    const doc=await fetchRss(FEEDS[key]);
+    const list=itemsFromXml(doc);
+    renderCards(list.slice(0,25));
+    document.getElementById('brief-updated').textContent='Updated '+new Date().toLocaleTimeString(undefined,{timeStyle:'short'})+' · '+list.length+' stories';
+  }catch(e){
+    err.textContent=e.message||'Failed to load headlines.';
+    err.hidden=false;
+    document.getElementById('brief-feed').replaceChildren();
+    document.getElementById('brief-updated').textContent='Could not update';
+  }
+}
+
+document.querySelectorAll('.brief-tabs [role=tab]').forEach(btn=>{
+  btn.onclick=()=>loadFeed(btn.dataset.feed);
+});
+document.getElementById('brief-refresh').onclick=()=>loadFeed(active);
+loadFeed('news');
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Short news cards — News, Sports, Business</h2><p>Sahankit Brief shows latest headlines in a quick, card-style feed similar to short-news apps. Switch tabs for general news, sports, or business. Each card summarizes the story in a few lines and links to the original publisher.</p><h2>How it works</h2><p>Headlines are loaded from public RSS feeds in your browser via a read-only proxy. We do not host article text or replace the publisher link. Refresh to pull newer stories.</p><h2>Frequently asked questions</h2><h3>Is this the Inshorts app?</h3><p>No. This is an independent Sahankit page inspired by short headline UX. Content comes from RSS, not Inshorts.</p><h3>Why do headlines not load?</h3><p>Ad blockers or network limits on the RSS proxy can block feeds. Try Refresh or another network.</p><h2>Related free tools</h2><ul><li><a href="/osint-search/">OSINT search</a></li><li><a href="/domain-age/">Domain age</a></li></ul></section>
+</main>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

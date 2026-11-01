@@ -282,6 +282,143 @@ ${ad}
 ${gcards ? `<section style="margin-top:24px"><h2>Guides</h2><div class="grid">${gcards}</div></section>` : ""}`;
 }
 
+/** Inshorts-style headline reader (News / Sports / Business). */
+export function briefSiteBody(ad) {
+  return `<div class="hero">
+  <h1>News brief</h1>
+  <p>Latest headlines in short cards—News, Sports, and Business. Tap a story to read the full article at the publisher.</p>
+  <p style="font-size:0.88rem"><a href="/">← Sahankit Tools</a></p>
+</div>
+${ad}
+<div class="brief-toolbar">
+  <span id="brief-updated">Loading headlines…</span>
+  <button type="button" class="primary" id="brief-refresh" style="padding:8px 14px;font-size:0.85rem">Refresh</button>
+</div>
+<div class="brief-tabs" role="tablist" aria-label="Categories">
+  <button type="button" role="tab" id="tab-news" data-feed="news" aria-selected="true">News</button>
+  <button type="button" role="tab" id="tab-sports" data-feed="sports" aria-selected="false">Sports</button>
+  <button type="button" role="tab" id="tab-business" data-feed="business" aria-selected="false">Business</button>
+</div>
+<p id="brief-err" class="error" hidden></p>
+<div id="brief-feed" class="brief-feed" aria-live="polite"></div>
+<p class="prose" style="font-size:0.8rem;margin-top:20px">Headlines via public RSS (Google News). Sahankit does not write or host news content. Not affiliated with Inshorts.</p>
+<script>
+const FEEDS={
+  news:'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
+  sports:'https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-IN&gl=IN&ceid=IN:en',
+  business:'https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en',
+};
+let active='news';
+
+function stripHtml(s){
+  const d=document.createElement('div');
+  d.innerHTML=s||'';
+  return (d.textContent||'').replace(/\\s+/g,' ').trim();
+}
+function inshort(text, maxWords=55){
+  const w=text.split(/\\s+/).filter(Boolean);
+  if(w.length<=maxWords) return text;
+  return w.slice(0,maxWords).join(' ')+'…';
+}
+function parseTitle(raw){
+  const t=stripHtml(raw);
+  const i=t.lastIndexOf(' - ');
+  if(i>0) return { title:t.slice(0,i).trim(), source:t.slice(i+3).trim() };
+  return { title:t, source:'' };
+}
+function timeAgo(pubDate){
+  if(!pubDate) return '';
+  const d=new Date(pubDate);
+  if(isNaN(d)) return '';
+  const m=Math.round((Date.now()-d)/60000);
+  if(m<1) return 'Just now';
+  if(m<60) return m+'m ago';
+  const h=Math.round(m/60);
+  if(h<48) return h+'h ago';
+  return d.toLocaleDateString(undefined,{dateStyle:'medium'});
+}
+
+async function fetchRss(url){
+  const proxy='https://api.allorigins.win/get?url='+encodeURIComponent(url);
+  const res=await fetch(proxy);
+  if(!res.ok) throw new Error('Could not load feed ('+res.status+').');
+  const data=await res.json();
+  if(!data.contents) throw new Error('Empty feed response.');
+  return new DOMParser().parseFromString(data.contents,'text/xml');
+}
+
+function itemsFromXml(doc){
+  const items=[...doc.querySelectorAll('item')];
+  return items.map(el=>{
+    const rawTitle=el.querySelector('title')?.textContent||'';
+    const {title,source}=parseTitle(rawTitle);
+    const link=el.querySelector('link')?.textContent?.trim()||'';
+    const pub=el.querySelector('pubDate')?.textContent||'';
+    const desc=stripHtml(el.querySelector('description')?.textContent||'');
+    const srcEl=el.querySelector('source');
+    const srcName=srcEl?.textContent?.trim()||source;
+    return { title, link, pub, summary:inshort(desc||title), source:srcName };
+  }).filter(x=>x.title&&x.link);
+}
+
+function renderCards(list){
+  const box=document.getElementById('brief-feed');
+  box.replaceChildren();
+  if(!list.length){
+    box.innerHTML='<p class="prose">No stories found. Try Refresh.</p>';
+    return;
+  }
+  for(const it of list){
+    const art=document.createElement('article');
+    art.className='brief-card';
+    const h=document.createElement('h2');
+    h.textContent=it.title;
+    const p=document.createElement('p');
+    p.textContent=it.summary;
+    const meta=document.createElement('div');
+    meta.className='brief-meta';
+    meta.innerHTML='<span>'+(it.source?it.source:'News')+'</span><span>'+timeAgo(it.pub)+'</span>';
+    const a=document.createElement('a');
+    a.className='brief-read';
+    a.href=it.link;
+    a.target='_blank';
+    a.rel='noopener noreferrer';
+    a.textContent='Read full story';
+    art.append(h,p,meta,a);
+    box.appendChild(art);
+  }
+}
+
+async function loadFeed(key){
+  active=key;
+  document.querySelectorAll('.brief-tabs [role=tab]').forEach(b=>{
+    b.setAttribute('aria-selected', b.dataset.feed===key?'true':'false');
+  });
+  const err=document.getElementById('brief-err');
+  err.hidden=true;
+  document.getElementById('brief-updated').textContent='Loading '+key+'…';
+  document.getElementById('brief-feed').innerHTML='<p class="prose">Fetching headlines…</p>';
+  try{
+    const doc=await fetchRss(FEEDS[key]);
+    const list=itemsFromXml(doc);
+    renderCards(list.slice(0,25));
+    document.getElementById('brief-updated').textContent='Updated '+new Date().toLocaleTimeString(undefined,{timeStyle:'short'})+' · '+list.length+' stories';
+  }catch(e){
+    err.textContent=e.message||'Failed to load headlines.';
+    err.hidden=false;
+    document.getElementById('brief-feed').replaceChildren();
+    document.getElementById('brief-updated').textContent='Could not update';
+  }
+}
+
+document.querySelectorAll('.brief-tabs [role=tab]').forEach(btn=>{
+  btn.onclick=()=>loadFeed(btn.dataset.feed);
+});
+document.getElementById('brief-refresh').onclick=()=>loadFeed(active);
+loadFeed('news');
+</script>`;
+}
+
 export function quizSiteBody(ad) {
   return `<div class="hero"><h1>Quick quiz</h1><p>Free trivia in your browser. <a href="/">← Sahankit Tools</a></p></div>${ad}
 <div class="tool-panel">

@@ -125,6 +125,31 @@ export const sitePageSeo = {
     faqs: [],
     related: [{ href: "/typing-test/", label: "Typing test" }],
   },
+  "brief/index.html": {
+    keywords: "news headlines India, sports news brief, business news short, inshorts style reader",
+    sections: [
+      {
+        h2: "Short news cards — News, Sports, Business",
+        paragraphs: [
+          "Sahankit Brief shows latest headlines in a quick, card-style feed similar to short-news apps. Switch tabs for general news, sports, or business. Each card summarizes the story in a few lines and links to the original publisher.",
+        ],
+      },
+      {
+        h2: "How it works",
+        paragraphs: [
+          "Headlines are loaded from public RSS feeds in your browser via a read-only proxy. We do not host article text or replace the publisher link. Refresh to pull newer stories.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Is this the Inshorts app?", a: "No. This is an independent Sahankit page inspired by short headline UX. Content comes from RSS, not Inshorts." },
+      { q: "Why do headlines not load?", a: "Ad blockers or network limits on the RSS proxy can block feeds. Try Refresh or another network." },
+    ],
+    related: [
+      { href: "/osint-search/", label: "OSINT search" },
+      { href: "/domain-age/", label: "Domain age" },
+    ],
+  },
   "quiz/index.html": {
     keywords: "free online quiz, trivia browser",
     sections: [{ h2: "Quick trivia quiz", paragraphs: ["Ten questions on general knowledge, tech, and this site's tools. Refresh to replay."] }],
