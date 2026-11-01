@@ -24,10 +24,11 @@ ${ad}
 
 <section id="username" class="tool-panel">
   <h2>Username search</h2>
-  <p class="prose" style="font-size:0.9rem">Checks whether a public profile URL exists—you still open each site manually.</p>
-  <label for="user">Username</label>
-  <input id="user" placeholder="octocat" autocapitalize="none" autocomplete="off" spellcheck="false" />
+  <p class="prose" style="font-size:0.9rem">Enter a handle or paste a profile URL (LinkedIn, GitHub, X, etc.)—we extract the username before building links.</p>
+  <label for="user">Username or profile URL</label>
+  <input id="user" placeholder="octocat or linkedin.com/in/yourname" autocapitalize="none" autocomplete="off" spellcheck="false" />
   <button type="button" class="primary" id="userLinks">Build links</button>
+  <p id="userNorm" class="prose" style="font-size:0.85rem" hidden></p>
   <ul id="userOut" class="prose" style="list-style:none;padding:0"></ul>
 </section>
 
@@ -90,17 +91,65 @@ function fillList(el, pairs){
   for(const [n,u] of pairs) el.appendChild(li(n,u));
 }
 
+function normalizeUsername(raw){
+  let s=String(raw||'').trim();
+  if(!s) return '';
+  s=s.replace(/^@+/,'');
+  const tryUrl=(href)=>{
+    try{
+      const u=new URL(href);
+      const host=u.hostname.replace(/^www\\./i,'').toLowerCase();
+      const parts=u.pathname.split('/').filter(Boolean).map(p=>decodeURIComponent(p.split('?')[0]));
+      if(host==='github.com'&&parts[0]) return parts[0].replace(/\\.git$/i,'');
+      if(host==='gitlab.com'&&parts[0]) return parts[0];
+      if(host==='linkedin.com'&&parts[0]==='in'&&parts[1]) return parts[1];
+      if((host==='twitter.com'||host==='x.com')&&parts[0]&&parts[0]!=='i'&&parts[0]!=='intent') return parts[0];
+      if(host==='reddit.com'&&parts[0]==='user'&&parts[1]) return parts[1];
+      if(host==='news.ycombinator.com'){
+        const id=u.searchParams.get('id');
+        if(id) return id;
+      }
+      if(host==='keybase.io'&&parts[0]) return parts[0];
+      if(parts.length) return parts[parts.length-1];
+    }catch(_){}
+    return '';
+  };
+  if(/^https?:\\/\\//i.test(s)) s=tryUrl(s)||s;
+  else if(/^[a-z0-9.-]+\\//i.test(s)) s=tryUrl('https://'+s)||s;
+  else s=s.replace(/^@+/,'').split('/').filter(Boolean).pop()||s;
+  s=s.split('?')[0].split('#')[0].replace(/^@+/,'').trim();
+  return s;
+}
+
+function pathUser(u){
+  return encodeURIComponent(u).replace(/[!'()*]/g,c=>('%'+c.charCodeAt(0).toString(16).toUpperCase()));
+}
+
 document.getElementById('userLinks').onclick=()=>{
-  const u=document.getElementById('user').value.trim();
-  if(!u) return;
-  const e=esc(u);
-  fillList(document.getElementById('userOut'), [
-    ['GitHub','https://github.com/'+e],
-    ['GitLab','https://gitlab.com/'+e],
-    ['Reddit','https://www.reddit.com/user/'+e],
-    ['X (Twitter)','https://x.com/'+e],
-    ['Hacker News','https://news.ycombinator.com/user?id='+e],
-    ['Keybase','https://keybase.io/'+e],
+  const raw=document.getElementById('user').value.trim();
+  const normEl=document.getElementById('userNorm');
+  const outEl=document.getElementById('userOut');
+  if(!raw){ normEl.hidden=true; outEl.replaceChildren(); return; }
+  const u=normalizeUsername(raw);
+  if(!u||u.includes('://')||/\\s/.test(u)){
+    normEl.hidden=false;
+    normEl.className='error';
+    normEl.textContent='Could not extract a username. Try a handle like ankitkrsah or a profile URL.';
+    outEl.replaceChildren();
+    return;
+  }
+  normEl.hidden=false;
+  normEl.className='prose';
+  normEl.textContent='Using username: '+u+(raw!==u?' (from pasted URL)':'');
+  const p=pathUser(u);
+  fillList(outEl, [
+    ['LinkedIn','https://www.linkedin.com/in/'+p+'/'],
+    ['GitHub','https://github.com/'+p],
+    ['GitLab','https://gitlab.com/'+p],
+    ['Reddit','https://www.reddit.com/user/'+p],
+    ['X (Twitter)','https://x.com/'+p],
+    ['Hacker News','https://news.ycombinator.com/user?id='+esc(u)],
+    ['Keybase','https://keybase.io/'+p],
     ['Pastebin search','https://www.google.com/search?q='+esc('site:pastebin.com '+u)],
     ['Google','https://www.google.com/search?q='+esc('"'+u+'" profile OR account')],
   ]);
