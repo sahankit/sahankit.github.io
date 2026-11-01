@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Random Number Generator — Range Online</title>
+  <meta name="description" content="Pick a random integer between min and max. Free secure random in the browser." />
+  <meta name="keywords" content="random number generator, random int online" />
+  <link rel="canonical" href="https://sahankit.github.io/random-number/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Random Number Generator — Range Online" />
+  <meta property="og:description" content="Pick a random integer between min and max. Free secure random in the browser." />
+  <meta property="og:url" content="https://sahankit.github.io/random-number/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Random Number Generator — Range Online" />
+  <meta name="twitter:description" content="Pick a random integer between min and max. Free secure random in the browser." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Random Number Generator — Range Online","description":"Pick a random integer between min and max. Free secure random in the browser.","url":"https://sahankit.github.io/random-number/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Random Number Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Pick a random integer between min and max. Free secure random in the browser.","url":"https://sahankit.github.io/random-number/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Random number</nav>
+
+<h1>Random number generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="a">Min</label><input id="a" type="number" value="1" />
+  <label for="b">Max</label><input id="b" type="number" value="100" />
+  <button type="button" class="primary" id="go">Roll</button>
+  <p id="out" class="ok" style="font-size:2rem"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  let min=Number(document.getElementById('a').value), max=Number(document.getElementById('b').value);
+  if(min>max){ const t=min; min=max; max=t; }
+  const n=Math.floor(crypto.getRandomValues(new Uint32Array(1))[0]/4294967296*(max-min+1))+min;
+  document.getElementById('out').textContent=String(n);
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Secure random</h2><p>Uses crypto.getRandomValues in the browser.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

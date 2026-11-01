@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Meta Tag Generator — Title & Description HTML</title>
+  <meta name="description" content="Generate title, description, and Open Graph meta tags for a page." />
+  <meta name="keywords" content="meta tag generator, SEO title description" />
+  <link rel="canonical" href="https://sahankit.github.io/meta-tag-generator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Meta Tag Generator — Title & Description HTML" />
+  <meta property="og:description" content="Generate title, description, and Open Graph meta tags for a page." />
+  <meta property="og:url" content="https://sahankit.github.io/meta-tag-generator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Meta Tag Generator — Title & Description HTML" />
+  <meta name="twitter:description" content="Generate title, description, and Open Graph meta tags for a page." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Meta Tag Generator — Title & Description HTML","description":"Generate title, description, and Open Graph meta tags for a page.","url":"https://sahankit.github.io/meta-tag-generator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Meta Tag Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generate title, description, and Open Graph meta tags for a page.","url":"https://sahankit.github.io/meta-tag-generator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Meta tag generator</nav>
+
+<h1>Meta tag generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="title">Title</label><input id="title" value="My Page Title" />
+  <label for="desc">Description</label><textarea id="desc" rows="3">Short page summary for search results.</textarea>
+  <label for="url">Canonical URL</label><input id="url" type="url" value="https://example.com/page" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <textarea id="out" rows="10" readonly spellcheck="false"></textarea>
+  <button type="button" class="primary" id="copy">Copy</button>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const t=document.getElementById('title').value, d=document.getElementById('desc').value, u=document.getElementById('url').value;
+  document.getElementById('out').value=`<title>${t}</title>
+<meta name="description" content="${d.replace(/"/g,'&quot;')}" />
+<link rel="canonical" href="${u}" />
+<meta property="og:title" content="${t.replace(/"/g,'&quot;')}" />
+<meta property="og:description" content="${d.replace(/"/g,'&quot;')}" />
+<meta property="og:url" content="${u}" />`;
+};
+document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(document.getElementById('out').value);
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>On-page meta HTML</h2><p>Copy generated tags into your page head.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

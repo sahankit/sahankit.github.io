@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Unit Converter — Length, Weight, Temperature</title>
+  <meta name="description" content="Convert km/miles, kg/lb, and Celsius/Fahrenheit online." />
+  <meta name="keywords" content="unit converter km miles kg lb celsius fahrenheit" />
+  <link rel="canonical" href="https://sahankit.github.io/unit-converter.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Unit Converter — Length, Weight, Temperature" />
+  <meta property="og:description" content="Convert km/miles, kg/lb, and Celsius/Fahrenheit online." />
+  <meta property="og:url" content="https://sahankit.github.io/unit-converter.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unit Converter — Length, Weight, Temperature" />
+  <meta name="twitter:description" content="Convert km/miles, kg/lb, and Celsius/Fahrenheit online." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Unit Converter — Length, Weight, Temperature","description":"Convert km/miles, kg/lb, and Celsius/Fahrenheit online.","url":"https://sahankit.github.io/unit-converter.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Unit Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert km/miles, kg/lb, and Celsius/Fahrenheit online.","url":"https://sahankit.github.io/unit-converter.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Unit converter</nav>
+
+<h1>Unit converter</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="mode">Type</label>
+  <select id="mode"><option value="len">Length (km ↔ miles)</option><option value="wt">Weight (kg ↔ lb)</option><option value="temp">Temperature (°C ↔ °F)</option></select>
+  <label for="val">Value</label><input id="val" type="number" value="10" />
+  <label for="dir">Direction</label>
+  <select id="dir"><option value="ab">First → second</option><option value="ba">Second → first</option></select>
+  <button type="button" class="primary" id="go">Convert</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const v=Number(document.getElementById('val').value), m=document.getElementById('mode').value, ab=document.getElementById('dir').value==='ab';
+  let r, label;
+  if(m==='len'){ r=ab?v*0.621371:v/0.621371; label=ab?'miles':'km'; }
+  else if(m==='wt'){ r=ab?v*2.20462:v/2.20462; label=ab?'lb':'kg'; }
+  else { r=ab?v*9/5+32:(v-32)*5/9; label=ab?'°F':'°C'; }
+  document.getElementById('out').textContent=r.toFixed(4)+' '+label;
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Common conversions</h2><p>Quick conversions for travel and recipes.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

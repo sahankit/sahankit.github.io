@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Word Frequency Counter — Top Words</title>
+  <meta name="description" content="Count how often each word appears in text. Free word frequency tool." />
+  <meta name="keywords" content="word frequency counter, word count analysis" />
+  <link rel="canonical" href="https://sahankit.github.io/word-frequency/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Word Frequency Counter — Top Words" />
+  <meta property="og:description" content="Count how often each word appears in text. Free word frequency tool." />
+  <meta property="og:url" content="https://sahankit.github.io/word-frequency/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Word Frequency Counter — Top Words" />
+  <meta name="twitter:description" content="Count how often each word appears in text. Free word frequency tool." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Word Frequency Counter — Top Words","description":"Count how often each word appears in text. Free word frequency tool.","url":"https://sahankit.github.io/word-frequency/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Word Frequency Counter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Count how often each word appears in text. Free word frequency tool.","url":"https://sahankit.github.io/word-frequency/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Word frequency</nav>
+
+<h1>Word frequency</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text" placeholder="Paste text…"></textarea>
+  <button type="button" class="primary" id="go">Count</button>
+  <pre id="out" style="white-space:pre-wrap;background:#faf7ff;padding:12px;border-radius:10px"></pre>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const m=new Map();
+  for(const w of document.getElementById('text').value.toLowerCase().match(/[a-z']+/g)||[]){
+    m.set(w,(m.get(w)||0)+1);
+  }
+  const top=[...m.entries()].sort((a,b)=>b[1]-a[1]).slice(0,30);
+  document.getElementById('out').textContent=top.map(([w,c])=>c+'\t'+w).join('\n')||'(no words)';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Find repeated words</h2><p>Useful for editing and SEO keyword stuffing checks.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

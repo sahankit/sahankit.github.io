@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Reverse Text — Backwards String Tool</title>
+  <meta name="description" content="Reverse characters or words in your text online." />
+  <meta name="keywords" content="reverse text online, backwards text" />
+  <link rel="canonical" href="https://sahankit.github.io/reverse-text/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Reverse Text — Backwards String Tool" />
+  <meta property="og:description" content="Reverse characters or words in your text online." />
+  <meta property="og:url" content="https://sahankit.github.io/reverse-text/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Reverse Text — Backwards String Tool" />
+  <meta name="twitter:description" content="Reverse characters or words in your text online." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Reverse Text — Backwards String Tool","description":"Reverse characters or words in your text online.","url":"https://sahankit.github.io/reverse-text/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Reverse Text","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Reverse characters or words in your text online.","url":"https://sahankit.github.io/reverse-text/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Reverse text</nav>
+
+<h1>Reverse text</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text"></textarea>
+  <div class="row">
+    <button type="button" class="primary" data-m="char">Reverse characters</button>
+    <button type="button" class="primary" data-m="word">Reverse word order</button>
+  </div>
+</div>
+<script>
+const t=document.getElementById('text');
+document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{
+  const s=t.value;
+  t.value=b.dataset.m==='char'?s.split('').reverse().join(''):s.split(/\s+/).reverse().join(' ');
+});
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Reverse strings</h2><p>Flip characters or reverse word order.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

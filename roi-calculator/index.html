@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>ROI Calculator — Return on Investment</title>
+  <meta name="description" content="Calculate ROI percent from gain and cost. Free ROI calculator." />
+  <meta name="keywords" content="ROI calculator, return on investment" />
+  <link rel="canonical" href="https://sahankit.github.io/roi-calculator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="ROI Calculator — Return on Investment" />
+  <meta property="og:description" content="Calculate ROI percent from gain and cost. Free ROI calculator." />
+  <meta property="og:url" content="https://sahankit.github.io/roi-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ROI Calculator — Return on Investment" />
+  <meta name="twitter:description" content="Calculate ROI percent from gain and cost. Free ROI calculator." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"ROI Calculator — Return on Investment","description":"Calculate ROI percent from gain and cost. Free ROI calculator.","url":"https://sahankit.github.io/roi-calculator/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ROI Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate ROI percent from gain and cost. Free ROI calculator.","url":"https://sahankit.github.io/roi-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / ROI calculator</nav>
+
+<h1>ROI calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="gain">Gain from investment</label><input id="gain" type="number" value="1500" />
+  <label for="cost">Cost of investment</label><input id="cost" type="number" value="1000" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const g=Number(document.getElementById('gain').value), c=Number(document.getElementById('cost').value);
+  const roi=c?(((g-c)/c)*100).toFixed(2):'0';
+  document.getElementById('out').textContent='ROI: '+roi+'%';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>ROI percent</h2><p>Simple (gain − cost) / cost formula.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

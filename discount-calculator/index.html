@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Discount Calculator — Sale Price & Savings</title>
+  <meta name="description" content="Find sale price after a percent discount. Free discount calculator." />
+  <meta name="keywords" content="discount calculator, sale price percent off" />
+  <link rel="canonical" href="https://sahankit.github.io/discount-calculator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Discount Calculator — Sale Price & Savings" />
+  <meta property="og:description" content="Find sale price after a percent discount. Free discount calculator." />
+  <meta property="og:url" content="https://sahankit.github.io/discount-calculator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Discount Calculator — Sale Price & Savings" />
+  <meta name="twitter:description" content="Find sale price after a percent discount. Free discount calculator." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Discount Calculator — Sale Price & Savings","description":"Find sale price after a percent discount. Free discount calculator.","url":"https://sahankit.github.io/discount-calculator/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Discount Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Find sale price after a percent discount. Free discount calculator.","url":"https://sahankit.github.io/discount-calculator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Discount calculator</nav>
+
+<h1>Discount calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="p">Original price</label><input id="p" type="number" value="999" />
+  <label for="d">Discount (%)</label><input id="d" type="number" value="20" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <div class="stats">
+    <div class="stat"><strong id="sale">—</strong>Sale price</div>
+    <div class="stat"><strong id="save">—</strong>You save</div>
+  </div>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const p=Number(document.getElementById('p').value), d=Number(document.getElementById('d').value)/100;
+  const sale=p*(1-d);
+  document.getElementById('sale').textContent=sale.toFixed(2);
+  document.getElementById('save').textContent=(p-sale).toFixed(2);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Shopping math</h2><p>Find final price after a percentage discount.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

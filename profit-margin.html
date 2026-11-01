@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Profit Margin Calculator — Markup & Margin</title>
+  <meta name="description" content="Calculate profit margin and markup from cost and selling price." />
+  <meta name="keywords" content="profit margin calculator, markup calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/profit-margin.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Profit Margin Calculator — Markup & Margin" />
+  <meta property="og:description" content="Calculate profit margin and markup from cost and selling price." />
+  <meta property="og:url" content="https://sahankit.github.io/profit-margin.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Profit Margin Calculator — Markup & Margin" />
+  <meta name="twitter:description" content="Calculate profit margin and markup from cost and selling price." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Profit Margin Calculator — Markup & Margin","description":"Calculate profit margin and markup from cost and selling price.","url":"https://sahankit.github.io/profit-margin.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Profit Margin Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate profit margin and markup from cost and selling price.","url":"https://sahankit.github.io/profit-margin.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Profit margin</nav>
+
+<h1>Profit margin calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="cost">Cost</label><input id="cost" type="number" value="50" />
+  <label for="price">Selling price</label><input id="price" type="number" value="80" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const c=Number(document.getElementById('cost').value), p=Number(document.getElementById('price').value);
+  const profit=p-c;
+  const margin=p?((profit/p)*100).toFixed(2):'0';
+  const markup=c?((profit/c)*100).toFixed(2):'0';
+  document.getElementById('out').textContent='Profit '+profit.toFixed(2)+' · Margin '+margin+'% · Markup '+markup+'%';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Margin vs markup</h2><p>Margin is profit divided by selling price; markup is profit divided by cost.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

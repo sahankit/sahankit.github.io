@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Markdown Preview — Live HTML Preview</title>
+  <meta name="description" content="Preview Markdown as HTML in the browser. Simple live Markdown viewer." />
+  <meta name="keywords" content="markdown preview online, markdown to html" />
+  <link rel="canonical" href="https://sahankit.github.io/markdown-preview.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Markdown Preview — Live HTML Preview" />
+  <meta property="og:description" content="Preview Markdown as HTML in the browser. Simple live Markdown viewer." />
+  <meta property="og:url" content="https://sahankit.github.io/markdown-preview.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Markdown Preview — Live HTML Preview" />
+  <meta name="twitter:description" content="Preview Markdown as HTML in the browser. Simple live Markdown viewer." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Markdown Preview — Live HTML Preview","description":"Preview Markdown as HTML in the browser. Simple live Markdown viewer.","url":"https://sahankit.github.io/markdown-preview.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Markdown Preview","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Preview Markdown as HTML in the browser. Simple live Markdown viewer.","url":"https://sahankit.github.io/markdown-preview.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Markdown preview</nav>
+
+<h1>Markdown preview</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="md">Markdown</label>
+  <textarea id="md" rows="8"># Hello
+
+- item one
+- item two
+
+**bold** and *italic*</textarea>
+  <div id="html" class="prose" style="background:#fff;padding:16px;border:1px solid var(--line);border-radius:12px"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+const md=document.getElementById('md'), html=document.getElementById('html');
+function upd(){ html.innerHTML=marked.parse(md.value); }
+md.oninput=upd; upd();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Preview Markdown</h2><p>Renders with marked.js in the browser—does not save files.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

@@ -13,9 +13,11 @@ import {
 import { extraPageSeo } from "./seo-extra.mjs";
 import { sitePageSeo } from "./seo-sites.mjs";
 import { extraTools } from "./tools-extra.mjs";
+import { moreTools } from "./tools-more.mjs";
+import { morePageSeo } from "./seo-more.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody } from "./sites.mjs";
 
-const pageSeo = { ...corePageSeo, ...extraPageSeo, ...sitePageSeo };
+const pageSeo = { ...corePageSeo, ...extraPageSeo, ...morePageSeo, ...sitePageSeo };
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
@@ -764,6 +766,7 @@ document.getElementById('go').click();
 </script>`,
   },
   ...extraTools(ad),
+  ...moreTools(ad),
 ];
 
 const guides = [

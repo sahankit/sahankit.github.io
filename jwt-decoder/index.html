@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>JWT Decoder — Read JWT Payload (No Verify)</title>
+  <meta name="description" content="Decode JWT header and payload JSON. Does not verify signatures." />
+  <meta name="keywords" content="JWT decoder online, read JWT payload" />
+  <link rel="canonical" href="https://sahankit.github.io/jwt-decoder/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="JWT Decoder — Read JWT Payload (No Verify)" />
+  <meta property="og:description" content="Decode JWT header and payload JSON. Does not verify signatures." />
+  <meta property="og:url" content="https://sahankit.github.io/jwt-decoder/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="JWT Decoder — Read JWT Payload (No Verify)" />
+  <meta name="twitter:description" content="Decode JWT header and payload JSON. Does not verify signatures." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"JWT Decoder — Read JWT Payload (No Verify)","description":"Decode JWT header and payload JSON. Does not verify signatures.","url":"https://sahankit.github.io/jwt-decoder/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"JWT Decoder","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Decode JWT header and payload JSON. Does not verify signatures.","url":"https://sahankit.github.io/jwt-decoder/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / JWT decoder</nav>
+
+<h1>JWT decoder</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="jwt">JWT</label>
+  <textarea id="jwt" spellcheck="false" placeholder="eyJhbG…"></textarea>
+  <button type="button" class="primary" id="go">Decode</button>
+  <pre id="out"></pre>
+  <p class="prose" style="font-size:0.85rem">Signature is not verified. Do not paste production secrets.</p>
+</div>
+<script>
+function b64url(s){
+  s=s.replace(/-/g,'+').replace(/_/g,'/');
+  while(s.length%4) s+='=';
+  return JSON.parse(atob(s));
+}
+document.getElementById('go').onclick=()=>{
+  const parts=document.getElementById('jwt').value.trim().split('.');
+  if(parts.length<2){ document.getElementById('out').textContent='Need at least header.payload'; return; }
+  try{
+    document.getElementById('out').textContent=JSON.stringify({header:b64url(parts[0]),payload:b64url(parts[1])},null,2);
+  }catch(e){ document.getElementById('out').textContent='Invalid JWT: '+e.message; }
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Inspect JWTs</h2><p>Decodes header and payload only; never verifies signatures.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

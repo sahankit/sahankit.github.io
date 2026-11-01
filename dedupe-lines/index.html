@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Remove Duplicate Lines — Online</title>
+  <meta name="description" content="Remove duplicate lines from a list. Keeps first occurrence." />
+  <meta name="keywords" content="remove duplicate lines online" />
+  <link rel="canonical" href="https://sahankit.github.io/dedupe-lines/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Remove Duplicate Lines — Online" />
+  <meta property="og:description" content="Remove duplicate lines from a list. Keeps first occurrence." />
+  <meta property="og:url" content="https://sahankit.github.io/dedupe-lines/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Remove Duplicate Lines — Online" />
+  <meta name="twitter:description" content="Remove duplicate lines from a list. Keeps first occurrence." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Remove Duplicate Lines — Online","description":"Remove duplicate lines from a list. Keeps first occurrence.","url":"https://sahankit.github.io/dedupe-lines/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Remove Duplicate Lines","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Remove duplicate lines from a list. Keeps first occurrence.","url":"https://sahankit.github.io/dedupe-lines/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Dedupe lines</nav>
+
+<h1>Remove duplicate lines</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <textarea id="text"></textarea>
+  <button type="button" class="primary" id="go">Remove duplicates</button>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const seen=new Set(), out=[];
+  for(const line of document.getElementById('text').value.split(/\n/)){
+    const k=line.trim();
+    if(seen.has(k)) continue;
+    seen.add(k); out.push(line);
+  }
+  document.getElementById('text').value=out.join('\n');
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Clean lists</h2><p>Keeps the first occurrence of each line.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

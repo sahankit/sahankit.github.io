@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Dice Roller — Roll D6, D20 Online</title>
+  <meta name="description" content="Roll dice with any number of sides. Free dice roller." />
+  <meta name="keywords" content="dice roller online, d20 roller" />
+  <link rel="canonical" href="https://sahankit.github.io/dice-roller.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Dice Roller — Roll D6, D20 Online" />
+  <meta property="og:description" content="Roll dice with any number of sides. Free dice roller." />
+  <meta property="og:url" content="https://sahankit.github.io/dice-roller.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Dice Roller — Roll D6, D20 Online" />
+  <meta name="twitter:description" content="Roll dice with any number of sides. Free dice roller." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Dice Roller — Roll D6, D20 Online","description":"Roll dice with any number of sides. Free dice roller.","url":"https://sahankit.github.io/dice-roller.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dice Roller","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Roll dice with any number of sides. Free dice roller.","url":"https://sahankit.github.io/dice-roller.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Dice roller</nav>
+
+<h1>Dice roller</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="sides">Sides</label><input id="sides" type="number" min="2" max="100" value="6" />
+  <label for="count">Dice</label><input id="count" type="number" min="1" max="20" value="2" />
+  <button type="button" class="primary" id="go">Roll</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const s=Math.max(2,Number(document.getElementById('sides').value)||6);
+  const n=Math.min(20,Math.max(1,Number(document.getElementById('count').value)||1));
+  const rolls=Array.from({length:n},()=>1+Math.floor(crypto.getRandomValues(new Uint32Array(1))[0]/4294967296*s));
+  const sum=rolls.reduce((a,b)=>a+b,0);
+  document.getElementById('out').textContent=rolls.join(', ')+' (sum '+sum+')';
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Roll dice</h2><p>Tabletop games and random picks.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

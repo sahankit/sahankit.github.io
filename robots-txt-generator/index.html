@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Robots.txt Generator — Simple Template</title>
+  <meta name="description" content="Build a basic robots.txt with allow/disallow and sitemap URL." />
+  <meta name="keywords" content="robots.txt generator, sitemap line" />
+  <link rel="canonical" href="https://sahankit.github.io/robots-txt-generator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Robots.txt Generator — Simple Template" />
+  <meta property="og:description" content="Build a basic robots.txt with allow/disallow and sitemap URL." />
+  <meta property="og:url" content="https://sahankit.github.io/robots-txt-generator/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Robots.txt Generator — Simple Template" />
+  <meta name="twitter:description" content="Build a basic robots.txt with allow/disallow and sitemap URL." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Robots.txt Generator — Simple Template","description":"Build a basic robots.txt with allow/disallow and sitemap URL.","url":"https://sahankit.github.io/robots-txt-generator/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Robots.txt Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Build a basic robots.txt with allow/disallow and sitemap URL.","url":"https://sahankit.github.io/robots-txt-generator/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Robots.txt generator</nav>
+
+<h1>Robots.txt generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="base">Site URL</label><input id="base" type="url" value="https://example.com" />
+  <label><input type="checkbox" id="all" checked /> Allow all (User-agent: *)</label>
+  <label for="dis">Disallow paths (one per line, optional)</label><textarea id="dis" rows="3" placeholder="/admin/"></textarea>
+  <button type="button" class="primary" id="go">Generate</button>
+  <textarea id="out" rows="8" readonly></textarea>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const base=document.getElementById('base').value.replace(/\/$/,'');
+  let t='User-agent: *\n';
+  if(document.getElementById('all').checked) t+='Allow: /\n'; else t+='Disallow: /\n';
+  for(const line of document.getElementById('dis').value.split(/\n/)){
+    const p=line.trim(); if(p) t+='Disallow: '+p+'\n';
+  }
+  t+='\nSitemap: '+base+'/sitemap.xml\n';
+  document.getElementById('out').value=t;
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Crawler rules</h2><p>Starter robots.txt—adjust for your site structure.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

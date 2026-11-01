@@ -37,6 +37,18 @@ export const sitePageSeo = {
     faqs: [],
     related: [{ href: "/y-chat/", label: "Y-Chat" }],
   },
+  "writing/index.html": {
+    keywords: "writing tools hub, text utilities",
+    sections: [{ h2: "Writing mini-site", paragraphs: ["All text and Markdown helpers in one hub."] }],
+    faqs: [],
+    related: [{ href: "/word-counter.html", label: "Word counter" }],
+  },
+  "productivity/index.html": {
+    keywords: "productivity hub, typing meeting planner",
+    sections: [{ h2: "Productivity mini-site", paragraphs: ["Typing, meetings, and quick calculators."] }],
+    faqs: [],
+    related: [{ href: "/typing-test.html", label: "Typing test" }],
+  },
   "quiz/index.html": {
     keywords: "free online quiz, trivia browser",
     sections: [{ h2: "Quick trivia quiz", paragraphs: ["Ten questions on general knowledge, tech, and this site's tools. Refresh to replay."] }],
