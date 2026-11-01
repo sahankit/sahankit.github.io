@@ -26,6 +26,10 @@ document.getElementById('go').onclick=async()=>{
   const size=Math.min(512,Math.max(128,Number(document.getElementById('size').value)||256));
   const box=document.getElementById('box'); box.innerHTML='';
   if(!text) return;
+  if(typeof QRCode==='undefined'){
+    box.textContent='Loading QR library… retry in a moment.';
+    return;
+  }
   const canvas=document.createElement('canvas');
   await QRCode.toCanvas(canvas,text,{width:size,margin:2});
   box.appendChild(canvas);
@@ -33,7 +37,10 @@ document.getElementById('go').onclick=async()=>{
   a.href=canvas.toDataURL('image/png');
   document.getElementById('dl').hidden=false;
 };
-document.getElementById('go').click();
+(function boot(){
+  if(typeof QRCode!=='undefined') document.getElementById('go').click();
+  else setTimeout(boot,50);
+})();
 </script>`,
     },
     {
@@ -216,10 +223,10 @@ document.getElementById('go').onclick=()=>{
   <p id="msg" class="ok"></p>
 </div>
 <script type="module">
-import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
 const inp=document.getElementById('files'), btn=document.getElementById('go');
 inp.onchange=()=>{ btn.disabled=!inp.files.length; };
 btn.onclick=async()=>{
+  const { PDFDocument }=await import('https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm');
   const out=await PDFDocument.create();
   for(const f of inp.files){
     const bytes=await f.arrayBuffer();

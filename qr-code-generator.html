@@ -57,6 +57,10 @@ document.getElementById('go').onclick=async()=>{
   const size=Math.min(512,Math.max(128,Number(document.getElementById('size').value)||256));
   const box=document.getElementById('box'); box.innerHTML='';
   if(!text) return;
+  if(typeof QRCode==='undefined'){
+    box.textContent='Loading QR library… retry in a moment.';
+    return;
+  }
   const canvas=document.createElement('canvas');
   await QRCode.toCanvas(canvas,text,{width:size,margin:2});
   box.appendChild(canvas);
@@ -64,7 +68,10 @@ document.getElementById('go').onclick=async()=>{
   a.href=canvas.toDataURL('image/png');
   document.getElementById('dl').hidden=false;
 };
-document.getElementById('go').click();
+(function boot(){
+  if(typeof QRCode!=='undefined') document.getElementById('go').click();
+  else setTimeout(boot,50);
+})();
 </script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Create QR codes for menus, posters, and links</h2><p>QR codes encode a URL or short text so phones can scan and open instantly. Generation happens in your browser; download PNG for print.</p><h2>Frequently asked questions</h2><h3>Do QR codes expire?</h3><p>Static QR codes do not expire—the data is in the image. If you change the URL later, generate a new code.</p><h2>Related free tools</h2><ul><li><a href="/json-formatter.html">JSON formatter</a></li><li><a href="/guides/seo-checklist.html">SEO checklist</a></li></ul></section>
 </main>
 

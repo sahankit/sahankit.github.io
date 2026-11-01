@@ -444,10 +444,11 @@ document.getElementById('go').click();
 </div>
 <script>
 document.getElementById('go').onclick=()=>{
-  const s=[...document.getElementById('ch').value];
-  if(!s.length) return;
-  const cp=s.codePointAt(0);
-  const bytes=new TextEncoder().encode(s[0]);
+  const str=document.getElementById('ch').value;
+  const chars=[...str];
+  if(!chars.length) return;
+  const cp=str.codePointAt(0);
+  const bytes=new TextEncoder().encode(chars[0]);
   document.getElementById('out').textContent='U+'+cp.toString(16).toUpperCase().padStart(4,'0')+' · UTF-8 '+[...bytes].map(b=>b.toString(16).padStart(2,'0')).join(' ');
 };
 document.getElementById('go').click();

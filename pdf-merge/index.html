@@ -49,10 +49,10 @@
   <p id="msg" class="ok"></p>
 </div>
 <script type="module">
-import { PDFDocument } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
 const inp=document.getElementById('files'), btn=document.getElementById('go');
 inp.onchange=()=>{ btn.disabled=!inp.files.length; };
 btn.onclick=async()=>{
+  const { PDFDocument }=await import('https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm');
   const out=await PDFDocument.create();
   for(const f of inp.files){
     const bytes=await f.arrayBuffer();
