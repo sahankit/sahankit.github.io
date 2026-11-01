@@ -116,6 +116,7 @@ for (const loc of locs) {
     if (!html.includes("google-adsense-account")) errors.push(`${rel}: missing AdSense account meta`);
     if (!html.includes("/assets/ads.js")) errors.push(`${rel}: missing ads.js`);
     if (!html.includes("/assets/analytics.js")) errors.push(`${rel}: missing analytics.js`);
+    if (!html.includes('id="cookieyes"')) errors.push(`${rel}: missing CookieYes consent script`);
     if (!html.includes("ad-slot--below")) errors.push(`${rel}: missing below-tool ad slot`);
   }
 
