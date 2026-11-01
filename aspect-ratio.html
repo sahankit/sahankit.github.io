@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Aspect Ratio Calculator — Resize Dimensions</title>
+  <meta name="description" content="Calculate width or height keeping aspect ratio." />
+  <meta name="keywords" content="aspect ratio calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/aspect-ratio.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Aspect Ratio Calculator — Resize Dimensions" />
+  <meta property="og:description" content="Calculate width or height keeping aspect ratio." />
+  <meta property="og:url" content="https://sahankit.github.io/aspect-ratio.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Aspect Ratio Calculator — Resize Dimensions" />
+  <meta name="twitter:description" content="Calculate width or height keeping aspect ratio." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Aspect Ratio Calculator — Resize Dimensions","description":"Calculate width or height keeping aspect ratio.","url":"https://sahankit.github.io/aspect-ratio.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aspect Ratio Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate width or height keeping aspect ratio.","url":"https://sahankit.github.io/aspect-ratio.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Aspect ratio</nav>
+
+<h1>Aspect ratio calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="w">Width</label><input id="w" type="number" value="1920" />
+  <label for="h">Height</label><input id="h" type="number" value="1080" />
+  <label for="nw">New width</label><input id="nw" type="number" value="1280" />
+  <button type="button" class="primary" id="go">New height</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const w=Number(document.getElementById('w').value), h=Number(document.getElementById('h').value);
+  const nw=Number(document.getElementById('nw').value);
+  const nh=w?Math.round((nw*h)/w):0;
+  document.getElementById('out').textContent='Height for '+nw+' px width: '+nh+' px (ratio '+(w/h).toFixed(4)+')';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Resize dimensions</h2><p>Keep width/height proportional.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

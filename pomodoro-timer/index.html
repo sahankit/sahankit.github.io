@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Pomodoro Timer — 25 Minute Focus</title>
+  <meta name="description" content="Simple Pomodoro focus timer in the browser with breaks." />
+  <meta name="keywords" content="pomodoro timer online" />
+  <link rel="canonical" href="https://sahankit.github.io/pomodoro-timer/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Pomodoro Timer — 25 Minute Focus" />
+  <meta property="og:description" content="Simple Pomodoro focus timer in the browser with breaks." />
+  <meta property="og:url" content="https://sahankit.github.io/pomodoro-timer/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Pomodoro Timer — 25 Minute Focus" />
+  <meta name="twitter:description" content="Simple Pomodoro focus timer in the browser with breaks." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Pomodoro Timer — 25 Minute Focus","description":"Simple Pomodoro focus timer in the browser with breaks.","url":"https://sahankit.github.io/pomodoro-timer/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pomodoro Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Simple Pomodoro focus timer in the browser with breaks.","url":"https://sahankit.github.io/pomodoro-timer/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Pomodoro timer</nav>
+
+<h1>Pomodoro timer</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <p id="phase" class="ok">Focus</p>
+  <p id="clock" style="font-size:2.5rem;font-weight:800;text-align:center">25:00</p>
+  <div class="row">
+    <button type="button" class="primary" id="start">Start</button>
+    <button type="button" class="primary" id="reset">Reset</button>
+  </div>
+</div>
+<script>
+let sec=25*60, focus=true, id=null;
+function render(){
+  const m=String(Math.floor(sec/60)).padStart(2,'0'), s=String(sec%60).padStart(2,'0');
+  document.getElementById('clock').textContent=m+':'+s;
+  document.getElementById('phase').textContent=focus?'Focus':'Break';
+}
+document.getElementById('start').onclick=()=>{
+  if(id) return;
+  id=setInterval(()=>{
+    sec--;
+    if(sec<=0){
+      focus=!focus;
+      sec=focus?25*60:5*60;
+    }
+    render();
+  },1000);
+};
+document.getElementById('reset').onclick=()=>{ clearInterval(id); id=null; focus=true; sec=25*60; render(); };
+render();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Focus timer</h2><p>Classic 25-minute focus and 5-minute break cycles.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

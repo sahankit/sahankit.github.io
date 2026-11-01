@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Number Base Converter — Binary, Hex, Decimal</title>
+  <meta name="description" content="Convert numbers between decimal, binary, and hexadecimal." />
+  <meta name="keywords" content="binary hex decimal converter" />
+  <link rel="canonical" href="https://sahankit.github.io/number-base-converter/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Number Base Converter — Binary, Hex, Decimal" />
+  <meta property="og:description" content="Convert numbers between decimal, binary, and hexadecimal." />
+  <meta property="og:url" content="https://sahankit.github.io/number-base-converter/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Number Base Converter — Binary, Hex, Decimal" />
+  <meta name="twitter:description" content="Convert numbers between decimal, binary, and hexadecimal." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Number Base Converter — Binary, Hex, Decimal","description":"Convert numbers between decimal, binary, and hexadecimal.","url":"https://sahankit.github.io/number-base-converter/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Number Base Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert numbers between decimal, binary, and hexadecimal.","url":"https://sahankit.github.io/number-base-converter/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Base converter</nav>
+
+<h1>Number base converter</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="dec">Decimal</label><input id="dec" inputmode="numeric" value="255" />
+  <label for="bin">Binary</label><input id="bin" spellcheck="false" />
+  <label for="hex">Hexadecimal</label><input id="hex" spellcheck="false" />
+  <p class="prose" style="font-size:0.85rem">Edit any field; others update.</p>
+</div>
+<script>
+let lock=false;
+function fromDec(n){
+  if(!Number.isFinite(n)||n<0) return;
+  lock=true;
+  document.getElementById('bin').value=n.toString(2);
+  document.getElementById('hex').value=n.toString(16).toUpperCase();
+  lock=false;
+}
+document.getElementById('dec').oninput=()=>{ if(lock) return; fromDec(Number(document.getElementById('dec').value)); };
+document.getElementById('bin').oninput=()=>{ if(lock) return; const n=parseInt(document.getElementById('bin').value.replace(/\s/g,''),2); if(!isNaN(n)){ lock=true; document.getElementById('dec').value=n; document.getElementById('hex').value=n.toString(16).toUpperCase(); lock=false; } };
+document.getElementById('hex').oninput=()=>{ if(lock) return; const n=parseInt(document.getElementById('hex').value,16); if(!isNaN(n)){ lock=true; document.getElementById('dec').value=n; document.getElementById('bin').value=n.toString(2); lock=false; } };
+fromDec(255);
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Programmer bases</h2><p>Convert between common radixes for debugging and learning.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

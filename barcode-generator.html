@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Barcode Generator — Code 128</title>
+  <meta name="description" content="Create Code 128 barcodes from text. SVG barcode generator." />
+  <meta name="keywords" content="barcode generator code 128" />
+  <link rel="canonical" href="https://sahankit.github.io/barcode-generator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Barcode Generator — Code 128" />
+  <meta property="og:description" content="Create Code 128 barcodes from text. SVG barcode generator." />
+  <meta property="og:url" content="https://sahankit.github.io/barcode-generator.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Barcode Generator — Code 128" />
+  <meta name="twitter:description" content="Create Code 128 barcodes from text. SVG barcode generator." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Barcode Generator — Code 128","description":"Create Code 128 barcodes from text. SVG barcode generator.","url":"https://sahankit.github.io/barcode-generator.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Barcode Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Create Code 128 barcodes from text. SVG barcode generator.","url":"https://sahankit.github.io/barcode-generator.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Barcode generator</nav>
+
+<h1>Barcode generator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="txt">Text</label><input id="txt" value="123456789012" />
+  <button type="button" class="primary" id="go">Generate</button>
+  <svg id="bc"></svg>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script>
+document.getElementById('go').onclick=()=>{
+  try{ JsBarcode('#bc', document.getElementById('txt').value, {format:'CODE128'}); }
+  catch(e){ alert(e.message||'Invalid value'); }
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Code 128 barcode</h2><p>Render SVG barcodes from text.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

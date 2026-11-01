@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Simple Interest Calculator</title>
+  <meta name="description" content="Calculate simple interest from principal, rate, and time in years." />
+  <meta name="keywords" content="simple interest calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/simple-interest/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Simple Interest Calculator" />
+  <meta property="og:description" content="Calculate simple interest from principal, rate, and time in years." />
+  <meta property="og:url" content="https://sahankit.github.io/simple-interest/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Simple Interest Calculator" />
+  <meta name="twitter:description" content="Calculate simple interest from principal, rate, and time in years." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Simple Interest Calculator","description":"Calculate simple interest from principal, rate, and time in years.","url":"https://sahankit.github.io/simple-interest/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Simple Interest Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate simple interest from principal, rate, and time in years.","url":"https://sahankit.github.io/simple-interest/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Simple interest</nav>
+
+<h1>Simple interest calculator</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="p">Principal</label><input id="p" type="number" value="10000" />
+  <label for="r">Rate (% per year)</label><input id="r" type="number" step="0.1" value="8" />
+  <label for="t">Time (years)</label><input id="t" type="number" step="0.1" value="2" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const P=Number(document.getElementById('p').value), R=Number(document.getElementById('r').value)/100, T=Number(document.getElementById('t').value);
+  const I=P*R*T;
+  document.getElementById('out').textContent='Interest '+I.toFixed(2)+' · Total '+(P+I).toFixed(2);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Simple interest formula</h2><p>Interest = principal × rate × time.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

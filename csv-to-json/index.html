@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>CSV to JSON Converter</title>
+  <meta name="description" content="Convert simple comma-separated values to JSON arrays." />
+  <meta name="keywords" content="csv to json converter" />
+  <link rel="canonical" href="https://sahankit.github.io/csv-to-json/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="CSV to JSON Converter" />
+  <meta property="og:description" content="Convert simple comma-separated values to JSON arrays." />
+  <meta property="og:url" content="https://sahankit.github.io/csv-to-json/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CSV to JSON Converter" />
+  <meta name="twitter:description" content="Convert simple comma-separated values to JSON arrays." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"CSV to JSON Converter","description":"Convert simple comma-separated values to JSON arrays.","url":"https://sahankit.github.io/csv-to-json/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CSV to JSON Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert simple comma-separated values to JSON arrays.","url":"https://sahankit.github.io/csv-to-json/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / CSV → JSON</nav>
+
+<h1>CSV to JSON</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="csv">CSV (header row)</label><textarea id="csv" rows="6">name,score
+Ada,98
+Bob,87</textarea>
+  <button type="button" class="primary" id="go">Convert</button>
+  <textarea id="json" rows="8" readonly spellcheck="false"></textarea>
+</div>
+<script>
+document.getElementById('go').onclick=()=>{
+  const lines=document.getElementById('csv').value.trim().split(/\n/).filter(Boolean);
+  if(!lines.length) return;
+  const headers=lines[0].split(',').map(h=>h.trim());
+  const rows=lines.slice(1).map(line=>{
+    const cells=line.split(',');
+    const o={}; headers.forEach((h,i)=>o[h]= (cells[i]||'').trim()); return o;
+  });
+  document.getElementById('json').value=JSON.stringify(rows,null,2);
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Simple CSV</h2><p>First row is headers; comma-separated.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

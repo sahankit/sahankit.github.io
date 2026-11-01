@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Roman Numerals Converter</title>
+  <meta name="description" content="Convert Arabic numbers to Roman numerals and back (1–3999)." />
+  <meta name="keywords" content="roman numerals converter" />
+  <link rel="canonical" href="https://sahankit.github.io/roman-numerals.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Roman Numerals Converter" />
+  <meta property="og:description" content="Convert Arabic numbers to Roman numerals and back (1–3999)." />
+  <meta property="og:url" content="https://sahankit.github.io/roman-numerals.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Roman Numerals Converter" />
+  <meta name="twitter:description" content="Convert Arabic numbers to Roman numerals and back (1–3999)." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Roman Numerals Converter","description":"Convert Arabic numbers to Roman numerals and back (1–3999).","url":"https://sahankit.github.io/roman-numerals.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Roman Numerals Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert Arabic numbers to Roman numerals and back (1–3999).","url":"https://sahankit.github.io/roman-numerals.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Roman numerals</nav>
+
+<h1>Roman numerals</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="arabic">Arabic (1–3999)</label><input id="arabic" type="number" min="1" max="3999" value="2026" />
+  <label for="roman">Roman</label><input id="roman" spellcheck="false" value="MMXXVI" />
+  <button type="button" class="primary" id="toR">→ Roman</button>
+  <button type="button" class="primary" id="toA">→ Arabic</button>
+</div>
+<script>
+function toRoman(n){
+  if(n<1||n>3999) return '';
+  const map=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+  let s=''; for(const [v,sym] of map){ while(n>=v){ s+=sym; n-=v; } } return s;
+}
+function fromRoman(s){
+  const m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+  s=s.toUpperCase().replace(/[^IVXLCDM]/g,''); let t=0, p=0;
+  for(let i=s.length-1;i>=0;i--){ const v=m[s[i]]||0; t+=v<p?-v:v; p=v; }
+  return t;
+}
+document.getElementById('toR').onclick=()=>{
+  const n=Number(document.getElementById('arabic').value);
+  document.getElementById('roman').value=toRoman(n);
+};
+document.getElementById('toA').onclick=()=>{
+  document.getElementById('arabic').value=fromRoman(document.getElementById('roman').value);
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Roman ↔ Arabic</h2><p>Supports values 1 through 3999.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

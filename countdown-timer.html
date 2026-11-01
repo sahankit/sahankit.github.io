@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Countdown Timer — Minutes & Seconds</title>
+  <meta name="description" content="Set a countdown timer and get an alert when time is up." />
+  <meta name="keywords" content="countdown timer online" />
+  <link rel="canonical" href="https://sahankit.github.io/countdown-timer.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Countdown Timer — Minutes & Seconds" />
+  <meta property="og:description" content="Set a countdown timer and get an alert when time is up." />
+  <meta property="og:url" content="https://sahankit.github.io/countdown-timer.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Countdown Timer — Minutes & Seconds" />
+  <meta name="twitter:description" content="Set a countdown timer and get an alert when time is up." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Countdown Timer — Minutes & Seconds","description":"Set a countdown timer and get an alert when time is up.","url":"https://sahankit.github.io/countdown-timer.html","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Countdown Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Set a countdown timer and get an alert when time is up.","url":"https://sahankit.github.io/countdown-timer.html"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Countdown timer</nav>
+
+<h1>Countdown timer</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="min">Minutes</label><input id="min" type="number" min="0" value="5" />
+  <button type="button" class="primary" id="go">Start</button>
+  <p id="out" style="font-size:2rem;font-weight:800;text-align:center">5:00</p>
+</div>
+<script>
+let id=null, left=0;
+function tick(){
+  const m=Math.floor(left/60), s=left%60;
+  document.getElementById('out').textContent=m+':'+String(s).padStart(2,'0');
+  if(left<=0){ clearInterval(id); id=null; document.getElementById('out').textContent='Done!'; return; }
+  left--;
+}
+document.getElementById('go').onclick=()=>{
+  clearInterval(id);
+  left=Math.max(0,Number(document.getElementById('min').value)||0)*60;
+  tick();
+  id=setInterval(tick,1000);
+};
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Minute timer</h2><p>Browser countdown with done message.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>

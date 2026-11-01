@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <title>Days Between Dates Calculator</title>
+  <meta name="description" content="Count days between two calendar dates." />
+  <meta name="keywords" content="days between dates calculator" />
+  <link rel="canonical" href="https://sahankit.github.io/days-between-dates/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sahankit Tools" />
+  <meta property="og:title" content="Days Between Dates Calculator" />
+  <meta property="og:description" content="Count days between two calendar dates." />
+  <meta property="og:url" content="https://sahankit.github.io/days-between-dates/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Days Between Dates Calculator" />
+  <meta name="twitter:description" content="Count days between two calendar dates." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/ads.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"WebPage","name":"Days Between Dates Calculator","description":"Count days between two calendar dates.","url":"https://sahankit.github.io/days-between-dates/","isPartOf":{"@type":"WebSite","name":"Sahankit Tools","url":"https://sahankit.github.io/"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Days Between Dates Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Count days between two calendar dates.","url":"https://sahankit.github.io/days-between-dates/"}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="/">Sahankit Tools</a>
+  <ul class="site-nav">
+    <li><a href="/">All tools</a></li>
+    <li><a href="/guides/writing-tools.html">Guides</a></li>
+    <li><a href="/y-chat/">Y-Chat</a></li>
+  </ul>
+</header>
+<div class="wrap">
+<nav class="breadcrumb"><a href="/">Tools</a> / Days between dates</nav>
+
+<h1>Days between dates</h1><aside class="ad-slot" data-ad hidden aria-label="Advertisement"></aside>
+<div class="tool-panel">
+  <label for="a">Start</label><input id="a" type="date" />
+  <label for="b">End</label><input id="b" type="date" />
+  <button type="button" class="primary" id="go">Calculate</button>
+  <p id="out" class="ok"></p>
+</div>
+<script>
+const t=new Date().toISOString().slice(0,10);
+document.getElementById('a').value=t;
+document.getElementById('b').value=t;
+document.getElementById('go').onclick=()=>{
+  const a=new Date(document.getElementById('a').value+'T00:00:00');
+  const b=new Date(document.getElementById('b').value+'T00:00:00');
+  const days=Math.round((b-a)/864e5);
+  document.getElementById('out').textContent=days+' day(s)';
+};
+document.getElementById('go').click();
+</script><section class="prose seo-content" aria-label="Guide and FAQ"><h2>Calendar math</h2><p>Inclusive difference in days between two dates.</p></section>
+</div>
+
+<footer class="site-footer">
+  <p>Free browser tools · <a href="https://sahankit.github.io/y-chat/">Y-Chat</a> (free chat) · Not affiliated with Google or Yahoo</p>
+  <p><a href="https://sahankit.github.io/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
