@@ -1,55 +1,69 @@
 {
-  "updated": "2026-11-01T20:29:35.333Z",
+  "updated": "2026-11-02T00:43:46.009Z",
   "feeds": {
     "news": [
       {
-        "title": "'Massive turnout at Ramlila Maidan,' says Congress; Rahul reiterates, 'Gyanesh will go to jail' | LIVE",
-        "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxPLTZLLUNHUGpmZDUyNEF5TUhvM1J5QVdmdmtEZHNkbWJBRHNHeVo4YUFZMm82WlkzaFJYMXp4TFgzRWIzZFdYMFMtYzNWU1llWWJHVDJBYWFFZVRfSGk2RmpyZ1M2Sko0QXlsMW52QjZqV3ZKMEtoWXV0VFZFTTRzNTVEY2Nrb2NTX05FMWtxS2FRZE5fRjZ1X3E2WkJ2cjFGbUQ1V1FoXzhZWDZ5WGFRNG5LaTlfcXlCZ3pkRUZ5RDJNa0ZFS0VRZXBuQXdJQU5lY1hKZ1kzNWhWY0Z5NDNWblMtTk5KaEUzZy1KaVJMbl9CdWNoTlF1b09BZmZlWUEt?oc=5",
-        "pub": "Sun, 01 Nov 2026 17:03:18 GMT",
-        "source": "The Hindu",
-        "summary": "'Massive turnout at Ramlila Maidan,' says Congress; Rahul reiterates, 'Gyanesh will go to jail' | LIVE&nbsp;&nbsp;The Hindu‘You can break a stick, not a bundle’: Thousands turn up for INDIA bloc rally from across the country&nbsp;&nbsp;The HinduRahul Gandhi's 'Protest, Then Shop' Appeal Hits 'Closed' Wall At Connaught Place On Delhi Rally Day&nbsp;&nbsp;NDTVOppn mounts grand show of…"
+        "title": "India’s Congress Party Holds Mass Protest in New Delhi",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPUUxyZDlDU1ZkMVd1bDREUFVvWkFzZlJwN2dLNUxmWG1FRVJNeEhoaHlzTHBJRFFLRWRyZk5zRTYwb3FzMmZXbXZVS0FxRVBNRFpMMjZXTzIwTHFlX2VtSjBraEJvZmkwc2l1aUJRV0R6ZXZsSDM2NHYtSXN5QjZUNEsyc2JkMlZFdkFISWxYMjJ5Zw?oc=5",
+        "pub": "Sun, 01 Nov 2026 16:51:00 GMT",
+        "source": "The New York Times",
+        "summary": "India’s Congress Party Holds Mass Protest in New Delhi&nbsp;&nbsp;The New York Times‘You can break a stick, not a bundle’: Thousands turn up for INDIA bloc rally from across the country&nbsp;&nbsp;The HinduRahul Gandhi's 'Protest, Then Shop' Appeal Hits 'Closed' Wall At Connaught Place On Delhi Rally Day&nbsp;&nbsp;NDTV'After Gyanesh, you are next': Rahul Gandhi says PM Modi,…"
       },
       {
-        "title": "Cyclone Murasu: Orange alert in six Telangana districts, yellow alert in five on November 2",
-        "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOUWZESTBxWjJSLUwtMU5fMmtLUFVGVTBIRS1ia1cwRlBwX2RuYmE2aDJkT2RXcHh1dHNQSVdRSzhwYURDM2ljSHNDc1REaGl2STJ6SG9UZVFsRUEzQTdkRzBsUlVuQXNrTXlIR0xqbG96N0dSb0hiT2ZadDUxWjNIamRUTVpaWDFZaDUzRFJtX09OWkd1STdleU9JNUtMdnY4Sng2RE5mc09SWHdoeWZtVGdfb3Q0NlJqMml1cGxYVEpQbzF4VVgyZXJyNUlnYjBSWWYyQXB2LTBublNZSlFxS3AxNG1xS1cxY1JhVkNFVdIB9gFBVV95cUxNdXNKcUNSZVhwNlZ0VWFWLXpfdTduRkxxYzlrWTNDRFZjY3pXTDczVDMzaHdWaFAxTlhBaU9qajNMQjl5WjN5UndObmtrWHdOal93TUtaYTFfQ3NPR3pJTlpYaDhMVF9BZG9FSVMzSFkzVElpd3ZCTnA4aTNJX3hUejJwZWFvV1hyVzNzWXllN2w4eE5yQWhNMlA2SVZCWExJWW9WbTg4YlVKeE5uVWZFZ3RzVkVkTUlJVVJNMU9XbDVnVjJMXzJOM2I4LUFhZm9vemluUlRaVDRneHFPSUNlZ09OVF9QMTVJbHJUSl9ENTFOdFhUM1E?oc=5",
-        "pub": "Sun, 01 Nov 2026 13:25:00 GMT",
+        "title": "Cyclone Murasu LIVE update: Orange alert in six Telangana districts, yellow alert in five; holidays announced for school in T.N. districts",
+        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQSm9kRFF1aVBJMXRicVcyeHp1YXA0QUdUazRYQlpkMFdwWDVnZHVTZWNLX3hnbGVMelNsTnJiWHdES1cxcVRXbV95OG5qeXZ6c0hWZ3Z2N3A4V0lBb2ItN1RlcjY5WXAydjRqR0pUZUV1ZWZmOFJfTmhYS0plRVhtMlNtN1VpZklEZmk0RXVQOWh3YWszeWZzWHk5Y050UlRMZFBZQVBhRU9uNGkxakV2ZUR1TU1VbDY0SF9aTGhhOVJMaExhOXlESTFZcXgzTkNncW42REgxTUVVYjJGOXFJcFpn0gHoAUFVX3lxTE9Vd2xobFRILUZCWUI0UUJCT3dldzhLbDBSOTc0SGdSblJXZ1QwVFlwYXBKUDRJUUdpRU9YbFkxQjFFWWt2RlhjeXR6Ukc3UktKM2hwcHU5MEl6Nm1LT1FwSjNTV1lmMXhlajVpanlaRmNkY3NmOVRrTXBWRS1YNlU2a0RCX0pSQ1B1S3JiTFFmNG16Nl9mRGVtZzRSaUROZ2I2anBOOGN5dUw0Ykp3ZExoMGhwSjVFY2pQR1NJa2lyYTB5WFZ3YW45VUNGQU16ZHdybkpVMVprcjdqVmpGTTkzYTYtRk1rSms?oc=5",
+        "pub": "Sun, 01 Nov 2026 22:51:05 GMT",
         "source": "The Hindu",
-        "summary": "Cyclone Murasu: Orange alert in six Telangana districts, yellow alert in five on November 2&nbsp;&nbsp;The HinduCyclone Murasu LIVE update: Orange alert in six Telangana districts, yellow alert in five; holidays announced for school in T.N. districts&nbsp;&nbsp;The HinduCyclone Murasu intensifies over Bay of Bengal, likely to cross Andhra coast on November 3&nbsp;&nbsp;The New Indian ExpressRain on…"
+        "summary": "Cyclone Murasu LIVE update: Orange alert in six Telangana districts, yellow alert in five; holidays announced for school in T.N. districts&nbsp;&nbsp;The HinduCyclonic Storm Murasu intensifies over Bay of Bengal; Odisha and Andhra Pradesh step up preparedness&nbsp;&nbsp;News On AIRRain on the cards for Kolkata as Cyclone Murasu intensifies over Bay of Bengal&nbsp;&nbsp;Telegraph IndiaCyclone Murasu likely to…"
       },
       {
-        "title": "Andhra Chainsaw Attacker Shot At, Cops Say 'Tried To Escape Carrying Knife'",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNVWN4a0tROXRSRERqSXA1MUhDN1dmMEdyTV91VDlhNVV5bmE3ZS1iVnVTUTEzZm01RjlkLUlEbUc3T1dwM0ZyRHlLN0xuYU1lV2NKSmlreEJ1N21zdkZzNUR0dXhKVFFDeVBOQ016U1FzUFpBdkgxY2dtMWhERFNhTUtudjNxYzBRazh0V1VFeXFJa3JORjg4OXl1UXJrUTVGWVFRWFJCTXdzY1dJblFpLUtPOA?oc=5",
-        "pub": "Sun, 01 Nov 2026 16:29:46 GMT",
+        "title": "9 dead as Florida jet crashes near busy roadway",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNMDRXLUpNZEZiR0xwMmNzRGttR01Cd3RxR1JQV1VrZEs5cmNPV0NrcVhDZ0dBSE9fY2d3V010M0lNNURQd21hZnJfQVFKdTBLUTk1UloyX0RTLWFsYkQyMzljTG9EUGtLWmxsc0RkLVJWaVdYOHRzSHdNVlBWS0t3M2gwcXFuaGtGOVVWN1FmLWVXRXh0X2NrSmtmYTdFTnNzLWVlWU5HV2o3dlRlTGRBX2E4UExLdzV4eEE?oc=5",
+        "pub": "Sun, 01 Nov 2026 21:54:00 GMT",
+        "source": "The Times of India",
+        "summary": "9 dead as Florida jet crashes near busy roadway&nbsp;&nbsp;The Times of India'Like a missile coming down' - Nine killed in fiery Florida jet crash&nbsp;&nbsp;BBCLearjet plane crash in Palm Beach County, Florida kills 9&nbsp;&nbsp;CNNPlane that crashed near Greenacres had nine on board, officials said&nbsp;&nbsp;YahooJet crashes in Florida, killing all 9 on board&nbsp;&nbsp;NBC News"
+      },
+      {
+        "title": "'Kill Psycho In Encounter': Andhra School Chainsaw Attack Victim's Family To NDTV",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPLVNHaE52THNpNWVXM3lMUmNaUGdNdXR3UlJtRmI1UmI4eDZrTmVtakk0NEFSYi00QlBpc0tvYmRhcml4Yjc5LS04MlcycXRId2hocHdrQjZwLUt3OUhWMnRyTFhLMlZVWjd4dUFMQjJNMVJwVm1PVk5iODRLcmxqT0VkUFQxZDFUazhiUHlQOG9YVDI0RzFQMW02a2xiYjdnTVhUcklR?oc=5",
+        "pub": "Sun, 01 Nov 2026 08:29:34 GMT",
         "source": "NDTV",
-        "summary": "Andhra Chainsaw Attacker Shot At, Cops Say 'Tried To Escape Carrying Knife'&nbsp;&nbsp;NDTVTeam of counselors deployed to instil confidence among students of Raptadu ZPHS&nbsp;&nbsp;The Hindu'Encounter the beast': Anger boils in Andhra village after chainsaw attack on 2 girls&nbsp;&nbsp;The Times of IndiaMinister Nara Lokesh says next 48 hours crucial for girl injured in chainsaw attack&nbsp;&nbsp;ThePrintAndhra chainsaw attack…"
+        "summary": "'Kill Psycho In Encounter': Andhra School Chainsaw Attack Victim's Family To NDTV&nbsp;&nbsp;NDTVAndhra Chainsaw Attacker Shot At, Cops Say 'Tried To Escape Carrying Knife'&nbsp;&nbsp;NDTVTeam of counselors deployed to instil confidence among students of Raptadu ZPHS&nbsp;&nbsp;The Hindu'Encounter the beast': Anger boils in Andhra village after chainsaw attack on 2 girls&nbsp;&nbsp;The Times of IndiaMinister Nara Lokesh says next…"
+      },
+      {
+        "title": "Mandaviya rolls out EPFO services through WhatsApp: Check PF balance, passbook and latest transactions on your phone",
+        "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQT1Q2V09aamxXMFNSaEtxbnVIZEVUdFRaeHZuMGN3YjdGWkRzZnoyUUpMTjEyVWVxT2diMGNMOXR3QjBvVVhNQWZEZ2h6UXhuMmJaQlhYREd6Qk0wVDhTR3ZFZkh5aXdpY1psWENsTzh0Y1Fual9UNDRDdWVnb0t4STY0TmJWa3ZkQkpFc25lMjJEdjVxbHIyd1h5UTVtSnZ0ODBwcEMySUhJTlgzS0NBYjJublVZMEdXVVNsS2loa1FGRG9VaW9wUUhTVXZEY1ZIVnNnN3dkTVcydWxuNVY4bjVScU83VV9wVlIwZElWWk0xTzF1TkFKY3hzZHBJa256bUF2ZTFBeHdjMWF2bGVv0gGUAkFVX3lxTE0xczBxUW9SZTV5VF83a0NCaG1FaGlyQ09CY2VpVEpxdVRIRDB3b0tVNDRqWE5KVm03d0VwRU1GbjVwOTFLV0lpZU5RWDNLanRUQU44N1hBTWtVQ01NME5nSTJsV3FONnVNTnVTTlo2cmVBZDFUMHZNUkhfd183UHhsRnVfZzFBV3owOGV4NmFiZG1ZYXJvNzdLWGJnaXdyd3hPaFA2ZUNOcVo5ZDZNOGQ4bGptOGZ5V0xhVUdYTXZQTUZzSnZvWGxQY0N3di1OWjZDMExkdGEzdXBhWXA3WFkxbjRVc2ZWVWxWSDJXWFpvYktkbDV4QnlDN094SU5nbm5oUnJPYllRYWN1ZzktaFZJM1JkdQ?oc=5",
+        "pub": "Sun, 01 Nov 2026 13:32:34 GMT",
+        "source": "Livemint",
+        "summary": "Mandaviya rolls out EPFO services through WhatsApp: Check PF balance, passbook and latest transactions on your phone&nbsp;&nbsp;LivemintFocus on worker-centric innovations across domains, Labour Minister tells EPFO employees&nbsp;&nbsp;The HinduEPFO launches WhatsApp services for PF balance, passbook access; automates small claims&nbsp;&nbsp;Telegraph IndiaWinner Announcement for EPFO Foundation Day Quiz 2026&nbsp;&nbsp;MyGov BlogsProvident Fund Services Launched On WhatsApp. How Employees…"
+      },
+      {
+        "title": "Thousands rally in Israel urging ‘Jewish-Arab’ coalition to oust Netanyahu",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPUERhVWJoQkxxNnNJMTAweURfZC1paFdKUDhIZFVBSGNjVGJqLUt1OFRiSnFwR0VkSDZjZE9UV3dRaGRCV0dUSENJZUVNdnBVNnJBUU53dFBsSy1wd0tzdG1OaG1WZi1kc3dmS0FJNG9wM3QtLWttR3JhVkRBWHBLaTlRRXR6TlV6U2hYZnMyMlRLUTkxX1M3Ri1vb1VZbmZZUVVVeHJyeXoySFNaTjNvVkN30gG3AUFVX3lxTE5KdFhzaWRtcWozRDhSYVp2LTJsLU1zeEpBMERRd2w2dFlEZzh3MU9uRFUxUFd0UUl0WnpsQkhTZ05sMEhMaUZZeE1uT19kVTZwNEpMcmptOVN2emtwb0hySlVzcVVSQS1DWEc2amE5OHpERURhRTJ3Rk1teklYVnBzSTFONGotVWZhSlZfRDUtOTJhb0U5OVFMRXlHUWcxc0d3a1AtelJNM3p3T1pMNVRhUlhxTDZORQ?oc=5",
+        "pub": "Sun, 01 Nov 2026 02:08:37 GMT",
+        "source": "Al Jazeera",
+        "summary": "Thousands rally in Israel urging ‘Jewish-Arab’ coalition to oust Netanyahu&nbsp;&nbsp;Al JazeeraIsrael election: When will government be formed, who will lead it?&nbsp;&nbsp;Al JazeeraIsraeli protesters demand opposition ally with Arab parties to oust Netanyahu&nbsp;&nbsp;The HinduEisenkot vows to swiftly utilize Knesset majority ‘against Oct. 7 government’&nbsp;&nbsp;The Times of IsraelThe Bursting of the Tel Aviv Bubble&nbsp;&nbsp;The Atlantic"
+      },
+      {
+        "title": "'Punjab Betrayed': AAP MLAs Explain Resignation, Point Fingers At Leadership",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQMkFsRDNORGRyaEFnYXBvejJsS1dKdXcxRDlIVnlZYmczMEI5MkswazktUk9icnNoQ1NCSVVrOUlOSDgtMHdCWGlvblR1V2Z2ck1BMElUYjlEUmhfYnlFeFlwbkg5SjRDRzhlRzM0ckh4bHJiSlk3YXRNTEJicS1XZE44Yl8zOTJYU1NWUVk3T1liNGc0MGNhTWxFLXRJX0tPRTlVZzNTMGZBMi1pVVBEVXBFYW1pUQ?oc=5",
+        "pub": "Sun, 01 Nov 2026 15:41:49 GMT",
+        "source": "NDTV",
+        "summary": "'Punjab Betrayed': AAP MLAs Explain Resignation, Point Fingers At Leadership&nbsp;&nbsp;NDTVAnalysis: Rural Punjab's Shifting Mood Is Redrawing Electoral Map For AAP&nbsp;&nbsp;NDTVPunjab polls: Two MLAs, including former Minister, quit AAP ahead of Assembly polls&nbsp;&nbsp;The HinduAAP unveils Punjab list, fields 40 sitting MLAs for next year's Assembly elections&nbsp;&nbsp;Telegraph India15-20 AAP MLAs in first list were set to join…"
+      },
+      {
+        "title": "Nadda terms INDIA bloc rally against CEC a ‘foolish and designed drama’",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPanoxRUZBVEo1ak54VHlMUnAydHJzN0pzbXVDS1FDdFIzZUtlSXBWMXJQNkJ4ZkF1UkNIT2QyNkZNTFVEUm1md2ZwWUFRQWhRR3dmRFQwTjM1RF9EOWVVR0VwN3NmdzNGbktxSFZBaGNPZnlrQU93cFZ0a245ZkRycDFwUE5uRjZzS0xHTGlseDhscENUWFJrTEs2UE9DLTIyOWlGQXUzc1ZZcW9PWnRRMjQwcGM0SG00TzktU2h0MWZya0FOYTNYMFU1Y01oMnVFbnfSAdgBQVVfeXFMT0U2b2lDMlExZlRXMTYwN28tbWo2X0cwUS1PQ3pUcV9NUThTeWNqWGkwaXdDOEJJTXR4YTJFMDdVc25YQjRPX1plZ1hNWkVaQ01qejBaVGpyZzduXzdaZzZUUlc2WkFfZjQ4SmxUU3lSWUdWT3NON203dDBkcGZDRU5adnZWbnpYMUNMdnNRTFNQbXBjOWIxak9fS2pHN0pyaXozVTBmNk5RRURzQlQyTTU2dFp5MVNfUUpZdERjN3NZakladkx0dXVMYkpCNFdXS2VISElFakxZ?oc=5",
+        "pub": "Sun, 01 Nov 2026 08:12:18 GMT",
+        "source": "The Hindu",
+        "summary": "Nadda terms INDIA bloc rally against CEC a ‘foolish and designed drama’&nbsp;&nbsp;The Hindu\"Flop Show, Ground Empty\": BJP Attacks Opposition's Ramlila Maidan Rally&nbsp;&nbsp;NDTVBJP takes out protest march in west Delhi over 1984 anti-Sikh riots; seeks apology from Congress&nbsp;&nbsp;The Hindu1984 survivors, Sikh groups question timing of INDIA bloc rally on Nov 1, seek apology&nbsp;&nbsp;The Times of India'40%…"
       },
       {
         "title": "Gyanesh Kumar will go to jail: Rahul Gandhi",
         "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNNy1pSTltWFQ0enVsNHUwOXFVWUM4aXA2SmYyeURiUEU3ZW1DYlFMQzM1ZHhaeG5kd3B0cHA5d2s2WVQtWUhtTWNDdTlUMHpCZEhOLTRiNzB1ekljNVZJSDRpUThGcDNWUGhvMUdFTzhXSXBUcjlxWlJnMkI0aXFhZHBWT0hWeWRpMkpxMklJV3VvYi1zNi01WTNSbjh5M0hFTlZyamU3dGNJa3BjVHpBTFdJUlJOcDF3NzR1WnRaYTBELWx0RmZkNmJldC1mRWpYRnphY3FfbGFkMEdERk5Lc1ZBVWNKTlIzTGlvStIB8wFBVV95cUxNNDJnVkRiZFBxQ2FVc2szbEVhby1xZWwwcEJ5bUZMd3VWS0c2czFKa09SeDJZdm1CbFNMWnBtRXhQRXRXRlVYSVZic3RHXzlmd0w3aDk1NFJfMThLYzVVakhOUmx4T2xLUzJaRjFFLWEyRHlKWDhieGN3Sy1wQTRhdldTckdHc2dCQ2lyMUJrdmY1ZEtuMElsR0U1LTBEWEVTSDBUX3FZUDc2dDdhOTdSLXdDT3YzQTFXY0w1WTN4U0h0UU0wbjBsUkY1bWtMMy1HREVRZGcyOE1iMURuRDFuMHM3ZlM1emhVY3pqeGxlZlVGME0?oc=5",
         "pub": "Sun, 01 Nov 2026 12:29:44 GMT",
         "source": "The Hindu",
-        "summary": "Gyanesh Kumar will go to jail: Rahul Gandhi&nbsp;&nbsp;The Hindu'Stay quiet or I'll speak for an hour': Kharge's playful warning to supporters at Ramlila Maidan rally&nbsp;&nbsp;The Times of India‘Nowhere else to go’: INDIA bloc holds mock impeachment of CEC at Kharge’s residence&nbsp;&nbsp;Telegraph IndiaINDIA bloc vows legal action over 'vote chori' at mega Ramlila Maidan rally&nbsp;&nbsp;RediffWe know…"
-      },
-      {
-        "title": "Explained | EPFO new initiatives: WhatsApp services, inactive PF accounts to get automatic settlement - What we know",
-        "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPTHFoRUNRZ20ydUc4LWdxcGUtdldNdEdNWkxNM2VEdlBUNFpjV093TGgwX0NmRFZ0T3JTVTJQdmF2M0tZbVRSYVkzSFdidHZaMUgtUElrWmYzZU40T1FQa2w0cVhGQjhlLU9nYkpqbG5XS29uc2RheFZWVHlIUEhRcVVQeFNwQ0tYYmtSNzNMaUhvX21DdElGT0IyQXhrZEVvOVBDM2ZwU0MwdTRNazlYcmlNZGVVWXc5UW1rV0pGRkQ5cXdmbEpzbmVDMEFqcU9RTmV5T041YkQxcDJaWV9RX2lIVUV5dndld1VneGxHeXE5VDFFUG9NRWUyb1gweDhVTnZyWkRYSl9EQdIBjwJBVV95cUxNaDNsS0pucUx4Y2NxZS1yMDVyaUE5NHh1c05uUFBlV0NKbXhlRVdodjRFaHdmYWM1Z1BsM2Utb0hPZ3pnOEpmRV9vLVVkbUdTNTZuMXNRQ1VWNzFHdW5QR1REOEVKVlc2LTZFYXlST25vSGMxV05Td3RqYmVKRzhtTldDcm9lRnhGU3FXVnFaVVZEbHVWeTY5RHc4WVIyYzM3SEdfQVRzdG0wUm5FeTZIRW43WnNzSjZsTTN6WUQtSmpPRms4Yl9ocF9HUkJQYzhuOTJjUUN3and2eVhMWVo0WHVsYWtTcmN5dy04UERMaWNvamdhMmdpclo0VUNxbnZDNDlNeXpzNlg3Sy1CalM0?oc=5",
-        "pub": "Sun, 01 Nov 2026 06:26:31 GMT",
-        "source": "Livemint",
-        "summary": "Explained | EPFO new initiatives: WhatsApp services, inactive PF accounts to get automatic settlement - What we know&nbsp;&nbsp;LivemintFocus on worker-centric innovations across domains, Labour Minister tells EPFO employees&nbsp;&nbsp;The HinduEPFO brings PF balance, passbook and transaction details to WhatsApp: What subscribers can access&nbsp;&nbsp;The Times of IndiaWinner Announcement for EPFO Foundation Day Quiz 2026&nbsp;&nbsp;MyGov BlogsEPFO launches WhatsApp…"
-      },
-      {
-        "title": "CBI extradites Mahadev App kingpin Sourabh Chandrakar from Oman",
-        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPNlZHWm4tVFBEeTQzSkhOOHlMTUVVRDROa2NEX0ZaNC1PSUh6dDMweFNvTTltMlFZX2tYTklQOERnMnU0dzZpU19DQWZvVzRGSkFIVDVSUkRua2ZWZnRSWmtmb2Q2bkdKNWIxbmZTMEZLV0FXbDJrZnBTc0pINTFOc3l5QVZ3QWpJZWpiUUZESVVIUVIyT25QVHV0czR3MmJIRjh0aDQwSm1lX0VqVElBMXA2SHZULUwxc1hZc0xFYkR1Zmg2VVpadF82dw?oc=5",
-        "pub": "Sun, 01 Nov 2026 13:32:00 GMT",
-        "source": "The Times of India",
-        "summary": "CBI extradites Mahadev App kingpin Sourabh Chandrakar from Oman&nbsp;&nbsp;The Times of IndiaMahadev betting syndicate ‘kingpin’ extradited from Oman&nbsp;&nbsp;The HinduMahadev betting app scam: Key accused Saurabh Chandrakar extradited from Oman&nbsp;&nbsp;The Indian ExpressCBI brings back fugitive Mahadev promoter Sourabh Chandrakar from Oman&nbsp;&nbsp;ThePrintMahadev Betting App Case Kingpin Sourabh Chandrakar Extradited From Oman&nbsp;&nbsp;NDTV"
-      },
-      {
-        "title": "Blow to AAP as 2 Punjab MLAs quit party day after ticket snub",
-        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNTll5UWhSbVdhZ2VoejZOdlgtSlVHbmRya09UcWhBN3cwSFF3MHpUNUo2TlNXa0FvX0FROEN4YU1TSS14SGh5aGF0bk11NzJVYW5JRUpPVkpRTE1ja2JSdzI3SzNtRkd5OGRjVnhXTGRCdjlfck5WNW55dE5RRTk5U1BCNFE0d3NySGNZTFZRN0FkM3VNVW9sTkVLeFFuTnVoRm05N0hHaXJCTG5wMDNIaVl3QVVvV3BJOWdrWNIBwgFBVV95cUxPQXQ0RXdFc2oxeVZFTDVaaEx0MnFzcC1KN3UzdWtvWHNHdU55Ukp6cV82X3V6Y3d0bHFZUTVVNGVuTkhpTl8tWmlBaVZzckk0WnpLb2VtZnFDeGF5S2E5OFlzc3F2ZWUtUDRUMjdGbkFFNExHVmJkTjJxcnY1TnJSNG03Wmg5QWd3TUZBRGNJY0xjLVRfVEE0azBtX2F4Q2R3N0lIdHpVRGtTSzFIdjNkOXhrU2VSdFdRUzJQM25xVlhTdw?oc=5",
-        "pub": "Sun, 01 Nov 2026 09:05:28 GMT",
-        "source": "India Today",
-        "summary": "Blow to AAP as 2 Punjab MLAs quit party day after ticket snub&nbsp;&nbsp;India Today'Punjab Betrayed': AAP MLAs Explain Resignation, Point Fingers At Leadership&nbsp;&nbsp;NDTVPunjab polls: Two AAP MLAs quit party after first candidate list announcement&nbsp;&nbsp;The HinduAAP unveils Punjab list, fields 40 sitting MLAs for next year's Assembly elections&nbsp;&nbsp;Telegraph India15-20 AAP MLAs in first list were set…"
+        "summary": "Gyanesh Kumar will go to jail: Rahul Gandhi&nbsp;&nbsp;The HinduGyanesh has to go, PM & Shah next, says Rahul Gandhi at anti-CEC rally&nbsp;&nbsp;The Times of India\"Gyanesh Kumar Will Go To Jail\": Rahul Gandhi Calls 2024 Polls \"Illegal\" At Delhi Rally&nbsp;&nbsp;NDTV‘Nowhere else to go’: INDIA bloc holds mock impeachment of CEC at Kharge’s residence&nbsp;&nbsp;Telegraph IndiaINDIA bloc vows…"
       },
       {
         "title": "Panchkula school assault: 6-yr-old out of danger as 8-yr-old who attacked her undergoes psych eval",
@@ -59,181 +73,160 @@
         "summary": "Panchkula school assault: 6-yr-old out of danger as 8-yr-old who attacked her undergoes psych eval&nbsp;&nbsp;ThePrintPanchkula school horror: Principal suspended after CCTV captures assault on 6-year-old girl&nbsp;&nbsp;The Times of IndiaHaryana Class 3 boy brutally assaults 6-year-old, man with chainsaw attacks Andhra schoolgirls&nbsp;&nbsp;Telegraph IndiaHaryana: 8-year-old boy bangs KG student’s head against desk, hits her with brick inside…"
       },
       {
-        "title": "Reliance Foundation to establish Nita Mukesh Ambani Anant Ashray for 5,000 residents",
-        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOUl9NN3BNWURqcmpnZ2ZoTVlQSGNMUG02VjVSNVIyYVBVSFZ3N3dSOTNwWXdNVTYtb25JU29Gc05fbW03Uk5hOHprazBMZExkblFLWm95YjlNdjBNM3kwdnpieEg2clBfR0lMUGo5a0U0Y29OYnZkQ21lMVF1QWxWMVphSTluYkstSm5jN1FoXzl4eFVvZDNja0hzY2dUeEU0bkFkN0VLYURVQzQxbFpPVE1GaVphRWcwOW1hVUZpam80bHJKZFgydDd6Vk1oZFRmcnB3YTNTbmY4VExIQ2pqOHBpS0xaZw?oc=5",
-        "pub": "Sun, 01 Nov 2026 12:53:00 GMT",
-        "source": "ANI News",
-        "summary": "Reliance Foundation to establish Nita Mukesh Ambani Anant Ashray for 5,000 residents&nbsp;&nbsp;ANI NewsNita Ambani marks birthday with foundation stone ceremony for 5,000-person care facility&nbsp;&nbsp;The Times of IndiaNita Ambani lays foundation stone for Karjat care facility on birthday&nbsp;&nbsp;The Economic TimesReliance Foundation to build 100-acre township offering lifelong care and homes to 5,000 people&nbsp;&nbsp;FirstpostNita Ambani announces Anant…"
+        "title": "Iranian army: War could be longer than previous one, Trump won’t dictate its duration",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPc0lMRlVva0JjWlN1Y1JZcFloZHZ0Z1VVX1VYTWhldDVNbldlQlJDbWNfRE8zOEEzdU82R3gyZzZjZUNRVWREZ2FxM1lHemhSbUlQeXVqT1hiUHZMS3RPUHQwejZGQ18zZ294bWJSbEJvR05KSmZhcnRja3VzSC1NTldFNjl5Rm9RRjBhQkJWTVRHUFZtR1A0S3hvb0tRVzRMRG9ScTUxM1FlUVZaaW9ZbThmZ9IBuAFBVV95cUxNel80bFpSYVhEZF9MbUtDSi1vVFlGNVZqMDkzMWJlTTRVOEg3LThxTHljVU5oMjQwTzhxdXVyaWNBQlM2OThVZmw4M2VjbGp4YjQ5RHVwU3JpTzFYejM2eXhwNEFkd2FiNkk2aTNCVUhaNHFQY09rNkhySVdORWlTV0hiWnBBdERwQ3JTcWlVMkh5TTd6QUxBSnFjemxWYTltM2RFNTNwMGZLR2NBMTRPM2FLbFN6aWJS?oc=5",
+        "pub": "Sun, 01 Nov 2026 17:52:58 GMT",
+        "source": "The Times of Israel",
+        "summary": "Iranian army: War could be longer than previous one, Trump won’t dictate its duration&nbsp;&nbsp;The Times of IsraelIran warns new war could last longer after Trump threatens strikes&nbsp;&nbsp;The HinduIran warns of 'geographically unrestricted response' if US attacks&nbsp;&nbsp;Euronews.comIran warns of immediate retaliation against attack, says Hormuz reopening proposal is ready&nbsp;&nbsp;Telegraph IndiaIranian media citing IRGC spokesperson: 'A vast…"
       },
       {
-        "title": "'2 pilots mandatory': DGCA tightens Char Dham helicopter norms after Uttarakhand crash; operators threaten shutdown | India News",
-        "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQZG9BUWtPcGktV0Z4Q1E3aFZRTnptLUJrTWgwd253WGoxMVd2YmN6Wnk5ZFJZUVRDT1UwbUt6OFljQXJYc2doZGxGUS12ZFlScmZFWVcwN0R4UE1YOFRJVlFFNXZJYThqdWZBS2RsdmNweXliblNCamJ4VjN5Z0JzQkw2WklwSFVVcDhzY1dheWwxY1A1ZnRVenE0eE8tS3QtcFNvdGZpQ0trTFZUTThYLXFBQnZLb0E5V2lDVmRCS2UzWFFDV09LNEhud1h6MFBOVmk1eDFJUjVpTkJYOG5HOW5uU2FHc0EzVzBweEZCZ19pWFQ3WDRUSll3ZnVxbkd0T3hYdVNFVmgwWnPSAZACQVVfeXFMT1ZXQ0h5V3V2WGdHbVhZOUxuanJNSFBzSGUtd0hYa1V5YVVpUnhJcG9Rc2RRUWFHWjVncDdBSV8xcFUwbmVRNGVzRXZjRGV1UEp4QVBWTEFIT3VjMkFJTklSZi0yY1FKcFlPdUlPRldoUl9EUUlOVDJfeFloTFQzWHZ5NzFxUXFoYzQybHJFemZuNGFnSWFEWGtKWHpkNkw0U3BqMkRVTnhadXUzcGtPWmR0VXplWm9Vblh0VF91ZjFOdE41bl9zMTVCd2Z2cTZMaWI4Smg3OFU4d1dYbWxzVDNzV1ZmejkzcGxwY3liVlY4dXlCZ1dSX29ZUXREN1ZRdXM1RTROVkh5NVI5MXJ1ams?oc=5",
-        "pub": "Sun, 01 Nov 2026 14:13:28 GMT",
-        "source": "Hindustan Times",
-        "summary": "'2 pilots mandatory': DGCA tightens Char Dham helicopter norms after Uttarakhand crash; operators threaten shutdown | India News&nbsp;&nbsp;Hindustan TimesChar Dham helicopter operators threaten to halt services over DGCA's two-pilot rule&nbsp;&nbsp;The HinduUttarakhand chopper crash: DGCA mandates fresh clearance for every flight after six deaths&nbsp;&nbsp;Telegraph IndiaUttarakhand helicopter crash reiterates concerns raised by Parliamentary panel&nbsp;&nbsp;The Times of India3…"
+        "title": "Lula da Silva | The Pele of Brazil’s politics",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNRlhtZ3VXV0JWMTdoejV6bmRtSDI1bGZvc3dGbjRiQ09RTzRNTW93SzlLYU93c0psaFQtdURxU2dFQ2R5VXlpclNqaXdQRnlCeXFRakw4bV9mSUpJWEJBS1dFYnJuUUxWLUU5TmdadlNkWGo1ekY4Vi1oRzhsS1Uxb3h2ZTI3S2R0ZEo1b2hPNFZ5SlFrTHlhSTJhRXFoVm1sc3lhRUE0dHpUd9IBsAFBVV95cUxQUERvbmdvSC1pZ1dVN1NrV0t2Rmx0TjVLU0t5QWJFQ056aG02ckpwV25UYlFKeFdnOGdoUUJnX1NuNjlWNHpZa2JNSDNDSzY4SjhJOTB2dVpPZ0RQa0IwODVVa3BjQzBPRDg4dU5KQ3Jxa3R6X2REcURXVUJHbU9GM3BrU25rVHpfdjhMZmw3MFgwS3FlZEN4Zy0xeTNOLV9mZjlCS3gtaEkxa2xXazItcw?oc=5",
+        "pub": "Sat, 31 Oct 2026 19:45:00 GMT",
+        "source": "The Hindu",
+        "summary": "Lula da Silva | The Pele of Brazil’s politics&nbsp;&nbsp;The HinduOpinion | The Global Right Had A Problem. Israel And Brazil Just Made It Bigger&nbsp;&nbsp;NDTVMarkets are dismayed by Lula’s surprise win—and for good reason&nbsp;&nbsp;The EconomistThe secret behind Lula’s win in Brazil may be an ‘army’ – of social media creators&nbsp;&nbsp;The GuardianGMR: Lulu beat Brazil’s pro-MAGA right,…"
       },
       {
-        "title": "German ministers vow tough response to Frankfurt riots and looting",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOX2l3Y3cxckRlRlpIRFQzT2FWa0YzZHcxYTdSV3dDY29iN0FNUHdqa1hKWkxFdU40NFI5MG8tWEV2SU54cng3NXpoV3JhdzdjVVRKZHJPYmlPNVBYTG95Y1lQYW1PbzVscnpHZ0plMGhET096ZDNjdEg0dTlzd2dPNVNlOXV3N2NiOW5rXzRsN3VZc2pSQWk0TUxkLXl4ZTRrcV9mMW9UWnUtSzlPajJaLS16Qm8?oc=5",
-        "pub": "Sun, 01 Nov 2026 16:24:19 GMT",
-        "source": "Reuters",
-        "summary": "German ministers vow tough response to Frankfurt riots and looting&nbsp;&nbsp;ReutersShops looted as German cost-of-living protests turn violent&nbsp;&nbsp;BBCGerman ministers pledge tough action after rioters damage stores in Frankfurt&nbsp;&nbsp;The HinduProtests spread to Germany as hundreds of thousands march again in France&nbsp;&nbsp;CNNGermany's Gen Z protests disrupted by violence on Saturday&nbsp;&nbsp;DW.com"
-      },
-      {
-        "title": "Mediators continue US-Iran negotiations amid war rhetoric: What we know",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOaTlmQ01wT0dRNXNLWS03YU1kckJGYTJSRjNGb09mWmZFajhNUDFEZEptTEtFb3hZMVhmeUo3OVBxQ3pTSXJMYzBJVXZXN0RUMTFJREZOVURqbml2TElHYTNtdVpkOUpKU0J4YW5SMi0xT3p4Z1NiN1FrMkNZcXEwNUN4UW9XZ0dzODl3d1Y1UDk4RDd2T1BHVkI4RkozUnhqeTdMYncxRklnc0NGUWs1TdIBtgFBVV95cUxNUHozTUZYc3N6ajNVWExJNUpDWkFrRUhFQmZzQzVDRWQxaFduS05COVlidUtXMWhEbnJib3BUMXBjekc3NW1lYlNNN1ppa0p4ek5wX1NXSUg2UXNocWNZcGpLZGs0dUszZFk1QUZ5NFhsTXJ4d1FzWWJCdFE3bzVrZ1NYSmFsRjJyYnUwV2lGMjdYVXR5TFdWTGtQendCSzdCT0I2MEY3VmhkOFRvTmVuSlRrNHREdw?oc=5",
-        "pub": "Sun, 01 Nov 2026 11:20:08 GMT",
+        "title": "Bangladesh forms wage board as garment workers protest",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPa0ZJUGJXU29Va0s3M2VnM2lFNHo5cEw0NkhvQ0FJYjdqb3Y3UlJXS3BCLTRiSTZYMVVQeEIyeTk4UDhENmZvalFEdFd2OWQzdU5LYlp6QW5wWFR2MWxtUDNxTEJuWmhILUtYajUxYTJKVU1YZmwwR2tVWHZqQWMyUDVNRlg4SlUyUjRsdkw0VTFHSUtIckZGZnhzNi1EUdIBowFBVV95cUxQYWFxOUlvT1l6d1NIZWFGajJ5UVZwREM4dDcyblBnWHVBaVppWjQwRHlRTXRNc0RraWF6TVJYYm1kVno0WnFPVDdocUtYbDZ5Tm9CbmtIeVFFTXVEaC0yT3Z3eUJLOHdERWtwbzFFSFdiVk84RFJ4d1FITDN6d1I2N25yT3hjdzVYcklieEd2NWZoajRPU2w1OHc3czZYcm9KTzg0?oc=5",
+        "pub": "Sun, 01 Nov 2026 08:15:57 GMT",
         "source": "Al Jazeera",
-        "summary": "Mediators continue US-Iran negotiations amid war rhetoric: What we know&nbsp;&nbsp;Al JazeeraIran, Qatari mediators hold third day of talks to end US-Iran war&nbsp;&nbsp;ReutersIran, Qatar hold talks as Tehran weighs US diplomatic overture&nbsp;&nbsp;CGTNQatari mediators held talks in Tehran aimed at restarting direct U.S.-Iran negotiations, source says&nbsp;&nbsp;CNBCUS-Iran talks progress, but nuclear disputes remain&nbsp;&nbsp;The Jerusalem Post"
+        "summary": "Bangladesh forms wage board as garment workers protest&nbsp;&nbsp;Al JazeeraBangladesh sets up wage board as garment workers' unrest shuts factories&nbsp;&nbsp;ReutersBangladesh forms wage board as garment workers keep up protests&nbsp;&nbsp;The HinduBangladesh garment workers protest for higher wages, govt announces wage board&nbsp;&nbsp;Telegraph IndiaViolent protests rock Bangladesh garment hubs as workers demand a steep pay hike&nbsp;&nbsp;The Times of India"
       },
       {
-        "title": "Executive action & emergencies: How Trump plans to deal with Democrat-controlled Congress after US midterms",
-        "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxPcVUtNi1kdFN2R2lZX2p1RmZhVlBjZF9kY0k0RllvSmxGQ0pMUzIxNjQ2SUllT0FMZnhuZVVJUnV1blhYTVlxTnRhai1HX3N2bUozTkxucm52U1dOMkQ0SzZJUll5eGZFY0VYU3lqOGtYRTRlVEEzTWl3d1NVaUtHNnJicDBOSENuY19hUURqckVaaEthMzVVcGc5Z0pfTHJlRUlQWGt3VE5oQzdWeW9iTDNDU28tZVB3NUkxOUppcXBzcHR2WnM4bnlOSGliU0xfZHhNRUoxQmZWU2QzUF83Nkt6ZmJibm9yb0oyaVJZMWNmZ3RvTXRNcDZZZHJfNEVTLXEyQUdR?oc=5",
-        "pub": "Sun, 01 Nov 2026 11:55:00 GMT",
-        "source": "The Times of India",
-        "summary": "Executive action & emergencies: How Trump plans to deal with Democrat-controlled Congress after US midterms&nbsp;&nbsp;The Times of IndiaTrump White House maps path to govern without Congress if Democrats win&nbsp;&nbsp;ReutersTrump seems set to contest the election&nbsp;&nbsp;CNNWhat happens if Trump rejects the 2026 US midterm election results?&nbsp;&nbsp;FirstpostTrump says he may become 'Mr Veto' if Democrats win the…"
+        "title": "Carney brushes back Trump on trade, Europe and Russia",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNbllRQkxBbGVkVDU1blRheXpabWo0Q3RKLUdEUHRNNWlsQjdNa195NkxDZGJoYzVoOHBrVkhXdDZPN3gxYkVEZlVPOURUMHNzUlFkVTJlaVBhQ3RGQ0RrU1dGM3NQejZTaDBlN1NoaWRPYWVUX3VXV3BUYi1DYi05TUlESEFKdGlKRzRNZzB0ejTSAZYBQVVfeXFMTW5lcWJ5U3pZbFRpVWs1eG1qZW94UXVhbE90QWFOdk5vRjY0dDA1Z2NNbHd4VmV0WEZ5YUVRNnk0ZW5KbjlGcUVfWnpMcU9pNnFqRlRPdjNERnZiUG8zS092VkdYdG9HdFR5Y1FadndZbVktR3dma0dfMzlHV2hZd3ZPVUJZMHNVUHBOOEdEQ2p2eWpKY2V3?oc=5",
+        "pub": "Sun, 01 Nov 2026 10:39:53 GMT",
+        "source": "Forex Factory",
+        "summary": "Carney brushes back Trump on trade, Europe and Russia&nbsp;&nbsp;Forex FactorySee more headlines and perspectives on Google News"
       },
       {
-        "title": "Iran’s Mojtaba Khamenei warns US, Israel of response ‘without geographic limits’",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUmNOTU5WMlVwaTd3aS1fSGpJd2hRSnhEWHZtbHdWaC1kSnhaTXZEVVVjaW9lMlJvSTk4eTE2U3RFNlFUMmJySGluSzBBNEllWHMtRHZNdDJmZE1KVlNqdkVzNUZzYVdWSjR5R2RjYnd4ZjZ2cFVyS084TTFtV1o0RmI3MHlSRWxPbHBIbjlWdTU5QVlyU3d2QWxLRGdxR3NwZmpuX2dxanRZLWF3OFF3czl1cHdKMlRT0gG_AUFVX3lxTE9CRkkwdkNEMXlSd1Z2T1ozSUpVZUloallqbnVtWkhKbjNTLXVwNkpXeXJHQkFHSkFCRnl5bjRpOEJYbDBEUnU4ei0xbG1JVTRDMFliVEFnOG5qRGYxa2hJWUYwM2NvSlduYW1COUk0RlN3YWhReVJtV1l6MDZENXpLZWUwN3BCTTR0LS1CamVFUDVlRmhHek5wTDhuSjk2QXVaN3BuSmtVX1FjdU0yQW40TUlOYTdyZ29YRlIxTE5F?oc=5",
-        "pub": "Sat, 31 Oct 2026 14:38:50 GMT",
-        "source": "The Indian Express",
-        "summary": "Iran’s Mojtaba Khamenei warns US, Israel of response ‘without geographic limits’&nbsp;&nbsp;The Indian ExpressOpposition parties meet for coalition talks as Likud rules out PM rotation agreement&nbsp;&nbsp;The Times of IsraelIran warns of 'geographically unrestricted response' if US attacks&nbsp;&nbsp;Euronews.comIran warns of immediate retaliation against attack, says Hormuz reopening proposal is ready&nbsp;&nbsp;Telegraph IndiaIranian media citing IRGC spokesperson: 'A vast…"
-      },
-      {
-        "title": "Masks Off: Crypto Industry Responds to Binance Hack by Acting Like Banks",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOcFRkR1VpMGJUYTR0emJMc1JaOV8yV2FsVEJwOEo5bDdyVldQYVlhd29ua3lhS0szNkNVRzhhT2o1SV9QS3J3VkxNTWoxVHRnN3JnZ0RMNUp0S0Nqa2RMbndBQ0dzUnhHNDZqQlZrbDBBWDdWckZRQzJYVTFRb3RuNTFNcFRzMWh6Qk16bERvRk5udDZSa0h2MUd0ZDY5d1NLVkg0dA?oc=5",
-        "pub": "Sun, 01 Nov 2026 16:20:54 GMT",
-        "source": "Gizmodo",
-        "summary": "Masks Off: Crypto Industry Responds to Binance Hack by Acting Like Banks&nbsp;&nbsp;GizmodoCrypto firm Binance covers 90% of losses after $6.3bn hack&nbsp;&nbsp;BBCThe largest theft in history: Sanctioned actors linked to North Korea behind the $6.4 billion Binance hack&nbsp;&nbsp;EllipticSecurity Incident | Recovery Update #4: Withdrawals Resume in Phases (2026-11-01)&nbsp;&nbsp;BinanceBinance to resume withdrawals after recovering 95% of $6.3…"
-      },
-      {
-        "title": "Trade Setup for November 2: Top 15 things to know before the opening bell",
-        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPQ3lBaDlnZEs2MHBvbl85YmxMUnJUYVFncG9NcmprYVJpV1J1VjdjQmxsVEc4Vi1Jc2lJeHFTeHZROC1JSEJHMGdYZXVfc2wyc2FuTVQ0eWtlbWwtNzJGV001VVUycXp0eUZXRmc0Y1dFT2p4cTRVRE5xOHBzU1lGeGFFOWlJSHZnbVp5RHdWZVBDdVh2cGtiRjBQalZXX3lTNlQwOFhlTnVPN2JWNFo1Nm9Ldlo0N0d5QXZqTnA4SjhUNFVXUE11a3pzNV9wZFNFU25B0gHYAUFVX3lxTE9LdERYWnhMX2tNSlozZGNBcTYyRGl3ZFgtSXVsak1fbnhWZXBPRjhnLU1GLUVmOHZrVXk4d3N5ellPQVhzUjJ6Z0pybFozR1NZVnV2eTdfRVlYYzhQWThjb1NiM1h2ZTJoaHhnMVdtUlNTQmc4cTNSS1NRS196YUppMndEOS00VTlfQVotTDI0bVFNTDkyRy1aMHVSYlNlOE95MHZkcFhKX1VWN1kyOW05OWZoVTlwRHR0SjhKR1BRWFBZTFBDM3pLamZWY3ZEZnVWVE43ZlRteg?oc=5",
-        "pub": "Sun, 01 Nov 2026 14:16:16 GMT",
-        "source": "Moneycontrol.com",
-        "summary": "Trade Setup for November 2: Top 15 things to know before the opening bell&nbsp;&nbsp;Moneycontrol.comIndex Outlook: Indices hold firm&nbsp;&nbsp;BusinessLineF&O Talk: Big break above 23,200 can open doors for 23,500 for Nifty; Sudeep Shah picks 6 stocks ahead of&nbsp;&nbsp;The Economic TimesNifty & Bank Nifty Weekly Outlook 31-10-2026 by Choice Broking Ltd&nbsp;&nbsp;Investment Guru IndiaNifty Outlook for November 2:…"
+        "title": "Binance to resume crypto withdrawals in phases after record $6 billion hack",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQSmdIb3Bua0xDMl9WRV9tbjdYQkZ0b0ZlTFNBR2M4eUxrS05ERUNmdE8tV09YaE1sRnlYVVJGTEV4OEd4TzZfOFQtWWVzd3QzZjdsUmpKUTZ2MW5tX1ZOTFZfcnl5bENjX0hndnlvYVpVM3dOYjBBYW5adnBvRVNiS21Qc3F6dDRqNFlpZldXUGJlMXZzN1JGajFBa1I0VU5mcE9hbHZJUWdwWExHUlZ0UTN6OUdaZHJsb2FOdGdHd2VYTXpZbENzX01Hcy1IZw?oc=5",
+        "pub": "Sun, 01 Nov 2026 06:25:34 GMT",
+        "source": "Investing.com",
+        "summary": "Binance to resume crypto withdrawals in phases after record $6 billion hack&nbsp;&nbsp;Investing.comBinance Estimates $6.3 Billion Hacked in Crypto's Biggest Heist&nbsp;&nbsp;Bloomberg.comBinance users withdraw billions after record crypto hack&nbsp;&nbsp;BBCBinance to resume withdrawals after recovering 95% of $6.3 billion crypto theft&nbsp;&nbsp;The Times of IndiaGone in 20 minutes: How the biggest heist in crypto history unfolded&nbsp;&nbsp;Reuters"
       },
       {
         "title": "Maruti Sales Oct 2026 All Time High - Domestic 2.12 Lakh, Exports Near 50k",
         "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOdEVmOElHMXJ5aXctOTFqemRycy1MdGJ6TFhtZXFzdmZ2R0dJUl9WSURnRFp0MnVLNzZwNGgyRlVJVmlHVWV0eC1DX1hPSDlYWGVzTVphSjJndlF3UF9LYWNqYXgtWWhhZ0wzQ0szT1RZREdUX08td2E4cVEwZTFmNlVvZGNXVjJqaW9JYXNNWEtibF93dWxxU3VzcVhRNHUyZnhNOXdDWmZCMUExNTRZ0gGvAUFVX3lxTE50RWY4SUcxcnlpdy05MWp6ZHJzLUx0YnpMWG1lcXN2ZnZHR0lSX1ZJRGdEWnQydUs3NnA0aDJGVUlWaUdVZXR4LUNfWE9IOVhYZXNNWmFKMmd2UXdQX0thY2pheC1ZaGFnTDNDSzNPVFlER1RfTy13YThxUTBlMWY2VW9kY1dWMmppb0lhc01YS2JsX3d1bHFTdXNxWFE0dTJmeE05d0NaZkIxQTE1NFk?oc=5",
         "pub": "Sun, 01 Nov 2026 10:36:53 GMT",
         "source": "RushLane",
-        "summary": "Maruti Sales Oct 2026 All Time High - Domestic 2.12 Lakh, Exports Near 50k&nbsp;&nbsp;RushLaneFestive tailwinds drive car sales to record highs in October&nbsp;&nbsp;The Times of IndiaMaruti Suzuki posts highest-ever monthly sales in October as festive demand drives 25% growth&nbsp;&nbsp;Telegraph IndiaDomestic PV dispatches cross five-lakh units mark in October on strong festive demand&nbsp;&nbsp;The HinduHyundai Records Highest-Ever…"
+        "summary": "Maruti Sales Oct 2026 All Time High - Domestic 2.12 Lakh, Exports Near 50k&nbsp;&nbsp;RushLaneDomestic PV dispatches cross five-lakh units mark in October on strong festive demand&nbsp;&nbsp;The HinduMaruti Suzuki posts highest-ever monthly sales in October as festive demand drives 25% growth&nbsp;&nbsp;Telegraph IndiaFestive tailwinds drive car sales to record highs in October&nbsp;&nbsp;The Times of IndiaHyundai Records Highest-Ever…"
       },
       {
         "title": "India's October net goods and services tax collection rises 25.6% year-on-year",
         "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQemVqbnAxSFBqbkxhQ2x2NXI2c3dlWXRfZWJ5VU1PN24xdzVhLUdVWmlrSVp6LW01d1lYdlllNFpMNnpReHJ1VnlUMFNUdzdtMjNGZnh6QXJsNkRjSVFIcTM2cFU2N2tWQk5XaUJoUU9GVXlLUlV0WVE0Mzd2Q1NEMmE3WTNHU1JydXBVejZyOFJBenU4MGY1VmE0VW5sakk4TEM4UUk2TFFMTlAtUEZyeExvRW5FWVdXMjZN?oc=5",
         "pub": "Sun, 01 Nov 2026 07:25:43 GMT",
         "source": "Reuters",
-        "summary": "India's October net goods and services tax collection rises 25.6% year-on-year&nbsp;&nbsp;ReutersGST mop-up surges 23% to second-highest level of ₹2.31 lakh crore in October on festive demand boost&nbsp;&nbsp;The HinduGST mop-up rises record 23% in Octoer, hits Rs 2.3 lakh crore&nbsp;&nbsp;The Times of IndiaFestive buying pushes October GST collections to second-highest level of Rs 2.31 lakh crore&nbsp;&nbsp;Telegraph…"
+        "summary": "India's October net goods and services tax collection rises 25.6% year-on-year&nbsp;&nbsp;ReutersGST mop-up surges 23% to second-highest level of ₹2.31 lakh crore in October on festive demand boost&nbsp;&nbsp;The HinduFestive buying pushes October GST collections to second-highest level of Rs 2.31 lakh crore&nbsp;&nbsp;Telegraph IndiaGross GST Collections Increase 23% To Rs 2.31 Lakh Crore In October&nbsp;&nbsp;NDTVGST mop-up rises…"
       },
       {
-        "title": "Rushed launch, faulty hinges and cracked screens: What went wrong with iPhone Duo? Report",
-        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQVUVPeUtBUXBjamROaU9UckF1LVFsc0FEb2Y1Nmt1ZHVpYWtVdndaQVpMOG01Nk9UZXlQQlYtZGg2S0ltYXM2dlFsQUE3SDZreXQ5STRQTzJVaUcyd1pzRFZfTmZfYjUzOUFNYzQ4a2pTTGExSjJvWk1VUlFvYW9wTjZuRzc0bmV3aFQ0RTZkQnlOQ3czMGlqbUMzM3lzdGdpNGR6WTRwaXRPTWp1V1dTaTQ5dzFKWXdyNGx4MDVnZUxGUUFUbmdhd3V3d9IB0AFBVV95cUxOMVVuMDFUQmZPeHJheVI1dkZxNGFocVY1Z3I4NjI2N1FBOWhURnI3NDA2dEZzY2UwQXVjSHkxQ0p6MTlXNXNvcTZHMy12dk5WN1dtT0Y1OElsenM4c0NmMWdCRnhtQklkdnJGZHBTMUFZR056eS1TUDdKSlVKYVNZa3phSXFJNks4SDEyZ1EtSzdLQlQya1ExdVNUMEpJLTdNRDBoSjZZdnFMd1RUT0NydUlDd0NnTjRDd1drUjJaVEJMODktaDVmYnBxbkpGc3Vq?oc=5",
-        "pub": "Sun, 01 Nov 2026 16:26:55 GMT",
+        "title": "Trade Setup for November 2: Top 15 things to know before the opening bell",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPQ3lBaDlnZEs2MHBvbl85YmxMUnJUYVFncG9NcmprYVJpV1J1VjdjQmxsVEc4Vi1Jc2lJeHFTeHZROC1JSEJHMGdYZXVfc2wyc2FuTVQ0eWtlbWwtNzJGV001VVUycXp0eUZXRmc0Y1dFT2p4cTRVRE5xOHBzU1lGeGFFOWlJSHZnbVp5RHdWZVBDdVh2cGtiRjBQalZXX3lTNlQwOFhlTnVPN2JWNFo1Nm9Ldlo0N0d5QXZqTnA4SjhUNFVXUE11a3pzNV9wZFNFU25B0gHYAUFVX3lxTE9LdERYWnhMX2tNSlozZGNBcTYyRGl3ZFgtSXVsak1fbnhWZXBPRjhnLU1GLUVmOHZrVXk4d3N5ellPQVhzUjJ6Z0pybFozR1NZVnV2eTdfRVlYYzhQWThjb1NiM1h2ZTJoaHhnMVdtUlNTQmc4cTNSS1NRS196YUppMndEOS00VTlfQVotTDI0bVFNTDkyRy1aMHVSYlNlOE95MHZkcFhKX1VWN1kyOW05OWZoVTlwRHR0SjhKR1BRWFBZTFBDM3pLamZWY3ZEZnVWVE43ZlRteg?oc=5",
+        "pub": "Sun, 01 Nov 2026 14:16:16 GMT",
+        "source": "Moneycontrol.com",
+        "summary": "Trade Setup for November 2: Top 15 things to know before the opening bell&nbsp;&nbsp;Moneycontrol.comIndex Outlook: Indices hold firm&nbsp;&nbsp;BusinessLineF&O Talk: Big break above 23,200 can open doors for 23,500 for Nifty; Sudeep Shah picks 6 stocks ahead of&nbsp;&nbsp;The Economic TimesTrade Setup For Nov. 2: Nifty Eyes Resistance At 23,200; Can Bulls Push Index Above 24,000?&nbsp;&nbsp;NDTV ProfitNifty…"
+      },
+      {
+        "title": "Apple’s next-generation touchscreen MacBook Pros with M7 Pro and M7 Max chips expected next year: Report",
+        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPd2ZwZlktcVpDbmhMNnN0ZUY1SHZDNlFlZHk2MWxYM1M1eC1sR00yd2ZmQ2VIMlpBZXV3MUQ5VkpvNkQ5ZkdQdk1WWkd5Mm5tbmxxNjNCd29Qc19xelZEUkhEeXc4bWN6bTF4LUdJcUxTUVd4YlFkRVFOSmliRHNXclFPNHFvTmZqa0swY0FZWmsyeEQxVVl4SVVCeHVYaGY4eDhOYk1zcDJUSFVVekRBbmNubWxuVjVsSXJjel9hMXp2a1VKMzNISUY5YjFXeUZUcDhaXzJtOGo4UF9ERFVRONIB5gFBVV95cUxQQnJJazBmSldiajBjVUExVHJhTUdpUldHYTVXUmZEMjd1N3pUNTdMY2V2dUxaenlaOWJOU2R4VG16aUI2eGNNNnVUWUl3a21uU0gzaXhRMU9feTZYOUlTbGgycmRSX191dnR6Wmt2S0J6WGN4SG5ra1paTS16WEJ3VUV2dDNuQ2VMV04tSXpHQTFLeVB1a3ppMF9lSldpM2dCVy05TnVoZWFVdkJzT2dmUE9ObkYwRG80TENfX3B3RXhhM3lzU21yb0pqdlB5YzhLV3Y3dlFGUmM5Snd4Z1ozVEtpeGZyZw?oc=5",
+        "pub": "Sun, 01 Nov 2026 17:35:56 GMT",
         "source": "Firstpost",
-        "summary": "Rushed launch, faulty hinges and cracked screens: What went wrong with iPhone Duo? Report&nbsp;&nbsp;Firstpost‘I Felt Blind Panic.’ They Opened Their New $2,000 iPhone Duo—and It Broke.&nbsp;&nbsp;WSJApple Alerts Stores to iPhone Duo's Display Cracking Issue&nbsp;&nbsp;MacRumorsSamsung is having a blast with the iPhone Duo launch issues while also marketing the Galaxy Z Fold 8&nbsp;&nbsp;PhoneArenaSamsung mercilessly mocks iPhone…"
-      },
-      {
-        "title": "Apple Missed a Chance to Be Revolutionary With Touch-Screen Mac",
-        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNVXczVk9tbnhYRzdPcUhxV0FBODgyVzlPVHF5X3pyUjFNUkMyV3c4YUUydHBHY0xjYWhRZ1dheUNhSGFTd3VsQlFlc2UxLXljeXh4TFkwRXl6V2RQT2Zabm5jdFZaV3IzRW5KRGhoSGdnWk1KVXhBaUlPa290Y0hOVm9EcDZMQ09lQ3FnN21ybFMyTHZsVGx4SkJVWVNmQ1NPajBjeW5lY3VlWDlvYUFyLWRHVnk5ZjZOWmNZOFVpMlZvaG94aXJfZmdR?oc=5",
-        "pub": "Sun, 01 Nov 2026 19:32:16 GMT",
-        "source": "Bloomberg.com",
-        "summary": "Apple Missed a Chance to Be Revolutionary With Touch-Screen Mac&nbsp;&nbsp;Bloomberg.comWeekly poll: do touchscreens on laptops make sense? - GSMArena.com news&nbsp;&nbsp;GSMArena.comApple unveils groundbreaking MacBook Pro with PROLED XDR Display and Touch for the first time on Mac&nbsp;&nbsp;AppleA New Apple MacBook Pro Costs Rs 18.78 Lakh! You Could Buy These 16 SUVs Instead!&nbsp;&nbsp;CarDekhoApple’s next-generation touchscreen MacBook Pros…"
+        "summary": "Apple’s next-generation touchscreen MacBook Pros with M7 Pro and M7 Max chips expected next year: Report&nbsp;&nbsp;FirstpostApple Missed a Chance to Be Revolutionary With Touch-Screen Mac&nbsp;&nbsp;Bloomberg.comWeekly poll: do touchscreens on laptops make sense? - GSMArena.com news&nbsp;&nbsp;GSMArena.comApple unveils groundbreaking MacBook Pro with PROLED XDR Display and Touch for the first time on Mac&nbsp;&nbsp;AppleA New Apple MacBook Pro…"
       },
       {
         "title": "NYT Strands Hints and Answers for November 1, 2026: Today’s Theme Is a Full-Blown Nap",
         "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPczVfOEpQX3VyeV91Wmk2UkdBQmViSUJmTWc4cE9sUUZfQ285bVhCRm9mSFNlR3NEbmhkWnF0RXIzd2x3S0stclRkdkhjZUxRMnRtU1RKbFlheWNldGJqNTBPdFZ4VmY1b0ItWVNXZGJNTDZnTmxYaGc3MTVzbktOci10SGZlRXhxcm5xNHRPWVVCblBJS2ExeFY3T2tGRUhkSEZ1Z3FYWU03bU9BeHAwNGhR0gG3AUFVX3lxTE02MjNrdjdnTjYyVW9WemQ0cFNnd1gxMjFBdGZFWTBzRDZhYkhfZjE3V3o0M1JKdGJHSGhCYy1SZ3ZxcDhhd1hqd005U1Q2blVqSVNnaGx4QUstNEZ6bGEtMG9QaTRoeXdXLU80dFA0dl9ycHZ1LWdFYk03akh3cGFOVXdXekczNWJieHZ0cktJVFdoQW5lUkJaUmZKMFVDSS1WTXpfQlFrZGFrTDY4dEJyX2VIQTFpaw?oc=5",
         "pub": "Sun, 01 Nov 2026 07:38:12 GMT",
         "source": "Gadget Bridge",
-        "summary": "NYT Strands Hints and Answers for November 1, 2026: Today’s Theme Is a Full-Blown Nap&nbsp;&nbsp;Gadget BridgeStrands Hints for November 1, 2026&nbsp;&nbsp;The New York TimesNYT Strands Hint Today: Monday, November 2 Spangram And Answers (High And Mighty)&nbsp;&nbsp;ForbesToday’s NYT Strands answers, clues, and hints on October 31 (puzzle #972)&nbsp;&nbsp;PC GuideNYT Strands hints and answers for Sunday, November…"
+        "summary": "NYT Strands Hints and Answers for November 1, 2026: Today’s Theme Is a Full-Blown Nap&nbsp;&nbsp;Gadget BridgeNYT Strands Hints for October 31, 2026 (Puzzle #972) and a Halloween Spangram That Fits Right In&nbsp;&nbsp;Gadget BridgeNYT Strands Hint Today: Monday, November 2 Spangram And Answers (High And Mighty)&nbsp;&nbsp;Yahoo TechNYT Strands Hints, Clues And Answer For Wednesday October 28:…"
       },
       {
-        "title": "Quordle hints and answers for Saturday, October 31 (game #1741)",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNc2c5eWZxbUwtX3UydzJucFNIMUp6cDRfY041cWJCUXpGQmNSbTM0UzM0X3dsQ3lVeWxvRjVLdEVSbld1NTVBM0dsSlkxdUQ1ZnVMckhsQjBuY0NrRTZORHFmQlNXTDlqaGZ2YkVuQktITzI0ZEtVNUlkeHBIanlZb1c4eVpPRUFCRllUaE1ETldrWXdsaTZ0Zg?oc=5",
-        "pub": "Sat, 31 Oct 2026 00:00:00 GMT",
-        "source": "TechRadar",
-        "summary": "Quordle hints and answers for Saturday, October 31 (game #1741)&nbsp;&nbsp;TechRadarToday's Chill Quordle Hints, Clues and Answers for Sunday, November 1, 2026&nbsp;&nbsp;TechnobezzToday’s Quordle Hints, Answers for October 30, 2026 (Puzzle #1740)&nbsp;&nbsp;Analytics InsightToday's Extreme Quordle Hints, Clues and Answers for Sunday, November 1, 2026&nbsp;&nbsp;TechnobezzQuordle Hint Today: Tuesday, October 27 Clues And Answers&nbsp;&nbsp;Forbes"
+        "title": "Samsung now mocks Apple iPhone Duo with crackgate memes too",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQV19MQmdLU0ZoWF9HWDlWMVE1b0RqdmNIN1lVd0RoNDFHc0Z5UTkxeGozUWg0SDBKSExPS1cyNU5DZXd5XzJ0WEFTcG9pSGtveGktbkdhMWVDYnFLU2FOVFZFb3lraGpXN0RQQ3lkNzVoOUFHVFpfVC1OZXpSM2EzX1k4ZFVqcEpNYTdNTk03bDBZbXpnNE0xa1Rtek8tNl94Z0tjcGdUcw?oc=5",
+        "pub": "Sat, 31 Oct 2026 22:25:00 GMT",
+        "source": "Notebookcheck",
+        "summary": "Samsung now mocks Apple iPhone Duo with crackgate memes too&nbsp;&nbsp;Notebookcheck‘I Felt Blind Panic.’ They Opened Their New $2,000 iPhone Duo—and It Broke.&nbsp;&nbsp;WSJRushed launch, faulty hinges and cracked screens: What went wrong with iPhone Duo? Report&nbsp;&nbsp;FirstpostApple Alerts Stores to iPhone Duo's Display Cracking Issue&nbsp;&nbsp;MacRumorsSamsung mercilessly mocks iPhone Duo ‘crackgate’ in Galaxy Z Fold 8 ads [Video]&nbsp;&nbsp;9to5Google"
+      },
+      {
+        "title": "Apple Watch showing the wrong time? Apple explains how to fix the daylight saving bug",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOTVUzTnRONURCQUFBVEpLV0ljNTlubUd3SDZsak9qY3Nvbml6VnREa0tGaFBpbG81NnhtSnhFV3BRVDBIRGZqQ2w0WERPMFFsbTJUV18taV9KenRybkc3eVRiaUdzdmVjLWxsVzZGRlZLUkdWSWJ4VnFGMm9lZWpDZXNuTkRrVDFsSWptaXl0cDJMQ3dBdHhOREV5cFZkM3N2UVlGSHJ2ekthLXg5aEdpYXRGVGNlaVEtUVV2QzJzdF80a0V3RjZDadIBzgFBVV95cUxPUWsycnFmRW9KcmdCV0NPMnB6aXlvN1N5blNIRlQ2M0RnN3RrSHlIR05Zc29QYVVlMGs2NjNXUWxVX21teEJFQmx4cDg5VWktVEt3cGtEbTlWeEZVWUViZUlvb3NtckY0RDdtYk1pcFlIM05UOHVZTkVIaTZHY1dIbkhOcXo2TnJ1WFFnYUN3TklLajVLUkk0UE5FS21ianh4Vm1wOWc5NEtKWkNTSHFCX0hyUEZTVzBJV29za1pFYVd6UW5ublVpNVBtTGM3Zw?oc=5",
+        "pub": "Sun, 01 Nov 2026 12:54:49 GMT",
+        "source": "Firstpost",
+        "summary": "Apple Watch showing the wrong time? Apple explains how to fix the daylight saving bug&nbsp;&nbsp;FirstpostApple Watch Showing The Wrong Time After Daylight Saving? How To Fix It&nbsp;&nbsp;ForbesApple Watch Showing the Wrong Time After DST? Apple Lists Two Fixes&nbsp;&nbsp;AndroidPureAn old problem that affected the iPhone many years ago starts impacting the Apple Watch&nbsp;&nbsp;PhoneArenaApple Offers Steps to…"
       },
       {
         "title": "Yash's seven-year-old son watched his father play Ravana in Ramayana and cried during the Jatayu scene, s",
         "link": "https://news.google.com/rss/articles/CBMioANBVV95cUxOc3RjRFhHenliTzVaTXQxVDl1TDRZM1J5QTQ0UlpCb0wxRFQzaktURG9JRXQzbzlKRFUzbjhkRW96ZDBVbWo3ZXlBdFAyWEdnWURkSE1qanNTaDU2VGxJaHplbzFFU2JQcC1CcU9Lb0pFd0xBZ3FWUmRsN2hvWHhnLXljZDA0OW9aQ3lFT1dtLW9rMlJsbWxkT1ZjTFdxZHBNS3NmUEFXQnZKUGhMazZic2UzdjhMZS1lRFc0d1FkbEJ2MWIwUXd4YWVjUTZfMXMwckl1QlRsdnhEeTNwajJ0cUw1NElKZVFIcEMwYUg4eUpVV1pibzYwbjNuaTdobDBZblpwa2h4M1JYdVFrVkE3X1g5Y2ZWMUxHY3dLcjN3TnAtbmRWbC1GMnZwWlBzRklRZTIzNmVsVC1ORFNnX3AxRGhvQ2dyTFEzUGJESmw3VlFiSTFUV0lrMWZLZ3VhbXFYR2U0eHpGUkZOTUtzc19uUTg0aDdYTEJQbUVvdHowOVVmTi1jQzhnX1R1NlZlN1VzS3BOWlVaTXA0TlRfaGd6ZA?oc=5",
         "pub": "Sun, 01 Nov 2026 12:24:00 GMT",
         "source": "The Times of India",
-        "summary": "Yash's seven-year-old son watched his father play Ravana in Ramayana and cried during the Jatayu scene, s&nbsp;&nbsp;The Times of IndiaSai Pallavi Reveals Yash's Son Cried After Watching Ravana's Battle With Jatayu&nbsp;&nbsp;NDTV‘No, you’re the bad guy!’: Yash reveals son’s surprising reaction to seeing him as Ravana in ‘Ramayana’&nbsp;&nbsp;The Times of IndiaRavana Outshines Ram!&nbsp;&nbsp;Deccan ChronicleRamayana: Yash's son…"
-      },
-      {
-        "title": "Shah Rukh Khan sneaks out for a late-night drive to see ‘King’ tribute on Mumbai’s Sea Link ahead of 61st",
-        "link": "https://news.google.com/rss/articles/CBMisgJBVV95cUxQdk50LVVSYjc2OEtuZWxoaGY3LXowcWRTQnNtdjE4M2pzUXE5bTdkUFI1NjFrT0FYQ0JUMU1ZbTBTdHltOFo4VkJBQjdkenZtb1dybkQ1UDhqTE9Nd0twVTAwMHp0N3lYeVUyY2pTSFloT3V5YUlja282ZkZqVWZqOFhuNXpOVEZBdE1uYkktTTVXa29KcVQ0QmZ5eDh5TnJQRm9Ic1M5YlUzeTRXSmhEZFdhRHlzTWoydnlDSkFCdGE1eWdMRm92emFkUVAzeXRGbWVYZjRBSjAzeFQ2VG8xQlhPbE1UeEtBa183MHlNc3h6UkV5QjBCZDZmS0Rsa1pnbmxEOHhYRy0xVHlHdGwtang1cUpiWV9PN3Nsa0h6bUVaTEU3ZEtrQlZKdHlpYWFSb3c?oc=5",
-        "pub": "Sun, 01 Nov 2026 15:20:00 GMT",
-        "source": "The Times of India",
-        "summary": "Shah Rukh Khan sneaks out for a late-night drive to see ‘King’ tribute on Mumbai’s Sea Link ahead of 61st&nbsp;&nbsp;The Times of India‘King’ first song out: Shah Rukh Khan, Deepika Padukone's chemistry, his chiselled body and Ed Sheeran-Arijit Singh’s collaboration send social media into a frenzy - WATCH VIDEO&nbsp;&nbsp;The Times of IndiaKing Song Tu Mil…"
+        "summary": "Yash's seven-year-old son watched his father play Ravana in Ramayana and cried during the Jatayu scene, s&nbsp;&nbsp;The Times of IndiaRavana on Screen: From Arvind Trivedi to Yash&nbsp;&nbsp;Dadasaheb Phalke International Film Festival | DPIFFSai Pallavi Reveals Yash's Son Cried After Watching Ravana's Battle With Jatayu&nbsp;&nbsp;NDTVRavana Outshines Ram!&nbsp;&nbsp;Deccan ChronicleYash says viewers will be able to relate with…"
       },
       {
         "title": "Jailer 2 Collection Day 17 Updates: Rajinikanth-starrer is 2026’s second-highest Indian grosser; Dhurandhar 2 record out of reach",
         "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOQWYwYmRqWVpybDU5SkxpOEdwUnpPamFfTlhNNE5rdHROZUVEMS1KY3l2V003aEdGdjhGS0Ntbm9ZVE91V0ZYaUpHWUNpY3JxX3ctX0x5blkyUjZSNTNSVTFhd1FlT3VicDVGYXo0cW9weUVRY05DUnV3U2FtWmlEN01YcnhnVmpLR281cHFPQUFfV210cThmRzNwOEtkV1RLbUhyMWlPc0NRMUM1UlhrTkhpR3JFLVFJeUF0cXVoYUJVQjF6SEZEWm0xWk9zalZaTlhSaGJMaGtyLUdPeXNYc2ttamnSAesBQVVfeXFMUG5peWJjbHNYMUpKZWxsOVRxSlNZWGVHd0RVZlh0NVBUREFfVXJha3BOZmFlZnZuVHFxMnZQTHpuRWNFU3dCSUVIUHpkQVFYbnA5dUNqemVBNVRlYTZ6bklxYXlCOHpqOGJIeUVqcVl6cDE0aU9hSHFCTlo2Y1lUVVJYYXBNREg4bXZDYTZUTkMzMjF0MzhkWlc0RTVrek5iNGNrVERqd3JWSjRYMno5TWNSdEVGNjZldEpSYlpCM0N2eDVmRmRjMXZ1ZEVETWlVc1Uzb1h2eGt5bVR1MW9QeDBraENyQS1JZFhnWQ?oc=5",
         "pub": "Sun, 01 Nov 2026 14:13:02 GMT",
         "source": "The Indian Express",
-        "summary": "Jailer 2 Collection Day 17 Updates: Rajinikanth-starrer is 2026’s second-highest Indian grosser; Dhurandhar 2 record out of reach&nbsp;&nbsp;The Indian ExpressRajinikanth-starrer ‘Jailer 2’ crosses Rs 775-crore mark globally despite dip in earnings&nbsp;&nbsp;Telegraph IndiaJailer 2 Box Office Collection Day 16: Rajinikanth Film All Set To Cross Rs 800 Crore Mark&nbsp;&nbsp;NDTVSuperstar Rajinikanth scripts box-office history&nbsp;&nbsp;The Times of India'Jailer…"
+        "summary": "Jailer 2 Collection Day 17 Updates: Rajinikanth-starrer is 2026’s second-highest Indian grosser; Dhurandhar 2 record out of reach&nbsp;&nbsp;The Indian ExpressJailer 2 Box Office Collection Day 16: Rajinikanth Film All Set To Cross Rs 800 Crore Mark&nbsp;&nbsp;NDTVRajinikanth-starrer ‘Jailer 2’ crosses Rs 775-crore mark globally despite dip in earnings&nbsp;&nbsp;Telegraph IndiaSuperstar Rajinikanth scripts box-office history&nbsp;&nbsp;The Times of India'Jailer…"
+      },
+      {
+        "title": "Shah Rukh Khan steps out for a drive to capture KING-themed Sea Link display ahead of his birthday; thanks Google Gemini for the surprise",
+        "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNblhNdFpHYkYydUhBMzBNVVdvdDFCRzZxZ1dXTnNTaENoUUpwQi15MWw3dHhGS0FocGUzZENkT0JJMlo2R0FTM0NaY2hKNURvQUZqWUdoZTBmdDY0NkZYQl9OTlJRcVdLeVBuTnp2U0FNLXAwSlUtb2NSdVVCWEpGWE9CTWhKbHNYMG16cWZldWlFaEd6bUliRzl3WTUyQXVySW9wVVBxbEZFZEQxSnhyQ0VOV0lRbklnOUhlUFNrOHoxQkRoNDJpSmtma28xNXpSN09fNmtLZmc2Q29YT3lCQUpVaG9Zd3l2VHJkYmwtc0pfWVhhX0FaeHdpcVVXNVhVMDZXdk00SnZVU25DRlBaNkxB0gGXAkFVX3lxTE9zQVpNVHFvWGt2eTBlTlRSMzRxbTlBYzBQVlBoaEFlU25sNnFnLVhLRGNSTUtPWWNBOWFuWXJxcjd3b294WEx6VlRDSFlBUWRYc3BERThuRGVGZUlmcnJwOHVYbjhQUU9PY3phaWVVLWx3WDMtelZqUXR0dnRUNExVVmFzTjNvakJRdkExNlYyb0dxS1loTkxaakhZZTVBaVJOMU50MVNsdnUxU0ZRR0tna0lqUGcwSHZtYWQ2ZVJOT1dBN0NZejJEdVRZTGtMdGc4ZnYwSEJicVJHRWt0TGVkX18yb2I1LTQxekFYUWoweHlzTUtWSFV2TEpScHVscVdhTTNubGNsN0QwY0lFSFFKV0cyd3pPTQ?oc=5",
+        "pub": "Sun, 01 Nov 2026 11:49:05 GMT",
+        "source": "Bollywood Hungama",
+        "summary": "Shah Rukh Khan steps out for a drive to capture KING-themed Sea Link display ahead of his birthday; thanks Google Gemini for the surprise&nbsp;&nbsp;Bollywood Hungama‘King’ first song out: Shah Rukh Khan, Deepika Padukone's chemistry, his chiselled body and Ed Sheeran-Arijit Singh’s collaboration send social media into a frenzy - WATCH VIDEO&nbsp;&nbsp;The Times of IndiaFirst King…"
       }
     ],
     "sports": [
       {
-        "title": "Lakshya Sen wins Hylo Open 2026, beats Jonatan Christie in final — Full match score highlights",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxORHBxZkJINlBrcFFVc2tzUkVjOUhvWTZ3QVYwaEJSSmNPOUNDMUlzNDV2YThVVzBQaWRxY0lvV01xU2ZkcXVJOEN5aG45NV9mTm1zZFNoMlp1T2NkenBLbXV6Y0tBYUo1MmlrSW1mOF9USVl4TmhsLTNiWm1FTVdmWTBzX3ZORUVZYmVtYmFNY0NjM19taW5XR0xrUjR5TkRKVlF1OERUUW0zRENMWDU3b0JSSjFmM09pZFBSaEdscnpjNk9ueTdFcG9Ua21mdjhfY1dTT3NQUGxoQk1MLWgzcE96TVIwU0lBTXfSAfABQVVfeXFMTzFpcm1JeHRILWExUGJ0RE1YdHJDaHo4QjJYQXJfTUVReFdwR0FjZDB0SzhockFKNGltTVJOWHZKRVpTamFFcTVqZE9IUVF5ZVZ5dW1rWTBKMVJaR0FxMDh5M1JZdlJlMmVLakJLV2tvbzVqLVNYb3JvTDEzSndrbHJGT2xsQl9FVFJMdzVlRXg3bDg2dUt5eDFuRGhvM1ZPX0Y3cWhKSUU3OG5pX3d1aWxXSmh3cXZnSE96NXAtc1FJb3czLTR1azRRUTFzNW9IYXhFLUdZVGNUZENjaG1CUmplN1lmTTV3WEJFdjBYclVi?oc=5",
-        "pub": "Sun, 01 Nov 2026 17:05:49 GMT",
-        "source": "Sportstar",
-        "summary": "Lakshya Sen wins Hylo Open 2026, beats Jonatan Christie in final — Full match score highlights&nbsp;&nbsp;SportstarSuper Sunday for India! Lakshya Sen ends year-long title drought as PV Sindhu completes Hylo Open double delight&nbsp;&nbsp;The Times of IndiaPV Sindhu, Lakshya Sen bag Hylo Open titles&nbsp;&nbsp;Deccan HeraldSindhu's big Sunday show! Another title in the bag&nbsp;&nbsp;RediffPV Sindhu shows her…"
-      },
-      {
-        "title": "Tim Seifert, Glenn Phillips power New Zealand to 7-wicket win in the final T20I as India take series 3-2",
-        "link": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQZlNvWDlDSkUzZ3VzcUo2RUowQllRX0VERk95eTVvM2VaUWxwcmpVc2VTUTNtU0xFQ1ZXQ3pLbXlDczVFdmk5TWdGWnRxWkpSSHJUUFNwbm43MWMwb3VQZUtReE9lVkppM3d6ZU9xYVhnLWxhSGtOSGxDNkl1dTVaYlRiVXJfM0gzdU96UTBZR0pWR2F4TEltc21rTEg5ZUxZV2ZQc3ZESjBvY1FjSUd6NFBSSTFGQ2FCTDNERnNKRGVQbGpYWW00dl9XNTRmY1hZdUJlM2JyRVpoSGtVRV83UEw4UWRmVGdwdm5UWVVpaEsyYVRDZVFUbjBHN2xFTlJzaFVyTXRlR0RtVVRHWGQ3Sk4tLXYwbjd4NEVWNmw4T0NCU0dWRjUxag?oc=5",
-        "pub": "Sun, 01 Nov 2026 11:02:00 GMT",
-        "source": "The Times of India",
-        "summary": "Tim Seifert, Glenn Phillips power New Zealand to 7-wicket win in the final T20I as India take series 3-2&nbsp;&nbsp;The Times of IndiaGlenn Phillips scripts history, breaks Phil Salt's world record in stunning T20I series against India&nbsp;&nbsp;The Times of India5th T20I: Shreyas, Kishan score fifties but NZ limit India to 191/8&nbsp;&nbsp;ThePrintSantner says India were lucky to…"
+        "title": "PV Sindhu wins Hylo Open 2026, beats Line Kjaersfeldt in final — Full match highlights",
+        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNbzQyTVFLSkhhVFRHYTJrN1FRZlBIYU1ONkphSnMwMU5UcTl0VlhJbUFFejcyODROc1FYTWUyMTBXNEg5dFN6cDhiSzBCczB3TW05SFRHY21odTdWRmtvMGJkYTk3N2NJdTBSNnJSaEVUSzhfY0RCYUxmcC0yZkI1MDBnWjFaUUxwNWl5V3U3d2NFLUw1M2tEakduZDRCZTBqOHU4OEhSUkxyVHgwNlNnQzctbFZ6cnhvNXRxZG02eEJwZm83ajVORktvdk5CN0RsbkYwV1JpNFJtMkxUd0daUzM4WdIB6gFBVV95cUxNWDRlMWN5SndvSU9fQWZ3ZnVlX3ZyZ3NTY24wWTZIeUw2YzNOUXYwTVRDQkpvdVVoSmloRXAwbFpfczdUdUhJYUc4bl92X2duTmplOXRuT2loUWFyUmR4YmRGbWVHYl9aR3o1YUVlb0xDc0FPc2xmZEE2Y1hkRjk0dVR2S1dPVFBsN0xTYmU1UlBJc2huc2JKQUh6ZGt5dlN4eGZCakplVE9kd0RlaGl5RGFTd3VTTV8yQ3czeFNQVFpydU5WTTFTVXdSbVpKa3dxQnFnQ1hKanV2ZDQ3RGNiNE1NX0FGLWItY3c?oc=5",
+        "pub": "Sun, 01 Nov 2026 14:24:42 GMT",
+        "source": "The Hindu",
+        "summary": "PV Sindhu wins Hylo Open 2026, beats Line Kjaersfeldt in final — Full match highlights&nbsp;&nbsp;The HinduDouble delight for India as PV Sindhu, Lakshya Sen clinch Hylo Open titles&nbsp;&nbsp;ESPN IndiaPV Sindhu wins second title of 2026, keeps BWF World Tour Finals hopes alive with Hylo Open triumph&nbsp;&nbsp;The Times of IndiaPioneer In Short&nbsp;&nbsp;Daily PioneerPV Sindhu outclasses Line…"
       },
       {
         "title": "Harmanpreet's hat-trick sinks Malaysia as India keep perfect Asian Champions Trophy unbeaten record",
         "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOV3RSb19wazRuZzMwRnktQjAzS0p3QmZweDNPRTIxbk1ZZ1Q2d1Z1Rng5V0tFZzVMTmZqR041elRMQXRFbHFuRUdWYXY0WEQ0UVJyaHNrRm5mWTJjUC0zVDlwUnFCbFhFVlptQWJHbGh4WlVaZGZHZ2tmeEo3TVBwamJNbFhlVjdkWHllbkwtRGE2WjNDMU9RVVlFQ2poY05EZHNma2ZkZzFYZHJSSHc5QUJvN1gtN3ljbmpJZUltcExxbnU2bm1BT1Y3TkN3b1hMUmsxdzZnREhOaUN0dGFacmdJNVRKR3NVZklycVB4YmJveHZmSjduV0FrVG16RXdPdXhvbVZFemNXWFlyUC1hWFBZRWo?oc=5",
         "pub": "Sun, 01 Nov 2026 15:56:00 GMT",
         "source": "The Times of India",
-        "summary": "Harmanpreet's hat-trick sinks Malaysia as India keep perfect Asian Champions Trophy unbeaten record&nbsp;&nbsp;The Times of IndiaAsian Champions Trophy: Harmanpreet hat trick helps India beat Malaysia 4-2&nbsp;&nbsp;ESPN IndiaIndia vs Malaysia Hockey, ACT 2026: Harmanpreet's hat-trick powers India to 4-2 win over Malaysia, extend unbeaten run&nbsp;&nbsp;The Times of IndiaSkipper Harmanpreet fires hat-trick to help India beat Malaysia…"
+        "summary": "Harmanpreet's hat-trick sinks Malaysia as India keep perfect Asian Champions Trophy unbeaten record&nbsp;&nbsp;The Times of IndiaAsian Champions Trophy: Harmanpreet hat trick helps India beat Malaysia 4-2&nbsp;&nbsp;ESPN IndiaIndia vs Malaysia Hockey, ACT 2026: Harmanpreet's hat-trick powers India to 4-2 win over Malaysia, extend unbeaten run&nbsp;&nbsp;The Times of IndiaAsian Champions Trophy: Mohali ready for hockey extravaganza&nbsp;&nbsp;Hindustan TimesAsian…"
       },
       {
         "title": "Surpassing a City legend: a historic achievement for Havertz in the Premier League",
         "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQOHY0bjFoQ2VObmx3SFdFMm5qZjhQRFBuYnpCaDczT21tWTMyakdWVDRJUDBjdFphS3BobUN1VU0zS0lwWnRXUk5pVFh4NGVybzZickNSN051R0stNndVZFNoWE1MdVpfT3ZGOUZCUVdkRVVxQi14ZTR2QVRfOHhITmg2U003V1daekJpekV5T2FGSzRka294MXR6amRIOEVPSnRMcF9WMzhlMVdIdDAtWEZwZHgyTHZNVU9pOWFIYXJDdmlTSmFZTnhn?oc=5",
         "pub": "Sun, 01 Nov 2026 17:26:07 GMT",
         "source": "Goal.com",
-        "summary": "Surpassing a City legend: a historic achievement for Havertz in the Premier League&nbsp;&nbsp;Goal.comLiverpool 0-1 Arsenal: Kai Havertz seals Gunners' first victory at Anfield for 14 years to move top of Premier League&nbsp;&nbsp;Sky SportsKai Havertz becomes all-time record German goalscorer in Premier League&nbsp;&nbsp;ESPN IndiaLiverpool v Arsenal player ratings: Whose mistake was costly? Who was the top…"
-      },
-      {
-        "title": "ATP Vienna Final Prediction: Carlos Alcaraz vs Alex de Minaur",
-        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOVXRFTTZXOWtGUHM4WmwzRlJydm5kWm5QajVWRjRYZXFTYXdDaFEzY3NyeEVsUkpQMFllR3JvbXZsUlBMd3hqRl93QTIxclh5Ukt5RldJQVhPeTllNUJUdTFrMmZOdzJZVG1YZmhnQWx5SjdsUVhUbzZWY2NDVktyT3gwXzFUWHRZZGpXMnRPalFwY1ky?oc=5",
-        "pub": "Sat, 31 Oct 2026 20:08:07 GMT",
-        "source": "Last Word On Sports",
-        "summary": "ATP Vienna Final Prediction: Carlos Alcaraz vs Alex de Minaur&nbsp;&nbsp;Last Word On SportsCarlos Alcaraz beats Alex de Minaur at Vienna Open to maintain perfect ATP 500 record&nbsp;&nbsp;BBCCarlos Alcaraz beats Alex de Minaur in straight sets to clinch Vienna Open title&nbsp;&nbsp;Telegraph IndiaCarlos Alcaraz: Spaniard seals Erste Bank Open victory in Vienna as he defeats Alex de…"
-      },
-      {
-        "title": "5th T20I: Vaibhav Sooryavanshi benched. Gambhir says his job is not to make everyone happy",
-        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOQ2xKUGs2WFZ4a3cxdEpXNzVsMFEyVm1MUjFqdFFfOFNOVGd6eUswdnhtSnYyempNcVp0ZHFMekZiVWt2R0NNTTlacTVHUVpELVZfNFNGdmdPNmZvU3VYVksxRFNuZmU1bnlTcmZWZW9OVFp0T1dxUmZvWktiYWUtQWQxaG9JdGRoMmVWUkN5MmVyMk51dVZqMFdtUXpkOExBVXdTSlpERXBubFVlN093UU9iQ3lyZWx6ZFVWN1h2OTBPZy1KVG1r0gHMAUFVX3lxTFBfOWxHMVJTckQ3NmEtdnlhbTlYeTJiX01uVDNtOXlpZmJWUXZ3WlBfZXRHUlhQS0Q1WUpCcFJ0MnBxRVM2eGNFS3dsMHdKaWV4WThwZzJzQUN5MURDd1Q2bUxsQkZXaUw4b2xBUzh5WS0wSU5wVUU1bkpRYXliRFA5bmVXWnh2UjVzT2pES3BaOUh3endOUUNiOC1uNDhJV2k0Y0VERkZfYnptYnlLZnRSdl85VmpQeWc2OW9rUDhvcU5wM3BudzJ0UjdiQQ?oc=5",
-        "pub": "Sun, 01 Nov 2026 07:23:00 GMT",
-        "source": "India Today",
-        "summary": "5th T20I: Vaibhav Sooryavanshi benched. Gambhir says his job is not to make everyone happy&nbsp;&nbsp;India Today'My job is to take right decisions, not make everyone happy': Gautam Gambhir&nbsp;&nbsp;Deccan Herald'Not good news': Ex-India star questions India's handling of Vaibhav Sooryavanshi&nbsp;&nbsp;The Times of IndiaMy job is to take right calls not popular ones: Gambhir&nbsp;&nbsp;The New Indian Express‘Not…"
+        "summary": "Surpassing a City legend: a historic achievement for Havertz in the Premier League&nbsp;&nbsp;Goal.comLiverpool 0-1 Arsenal: Gunners end Anfield curse to go three points clear - as it happened&nbsp;&nbsp;ESPN IndiaLiverpool 0-1 Arsenal – Premier League as it happened&nbsp;&nbsp;Al JazeeraLiverpool 0-1 Arsenal: Premier League – as it happened&nbsp;&nbsp;The GuardianRice – ‘This togetherness is unmatched’&nbsp;&nbsp;Arsenal.com"
       },
       {
         "title": "JJ Smit sets up Namibia's first-ever bilateral ODI series win",
         "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNbFV5eEpiZGJuNzU5elBhTXdhM1FtRFB3YWl2bGJlZjlRX3VQMlRmWE9kYVpvMWNNUW9nR3V5VGs0OGN5VDVmcFJ0eTI5Z2hGQkdFVEVpM0ZGMVg4SkF6Z3U1bF9LcGdTdjhWbm9MOEF3RHdYZi16eWlzd1BSUFNRQjVIN25va1FrNVl0U1Z0MDhoU0FPUUZQb1RSeGRuN1FvbDQ2TU5FSl9YdFJqQ1pfYlBDRDM?oc=5",
         "pub": "Sun, 01 Nov 2026 17:24:17 GMT",
         "source": "Cricinfo",
-        "summary": "JJ Smit sets up Namibia's first-ever bilateral ODI series win&nbsp;&nbsp;CricinfoSmit, Brassell set up Namibia's series victory over Ireland&nbsp;&nbsp;CricbuzzIreland's Indian-origin pacer Jai Moondra creates cricket history with record-breaking 6/26 bowling figures&nbsp;&nbsp;The Times of India5th ODI, Ireland tour of Namibia at Windhoek, Nov 1 2026&nbsp;&nbsp;ESPNNamibia script history with first-ever ODI series victory against Ireland&nbsp;&nbsp;India Today"
+        "summary": "JJ Smit sets up Namibia's first-ever bilateral ODI series win&nbsp;&nbsp;CricinfoNamibia vs Ireland: Irish have 'learned a lot' as hosts win ODI series 3-2&nbsp;&nbsp;BBCIreland's Indian-origin pacer Jai Moondra creates cricket history with record-breaking 6/26 bowling figures&nbsp;&nbsp;The Times of India5th ODI, Ireland tour of Namibia at Windhoek, Nov 1 2026&nbsp;&nbsp;ESPNNamibia script history with first-ever ODI series victory…"
       },
       {
-        "title": "Hansi Flick talks substituting Lamine Yamal and Frenkie de Jong the center-back after Barcelona beat Alaves",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPckZ0a0JCWUwtVGw2cjNiMnVWUWFMcWI5eUE1VlR6UGQ1NThBU2NZNzhTSGI3cVkyMkJ3RFpVYWo4b2ZxdnppamZzOGpqWmVBRlFORjRrVDVacENJdW1jX3JiSnhsN2dxcGxfT0ZaZHdmQ0dEdXVXeV84d18tY1NuMXBCNGpHV3ltWXNxMUdPZGM3YnBNTDVzSHV2a0Y4SGU1OG1FWFRBNnBsV0tPeHJ6M0xhR0lnazdNR3NqRTIyN2FVdldo?oc=5",
-        "pub": "Sun, 01 Nov 2026 09:15:11 GMT",
-        "source": "Barca Blaugranes",
-        "summary": "Hansi Flick talks substituting Lamine Yamal and Frenkie de Jong the center-back after Barcelona beat Alaves&nbsp;&nbsp;Barca BlaugranesBarcelona 6-1 Alavés (1 Nov, 2026) Game Analysis&nbsp;&nbsp;ESPN IndiaHansi Flick: Record-breaking 100 wins&nbsp;&nbsp;Official FC Barcelona WebsiteBarcelona bounce back with 6-1 win over Alaves&nbsp;&nbsp;ReutersLamine Yamal, Raphinha help Barcelona hammer Alaves to retain Liga top spot&nbsp;&nbsp;Al Jazeera"
+        "title": "WTC scenarios: South Africa replace Australia in top-two after Cape Town Test",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNVWJYOVk3TnVYLVlUS2RqNm53cWJqM0pNN1RDc3oxWjY1QjVoN1E4QnVrQWNON1NmY0FXclhJX0FxTnh3T1FZTXA2Q3J1OGdxcUgxV1JGVC12OGJydUVVa2RTblF5RERKQUFRYzlmZVFTZGllUUxIamZCcWxCV21uYk1xaWNRUFRIN0x1cDRJZmF5OTR3NEU1NVFla2dhMTg3UHhOcDNDMGYwbDBnUzZrM0RyM3UwajBLbkxNR3B3?oc=5",
+        "pub": "Sat, 31 Oct 2026 16:15:51 GMT",
+        "source": "Cricbuzz",
+        "summary": "WTC scenarios: South Africa replace Australia in top-two after Cape Town Test&nbsp;&nbsp;CricbuzzAustralia lose top spot in WTC standings and Test ranking after Cape Town defeat&nbsp;&nbsp;CricinfoSensational South Africa seal the series in Cape Town | ICC World Test Championship&nbsp;&nbsp;ICCRabada, Harmer bowl South Africa to series win and No. 1 ranking&nbsp;&nbsp;CricbuzzHarmer shines as South Africa wins third…"
+      },
+      {
+        "title": "India vs New Zealand 5th T20I Highlights: NZ beat IND by 7 wickets",
+        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQTHgtOXdDRWg2SGNVMnRkYnRnWnJRYzBDODVOekhrc1FSTVN1bkhRdmQ3Y25nY3NJTHJuWDVXcE5UR3NZUUpvdktuNk9sOXc0YmdjSlViQ1MwejRIb3R6MWlJRHJzQzFhUm5fdzhJZWhaR2lfelVoYlVWUnVNMHE2T0FsQzA5ckdmMUZKU0hwOE9OQ09ma3I5S0l2MGtFZ1Ftd2Jmc1ZOaWlEVjNQT1RyNkl5emJ0cW14U0RFclBKb2E4Q1hLUXlwallsV3rSAdMBQVVfeXFMTXFNbTc3Nm44T053bUYzX3FjY1RsdEFpal8wTlg5RmVBa1NVNXNVZjJTZ0lpQ1VYcTh2SWJ1Vkc0QWVaeEhaNXNMZXNXbEJONnFjNnVxWUlTMWQyUkJOb3dlTk5ER1RBeXV5SnlMSDVvY2NOLVp2ZXZSczVBWVoxNFpIZ1NrdDNLdFpHRWxFYVF0Z2tUQWRYRlFWNV9PRzhoQU1wbnNWQllQUm1BMkpJX2N3QUtRbS1sU3Y2d2wwZTRCTEw3cF9XaVRhaW81YXhlNmxPTQ?oc=5",
+        "pub": "Sun, 01 Nov 2026 06:56:38 GMT",
+        "source": "The Indian Express",
+        "summary": "India vs New Zealand 5th T20I Highlights: NZ beat IND by 7 wickets&nbsp;&nbsp;The Indian ExpressMilne's four-for, Seifert's 93 headline New Zealand's win&nbsp;&nbsp;CricbuzzGlenn Phillips scripts history, breaks Phil Salt's world record in stunning T20I series against India&nbsp;&nbsp;The Times of India5th T20I: Shreyas, Kishan score fifties but NZ limit India to 191/8&nbsp;&nbsp;ThePrintSantner says India were lucky to…"
+      },
+      {
+        "title": "ATP Vienna Final Prediction: Carlos Alcaraz vs Alex de Minaur",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOVXRFTTZXOWtGUHM4WmwzRlJydm5kWm5QajVWRjRYZXFTYXdDaFEzY3NyeEVsUkpQMFllR3JvbXZsUlBMd3hqRl93QTIxclh5Ukt5RldJQVhPeTllNUJUdTFrMmZOdzJZVG1YZmhnQWx5SjdsUVhUbzZWY2NDVktyT3gwXzFUWHRZZGpXMnRPalFwY1ky?oc=5",
+        "pub": "Sat, 31 Oct 2026 20:08:07 GMT",
+        "source": "Last Word On Sports",
+        "summary": "ATP Vienna Final Prediction: Carlos Alcaraz vs Alex de Minaur&nbsp;&nbsp;Last Word On SportsCarlos Alcaraz beats Alex de Minaur at Vienna Open to maintain perfect ATP 500 record&nbsp;&nbsp;BBCAlcaraz beats De Minaur to win Vienna Open without dropping a set to clinch fourth title this year&nbsp;&nbsp;The HinduCarlos Alcaraz: Spaniard seals Erste Bank Open victory in Vienna as…"
       },
       {
         "title": "IND vs NZ: Vaibhav Sooryavanshi on the bench again; Shreyas Iyer makes two changes for fifth T20I against",
@@ -243,29 +236,15 @@
         "summary": "IND vs NZ: Vaibhav Sooryavanshi on the bench again; Shreyas Iyer makes two changes for fifth T20I against&nbsp;&nbsp;The Times of IndiaNZL vs IND: New Zealand vs India, 5th T20I, 1 Nov 2026 – Commentary | India in New Zealand 2026/27 | Match Centre&nbsp;&nbsp;BCCIIND vs NZ 5th T20I: Will Sooryavanshi, Kuldeep feature in the final T20I?&nbsp;&nbsp;The…"
       },
       {
-        "title": "WTC scenarios: South Africa replace Australia in top-two after Cape Town Test",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNVWJYOVk3TnVYLVlUS2RqNm53cWJqM0pNN1RDc3oxWjY1QjVoN1E4QnVrQWNON1NmY0FXclhJX0FxTnh3T1FZTXA2Q3J1OGdxcUgxV1JGVC12OGJydUVVa2RTblF5RERKQUFRYzlmZVFTZGllUUxIamZCcWxCV21uYk1xaWNRUFRIN0x1cDRJZmF5OTR3NEU1NVFla2dhMTg3UHhOcDNDMGYwbDBnUzZrM0RyM3UwajBLbkxNR3B3?oc=5",
-        "pub": "Sat, 31 Oct 2026 16:15:51 GMT",
-        "source": "Cricbuzz",
-        "summary": "WTC scenarios: South Africa replace Australia in top-two after Cape Town Test&nbsp;&nbsp;CricbuzzRabada, Harmer bowl South Africa to series win and No. 1 ranking&nbsp;&nbsp;CricbuzzSensational South Africa seal the series in Cape Town | ICC World Test Championship&nbsp;&nbsp;ICCHarmer shines as South Africa wins third Test against Australia to claim series 2-1&nbsp;&nbsp;The HinduUpdated WTC Standings: Australia slip after…"
-      },
-      {
-        "title": "India complete historic double with men's and women's title at Commonwealth Kabaddi Championship",
-        "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxOZVE3SjREUUQydndQd1lYYld0UGhzR0tTQjhOZkxLbl8xaV9GX1dqbEszTDcxQ3JBSWlPX1B5T2h0QkJhdVBTcW5xVVFhMVFYeDNocEEwRVprNzJ4R3BnS1U4ckJfMEZPczNQS19KSnNwWTRiM2ZIR1dka1RaZHlaaXFkdGxHaEVGcFhwVEhoeWRZQUtYTHM0UEExSXh0QTRiSUd0bWJSSEJzM0o4dXpVMEtPY3VYbzk3VWwwU3dZdXhWdnZLbkFmYlVISjRnRE43b0ZydzJfdWhOa3VqNzVTWFRzRXZEOGZCVVBMZXM4VzhPOEdUMkIzdnJmWGhvYzFHNENRUTN2eHVVLXJjSWZF?oc=5",
-        "pub": "Sat, 31 Oct 2026 17:37:00 GMT",
-        "source": "The Times of India",
-        "summary": "India complete historic double with men's and women's title at Commonwealth Kabaddi Championship&nbsp;&nbsp;The Times of IndiaCommonwealth Kabaddi Championship 2026: Semi-Final Day as India, Kenya and Sri Lanka Chase Final Places&nbsp;&nbsp;Pro Kabaddi LeagueIndian Women Win Inaugural Commonwealth Kabaddi Championship Title&nbsp;&nbsp;News On AIRIndia reigns supreme in Commonwealth kabaddi championship&nbsp;&nbsp;The HinduCommonwealth Kabaddi Championship: Indian men and women's teams…"
-      },
-      {
         "title": "Pat Cummins blames Australian batting after losing the Cape Town decider | Cricket",
         "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNaWtJS0RRRHA1aklQV0VSQkJia0ZqczRzRGFFdTQxX0R6OHBMZjdMVlVKaGhDWG9pS0ZOTnIyV3M4T1RlX25NdkRZNi12SHpyeUxYbXZvUG9qdE4xazhPRkJaazhrNlRZOHVkQWhqcFlrYXhZNkN4RW9ZaUNnVWIxN0VxeE1rUENpZURzQlNsb1daMnVIYU5yX1k1dnNqYzFnSkNFdjZRZW1Nb0I2SV96QVJHNFpzVHpSZUFFdUhkUF9fSW14Sllwb3U0bXfSAdIBQVVfeXFMTWRBZkVFNGtETUNNQXZRSTZ5ODZRNE9lSmk5YjBCcHI1YXZDODVMS2lxcTJraWtjWWxGdmU1V1ZSVUE2akVLMDdGaURmYnkwSUpLaGswamVHcWM5NFVFLWhJN0VrMnh5ZUxVaHU4TG1uRmZ3aXVhMThWR1B1Z0ZJUTN3TFlvcDhHWnIycHRpTG1UZE5yZWltSGhkY1lfSmtTZXY0VF9zVWhhNEthc2QtT3IyZFk1R3dtMnppWTFGTGpkVjNUbF9ta2NvN01CM21fdEJ3?oc=5",
         "pub": "Sun, 01 Nov 2026 02:24:50 GMT",
         "source": "Hindustan Times",
-        "summary": "Pat Cummins blames Australian batting after losing the Cape Town decider | Cricket&nbsp;&nbsp;Hindustan TimesLyon's fading force, Smith at No. 3, and the never-ending Boland debate - Questions for Australia after series defeat&nbsp;&nbsp;Cricinfo'We've got to get better': Cummins looks for improvements&nbsp;&nbsp;cricket.com.auSouth Africa vs Australia: Five takeaways for England after epic series&nbsp;&nbsp;BBCCape Town 2018, cultural review; Cape…"
+        "summary": "Pat Cummins blames Australian batting after losing the Cape Town decider | Cricket&nbsp;&nbsp;Hindustan TimesLyon's fading force, Smith at No. 3, and the never-ending Boland debate - Questions for Australia after series defeat&nbsp;&nbsp;CricinfoAustralia’s bizarre selection choices backfired – predictably – in South Africa. It’s time for a reality check | Geoff Lemon&nbsp;&nbsp;The Guardian'We've got to get…"
       },
       {
         "title": "Boyle, Foxcroft make India A toil after early wobble",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOOHEzSi1DRmNUUDBWV2JUeFd4MEgzWENDeE5sTmJYS0hRQlM2M1BGN1BrcW9Za0daME5nekNONVRvbFZ5MEJuQklJX1N0RmdfT3YyVnpNVjBURm9DeHhna2NoOGhZaDlQTVh2TEV6Z0FOZ29DT1dyVXlOZF9sNWxDVHI2eG5yVURaUnpPaTBfemdHOEJMSWdaTFF0dzBFMnhURnljYkVETEtGT01SbzVCYndHYjhiVHRWTXcwSy1aUEJZekVpbkZIdHRlbTBCN0VJMHc?oc=5",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOZVRqMXpYMEgyeW42eG53R2dOemNsUlJRNUdSLU9lRlZLenFMWXF4X0d0UGNoTUtPT0UzVjVOOUloSGlWTDI5WnVsWXBMc0JBNDNRS3YyVnM1UjhXQXVBd0xQeUgtTldkeE5vTnRGNC1PbURTQ1oyUDktWk1YQTlBTUQ0VjQ1bmZRamRPd0hZbno4UThnQUlaZWpnZkVuSGJLSWtSSUpwc1JLVXhoT1FTdXpRb0lVVTEzX0lHcTNxUElqdw?oc=5",
         "pub": "Sun, 01 Nov 2026 06:34:47 GMT",
         "source": "Cricbuzz",
         "summary": "Boyle, Foxcroft make India A toil after early wobble&nbsp;&nbsp;CricbuzzBall by Ball Commentary & Live Score - NZ-A vs IND-A, 2nd unofficial Test&nbsp;&nbsp;CricinfoGet Ball by Ball Commentary of New Zealand A vs India A 2nd unofficial Test 2026&nbsp;&nbsp;ESPN IndiaIndia A vs New Zealand A Highlights, 2nd unofficial Test Day 2: Boyle brings up his hundred, NZ…"
@@ -285,25 +264,18 @@
         "summary": "The true belief of Shukri Conrad&nbsp;&nbsp;CricbuzzConrad: 'I don't think you ever want to walk around saying you are the best'&nbsp;&nbsp;CricinfoSouth Africa vs Australia LIVE: Third Test, day five, Newlands, Cape Town - cricket score & updates&nbsp;&nbsp;BBCSouth Africa claim world No.1 ranking with Bavuma at the fore&nbsp;&nbsp;cricket.com.au'WTC win was no fluke': Temba Bavuma slams 'critics' after…"
       },
       {
-        "title": "Gambhir hails India's ruthlessness in T20Is despite little preparation time in NZ",
-        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOUDBOeHBGbUJfY0FuQnpTdzgtajBIaUJqODFvS3lWbVAzUkh6YVVyQ3lIZTlWUlJOQ1ZwR2s0cDJHUHh6SFg3b0Mzb2RydXNLM0d5OE1ZTkFYUnlaU003aDFyQTY5RndsSndITlYwSjB3WXBOeEVGa2FCRG9tTEhET3FxaWlDbnZxSUc2RmVwYzBhT0R5LWZCdnpOM00wem11SFRwSUhDWGNkdFhUWElrNkgtRDRDZDNyWTdrbV9wN2RoQUp2ckHSAdcBQVVfeXFMTUstWU9ja002MTRPRHZvMTFramNYRzJqVnhYNE9qbHNELUh0SlVieEJVbE5UODNVakZnRzR5ZDVXMHlXUEpNTy1kTkxUQ1dhTzlwX0o5WDEtY2hMWENXUlp6Qjl1SWQtM2Vva2Yxc0dLMXM4d0ZwYUZnR0k3aTNlNzJzWkhYREozTkNvRk93S01zMUxzMVg5Ty1qX21jLTNybWp4aGZjOTNNY2MwaXR6bTNqTFhCR1lpNHhFNUxJc2FhODRzWDZlb3FDVWY4aVdldTBuUWhZVWs?oc=5",
-        "pub": "Sun, 01 Nov 2026 14:31:00 GMT",
+        "title": "Ravindra and Chapman ruled out of India ODIs",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNYy1JZFM5XzE1RkZPYXM0YkljbmJSNE5lMVhwWDBRQnFvNXhiRUlYbkJsTU4yOTlWS2xhR3NJc2I2M3NqNjFkekY5Q0Y0eE45QUhUeXFqSnhqTU1XNkJaT3ZLQkNsWVIwTTk3QkltRDA1MWVCMmdFUVo1TnRKcGdxWUlBbEhJVGpqNDhEV0FUNzRrYjZXdWtuWG1IZWVXeUJ5dVZwRHZVX19rSkJVTXRlS1J0NW93MVN00gHKAUFVX3lxTFBFeXpFdXFLNHRLWUd0UXhMeWE2dmYzOFFsM2pqenF2MUVJRm04OU9JRnR6WWJvQ3F0dms0a1lFdnVhYmRDdmp5aXZ5cnhhMmhOTlhPeWpPV0I0RWVvaDNNWEp1SnpOdzhOUEZfN3dCYlplX3FjNVZQZzRvRWF3YVU5YUxVb1JBODdQSFY5ZER4eEo4YkEwOUdQUTZ1eDY2cEFKYTI4TFFVQlVoSWFrNDNZZHo4aG9SQ1RFU2w4NHhCa24tQ1UwZTlfOGc?oc=5",
+        "pub": "Sun, 01 Nov 2026 23:30:07 GMT",
         "source": "Cricinfo",
-        "summary": "Gambhir hails India's ruthlessness in T20Is despite little preparation time in NZ&nbsp;&nbsp;CricinfoGambhir lauds India's 'ruthlessness' in T20I series win&nbsp;&nbsp;Cricbuzz'There is no word like 'dar' in my dictionary': Gautam Gambhir's bold message after India win T20I series against New Zealand&nbsp;&nbsp;The Times of IndiaGambhir's three-line message after India's T20I series win&nbsp;&nbsp;RediffHave felt mentally drained but strong enough…"
+        "summary": "Ravindra and Chapman ruled out of India ODIs&nbsp;&nbsp;CricinfoNew Zealand lose key duo for home ODI series against India&nbsp;&nbsp;ICCChapman and Ravindra ruled out of India ODIs | Nicholls, Fisher, Foxcroft, and Seifert called in&nbsp;&nbsp;NZCNew Zealand vs India: Injuries force changes to Blackcaps squad for ODI series&nbsp;&nbsp;Sport NationIndia vs NZ | Rachin Ravindra, Mark Chapman to miss…"
       },
       {
-        "title": "Match Predictions: Nepal Premier League 2026 - 9th Match - Janakpur Bolts vs Pokhara Avengers - 1st November",
-        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNU2xoRWpwUWxHNFphMWh4cFY0SC1QUHFrRzlkbXdnWnJxNm42VEIwbk95T0Vsb1VRQ3RrOEl5U3pXemJESkQ3dWhOcTc4N0xMay1ETVR3cGxUa2tYWGxiOGtsa19UVlNjUEZ6dk4zWXA2Q2RpdnpOVUpXanFaMGNQVDJmbWRUaGNwemFVSmN5MU1GX1pBaDM2S3hNZjVRblVUR3h0QS1lRHBqQXN4OGlXMVdxRjU5NlpUd19ZX0FaN1RxUHhkOUF0SlZuSlBwSE1kZldoZnl2UDg?oc=5",
-        "pub": "Sat, 31 Oct 2026 13:06:11 GMT",
-        "source": "Cricket World",
-        "summary": "Match Predictions: Nepal Premier League 2026 - 9th Match - Janakpur Bolts vs Pokhara Avengers - 1st November&nbsp;&nbsp;Cricket WorldShakib takes three wickets but Pokhara suffer heavy defeat in NPL&nbsp;&nbsp;BDCricTimeNPL: Janakpur set 148-run target for Pokhara&nbsp;&nbsp;KhabarhubJanakpur Bolts set 148-run target for Pokhara Avengers&nbsp;&nbsp;Nepalnews.comNepal Premier League Cricket: Janakpur Bolts vs Pokhara Avengers Match&nbsp;&nbsp;Ratopati"
-      },
-      {
-        "title": "WBBL 2026: Match 07, SS W vs HH W Match Prediction – Who will win today’s WBBL match between Sydney Sixers Women vs Hobart Hurricanes Women?",
-        "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxQd0dGUG1pOExuQkJlSmxscTZhR2diaVk5NXRhTWVqQ3d4T1ZQS1VudzNVNFA1emlwR1NSbUNUOVA4NEV6NGpOTjMtejRSZDhUcmdKWThzWkRGTS0tMDRuQmpLajVTNWdOU3BoeXBvVUgxbjFUbl85VERuX3Q5RFN3emFqc2NfRzZkRHpCSF84ZVJRcVNHU2NqNEl2UTFNTDNnR0lSd1MtS3R2Yi12Q3lWSU0yTVlfdUVnTGV3TVVvSXZpbTJIcUUzajZ1SVhMai1MRWRqYnZ5WU96VU9FN0xXRE5jRXUwYjZ6al9RLTdQdXdraXNpczZuNWI1eUZmZTFDZW40bXp5bVBjZmY4T1R5Tk8xakctek810gGgAkFVX3lxTFBWQzBla2F5LWxLOFpWc1hnVTdTS3NxZ2laeXFHSFM2OHNIQnh5RU1KODlyenl4TnZKdlFyQzdKNXNoUEFkYXo5b0t4VXVLeHlvMnZLRnNnN18yMVBZSHRibmdrWnp3a25VSjlud0ZObG5jRVlZRnZCVjBlRlNFOUxTTmw2VVBud0xIc3FSdnROcFhVelNVSjU2eWIxMnJtS1JwblZJVFFqYXVCSDlydU1yNHVrR3pEZWdFNzlGU3lhbmctdzJvN1NpbHA0SW9yYXhpRlhjcjlHR3k4V2JfbEV2WEFxOTNXbnVpREI1enYyX2ZPQ1hCMERIYkZ2M1NZNk9DRFAzdDJSX1N6a0x4R25jVHZ0MFN6S050MEtHaUVBQw?oc=5",
-        "pub": "Sat, 31 Oct 2026 12:29:00 GMT",
-        "source": "CricTracker",
-        "summary": "WBBL 2026: Match 07, SS W vs HH W Match Prediction – Who will win today’s WBBL match between Sydney Sixers Women vs Hobart Hurricanes Women?&nbsp;&nbsp;CricTrackerGardner's 124 diffuses Hurricanes as Sixers script stunning comeback win&nbsp;&nbsp;CricinfoSydney Sixers Women vs Hobart Hurricanes Women, 7th Match, Womens Big Bash League 2026 Live Cricket Stream, live scores, ball-by-ball commentary,…"
+        "title": "Amid Vaibhav Sooryavanshi debate, Gautam Gambhir says, 'my job is not to make everyone happy'",
+        "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxOQ3I3TkoxRmtnbi1vSm1zR2V3clIwY0ZBNE9hYjR3NjBHWi1VOWFWN082aXljUXVEQnNiZHJQNURmY25PZmdmM0c4VXVzMXBIYnJPQ0toM2t5cmJNM1ZRakk4Q1MxeEtaaTg4azZyTjVSendGUGZZUWhyOWlpazB2bmRYeVZlZGdVdnpSeFB0SmdNeE5JOVA0andOdEJSanVHNlhiOHhGUlRFNVNIWUt0enF6b29VQ0laRkVIVmJ5VHM3MHh6NDdqVE43Qjc5RElPQmRDLWNITXdHUnNSNHhraGhkVkx0NEZzY2pRMHZzVzdXU0dyd0tnTkczemtPS0FJOFY0ZkNJMExHNlAtdF8xajVEMEJ3UdIBmwJBVV95cUxObEVCT3loQlJNMmRPWUQ2ZjMxNW9fWnhFWXlrRXJfRk80UkJRR1lXcTFPOWpYd3BmWXVObXVQaHQ3WDc0VDgwZEx4bWEzcmNiQzAxTERKaG0zRWNEUjhSZmR1RjJsX3NpQmVoS0tZOUM0dDRnd3RZZUlXOGRIcHlSMTBVdW1faU5Ob1Vac3lRYWE4RWRJTHFUVE9QR3htTWpVb0x5V1ZhYVpMLWduTnNXclpiOHY2ZFU1NDFRQ0ZpNVpCTzU2QmVPdjZnYkFfZGpHZjdUSHNWVjdQbDB0ZkdBNG1KS0VUNkw4Yktpc3JQczM2V2hnMEU1SWIzdlBPNExpMDJKeC05cXlvYmtaeW95b2J5cmVORnVxUGpR?oc=5",
+        "pub": "Sun, 01 Nov 2026 09:30:00 GMT",
+        "source": "The Times of India",
+        "summary": "Amid Vaibhav Sooryavanshi debate, Gautam Gambhir says, 'my job is not to make everyone happy'&nbsp;&nbsp;The Times of India'My job is to take right decisions, not make everyone happy': Gautam Gambhir&nbsp;&nbsp;Deccan Herald'Not good news': Ex-India star questions India's handling of Vaibhav Sooryavanshi&nbsp;&nbsp;The Times of India5th T20I: Vaibhav Sooryavanshi benched. Gambhir says his job is not to…"
       },
       {
         "title": "Match Predictions: Afghanistan vs Zimbabwe in UAE 2026 - 3rd T20I - Afghanistan vs Zimbabwe - November 1st",
@@ -313,11 +285,39 @@
         "summary": "Match Predictions: Afghanistan vs Zimbabwe in UAE 2026 - 3rd T20I - Afghanistan vs Zimbabwe - November 1st&nbsp;&nbsp;Cricket WorldDominant Afghanistan sweep T20I series against Zimbabwe&nbsp;&nbsp;ICCAFG vs ZIM, 3rd T20I, Afghanistan vs Zimbabwe in UAE, 2026 - Commentary&nbsp;&nbsp;CricbuzzHigh on Omarzai - Afghanistan allrounder has a night to remember&nbsp;&nbsp;CricinfoAfghanistan and Zimbabwe in UAE, 3 T20I Series, 2026…"
       },
       {
-        "title": "How Marc Marquez could wrap up the 2026 MotoGP title in Qatar GP",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTDZQQkY1aEtER3FTZ3QwRkFza3hPd1JLQ0Z5QkFRbDBfZUtqM1ZCQUpFb2FoM0JOZlIxeEtoZjRCbWtBSFRpendRd0NHSjVWUVNkeGVtc3pmdjJQaTBwcW1raUZFYldXWG9LV1ctMHp5b1kxUTIyeTd2UENlRU9QaWQyVVMtVUZhcUhDdmxNdEN2NTVZZ3RZMWFQU1ZQcW5ZcDNBT3NFdHlWaTJNYkZadUVuZWNOY1ZxVnM4WkN2TmFGMVhOTkV5cw?oc=5",
-        "pub": "Sun, 01 Nov 2026 12:03:29 GMT",
-        "source": "Motorsport.com",
-        "summary": "How Marc Marquez could wrap up the 2026 MotoGP title in Qatar GP&nbsp;&nbsp;Motorsport.comMasterclass: Marc Marquez marches to Malaysia victory to earn 2026 match point&nbsp;&nbsp;motogp.comMotoGP: Marc Marquez wins Malaysian Grand Prix to extend lead over Jorge Martin&nbsp;&nbsp;BBCMarquez takes complete control of title fight with Sepang win&nbsp;&nbsp;The RaceMalaysian MotoGP results: From Marc Marquez to Jack Miller, full…"
+        "title": "WBBL 2026: Match 07, SS W vs HH W Match Prediction – Who will win today’s WBBL match between Sydney Sixers Women vs Hobart Hurricanes Women?",
+        "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxQd0dGUG1pOExuQkJlSmxscTZhR2diaVk5NXRhTWVqQ3d4T1ZQS1VudzNVNFA1emlwR1NSbUNUOVA4NEV6NGpOTjMtejRSZDhUcmdKWThzWkRGTS0tMDRuQmpLajVTNWdOU3BoeXBvVUgxbjFUbl85VERuX3Q5RFN3emFqc2NfRzZkRHpCSF84ZVJRcVNHU2NqNEl2UTFNTDNnR0lSd1MtS3R2Yi12Q3lWSU0yTVlfdUVnTGV3TVVvSXZpbTJIcUUzajZ1SVhMai1MRWRqYnZ5WU96VU9FN0xXRE5jRXUwYjZ6al9RLTdQdXdraXNpczZuNWI1eUZmZTFDZW40bXp5bVBjZmY4T1R5Tk8xakctek810gGgAkFVX3lxTFBWQzBla2F5LWxLOFpWc1hnVTdTS3NxZ2laeXFHSFM2OHNIQnh5RU1KODlyenl4TnZKdlFyQzdKNXNoUEFkYXo5b0t4VXVLeHlvMnZLRnNnN18yMVBZSHRibmdrWnp3a25VSjlud0ZObG5jRVlZRnZCVjBlRlNFOUxTTmw2VVBud0xIc3FSdnROcFhVelNVSjU2eWIxMnJtS1JwblZJVFFqYXVCSDlydU1yNHVrR3pEZWdFNzlGU3lhbmctdzJvN1NpbHA0SW9yYXhpRlhjcjlHR3k4V2JfbEV2WEFxOTNXbnVpREI1enYyX2ZPQ1hCMERIYkZ2M1NZNk9DRFAzdDJSX1N6a0x4R25jVHZ0MFN6S050MEtHaUVBQw?oc=5",
+        "pub": "Sat, 31 Oct 2026 12:29:00 GMT",
+        "source": "CricTracker",
+        "summary": "WBBL 2026: Match 07, SS W vs HH W Match Prediction – Who will win today’s WBBL match between Sydney Sixers Women vs Hobart Hurricanes Women?&nbsp;&nbsp;CricTrackerGardner's 124 diffuses Hurricanes as Sixers script stunning comeback win&nbsp;&nbsp;CricinfoSydney Sixers Women vs Hobart Hurricanes Women, 7th Match, Womens Big Bash League 2026 Live Cricket Stream, live scores, ball-by-ball commentary,…"
+      },
+      {
+        "title": "Gambhir lauds India's 'ruthlessness' in T20I series win",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQaExCU25WUzY5Nmt3RUR2M3NmUjdVNmRHT01vV2t3V0JWT21lOEx5NmpRLWhnckdMNlJMY0pfMlV0aG9ES0hUVUN5SzVOdFdqblBFRlYyX0t2NnQ3U0JyZFVKempBZ2ZqR0ZmenpadXRUNDRHQ2hmUWxzbzQ5SW9hRDRObjZqSnd0T0s2ZGw4ZGtnd0xOOFYtdkhQcGhsZw?oc=5",
+        "pub": "Sun, 01 Nov 2026 14:12:58 GMT",
+        "source": "Cricbuzz",
+        "summary": "Gambhir lauds India's 'ruthlessness' in T20I series win&nbsp;&nbsp;CricbuzzGambhir hails India's ruthlessness in T20Is despite little preparation time in NZ&nbsp;&nbsp;CricinfoGambhir's three-line message after India's T20I series win&nbsp;&nbsp;Rediff'There is no word like 'dar' in my dictionary': Gautam Gambhir's bold message after India win T20I series against New Zealand&nbsp;&nbsp;The Times of IndiaHave felt mentally drained but strong enough…"
+      },
+      {
+        "title": "Match Predictions: Nepal Premier League 2026 - 9th Match - Janakpur Bolts vs Pokhara Avengers - 1st November",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNU2xoRWpwUWxHNFphMWh4cFY0SC1QUHFrRzlkbXdnWnJxNm42VEIwbk95T0Vsb1VRQ3RrOEl5U3pXemJESkQ3dWhOcTc4N0xMay1ETVR3cGxUa2tYWGxiOGtsa19UVlNjUEZ6dk4zWXA2Q2RpdnpOVUpXanFaMGNQVDJmbWRUaGNwemFVSmN5MU1GX1pBaDM2S3hNZjVRblVUR3h0QS1lRHBqQXN4OGlXMVdxRjU5NlpUd19ZX0FaN1RxUHhkOUF0SlZuSlBwSE1kZldoZnl2UDg?oc=5",
+        "pub": "Sat, 31 Oct 2026 13:06:11 GMT",
+        "source": "Cricket World",
+        "summary": "Match Predictions: Nepal Premier League 2026 - 9th Match - Janakpur Bolts vs Pokhara Avengers - 1st November&nbsp;&nbsp;Cricket WorldShakib takes three wickets but Pokhara suffer heavy defeat in NPL&nbsp;&nbsp;BDCricTimeNPL: Janakpur set 148-run target for Pokhara&nbsp;&nbsp;KhabarhubJanakpur Bolts set 148-run target for Pokhara Avengers&nbsp;&nbsp;Nepalnews.comJAB vs POA 9th Match, 01 Nov 2026 Fantasy AI Predictions&nbsp;&nbsp;AI11"
+      },
+      {
+        "title": "Lakshya Sen vs Jonatan Christie Hylo Open Final LIVE UPDATES - India star hopes for second title",
+        "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQTjFpUFBGZTBTXzBzNk9vYnBKXzhteklXbkxvRjBmS25CRmVlenUwZERuVGIzRWo5ejEzVDdHanA0NkoyN0czT3o4WjFWR3dsVzB5LXowTHZSQVdUeV9LYTZselZGa0lnLVdWR0l2T0ZIS213ei1LbnhfenNFbkktbXI1UWRyWEJ4aWNvZ0xmcXFsVWYyV3NtOHdLS0dfTzBHS2lHazJ3RmR1ajEyajZ2ajR4YmxpUDFfWnhZX0o5NDFBb1JoT3NTZjEtY002bG41clpnRHYtT0NDelE0ZElqcmpPcWVzTDNxQ1BJ0gHyAUFVX3lxTE8tLWoxX19iQnRDQ0M4aWpYUzJRVllSbV9rUHFnYXI1cFhVZXhVaUw4Szd1MlZtUzFDcWQ0Q2RUczkzcURaZXp1U3NXQm9udnlPakVUOHJEZ28yTTlvc2ZuSU91M3U1LUxSelZmQkdwN2RPVVVSOWhSd2s1UmdCQ281cU5sWjZfejhvZlVZbFQxbWZWcEczTGlaVHZfcm1FdnNGclRwaWpMLXNySE00YlBxN0V2aHJPQ0NZVFdyYk5jVFhQRjBRbWdha1VNWHBhWUkxS2hvQjkwZ1E1c0RqbkVFTnI3T0t4SUdmN2hiaGlPaTdB?oc=5",
+        "pub": "Sun, 01 Nov 2026 14:00:14 GMT",
+        "source": "Sportstar",
+        "summary": "Lakshya Sen vs Jonatan Christie Hylo Open Final LIVE UPDATES - India star hopes for second title&nbsp;&nbsp;SportstarSee more headlines and perspectives on Google News"
+      },
+      {
+        "title": "Hansi Flick reveals his favorite victory after hitting 100 wins in charge of Barcelona",
+        "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQbUoyRzFxbEtmMmRoc3kyRWRfRGlWbzRKRDVTM2J3aW5lZUdCaTVOak9DUE5jTFExSV9yOWZjZWhraG1JSVdQd25fQ1JCaXd1YXp5TDByUWlRTGZYRUctRXFTa3dxZllIUE5zLWQ5LWpNOWhOZUl1cGNqSnNQeTFwX2RqV3g3RVg0VkYyMnY2WkszMjVuMngtZXY4Ry0tak9SMElRU1Fwd0Z0V0dKQVhZWXJ0d3oydjVWLXhpX0dVTW1QYXppRGU1QWNSc0VPOFh4LWtQVFdKc1J5UEE?oc=5",
+        "pub": "Sun, 01 Nov 2026 18:00:00 GMT",
+        "source": "Barca Blaugranes",
+        "summary": "Hansi Flick reveals his favorite victory after hitting 100 wins in charge of Barcelona&nbsp;&nbsp;Barca BlaugranesBarcelona 6-1 Alavés (1 Nov, 2026) Game Analysis&nbsp;&nbsp;ESPN IndiaHansi Flick: Record-breaking 100 wins&nbsp;&nbsp;Official FC Barcelona WebsiteBarcelona bounce back with 6-1 win over Alaves&nbsp;&nbsp;ReutersLamine Yamal, Raphinha help Barcelona hammer Alaves to retain Liga top spot&nbsp;&nbsp;Al Jazeera"
       },
       {
         "title": "Match Predictions: YesPlay Pro20 Cup 2026 - Dolphins vs Boland - Lions vs Titans - November 1st",
@@ -327,62 +327,62 @@
         "summary": "Match Predictions: YesPlay Pro20 Cup 2026 - Dolphins vs Boland - Lions vs Titans - November 1st&nbsp;&nbsp;Cricket WorldDOLPH vs BOL Super Eights, 01 Nov 2026 Fantasy AI Predictions&nbsp;&nbsp;AI11Boland openers upstage Viljoen heroics in Pro20 Cup&nbsp;&nbsp;supersport.comDolphins vs Boland T20 Live Score at Kingsmead, Durban, CSA T20 Challenge - T20 at Cricketnmore&nbsp;&nbsp;Cricketnmore"
       },
       {
-        "title": "Heather Knight, Laura Harris star as Thunder make it two in two",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbF9KOWtCYVZBN1hmNTBGMjU0ZFNTR3NRMzJYQllKdXNfN0dKLUNMVG5aZGMyaFYxTGJrU3JuYXlNQll2TjVocm1ET3ZYSlNESlViMmU0VUJBbWlhVjBNcFhZeFp4TXlCSWFwNmg1c3dfWHNKdXZEQkFLZEgzdkZXS1Fmd0tHZFM3WGNXSURXZEpnVXV6d0FMdXB3YnB5eWs4WFB3TVJ3MThJMG8?oc=5",
-        "pub": "Sun, 01 Nov 2026 09:27:57 GMT",
-        "source": "Cricbuzz",
-        "summary": "Heather Knight, Laura Harris star as Thunder make it two in two&nbsp;&nbsp;CricbuzzHobart hit by Gardner hurricane&nbsp;&nbsp;CricbuzzFast-finishing Thunder outmuscle Heat as Harris sisters go big&nbsp;&nbsp;cricket.com.auWomens Big Bash League: Heather Knights unbeaten 54 powers Sydney Thunder to six-wicket win over Brisbane Heat&nbsp;&nbsp;Cricket WorldMatch 6: Sydney Thunder Women vs Brisbane Heat Women – Squads, Players to Watch, Live…"
+        "title": "How Marc Marquez could wrap up the 2026 MotoGP title in Qatar GP",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTDZQQkY1aEtER3FTZ3QwRkFza3hPd1JLQ0Z5QkFRbDBfZUtqM1ZCQUpFb2FoM0JOZlIxeEtoZjRCbWtBSFRpendRd0NHSjVWUVNkeGVtc3pmdjJQaTBwcW1raUZFYldXWG9LV1ctMHp5b1kxUTIyeTd2UENlRU9QaWQyVVMtVUZhcUhDdmxNdEN2NTVZZ3RZMWFQU1ZQcW5ZcDNBT3NFdHlWaTJNYkZadUVuZWNOY1ZxVnM4WkN2TmFGMVhOTkV5cw?oc=5",
+        "pub": "Sun, 01 Nov 2026 12:03:29 GMT",
+        "source": "Motorsport.com",
+        "summary": "How Marc Marquez could wrap up the 2026 MotoGP title in Qatar GP&nbsp;&nbsp;Motorsport.comMarquez wins in Malaysia to stand on brink of MotoGP world title&nbsp;&nbsp;The HinduMasterclass: Marc Marquez marches to Malaysia victory to earn 2026 match point&nbsp;&nbsp;motogp.comMarquez takes complete control of title fight with Sepang win&nbsp;&nbsp;The RaceMotoGP: Marc Marquez wins Malaysian Grand Prix to extend lead…"
       },
       {
         "title": "6 stats from Racing Santander 0-3 Real Madrid",
         "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbHl6MTVfVUhSc1ozMFJFSWxrX1ptTllNNEFhVk9VS1BnODlkX1Z0QjdiNHJVUE9RemtocG9yYXV4ZUhzRnlUY3ZXdl9VeElXNWRycHBCOEtXMHlLUnlTbFdkNXBJOE9fMUFzcTJneXltVE5ScnJHX2k2elhnOWhicWlOQnJqSkFTVDhZbC1uS09KNVE1VmZWWmJuNEJmYXdFc2YyS1VValB4Zw?oc=5",
         "pub": "Sun, 01 Nov 2026 18:00:55 GMT",
         "source": "Managing Madrid",
-        "summary": "6 stats from Racing Santander 0-3 Real Madrid&nbsp;&nbsp;Managing MadridRacing Santander 0-3 Real Madrid: England's Jude Bellingham scores in win&nbsp;&nbsp;BBCEuropean football: Mbappé penalty helps Real Madrid stroll to sixth straight win&nbsp;&nbsp;The GuardianJude Bellingham becomes first Englishman to score 50 goals for Real Madrid&nbsp;&nbsp;ESPN IndiaRacing Santander vs Real Madrid LIVE BLOG: Kickoff Time, Lineups and LaLiga Match…"
+        "summary": "6 stats from Racing Santander 0-3 Real Madrid&nbsp;&nbsp;Managing MadridEuropean football: Mbappé penalty helps Real Madrid stroll to sixth straight win&nbsp;&nbsp;The GuardianRacing Santander 0-3 Real Madrid: England's Jude Bellingham scores in win&nbsp;&nbsp;BBCPlayer Ratings: Racing Santander 0–3 Real Madrid&nbsp;&nbsp;Managing MadridMbappe strikes after China controversy as Real Madrid beat Santander in La Liga&nbsp;&nbsp;Dawn"
       },
       {
-        "title": "Body language expert examines reactions to Kane winning Ballon d’Or",
-        "link": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxNQ0MzaTVpTFktQ1JTdEJXY2w3MWplQXNLcGNId0JvVHc5a0N1Q0Q5MEFKOF9sWnp5RkV6ajV6eEl0Z2NXR3A4WjFuQUV6cVlKbUhTUURrUWpOSEFUVHkzQW9UUjhiUzh3aFBLUkxpTE5jQ2pScHNMWlNVUTVOZDJoMDAyWlhzb0hfY1ZsTEdid0Z0dFhZYmVCa3VJU2w1RUFxUkRSWUtCWE9lVXhrNm5RTW0yekhaS0N5TjZreTFTcTF2cHFrZExBZ0M5b2l2WktIWlc3MmM3QTVjZXpEcElqc0FBS0VJSGhMX25ySjVPVWNPcTlmbXdJZXVXYjYxUDQ0Z05SYkt3WDI5TFdZZkFQVTVvTE9hSWVNaFVKOVhjbjhlcjB6cFQ0aGtyT3kzZ294WDlvUUhSZnpYU0U?oc=5",
-        "pub": "Sun, 01 Nov 2026 19:00:00 GMT",
-        "source": "Bavarian Football Works",
-        "summary": "Body language expert examines reactions to Kane winning Ballon d’Or&nbsp;&nbsp;Bavarian Football WorksHarry Kane parades Ballon d'Or in front of Bayern Munich fans before Borussia Dortmund clash&nbsp;&nbsp;ESPN IndiaOld target: English giant moves for Barcelona star&nbsp;&nbsp;Goal.comHarry Kane: “Jose Mourinho definitely made his stamp on me”&nbsp;&nbsp;Managing MadridFinal Ballon d’Or points totals revealed as Harry Kane narrowly beats Kylian…"
+        "title": "Heather Knight, Laura Harris star as Thunder make it two in two",
+        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbF9KOWtCYVZBN1hmNTBGMjU0ZFNTR3NRMzJYQllKdXNfN0dKLUNMVG5aZGMyaFYxTGJrU3JuYXlNQll2TjVocm1ET3ZYSlNESlViMmU0VUJBbWlhVjBNcFhZeFp4TXlCSWFwNmg1c3dfWHNKdXZEQkFLZEgzdkZXS1Fmd0tHZFM3WGNXSURXZEpnVXV6d0FMdXB3YnB5eWs4WFB3TVJ3MThJMG8?oc=5",
+        "pub": "Sun, 01 Nov 2026 09:27:57 GMT",
+        "source": "Cricbuzz",
+        "summary": "Heather Knight, Laura Harris star as Thunder make it two in two&nbsp;&nbsp;CricbuzzHobart hit by Gardner hurricane&nbsp;&nbsp;CricbuzzLitchfield, Laura Harris and Knight blaze away to continue Heat's drought&nbsp;&nbsp;CricinfoFast-finishing Thunder outmuscle Heat as Harris sisters go big&nbsp;&nbsp;cricket.com.auWomens Big Bash League: Heather Knights unbeaten 54 powers Sydney Thunder to six-wicket win over Brisbane Heat&nbsp;&nbsp;Cricket World"
       },
       {
-        "title": "Late Marc Marquez leads Sepang MotoGP warm-up, Qatar title chance?",
-        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOcHZfZEE0NU1Cb1VRUTVPNGwxeVE1N0VTc3RiT0xQVjl3ZDdPNWlZSWFzU180cDc3R0tBeGEzVEVJYkxJeFppMEVaUVRleU9ySlk4cXRTQ01qM3Q5emRXQUFFWngweEpXUWF1YjBhZ2ljdDZLV3hiS3hIN2dmYTZQTGJ2UEtNQ25XckI0Q2Y3YzdsRFR3Nm5oRE5xSQ?oc=5",
-        "pub": "Sun, 01 Nov 2026 05:41:37 GMT",
-        "source": "Crash.net",
-        "summary": "Late Marc Marquez leads Sepang MotoGP warm-up, Qatar title chance?&nbsp;&nbsp;Crash.netMartin withdraws: the #89 won’t take part in Malaysia&nbsp;&nbsp;motogp.comMartin admits MotoGP title 'already lost' after Sepang withdrawal&nbsp;&nbsp;The RaceThe starting grid for the 2026 Malaysian MotoGP Grand Prix&nbsp;&nbsp;https://www.autohebdof1.com/MotoGP sprint is today at Sepang: Worldwide start times as Márquez and Martín battle for title&nbsp;&nbsp;Grande Prêmio"
+        "title": "Glenn Phillips on the brink of breaking world record in last T20I vs India",
+        "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNMm51emY5YWZMRXB3aFU4b2RMbXVDSkV5SXBXc1p5TW14R0dTaDRLd0xub0hBQ1Y4bUJGTjdtWTFMdEZFcWVNSUJpMFh6Y0ZlNzZBcHBRVkNON1huMXRQNTQxbDZIR25YSnJHVDBaR3hra3JEZENHTWRwRnVpZHU3Q3RXQS1BREJHV1lqOE5sMk1wdEwxakhoSzVuX1dOQUFxTndYVTAtV29tUktrM1h3czZ4cXlnSXVldlB6VTBnLWlWUUx1X216c3JKd0RtUVd6TEt3Z3hxcmpHLXJPYW5JMzltNXdUQ2FieWpNUlVUWDhfenItZGVIWDE0RVA3RlpKNEE?oc=5",
+        "pub": "Sun, 01 Nov 2026 00:30:00 GMT",
+        "source": "The Times of India",
+        "summary": "Glenn Phillips on the brink of breaking world record in last T20I vs India&nbsp;&nbsp;The Times of IndiaCaptain Shreyas blames bowlers for Friday’s T20I defeat against New Zealand in Auckland&nbsp;&nbsp;Telegraph IndiaNZL vs IND: New Zealand vs India, 4th T20I, 30 Oct 2026 – Commentary | India in New Zealand 2026/27 | Match Centre&nbsp;&nbsp;BCCIGlenn Phillips finds value…"
       }
     ],
     "business": [
       {
-        "title": "Masks Off: Crypto Industry Responds to Binance Hack by Acting Like Banks",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOcFRkR1VpMGJUYTR0emJMc1JaOV8yV2FsVEJwOEo5bDdyVldQYVlhd29ua3lhS0szNkNVRzhhT2o1SV9QS3J3VkxNTWoxVHRnN3JnZ0RMNUp0S0Nqa2RMbndBQ0dzUnhHNDZqQlZrbDBBWDdWckZRQzJYVTFRb3RuNTFNcFRzMWh6Qk16bERvRk5udDZSa0h2MUd0ZDY5d1NLVkg0dA?oc=5",
-        "pub": "Sun, 01 Nov 2026 16:20:54 GMT",
-        "source": "Gizmodo",
-        "summary": "Masks Off: Crypto Industry Responds to Binance Hack by Acting Like Banks&nbsp;&nbsp;GizmodoCrypto firm Binance covers 90% of losses after $6.3bn hack&nbsp;&nbsp;BBCThe largest theft in history: North Korea likely behind the $6.4 billion Binance hack&nbsp;&nbsp;EllipticSecurity Incident | Recovery Update #4: Withdrawals Resume in Phases (2026-11-01)&nbsp;&nbsp;BinanceBinance to resume withdrawals after recovering 95% of $6.3 billion crypto theft&nbsp;&nbsp;The…"
-      },
-      {
-        "title": "Trade Setup for November 2: Top 15 things to know before the opening bell",
-        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPQ3lBaDlnZEs2MHBvbl85YmxMUnJUYVFncG9NcmprYVJpV1J1VjdjQmxsVEc4Vi1Jc2lJeHFTeHZROC1JSEJHMGdYZXVfc2wyc2FuTVQ0eWtlbWwtNzJGV001VVUycXp0eUZXRmc0Y1dFT2p4cTRVRE5xOHBzU1lGeGFFOWlJSHZnbVp5RHdWZVBDdVh2cGtiRjBQalZXX3lTNlQwOFhlTnVPN2JWNFo1Nm9Ldlo0N0d5QXZqTnA4SjhUNFVXUE11a3pzNV9wZFNFU25B0gHYAUFVX3lxTE9LdERYWnhMX2tNSlozZGNBcTYyRGl3ZFgtSXVsak1fbnhWZXBPRjhnLU1GLUVmOHZrVXk4d3N5ellPQVhzUjJ6Z0pybFozR1NZVnV2eTdfRVlYYzhQWThjb1NiM1h2ZTJoaHhnMVdtUlNTQmc4cTNSS1NRS196YUppMndEOS00VTlfQVotTDI0bVFNTDkyRy1aMHVSYlNlOE95MHZkcFhKX1VWN1kyOW05OWZoVTlwRHR0SjhKR1BRWFBZTFBDM3pLamZWY3ZEZnVWVE43ZlRteg?oc=5",
-        "pub": "Sun, 01 Nov 2026 14:16:16 GMT",
-        "source": "Moneycontrol.com",
-        "summary": "Trade Setup for November 2: Top 15 things to know before the opening bell&nbsp;&nbsp;Moneycontrol.comIndex Outlook: Indices hold firm&nbsp;&nbsp;BusinessLineF&O Talk: Big break above 23,200 can open doors for 23,500 for Nifty; Sudeep Shah picks 6 stocks ahead of&nbsp;&nbsp;The Economic TimesNifty & Bank Nifty Weekly Outlook 31-10-2026 by Choice Broking Ltd&nbsp;&nbsp;Investment Guru IndiaNifty Outlook for November 2:…"
+        "title": "Binance to resume crypto withdrawals in phases after record $6 billion hack",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQSmdIb3Bua0xDMl9WRV9tbjdYQkZ0b0ZlTFNBR2M4eUxrS05ERUNmdE8tV09YaE1sRnlYVVJGTEV4OEd4TzZfOFQtWWVzd3QzZjdsUmpKUTZ2MW5tX1ZOTFZfcnl5bENjX0hndnlvYVpVM3dOYjBBYW5adnBvRVNiS21Qc3F6dDRqNFlpZldXUGJlMXZzN1JGajFBa1I0VU5mcE9hbHZJUWdwWExHUlZ0UTN6OUdaZHJsb2FOdGdHd2VYTXpZbENzX01Hcy1IZw?oc=5",
+        "pub": "Sun, 01 Nov 2026 06:25:34 GMT",
+        "source": "Investing.com",
+        "summary": "Binance to resume crypto withdrawals in phases after record $6 billion hack&nbsp;&nbsp;Investing.comBinance Estimates $6.3 Billion Hacked in Crypto's Biggest Heist&nbsp;&nbsp;Bloomberg.comBinance users withdraw billions after record crypto hack&nbsp;&nbsp;BBCBinance to resume withdrawals after recovering 95% of $6.3 billion crypto theft&nbsp;&nbsp;The Times of IndiaGone in 20 minutes: How the biggest heist in crypto history unfolded&nbsp;&nbsp;Reuters"
       },
       {
         "title": "Maruti Sales Oct 2026 All Time High - Domestic 2.12 Lakh, Exports Near 50k",
         "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOdEVmOElHMXJ5aXctOTFqemRycy1MdGJ6TFhtZXFzdmZ2R0dJUl9WSURnRFp0MnVLNzZwNGgyRlVJVmlHVWV0eC1DX1hPSDlYWGVzTVphSjJndlF3UF9LYWNqYXgtWWhhZ0wzQ0szT1RZREdUX08td2E4cVEwZTFmNlVvZGNXVjJqaW9JYXNNWEtibF93dWxxU3VzcVhRNHUyZnhNOXdDWmZCMUExNTRZ0gGvAUFVX3lxTE50RWY4SUcxcnlpdy05MWp6ZHJzLUx0YnpMWG1lcXN2ZnZHR0lSX1ZJRGdEWnQydUs3NnA0aDJGVUlWaUdVZXR4LUNfWE9IOVhYZXNNWmFKMmd2UXdQX0thY2pheC1ZaGFnTDNDSzNPVFlER1RfTy13YThxUTBlMWY2VW9kY1dWMmppb0lhc01YS2JsX3d1bHFTdXNxWFE0dTJmeE05d0NaZkIxQTE1NFk?oc=5",
         "pub": "Sun, 01 Nov 2026 10:36:53 GMT",
         "source": "RushLane",
-        "summary": "Maruti Sales Oct 2026 All Time High - Domestic 2.12 Lakh, Exports Near 50k&nbsp;&nbsp;RushLaneDomestic PV dispatches cross five-lakh units mark in October on strong festive demand&nbsp;&nbsp;The HinduFestive tailwinds drive car sales to record highs in October&nbsp;&nbsp;The Times of IndiaMaruti Suzuki posts highest-ever monthly sales in October as festive demand drives 25% growth&nbsp;&nbsp;Telegraph IndiaHyundai Records Highest-Ever…"
+        "summary": "Maruti Sales Oct 2026 All Time High - Domestic 2.12 Lakh, Exports Near 50k&nbsp;&nbsp;RushLaneDomestic PV dispatches cross five-lakh units mark in October on strong festive demand&nbsp;&nbsp;The HinduMaruti Suzuki posts highest-ever monthly sales in October as festive demand drives 25% growth&nbsp;&nbsp;Telegraph IndiaFestive tailwinds drive car sales to record highs in October&nbsp;&nbsp;The Times of IndiaHyundai Records Highest-Ever…"
       },
       {
         "title": "India's October net goods and services tax collection rises 25.6% year-on-year",
         "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQemVqbnAxSFBqbkxhQ2x2NXI2c3dlWXRfZWJ5VU1PN24xdzVhLUdVWmlrSVp6LW01d1lYdlllNFpMNnpReHJ1VnlUMFNUdzdtMjNGZnh6QXJsNkRjSVFIcTM2cFU2N2tWQk5XaUJoUU9GVXlLUlV0WVE0Mzd2Q1NEMmE3WTNHU1JydXBVejZyOFJBenU4MGY1VmE0VW5sakk4TEM4UUk2TFFMTlAtUEZyeExvRW5FWVdXMjZN?oc=5",
         "pub": "Sun, 01 Nov 2026 07:25:43 GMT",
         "source": "Reuters",
-        "summary": "India's October net goods and services tax collection rises 25.6% year-on-year&nbsp;&nbsp;ReutersGST mop-up surges 23% to second-highest level of ₹2.31 lakh crore in October on festive demand boost&nbsp;&nbsp;The HinduGST mop-up rises record 23% in Octoer, hits Rs 2.3 lakh crore&nbsp;&nbsp;The Times of IndiaFestive buying pushes October GST collections to second-highest level of Rs 2.31 lakh crore&nbsp;&nbsp;Telegraph…"
+        "summary": "India's October net goods and services tax collection rises 25.6% year-on-year&nbsp;&nbsp;ReutersGST mop-up surges 23% to second-highest level of ₹2.31 lakh crore in October on festive demand boost&nbsp;&nbsp;The HinduFestive buying pushes October GST collections to second-highest level of Rs 2.31 lakh crore&nbsp;&nbsp;Telegraph IndiaGross GST Collections Increase 23% To Rs 2.31 Lakh Crore In October&nbsp;&nbsp;NDTVGST mop-up rises…"
+      },
+      {
+        "title": "Trade Setup for November 2: Top 15 things to know before the opening bell",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPQ3lBaDlnZEs2MHBvbl85YmxMUnJUYVFncG9NcmprYVJpV1J1VjdjQmxsVEc4Vi1Jc2lJeHFTeHZROC1JSEJHMGdYZXVfc2wyc2FuTVQ0eWtlbWwtNzJGV001VVUycXp0eUZXRmc0Y1dFT2p4cTRVRE5xOHBzU1lGeGFFOWlJSHZnbVp5RHdWZVBDdVh2cGtiRjBQalZXX3lTNlQwOFhlTnVPN2JWNFo1Nm9Ldlo0N0d5QXZqTnA4SjhUNFVXUE11a3pzNV9wZFNFU25B0gHYAUFVX3lxTE9LdERYWnhMX2tNSlozZGNBcTYyRGl3ZFgtSXVsak1fbnhWZXBPRjhnLU1GLUVmOHZrVXk4d3N5ellPQVhzUjJ6Z0pybFozR1NZVnV2eTdfRVlYYzhQWThjb1NiM1h2ZTJoaHhnMVdtUlNTQmc4cTNSS1NRS196YUppMndEOS00VTlfQVotTDI0bVFNTDkyRy1aMHVSYlNlOE95MHZkcFhKX1VWN1kyOW05OWZoVTlwRHR0SjhKR1BRWFBZTFBDM3pLamZWY3ZEZnVWVE43ZlRteg?oc=5",
+        "pub": "Sun, 01 Nov 2026 14:16:16 GMT",
+        "source": "Moneycontrol.com",
+        "summary": "Trade Setup for November 2: Top 15 things to know before the opening bell&nbsp;&nbsp;Moneycontrol.comIndex Outlook: Indices hold firm&nbsp;&nbsp;BusinessLineF&O Talk: Big break above 23,200 can open doors for 23,500 for Nifty; Sudeep Shah picks 6 stocks ahead of&nbsp;&nbsp;The Economic TimesTrade Setup For Nov. 2: Nifty Eyes Resistance At 23,200; Can Bulls Push Index Above 24,000?&nbsp;&nbsp;NDTV ProfitNifty…"
       },
       {
         "title": "Can Nifty, Sensex extend gains after rallying up to 2% last week? 4 factors to watch on Monday",
@@ -392,25 +392,25 @@
         "summary": "Can Nifty, Sensex extend gains after rallying up to 2% last week? 4 factors to watch on Monday&nbsp;&nbsp;The Economic TimesBroader markets outperform; Ather Energy, Piramal Pharma, Laurus Labs surge over 20% each&nbsp;&nbsp;Moneycontrol.comMarkets rally for second straight session, Sensex gains 308 points, Nifty reclaims 23,050 mark&nbsp;&nbsp;Telegraph IndiaMarkets extend previous session's rally amid buying in IT firms,…"
       },
       {
-        "title": "OPEC+ set to keep oil output targets steady, sources say",
-        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbG42ZjlkZUNQUWwtTFJXRDBvcnpRamtRUnhwRm1VU3d4T09UX2VYUWUwT2trNmdqU0JDVk8yT2xSM3VkWTZzQTZrSE1YbEQwQXZtVEhUbHg4blQ1eTJlc1pkSURWVXFoQlM0cDYwZ1Q5azBHUS1tWGc3ZERKalVzZjRnWnJDVkVTWlJOddIBkgFBVV95cUxOVlZSU2ZyV2NHNVFPOXlLZk1JaGtjWkVpbl9FNTVTb01NTHRxZWR4dkdUTWhLbFdlWk1EV1E1VzkzWTZBckpVSGhKNmpYcDQ2OEhLX0VobVZpbGg5V0ViM3V3bG9rcFpQZ19vZXFCRUkzN2hJcHFzWHQ3dGxQcjRSWFNUOUhOeU5CWUlrbWs1Y1ZUQQ?oc=5",
-        "pub": "Sun, 01 Nov 2026 11:01:00 GMT",
-        "source": "Forex Factory",
-        "summary": "OPEC+ set to keep oil output targets steady, sources say&nbsp;&nbsp;Forex FactoryOPEC, Allies Keep Output Steady While Gulf Shipping Remains Under Threat&nbsp;&nbsp;WSJOPEC+ keeps December oil output targets steady ahead of tougher call for 2027&nbsp;&nbsp;ReutersPress Releases&nbsp;&nbsp;Organization of the Petroleum Exporting CountriesOPEC+ set to keep December oil production targets unchanged amid US-Iran war disruptions&nbsp;&nbsp;Hindustan Times"
+        "title": "Rupee Rally Hits Roadblock: Why Recovery Is Losing Steam Despite RBI Push",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekU1VDRYNEpISVJJV0ozV19SQUlhNll3d2lxSnUwVlNSYVNZaEZCZzhfZ2ZsYk5WSlJYLWdYTEE5WUFFeE9DV21VelRWNW5xbVoycm1RWURmakZ5MGltYTNNV2NGcHlQbllYdHpWcGRXTjZwQzlpN1liZ0hRRm5YT3Y1eWxPMnZ3cUNVbmdqLWFaS0daN3FNTVRTZG00RVhOSDhjRXpJb0t4eTVZRnVLVkl1MDMtNlk?oc=5",
+        "pub": "Mon, 26 Oct 2026 06:04:53 GMT",
+        "source": "NDTV",
+        "summary": "Rupee Rally Hits Roadblock: Why Recovery Is Losing Steam Despite RBI Push&nbsp;&nbsp;NDTVDelhi’s mixed signals, Mumbai’s panic: RBI proposes blunt fix for the rupee&nbsp;&nbsp;The Indian ExpressRupee rises 7 paise to 95.19 against U.S. dollar in early trade&nbsp;&nbsp;The HinduRupee gains 33 paise as dollar weakens, Sensex and Nifty end higher&nbsp;&nbsp;The Times of IndiaRupee Rebounds As Central Bank…"
       },
       {
         "title": "Jio Platforms vs Bharti Airtel shares: Which telecom stock to buy after Reliance arm’s IPO listing? Experts suggestions",
         "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQTDlZaUowaWlhRGg2cUlLY2NjeHBfXzVidF9iZnNlMkhtd0lESFFxSnp4Y29WY3hEYTZtelVjUXVLZHNibkd4d0FyR1l2OFRBVGloRi1wUXJFUG9hWHIzTkFQWmhDbnhnYWt6T2NNamsyNmxrb2FkdEZIUVFwaGg3WmR0SVJ2Z0MxZzhDbG1sNHRiNzZMSjdQbjFBdkp5RzY3eW15ck1EQS1sTWQ4M2JoeWVXaWJyem1nb1ZaeWJrdEJWSTRScHpyejdMNTR0UUQwY2lId2JYYXhmME9OSkVhV1c4TzRLcTExTDE1VVlRVVNsMzJaTlNWWUo1bVI0aDIyWlRmeWlkVWo1SlRPUlhWc0MyOXBwZ9IBmwJBVV95cUxPRksxQkpHQXdyRTFZcHQxc3NnM1NoWUJLclEzN29rcnFrWnZDNG5sTFVsMGtydGdDMlpXTGJoRXpFRmtZc2ZOSUJEZk05RUZ1VGRxN01ySHlDQWRmWFhsbjFDRl9MWTN0T29NUGNLdXd4bEYzUWhpc1RsQXpEaFRlcmNqa1I2b2pNS0V0S3p1TzkxQ0ljQmpLSUZWdXJ0eUVWWXBLd1VZUHNHMmNaNzFWNG5pZTdwOE52UnBhaVZfS1p1elo0VDgtbklkYW1LTXdUU1U5Z1llekZPSXh6Ym13aHAyQVRwbV9oUjFrR29zM3hVcEpSWDRlekxNSWR6VDJIT0dkSTNSR3F6VjZmdzdpVkQxNWR1RWR4d2F3?oc=5",
         "pub": "Sun, 01 Nov 2026 05:33:17 GMT",
         "source": "Livemint",
-        "summary": "Jio Platforms vs Bharti Airtel shares: Which telecom stock to buy after Reliance arm’s IPO listing? Experts suggestions&nbsp;&nbsp;LivemintBillionaire Ambani cries tears of joy as Jio Platforms becomes the second most valued Indian firm&nbsp;&nbsp;CNBCJio’s success gives India’s upcoming IPOs a boost after blockbuster market debut&nbsp;&nbsp;Telegraph IndiaJio Platforms shares surge 28% since market debut&nbsp;&nbsp;The HinduRetail investors borrow…"
+        "summary": "Jio Platforms vs Bharti Airtel shares: Which telecom stock to buy after Reliance arm’s IPO listing? Experts suggestions&nbsp;&nbsp;LivemintBillionaire Ambani cries tears of joy as Jio Platforms becomes the second most valued Indian firm&nbsp;&nbsp;CNBCJio Platforms shares surge 28% since market debut&nbsp;&nbsp;The HinduWhy the blockbuster Jio IPO has little impact on Mukesh Ambani’s wealth&nbsp;&nbsp;Fortune IndiaRetail investors borrow…"
       },
       {
-        "title": "Rupee Rally Hits Roadblock: Why Recovery Is Losing Steam Despite RBI Push",
-        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOekU1VDRYNEpISVJJV0ozV19SQUlhNll3d2lxSnUwVlNSYVNZaEZCZzhfZ2ZsYk5WSlJYLWdYTEE5WUFFeE9DV21VelRWNW5xbVoycm1RWURmakZ5MGltYTNNV2NGcHlQbllYdHpWcGRXTjZwQzlpN1liZ0hRRm5YT3Y1eWxPMnZ3cUNVbmdqLWFaS0daN3FNTVRTZG00RVhOSDhjRXpJb0t4eTVZRnVLVkl1MDMtNlk?oc=5",
-        "pub": "Mon, 26 Oct 2026 06:04:53 GMT",
+        "title": "Why Is Stock Market Falling Today? 4 Key Reasons Behind Sensex, Nifty Crash",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxObWxhVDV4ZlIydzBlUDdmdzFaMGRMcWw5N3RjWHRSWnZKOU85V1BaM1pOVDJBU0NjcUcycEZ0a1lGdTFjT2JBU3hGRl8xV0tmRmN6Rk9pSmo2MTJXLW1sRTFEZXROZ2NyaWlOc25CajVNNlBBTWN1aTNrWk9rTDU0QlhJaUt4MHV0cDdwSUs4M1M0WEZGYUJxTWtUUDhJeUNRc1Z1NXhlZTRPZHFzZmgwQzlWQWNxeldN0gHAAUFVX3lxTE5jb2ZQVkFqMmdkV1pQR3ZUaFBnRnNEODlSbFdlOWpxNGUxVnlRTlZjX1JraXlkVlZhNjc0ektuZ0VpaVFfbkhwRFI2N3JaSEtKc0pkZ1RQRjFVS3hhQlFVSUJHdE0yODNqS1NJRXc5LU9mM19GMWc4ZjdfbXd5WnRZTWpqTDJ3eGs3NnUxNmdhOWg2S2YxS2FnUUdPOFZoQ1JBdElkQWZJaVBNVXNuRDB2c1dpSEpxaDVwWWdKOFo4LQ?oc=5",
+        "pub": "Wed, 28 Oct 2026 05:26:45 GMT",
         "source": "NDTV",
-        "summary": "Rupee Rally Hits Roadblock: Why Recovery Is Losing Steam Despite RBI Push&nbsp;&nbsp;NDTVDelhi’s mixed signals, Mumbai’s panic: RBI proposes blunt fix for the rupee&nbsp;&nbsp;The Indian ExpressRupee rises 7 paise to 95.19 against U.S. dollar in early trade&nbsp;&nbsp;The HinduRupee gains 33 paise as dollar weakens, Sensex and Nifty end higher&nbsp;&nbsp;The Times of IndiaRupee Rebounds As Central Bank…"
+        "summary": "Why Is Stock Market Falling Today? 4 Key Reasons Behind Sensex, Nifty Crash&nbsp;&nbsp;NDTVSensex, Nifty turn lower; broader markets crash as oil tops $116/barrel. What lies ahead?&nbsp;&nbsp;The Economic TimesSensex, Nifty open flat as crude oil prices remain elevated; IT stocks gain&nbsp;&nbsp;Telangana TodaySensex down 350 pts from day's high, Nifty at 23K: Weak global cues among key…"
       },
       {
         "title": "ITC Q2 Results Preview: Profit seen falling nearly 30% YoY as cigarette tax hikes bite",
@@ -420,39 +420,11 @@
         "summary": "ITC Q2 Results Preview: Profit seen falling nearly 30% YoY as cigarette tax hikes bite&nbsp;&nbsp;The Economic TimesITC shares trade near 52 week low ahead of Q2 earnings; net profit, revenue expectations and more&nbsp;&nbsp;Business TodayITC Limited (ITC.NS) Gains 1.30% to ₹264.9, Holding Above ₹251.65 Support - ETF Flow&nbsp;&nbsp;https://www.siam.in/ITC Ltd. Share Price, Stock Price - NSE/BSE Live&nbsp;&nbsp;NDTV…"
       },
       {
-        "title": "Why Is Stock Market Falling Today? 4 Key Reasons Behind Sensex, Nifty Crash",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxObWxhVDV4ZlIydzBlUDdmdzFaMGRMcWw5N3RjWHRSWnZKOU85V1BaM1pOVDJBU0NjcUcycEZ0a1lGdTFjT2JBU3hGRl8xV0tmRmN6Rk9pSmo2MTJXLW1sRTFEZXROZ2NyaWlOc25CajVNNlBBTWN1aTNrWk9rTDU0QlhJaUt4MHV0cDdwSUs4M1M0WEZGYUJxTWtUUDhJeUNRc1Z1NXhlZTRPZHFzZmgwQzlWQWNxeldN0gHAAUFVX3lxTE5jb2ZQVkFqMmdkV1pQR3ZUaFBnRnNEODlSbFdlOWpxNGUxVnlRTlZjX1JraXlkVlZhNjc0ektuZ0VpaVFfbkhwRFI2N3JaSEtKc0pkZ1RQRjFVS3hhQlFVSUJHdE0yODNqS1NJRXc5LU9mM19GMWc4ZjdfbXd5WnRZTWpqTDJ3eGs3NnUxNmdhOWg2S2YxS2FnUUdPOFZoQ1JBdElkQWZJaVBNVXNuRDB2c1dpSEpxaDVwWWdKOFo4LQ?oc=5",
-        "pub": "Wed, 28 Oct 2026 05:26:45 GMT",
-        "source": "NDTV",
-        "summary": "Why Is Stock Market Falling Today? 4 Key Reasons Behind Sensex, Nifty Crash&nbsp;&nbsp;NDTVSensex, Nifty open flat as crude oil prices remain elevated; IT stocks gain&nbsp;&nbsp;Telangana TodaySensex down 350 pts from day's high, Nifty at 23K: Weak global cues among key factors behind market paring...&nbsp;&nbsp;Moneycontrol.comSensex Today Trades Flat | Nifty Below 22,950 | BSE Telecommunication Down…"
-      },
-      {
-        "title": "In Early Morning Mail, Amazon Lays Off 250 Staff To \"Operate More Efficiently\"",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOZFhObWF3UmpiWUVSdm93bk8tUVAxS2pLdjE1d3BuWDJpVTBDVndYWkNmdUZuVk1tZ0FMams3NTdVQlJaalNaSVhUQlFMZHVmbFJwVDI3al9FUlhfQWx1Ym5UVnJlVHhITzVxb2QtbnI4RXRQUlctRU5zRjJHSVF2dlRLR0tFem9ya19QWkxZR3h0SEc2cXQzOERYWjFSZHFwNlVMdU1rY2NKNG5wRU5LdFJyZ2ZZUdIBvgFBVV95cUxQcFpodDA1N1FKS19fWk4xNHlVNG9uQkZXSTRjeGtCYXNZUFgzR2lTNW40RzlUcHpFdXlpVHhKU29KVGRPLU1tVDRDVlBBVjdQUGFSd1VWWU9jSUxDajMyZ0NYcXpmV2p5VE9SLWdTd040aWh2ZXRXV2lmaEpJT2szWm1RX19vdmRhc3RoOE1xRkcwczA3QjNIYXpEWGZTTWpkQnpNTjF4U293Ny1vSUV5LURrTUU2MHU0dURSRlRB?oc=5",
-        "pub": "Thu, 29 Oct 2026 02:42:19 GMT",
-        "source": "NDTV",
-        "summary": "In Early Morning Mail, Amazon Lays Off 250 Staff To \"Operate More Efficiently\"&nbsp;&nbsp;NDTVSee more headlines and perspectives on Google News"
-      },
-      {
-        "title": "Indian bond yields spike 30 bps in October on rising oil prices, RBI rate hike fears",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQSDhSRmxtLWh6Q3diZVJzQ0o0TEdGc0RSREYzRG9MdDY0WmV0N3lxcEkya1lPS1FSVURIUFRmdk80WG9xNTRYOGxCZS0wM3dGWEVpNTJLOWpGYnRiVkJJVU9FUnl0WVRGU3VvMUJPSlREcDBhWFVrZ2M3dk5uM0xhMmtOMVJIaWFEWVQ3MENuVlpBOEtrYVBWZVlzRDZHQ1RSejNIYWpfcjBCd0lFekk1cjE2M2M0Z9IBvAFBVV95cUxOcnRfZ0laVUFJWlo3Vkw5ZnBtdFUzQWJjd2pMMmMtZ19pQWoybEZBUHBseWJpX2htOTlTVzZCMGxpXzFrTWR0WlFyMmhKeWlPUzd0R0JXSVpvTENhcldKd3ZHT3NlLW55R3FmQkszLUNQV3FJTDR6U3hJN3NxamJfbWg5dlVHUlF0Um16UWEtZ3ZJVHhKcGNwTkVTVGdWaFNQRV8wc0FUbTVSTFEzeUhRbzZYbFd4UmxyVXRKaQ?oc=5",
-        "pub": "Wed, 28 Oct 2026 15:18:46 GMT",
-        "source": "The Financial Express",
-        "summary": "Indian bond yields spike 30 bps in October on rising oil prices, RBI rate hike fears&nbsp;&nbsp;The Financial ExpressIndia bonds seen attracting buyers as 10-year yield nears 2022 levels&nbsp;&nbsp;ReutersRate hikes unlikely to push bond yields much higher: businessline poll&nbsp;&nbsp;BusinessLineIndia bonds buckle for fourth straight month on oil's climb&nbsp;&nbsp;bfsi.economictimes.indiatimes.comOpinion | India's Bond Market Is Bleeding, And The…"
-      },
-      {
         "title": "Toyota’s Answer To Mahindra Confirmed",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5DSndIU2VUMHVOTFlxYzVJT3JTYXA4a3FtRzhpbXpiRHN6eWVoSmszajFFdzhUdHZvSUdBQy1ETEQ2RFVpdmk4UGI5MGM2eEhlY192emNkUUFWSGVpUzBXNngwVC1IWG1iSm8yaG1yX2pZZ1h5LTFjSHZ5RzDSAYIBQVVfeXFMTmpKb1dQN2wyS2xqbmJEdWRaVmh6cTZUWTlzSFUydEtwanVXUlF4dFN0aFRGS3J5THFJMWRqWHpqQ3ZDRkg3RDhGbmVmM003LUhzZXNESm9YTFNRaVZYWVpOSG0zTVB0NTZheFctU20zWUM1dmNqRm5WQXlDWDZoR2ZHZw?oc=5",
-        "pub": "Sun, 01 Nov 2026 09:30:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOakpvV1A3bDJLbGpuYkR1ZFpWaHpxNlRZOXNIVTJ0S3BqdVdSUXh0U3RoVEZLcnlMcUkxZGpYempDdkNGSDdEOEZuZWYzTTctSHNlc0RKb1hMU1FpVlhZWk5IbTNNUHQ1NmF4Vy1TbTNZQzV2Y2pGblZBeUNYNmhHZkdn0gGCAUFVX3lxTE5qSm9XUDdsMktsam5iRHVkWlZoenE2VFk5c0hVMnRLcGp1V1JReHRTdGhURktyeUxxSTFkalh6akN2Q0ZIN0Q4Rm5lZjNNNy1Ic2VzREpvWExTUWlWWFlaTkhtM01QdDU2YXhXLVNtM1lDNXZjakZuVkF5Q1g2aEdmR2c?oc=5",
+        "pub": "Sun, 01 Nov 2026 09:31:02 GMT",
         "source": "MotorOctane",
         "summary": "Toyota’s Answer To Mahindra Confirmed&nbsp;&nbsp;MotorOctane"
-      },
-      {
-        "title": "Rare Volkswagen SUV For The Price Of Tata Punch",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNd1o3ajdFODNjQzE2Q1B6Rm52a004b2ZqOExVeGtkdks4bVlqRUs5U2VvQ1IzeFlMajJ5RG1TalNQWWNvb3hWajFMYjQ2bE54N3NaTGVHaWE3Q296eWtIOHlLal9OVTRtX2NMSmUwdnhUZERLNTBvNG9UaFV5MDUzSlVPTzh4ZXA2WFJZ0gGQAUFVX3lxTFBFa0lpTjBqYjM2MnhhYVJUYnJWdS1Ja0xSNFVYLW9DVmdrWTFPalZIZW05M0NhWFdDeUJZRjVTeWpFa3dmT3VaR2gyX0haelBTalNuc2ZHanEtenR2TmtiMklXYTVNNjZpX3RMUXFzUllVSS0zd0lpOGh4OC1fd2hMZjdJbUEwQUgtMzcwTUZ1aA?oc=5",
-        "pub": "Sun, 01 Nov 2026 14:30:00 GMT",
-        "source": "MotorOctane",
-        "summary": "Rare Volkswagen SUV For The Price Of Tata Punch&nbsp;&nbsp;MotorOctane"
       },
       {
         "title": "UPI's average daily transaction value tops Rs 1 lakh crore for first time, hits monthly records",
@@ -462,18 +434,39 @@
         "summary": "UPI's average daily transaction value tops Rs 1 lakh crore for first time, hits monthly records&nbsp;&nbsp;Moneycontrol.comUPI crosses record 25 billion transactions&nbsp;&nbsp;The Times of IndiaNikhil Kamath Sits Down With The People Behind Your Payments Network to Ask Who Really Pays for UPI, and What Comes Next&nbsp;&nbsp;TheWire.inAverage daily value of UPI transactions crosses ₹1 lakh crore in…"
       },
       {
+        "title": "AI investors rush to hedge against potential tech market downturn - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQNENTcWpPbE5EZHhDUkdhZktDNXBkQ09UZ05CVy0xenFoZ0k0b0FoN05HVzJrdG1ZLTBBZWJzaUpTYnNkY043ZFdtQTVPSXVZckk2RUM1QXllMm5jNFl6S3RuX2syeHB2X2pCU1ZKMkdZTVAxbU0xNHFkeGpNTjdFWWptWExaNmZPOV9penN5YXJRMmtHMTZYb2NmSkUzOEs2MU50ajd3a2NvaWt5akZ3Y2RrTnFvdXBqSXFhNFUzUUhJU1FiZ1E?oc=5",
+        "pub": "Sun, 01 Nov 2026 02:35:28 GMT",
+        "source": "Investing.com",
+        "summary": "AI investors rush to hedge against potential tech market downturn - WSJ&nbsp;&nbsp;Investing.comAI stocks just lost $5 trillion — but history says the stock market's sweetest stretch starts now&nbsp;&nbsp;Yahoo FinanceChips are down&nbsp;&nbsp;The Times of IndiaAI Investors Are Racing to Get Insurance on the Biggest Market Bet in History&nbsp;&nbsp;WSJS&P 500 earnings growth to slow as AI spending…"
+      },
+      {
         "title": "TVS Crosses 7 Lakh Units In October 2026 With 29% Sales Increase",
         "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNd0lzaFB5ZzJFRzVwNVFGNzh1ci05cmpDV0NKZjNnaGI1ZUJmck9Wa2c2Sl8wQzJmQVJjcVA4bHk0VTV3VXJnczZUUkF3Ullid2sxOWFkem9VUWRCMVVmQThjVWZhaWJ0WFVJV2JCZGdjdVVGTnp2UDZWN3dKcTRSdGRNNXd4aXZSQnVITF9CWHnSAZABQVVfeXFMTXdJc2hQeWcyRUc1cDVRRjc4dXItOXJqQ1dDSmYzZ2hiNWVCZnJPVmtnNkpfMEMyZkFSY3FQOGx5NFU1d1VyZ3M2VFJBd1JZYndrMTlhZHpvVVFkQjFVZkE4Y1VmYWlidFhVSVdiQmRnY3VVRk56dlA2Vjd3SnE0UnRkTTV3eGl2UkJ1SExfQlh5?oc=5",
         "pub": "Sun, 01 Nov 2026 10:35:58 GMT",
         "source": "Gaadiwaadi.com",
-        "summary": "TVS Crosses 7 Lakh Units In October 2026 With 29% Sales Increase&nbsp;&nbsp;Gaadiwaadi.comIndian e-two-wheeler sales crosses a record 2.23 lakh units in October&nbsp;&nbsp;Autocar IndiaTVS Motor October Dispatches Cross 7 Lakh Units, Rise 29% YoY&nbsp;&nbsp;Autocar ProfessionalElectric two-wheeler sales hit record 2.24 lakh units in October on festive demand, new models&nbsp;&nbsp;The Economic TimesFestive cheer lifts electric two-wheeler retail…"
+        "summary": "TVS Crosses 7 Lakh Units In October 2026 With 29% Sales Increase&nbsp;&nbsp;Gaadiwaadi.comIndian e-two-wheeler sales crosses a record 2.23 lakh units in October&nbsp;&nbsp;Autocar IndiaTVS Motor October Dispatches Cross 7 Lakh Units, Rise 29% YoY&nbsp;&nbsp;Autocar ProfessionalEV sales cross record 3.5 lakh units in October&nbsp;&nbsp;The Times of IndiaElectric car sales nearly double in October&nbsp;&nbsp;The Economic Times"
       },
       {
-        "title": "Anthropic expected to receive high 'junk' rating from credit agencies following IPO, FT report says",
-        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOVXpfTXdqVDgtSDYzSkp0TmVFdW5yZ0lyRXdfNk9tdHY3d05BQzdvZ1ZLRXEyQ2FuWkdCRF9SRnBhNTFMRG5fN0VKT0tVUVNXZm92clZwOEh0Z2NPYlhRQWhxT1FZTWhkTmM1a2dOdFpvaU00UmY4S1lNWEEycnpZNjlzdWtubWpLWmEwQS1rRHNFWTBXRzdtWVNjQWlqaU1CazVYM01VcktOdDdJcFJkazdjSUVkVV9fUDJhaFIzVEFNV292QlJz?oc=5",
-        "pub": "Fri, 30 Oct 2026 21:52:03 GMT",
-        "source": "TechCrunch",
-        "summary": "Anthropic expected to receive high 'junk' rating from credit agencies following IPO, FT report says&nbsp;&nbsp;TechCrunchWe’re Living in the Age of the Imperial CEO&nbsp;&nbsp;WSJAnthropic's path to the Nasdaq just got a lot bumpier&nbsp;&nbsp;CNBCTheAnthropic IPO Arrives: My (but not the) Anthropic Valuation!&nbsp;&nbsp;Aswath Damodaran | SubstackAnthropic’s business plan: Build God or die trying&nbsp;&nbsp;The Verge"
+        "title": "Anthropic Isn't Just a Company, It's a Payoff",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBOaDh3RzF3NjBCc3IwUXhubFpJZjYtZEREN0lMMWM5cDJOcjFJS0ROUm5wZ0tMbXhjTW5WcGFSU0g4MDV1dHJvTFp3XzdJU3l0UUw1bzJnTHJvcWlTZVhIdEJOcmF2RlotNlhDRVhwMzBUUEJWZVEwSA?oc=5",
+        "pub": "Sat, 31 Oct 2026 12:10:43 GMT",
+        "source": "BIG by Matt Stoller",
+        "summary": "Anthropic Isn't Just a Company, It's a Payoff&nbsp;&nbsp;BIG by Matt StollerWe’re Living in the Age of the Imperial CEO&nbsp;&nbsp;WSJAnthropic's path to the Nasdaq just got a lot bumpier&nbsp;&nbsp;CNBCTheAnthropic IPO Arrives: My (but not the) Anthropic Valuation!&nbsp;&nbsp;Aswath Damodaran | SubstackAnthropic’s business plan: Build God or die trying&nbsp;&nbsp;The Verge"
+      },
+      {
+        "title": "Rare Volkswagen SUV For The Price Of Tata Punch",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNd1o3ajdFODNjQzE2Q1B6Rm52a004b2ZqOExVeGtkdks4bVlqRUs5U2VvQ1IzeFlMajJ5RG1TalNQWWNvb3hWajFMYjQ2bE54N3NaTGVHaWE3Q296eWtIOHlLal9OVTRtX2NMSmUwdnhUZERLNTBvNG9UaFV5MDUzSlVPTzh4ZXA2WFJZ0gGQAUFVX3lxTFBFa0lpTjBqYjM2MnhhYVJUYnJWdS1Ja0xSNFVYLW9DVmdrWTFPalZIZW05M0NhWFdDeUJZRjVTeWpFa3dmT3VaR2gyX0haelBTalNuc2ZHanEtenR2TmtiMklXYTVNNjZpX3RMUXFzUllVSS0zd0lpOGh4OC1fd2hMZjdJbUEwQUgtMzcwTUZ1aA?oc=5",
+        "pub": "Sun, 01 Nov 2026 14:30:00 GMT",
+        "source": "MotorOctane",
+        "summary": "Rare Volkswagen SUV For The Price Of Tata Punch&nbsp;&nbsp;MotorOctane"
+      },
+      {
+        "title": "Govt forms 5-member committee of for banking sector reforms",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPclFvcF9Vb0ZKSlJwdDNPSDlFVkRicFBfZGdEZEVJWWhyWVgxaWoxNGs1UnRlb001dGV5ZUNELTRkcll2RFpuYkdqQmg2UFpLVmxTRmtZWjFaWmRGYTFsM19uN1VsQXBQZnp2Y1dXOXNVbk5zeWw3X3dDNDBZYS1kTzliRGl1SVZIZndGTHpRN214SW41eVd3YzkxVy1QbnNVdlBDVmwzU2JaMXBxYTlaYURxQdIBwAFBVV95cUxNUU4tNm94V0J5alh1bkZudnVRNHNBR2F0Q01rZl9EUkVoN0JhRUZSNXZUVjhwRGZ2bTJKNW41WEo4bWlsRWZoR2JuM28zS01xN2wzNXdXVUl1U1dpSUpYMXNRTV9RakFvMkw4Uld5VWswY2M1Z3pNUkhqcFc2WWgzMkJlWnAzNzFqNlhiOVJycmpNem5OaTlXamFiRmQ0akpQbmFwNXZPa2JYNmJXVzZfTFZVMVZ2YzhYTFNYczNVdnk?oc=5",
+        "pub": "Fri, 30 Oct 2026 19:22:27 GMT",
+        "source": "The New Indian Express",
+        "summary": "Govt forms 5-member committee of for banking sector reforms&nbsp;&nbsp;The New Indian ExpressCentre constitutes high-level committee to recommend banking reforms for Viksit Bharat 2047&nbsp;&nbsp;News On AIRCentre sets six-month banking reform agenda to strengthen India's financial architecture by 2047&nbsp;&nbsp;ET GovernmentBank Employees Federation Opposes Reforms against Public Interest&nbsp;&nbsp;Deccan ChronicleIndia constitutes high-level committee for banking reforms&nbsp;&nbsp;Reuters"
       },
       {
         "title": "India to meet liquor firms as domestic giants join foreign peers in Scotch dispute",
@@ -481,6 +474,13 @@
         "pub": "Sat, 31 Oct 2026 09:22:39 GMT",
         "source": "Reuters",
         "summary": "India to meet liquor firms as domestic giants join foreign peers in Scotch dispute&nbsp;&nbsp;ReutersScotch prices row: India-UK trade deal faces big test as govt calls liquor giants for talks&nbsp;&nbsp;The Times of IndiaDiageo's India unit searched as state tax officials review Scotch imports&nbsp;&nbsp;The Economic TimesGovt to hold talks with liquor firms as bulk Scotch tariff row…"
+      },
+      {
+        "title": "OPEC+ set to keep oil output targets steady, sources say",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbG42ZjlkZUNQUWwtTFJXRDBvcnpRamtRUnhwRm1VU3d4T09UX2VYUWUwT2trNmdqU0JDVk8yT2xSM3VkWTZzQTZrSE1YbEQwQXZtVEhUbHg4blQ1eTJlc1pkSURWVXFoQlM0cDYwZ1Q5azBHUS1tWGc3ZERKalVzZjRnWnJDVkVTWlJOddIBkgFBVV95cUxOVlZSU2ZyV2NHNVFPOXlLZk1JaGtjWkVpbl9FNTVTb01NTHRxZWR4dkdUTWhLbFdlWk1EV1E1VzkzWTZBckpVSGhKNmpYcDQ2OEhLX0VobVZpbGg5V0ViM3V3bG9rcFpQZ19vZXFCRUkzN2hJcHFzWHQ3dGxQcjRSWFNUOUhOeU5CWUlrbWs1Y1ZUQQ?oc=5",
+        "pub": "Sun, 01 Nov 2026 11:01:00 GMT",
+        "source": "Forex Factory",
+        "summary": "OPEC+ set to keep oil output targets steady, sources say&nbsp;&nbsp;Forex FactoryOPEC, Allies Keep Output Steady While Gulf Shipping Remains Under Threat&nbsp;&nbsp;WSJPress Releases&nbsp;&nbsp;Organization of the Petroleum Exporting CountriesOPEC+ set to keep December oil production targets unchanged amid US-Iran war disruptions&nbsp;&nbsp;Hindustan TimesOPEC+ agrees in principle to keep oil output targets steady in December, sources say&nbsp;&nbsp;Reuters"
       },
       {
         "title": "Kia Sales Oct 2026 Records New High - 33,462 Units, Seltos Crosses 13k",
@@ -494,7 +494,21 @@
         "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNTkZCQTNObE5LZzhKSnJFS3BaNjlnbEtPZW1TX3BFSlBmZnIxd1lFaE5KUEFySnJPeW5EQVBHVHZ0UGFWYUdvVzg1b1o5bXlKYXhxS3hIbjZjRkwtajRYLUdzNDJsZjZoaWJZQ2E1MjJoZ2t2ZkptUHhXNVVyN0RSNjk2VXFScUhPbTlKVmdLQzdXcXdvWmx2ZXZHbXB6OG1mc094S2RDSHhWaGwxeHp0UHVMR3owVkRzdTNVLU1nWUk3T1cyRm5pU2NVdU95LU1vaHFCaVZfcEJxN3pHNzBBMGtQMVFjV1AzNjN4YVR3b2hDSkdTWlRKVXhkbW9kQdIBgwJBVV95cUxPWExwWTdYcUctYndiejJ5RFhzQVA0RGI0amZCUHBCb1BSR2tfV0hYZ1U1dGlyNDRubkZldFdzb1d4WnNwUzJFUXdyaEFJVDZsTV9xYjFBTW9McFZEa2RXSmswS0NuNUI1T28xUU1VcGJ1VHpIa0dKVVVyTUlSN0xhUklVQmE2R3ZFTktSSmpBZFNRTEhSRFpDd0VYclNYMEd3WEtsWWJNTGhVU2s1ektfQzdvMHozX2duek5MQkhFM1hIZFFic29Zem5Qd3ZDbnd1OWpsOEFPTVdURFd3d1doSmRzVFh4VWp0OHV2a2FJLUFyLVZ2X0hPcU12VVd2bFhkU3Jr?oc=5",
         "pub": "Sun, 01 Nov 2026 07:45:41 GMT",
         "source": "CNBC TV18",
-        "summary": "Stocks to Watch for November 2: Reliance Industries, Jio Platforms, BEL, Vodafone Idea, IOC, M&M and more&nbsp;&nbsp;CNBC TV18Reliance PAT jumps 33% to Rs 29,550 crore in Q2 on strong telecom, petrochemicals growth&nbsp;&nbsp;Telegraph IndiaRIL Q2 profit jumps 41% to ₹25,548 crore on O2C, Jio strength&nbsp;&nbsp;The HinduEarnings call transcript: Reliance posts Q2 2026 beat as energy drives…"
+        "summary": "Stocks to Watch for November 2: Reliance Industries, Jio Platforms, BEL, Vodafone Idea, IOC, M&M and more&nbsp;&nbsp;CNBC TV18Stocks to Watch Today: RIL, Maruti Suzuki, EAAA, NTPC, Affle, KIMS, NCC, Jio Platforms, Coal India,...&nbsp;&nbsp;Moneycontrol.comReliance PAT jumps 33% to Rs 29,550 crore in Q2 on strong telecom, petrochemicals growth&nbsp;&nbsp;Telegraph IndiaRIL Q2 profit jumps 41% to ₹25,548 crore…"
+      },
+      {
+        "title": "From Carlsberg to Coca-Cola: Global beverage giants gear up for India IPOs",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNZjdrN0lXYU9qcGY1aGVZWGJyX1g1NEZJU3Q1LXlUVE9nNDF5TUFRZUNqMTc0d1ZpSFpLenpuTWtkZHU5aVVSNDF0T2Jhb0FXWWVsRGwzNVNZQjluWTBoVkJzU1BpV1VzRTJKNHZ1S21WZVVabmxoUjEwSW50bmJDTHAzQkNKbmphLUVTM1pjSWdFOHY2dUhDZUExU293NTh4U0ZJcDZSLVp0ZFQ5YUZEb0wydUdzRkRRTFJsQW1oTlQ4RWpaNlp6YWdkTjlJby1Fc0tJTGJiZ9IB3AFBVV95cUxOWjZqdlhCZ0tCaXl5ZzBTbVJpS2dmNFFIcEVSZXdraU1COFVURHF4WWtuc3dVVGgza1lyaTMxTXJTNW1tNnZTZXY0NllLenVBb0NDREpyaExqNEpleXh3dWtEaFRLX21TdzBsUVhSeFFNNzlqSnNsQm1DSjc3WGdPVWxUNVhvSDF1enJEaDNmdVlDSlQyajZ2eUVhSlpsbmNzazk5NGpvM0tXVWVMSldXRTNGbHRZR2EzN2NMWFBSaWdUNjBDWHBubUhVZ2hORUM5TURxdFFWRkE2cmdS?oc=5",
+        "pub": "Sun, 01 Nov 2026 09:32:11 GMT",
+        "source": "Moneycontrol.com",
+        "summary": "From Carlsberg to Coca-Cola: Global beverage giants gear up for India IPOs&nbsp;&nbsp;Moneycontrol.comCarlsberg, Pernod Ricard, Coca-Cola advance India IPO plans as global beverage giants eye listings&nbsp;&nbsp;Telegraph IndiaDanish Brewer Carlsberg files updated papers for India unit's IPO&nbsp;&nbsp;ReutersBillionaire brothers Shyam and Hari Bhartia’ Coca-Cola Bet Nears a Payoff as Bottler Plans $1 Billion IPO&nbsp;&nbsp;CEOWORLD magazineCoca-Cola's India business posts…"
+      },
+      {
+        "title": "Crash! Gold price suffers worst October in years: Did silver and platinum suffer too? Check monthly performance",
+        "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNVWFSbVpYOWt0c2Z3cTNFV2Fvc2NKaEk2Z0VnYl9FRjVPZ3d6OFVZLTBHZnVrVk5zVVFYS0xlakhuRWhHZTlJMm9fZDcwLW42UnJ3UExfQTJqWS1ocFNKWWdqRjV1eW9FT0R5bU1fV3J2SEdjZktxVko3NDJQcm0xYUVjM2xXRVg5cWE1ZlRZTHVfclVqMGJORjRpVW1rWTBKRlB1d2twUW9UYnRoTnVkLUVTQ3pVWmRld0c1MnZVTmZLbFNFMmZHZ0NvNmJBSERtY2JyU0lfc09hMFpTaDVTWjJVckVPVlRKX0c2N1cwekdhYW9uZnl2V2VYUDM3ZXZEWnfSAYcCQVVfeXFMT1p5d1hQRVU5bVNSbWtCOFowRmotQ0NhVFRlNkdjWm9MeFZfdmp4anNBWl9aN2VxeFZULUhVZlNkYmM3cnBQM19ueUVrWnRPSHRQeUdnejBVV0dubEh2d1pSa3E0QmJuMDJmTkl5WVJ5ZEluMHRmRFNwdUVoUHhCS3M3alNJV1JuUWlqMldkYkhJZWtua1VMLUJ3MTdtLVNORlM3bkNQZ1puQVhWSGg5Q0lRc1pzZWlSTDM1Y1hLT2V1dWtzVmo0cFdkNU1SQ1NRNWRhc1EzSzk0eXZidWlCX2N2RkJVb2RtVmk5TW9uaVpHR3MzVFVPMHdiV2hJeF81TFZEN2cwRWM?oc=5",
+        "pub": "Sun, 01 Nov 2026 16:24:04 GMT",
+        "source": "Livemint",
+        "summary": "Crash! Gold price suffers worst October in years: Did silver and platinum suffer too? Check monthly performance&nbsp;&nbsp;LivemintTech rout drives gold to one-year low, white metals sink deep into oversold zone&nbsp;&nbsp;ReutersGold and silver prices coming dangerously close to capitulation levels – Jesse Colombo&nbsp;&nbsp;KitcoGold price outlook: Gold sliding along the 0.786 arc. Eyes on 3,720&nbsp;&nbsp;FXStreetGold Falls Below…"
       },
       {
         "title": "Toyota Sales Oct 2026 at 29,521 Units - Domestic Down 27% YoY, Up 18% MoM",
@@ -504,25 +518,11 @@
         "summary": "Toyota Sales Oct 2026 at 29,521 Units - Domestic Down 27% YoY, Up 18% MoM&nbsp;&nbsp;RushLane"
       },
       {
-        "title": "From Carlsberg to Coca-Cola: Global beverage giants gear up for India IPOs",
-        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNZjdrN0lXYU9qcGY1aGVZWGJyX1g1NEZJU3Q1LXlUVE9nNDF5TUFRZUNqMTc0d1ZpSFpLenpuTWtkZHU5aVVSNDF0T2Jhb0FXWWVsRGwzNVNZQjluWTBoVkJzU1BpV1VzRTJKNHZ1S21WZVVabmxoUjEwSW50bmJDTHAzQkNKbmphLUVTM1pjSWdFOHY2dUhDZUExU293NTh4U0ZJcDZSLVp0ZFQ5YUZEb0wydUdzRkRRTFJsQW1oTlQ4RWpaNlp6YWdkTjlJby1Fc0tJTGJiZ9IB3AFBVV95cUxOWjZqdlhCZ0tCaXl5ZzBTbVJpS2dmNFFIcEVSZXdraU1COFVURHF4WWtuc3dVVGgza1lyaTMxTXJTNW1tNnZTZXY0NllLenVBb0NDREpyaExqNEpleXh3dWtEaFRLX21TdzBsUVhSeFFNNzlqSnNsQm1DSjc3WGdPVWxUNVhvSDF1enJEaDNmdVlDSlQyajZ2eUVhSlpsbmNzazk5NGpvM0tXVWVMSldXRTNGbHRZR2EzN2NMWFBSaWdUNjBDWHBubUhVZ2hORUM5TURxdFFWRkE2cmdS?oc=5",
-        "pub": "Sun, 01 Nov 2026 09:32:11 GMT",
+        "title": "AI spending concerns deepen Wall Street selloff as Big Tech earnings disappoint investors",
+        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOcmpKdlZFc21pMm5sZlhXNWszRmNJSHg4VUhIcGJtbW9RMnZlalQtclcwRXFWSURuaTZsNUhYR0FST2EzUFNPN0lzQXhVX3ZCWHl3bVBHTUREZ3lpTmE5SlRfOFBpSjZOTE9UR2xlSEczWnF4TExHQ2pLVlpocDA4WFdVZkNubnYyc3J1N1BQcG9KUXVrTWgyT1RldkswZHk0R3RyMnQ0OEdRLV9SallVYUdkZEFCQ01CX0k0ZlVXazVIWGhmdnB1UGdwZ1J3cWdPRng4ak1IUDJiTTNUTnhhOXRaU2RnTTZiMlHSAe8BQVVfeXFMT252WmJKdE83TS1PLUt0TFI0WGFYc01GYUJMeEJHZEdoMS1PZnR5ZWJfSVliLWsyUVdtZXgyN3F6NUxPYVBSU0J0cXppVXFOblJlLTZpcUsxZW9WY1FGaDJRRFFvWmd5bWdCUkluY2s3MExZNWllMU9xS1ZZcHkxZXUtLTV0eDJkSWJwLVBwM3N1WHRKSFkwcHFqYVAzdWYzNUlvdmU3bFpxSkhxOFBWTWpXTkZMeTYtd0NvVlBuNmhwM3pOZWc0Sm5vaHhaM1czZkZtdHlEOTBOSW5vWjZYQzVKam55UEhxVEl2bU45a2s?oc=5",
+        "pub": "Sat, 31 Oct 2026 17:35:44 GMT",
         "source": "Moneycontrol.com",
-        "summary": "From Carlsberg to Coca-Cola: Global beverage giants gear up for India IPOs&nbsp;&nbsp;Moneycontrol.comCarlsberg, Pernod Ricard, Coca-Cola advance India IPO plans as global beverage giants eye listings&nbsp;&nbsp;Telegraph IndiaDanish Brewer Carlsberg files updated papers for India unit's IPO&nbsp;&nbsp;ReutersBillionaire brothers Shyam and Hari Bhartia’ Coca-Cola Bet Nears a Payoff as Bottler Plans $1 Billion IPO&nbsp;&nbsp;CEOWORLD magazineCarlsberg India files updated…"
-      },
-      {
-        "title": "Bonus issues, stock splits, dividends: Infosys, Asian Paints among over 40 stocks turning ex-date this wee",
-        "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQNlE3SXVrOFJtVWxCMEFBRkViZmZnWGdCQ2p0Y1VkbmJGaVVaaktGWUxyMUo1eWE2SnFueU5WdFc0dV9acktZM3dlcF9YRTFPRWZmLVdqTnhwN2RXNGktMDBhNnhMRWE4Y2xlSEN6SElLMElzM2g5N0Z1S1MyYXBPN1c2eXJTbXJPUjAwYkJtR0ZBejhWY2tSb3V5RlpXcVVrY19vTXN3TW9zYWFDenMyQTd5VUlkNl9WdmFMLW5pWXNIQWI4dkJIOTNaSi1kX3dOWGoxODl2Ti1Uand0N000QnRmQ3MtQmJCSHMzYU94cF8tc3doc2NPTmhiZVhzbjdLTVduaHRLazTSAY4CQVVfeXFMTm5DNU1aTFlLeFV1VUtYYTVPSEhCNmdPclU1b1pGcnFwU3YwR0ZMcWFCSFFSbHhsWjEyZGNEdmV5VWtsdDk3SHE5MElveGlPU3k0UUpGNi1abk5GNmJoLU5VbHl1Y0xibUozOGxKbkQwMnRaeUF4M2dTbVVhSWVDdC1fR3V0WGdfeElPelF1elVzNXg1ekRsSWJfdWF1Um82SWx3a28zMWd5dDdJazFXWWNPYWRZT25iRi1yM1gxeFpmZUI2ZnRiVExIYkdZUlhyOWZKMU1hRm55Z2V3SXd0cy1SZzR4a3lLVXBpb0pEWVNTNGVDMmoxWHVOZXNuUEoyMEE0c1pqN2dHX0V4U21R?oc=5",
-        "pub": "Sun, 01 Nov 2026 05:04:32 GMT",
-        "source": "The Economic Times",
-        "summary": "Bonus issues, stock splits, dividends: Infosys, Asian Paints among over 40 stocks turning ex-date this wee&nbsp;&nbsp;The Economic TimesCash rewards coming? PFC, CONCOR, RITES, to Sonata- These firms to announce dividend with Q2 results 2026 this week&nbsp;&nbsp;LivemintCorporate Actions This Week: Infosys, Asian Paints, Coal India, Mazagon Dock, Varun Beverages & More In Focus | Full List&nbsp;&nbsp;NDTV…"
-      },
-      {
-        "title": "AI investors rush to hedge against potential tech market downturn - WSJ",
-        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQNENTcWpPbE5EZHhDUkdhZktDNXBkQ09UZ05CVy0xenFoZ0k0b0FoN05HVzJrdG1ZLTBBZWJzaUpTYnNkY043ZFdtQTVPSXVZckk2RUM1QXllMm5jNFl6S3RuX2syeHB2X2pCU1ZKMkdZTVAxbU0xNHFkeGpNTjdFWWptWExaNmZPOV9penN5YXJRMmtHMTZYb2NmSkUzOEs2MU50ajd3a2NvaWt5akZ3Y2RrTnFvdXBqSXFhNFUzUUhJU1FiZ1E?oc=5",
-        "pub": "Sun, 01 Nov 2026 02:35:28 GMT",
-        "source": "Investing.com",
-        "summary": "AI investors rush to hedge against potential tech market downturn - WSJ&nbsp;&nbsp;Investing.comAI stocks just lost $5 trillion — but history says the stock market's sweetest stretch starts now&nbsp;&nbsp;Yahoo FinanceAI Investors Are Racing to Get Insurance on the Biggest Market Bet in History&nbsp;&nbsp;WSJWall Street's AI Trade Gets a Hedge: Put Options, CDS and Even Chip-Rental Derivatives&nbsp;&nbsp;BigGo…"
+        "summary": "AI spending concerns deepen Wall Street selloff as Big Tech earnings disappoint investors&nbsp;&nbsp;Moneycontrol.comStock market rocked as investors dump tech shares; Nasdaq suffers worst day since June: Live updates&nbsp;&nbsp;CNBCAsian Stocks to Fall as Tech Rout Fuels AI Fears: Markets Wrap&nbsp;&nbsp;Bloomberg.comUS tech stocks see sharp falls as AI spending nears $1tn&nbsp;&nbsp;BBCMassive tech sell-off has Nasdaq 100 entering…"
       },
       {
         "title": "Honda Sells 7.34 Lakh Two-Wheelers In October 2026, Records 13% Growth",
