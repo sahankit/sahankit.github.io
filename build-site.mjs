@@ -64,6 +64,8 @@ import { batch29Tools } from "./tools-batch29.mjs";
 import { batch29PageSeo } from "./seo-batch29.mjs";
 import { batch30Tools } from "./tools-batch30.mjs";
 import { batch30PageSeo } from "./seo-batch30.mjs";
+import { batch31Tools } from "./tools-batch31.mjs";
+import { batch31PageSeo } from "./seo-batch31.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -114,6 +116,7 @@ const pageSeo = {
   ...batch28PageSeo,
   ...batch29PageSeo,
   ...batch30PageSeo,
+  ...batch31PageSeo,
   ...sitePageSeo,
 };
 
@@ -1133,6 +1136,7 @@ document.getElementById('go').click();
   ...batch28Tools(ad),
   ...batch29Tools(ad),
   ...batch30Tools(ad),
+  ...batch31Tools(ad),
 ];
 
 const guides = [
