@@ -242,6 +242,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <script src="/assets/ads.js" defer></script>
   <script src="/assets/tool-busy.js" defer></script>
   <script src="/assets/site-ui.js" defer></script>
+  <script src="/assets/printable.js" defer></script>
   <script src="/assets/ga-events.js" defer></script>`;
 };
 

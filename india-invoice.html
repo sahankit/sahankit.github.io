@@ -38,6 +38,7 @@
   <script src="/assets/ads.js" defer></script>
   <script src="/assets/tool-busy.js" defer></script>
   <script src="/assets/site-ui.js" defer></script>
+  <script src="/assets/printable.js" defer></script>
   <script src="/assets/ga-events.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/india-invoice/#webpage","name":"Simple GST Invoice Generator India — Print | Tools","description":"Create a simple printable GST invoice for small businesses. Browser-only invoice template. Free GST invoice in your browser—no signup or install.","url":"https://sahankit.github.io/india-invoice/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"India utilities","item":"https://sahankit.github.io/india/"},{"@type":"ListItem","position":3,"name":"GST invoice","item":"https://sahankit.github.io/india-invoice/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this legally valid?","acceptedAnswer":{"@type":"Answer","text":"Use your CA and official billing software for compliance; this is a starter layout."}},{"@type":"Question","name":"Is this GST invoice free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The GST invoice is free to use in your browser with no account required."}},{"@type":"Question","name":"Does my data leave my device?","acceptedAnswer":{"@type":"Answer","text":"For most tools on this site, input stays on your device. If a tool calls a public API (for example domain age), that is noted on the page."}}]},{"@type":"SoftwareApplication","name":"Simple GST Invoice Generator India","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Create a simple printable GST invoice for small businesses. Browser-only invoice template. Free GST invoice in your browser—no signup or install.","url":"https://sahankit.github.io/india-invoice/"},{"@type":"HowTo","name":"How to use the GST invoice","description":"Create a simple printable GST invoice for small businesses. Browser-only invoice template. Free GST invoice in your browser—no signup or install.","step":[{"@type":"HowToStep","position":1,"name":"Open the tool","text":"Use the form or editor on this page—no download required."},{"@type":"HowToStep","position":2,"name":"Enter your input","text":"Printable invoice with GST."},{"@type":"HowToStep","position":3,"name":"Use the result","text":"Copy, download, or apply the output. Processing usually happens locally in your browser."}]}]}</script>
 </head>
@@ -73,22 +74,18 @@
   <button type="button" class="primary" id="fill">Update preview</button>
   <button type="button" class="primary" id="print">Print / Save PDF</button>
 </div>
-<div id="invout" class="tool-panel invoice-print"></div>
-<style>
-@media print{ .site-header,.site-footer,.ad-slot,.no-print,.breadcrumb,.seo-content{ display:none!important } body{ background:#fff } }
-.invoice-print h2{ margin:0 0 8px } .invoice-print table{ width:100%; border-collapse:collapse; margin-top:12px }
-.invoice-print td,.invoice-print th{ border:1px solid #ccc; padding:8px; text-align:left }
-</style>
+<div id="invout" class="tool-panel invoice-print print-document"></div>
 <script>
 function fmt(n){ return '₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function esc(s){ return window.Printable?Printable.escapeHtml(s):String(s??''); }
 function fill(){
   const base=Number(document.getElementById('amt').value)||0;
   const r=Number(document.getElementById('rate').value)/100;
   const gst=base*r, total=base+gst;
-  document.getElementById('invout').innerHTML='<h2>Tax invoice</h2><p><strong>'+document.getElementById('seller').value+'</strong><br>GSTIN: '+document.getElementById('gstin').value+'</p><p>Bill to: '+document.getElementById('buyer').value+'</p><p>Invoice: '+document.getElementById('inv').value+' · Date: '+new Date().toLocaleDateString('en-IN')+'</p><table><tr><th>Description</th><th>Taxable</th><th>GST</th><th>Total</th></tr><tr><td>'+document.getElementById('desc').value+'</td><td>'+fmt(base)+'</td><td>'+fmt(gst)+'</td><td>'+fmt(total)+'</td></tr></table><p><small>Template only—not legal advice. Use your CA for compliance.</small></p>';
+  document.getElementById('invout').innerHTML='<h2>Tax invoice</h2><p><strong>'+esc(document.getElementById('seller').value)+'</strong><br>GSTIN: '+esc(document.getElementById('gstin').value)+'</p><p>Bill to: '+esc(document.getElementById('buyer').value)+'</p><p>Invoice: '+esc(document.getElementById('inv').value)+' · Date: '+new Date().toLocaleDateString('en-IN')+'</p><table><tr><th>Description</th><th>Taxable</th><th>GST</th><th>Total</th></tr><tr><td>'+esc(document.getElementById('desc').value)+'</td><td>'+fmt(base)+'</td><td>'+fmt(gst)+'</td><td>'+fmt(total)+'</td></tr></table><p><small>Template only—not legal advice. Use your CA for compliance.</small></p>';
 }
 document.getElementById('fill').onclick=fill;
-document.getElementById('print').onclick=()=>{ fill(); window.print(); };
+document.getElementById('print').onclick=()=>{ fill(); (window.Printable?Printable.printPage():window.print)(); };
 fill();
 </script>
 <aside class="ad-slot ad-slot--below" data-ad hidden aria-label="Advertisement"></aside>

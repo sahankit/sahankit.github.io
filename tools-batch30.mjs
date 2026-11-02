@@ -63,28 +63,54 @@ document.getElementById('go').click();
       file: "rent-receipt-generator.html",
       category: "india",
       title: "Rent Receipt Generator India — Printable HRA Receipt",
-      desc: "Fill landlord, tenant, and rent details and print a simple rent receipt for HRA records. Browser-only template.",
+      desc: "Fill landlord, tenant, and rent details. Generate one receipt per month and print for HRA records—browser-only template.",
       card: "Rent receipt",
       cardDesc: "Printable HRA receipt.",
       body: `<h1>Rent receipt generator (India)</h1>${ad}
-<div class="tool-panel">
-<label for="tenant">Tenant name</label><input id="tenant" type="text" />
-<label for="landlord">Landlord name</label><input id="landlord" type="text" />
-<label for="addr">Property address</label><textarea id="addr" rows="2"></textarea>
-<label for="amt">Rent amount (₹)</label><input id="amt" type="number" value="15000" />
-<label for="month">For month</label><input id="month" type="month" />
-<button type="button" class="primary" id="go">Preview receipt</button>
+<div class="tool-panel no-print">
+<label for="tenant">Tenant name</label><input id="tenant" type="text" placeholder="Tenant full name" />
+<label for="landlord">Landlord name</label><input id="landlord" type="text" placeholder="Landlord name" />
+<label for="addr">Property address</label><textarea id="addr" rows="2" placeholder="Full rental address"></textarea>
+<label for="amt">Rent amount per month (₹)</label><input id="amt" type="number" value="15000" />
+<div class="row">
+<div style="flex:1"><label for="month-from">From month</label><input id="month-from" type="month" /></div>
+<div style="flex:1"><label for="month-to">To month</label><input id="month-to" type="month" /></div>
 </div>
-<div id="preview" class="tool-panel" hidden></div>
+<p class="prose" style="font-size:0.85rem">Leave both empty for the current month. One receipt is generated per month in the range (max 36).</p>
+<button type="button" class="primary" id="go">Preview receipt(s)</button>
+<button type="button" class="primary rs-secondary" id="print" hidden>Print receipt(s)</button>
+<p id="receipt-status" class="tool-feedback" role="status"></p>
+</div>
+<div id="preview" class="print-stack" hidden aria-live="polite"></div>
 <script>
-document.getElementById('go').onclick=()=>{
-  const m=document.getElementById('month').value||new Date().toISOString().slice(0,7);
-  const html='<h2>Rent receipt</h2><p>Received from <strong>'+document.getElementById('tenant').value+'</strong> the sum of <strong>₹'+(+document.getElementById('amt').value).toLocaleString('en-IN')+'</strong> towards rent for '+m+'.</p><p>Property: '+document.getElementById('addr').value+'</p><p>Landlord: '+document.getElementById('landlord').value+'</p><p>Date: '+new Date().toLocaleDateString('en-IN')+'</p><p><em>Template only—use as per your lease and tax rules.</em></p>';
+function buildRentReceipts(){
+  const P=window.Printable;
+  const tenant=document.getElementById('tenant').value.trim();
+  const landlord=document.getElementById('landlord').value.trim();
+  const addr=document.getElementById('addr').value.trim();
+  const amt=+document.getElementById('amt').value;
+  const status=document.getElementById('receipt-status');
+  if(!tenant){ status.className='error'; status.textContent='Enter tenant name.'; return false; }
+  if(!landlord){ status.className='error'; status.textContent='Enter landlord name.'; return false; }
+  if(!amt||amt<=0){ status.className='error'; status.textContent='Enter a valid rent amount.'; return false; }
+  const months=P.monthRange(document.getElementById('month-from').value,document.getElementById('month-to').value);
+  const today=new Date().toLocaleDateString('en-IN');
+  const blocks=months.map(m=>'<article class="print-document receipt-doc"><h2>Rent receipt</h2>'
+    +'<p>Received from <strong>'+P.escapeHtml(tenant)+'</strong> the sum of <strong>₹'+amt.toLocaleString('en-IN')+'</strong> towards rent for '+P.escapeHtml(P.formatMonth(m))+'.</p>'
+    +(addr?'<p><strong>Property:</strong> '+P.escapeHtml(addr)+'</p>':'')
+    +'<p><strong>Landlord:</strong> '+P.escapeHtml(landlord)+'</p>'
+    +'<p><strong>Date:</strong> '+today+'</p>'
+    +'<p><em>Template only—use as per your lease and tax rules.</em></p></article>').join('');
   const el=document.getElementById('preview');
-  el.innerHTML=html; el.hidden=false;
-  el.insertAdjacentHTML('beforeend','<button type="button" class="primary" id="print">Print</button>');
-  document.getElementById('print').onclick=()=>window.print();
-};
+  el.innerHTML=blocks;
+  el.hidden=false;
+  document.getElementById('print').hidden=false;
+  status.className='ok';
+  status.textContent=months.length===1?'1 receipt ready to print.':months.length+' receipts ready (one per month).';
+  return true;
+}
+document.getElementById('go').onclick=()=>buildRentReceipts();
+document.getElementById('print').onclick=()=>{ if(buildRentReceipts()) Printable.printPage(); };
 </script>`,
     },
     {

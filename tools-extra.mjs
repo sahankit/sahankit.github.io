@@ -322,22 +322,18 @@ document.getElementById('go').click();
   <button type="button" class="primary" id="fill">Update preview</button>
   <button type="button" class="primary" id="print">Print / Save PDF</button>
 </div>
-<div id="invout" class="tool-panel invoice-print"></div>
-<style>
-@media print{ .site-header,.site-footer,.ad-slot,.no-print,.breadcrumb,.seo-content{ display:none!important } body{ background:#fff } }
-.invoice-print h2{ margin:0 0 8px } .invoice-print table{ width:100%; border-collapse:collapse; margin-top:12px }
-.invoice-print td,.invoice-print th{ border:1px solid #ccc; padding:8px; text-align:left }
-</style>
+<div id="invout" class="tool-panel invoice-print print-document"></div>
 <script>
 function fmt(n){ return '₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function esc(s){ return window.Printable?Printable.escapeHtml(s):String(s??''); }
 function fill(){
   const base=Number(document.getElementById('amt').value)||0;
   const r=Number(document.getElementById('rate').value)/100;
   const gst=base*r, total=base+gst;
-  document.getElementById('invout').innerHTML='<h2>Tax invoice</h2><p><strong>'+document.getElementById('seller').value+'</strong><br>GSTIN: '+document.getElementById('gstin').value+'</p><p>Bill to: '+document.getElementById('buyer').value+'</p><p>Invoice: '+document.getElementById('inv').value+' · Date: '+new Date().toLocaleDateString('en-IN')+'</p><table><tr><th>Description</th><th>Taxable</th><th>GST</th><th>Total</th></tr><tr><td>'+document.getElementById('desc').value+'</td><td>'+fmt(base)+'</td><td>'+fmt(gst)+'</td><td>'+fmt(total)+'</td></tr></table><p><small>Template only—not legal advice. Use your CA for compliance.</small></p>';
+  document.getElementById('invout').innerHTML='<h2>Tax invoice</h2><p><strong>'+esc(document.getElementById('seller').value)+'</strong><br>GSTIN: '+esc(document.getElementById('gstin').value)+'</p><p>Bill to: '+esc(document.getElementById('buyer').value)+'</p><p>Invoice: '+esc(document.getElementById('inv').value)+' · Date: '+new Date().toLocaleDateString('en-IN')+'</p><table><tr><th>Description</th><th>Taxable</th><th>GST</th><th>Total</th></tr><tr><td>'+esc(document.getElementById('desc').value)+'</td><td>'+fmt(base)+'</td><td>'+fmt(gst)+'</td><td>'+fmt(total)+'</td></tr></table><p><small>Template only—not legal advice. Use your CA for compliance.</small></p>';
 }
 document.getElementById('fill').onclick=fill;
-document.getElementById('print').onclick=()=>{ fill(); window.print(); };
+document.getElementById('print').onclick=()=>{ fill(); (window.Printable?Printable.printPage():window.print)(); };
 fill();
 </script>`,
     },

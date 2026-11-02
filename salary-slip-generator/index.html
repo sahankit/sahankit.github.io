@@ -38,6 +38,7 @@
   <script src="/assets/ads.js" defer></script>
   <script src="/assets/tool-busy.js" defer></script>
   <script src="/assets/site-ui.js" defer></script>
+  <script src="/assets/printable.js" defer></script>
   <script src="/assets/ga-events.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sahankit.github.io/salary-slip-generator/#webpage","name":"Salary Slip Generator India — Payslip Template | Tools","description":"Create a simple printable salary slip with basic, HRA, and deductions. Free payslip generator. Free salary slip in your browser—no signup or install.","url":"https://sahankit.github.io/salary-slip-generator/","isPartOf":{"@id":"https://sahankit.github.io/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sahankit.github.io/"},{"@type":"ListItem","position":2,"name":"India utilities","item":"https://sahankit.github.io/india/"},{"@type":"ListItem","position":3,"name":"Salary slip","item":"https://sahankit.github.io/salary-slip-generator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this salary slip free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The salary slip is free to use in your browser with no account required."}},{"@type":"Question","name":"Does my data leave my device?","acceptedAnswer":{"@type":"Answer","text":"For most tools on this site, input stays on your device. If a tool calls a public API (for example domain age), that is noted on the page."}}]},{"@type":"SoftwareApplication","name":"Salary Slip Generator India","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Create a simple printable salary slip with basic, HRA, and deductions. Free payslip generator. Free salary slip in your browser—no signup or install.","url":"https://sahankit.github.io/salary-slip-generator/"},{"@type":"HowTo","name":"How to use the Salary slip","description":"Generate a basic printable salary slip with earnings and deductions. Browser template—not payroll software. Free salary slip in your browser—no signup or install.","step":[{"@type":"HowToStep","position":1,"name":"Open the tool","text":"Use the form or editor on this page—no download required."},{"@type":"HowToStep","position":2,"name":"Enter your input","text":"Printable payslip."},{"@type":"HowToStep","position":3,"name":"Use the result","text":"Copy, download, or apply the output. Processing usually happens locally in your browser."}]}]}</script>
 </head>
@@ -61,25 +62,42 @@
 <main class="wrap" id="main">
 <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/india/">India utilities</a></li><li aria-current="page">Salary slip</li></ol></nav>
 <header class="page-hero"><a class="eyebrow tone-orange" href="/india/"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12"/><path d="M6 8h12"/><path d="m6 13 8.5 8"/><path d="M6 13h3"/><path d="M9 13c6.67 0 6.67-10 0-10"/></svg>India utilities</a><h1>Salary slip generator</h1><p class="page-lead">Generate a basic printable salary slip with earnings and deductions. Browser template—not payroll software.</p></header><aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>
-<div class="tool-panel">
-<label for="name">Employee name</label><input id="name" type="text" />
+<div class="tool-panel no-print">
+<label for="name">Employee name</label><input id="name" type="text" placeholder="Employee name" />
 <label for="basic">Basic (₹)</label><input id="basic" type="number" value="30000" />
 <label for="hra">HRA (₹)</label><input id="hra" type="number" value="12000" />
 <label for="ded">Deductions (₹)</label><input id="ded" type="number" value="5000" />
-<label for="month">Month</label><input id="month" type="month" />
-<button type="button" class="primary" id="go">Preview slip</button>
+<div class="row">
+<div style="flex:1"><label for="month-from">From month</label><input id="month-from" type="month" /></div>
+<div style="flex:1"><label for="month-to">To month</label><input id="month-to" type="month" /></div>
 </div>
-<div id="preview" class="tool-panel" hidden></div>
+<button type="button" class="primary" id="go">Preview slip(s)</button>
+<button type="button" class="primary rs-secondary" id="print" hidden>Print slip(s)</button>
+<p id="slip-status" class="tool-feedback" role="status"></p>
+</div>
+<div id="preview" class="print-stack" hidden></div>
 <script>
-document.getElementById('go').onclick=()=>{
+function buildSlips(){
+  const P=window.Printable;
+  const name=document.getElementById('name').value.trim();
+  const status=document.getElementById('slip-status');
+  if(!name){ status.className='error'; status.textContent='Enter employee name.'; return false; }
   const basic=+document.getElementById('basic').value, hra=+document.getElementById('hra').value, ded=+document.getElementById('ded').value;
-  const gross=basic+hra;
-  const net=gross-ded;
-  const m=document.getElementById('month').value||new Date().toISOString().slice(0,7);
-  document.getElementById('preview').innerHTML='<h2>Salary slip — '+m+'</h2><p><strong>'+document.getElementById('name').value+'</strong></p><p>Basic ₹'+basic+' · HRA ₹'+hra+' · Gross ₹'+gross+' · Deductions ₹'+ded+' · <strong>Net ₹'+net+'</strong></p><p><em>Template only.</em></p><button type="button" class="primary" id="print">Print</button>';
+  const gross=basic+hra, net=gross-ded;
+  const months=P.monthRange(document.getElementById('month-from').value,document.getElementById('month-to').value);
+  const blocks=months.map(m=>'<article class="print-document payslip-doc"><h2>Salary slip — '+P.escapeHtml(P.formatMonth(m))+'</h2>'
+    +'<p><strong>'+P.escapeHtml(name)+'</strong></p>'
+    +'<p>Basic ₹'+basic.toLocaleString('en-IN')+' · HRA ₹'+hra.toLocaleString('en-IN')+' · Gross ₹'+gross.toLocaleString('en-IN')+' · Deductions ₹'+ded.toLocaleString('en-IN')+' · <strong>Net ₹'+net.toLocaleString('en-IN')+'</strong></p>'
+    +'<p><em>Template only—not payroll advice.</em></p></article>').join('');
+  document.getElementById('preview').innerHTML=blocks;
   document.getElementById('preview').hidden=false;
-  document.getElementById('print').onclick=()=>window.print();
-};
+  document.getElementById('print').hidden=false;
+  status.className='ok';
+  status.textContent=months.length+' slip(s) ready.';
+  return true;
+}
+document.getElementById('go').onclick=()=>buildSlips();
+document.getElementById('print').onclick=()=>{ if(buildSlips()) Printable.printPage(); };
 </script>
 <aside class="ad-slot ad-slot--below" data-ad hidden aria-label="Advertisement"></aside>
 <section class="related-tools" aria-labelledby="related-heading">

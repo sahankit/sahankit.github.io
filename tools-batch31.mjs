@@ -211,25 +211,42 @@ document.getElementById('go').click();
       card: "Salary slip",
       cardDesc: "Printable payslip.",
       body: `<h1>Salary slip generator</h1>${ad}
-<div class="tool-panel">
-<label for="name">Employee name</label><input id="name" type="text" />
+<div class="tool-panel no-print">
+<label for="name">Employee name</label><input id="name" type="text" placeholder="Employee name" />
 <label for="basic">Basic (₹)</label><input id="basic" type="number" value="30000" />
 <label for="hra">HRA (₹)</label><input id="hra" type="number" value="12000" />
 <label for="ded">Deductions (₹)</label><input id="ded" type="number" value="5000" />
-<label for="month">Month</label><input id="month" type="month" />
-<button type="button" class="primary" id="go">Preview slip</button>
+<div class="row">
+<div style="flex:1"><label for="month-from">From month</label><input id="month-from" type="month" /></div>
+<div style="flex:1"><label for="month-to">To month</label><input id="month-to" type="month" /></div>
 </div>
-<div id="preview" class="tool-panel" hidden></div>
+<button type="button" class="primary" id="go">Preview slip(s)</button>
+<button type="button" class="primary rs-secondary" id="print" hidden>Print slip(s)</button>
+<p id="slip-status" class="tool-feedback" role="status"></p>
+</div>
+<div id="preview" class="print-stack" hidden></div>
 <script>
-document.getElementById('go').onclick=()=>{
+function buildSlips(){
+  const P=window.Printable;
+  const name=document.getElementById('name').value.trim();
+  const status=document.getElementById('slip-status');
+  if(!name){ status.className='error'; status.textContent='Enter employee name.'; return false; }
   const basic=+document.getElementById('basic').value, hra=+document.getElementById('hra').value, ded=+document.getElementById('ded').value;
-  const gross=basic+hra;
-  const net=gross-ded;
-  const m=document.getElementById('month').value||new Date().toISOString().slice(0,7);
-  document.getElementById('preview').innerHTML='<h2>Salary slip — '+m+'</h2><p><strong>'+document.getElementById('name').value+'</strong></p><p>Basic ₹'+basic+' · HRA ₹'+hra+' · Gross ₹'+gross+' · Deductions ₹'+ded+' · <strong>Net ₹'+net+'</strong></p><p><em>Template only.</em></p><button type="button" class="primary" id="print">Print</button>';
+  const gross=basic+hra, net=gross-ded;
+  const months=P.monthRange(document.getElementById('month-from').value,document.getElementById('month-to').value);
+  const blocks=months.map(m=>'<article class="print-document payslip-doc"><h2>Salary slip — '+P.escapeHtml(P.formatMonth(m))+'</h2>'
+    +'<p><strong>'+P.escapeHtml(name)+'</strong></p>'
+    +'<p>Basic ₹'+basic.toLocaleString('en-IN')+' · HRA ₹'+hra.toLocaleString('en-IN')+' · Gross ₹'+gross.toLocaleString('en-IN')+' · Deductions ₹'+ded.toLocaleString('en-IN')+' · <strong>Net ₹'+net.toLocaleString('en-IN')+'</strong></p>'
+    +'<p><em>Template only—not payroll advice.</em></p></article>').join('');
+  document.getElementById('preview').innerHTML=blocks;
   document.getElementById('preview').hidden=false;
-  document.getElementById('print').onclick=()=>window.print();
-};
+  document.getElementById('print').hidden=false;
+  status.className='ok';
+  status.textContent=months.length+' slip(s) ready.';
+  return true;
+}
+document.getElementById('go').onclick=()=>buildSlips();
+document.getElementById('print').onclick=()=>{ if(buildSlips()) Printable.printPage(); };
 </script>`,
     },
     {
