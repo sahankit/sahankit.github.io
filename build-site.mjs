@@ -66,6 +66,8 @@ import { batch30Tools } from "./tools-batch30.mjs";
 import { batch30PageSeo } from "./seo-batch30.mjs";
 import { batch31Tools } from "./tools-batch31.mjs";
 import { batch31PageSeo } from "./seo-batch31.mjs";
+import { batch32Tools } from "./tools-batch32.mjs";
+import { batch32PageSeo } from "./seo-batch32.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -117,6 +119,7 @@ const pageSeo = {
   ...batch29PageSeo,
   ...batch30PageSeo,
   ...batch31PageSeo,
+  ...batch32PageSeo,
   ...sitePageSeo,
 };
 
@@ -455,7 +458,21 @@ function toolFinderHtml() {
 </section>`;
 }
 
-const tools = [
+function uniqueToolsByFile(list) {
+  const seen = new Set();
+  const out = [];
+  for (const t of list) {
+    if (seen.has(t.file)) continue;
+    seen.add(t.file);
+    out.push(t);
+  }
+  if (out.length !== list.length) {
+    console.warn(`Removed ${list.length - out.length} duplicate tool definition(s)`);
+  }
+  return out;
+}
+
+const tools = uniqueToolsByFile([
   {
     path: "/word-counter.html",
     file: "word-counter.html",
@@ -1137,7 +1154,8 @@ document.getElementById('go').click();
   ...batch29Tools(ad),
   ...batch30Tools(ad),
   ...batch31Tools(ad),
-];
+  ...batch32Tools(ad),
+]);
 
 const guides = [
   {
@@ -1557,9 +1575,15 @@ const sitemapEntries = [
   })),
   ...infoPages.map((p) => ({ loc: `/${p.slug}/`, priority: "0.3", changefreq: "yearly" })),
 ];
+const sitemapSeen = new Set();
+const sitemapUnique = sitemapEntries.filter((e) => {
+  if (sitemapSeen.has(e.loc)) return false;
+  sitemapSeen.add(e.loc);
+  return true;
+});
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapEntries
+${sitemapUnique
   .map(
     (e) =>
       `  <url><loc>${BASE}${e.loc}</loc><lastmod>${BUILD_DATE}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
