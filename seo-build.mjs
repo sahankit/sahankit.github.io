@@ -31,6 +31,14 @@ export function canonicalFromFile(file) {
   return `/${slug}/`;
 }
 
+/** Consistent `<title>` / OG title: append brand when missing. */
+export function formatDocumentTitle(raw) {
+  const t = String(raw ?? "").trim();
+  if (!t) return SITE_NAME;
+  if (/\|\s*Tools\s*$/i.test(t)) return t;
+  return `${t} | ${SITE_NAME}`;
+}
+
 export function webSiteLd(base) {
   return {
     "@type": "WebSite",
@@ -39,6 +47,14 @@ export function webSiteLd(base) {
     url: `${base}/`,
     description:
       "Free online calculators, India finance tools, developer utilities, and browser-based text tools.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${base}/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
     publisher: {
       "@type": "Organization",
       name: SITE_PUBLISHER.company,
@@ -210,13 +226,15 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
       },
     ];
   } else if (base.sections.length === 1 && !(base.sections[0].paragraphs?.length > 1)) {
+    const extra =
+      tool.cardDesc && tool.cardDesc !== tool.desc
+        ? tool.cardDesc
+        : `Use the ${inSentence(card)} when you need a quick result without installing software.`;
     base.sections = [
       ...base.sections,
       {
-        h2: "Why use an online tool?",
-        paragraphs: [
-          "Browser tools are quick for one-off tasks—you avoid installing software and your input often stays on your device.",
-        ],
+        h2: `Tips for ${inSentence(card)}`,
+        paragraphs: [extra],
       },
     ];
   }

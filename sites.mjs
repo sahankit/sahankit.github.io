@@ -8,9 +8,9 @@ import { generateQuizClientScript } from "./quiz-hourly.mjs";
 export const micrositeDefs = [
   {
     slug: "finance",
-    title: "Sahankit Finance — Income Tax, GST, SIP, FD & EMI Tools",
+    title: "India Finance Calculators — Income Tax, GST, SIP, FD & EMI",
     desc: "Free India finance calculators: income tax new vs old regime, GST, SIP, FD, RD, EMI, salary, invoice, and rupees in words.",
-    keywords: "India finance calculator, income tax calculator, GST SIP FD EMI, Sahankit Finance",
+    keywords: "India finance calculator, income tax calculator India, GST calculator, SIP FD EMI calculator",
     hero: "India finance calculators",
     blurb: "Browser-only tools for invoices, tax math, loans, and savings estimates. Not financial advice.",
     toolPaths: [
@@ -59,9 +59,9 @@ export const micrositeDefs = [
   },
   {
     slug: "dev",
-    title: "Sahankit Dev — Hash, Base64, UUID, JSON & Cron",
+    title: "Developer Tools Online — Hash, Base64, UUID, JSON & Cron",
     desc: "Developer utilities in the browser: SHA-256, Base64, UUID, password generator, JSON formatter, cron helper, QR codes.",
-    keywords: "developer tools online, hash base64 uuid, Sahankit Dev",
+    keywords: "developer tools online, hash generator, base64 encoder, uuid generator, json formatter",
     hero: "Developer utilities",
     blurb: "Encode, hash, and generate identifiers locally—nothing sent to a server.",
     toolPaths: [
@@ -102,7 +102,7 @@ export const micrositeDefs = [
   },
   {
     slug: "seo-lab",
-    title: "Sahankit SEO Lab — Domain Age & Writing for SEO",
+    title: "Free SEO Tools — Domain Age, Meta Tags & Content Counters",
     desc: "SEO helpers: domain age lookup, word counter, character counter, reading time, and SEO checklist guide.",
     keywords: "SEO tools free, domain age, word counter SEO",
     hero: "SEO lab",
@@ -148,7 +148,7 @@ export const micrositeDefs = [
   },
   {
     slug: "osint",
-    title: "Sahankit OSINT — Username, Domain & Public Search Tools",
+    title: "OSINT Tools — Username, Domain & Public Search Links",
     desc: "Free OSINT hub: username links, domain certs, DNS, IP lookups, Google dorks, and breach index links. Public sources only.",
     keywords: "osint tools, osint search hub, domain investigation, username search",
     hero: "OSINT research hub",
@@ -174,7 +174,7 @@ export const micrositeDefs = [
   },
   {
     slug: "india",
-    title: "Sahankit India — Tax, GST, UPI, PAN & Finance Tools",
+    title: "India Online Tools — Tax, GST, UPI, PAN & Finance Calculators",
     desc: "India toolkit: income tax new vs old regime, GST, PPF, gratuity, UPI/PAN/IFSC checks, invoices, SIP, EMI, and rupees in words.",
     keywords: "India tools online, income tax India, GST calculator, UPI PAN IFSC",
     hero: "India utilities",
@@ -209,7 +209,7 @@ export const micrositeDefs = [
   },
   {
     slug: "security",
-    title: "Sahankit Security — Hash, JWT, Passwords & Crypto Tools",
+    title: "Security Tools — Hash, JWT, Password & Crypto Utilities",
     desc: "Security utilities in the browser: SHA-256, SHA-1, MD5, HMAC, JWT decode, password generator, Luhn, and API keys.",
     keywords: "security tools online, hash generator, jwt decoder, password strength",
     hero: "Security & crypto tools",
@@ -236,7 +236,7 @@ export const micrositeDefs = [
   },
   {
     slug: "design",
-    title: "Sahankit Design — Colors, Gradients, QR, PDF & Images",
+    title: "Design & PDF Tools — Colors, Gradients, QR & Image Utilities",
     desc: "Design and file tools: color contrast, CSS gradients, QR codes, PDF merge, and image compression.",
     keywords: "design tools online, gradient generator, compress image",
     hero: "Design & media",
@@ -267,7 +267,7 @@ export const micrositeDefs = [
   },
   {
     slug: "student",
-    title: "Sahankit Student — CGPA, Typing, Study Chat",
+    title: "Student Tools — CGPA, Typing Test & Study Chat",
     desc: "Student tools: CGPA converter, typing test, word counter, age calculator, and free study chat via Y-Chat.",
     keywords: "student tools online, CGPA calculator, study chat",
     hero: "Student toolkit",
@@ -292,7 +292,7 @@ export const micrositeDefs = [
   },
   {
     slug: "chat",
-    title: "Sahankit Chat — Free Online Chat Rooms (Y-Chat)",
+    title: "Free Online Chat Rooms — Browser Chat (Y-Chat)",
     desc: "Free browser chat: public rooms, private IM, Hindi-friendly and study landing pages. 18+ terms.",
     keywords: "free chat online, chat rooms browser, Y-Chat",
     hero: "Free chat (Y-Chat)",
@@ -381,7 +381,7 @@ export const micrositeDefs = [
   },
   {
     slug: "productivity",
-    title: "Sahankit Productivity — Typing, Meetings & Quick Tools",
+    title: "Productivity Tools — Typing, Meetings & Quick Calculators",
     desc: "Productivity tools: typing speed test, time zone meeting planner, dice roller, discount and ROI calculators.",
     keywords: "productivity tools online, typing test, meeting planner",
     hero: "Productivity",

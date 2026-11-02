@@ -1,12 +1,14 @@
 /** SEO entries for tools-extra.mjs pages */
 
-function toolSeo(keywords, h2, paragraph, faqs = [], related = []) {
-  return {
+function toolSeo(keywords, h2, paragraph, faqs = [], related = [], metaTitle) {
+  const entry = {
     keywords,
     sections: [{ h2, paragraphs: [paragraph] }],
     faqs,
     related,
   };
+  if (metaTitle) entry.metaTitle = metaTitle;
+  return entry;
 }
 
 export const extraPageSeo = {
@@ -130,30 +132,33 @@ export const extraPageSeo = {
     [{ href: "/emi-calculator.html", label: "EMI calculator" }],
   ),
   "free-online-chat.html": toolSeo(
-    "free online chat, chat rooms no download, Y-Chat",
+    "free online chat, chat rooms no download, Y-Chat, free chat rooms browser",
     "Browser chat without install",
     "Y-Chat offers public rooms and private messaging on the same GitHub Pages site under /y-chat/. Adults must accept terms.",
     [{ q: "Is Y-Chat free?", a: "Yes. It runs in the browser; see terms on the chat site." }],
     [{ href: "/y-chat/", label: "Open Y-Chat" }, { href: "/hindi-chat.html", label: "Hindi chat" }],
+    "Free Online Chat Rooms — No Download (Y-Chat)",
   ),
   "hindi-chat.html": toolSeo(
-    "Hindi chat room online, free Hindi chat",
+    "Hindi chat room online, free Hindi chat, Hindi chat room",
     "Chat in Hindi in your browser",
     "Use Y-Chat rooms and type in Hindi. Follow community rules and 18+ terms.",
     [],
     [{ href: "/y-chat/", label: "Y-Chat" }, { href: "/free-online-chat.html", label: "Free online chat" }],
+    "Hindi Chat Room Online Free — Browser Chat (Y-Chat)",
   ),
   "study-chat.html": toolSeo(
-    "study chat online, group study chat room",
+    "study chat online, group study chat room, study together chat",
     "Study together in chat",
     "Coordinate homework and revision in a Y-Chat room alongside our student-friendly calculators.",
     [],
     [{ href: "/y-chat/", label: "Y-Chat" }, { href: "/cgpa-calculator.html", label: "CGPA calculator" }],
+    "Study Chat & Group Study Online — Free (Y-Chat)",
   ),
   "guides/india-finance-tools.html": toolSeo(
     "India finance calculator, GST SIP FD tools",
     "Finance tools for India",
-    "Links to GST, SIP, FD, RD, invoice, and salary tools on Sahankit.",
+    "Links to GST, SIP, FD, RD, invoice, and salary tools on this site.",
     [],
     [{ href: "/gst-calculator.html", label: "GST calculator" }],
   ),

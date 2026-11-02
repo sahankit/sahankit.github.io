@@ -65,18 +65,31 @@
     render(hits);
   }
 
+  function openFinder() {
+    setTimeout(() => {
+      input.focus({ preventScroll: false });
+      finder.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  }
+
+  const params = new URLSearchParams(location.search);
+  const qParam = params.get("q");
+  if (qParam) input.value = qParam;
+
   fetch("/assets/tools-search.json")
     .then((r) => r.json())
     .then((data) => {
       index = data;
       ready = true;
       if (input.value) filter(input.value);
+      if (qParam || location.hash === "#find-tool" || params.get("find") === "1") openFinder();
     })
     .catch(() => {
       if (empty) {
         empty.textContent = "Search index failed to load. Browse categories below.";
         empty.hidden = false;
       }
+      if (qParam || location.hash === "#find-tool" || params.get("find") === "1") openFinder();
     });
 
   input.addEventListener("input", () => {
@@ -87,11 +100,4 @@
   input.addEventListener("focus", () => {
     if (ready && input.value) filter(input.value);
   });
-
-  if (location.hash === "#find-tool" || location.search.includes("find=1")) {
-    setTimeout(() => {
-      input.focus({ preventScroll: false });
-      finder.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
-  }
 })();

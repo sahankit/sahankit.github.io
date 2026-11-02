@@ -80,6 +80,7 @@ import {
   enrichToolSeo,
   enrichContentSeo,
   buildMetaDescription,
+  formatDocumentTitle,
 } from "./seo-build.mjs";
 
 const pageSeo = {
@@ -202,6 +203,8 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta name="author" content="${SITE_NAME}" />
   <meta name="theme-color" content="#720e9e" />
   <meta name="color-scheme" content="light" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
   <script id="cookieyes" type="text/javascript" src="${COOKIEYES_SCRIPT}"></script>
   <title>${t}</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -229,12 +232,25 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <script src="/assets/analytics.js" defer></script>
   <script src="/assets/ads.js" defer></script>
   <script src="/assets/tool-busy.js" defer></script>
-  <script src="/assets/site-ui.js" defer></script>`;
+  <script src="/assets/site-ui.js" defer></script>
+  <script src="/assets/ga-events.js" defer></script>`;
 };
 
 function buildJsonLd(title, desc, canonicalPath, opts = {}) {
   const graph = [];
   if (opts.isHome) graph.push(webSiteLd(BASE));
+  if (opts.isHome && opts.itemList?.length) {
+    graph.push({
+      "@type": "ItemList",
+      name: "Popular free online tools",
+      itemListElement: opts.itemList.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: item.name,
+        url: `${BASE}${item.url}`,
+      })),
+    });
+  }
   graph.push(webPageNode(title, desc, canonicalPath, BASE));
   const bc = breadcrumbLd(opts.breadcrumbs, BASE, canonicalPath);
   if (bc) graph.push(bc);
@@ -323,14 +339,20 @@ const FEATURED_HUB_SLUGS = ["finance", "india", "dev", "osint", "ai-writing", "s
 
 const POPULAR_TOOL_FILES = [
   "word-counter.html",
+  "character-counter.html",
   "income-tax-calculator.html",
+  "home-loan-calculator.html",
   "gst-calculator.html",
-  "qr-code-generator.html",
+  "emi-calculator.html",
   "pdf-merge.html",
+  "pdf-to-word.html",
+  "qr-code-generator.html",
+  "ai-meta-description-generator.html",
   "json-formatter.html",
   "password-generator.html",
   "typing-test.html",
   "grammar-checker.html",
+  "free-online-chat.html",
   "osint-search.html",
 ];
 
@@ -1221,9 +1243,17 @@ ${hubSectionsHtml()}
 </section>
 ${renderSeoHtml(indexSeo)}`;
 
+const indexTitle = formatDocumentTitle(
+  `Free Online Calculators & Tools — ${tools.length}+ Utilities`,
+);
+const indexItemList = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
+  .filter(Boolean)
+  .slice(0, 12)
+  .map((t) => ({ name: t.card, url: canonicalFromFile(t.file) }));
+
 const indexHtml = page(
   "/",
-  `Free Online Calculators & Tools — ${tools.length}+ Utilities | ${SITE_NAME}`,
+  indexTitle,
   `${tools.length}+ free online tools: income tax, GST, EMI, PDF merge, word counter, QR codes, and more. Fast, private, no signup—works in your browser.`,
   indexMain,
   "",
@@ -1233,6 +1263,7 @@ const indexHtml = page(
     isHome: true,
     canonical: "/",
     breadcrumbs: [{ name: "Home", url: "/" }],
+    itemList: indexItemList,
   },
 );
 
@@ -1280,7 +1311,7 @@ function pageTitleDesc(file, entity) {
   const seo = resolveSeo(file, entity);
   const label = entity.card || entity.title?.split("—")[0]?.trim() || "tool";
   return {
-    title: seo?.metaTitle || entity.title,
+    title: formatDocumentTitle(seo?.metaTitle || entity.title),
     desc: buildMetaDescription(seo?.metaDescription || entity.desc, label),
   };
 }
@@ -1335,8 +1366,10 @@ for (const g of guides) {
       { name: short, url: canonical },
     ],
   };
-  write(g.file, page(g.path, g.title, g.desc, main, bc, opts));
-  write(`${g.file.replace(/\.html$/, "")}/index.html`, page(canonical, g.title, g.desc, main, bc, opts));
+  const gTitle = formatDocumentTitle(g.title);
+  const gDesc = buildMetaDescription(g.desc, g.title.split("—")[0].trim());
+  write(g.file, page(g.path, gTitle, gDesc, main, bc, opts));
+  write(`${g.file.replace(/\.html$/, "")}/index.html`, page(canonical, gTitle, gDesc, main, bc, opts));
 }
 
 const micrositeUrls = [];
@@ -1362,7 +1395,10 @@ for (const def of micrositeDefs) {
       { name: def.hero, url: urlPath },
     ],
   };
-  write(file, page(urlPath, def.title, def.desc, main, bc, opts));
+  write(
+    file,
+    page(urlPath, formatDocumentTitle(def.title), buildMetaDescription(def.desc, def.hero), main, bc, opts),
+  );
 }
 
 {
@@ -1394,14 +1430,14 @@ for (const def of micrositeDefs) {
   const file = "quiz/index.html";
   const urlPath = "/quiz/";
   micrositeUrls.push(urlPath);
-  const title = "Sahankit Quiz — Free Online Trivia";
+  const title = formatDocumentTitle("Free Online Quiz & Trivia — Hourly 10 Questions");
   const desc = "Hourly ten-question trivia in your browser. New set each local hour—general knowledge and tech.";
   const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: "Quiz" }]);
   const quizSeo = enrichContentSeo(pageSeo[file], { title, desc, faqs: pageSeo[file]?.faqs });
   const main = quizSiteBody(ad) + renderSeoHtml(quizSeo);
   write(
     file,
-    page(urlPath, title, buildMetaDescription(desc, "quiz"), main, bc, {
+    page(urlPath, title, buildMetaDescription(desc, "online quiz"), main, bc, {
       keywords: quizSeo.keywords,
       faqs: quizSeo.faqs,
       softwareApp: false,

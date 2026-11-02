@@ -42,7 +42,7 @@ export const sitePageSeo = {
       {
         h2: "Public OSINT toolkit",
         paragraphs: [
-          "This mini-site groups OSINT-friendly utilities on Sahankit: the OSINT search link builder, domain age via RDAP, URL and email extractors, and network helpers. Use only for lawful research on public data.",
+          "This mini-site groups OSINT-friendly utilities: the OSINT search link builder, domain age via RDAP, URL and email extractors, and network helpers. Use only for lawful research on public data.",
         ],
       },
       {

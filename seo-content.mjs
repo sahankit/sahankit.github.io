@@ -100,13 +100,20 @@ const rel = {
 };
 
 export const indexSeo = {
-  keywords: "free online tools, calculators, India GST EMI, word counter, developer utilities, SEO tools, Sahankit",
+  keywords:
+    "free online tools, free calculator, income tax calculator India, GST calculator, EMI calculator, word counter, character counter, PDF merge, password generator, typing test, developer tools, SEO tools",
   sections: [
     {
       h2: "Free browser tools for writing, math, and everyday tasks",
       paragraphs: [
         "Tools is a collection of lightweight calculators and text utilities that run entirely in your browser. There is no app install, no account, and no server-side storage of what you type into a tool.",
         "Use word counters, typing tests, QR codes, PDF merge, and image tools without uploading to our servers. India pages cover GST, invoices, FD/RD/SIP, CGPA, and salary estimates. Chat landing pages link to free Y-Chat rooms at /y-chat/. IFSC and PAN checkers validate format only—not government records.",
+      ],
+    },
+    {
+      h2: "High-traffic tools people search for",
+      paragraphs: [
+        'Jump straight to common searches: <a href="/word-counter/">word counter</a>, <a href="/character-counter/">character counter</a>, <a href="/income-tax-calculator/">income tax calculator (India)</a>, <a href="/gst-calculator/">GST calculator</a>, <a href="/home-loan-calculator/">home loan EMI</a>, <a href="/pdf-merge/">merge PDF</a>, <a href="/password-generator/">password generator</a>, <a href="/ai-meta-description-generator/">AI meta description</a>, and <a href="/free-online-chat/">free online chat</a>.',
       ],
     },
     {
