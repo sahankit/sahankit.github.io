@@ -4,6 +4,19 @@ export const OG_IMAGE = "/assets/og.png";
 /** Site brand shown in header, meta, and JSON-LD. */
 export const SITE_NAME = "Tools";
 
+/** Legal / publisher attribution (footer, about, schema.org). */
+export const SITE_PUBLISHER = {
+  brand: "Useless engineer",
+  company: "Sah Technologies",
+  locality: "Bangalore",
+  country: "IN",
+};
+
+export function siteOwnerLine() {
+  const { brand, company, locality } = SITE_PUBLISHER;
+  return `${brand} · ${company} · ${locality}`;
+}
+
 export function escapeMeta(text) {
   return String(text ?? "")
     .replace(/&/g, "&amp;")
@@ -28,8 +41,14 @@ export function webSiteLd(base) {
       "Free online calculators, India finance tools, developer utilities, and browser-based text tools.",
     publisher: {
       "@type": "Organization",
-      name: SITE_NAME,
+      name: SITE_PUBLISHER.company,
+      alternateName: [SITE_PUBLISHER.brand, SITE_NAME],
       url: `${base}/`,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: SITE_PUBLISHER.locality,
+        addressCountry: SITE_PUBLISHER.country,
+      },
     },
   };
 }

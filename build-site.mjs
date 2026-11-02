@@ -68,6 +68,8 @@ import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./u
 import {
   OG_IMAGE,
   SITE_NAME,
+  SITE_PUBLISHER,
+  siteOwnerLine,
   escapeMeta,
   canonicalFromFile,
   webSiteLd,
@@ -180,6 +182,7 @@ function footerHtml() {
       ["/sitemap.xml", "Sitemap"],
     ])}</ul></nav>
   </div>
+  <p class="footer-owner">Site owned by ${escapeMeta(siteOwnerLine())}</p>
   <p class="footer-note">Estimates are for information only—not financial, tax, legal, or medical advice. Not affiliated with Google or Yahoo.</p>
 </footer>`;
 }
@@ -1427,6 +1430,8 @@ const infoPages = [
 <p>Calculators give estimates based on the formulas and rates shown on each page. They are not financial, tax, legal, or medical advice—confirm important numbers with a qualified professional or the official source.</p>
 <h2>Cost</h2>
 <p>Every tool is free with no account. The site is supported by advertising; see the <a href="/privacy/">privacy policy</a> for how ads work.</p>
+<h2>Site owner</h2>
+<p>This site is owned and maintained by <strong>${SITE_PUBLISHER.brand}</strong>, part of <strong>${SITE_PUBLISHER.company}</strong>, based in ${SITE_PUBLISHER.locality}, India.</p>
 <h2>Start here</h2>
 <ul><li><a href="/finance/">India finance calculators</a></li><li><a href="/design/">PDF, image &amp; design tools</a></li><li><a href="/writing/">Writing tools</a></li><li><a href="/dev/">Developer utilities</a></li></ul>
 </div>`,

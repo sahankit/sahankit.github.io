@@ -1095,6 +1095,15 @@ span.ok { color: #047857; font-weight: 700; }
   .footer-col a { display: inline-block; padding: 3px 0; }
 }
 
+.footer-owner {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 12px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
 .footer-note {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
