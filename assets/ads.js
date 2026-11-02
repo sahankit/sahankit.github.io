@@ -1,10 +1,13 @@
 "use strict";
 
 (() => {
-  const base = document.currentScript && document.currentScript.src
-    ? document.currentScript.src.replace(/\/[^/]*$/, "/")
-    : "/assets/";
+  const base =
+    document.currentScript && document.currentScript.src
+      ? document.currentScript.src.replace(/\/[^/]*$/, "/")
+      : "/assets/";
   const cfgUrl = base + "ads.json";
+
+  let fillOnce = null;
 
   function clientFromMeta() {
     const m = document.querySelector('meta[name="google-adsense-account"]');
@@ -26,7 +29,7 @@
   }
 
   function fillSlots(client, slot) {
-    if (!slot) return;
+    if (!slot || !/^ca-pub-\d+$/.test(client)) return;
     document.querySelectorAll(".ad-slot[data-ad]").forEach((host) => {
       if (host.querySelector("ins.adsbygoogle")) return;
       host.hidden = false;
@@ -54,13 +57,51 @@
     });
   }
 
+  function isToolPage() {
+    return !!document.querySelector("main .tool-panel");
+  }
+
+  function bindInputOnlyTools(reveal) {
+    const panel = document.querySelector("main .tool-panel");
+    if (!panel || panel.querySelector("button.primary")) return;
+    let done = false;
+    const run = () => {
+      if (done) return;
+      done = true;
+      reveal();
+    };
+    const debounced = () => {
+      clearTimeout(debounced.t);
+      debounced.t = setTimeout(run, 900);
+    };
+    panel.addEventListener("input", debounced, { passive: true });
+    panel.addEventListener("change", debounced, { passive: true });
+  }
+
   function start(cfg) {
     const client = String(cfg?.client || clientFromMeta() || "").trim();
     const slot = String(cfg?.slot || "").trim();
+    const deferForTool = cfg?.showAfterToolUse !== false && isToolPage();
+
     boot(client, cfg?.autoAds);
-    const run = () => fillSlots(client, slot);
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
-    else run();
+
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      fillSlots(client, slot);
+    };
+    fillOnce = reveal;
+
+    if (!deferForTool) {
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", reveal);
+      else reveal();
+      return;
+    }
+
+    document.addEventListener("tool:complete", reveal, { once: true });
+    bindInputOnlyTools(reveal);
+    if (window.__toolCompleteFired) reveal();
   }
 
   fetch(cfgUrl)

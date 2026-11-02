@@ -72,6 +72,11 @@
   };
   window.ToolBusy = ToolBusy;
 
+  function signalToolComplete() {
+    window.__toolCompleteFired = true;
+    document.dispatchEvent(new CustomEvent("tool:complete"));
+  }
+
   function flashCopied(btn) {
     if (btn.dataset.copyLabel) return;
     btn.dataset.copyLabel = btn.innerHTML;
@@ -98,7 +103,10 @@
         Promise.resolve(result).then(() => flashCopied(btn), () => {});
         return result;
       }
-      if (!result || typeof result.then !== "function") return result;
+      if (!result || typeof result.then !== "function") {
+        if (!isCopy) signalToolComplete();
+        return result;
+      }
       const status = findStatus(panel);
       let started = false;
       let settled = false;
@@ -111,6 +119,7 @@
         settled = true;
         clearTimeout(timer);
         if (started) ToolBusy.stop(panel, btn, status);
+        if (!isCopy) signalToolComplete();
       });
     };
   }
@@ -119,7 +128,28 @@
     document.querySelectorAll(".tool-panel button.primary").forEach(patchButton);
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", patchAll);
-  else patchAll();
-  window.addEventListener("load", patchAll);
+  /** Primary buttons without .onclick (addEventListener only) still reveal ads after use. */
+  function bindPrimaryClicks() {
+    document.querySelectorAll("main .tool-panel button.primary").forEach((btn) => {
+      if (btn.hasAttribute("data-tool-ad-bound")) return;
+      if (/^\s*copy\b/i.test(btn.textContent)) return;
+      btn.setAttribute("data-tool-ad-bound", "1");
+      btn.addEventListener(
+        "click",
+        () => {
+          setTimeout(signalToolComplete, 0);
+        },
+        { capture: true },
+      );
+    });
+  }
+
+  function init() {
+    patchAll();
+    bindPrimaryClicks();
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+  window.addEventListener("load", init);
 })();
