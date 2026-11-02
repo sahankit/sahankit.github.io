@@ -202,6 +202,12 @@ export const micrositeDefs = [
       "/fd-calculator.html",
       "/rd-calculator.html",
       "/electricity-bill.html",
+      "/personal-loan-calculator.html",
+      "/ltcg-tax-calculator.html",
+      "/rent-receipt-generator.html",
+      "/leave-encashment-calculator.html",
+      "/professional-tax-calculator.html",
+      "/aadhaar-format-checker.html",
     ],
     faqs: [
       { q: "Are PAN or UPI checks official?", a: "No. Format and pattern helpers only—not NPCI or Income Tax verification." },

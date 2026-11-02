@@ -62,6 +62,8 @@ import { batch28Tools } from "./tools-batch28.mjs";
 import { batch28PageSeo } from "./seo-batch28.mjs";
 import { batch29Tools } from "./tools-batch29.mjs";
 import { batch29PageSeo } from "./seo-batch29.mjs";
+import { batch30Tools } from "./tools-batch30.mjs";
+import { batch30PageSeo } from "./seo-batch30.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -111,6 +113,7 @@ const pageSeo = {
   ...batch27PageSeo,
   ...batch28PageSeo,
   ...batch29PageSeo,
+  ...batch30PageSeo,
   ...sitePageSeo,
 };
 
@@ -341,6 +344,8 @@ const POPULAR_TOOL_FILES = [
   "word-counter.html",
   "character-counter.html",
   "income-tax-calculator.html",
+  "personal-loan-calculator.html",
+  "ltcg-tax-calculator.html",
   "home-loan-calculator.html",
   "gst-calculator.html",
   "emi-calculator.html",
@@ -1127,6 +1132,7 @@ document.getElementById('go').click();
   ...batch27Tools(ad),
   ...batch28Tools(ad),
   ...batch29Tools(ad),
+  ...batch30Tools(ad),
 ];
 
 const guides = [
