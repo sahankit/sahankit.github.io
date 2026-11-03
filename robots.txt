@@ -3,4 +3,6 @@ Allow: /
 Disallow: /404.html
 Disallow: /tools/
 
+Sitemap: https://sahankit.github.io/sitemap-index.xml
+Sitemap: https://sahankit.github.io/sitemap-seed.xml
 Sitemap: https://sahankit.github.io/sitemap.xml

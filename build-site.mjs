@@ -1582,9 +1582,10 @@ const sitemapUnique = sitemapEntries.filter((e) => {
   sitemapSeen.add(e.loc);
   return true;
 });
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+
+const urlsetXml = (entries) => `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapUnique
+${entries
   .map(
     (e) =>
       `  <url><loc>${BASE}${e.loc}</loc><lastmod>${BUILD_DATE}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
@@ -1592,7 +1593,51 @@ ${sitemapUnique
   .join("\n")}
 </urlset>
 `;
-write("sitemap.xml", sitemap);
+
+write("sitemap.xml", urlsetXml(sitemapUnique));
+
+/** Small file for GSC — some *.github.io properties fail on the full sitemap fetch. */
+const seedPaths = new Set([
+  "/",
+  "/finance/",
+  "/dev/",
+  "/seo-lab/",
+  "/india/",
+  "/word-counter/",
+  "/income-tax-calculator/",
+  "/gst-calculator/",
+  "/emi-calculator/",
+  "/pdf-merge/",
+  "/qr-code-generator/",
+  "/bmr-calculator/",
+  "/rent-receipt-generator/",
+  "/personal-loan-calculator/",
+  "/ltcg-tax-calculator/",
+]);
+const sitemapSeedEntries = sitemapUnique.filter((e) => seedPaths.has(e.loc));
+write("sitemap-seed.xml", urlsetXml(sitemapSeedEntries));
+
+const SITEMAP_CHUNK = 150;
+const sitemapPartPaths = [];
+for (let i = 0; i < sitemapUnique.length; i += SITEMAP_CHUNK) {
+  const part = Math.floor(i / SITEMAP_CHUNK) + 1;
+  const name = `sitemap-part-${part}.xml`;
+  write(name, urlsetXml(sitemapUnique.slice(i, i + SITEMAP_CHUNK)));
+  sitemapPartPaths.push(`/${name}`);
+}
+
+const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapPartPaths
+  .map(
+    (p) =>
+      `  <sitemap><loc>${BASE}${p}</loc><lastmod>${BUILD_DATE}</lastmod></sitemap>`,
+  )
+  .join("\n")}
+</sitemapindex>
+`;
+write("sitemap-index.xml", sitemapIndex);
+
 write(
   "robots.txt",
   `User-agent: *
@@ -1600,6 +1645,8 @@ Allow: /
 Disallow: /404.html
 Disallow: /tools/
 
+Sitemap: ${BASE}/sitemap-index.xml
+Sitemap: ${BASE}/sitemap-seed.xml
 Sitemap: ${BASE}/sitemap.xml
 `,
 );
