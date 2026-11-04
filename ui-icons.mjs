@@ -18,6 +18,7 @@ const PATHS = {
   news: '<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9h4"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8Z"/>',
   help: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
   shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>',
+  monitor: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
   book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
 };
 
@@ -31,6 +32,9 @@ export const CATEGORY_ICON = {
   documents: ["file", "red"],
   seo: ["trend", "teal"],
   developer: ["code", "slate"],
+  security: ["shield", "slate"],
+  student: ["cap", "blue"],
+  tests: ["monitor", "teal"],
   chat: ["chat", "indigo"],
 };
 
@@ -46,6 +50,7 @@ export const HUB_ICON = {
   india: ["rupee", "orange"],
   design: ["palette", "pink"],
   security: ["shield", "slate"],
+  "online-tests": ["monitor", "teal"],
   writing: ["pen", "violet"],
   productivity: ["clock", "green"],
   chat: ["chat", "indigo"],

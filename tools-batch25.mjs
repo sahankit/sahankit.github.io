@@ -367,29 +367,6 @@ document.getElementById('go').click();
 </script>`,
     },
     {
-      path: "/waist-to-hip-ratio-calculator.html",
-      file: "waist-to-hip-ratio-calculator.html",
-      category: "calculators",
-      title: "Waist to Hip Ratio Calculator — WHR Health Metric",
-      desc: "Calculate waist-to-hip ratio (WHR) from measurements. Free WHR calculator—general wellness metric.",
-      card: "Waist-to-hip ratio",
-      cardDesc: "WHR calculator.",
-      body: `<h1>Waist-to-hip ratio</h1>${ad}
-<div class="tool-panel">
-<label for="w">Waist (cm)</label><input id="w" type="number" value="85" />
-<label for="h">Hip (cm)</label><input id="h" type="number" value="95" />
-<button type="button" class="primary" id="go">Calculate WHR</button>
-<p id="out" class="ok"></p>
-</div>
-<script>
-document.getElementById('go').onclick=()=>{
-  const whr=+document.getElementById('w').value/+document.getElementById('h').value;
-  document.getElementById('out').textContent='WHR = '+whr.toFixed(2)+'. Interpretation depends on sex and guidelines—not medical advice.';
-};
-document.getElementById('go').click();
-</script>`,
-    },
-    {
       path: "/syllable-counter.html",
       file: "syllable-counter.html",
       category: "writing",

@@ -10,9 +10,10 @@ export function renderSeoHtml(seo) {
       html += `<h2>${s.h2}</h2>`;
       for (const p of s.paragraphs || []) html += `<p>${p}</p>`;
       if (s.list) {
-        html += "<ul>";
+        const tag = s.ordered ? "ol" : "ul";
+        html += `<${tag}>`;
         for (const li of s.list) html += `<li>${li}</li>`;
-        html += "</ul>";
+        html += `</${tag}>`;
       }
     }
     html += "</div>";
@@ -244,49 +245,105 @@ export const pageSeo = {
     related: [rel.json, rel.age],
   },
   "bmi-calculator.html": {
-    keywords: "BMI calculator, body mass index, BMI calculator kg cm",
+    metaTitle: "BMI Calculator — Body Mass Index in kg/cm or ft/lb",
+    metaDescription:
+      "Free BMI calculator for adults. Enter height and weight in cm/kg or feet/pounds to get your BMI, WHO category, and healthy weight range instantly.",
+    keywords: "BMI calculator, body mass index calculator, BMI calculator kg cm, BMI calculator feet pounds, healthy weight range, BMI chart",
     sections: [
       {
-        h2: "Understanding BMI results",
+        h2: "How BMI is calculated",
         paragraphs: [
-          "Body Mass Index is weight in kilograms divided by height in meters squared. Categories follow common WHO-style cutoffs for adults. BMI does not measure body fat directly and is not medical advice.",
+          "Body Mass Index is weight in kilograms divided by height in metres squared: <strong>BMI = kg ÷ m²</strong>. For pounds and inches the equivalent is <strong>703 × lb ÷ in²</strong>. Example: 70 kg at 1.70 m gives 70 ÷ 2.89 = <strong>24.2</strong>, which is in the healthy range.",
+          "The calculator also shows the weight range that keeps you between BMI 18.5 and 24.9 for your height, so you can see how far you are from the healthy band.",
+        ],
+      },
+      {
+        h2: "BMI categories for adults (WHO)",
+        list: [
+          "<strong>Below 18.5</strong> — underweight",
+          "<strong>18.5 to 24.9</strong> — healthy weight",
+          "<strong>25 to 29.9</strong> — overweight",
+          "<strong>30 and above</strong> — obese",
+        ],
+        paragraphs: [
+          "Many Asian health bodies, including guidance used in India, treat 23+ as overweight and 25+ as obese because risk rises at lower BMI. BMI does not distinguish muscle from fat, so athletes can score high while being healthy.",
         ],
       },
     ],
     faqs: [
-      { q: "Can children use this BMI tool?", a: "This page uses adult cutoffs only. Pediatric BMI uses age-specific charts." },
+      { q: "Can children use this BMI tool?", a: "No. This page uses adult cut-offs. Children and teens need age- and sex-specific BMI percentile charts." },
+      { q: "What is a healthy BMI?", a: "For most adults a BMI between 18.5 and 24.9 is considered healthy. Your doctor may use a different target based on age, ethnicity, and body composition." },
+      { q: "Is BMI accurate for muscular people?", a: "Not very. BMI only uses height and weight, so muscular people can read as overweight. Waist size or body-fat estimates add useful context." },
     ],
-    related: [rel.age, rel.pct],
+    related: [rel.age, { href: "/body-fat-calculator/", label: "Body fat calculator" }, { href: "/ideal-weight-calculator/", label: "Ideal weight" }, { href: "/bmr-calculator/", label: "BMR calculator" }],
   },
   "percentage-calculator.html": {
-    keywords: "percentage calculator, percent of a number, what is X percent of Y",
+    metaTitle: "Percentage Calculator — % of a Number, % Change & Increase",
+    metaDescription:
+      "Free percentage calculator: find X% of Y, what percent one number is of another, percentage increase or decrease, and add or subtract a percent. Instant results.",
+    keywords:
+      "percentage calculator, percent of a number, what is X percent of Y, percentage increase calculator, percentage decrease, percent change, add percentage, marks percentage",
     sections: [
       {
-        h2: "Quick percent math",
+        h2: "Percentage formulas",
+        list: [
+          "<strong>X% of Y</strong> = X ÷ 100 × Y. Example: 15% of 2,400 = 360.",
+          "<strong>X is what % of Y</strong> = X ÷ Y × 100. Example: 45 out of 60 marks = 75%.",
+          "<strong>Percentage change</strong> = (new − old) ÷ old × 100. Example: 800 → 1,000 is a 25% increase.",
+          "<strong>Add a percentage</strong> = value × (1 + p ÷ 100). Example: 1,200 + 18% GST = 1,416.",
+        ],
+      },
+      {
+        h2: "Everyday uses",
         paragraphs: [
-          "Find a percentage of any number—for discounts, tax estimates, exam scores, or tip math before using the dedicated tip calculator.",
+          "Work out exam marks as a percentage, discounts during a sale, salary hikes, price increases, GST or VAT on a bill, and profit or loss. All four calculators update as you type, so you can compare scenarios quickly.",
         ],
       },
     ],
     faqs: [
-      { q: "How is the result rounded?", a: "Up to four decimal places using standard formatting; adjust mentally for currency." },
+      { q: "How do I calculate percentage of marks?", a: "Divide marks obtained by total marks and multiply by 100. Use the second calculator: enter your marks and the total." },
+      { q: "Is percentage increase the same as percentage points?", a: "No. Going from 10% to 12% is a 2 percentage-point rise but a 20% increase relative to the starting value." },
+      { q: "How is the result rounded?", a: "Results show up to four decimal places. Round currency to two decimals when you use it on an invoice." },
     ],
-    related: [rel.tip, rel.emi, rel.bmi],
+    related: [rel.tip, rel.emi, { href: "/discount-calculator/", label: "Discount calculator" }, { href: "/percentage-change/", label: "Percentage change" }, { href: "/reverse-percentage-calculator/", label: "Reverse percentage" }],
   },
   "emi-calculator.html": {
-    keywords: "EMI calculator India, loan EMI calculator, home loan EMI, personal loan EMI",
+    metaTitle: "EMI Calculator — Home, Car & Personal Loan EMI with Schedule",
+    metaDescription:
+      "Free EMI calculator for India: enter loan amount, interest rate and tenure to see monthly EMI, total interest, total payment and a year-wise repayment schedule.",
+    keywords:
+      "EMI calculator, loan EMI calculator, home loan EMI calculator, personal loan EMI calculator, car loan EMI, EMI formula, loan repayment schedule",
     sections: [
       {
-        h2: "How EMI is estimated",
+        h2: "EMI formula",
         paragraphs: [
-          "EMI uses the standard amortizing loan formula with monthly compounding from the annual rate. Processing fees, insurance, and floating rates are not included. Treat the output as an estimate before talking to a bank.",
+          "Banks in India use the reducing-balance formula: <strong>EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</strong>, where P is the loan amount, r is the monthly rate (annual rate ÷ 12 ÷ 100) and n is the number of monthly instalments.",
+          "Example: ₹5,00,000 at 10.5% for 5 years (60 months) gives r = 0.00875 and an EMI of about <strong>₹10,747</strong>. You repay about ₹6,44,800 in total, so the interest cost is roughly ₹1,44,800.",
+        ],
+      },
+      {
+        h2: "How to lower your EMI or total interest",
+        list: [
+          "A longer tenure lowers the EMI but increases total interest paid.",
+          "Even a 0.5% lower rate saves a lot on long home loans—compare lenders.",
+          "Part-prepayments early in the loan cut interest the most, because early EMIs are mostly interest.",
+          "A larger down payment reduces the principal and every EMI after it.",
+        ],
+      },
+      {
+        h2: "Reading the repayment schedule",
+        paragraphs: [
+          "The year-wise table shows how each year's EMIs split between principal and interest and the balance left at year end. In the first years most of the EMI goes to interest; the principal share grows over time.",
         ],
       },
     ],
     faqs: [
-      { q: "Is this an official bank quote?", a: "No. It is a math helper only, not a loan offer." },
+      { q: "Is this an official bank quote?", a: "No. It is an estimate using the standard formula. Processing fees, insurance and rate resets on floating loans are not included." },
+      { q: "Does the EMI change with a floating rate?", a: "Yes. When the rate changes, banks either change the EMI or extend the tenure. Re-run the calculator with the new rate to estimate it." },
+      { q: "Can I use this for home, car and personal loans?", a: "Yes. The formula is the same for any reducing-balance loan. Only the rate and tenure differ." },
+      { q: "What is included in total payment?", a: "Total payment is EMI × number of months, which equals the principal plus all interest over the tenure." },
     ],
-    related: [rel.pct, rel.tip],
+    related: [rel.pct, { href: "/home-loan-calculator/", label: "Home loan EMI" }, { href: "/personal-loan-calculator/", label: "Personal loan EMI" }, { href: "/car-loan-calculator/", label: "Car loan EMI" }, { href: "/home-loan-prepayment-calculator/", label: "Home loan prepayment" }],
   },
   "tip-calculator.html": {
     keywords: "tip calculator, split bill calculator, gratuity calculator India",
@@ -304,19 +361,31 @@ export const pageSeo = {
     related: [rel.pct, rel.emi],
   },
   "age-calculator.html": {
-    keywords: "age calculator, date of birth to age, how old am I calculator",
+    metaTitle: "Age Calculator — How Old Am I? Age in Years, Months & Days",
+    metaDescription:
+      "Free age calculator: enter date of birth to get exact age in years, months and days, total weeks and days lived, birth weekday, and days to your next birthday.",
+    keywords: "age calculator, how old am I, date of birth calculator, age calculator by date of birth, exact age, age on a specific date, next birthday countdown",
     sections: [
       {
-        h2: "Age from date of birth",
+        h2: "Exact age from date of birth",
         paragraphs: [
-          "Pick a birth date to see years, months, and days relative to today in your local calendar. Useful for forms, eligibility checks, and curiosity—not for legal age verification on its own.",
+          "Enter your date of birth to see your exact age in years, months and days. Change the second date to find your age on any day—useful for exam and job eligibility cut-offs (for example “age as on 1 August”), insurance forms and retirement planning.",
+          "The calculator counts calendar months correctly, including leap years and months with 28, 30 or 31 days, and also shows your total months, weeks and days lived.",
+        ],
+      },
+      {
+        h2: "How age is counted",
+        paragraphs: [
+          "Full years are counted first, then remaining whole months, then leftover days. If today’s day-of-month is earlier than your birth day, the month is not yet complete and days are borrowed from the previous month. People born on 29 February celebrate on 1 March in non-leap years in this calculator.",
         ],
       },
     ],
     faqs: [
-      { q: "Does it handle leap years?", a: "Yes—the calculation uses the browser Date object with calendar-aware month lengths." },
+      { q: "How do I calculate age as on a specific date?", a: "Set the second field (“Age on this date”) to the cut-off date, such as an exam eligibility date. The result updates immediately." },
+      { q: "Does it handle leap years?", a: "Yes. The calculation uses real calendar month lengths, including 29 February." },
+      { q: "Is this valid for legal age proof?", a: "No. It is a calculator. Official documents such as a birth certificate are needed for legal proof of age." },
     ],
-    related: [rel.bmi, rel.epoch],
+    related: [rel.bmi, { href: "/age-in-days-calculator/", label: "Age in days" }, { href: "/days-between-dates/", label: "Days between dates" }, { href: "/date-add-days/", label: "Add days to date" }],
   },
   "ifsc-format.html": {
     keywords: "IFSC code format, IFSC validator, check IFSC pattern India",

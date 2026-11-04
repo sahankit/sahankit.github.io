@@ -86,12 +86,6 @@ export const batch25PageSeo = {
     keywords: "calories burned walking calculator, walking calorie calculator, calories burned walking 3 miles",
     related: [{ href: "/steps-to-miles-calculator/", label: "Steps to miles" }, { href: "/tdee-calculator/", label: "TDEE calculator" }],
   },
-  "waist-to-hip-ratio-calculator.html": {
-    metaTitle: "Waist to Hip Ratio Calculator — WHR Online",
-    metaDescription: "Calculate waist-to-hip ratio (WHR) from body measurements. Free WHR health metric calculator.",
-    keywords: "waist to hip ratio calculator, whr calculator, waist hip ratio",
-    related: [{ href: "/body-fat-calculator/", label: "Body fat calculator" }, { href: "/bmi-calculator/", label: "BMI calculator" }],
-  },
   "syllable-counter.html": {
     metaTitle: "Syllable Counter — Count Syllables in Words & Text",
     metaDescription: "Count syllables in English text for poems, haiku, and lyrics. Free online syllable counter.",

@@ -28,10 +28,13 @@ async function main() {
   await new Promise((r) => server.once("listening", r));
 
   const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext();
+  // Third-party scripts (CookieYes throws on non-registered hosts like 127.0.0.1) are out of scope here.
+  await context.route(/cookieyes\.com|googlesyndication\.com|googletagmanager\.com|google-analytics\.com|doubleclick\.net/, (r) => r.abort());
   const fails = [];
 
   for (const pathname of paths) {
-    const page = await browser.newPage();
+    const page = await context.newPage();
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     const url = `http://127.0.0.1:${PORT}${pathname}`;

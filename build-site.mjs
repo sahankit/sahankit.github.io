@@ -68,6 +68,10 @@ import { batch31Tools } from "./tools-batch31.mjs";
 import { batch31PageSeo } from "./seo-batch31.mjs";
 import { batch32Tools } from "./tools-batch32.mjs";
 import { batch32PageSeo } from "./seo-batch32.mjs";
+import { batch33Tools } from "./tools-batch33.mjs";
+import { batch33PageSeo } from "./seo-batch33.mjs";
+import { batch34Tools } from "./tools-batch34.mjs";
+import { batch34PageSeo } from "./seo-batch34.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -120,6 +124,8 @@ const pageSeo = {
   ...batch30PageSeo,
   ...batch31PageSeo,
   ...batch32PageSeo,
+  ...batch33PageSeo,
+  ...batch34PageSeo,
   ...sitePageSeo,
 };
 
@@ -146,22 +152,34 @@ function applyAnalyticsEnv() {
 
 applyAnalyticsEnv();
 
-const nav = `
+const headerSearchHtml = `
+    <form class="header-search" role="search" action="/" method="get" data-tool-finder>
+      <label class="sr-only" for="header-search-input">Search tools</label>
+      <input type="search" id="header-search-input" name="q" placeholder="Search tools…  ( / )" autocomplete="off" enterkeyhint="search" />
+      <div class="search-results search-results--pop" data-results aria-label="Matching tools"></div>
+    </form>
+    <button type="button" class="header-search-toggle" aria-label="Search tools" aria-expanded="false" aria-controls="header-search-input">${iconSvg("search")}</button>`;
+
+function navHtml(isHome = false) {
+  return `
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="site-header-inner">
     <a class="brand" href="/" aria-label="${SITE_NAME} home"><span class="brand-mark" aria-hidden="true">T</span><span>${SITE_NAME}</span></a>
     <nav class="site-nav" aria-label="Main">
-      <a href="/#find-tool">Search</a>
+      ${isHome ? `<a href="#find-tool">Search</a>` : ""}
       <a href="/#hubs">Hubs</a>
       <a href="/finance/">Finance</a>
+      <a href="/india/">India</a>
       <a href="/dev/">Developer</a>
-      <a href="/guides/writing-tools/">Guides</a>
+      <a href="/design/">PDF &amp; images</a>
+      <a href="/online-tests/">Tests</a>
       <a href="/quiz/">Quiz</a>
       <a href="/brief/">News</a>
-    </nav>
+    </nav>${isHome ? "" : headerSearchHtml}
   </div>
 </header>`;
+}
 
 const FOOTER_POPULAR = [
   ["/word-counter/", "Word counter"],
@@ -281,7 +299,7 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
         "@type": "HowToStep",
         position: i + 1,
         name: s.name,
-        text: s.text,
+        text: String(s.text).replace(/<[^>]+>/g, ""),
       })),
     });
   }
@@ -296,7 +314,7 @@ function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
 ${buildJsonLd(title, desc, canonicalPath, opts)}
 </head>
 <body>
-${nav}
+${navHtml(opts.isHome)}
 <main class="wrap" id="main">
 ${breadcrumb}
 ${mainHtml}
@@ -330,6 +348,9 @@ const HUB_CATEGORIES = [
   { id: "documents", title: "PDF & images" },
   { id: "seo", title: "SEO & web" },
   { id: "developer", title: "Developer utilities" },
+  { id: "security", title: "Security & passwords" },
+  { id: "student", title: "Student tools" },
+  { id: "tests", title: "Online tests (webcam, mic, keyboard)" },
   { id: "chat", title: "Free chat (Y-Chat)" },
 ];
 
@@ -342,10 +363,13 @@ const CATEGORY_HUB = {
   documents: { href: "/design/", label: "PDF & images" },
   seo: { href: "/seo-lab/", label: "SEO lab" },
   developer: { href: "/dev/", label: "Developer utilities" },
+  security: { href: "/security/", label: "Security & crypto tools" },
+  student: { href: "/student/", label: "Student toolkit" },
+  tests: { href: "/online-tests/", label: "Online tests" },
   chat: { href: "/chat/", label: "Free chat (Y-Chat)" },
 };
 
-const FEATURED_HUB_SLUGS = ["finance", "india", "dev", "osint", "ai-writing", "student", "brief", "quiz"];
+const FEATURED_HUB_SLUGS = ["finance", "india", "dev", "online-tests", "osint", "ai-writing", "student", "brief", "quiz"];
 
 const POPULAR_TOOL_FILES = [
   "word-counter.html",
@@ -356,9 +380,15 @@ const POPULAR_TOOL_FILES = [
   "home-loan-calculator.html",
   "gst-calculator.html",
   "emi-calculator.html",
+  "scientific-calculator.html",
+  "internet-speed-test.html",
   "pdf-merge.html",
+  "compress-pdf.html",
   "pdf-to-word.html",
+  "reduce-image-size-in-kb.html",
   "qr-code-generator.html",
+  "image-to-text.html",
+  "spin-the-wheel.html",
   "ai-meta-description-generator.html",
   "json-formatter.html",
   "password-generator.html",
@@ -450,12 +480,12 @@ function micrositeCard(s) {
 function toolFinderHtml() {
   return `<section id="find-tool" class="tool-finder" aria-labelledby="finder-heading">
 <h2 id="finder-heading" class="sr-only">Find a tool</h2>
-<div id="tool-finder">
+<form id="tool-finder" role="search" action="/" method="get" data-tool-finder>
 <label class="sr-only" for="tool-search-input">Search tools</label>
-<input type="search" id="tool-search-input" name="q" placeholder="Search ${tools.length} tools…" autocomplete="off" enterkeyhint="search" />
-<div class="search-results" data-results aria-live="polite"></div>
-<p class="search-empty" data-empty hidden>Type to search 210+ tools by name or topic.</p>
-</div>
+<input type="search" id="tool-search-input" name="q" placeholder="Search ${tools.length} tools — EMI, PDF, GST…" autocomplete="off" enterkeyhint="search" />
+<div class="search-results" data-results aria-label="Matching tools"></div>
+<p class="search-empty" data-empty hidden aria-live="polite">Type to search ${tools.length} tools by name or topic.</p>
+</form>
 </section>`;
 }
 
@@ -662,20 +692,61 @@ document.getElementById('now').onclick=()=>{ document.getElementById('ts').value
     cardDesc: "Body mass index from height & weight.",
     body: `
 <h1>BMI calculator</h1>${ad}
-<div class="tool-panel">
-  <label for="h">Height (cm)</label><input id="h" type="number" min="50" max="250" value="170" />
-  <label for="w">Weight (kg)</label><input id="w" type="number" min="20" max="300" value="70" />
-  <button type="button" class="primary" id="go">Calculate</button>
-  <p id="out"></p>
+<div class="tool-panel" data-no-live>
+  <div class="seg" role="radiogroup" aria-label="Units">
+    <label><input type="radio" name="units" value="metric" checked /> Metric (cm, kg)</label>
+    <label><input type="radio" name="units" value="imperial" /> US (ft, in, lb)</label>
+  </div>
+  <div id="metric">
+    <label for="h">Height (cm)</label><input id="h" type="number" min="50" max="250" step="0.1" inputmode="decimal" value="170" />
+    <label for="w">Weight (kg)</label><input id="w" type="number" min="10" max="350" step="0.1" inputmode="decimal" value="70" />
+  </div>
+  <div id="imperial" hidden>
+    <label for="ft">Height</label>
+    <div class="input-group"><input id="ft" type="number" min="1" max="8" step="1" inputmode="numeric" value="5" aria-label="Feet" /><span class="input-suffix">ft</span><input id="in" type="number" min="0" max="11.9" step="0.1" inputmode="decimal" value="7" aria-label="Inches" /><span class="input-suffix">in</span></div>
+    <label for="lb">Weight (lb)</label><input id="lb" type="number" min="20" max="800" step="0.1" inputmode="decimal" value="154" />
+  </div>
+  <button type="button" class="primary" id="go">Calculate BMI</button>
+  <p id="out" role="status" aria-live="polite"></p>
+  <div class="bmi-scale" id="scale" hidden aria-hidden="true"><span class="bmi-marker" id="marker"></span></div>
+  <p class="bmi-scale-labels" id="scaleLabels" hidden aria-hidden="true"><span>Under 18.5</span><span>18.5–24.9</span><span>25–29.9</span><span>30+</span></p>
+  <p id="range" class="tool-feedback"></p>
 </div>
 <script>
-document.getElementById('go').onclick=()=>{
-  const h=Number(document.getElementById('h').value)/100, w=Number(document.getElementById('w').value);
-  if(!h||!w) return;
-  const bmi=(w/(h*h)).toFixed(1);
-  let cat='Normal'; if(bmi<18.5) cat='Underweight'; else if(bmi>=25&&bmi<30) cat='Overweight'; else if(bmi>=30) cat='Obese';
-  document.getElementById('out').textContent='BMI: '+bmi+' ('+cat+') — for adults; not medical advice.';
-};
+(function(){
+const $=id=>document.getElementById(id);
+const unit=()=>document.querySelector('input[name=units]:checked').value;
+function calc(){
+  const imp=unit()==='imperial';
+  const hm=imp?((+$('ft').value||0)*12+(+$('in').value||0))*0.0254:(+$('h').value)/100;
+  const kg=imp?(+$('lb').value)*0.45359237:+$('w').value;
+  const out=$('out');
+  if(!(hm>=0.5&&hm<=2.6)||!(kg>=10&&kg<=360)){
+    out.className='error'; out.textContent='Enter a realistic height and weight.';
+    $('scale').hidden=$('scaleLabels').hidden=true; $('range').textContent=''; return;
+  }
+  const bmi=kg/(hm*hm);
+  const cat=bmi<18.5?'Underweight':bmi<25?'Healthy weight':bmi<30?'Overweight':'Obese';
+  out.className='';
+  out.textContent='BMI '+bmi.toFixed(1)+' — '+cat;
+  const pos=Math.min(100,Math.max(0,(bmi-12)/(40-12)*100));
+  $('marker').style.left=pos+'%';
+  $('scale').hidden=$('scaleLabels').hidden=false;
+  const lo=18.5*hm*hm, hi=24.9*hm*hm;
+  const fmt=x=>imp?(x/0.45359237).toFixed(0)+' lb':x.toFixed(1)+' kg';
+  $('range').textContent='Healthy weight range for your height: '+fmt(lo)+' – '+fmt(hi)+'. Adult cut-offs (WHO); not medical advice.';
+}
+document.querySelectorAll('input[name=units]').forEach(r=>r.addEventListener('change',()=>{
+  const imp=unit()==='imperial';
+  $('metric').hidden=imp; $('imperial').hidden=!imp;
+  if(imp){ const cm=+$('h').value, in_=cm/2.54; $('ft').value=Math.floor(in_/12); $('in').value=(in_%12).toFixed(1); $('lb').value=(+$('w').value/0.45359237).toFixed(1); }
+  else { $('h').value=(((+$('ft').value||0)*12+(+$('in').value||0))*2.54).toFixed(1); $('w').value=(+$('lb').value*0.45359237).toFixed(1); }
+  $('go').click();
+}));
+$('go').onclick=calc;
+['h','w','ft','in','lb'].forEach(id=>$(id).addEventListener('input',()=>$('go').click()));
+calc();
+})();
 </script>`,
   },
   {
@@ -688,16 +759,51 @@ document.getElementById('go').onclick=()=>{
     cardDesc: "Percent of a number, increase/decrease.",
     body: `
 <h1>Percentage calculator</h1>${ad}
-<div class="tool-panel">
-  <label>What is <input id="pct" type="number" value="10" style="width:4rem" />% of <input id="of" type="number" value="200" style="width:5rem" />?</label>
-  <button type="button" class="primary" id="go">Calculate</button>
-  <p id="out"></p>
+<div class="tool-panel calc-rows" data-no-live>
+  <section class="calc-row" aria-labelledby="pc1">
+    <h2 id="pc1">What is X% of Y?</h2>
+    <div class="calc-line">What is <input id="a1" type="number" step="any" inputmode="decimal" value="15" aria-label="Percent" /> % of <input id="b1" type="number" step="any" inputmode="decimal" value="2400" aria-label="Number" /> ?</div>
+    <output id="o1" class="calc-answer"></output>
+  </section>
+  <section class="calc-row" aria-labelledby="pc2">
+    <h2 id="pc2">X is what percent of Y?</h2>
+    <div class="calc-line"><input id="a2" type="number" step="any" inputmode="decimal" value="45" aria-label="Part" /> is what % of <input id="b2" type="number" step="any" inputmode="decimal" value="60" aria-label="Whole" /> ?</div>
+    <output id="o2" class="calc-answer"></output>
+  </section>
+  <section class="calc-row" aria-labelledby="pc3">
+    <h2 id="pc3">Percentage increase or decrease</h2>
+    <div class="calc-line">From <input id="a3" type="number" step="any" inputmode="decimal" value="800" aria-label="Old value" /> to <input id="b3" type="number" step="any" inputmode="decimal" value="1000" aria-label="New value" /></div>
+    <output id="o3" class="calc-answer"></output>
+  </section>
+  <section class="calc-row" aria-labelledby="pc4">
+    <h2 id="pc4">Add or subtract a percentage</h2>
+    <div class="calc-line"><input id="a4" type="number" step="any" inputmode="decimal" value="1200" aria-label="Value" /> <select id="op4" aria-label="Add or subtract"><option value="1">plus</option><option value="-1">minus</option></select> <input id="b4" type="number" step="any" inputmode="decimal" value="18" aria-label="Percent" /> %</div>
+    <output id="o4" class="calc-answer"></output>
+  </section>
 </div>
 <script>
-document.getElementById('go').onclick=()=>{
-  const p=Number(document.getElementById('pct').value), o=Number(document.getElementById('of').value);
-  document.getElementById('out').textContent=(p/100*o).toLocaleString(undefined,{maximumFractionDigits:4});
-};
+(function(){
+const $=id=>document.getElementById(id);
+const v=id=>{const s=$(id).value.trim(); return s===''?NaN:Number(s);};
+const f=x=>Number.isFinite(x)?x.toLocaleString(undefined,{maximumFractionDigits:4}):'—';
+let used=false;
+function set(id,ok,html){ const o=$(id); o.innerHTML=html; o.classList.toggle('is-empty',!ok); }
+function calc(e){
+  const a1=v('a1'),b1=v('b1');
+  set('o1',Number.isFinite(a1)&&Number.isFinite(b1),Number.isFinite(a1)&&Number.isFinite(b1)?'<b>'+f(a1/100*b1)+'</b>':'Enter both numbers');
+  const a2=v('a2'),b2=v('b2');
+  set('o2',Number.isFinite(a2)&&b2,!Number.isFinite(a2)||!Number.isFinite(b2)?'Enter both numbers':b2===0?'The whole cannot be zero':'<b>'+f(a2/b2*100)+'%</b>');
+  const a3=v('a3'),b3=v('b3');
+  if(!Number.isFinite(a3)||!Number.isFinite(b3)) set('o3',false,'Enter both values');
+  else if(a3===0) set('o3',false,'Old value cannot be zero');
+  else { const ch=(b3-a3)/Math.abs(a3)*100; set('o3',true,'<b>'+(ch>=0?'+':'')+f(ch)+'%</b> '+(ch>0?'increase':ch<0?'decrease':'no change')+' · difference '+f(b3-a3)); }
+  const a4=v('a4'),b4=v('b4'),s=+$('op4').value;
+  set('o4',Number.isFinite(a4)&&Number.isFinite(b4),Number.isFinite(a4)&&Number.isFinite(b4)?'<b>'+f(a4*(1+s*b4/100))+'</b> ('+(s>0?'+':'−')+f(Math.abs(a4*b4/100))+')':'Enter both numbers');
+  if(e&&!used){ used=true; window.__toolCompleteFired=true; document.dispatchEvent(new CustomEvent('tool:complete')); }
+}
+document.querySelector('.calc-rows').addEventListener('input',calc);
+calc();
+})();
 </script>`,
   },
   {
@@ -710,20 +816,66 @@ document.getElementById('go').onclick=()=>{
     cardDesc: "Monthly loan payment estimate.",
     body: `
 <h1>EMI calculator</h1>${ad}
-<div class="tool-panel">
-  <label for="p">Principal (₹)</label><input id="p" type="number" value="500000" />
-  <label for="r">Annual interest (%)</label><input id="r" type="number" step="0.1" value="10.5" />
-  <label for="n">Tenure (months)</label><input id="n" type="number" value="60" />
+<div class="tool-panel" data-no-live>
+  <label for="p">Loan amount (₹)</label><input id="p" type="number" min="1000" step="1000" inputmode="decimal" value="500000" />
+  <label for="r">Interest rate (% per year)</label><input id="r" type="number" min="0" max="50" step="0.05" inputmode="decimal" value="10.5" />
+  <label for="n">Loan tenure</label>
+  <div class="input-group"><input id="n" type="number" min="1" step="1" inputmode="numeric" value="5" /><select id="unit" aria-label="Tenure unit"><option value="y" selected>Years</option><option value="m">Months</option></select></div>
   <button type="button" class="primary" id="go">Calculate EMI</button>
-  <p id="out"></p>
+  <p id="out" class="tool-feedback" role="status" aria-live="polite"></p>
+  <div class="stats" id="stats">
+    <div class="stat"><strong id="emi">—</strong>Monthly EMI</div>
+    <div class="stat"><strong id="int">—</strong>Total interest</div>
+    <div class="stat"><strong id="tot">—</strong>Total payment</div>
+  </div>
+  <div class="split-bar" id="bar" hidden><span class="split-bar-a" id="barP"></span><span class="split-bar-b" id="barI"></span></div>
+  <p class="split-legend" id="legend" hidden><span class="dot dot-a"></span>Principal <b id="pp"></b> <span class="dot dot-b"></span>Interest <b id="ip"></b></p>
+  <details class="schedule" id="schedWrap" hidden><summary>Year-by-year repayment schedule</summary><div id="sched"></div></details>
 </div>
+<p class="prose" style="font-size:0.88rem">Need every month? Use the <a href="/amortization-schedule.html">amortization schedule</a> or compare offers with the <a href="/loan-comparison.html">loan comparison</a> tool.</p>
 <script>
-document.getElementById('go').onclick=()=>{
-  const P=Number(document.getElementById('p').value), ann=Number(document.getElementById('r').value)/100/12, n=Number(document.getElementById('n').value);
-  if(!P||!n) return;
-  const emi= ann? P*ann*Math.pow(1+ann,n)/(Math.pow(1+ann,n)-1): P/n;
-  document.getElementById('out').textContent='EMI ≈ ₹'+emi.toFixed(2)+' (estimate only, not a bank offer)';
-};
+(function(){
+const $=id=>document.getElementById(id);
+const inr=x=>'₹'+Math.round(x).toLocaleString('en-IN');
+function calc(){
+  const P=parseFloat($('p').value), rate=parseFloat($('r').value);
+  const raw=parseFloat($('n').value), months=Math.round($('unit').value==='y'?raw*12:raw);
+  const out=$('out');
+  out.className='tool-feedback';
+  if(!(P>0)||!(rate>=0)||rate>50||!(months>=1)||months>600){
+    out.className='error';
+    out.textContent=!(P>0)?'Enter a loan amount above zero.':rate>50||!(rate>=0)?'Enter an interest rate between 0 and 50%.':'Enter a tenure between 1 month and 50 years.';
+    ['emi','int','tot'].forEach(id=>$(id).textContent='—');
+    $('bar').hidden=$('legend').hidden=$('schedWrap').hidden=true;
+    return;
+  }
+  const i=rate/100/12;
+  const emi=i?P*i*Math.pow(1+i,months)/(Math.pow(1+i,months)-1):P/months;
+  const total=emi*months, interest=total-P;
+  out.textContent='';
+  $('emi').textContent=inr(emi);
+  $('int').textContent=inr(interest);
+  $('tot').textContent=inr(total);
+  const pp=P/total*100;
+  $('barP').style.width=pp+'%'; $('barI').style.width=(100-pp)+'%';
+  $('pp').textContent=pp.toFixed(1)+'%'; $('ip').textContent=(100-pp).toFixed(1)+'%';
+  $('bar').hidden=$('legend').hidden=false;
+  let bal=P, rows='', year=1, yP=0, yI=0;
+  for(let m=1;m<=months;m++){
+    const int=bal*i, pr=Math.min(emi-int,bal);
+    bal-=pr; yP+=pr; yI+=int;
+    if(m%12===0||m===months){
+      rows+='<tr><td>'+year+'</td><td>'+inr(yP)+'</td><td>'+inr(yI)+'</td><td>'+inr(Math.max(bal,0))+'</td></tr>';
+      year++; yP=0; yI=0;
+    }
+  }
+  $('sched').innerHTML='<table><thead><tr><th>Year</th><th>Principal paid</th><th>Interest paid</th><th>Balance</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  $('schedWrap').hidden=false;
+}
+$('go').onclick=calc;
+['p','r','n','unit'].forEach(id=>$(id).addEventListener('input',()=>$('go').click()));
+calc();
+})();
 </script>`,
   },
   {
@@ -761,20 +913,54 @@ document.getElementById('go').onclick=()=>{
     cardDesc: "Age from date of birth.",
     body: `
 <h1>Age calculator</h1>${ad}
-<div class="tool-panel">
-  <label for="dob">Date of birth</label><input id="dob" type="date" />
-  <button type="button" class="primary" id="go">Calculate</button>
-  <p id="out"></p>
+<div class="tool-panel" data-no-live>
+  <label for="dob">Date of birth</label><input id="dob" type="date" value="2000-01-15" max="9999-12-31" />
+  <label for="at">Age on this date</label><input id="at" type="date" max="9999-12-31" />
+  <button type="button" class="primary" id="go">Calculate age</button>
+  <p id="out" role="status" aria-live="polite"></p>
+  <div class="stats" id="stats">
+    <div class="stat"><strong id="months">—</strong>Total months</div>
+    <div class="stat"><strong id="weeks">—</strong>Total weeks</div>
+    <div class="stat"><strong id="days">—</strong>Total days</div>
+    <div class="stat"><strong id="next">—</strong>Days to next birthday</div>
+  </div>
+  <p id="extra" class="tool-feedback"></p>
 </div>
 <script>
-document.getElementById('go').onclick=()=>{
-  const d=document.getElementById('dob').value; if(!d) return;
-  const b=new Date(d+'T00:00:00'), n=new Date();
-  let y=n.getFullYear()-b.getFullYear(), m=n.getMonth()-b.getMonth(), day=n.getDate()-b.getDate();
-  if(day<0){ m--; day+=new Date(n.getFullYear(),n.getMonth(),0).getDate(); }
+(function(){
+const $=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const parse=s=>{ if(!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(s)) return null; const [y,m,d]=s.split('-').map(Number); const dt=new Date(y,m-1,d); return dt.getMonth()===m-1?dt:null; };
+const plural=(n,w)=>n.toLocaleString()+' '+w+(n===1?'':'s');
+$('at').value=iso(new Date());
+function calc(){
+  const b=parse($('dob').value), n=parse($('at').value), out=$('out');
+  ['months','weeks','days','next'].forEach(id=>$(id).textContent='—');
+  $('extra').textContent='';
+  if(!b||!n){ out.className='error'; out.textContent='Pick a valid date of birth and target date.'; return; }
+  if(b>n){ out.className='error'; out.textContent='Date of birth must be on or before the target date.'; return; }
+  let y=n.getFullYear()-b.getFullYear(), m=n.getMonth()-b.getMonth(), d=n.getDate()-b.getDate();
+  if(d<0){ m--; d+=new Date(n.getFullYear(),n.getMonth(),0).getDate(); }
   if(m<0){ y--; m+=12; }
-  document.getElementById('out').textContent=y+' years, '+m+' months, '+day+' days';
-};
+  out.className='';
+  out.textContent=plural(y,'year')+', '+plural(m,'month')+', '+plural(d,'day');
+  const totalDays=Math.round((Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())-Date.UTC(b.getFullYear(),b.getMonth(),b.getDate()))/864e5);
+  $('months').textContent=(y*12+m).toLocaleString();
+  $('weeks').textContent=Math.floor(totalDays/7).toLocaleString();
+  $('days').textContent=totalDays.toLocaleString();
+  let nb=new Date(n.getFullYear(),b.getMonth(),b.getDate());
+  if(b.getMonth()===1&&b.getDate()===29&&nb.getMonth()!==1) nb=new Date(n.getFullYear(),2,1);
+  if(nb<n) nb=new Date(n.getFullYear()+1,b.getMonth(),b.getDate());
+  const toNext=Math.round((Date.UTC(nb.getFullYear(),nb.getMonth(),nb.getDate())-Date.UTC(n.getFullYear(),n.getMonth(),n.getDate()))/864e5);
+  $('next').textContent=toNext===0?'Today!':toNext.toLocaleString();
+  const wd=dt=>dt.toLocaleDateString(undefined,{weekday:'long'});
+  $('extra').textContent='Born on a '+wd(b)+'. Next birthday: '+nb.toLocaleDateString(undefined,{dateStyle:'long'})+' ('+wd(nb)+'), turning '+(nb.getFullYear()-b.getFullYear())+'.';
+}
+$('go').onclick=calc;
+['dob','at'].forEach(id=>$(id).addEventListener('change',()=>$('go').click()));
+calc();
+})();
 </script>`,
   },
   {
@@ -1156,6 +1342,8 @@ document.getElementById('go').click();
   ...batch30Tools(ad),
   ...batch31Tools(ad),
   ...batch32Tools(ad),
+  ...batch33Tools(ad),
+  ...batch34Tools(ad),
 ]);
 
 const guides = [
@@ -1253,6 +1441,10 @@ ${toolFinderHtml()}
 <li>Works on mobile</li>
 </ul>
 </div>
+<section class="recent-tools" data-recent-tools hidden aria-labelledby="recent-heading">
+<h2 id="recent-heading">Recently used</h2>
+<div class="recent-list" data-recent-list></div>
+</section>
 ${ad}
 <section id="hubs" class="home-section" aria-labelledby="hubs-heading">
 <h2 id="hubs-heading">Start with a topic hub</h2>
@@ -1298,12 +1490,34 @@ const indexHtml = page(
 
 write("index.html", indexHtml);
 
-const searchIndex = tools.map((t) => ({
-  name: t.card,
-  desc: t.cardDesc,
-  href: canonicalFromFile(t.file),
-  cat: HUB_CATEGORIES.find((c) => c.id === t.category)?.title || t.category,
-}));
+/** Extra search terms: SEO keywords minus words already in the name/description. */
+function searchKeywords(t) {
+  const seen = new Set(`${t.card} ${t.cardDesc} ${t.title}`.toLowerCase().split(/[^a-z0-9]+/));
+  const raw = String(pageSeo[t.file]?.keywords || "").toLowerCase();
+  const words = [];
+  for (const w of raw.split(/[^a-z0-9]+/)) {
+    if (w.length < 3 || seen.has(w) || /^(free|online|tool|tools|india|calculator)$/.test(w)) continue;
+    seen.add(w);
+    words.push(w);
+  }
+  for (const w of t.title.toLowerCase().split(/[^a-z0-9]+/)) {
+    if (w.length >= 3 && !words.includes(w) && !`${t.card} ${t.cardDesc}`.toLowerCase().includes(w)) words.push(w);
+  }
+  return words.slice(0, 14).join(" ");
+}
+
+const searchIndex = tools.map((t) => {
+  const kw = searchKeywords(t);
+  const popIdx = POPULAR_TOOL_FILES.indexOf(t.file);
+  return {
+    name: t.card,
+    desc: t.cardDesc,
+    href: canonicalFromFile(t.file),
+    cat: HUB_CATEGORIES.find((c) => c.id === t.category)?.title || t.category,
+    ...(kw ? { kw } : {}),
+    ...(popIdx >= 0 ? { pop: POPULAR_TOOL_FILES.length - popIdx } : {}),
+  };
+});
 write("assets/tools-search.json", `${JSON.stringify(searchIndex)}\n`);
 
 function resolveSeo(file, toolOrGuide) {
@@ -1613,6 +1827,17 @@ const seedPaths = new Set([
   "/rent-receipt-generator/",
   "/personal-loan-calculator/",
   "/ltcg-tax-calculator/",
+  "/online-tests/",
+  "/scientific-calculator/",
+  "/spin-the-wheel/",
+  "/webcam-test/",
+  "/image-to-text/",
+  "/time-zone-converter/",
+  "/internet-speed-test/",
+  "/compress-pdf/",
+  "/reduce-image-size-in-kb/",
+  "/passport-size-photo/",
+  "/pdf-to-jpg/",
 ]);
 const sitemapSeedEntries = sitemapUnique.filter((e) => seedPaths.has(e.loc));
 write("sitemap-seed.xml", urlsetXml(sitemapSeedEntries));

@@ -17,8 +17,14 @@ function decodeXmlText(raw) {
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
-    .replace(/<[^>]+>/g, "")
+    .replace(/<\/li>/gi, " · ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (m, n) => String.fromCodePoint(parseInt(n, 16)))
     .replace(/\s+/g, " ")
+    .replace(/(?:\s*·\s*)+$/, "")
+    .replace(/\s+([,.;:!?])/g, "$1")
     .trim();
 }
 

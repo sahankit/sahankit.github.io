@@ -192,17 +192,53 @@ function defaultToolFaqs(card) {
   ];
 }
 
+function stripTags(s) {
+  return String(s ?? "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function joinList(items) {
+  if (items.length <= 1) return items.join("");
+  return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+/** Field labels and the main action button, read from a tool's markup. */
+function formSummary(body) {
+  const html = String(body ?? "");
+  const labels = [];
+  for (const m of html.matchAll(/<label[^>]*for="[^"]+"[^>]*>([\s\S]*?)<\/label>/g)) {
+    const text = stripTags(m[1]).replace(/[:：]\s*$/, "");
+    if (text && text.length <= 48 && !labels.includes(text)) labels.push(text);
+    if (labels.length >= 5) break;
+  }
+  const btn = html.match(/<button[^>]*class="primary"[^>]*>([\s\S]*?)<\/button>/);
+  const action = btn ? stripTags(btn[1]) : "";
+  return { labels, action: /^copy\b/i.test(action) ? "" : action };
+}
+
 function defaultHowTo(tool) {
   const name = tool.card;
+  const { labels, action } = formSummary(tool.body);
+  const hasFile = /type="file"/.test(tool.body || "");
+  const inputText = hasFile
+    ? "Choose a file from your device. It is processed locally and never uploaded to this site."
+    : labels.length
+      ? `Fill in ${joinList(labels.map((l) => `<em>${l}</em>`))}.`
+      : tool.desc;
+  const actionText = action
+    ? `Press <em>${action}</em>. Results update on the page${/calculat|estimat|convert/i.test(action) ? " and recalculate as you edit values" : ""}.`
+    : "The result updates on the page as you type.";
   return {
     name: `How to use the ${name}`,
     description: buildMetaDescription(tool.desc, name),
     steps: [
-      { name: "Open the tool", text: "Use the form or editor on this page—no download required." },
-      { name: "Enter your input", text: tool.cardDesc || tool.desc },
+      { name: "Enter your details", text: inputText },
+      { name: "Get the result", text: actionText },
       {
-        name: "Use the result",
-        text: "Copy, download, or apply the output. Processing usually happens locally in your browser.",
+        name: "Use or copy it",
+        text: "Copy or download the output. Nothing is stored—refresh the page to start over.",
       },
     ],
   };
@@ -218,6 +254,8 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
     base.keywords = `${key}, free ${key} online, ${key} tool, ${SITE_NAME}`;
   }
 
+  if (!base.howTo?.steps?.length) base.howTo = defaultHowTo(tool);
+
   if (!base.sections?.length) {
     base.sections = [
       {
@@ -225,16 +263,15 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
         paragraphs: [tool.desc, "Runs in your browser—no signup and no install."],
       },
     ];
-  } else if (base.sections.length === 1 && !(base.sections[0].paragraphs?.length > 1)) {
-    const extra =
-      tool.cardDesc && tool.cardDesc !== tool.desc
-        ? tool.cardDesc
-        : `Use the ${inSentence(card)} when you need a quick result without installing software.`;
+  }
+  const hasSteps = base.sections.some((s) => s.ordered || /^how to use/i.test(s.h2 || ""));
+  if (!hasSteps) {
     base.sections = [
       ...base.sections,
       {
-        h2: `Tips for ${inSentence(card)}`,
-        paragraphs: [extra],
+        h2: `How to use the ${inSentence(card)}`,
+        ordered: true,
+        list: base.howTo.steps.map((s) => `<strong>${s.name}.</strong> ${s.text}`),
       },
     ];
   }
@@ -264,8 +301,6 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
     base.related = merged;
   }
   base.related = base.related.map((r) => ({ ...r, href: normalizeHref(r.href) }));
-
-  if (!base.howTo?.steps?.length) base.howTo = defaultHowTo(tool);
 
   return base;
 }

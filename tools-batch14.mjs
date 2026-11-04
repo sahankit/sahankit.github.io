@@ -32,7 +32,7 @@ btn.onclick=async()=>{
   status.className='tool-feedback';
   status.textContent='Loading PDF…';
   try{
-    const pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/+esm');
+    const pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs');
     pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
     const { Document, Packer, Paragraph, TextRun, PageBreak }=await import('https://cdn.jsdelivr.net/npm/docx@9.5.1/+esm');
     const buf=await f.arrayBuffer();

@@ -428,31 +428,6 @@ document.getElementById('go').click();
 </script>`,
     },
     {
-      path: "/download-time-calculator.html",
-      file: "download-time-calculator.html",
-      category: "productivity",
-      title: "Download Time Calculator — File Size & Internet Speed",
-      desc: "Estimate download time from file size (MB) and connection speed (Mbps). Free download speed calculator.",
-      card: "Download time",
-      cardDesc: "Size + Mbps → time.",
-      body: `<h1>Download time calculator</h1>${ad}
-<div class="tool-panel">
-<label for="mb">File size (MB)</label><input id="mb" type="number" value="1500" />
-<label for="mbps">Speed (Mbps)</label><input id="mbps" type="number" value="50" />
-<button type="button" class="primary" id="go">Estimate</button>
-<p id="out" class="ok"></p>
-</div>
-<script>
-document.getElementById('go').onclick=()=>{
-  const bits=+document.getElementById('mb').value*8*1024*1024;
-  const sec=bits/(+document.getElementById('mbps').value*1000000);
-  const m=Math.floor(sec/60), s=Math.round(sec%60);
-  document.getElementById('out').textContent=(m?m+' min ':'')+s+' sec ('+sec.toFixed(0)+' seconds)';
-};
-document.getElementById('go').click();
-</script>`,
-    },
-    {
       path: "/htaccess-redirect-generator.html",
       file: "htaccess-redirect-generator.html",
       category: "developer",
