@@ -131,6 +131,8 @@ const pageSeo = {
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://sahankit.github.io";
+/** Cross-submitted sitemap. Search Console cannot fetch the copy on github.io. */
+const FIREBASE_SITEMAP_URL = "https://chatkaro-1754733802.web.app/sahankit-sitemap.xml";
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 /** CookieYes consent banner — load before analytics/ads (configure tags in CookieYes dashboard). */
 const COOKIEYES_SCRIPT = "https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js";
@@ -1809,6 +1811,10 @@ ${entries
 `;
 
 write("sitemap.xml", urlsetXml(sitemapUnique));
+const firebaseSitemapCopy = path.resolve(ROOT, "../../public/sahankit-sitemap.xml");
+if (fs.existsSync(path.dirname(firebaseSitemapCopy))) {
+  fs.copyFileSync(path.join(ROOT, "sitemap.xml"), firebaseSitemapCopy);
+}
 
 /** Small file for GSC — some *.github.io properties fail on the full sitemap fetch. */
 const seedPaths = new Set([
@@ -1870,6 +1876,7 @@ Allow: /
 Disallow: /404.html
 Disallow: /tools/
 
+Sitemap: ${FIREBASE_SITEMAP_URL}
 Sitemap: ${BASE}/sitemap-index.xml
 Sitemap: ${BASE}/sitemap-seed.xml
 Sitemap: ${BASE}/sitemap.xml

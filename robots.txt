@@ -3,6 +3,7 @@ Allow: /
 Disallow: /404.html
 Disallow: /tools/
 
+Sitemap: https://chatkaro-1754733802.web.app/sahankit-sitemap.xml
 Sitemap: https://sahankit.github.io/sitemap-index.xml
 Sitemap: https://sahankit.github.io/sitemap-seed.xml
 Sitemap: https://sahankit.github.io/sitemap.xml
