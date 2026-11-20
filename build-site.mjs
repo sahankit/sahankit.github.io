@@ -72,6 +72,8 @@ import { batch33Tools } from "./tools-batch33.mjs";
 import { batch33PageSeo } from "./seo-batch33.mjs";
 import { batch34Tools } from "./tools-batch34.mjs";
 import { batch34PageSeo } from "./seo-batch34.mjs";
+import { batch35Tools } from "./tools-batch35.mjs";
+import { batch35PageSeo } from "./seo-batch35.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -126,6 +128,7 @@ const pageSeo = {
   ...batch32PageSeo,
   ...batch33PageSeo,
   ...batch34PageSeo,
+  ...batch35PageSeo,
   ...sitePageSeo,
 };
 
@@ -1347,6 +1350,7 @@ document.getElementById('go').click();
   ...batch32Tools(ad),
   ...batch33Tools(ad),
   ...batch34Tools(ad),
+  ...batch35Tools(ad),
 ]);
 
 const guides = [
