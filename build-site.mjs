@@ -226,6 +226,8 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-adsense-account" content="ca-pub-5596933121293455" />
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5596933121293455" crossorigin="anonymous"></script>
   <meta name="robots" content="${robots}" />
   <meta name="author" content="${SITE_NAME}" />
   <meta name="theme-color" content="#720e9e" />
