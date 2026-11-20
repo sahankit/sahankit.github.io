@@ -1883,6 +1883,7 @@ Sitemap: ${BASE}/sitemap.xml
 `,
 );
 write(".nojekyll", "");
+write("CNAME", "thetoolhq.com\n");
 write("google34da527c15058477.html", "google-site-verification: google34da527c15058477.html\n");
 
 try {
