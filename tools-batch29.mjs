@@ -74,7 +74,7 @@ document.getElementById('go').onclick=async()=>{
   const prompt='Write exactly one SEO meta description for a web page. Maximum 155 characters. No quotes. Topic:\\n'+topic;
   await ChromeAi.runWriter({
     prompt,
-    context:'SEO meta description for sahankit.github.io style utility pages',
+    context:'SEO meta description for thetoolhq.com style utility pages',
     tone:'neutral',
     length:'short',
     statusEl:document.getElementById('status'),

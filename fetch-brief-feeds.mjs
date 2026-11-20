@@ -6,7 +6,7 @@ export const BRIEF_FEED_URLS = {
   business: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en",
 };
 
-const UA = "Tools-NewsBrief/1.0 (+https://sahankit.github.io/brief/)";
+const UA = "Tools-NewsBrief/1.0 (+https://thetoolhq.com/brief/)";
 
 function decodeXmlText(raw) {
   if (!raw) return "";

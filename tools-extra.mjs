@@ -13,7 +13,7 @@ export function extraTools(ad) {
 <h1>QR code generator</h1>${ad}
 <div class="tool-panel">
   <label for="txt">URL or text</label>
-  <input id="txt" type="url" placeholder="https://example.com" value="https://sahankit.github.io/" />
+  <input id="txt" type="url" placeholder="https://example.com" value="https://thetoolhq.com/" />
   <label for="size">Size (px)</label><input id="size" type="number" min="128" max="512" value="256" />
   <button type="button" class="primary" id="go">Generate</button>
   <div id="box" style="margin-top:16px"></div>

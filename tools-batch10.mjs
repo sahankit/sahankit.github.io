@@ -593,7 +593,7 @@ document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(docume
 <h1>Twitter / X intent link</h1>${ad}
 <div class="tool-panel">
   <label for="text">Tweet text</label><textarea id="text" rows="3">Check out this tool</textarea>
-  <label for="url">URL (optional)</label><input id="url" placeholder="https://sahankit.github.io/" />
+  <label for="url">URL (optional)</label><input id="url" placeholder="https://thetoolhq.com/" />
   <button type="button" class="primary" id="go">Generate</button>
   <input id="out" readonly spellcheck="false" />
   <button type="button" class="primary" id="copy">Copy</button>

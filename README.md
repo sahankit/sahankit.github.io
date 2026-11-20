@@ -1,8 +1,8 @@
 # sahankit.github.io — Tools hub
 
-Free calculators and writing tools at **https://sahankit.github.io/**
+Free calculators and writing tools at **https://thetoolhq.com/**
 
-- **Y-Chat:** https://sahankit.github.io/y-chat/ (separate repo `y-chat`)
+- **Y-Chat:** https://thetoolhq.com/y-chat/ (separate repo `y-chat`)
 - **AdSense:** `ads.txt`, `/assets/ads.json`, Auto ads via `/assets/ads.js`
 
 ## Regenerate HTML pages

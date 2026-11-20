@@ -1,7 +1,7 @@
 {
   "name": "sahankit.github.io",
   "version": "1.0.0",
-  "description": "Free calculators and writing tools at **https://sahankit.github.io/**",
+  "description": "Free calculators and writing tools at https://thetoolhq.com/",
   "main": "osint-username.core.js",
   "scripts": {
     "test": "node verify-site.mjs",

@@ -84,7 +84,7 @@ document.getElementById('go').click();
       body: `
 <h1>UTM link builder</h1>${ad}
 <div class="tool-panel">
-  <label for="url">Page URL</label><input id="url" type="url" value="https://sahankit.github.io/" />
+  <label for="url">Page URL</label><input id="url" type="url" value="https://thetoolhq.com/" />
   <label for="src">utm_source</label><input id="src" placeholder="newsletter" />
   <label for="med">utm_medium</label><input id="med" placeholder="email" />
   <label for="camp">utm_campaign</label><input id="camp" placeholder="launch" />

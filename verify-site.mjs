@@ -10,7 +10,7 @@ import { execSync } from "child_process";
 import { fileURLToPath } from "url";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const BASE = "https://sahankit.github.io";
+const BASE = "https://thetoolhq.com";
 
 const SKIP_LINK_PREFIXES = ["/y-chat/", "mailto:", "tel:", "javascript:", "#"];
 const OPTIONAL_PATHS = new Set(["/y-chat/"]);

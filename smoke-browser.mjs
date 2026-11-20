@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 import { startStaticServer } from "./test-http-server.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const BASE = "https://sahankit.github.io";
+const BASE = "https://thetoolhq.com";
 const PORT = 8765;
 
 async function main() {

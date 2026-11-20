@@ -12,7 +12,7 @@ export function batch23Tools(ad) {
       cardDesc: "Google snippet mockup.",
       body: `<h1>SERP snippet preview</h1>${ad}
 <div class="tool-panel">
-<label for="url">Display URL (optional)</label><input id="url" type="text" placeholder="sahankit.github.io › word-counter" />
+<label for="url">Display URL (optional)</label><input id="url" type="text" placeholder="thetoolhq.com › word-counter" />
 <label for="title">SEO title</label><input id="title" type="text" maxlength="120" placeholder="Free Word Counter — Count Words Online" />
 <label for="desc">Meta description</label><textarea id="desc" rows="3" maxlength="320" placeholder="Paste your meta description…"></textarea>
 <div class="brief-card" id="preview" style="margin-top:16px">

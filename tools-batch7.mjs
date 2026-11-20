@@ -13,7 +13,7 @@ export function batch7Tools(ad) {
 <h1>URL parser</h1>${ad}
 <div class="tool-panel">
   <label for="url">URL</label>
-  <input id="url" type="url" value="https://sahankit.github.io/word-counter/?ref=home" />
+  <input id="url" type="url" value="https://thetoolhq.com/word-counter/?ref=home" />
   <button type="button" class="primary" id="go">Parse</button>
   <pre id="out"></pre>
 </div>
