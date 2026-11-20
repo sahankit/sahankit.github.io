@@ -1,8 +1,8 @@
 /** SEO helpers used by build-site.mjs (meta escaping, canonicals, JSON-LD). */
 
 export const OG_IMAGE = "/assets/og.png";
-/** Site brand shown in header, meta, and JSON-LD. */
-export const SITE_NAME = "Tools";
+/** Site brand shown in header, meta, and JSON-LD. Matches thetoolhq.com. */
+export const SITE_NAME = "ToolHQ";
 
 /** Legal / publisher attribution (footer, about, schema.org). */
 export const SITE_PUBLISHER = {
@@ -31,11 +31,12 @@ export function canonicalFromFile(file) {
   return `/${slug}/`;
 }
 
-/** Consistent `<title>` / OG title: append brand when missing. */
+/** Consistent `<title>` / OG title: one brand suffix, matching the domain. */
 export function formatDocumentTitle(raw) {
-  const t = String(raw ?? "").trim();
+  let t = String(raw ?? "").trim();
   if (!t) return SITE_NAME;
-  if (/\|\s*Tools\s*$/i.test(t)) return t;
+  t = t.replace(/\s*[|—–-]\s*Tools\s*$/i, "").trim();
+  if (new RegExp(`\\|\\s*${SITE_NAME}\\s*$`, "i").test(t)) return t;
   return `${t} | ${SITE_NAME}`;
 }
 
@@ -58,8 +59,12 @@ export function webSiteLd(base) {
     publisher: {
       "@type": "Organization",
       name: SITE_PUBLISHER.company,
-      alternateName: [SITE_PUBLISHER.brand, SITE_NAME],
+      alternateName: ["The Tool HQ", SITE_NAME],
       url: `${base}/`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${base}/assets/apple-touch-icon.png`,
+      },
       address: {
         "@type": "PostalAddress",
         addressLocality: SITE_PUBLISHER.locality,

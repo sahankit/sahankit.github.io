@@ -307,6 +307,7 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
 }
 
 function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
+  title = formatDocumentTitle(title);
   const canonicalPath = opts.canonical || urlPath;
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1411,6 +1412,24 @@ function canonicalizeLinks(html) {
   );
 }
 
+/** Old /tool.html URLs stay reachable, but they are not a second copy of the page. */
+function redirectPage(targetPath) {
+  const url = `${BASE}${targetPath}`;
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="${url}" />
+<meta http-equiv="refresh" content="0;url=${targetPath}" />
+<title>Redirect | ${SITE_NAME}</title>
+<script>location.replace(${JSON.stringify(targetPath)});</script>
+</head>
+<body><p><a href="${targetPath}">Continue</a></p></body>
+</html>
+`;
+}
+
 function write(rel, content) {
   const full = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(full), { recursive: true });
@@ -1586,7 +1605,7 @@ for (const t of tools) {
     canonical,
     breadcrumbs: crumbs,
   };
-  write(t.file, page(t.path, title, desc, main, bc, opts));
+  write(t.file, redirectPage(canonical));
   write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, title, desc, main, bc, opts));
 }
 
@@ -1611,7 +1630,7 @@ for (const g of guides) {
   };
   const gTitle = formatDocumentTitle(g.title);
   const gDesc = buildMetaDescription(g.desc, g.title.split("—")[0].trim());
-  write(g.file, page(g.path, gTitle, gDesc, main, bc, opts));
+  write(g.file, redirectPage(canonical));
   write(`${g.file.replace(/\.html$/, "")}/index.html`, page(canonical, gTitle, gDesc, main, bc, opts));
 }
 
@@ -1877,6 +1896,9 @@ Sitemap: ${BASE}/sitemap.xml
 );
 write(".nojekyll", "");
 write("CNAME", "thetoolhq.com\n");
+/** Stable IndexNow key so Bing can be notified when URLs change. https://www.indexnow.org/documentation */
+const INDEXNOW_KEY = "7f3c1a9e4b28d650c1e8a4f27b9d03c6";
+write(`${INDEXNOW_KEY}.txt`, `${INDEXNOW_KEY}\n`);
 write("google34da527c15058477.html", "google-site-verification: google34da527c15058477.html\n");
 
 try {
