@@ -17,6 +17,7 @@ export function batch40Tools(ad) {
 <label for="chess-mode">Mode</label>
 <select id="chess-mode"><option value="human">Two players (same screen)</option><option value="cpu">You (White) vs computer</option></select>
 <p id="chess-status" class="tool-feedback" role="status">White to move</p>
+<p id="chess-hint" class="tool-hint">Tap your piece, then tap a green square to move.</p>
 <div id="chess-board" class="chess-board" role="grid" aria-label="Chess board"></div>
 <button type="button" class="primary" id="chess-new">New game</button>
 <button type="button" id="chess-flip">Flip board</button>
@@ -26,10 +27,10 @@ export function batch40Tools(ad) {
 .chess-board .sq{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:clamp(1.4rem,6vw,2.4rem);cursor:pointer;border:none;padding:0;line-height:1}
 .chess-board .sq.light{background:#f0d9b5}
 .chess-board .sq.dark{background:#b58863}
-.chess-board .sq.sel{box-shadow:inset 0 0 0 3px #720e9e}
-.chess-board .sq.dot{position:relative}
-.chess-board .sq.dot::after{content:'';width:28%;height:28%;border-radius:50%;background:rgba(114,14,158,0.55)}
-.chess-board .sq.cap::after{content:'';position:absolute;inset:6%;border-radius:50%;border:3px solid rgba(114,14,158,0.65)}
+.chess-board .sq.sel{box-shadow:inset 0 0 0 3px #1b5e20;background:#c8e6c9 !important}
+.chess-board .sq.legal{background:rgba(76,175,80,0.45) !important}
+.chess-board .sq.cap{background:rgba(244,67,54,0.35) !important}
+.chess-board .sq.dot::after{content:'';position:absolute;width:22%;height:22%;border-radius:50%;background:#2e7d32;opacity:0.85}
 .chess-board .sq.check{box-shadow:inset 0 0 0 3px #c62828}
 .chess-board .sq{position:relative}
 </style>
@@ -40,8 +41,9 @@ export function batch40Tools(ad) {
   const START=['rnbqkbnr','pppppppp','........','........','........','........','PPPPPPPP','RNBQKBNR'].map(function(r){return r.split('');});
   const boardEl=document.getElementById('chess-board');
   const statusEl=document.getElementById('chess-status');
+  const hintEl=document.getElementById('chess-hint');
   const modeEl=document.getElementById('chess-mode');
-  let board, whiteTurn, castling, epSquare, sel, targets, gameOver, flipped, vsCpu, movedOnce, cpuBusy;
+  var board, whiteTurn, castling, epSquare, sel, targets, gameOver, flipped, vsCpu, movedOnce, cpuBusy;
 
   function isW(p){ return p>='A'&&p<='Z'; }
   function isB(p){ return p>='a'&&p<='z'; }
@@ -136,13 +138,13 @@ export function batch40Tools(ad) {
           if(empty(tgt)||(white?isB(tgt):isW(tgt))) add(r,c,nr,nc,null);
         }
         if(cast){
-          if(white&&castling.K&&r===7&&c===4&&empty(b[7][5])&&empty(b[7][6])&&b[7][7]==='R'&&!inCheck(b,true,ep))
+          if(white&&cast.K&&r===7&&c===4&&empty(b[7][5])&&empty(b[7][6])&&b[7][7]==='R'&&!inCheck(b,true,ep))
             add(7,4,7,6,{castle:'K'});
-          if(white&&castling.Q&&r===7&&c===4&&empty(b[7][1])&&empty(b[7][2])&&empty(b[7][3])&&b[7][0]==='R'&&!inCheck(b,true,ep))
+          if(white&&cast.Q&&r===7&&c===4&&empty(b[7][1])&&empty(b[7][2])&&empty(b[7][3])&&b[7][0]==='R'&&!inCheck(b,true,ep))
             add(7,4,7,2,{castle:'Q'});
-          if(!white&&castling.k&&r===0&&c===4&&empty(b[0][5])&&empty(b[0][6])&&b[0][7]==='r'&&!inCheck(b,false,ep))
+          if(!white&&cast.k&&r===0&&c===4&&empty(b[0][5])&&empty(b[0][6])&&b[0][7]==='r'&&!inCheck(b,false,ep))
             add(0,4,0,6,{castle:'k'});
-          if(!white&&castling.q&&r===0&&c===4&&empty(b[0][1])&&empty(b[0][2])&&empty(b[0][3])&&b[0][0]==='r'&&!inCheck(b,false,ep))
+          if(!white&&cast.q&&r===0&&c===4&&empty(b[0][1])&&empty(b[0][2])&&empty(b[0][3])&&b[0][0]==='r'&&!inCheck(b,false,ep))
             add(0,4,0,2,{castle:'q'});
         }
       } else {
@@ -215,48 +217,39 @@ export function batch40Tools(ad) {
     return nc;
   }
 
-  function statusText(){
-    const white=whiteTurn;
-    const moves=legalMoves(board,white,epSquare,castling);
-    const chk=inCheck(board,white,epSquare);
+  function statusLine(){
+    var white=whiteTurn;
+    var moves=legalMoves(board,white,epSquare,castling);
+    var chk=inCheck(board,white,epSquare);
+    if(gameOver){
+      return statusEl.textContent;
+    }
     if(!moves.length){
-      gameOver=true;
       return chk?(white?'Checkmate. Black wins.':'Checkmate. White wins.'):'Stalemate. Draw.';
     }
-    let t=white?'White':'Black';
+    var t=white?'White':'Black';
     t+=' to move';
     if(chk) t+=' — check!';
+    if(vsCpu&&white) t+=' (you are White)';
     return t;
   }
 
-  function pickCpuMove(){
-    const moves=legalMoves(board,false,epSquare,castling);
-    if(!moves.length) return null;
-    let best=null, bestSc=-1e9;
-    for(const m of moves){
-      const {board:nb}=applyMove(board,m,false);
-      const reply=legalMoves(nb,true,null,castling);
-      let sc=Math.random()*0.1;
-      const cap=board[m.tr][m.tc];
-      if(!empty(cap)) sc+=VAL[cap]||0;
-      if(m.extra&&m.extra.promo) sc+=8;
-      let worst=1e9;
-      for(const r of reply){
-        const {board:nb2}=applyMove(nb,r,true);
-        const tr=legalMoves(nb2,false,null,castling);
-        let s=0;
-        for(let i=0;i<8;i++) for(let j=0;j<8;j++){
-          const p=nb2[i][j];
-          if(isB(p)) s+=(VAL[p]||0);
-          if(isW(p)) s-=(VAL[p]||0);
-        }
-        if(tr.length===0&&inCheck(nb2,false,null)) s+=500;
-        worst=Math.min(worst,s);
-      }
-      sc+=worst*-0.02;
-      if(sc>bestSc){ bestSc=sc; best=m; }
+  function endIfNeeded(){
+    var moves=legalMoves(board,whiteTurn,epSquare,castling);
+  var chk=inCheck(board,whiteTurn,epSquare);
+    if(!moves.length){
+      gameOver=true;
+      statusEl.textContent=chk?(whiteTurn?'Checkmate. Black wins.':'Checkmate. White wins.'):'Stalemate. Draw.';
+      hintEl.textContent='Press New game to play again.';
     }
-    return best||moves[Math.floor(Math.random()*moves.length)];
+  }
+
+  function pickCpuMove(){
+    var moves=legalMoves(board,false,epSquare,castling);
+    if(!moves.length) return null;
+    var captures=moves.filter(function(m){ return !empty(board[m.tr][m.tc]); });
+    var pool=captures.length?captures:moves;
+    return pool[Math.floor(Math.random()*pool.length)];
   }
 
   function render(){
@@ -275,48 +268,56 @@ export function batch40Tools(ad) {
         if(!empty(p)) btn.textContent=SYM[p]||p;
         if(sel&&sel[0]===r&&sel[1]===c) btn.classList.add('sel');
         if(kPos&&chk&&kPos[0]===r&&kPos[1]===c) btn.classList.add('check');
-        const isT=targets.some(function(t){return t.tr===r&&t.tc===c;});
+        var isT=targets.some(function(t){return t.tr===r&&t.tc===c;});
         if(isT){
-          const cap=!empty(board[r][c]);
-          btn.classList.add(cap?'cap':'dot');
+          if(empty(board[r][c])){ btn.classList.add('legal'); btn.classList.add('dot'); }
+          else btn.classList.add('cap');
         }
-        (function(rr,cc){
-          btn.onclick=function(){ onSq(rr,cc); };
-        })(r,c);
+        btn.dataset.r=String(r);
+        btn.dataset.c=String(c);
+        btn.addEventListener('click',function(ev){ ev.preventDefault(); onSq(r,c); });
         boardEl.appendChild(btn);
       }
     }
-    statusEl.textContent=gameOver?statusText():statusText();
+    statusEl.textContent=statusLine();
+    if(sel&&targets.length) hintEl.textContent='Tap a green square to move ('+targets.length+' options).';
+    else if(vsCpu&&!whiteTurn&&cpuBusy) hintEl.textContent='Computer is thinking…';
+    else if(!gameOver) hintEl.textContent=vsCpu&&whiteTurn?'You are White — tap a piece, then a green square.':'Tap your piece, then a green square.';
   }
 
   function finishMove(m){
-    const {board:nb,ep:nep}=applyMove(board,m,whiteTurn);
-    board=nb;
-    epSquare=nep;
+    var applied=applyMove(board,m,whiteTurn);
+    board=applied.board;
+    epSquare=applied.ep;
     castling=updateCastling(m,castling);
     whiteTurn=!whiteTurn;
     sel=null; targets=[];
     if(!movedOnce){ movedOnce=true; ${done} }
+    endIfNeeded();
     render();
     if(gameOver) return;
-    if(vsCpu&&whiteTurn===false&&!gameOver){
+    if(vsCpu&&whiteTurn===false){
       cpuBusy=true;
+      statusEl.textContent='Computer thinking…';
+      hintEl.textContent='';
       setTimeout(function(){
-        const cm=pickCpuMove();
+        var cm=pickCpuMove();
         cpuBusy=false;
         if(cm) finishMove(cm);
         else render();
-      },250);
+      },120);
     }
   }
 
   function onSq(r,c){
     if(gameOver||cpuBusy) return;
-    if(vsCpu&&!whiteTurn) return;
+    if(vsCpu&&whiteTurn===false) return;
     const p=board[r][c];
     if(sel){
-      const m=targets.find(function(t){return t.tr===r&&t.tc===c;});
-      if(m){ finishMove(m); return; }
+      var mv=null;
+      for(var i=0;i<targets.length;i++){ if(targets[i].tr===r&&targets[i].tc===c){ mv=targets[i]; break; } }
+      if(mv){ finishMove(mv); return; }
+      if(sel[0]===r&&sel[1]===c){ sel=null; targets=[]; render(); return; }
     }
     if(!empty(p)&&(whiteTurn?isW(p):isB(p))){
       sel=[r,c];
@@ -339,6 +340,7 @@ export function batch40Tools(ad) {
     movedOnce=false;
     cpuBusy=false;
     statusEl.textContent='White to move';
+    hintEl.textContent=vsCpu?'You play White. Tap a pawn or piece to start.':'Tap your piece, then a green square.';
     render();
   }
 
