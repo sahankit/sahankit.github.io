@@ -92,6 +92,15 @@ import { batch43Tools } from "./tools-batch43.mjs";
 import { batch43PageSeo } from "./seo-batch43.mjs";
 import { batch44Tools } from "./tools-batch44.mjs";
 import { batch44PageSeo } from "./seo-batch44.mjs";
+import { GAME_PLAY_HINTS } from "./game-hints.mjs";
+
+const GAME_HINT_ACTION_FILES = new Set([
+  "sudoku-game.html",
+  "wordle-game.html",
+  "hangman-game.html",
+  "minesweeper-game.html",
+  "tic-tac-toe.html",
+]);
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -213,6 +222,7 @@ function navHtml(isHome = false, locale = DEFAULT_LOCALE) {
       <a href="/finance/">${t(locale, "finance")}</a>
       <a href="/india/">${t(locale, "india")}</a>
       <a href="/eu/">${t(locale, "europe")}</a>
+      <a href="/health/">${t(locale, "health")}</a>
       <a href="/dev/">${t(locale, "developer")}</a>
       <a href="/design/">${t(locale, "design")}</a>
       <a href="/games/">${t(locale, "games")}</a>
@@ -1699,9 +1709,24 @@ function pageTitleDesc(file, entity) {
   };
 }
 
+function injectGamePanelHints(body, file, category) {
+  if (category !== "games") return body;
+  if (file === "chess-game.html") {
+    return body.replace("<div class=\"tool-panel\">", '<div class="tool-panel game-panel" data-game-hints="custom">');
+  }
+  const hint = GAME_PLAY_HINTS[file];
+  const action = GAME_HINT_ACTION_FILES.has(file) ? ' data-game-hint-action="1"' : "";
+  if (!hint) return body.replace("<div class=\"tool-panel\">", `<div class="tool-panel game-panel"${action}>`);
+  return body.replace(
+    "<div class=\"tool-panel\">",
+    `<div class="tool-panel game-panel" data-game-hint="${escapeMeta(hint)}"${action}>`,
+  );
+}
+
 function fullMain(file, entity) {
   const seo = resolveSeo(file, entity);
   let body = entity.body;
+  if (entity.category === "games") body = injectGamePanelHints(body, file, entity.category);
   if (entity.card && entity.category) body = normalizeToolBody(body, entity);
   if (!entity.card) return body + (seo ? renderSeoHtml(seo) : "");
   body = ensureToolAds(body);
@@ -1969,6 +1994,7 @@ const seedPaths = new Set([
   "/vat-calculator/",
   "/uk-stamp-duty-calculator/",
   "/uk-take-home-pay-calculator/",
+  "/health/",
   "/calorie-calculator/",
   "/bmr-calculator/",
   "/margin-calculator/",

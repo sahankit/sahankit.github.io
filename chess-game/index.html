@@ -57,6 +57,7 @@
       <a href="/finance/">Finance</a>
       <a href="/india/">India</a>
       <a href="/eu/">Europe</a>
+      <a href="/health/">Health</a>
       <a href="/dev/">Developer</a>
       <a href="/design/">PDF & images</a>
       <a href="/games/">Games</a>
@@ -78,11 +79,14 @@
 <main class="wrap" id="main">
 <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/games/">Free online games</a></li><li aria-current="page">Chess game</li></ol></nav>
 <header class="page-hero"><a class="eyebrow tone-indigo" href="/games/"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><path d="M17 6H7a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V10a4 4 0 0 0-4-4Z"/></svg>Free online games</a><h1>Chess game</h1><p class="page-lead">Play chess in your browser. Standard rules: castling, en passant, pawn promotion, check and checkmate. Two players on one device or vs a simple computer.</p></header><aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>
-<div class="tool-panel">
+<div class="tool-panel game-panel" data-game-hints="custom">
 <label for="chess-mode">Mode</label>
 <select id="chess-mode"><option value="human">Two players (same screen)</option><option value="cpu">You (White) vs computer</option></select>
 <p id="chess-status" class="tool-feedback" role="status">White to move</p>
-<p id="chess-hint" class="tool-hint">Tap your piece, then tap a green square to move.</p>
+<div class="game-hint-bar">
+<button type="button" class="game-hint-btn" id="chess-hint-btn" aria-expanded="false">Hint</button>
+<p id="chess-hint" class="tool-hint game-hint-reveal" hidden role="status"></p>
+</div>
 <div id="chess-board" class="chess-board" role="grid" aria-label="Chess board"></div>
 <button type="button" class="primary" id="chess-new">New game</button>
 <button type="button" id="chess-flip">Flip board</button>
@@ -98,6 +102,7 @@
 .chess-board .sq.dot::after{content:'';position:absolute;width:22%;height:22%;border-radius:50%;background:#2e7d32;opacity:0.85}
 .chess-board .sq.check{box-shadow:inset 0 0 0 3px #c62828}
 .chess-board .sq{position:relative}
+.chess-board .sq.hint-move{background:rgba(33,150,243,0.4)!important}
 </style>
 <script>
 (function(){
@@ -305,7 +310,6 @@
     if(!moves.length){
       gameOver=true;
       statusEl.textContent=chk?(whiteTurn?'Checkmate. Black wins.':'Checkmate. White wins.'):'Stalemate. Draw.';
-      hintEl.textContent='Press New game to play again.';
     }
   }
 
@@ -315,6 +319,64 @@
     var captures=moves.filter(function(m){ return !empty(board[m.tr][m.tc]); });
     var pool=captures.length?captures:moves;
     return pool[Math.floor(Math.random()*pool.length)];
+  }
+
+  function sqName(r,c){ return String.fromCharCode(97+c)+(8-r); }
+
+  function scoreMove(m,white){
+    var score=0;
+    if(!empty(board[m.tr][m.tc])) score+=VAL[board[m.tr][m.tc]]||1;
+    var applied=applyMove(cloneB(board),m,white);
+    if(inCheck(applied.board,!white,epSquare)) score+=2;
+    return score;
+  }
+
+  function pickHintMove(){
+    var white=whiteTurn;
+    if(vsCpu&&whiteTurn===false) return null;
+    var moves=legalMoves(board,white,epSquare,castling);
+    if(!moves.length) return null;
+    var best=moves[0], bestS=-1;
+    for(var i=0;i<moves.length;i++){
+      var s=scoreMove(moves[i],white);
+      if(s>bestS){ bestS=s; best=moves[i]; }
+    }
+    return best;
+  }
+
+  var hintMove=null;
+
+  function showChessHint(){
+    if(gameOver){
+      hintEl.textContent='Start a new game with New game.';
+      hintEl.hidden=false;
+      document.getElementById('chess-hint-btn').setAttribute('aria-expanded','true');
+      return;
+    }
+    if(cpuBusy){
+      hintEl.textContent='Wait for the computer to finish its move.';
+      hintEl.hidden=false;
+      return;
+    }
+    if(vsCpu&&whiteTurn===false){
+      hintEl.textContent="Wait — it is the computer's turn.";
+      hintEl.hidden=false;
+      return;
+    }
+    var m=pickHintMove();
+    if(!m){
+      hintEl.textContent='No legal moves right now.';
+      hintEl.hidden=false;
+      return;
+    }
+    hintMove=m;
+    sel=[m.fr,m.fc];
+    targets=[m];
+    var p=board[m.fr][m.fc];
+    hintEl.textContent='Hint: try '+p+' from '+sqName(m.fr,m.fc)+' to '+sqName(m.tr,m.tc)+'.';
+    hintEl.hidden=false;
+    document.getElementById('chess-hint-btn').setAttribute('aria-expanded','true');
+    render();
   }
 
   function render(){
@@ -334,6 +396,7 @@
         if(sel&&sel[0]===r&&sel[1]===c) btn.classList.add('sel');
         if(kPos&&chk&&kPos[0]===r&&kPos[1]===c) btn.classList.add('check');
         var isT=targets.some(function(t){return t.tr===r&&t.tc===c;});
+        if(hintMove&&hintMove.tr===r&&hintMove.tc===c) btn.classList.add('hint-move');
         if(isT){
           if(empty(board[r][c])){ btn.classList.add('legal'); btn.classList.add('dot'); }
           else btn.classList.add('cap');
@@ -345,9 +408,6 @@
       }
     }
     statusEl.textContent=statusLine();
-    if(sel&&targets.length) hintEl.textContent='Tap a green square to move ('+targets.length+' options).';
-    else if(vsCpu&&!whiteTurn&&cpuBusy) hintEl.textContent='Computer is thinking…';
-    else if(!gameOver) hintEl.textContent=vsCpu&&whiteTurn?'You are White — tap a piece, then a green square.':'Tap your piece, then a green square.';
   }
 
   function finishMove(m){
@@ -356,7 +416,7 @@
     epSquare=applied.ep;
     castling=updateCastling(m,castling);
     whiteTurn=!whiteTurn;
-    sel=null; targets=[];
+    sel=null; targets=[]; hintMove=null; hintEl.hidden=true;
     if(!movedOnce){ movedOnce=true; window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete')); }
     endIfNeeded();
     render();
@@ -364,7 +424,7 @@
     if(vsCpu&&whiteTurn===false){
       cpuBusy=true;
       statusEl.textContent='Computer thinking…';
-      hintEl.textContent='';
+      hintEl.hidden=true;
       setTimeout(function(){
         var cm=pickCpuMove();
         cpuBusy=false;
@@ -377,6 +437,8 @@
   function onSq(r,c){
     if(gameOver||cpuBusy) return;
     if(vsCpu&&whiteTurn===false) return;
+    hintEl.hidden=true;
+    hintMove=null;
     const p=board[r][c];
     if(sel){
       var mv=null;
@@ -405,10 +467,13 @@
     movedOnce=false;
     cpuBusy=false;
     statusEl.textContent='White to move';
-    hintEl.textContent=vsCpu?'You play White. Tap a pawn or piece to start.':'Tap your piece, then a green square.';
+    hintEl.hidden=true;
+    hintEl.textContent='';
+    hintMove=null;
     render();
   }
 
+  document.getElementById('chess-hint-btn').onclick=showChessHint;
   document.getElementById('chess-new').onclick=reset;
   document.getElementById('chess-flip').onclick=function(){ flipped=!flipped; render(); };
   modeEl.onchange=reset;
@@ -426,10 +491,10 @@
   <div class="site-footer-inner">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="ToolHQ home"><span class="brand-mark" aria-hidden="true">T</span><span>ToolHQ</span></a>
-      <p>548+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
+      <p>562+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
     </div>
     <nav class="footer-col" aria-label="Popular tools"><h2>Popular</h2><ul><li><a href="/word-counter/">Word counter</a></li><li><a href="/income-tax-calculator/">Income tax calculator</a></li><li><a href="/gst-calculator/">GST calculator</a></li><li><a href="/emi-calculator/">EMI calculator</a></li><li><a href="/pdf-merge/">Merge PDF</a></li><li><a href="/qr-code-generator/">QR code generator</a></li></ul></nav>
-    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/eu/">Europe calculators</a></li><li><a href="/security/">Security & crypto tools</a></li><li><a href="/design/">Design & media</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/health/">Health calculators</a></li><li><a href="/eu/">Europe calculators</a></li><li><a href="/security/">Security & crypto tools</a></li></ul></nav>
     <nav class="footer-col" aria-label="Site"><h2>Site</h2><ul><li><a href="/guides/writing-tools/">Guides</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy policy</a></li><li><a href="/languages/">Languages</a></li><li><a href="/y-chat/">Y-Chat</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></nav>
   </div>
   <p class="footer-owner">Site owned by Useless engineer · Sah Technologies · Bangalore</p>

@@ -398,6 +398,53 @@
     });
   });
 
+  /** Games: Hint button shows how-to or dispatches game:hint for puzzle help. */
+  document.querySelectorAll("main .tool-panel.game-panel:not([data-game-hints='custom'])").forEach((panel) => {
+    if (panel.dataset.gameHintReady === "1") return;
+    panel.dataset.gameHintReady = "1";
+    if (panel.querySelector(".game-hint-bar")) return;
+
+    const text = panel.getAttribute("data-game-hint") || "";
+    const hasAction = panel.hasAttribute("data-game-hint-action");
+    const bar = document.createElement("div");
+    bar.className = "game-hint-bar";
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "game-hint-btn";
+    btn.textContent = "Hint";
+    btn.setAttribute("aria-expanded", "false");
+    const reveal = document.createElement("p");
+    reveal.className = "tool-hint game-hint-reveal";
+    reveal.hidden = true;
+    if (text) reveal.textContent = text;
+
+    btn.addEventListener("click", () => {
+      if (hasAction) {
+        panel.dispatchEvent(new CustomEvent("game:hint", { bubbles: false }));
+      }
+      if (text) {
+        const show = reveal.hidden;
+        reveal.hidden = !show;
+        btn.textContent = show ? "Hide hint" : "Hint";
+        btn.setAttribute("aria-expanded", show ? "true" : "false");
+      } else if (!hasAction) {
+        panel.dispatchEvent(new CustomEvent("game:hint", { bubbles: false }));
+      }
+    });
+
+    bar.appendChild(btn);
+    if (text) bar.appendChild(reveal);
+    const board = panel.querySelector(
+      ".chess-board, .game-2048, canvas, .ttt-board, .su-grid, #wl-rows, .mg-board, .ms-grid, .c4-board, .c4-drop",
+    );
+    if (board && board.parentNode === panel) {
+      panel.insertBefore(bar, board);
+    } else {
+      const primary = panel.querySelector("button.primary");
+      panel.insertBefore(bar, primary || panel.firstChild);
+    }
+  });
+
   /* Copy buttons for read-only results that lack one. */
   async function copyText(text) {
     try {

@@ -57,6 +57,7 @@
       <a href="/finance/">Finance</a>
       <a href="/india/">India</a>
       <a href="/eu/">Europe</a>
+      <a href="/health/">Health</a>
       <a href="/dev/">Developer</a>
       <a href="/design/">PDF & images</a>
       <a href="/games/">Games</a>
@@ -78,7 +79,7 @@
 <main class="wrap" id="main">
 <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/games/">Free online games</a></li><li aria-current="page">Sudoku game</li></ol></nav>
 <header class="page-hero"><a class="eyebrow tone-indigo" href="/games/"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><path d="M17 6H7a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V10a4 4 0 0 0-4-4Z"/></svg>Free online games</a><h1>Sudoku game</h1><p class="page-lead">Play Sudoku in the browser. Fill the grid so each row, column and 3×3 box has digits 1–9 once.</p></header><aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>
-<div class="tool-panel">
+<div class="tool-panel game-panel" data-game-hint="Each row, column, and 3×3 box must contain 1–9 once. Tap Hint to reveal one correct cell, or Check when you think you are done." data-game-hint-action="1">
 <div id="su" class="su-grid"></div>
 <button type="button" class="primary" id="su-check">Check</button>
 <button type="button" id="su-new">New puzzle</button>
@@ -111,6 +112,15 @@
     else msg.textContent=ok?'No conflicts so far, but not finished.':'Some cells are wrong.';
   };
   document.getElementById('su-new').onclick=function(){ msg.textContent=''; render(); };
+  document.querySelector('.tool-panel.game-panel')?.addEventListener('game:hint',function(){
+    const inputs=[...box.querySelectorAll('input')];
+    const empty=inputs.filter(i=>!i.classList.contains('fixed')&&(!i.value||Number(i.value)!==solution[Number(i.dataset.i)]));
+    if(!empty.length){ msg.textContent='No empty cells — tap Check.'; return; }
+    const pick=empty[Math.floor(Math.random()*empty.length)];
+  const i=Number(pick.dataset.i);
+  pick.value=String(solution[i]);
+    msg.textContent='Hint: filled one correct cell.';
+  });
   render();
 })();
 </script>
@@ -125,10 +135,10 @@
   <div class="site-footer-inner">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="ToolHQ home"><span class="brand-mark" aria-hidden="true">T</span><span>ToolHQ</span></a>
-      <p>548+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
+      <p>562+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
     </div>
     <nav class="footer-col" aria-label="Popular tools"><h2>Popular</h2><ul><li><a href="/word-counter/">Word counter</a></li><li><a href="/income-tax-calculator/">Income tax calculator</a></li><li><a href="/gst-calculator/">GST calculator</a></li><li><a href="/emi-calculator/">EMI calculator</a></li><li><a href="/pdf-merge/">Merge PDF</a></li><li><a href="/qr-code-generator/">QR code generator</a></li></ul></nav>
-    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/eu/">Europe calculators</a></li><li><a href="/security/">Security & crypto tools</a></li><li><a href="/design/">Design & media</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/health/">Health calculators</a></li><li><a href="/eu/">Europe calculators</a></li><li><a href="/security/">Security & crypto tools</a></li></ul></nav>
     <nav class="footer-col" aria-label="Site"><h2>Site</h2><ul><li><a href="/guides/writing-tools/">Guides</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy policy</a></li><li><a href="/languages/">Languages</a></li><li><a href="/y-chat/">Y-Chat</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></nav>
   </div>
   <p class="footer-owner">Site owned by Useless engineer · Sah Technologies · Bangalore</p>

@@ -52,6 +52,7 @@ export const HUB_ICON = {
   quiz: ["help", "green"],
   india: ["rupee", "orange"],
   eu: ["calculator", "blue"],
+  health: ["shield", "teal"],
   design: ["palette", "pink"],
   security: ["shield", "slate"],
   "online-tests": ["monitor", "teal"],

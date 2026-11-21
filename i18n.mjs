@@ -45,6 +45,7 @@ const STR = {
     finance: "Finance",
     india: "India",
     europe: "Europe",
+    health: "Health",
     developer: "Developer",
     design: "PDF & images",
     games: "Games",

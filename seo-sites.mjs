@@ -59,6 +59,23 @@ export const sitePageSeo = {
       { href: "/seo-lab/", label: "SEO lab" },
     ],
   },
+  "health/index.html": {
+    keywords: "health calculator hub, calorie bmr bmi tdee pregnancy",
+    sections: [
+      {
+        h2: "Calories, weight, and pregnancy tools",
+        paragraphs: [
+          "Maintenance calories, basal metabolic rate, BMI, body fat, TDEE, deficit planning, and pregnancy due date—plus walking and running calorie estimates.",
+        ],
+      },
+    ],
+    faqs: [{ q: "Which calculator for weight loss calories?", a: "Start with the calorie calculator or TDEE, then use calorie deficit for a target." }],
+    related: [
+      { href: "/calorie-calculator/", label: "Calorie calculator" },
+      { href: "/bmi-calculator/", label: "BMI" },
+      { href: "/bmr-calculator/", label: "BMR" },
+    ],
+  },
   "eu/index.html": {
     keywords: "eu vat calculator hub, uk stamp duty mortgage, europe tax calculator",
     sections: [

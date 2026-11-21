@@ -16,7 +16,6 @@ export function batch37Tools(ad) {
 <div class="tool-panel">
 <p id="score">Score: 0</p>
 <div id="board" class="game-2048" tabindex="0" aria-label="2048 board" role="application"></div>
-<p class="prose" style="font-size:0.85rem">Arrow keys or swipe. Press R to restart.</p>
 <button type="button" class="primary" id="reset">New game</button>
 <p id="msg" class="tool-feedback" role="status"></p>
 </div>
@@ -269,8 +268,24 @@ export function batch37Tools(ad) {
       board.appendChild(btn);
     }
   }
+  function hintMove(){
+    if(over||!human) return;
+    const empty=cells.map((v,i)=>v?null:i).filter(i=>i!==null);
+    for(const i of empty){
+      cells[i]='X';
+      if(winner(cells)==='X'){ cells[i]=''; status.textContent='Hint: play square '+(i+1)+' to win.'; render(); return; }
+      cells[i]='';
+    }
+    for(const i of empty){
+      cells[i]='O';
+      if(winner(cells)==='O'){ cells[i]=''; status.textContent='Hint: block square '+(i+1)+'.'; render(); return; }
+      cells[i]='';
+    }
+    status.textContent='Hint: centre (square 5) is often strong.';
+  }
   function reset(){ cells=Array(9).fill(''); over=false; human=true; status.textContent='Your turn (X)'; render(); }
   document.getElementById('ttt-new').onclick=reset;
+  document.querySelector('.tool-panel.game-panel')?.addEventListener('game:hint',hintMove);
   reset();
 })();
 </script>`,
@@ -317,6 +332,15 @@ export function batch37Tools(ad) {
     else msg.textContent=ok?'No conflicts so far, but not finished.':'Some cells are wrong.';
   };
   document.getElementById('su-new').onclick=function(){ msg.textContent=''; render(); };
+  document.querySelector('.tool-panel.game-panel')?.addEventListener('game:hint',function(){
+    const inputs=[...box.querySelectorAll('input')];
+    const empty=inputs.filter(i=>!i.classList.contains('fixed')&&(!i.value||Number(i.value)!==solution[Number(i.dataset.i)]));
+    if(!empty.length){ msg.textContent='No empty cells — tap Check.'; return; }
+    const pick=empty[Math.floor(Math.random()*empty.length)];
+  const i=Number(pick.dataset.i);
+  pick.value=String(solution[i]);
+    msg.textContent='Hint: filled one correct cell.';
+  });
   render();
 })();
 </script>`,
@@ -387,6 +411,13 @@ export function batch37Tools(ad) {
   document.getElementById('wl-go').onclick=guess;
   document.getElementById('wl-in').addEventListener('keydown',function(e){ if(e.key==='Enter') guess(); });
   document.getElementById('wl-new').onclick=reset;
+  document.querySelector('.tool-panel.game-panel')?.addEventListener('game:hint',function(){
+    if(over) return;
+    const pos=Math.min(guesses,4);
+    const ch=answer[pos];
+    if(!ch){ msg.textContent='Hint: try common vowels A, E, I, O, U.'; return; }
+    msg.textContent='Hint: letter in position '+(pos+1)+' is '+ch+'.';
+  });
   reset();
 })();
 </script>`,
@@ -500,6 +531,16 @@ export function batch37Tools(ad) {
     renderWord(); buildKeys();
   }
   document.getElementById('hm-new').onclick=reset;
+  document.querySelector('.tool-panel.game-panel')?.addEventListener('game:hint',function(){
+    if(over) return;
+    const missing=[...new Set(word.split('').filter(ch=>!guessed.has(ch)))];
+    if(!missing.length){ msg.textContent='All letters found.'; return; }
+    const L=missing[Math.floor(Math.random()*missing.length)];
+    guessed.add(L);
+    msg.textContent='Hint: the word has '+L+'.';
+    renderWord(); buildKeys();
+    if(word.split('').every(ch=>guessed.has(ch))){ over=true; msg.textContent='You won!'; buildKeys(); }
+  });
   reset();
 })();
 </script>`,
@@ -589,8 +630,25 @@ export function batch37Tools(ad) {
       grid.appendChild(b);
     }
   }
+  function safeHint(){
+    if(over) return;
+    const options=[];
+    for(let y=0;y<S;y++) for(let x=0;x<S;x++){
+      const id=idx(x,y);
+      if(revealed.has(id)||flags.has(id)||mines.has(id)) continue;
+      options.push([x,y]);
+    }
+    if(!options.length){ msg.textContent='No safe cells left to reveal.'; return; }
+    const [x,y]=options[Math.floor(Math.random()*options.length)];
+    if(first){ first=false; place(x,y); }
+    flood(x,y);
+    if(revealed.size===S*S-M){ over=true; msg.textContent='You cleared the board!'; }
+    else msg.textContent='Hint: revealed a safe cell.';
+    render();
+  }
   function reset(){ first=true; mines=new Set(); revealed=new Set(); flags=new Set(); over=false; msg.textContent=''; document.getElementById('ms-stat').textContent='Mines left: '+M; render(); }
   document.getElementById('ms-new').onclick=reset;
+  document.querySelector('.tool-panel.game-panel')?.addEventListener('game:hint',safeHint);
   reset();
 })();
 </script>`,

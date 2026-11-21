@@ -57,6 +57,7 @@
       <a href="/finance/">Finance</a>
       <a href="/india/">India</a>
       <a href="/eu/">Europe</a>
+      <a href="/health/">Health</a>
       <a href="/dev/">Developer</a>
       <a href="/design/">PDF & images</a>
       <a href="/games/">Games</a>
@@ -78,7 +79,7 @@
 <main class="wrap" id="main">
 <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/games/">Free online games</a></li><li aria-current="page">Minesweeper game</li></ol></nav>
 <header class="page-hero"><a class="eyebrow tone-indigo" href="/games/"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><path d="M17 6H7a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V10a4 4 0 0 0-4-4Z"/></svg>Free online games</a><h1>Minesweeper game</h1><p class="page-lead">Classic minesweeper in the browser. Clear the 9×9 beginner board without hitting a mine. Flag with right-click or long-press.</p></header><aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>
-<div class="tool-panel">
+<div class="tool-panel game-panel" data-game-hint="Left-click to uncover; right-click (or long-press on mobile) to flag a mine. Numbers show adjacent mines. Tap Hint to uncover one safe cell." data-game-hint-action="1">
 <p id="ms-stat">Mines left: 10</p>
 <div id="ms" class="ms-grid"></div>
 <button type="button" class="primary" id="ms-new">New game</button>
@@ -154,8 +155,25 @@
       grid.appendChild(b);
     }
   }
+  function safeHint(){
+    if(over) return;
+    const options=[];
+    for(let y=0;y<S;y++) for(let x=0;x<S;x++){
+      const id=idx(x,y);
+      if(revealed.has(id)||flags.has(id)||mines.has(id)) continue;
+      options.push([x,y]);
+    }
+    if(!options.length){ msg.textContent='No safe cells left to reveal.'; return; }
+    const [x,y]=options[Math.floor(Math.random()*options.length)];
+    if(first){ first=false; place(x,y); }
+    flood(x,y);
+    if(revealed.size===S*S-M){ over=true; msg.textContent='You cleared the board!'; }
+    else msg.textContent='Hint: revealed a safe cell.';
+    render();
+  }
   function reset(){ first=true; mines=new Set(); revealed=new Set(); flags=new Set(); over=false; msg.textContent=''; document.getElementById('ms-stat').textContent='Mines left: '+M; render(); }
   document.getElementById('ms-new').onclick=reset;
+  document.querySelector('.tool-panel.game-panel')?.addEventListener('game:hint',safeHint);
   reset();
 })();
 </script>
@@ -170,10 +188,10 @@
   <div class="site-footer-inner">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="ToolHQ home"><span class="brand-mark" aria-hidden="true">T</span><span>ToolHQ</span></a>
-      <p>548+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
+      <p>562+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
     </div>
     <nav class="footer-col" aria-label="Popular tools"><h2>Popular</h2><ul><li><a href="/word-counter/">Word counter</a></li><li><a href="/income-tax-calculator/">Income tax calculator</a></li><li><a href="/gst-calculator/">GST calculator</a></li><li><a href="/emi-calculator/">EMI calculator</a></li><li><a href="/pdf-merge/">Merge PDF</a></li><li><a href="/qr-code-generator/">QR code generator</a></li></ul></nav>
-    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/eu/">Europe calculators</a></li><li><a href="/security/">Security & crypto tools</a></li><li><a href="/design/">Design & media</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/health/">Health calculators</a></li><li><a href="/eu/">Europe calculators</a></li><li><a href="/security/">Security & crypto tools</a></li></ul></nav>
     <nav class="footer-col" aria-label="Site"><h2>Site</h2><ul><li><a href="/guides/writing-tools/">Guides</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy policy</a></li><li><a href="/languages/">Languages</a></li><li><a href="/y-chat/">Y-Chat</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></nav>
   </div>
   <p class="footer-owner">Site owned by Useless engineer · Sah Technologies · Bangalore</p>
