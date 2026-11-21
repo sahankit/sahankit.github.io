@@ -83,6 +83,7 @@
 <script>
 (function(){
   const c=document.getElementById('fb'); const ctx=c.getContext('2d');
+  const bx=70, br=14, pipeW=52, gapH=120;
   let bird, pipes, score, alive, started, frame;
   function reset(){
     bird={y:200,vy:0}; pipes=[]; score=0; alive=true; started=false; frame=0;
@@ -93,34 +94,38 @@
     if(!started){ started=true; window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete')); }
     bird.vy=-6;
   }
+  function pipeHit(p){
+    if(bx+br<=p.x||bx-br>=p.x+pipeW) return false;
+    if(bird.y-br>=p.gap&&bird.y+br<=p.gap+gapH) return false;
+    return true;
+  }
   function draw(){
     ctx.fillStyle='#7dd3fc'; ctx.fillRect(0,0,c.width,c.height);
     pipes.forEach(function(p){
       ctx.fillStyle='#22c55e';
-      ctx.fillRect(p.x,0,52,p.gap);
-      ctx.fillRect(p.x,p.gap+120,52,c.height);
+      ctx.fillRect(p.x,0,pipeW,p.gap);
+      ctx.fillRect(p.x,p.gap+gapH,pipeW,c.height);
     });
-    ctx.fillStyle='#facc15'; ctx.beginPath(); ctx.arc(70,bird.y,14,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle='#000'; ctx.fillRect(78,bird.y-3,8,6);
+    ctx.fillStyle='#facc15'; ctx.beginPath(); ctx.arc(bx,bird.y,br,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#000'; ctx.fillRect(bx+8,bird.y-3,8,6);
   }
   function step(){
     if(!alive){ draw(); requestAnimationFrame(step); return; }
     frame++;
     bird.vy+=0.35; bird.y+=bird.vy;
-    if(frame%90===0){
-      const gap=110+Math.random()*50;
-      pipes.push({x:c.width,gap:80+Math.random()*(c.height-gap-160)});
+    if(frame%95===0){
+      const top=70+Math.random()*(c.height-gapH-140);
+      pipes.push({x:c.width,gap:top,scored:false});
     }
     pipes.forEach(function(p){ p.x-=2.5; });
-    pipes=pipes.filter(p=>p.x>-60);
     pipes.forEach(function(p){
-      if(p.x<90&&p.x>40){
-        if(bird.y<p.gap||bird.y>p.gap+120){
-          alive=false;
-        } else if(p.x>55&&p.x<58){ score++; document.getElementById('fb-score').textContent='Score: '+score; }
+      if(pipeHit(p)) alive=false;
+      if(!p.scored&&p.x+pipeW<bx-br){
+        p.scored=true; score++; document.getElementById('fb-score').textContent='Score: '+score;
       }
     });
-    if(bird.y>c.height-10||bird.y<0) alive=false;
+    pipes=pipes.filter(function(p){ return p.x>-pipeW; });
+    if(bird.y>c.height-br||bird.y<br) alive=false;
     draw();
     requestAnimationFrame(step);
   }

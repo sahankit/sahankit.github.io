@@ -75,14 +75,16 @@
 <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/games/">Free online games</a></li><li aria-current="page">Connect Four</li></ol></nav>
 <header class="page-hero"><a class="eyebrow tone-indigo" href="/games/"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><path d="M17 6H7a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V10a4 4 0 0 0-4-4Z"/></svg>Free online games</a><h1>Connect four</h1><p class="page-lead">Drop discs and connect four in a row before the computer does. Free Connect 4 game in your browser.</p></header><aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>
 <div class="tool-panel">
+<div id="c4-drop" class="c4-drop"></div>
 <div id="c4" class="c4-board"></div>
 <p id="c4-msg" class="tool-feedback" role="status">Your turn (red)</p>
 <button type="button" class="primary" id="c4-new">New game</button>
 </div>
-<style>.c4-board{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:350px;padding:10px;background:#1e40af;border-radius:12px}.c4-board button{aspect-ratio:1;border-radius:50%;border:2px solid #1e3a8a;background:#fff;cursor:pointer}.c4-board button.r{background:#ef4444}.c4-board button.y{background:#eab308}.c4-board button:disabled{cursor:default}</style>
+<style>.c4-drop,.c4-board{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:350px}.c4-drop{margin-bottom:6px}.c4-board{padding:10px;background:#1e40af;border-radius:12px}.c4-drop button,.c4-board button{aspect-ratio:1;border-radius:50%;border:2px solid #1e3a8a;background:#fff;cursor:pointer;font-size:0.85rem}.c4-board button{cursor:default}.c4-board button.r{background:#ef4444}.c4-board button.y{background:#eab308}.c4-drop button:disabled{cursor:default;opacity:0.5}</style>
 <script>
 (function(){
   const R=6,C=7; let grid, human, over;
+  const dropRow=document.getElementById('c4-drop');
   const board=document.getElementById('c4');
   const msg=document.getElementById('c4-msg');
   function empty(){ return Array.from({length:R},()=>Array(C).fill(0)); }
@@ -104,7 +106,7 @@
     return false;
   }
   function undo(col,p){
-    for(let r=0;r<R;r++) if(grid[r][col]===p){ grid[r][col]=0; break; }
+    for(let r=R-1;r>=0;r--) if(grid[r][col]===p){ grid[r][col]=0; break; }
   }
   function cpu(){
     for(let c=0;c<C;c++){
@@ -114,7 +116,7 @@
     for(let c=0;c<C;c++){
       const r=drop(c,1);
       if(r!==-1){
-        if(win(1)){ drop(c,2); return; }
+        if(win(1)){ undo(c,1); drop(c,2); return; }
         undo(c,1);
       }
     }
@@ -122,8 +124,9 @@
     for(const c of cols) if(drop(c,2)!==-1) return;
   }
   function render(){
+    dropRow.innerHTML='';
     board.innerHTML='';
-    const top=Array(C).fill(0).map((_,c)=>{
+    for(let c=0;c<C;c++){
       const b=document.createElement('button');
       b.textContent='↓'; b.title='Drop in column '+(c+1);
       b.disabled=over||!human||grid[0][c];
@@ -143,9 +146,8 @@
         }, 400);
         render();
       };
-      return b;
-    });
-    top.forEach(b=>board.appendChild(b));
+      dropRow.appendChild(b);
+    }
     for(let r=0;r<R;r++) for(let c=0;c<C;c++){
       const b=document.createElement('button');
       b.disabled=true;

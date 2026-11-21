@@ -82,7 +82,7 @@
 <style>.wm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:280px}.wm-grid button{aspect-ratio:1;border-radius:12px;border:2px solid var(--line);background:#dcfce7;font-size:2rem;cursor:pointer}.wm-grid button.up{background:#86efac}</style>
 <script>
 (function(){
-  const N=9; let score, timeLeft, timer, mole, running;
+  const N=9; let score, timeLeft, moleTimer, clockTimer, mole, running;
   const grid=document.getElementById('wm-grid');
   const stat=document.getElementById('wm');
   function render(){
@@ -102,15 +102,14 @@
   function start(){
     score=0; timeLeft=30; running=true; mole=-1;
     window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
-    clearInterval(timer);
-    timer=setInterval(function(){
-      tick();
-    }, 750);
-    const clock=setInterval(function(){
+    clearInterval(moleTimer);
+    clearInterval(clockTimer);
+    moleTimer=setInterval(tick, 750);
+    clockTimer=setInterval(function(){
       timeLeft--;
       stat.textContent='Score: '+score+' · Time: '+timeLeft+'s';
       if(timeLeft<=0){
-        clearInterval(clock); clearInterval(timer); running=false; mole=-1; render();
+        clearInterval(clockTimer); clearInterval(moleTimer); running=false; mole=-1; render();
         stat.textContent='Finished! Score: '+score;
       }
     }, 1000);

@@ -84,13 +84,13 @@
 <script>
 (function(){
   const colors=['red','green','blue','yellow'];
-  let seq=[], step, playing, input;
+  let seq=[], playing, input, dead;
   const pad=document.getElementById('sim');
   const msg=document.getElementById('sim-msg');
   colors.forEach(function(c,i){
     const b=document.createElement('button');
     b.title=c;
-    b.onclick=function(){ if(playing) return; playerHit(i); };
+    b.onclick=function(){ if(playing||dead) return; playerHit(i); };
     pad.appendChild(b);
   });
   function flash(i){
@@ -109,7 +109,7 @@
   function playerHit(i){
     if(playing) return;
     flash(i);
-    if(i!==seq[input]){ msg.textContent='Wrong! You reached level '+seq.length+'.'; input=0; return; }
+    if(i!==seq[input]){ dead=true; msg.textContent='Wrong! You reached level '+seq.length+'. Press Start to try again.'; input=0; return; }
     input++;
     if(input===seq.length){
       seq.push(Math.floor(Math.random()*4));
@@ -121,7 +121,7 @@
   }
   function start(){
     seq=[Math.floor(Math.random()*4)];
-    input=0; window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
+    input=0; dead=false; window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
     document.getElementById('sim-lvl').textContent='Level: 1';
     msg.textContent='Watch the pattern…';
     setTimeout(playSeq, 400);

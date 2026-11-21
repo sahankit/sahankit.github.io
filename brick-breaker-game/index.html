@@ -102,7 +102,6 @@
     ctx.beginPath(); ctx.arc(ball.x,ball.y,8,0,Math.PI*2); ctx.fillStyle='#f8fafc'; ctx.fill();
   }
   function step(){
-    if(!live) return;
     if(vx||vy){
       ball.x+=vx; ball.y+=vy;
       if(ball.x<8||ball.x>W-8) vx*=-1;
@@ -112,23 +111,25 @@
         vx+=(ball.x-(px+40))*0.08;
         if(!started){ started=true; window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete')); }
       }
-      if(ball.y>H){ live=false; msg.textContent='Ball lost — press New level.'; return; }
+      if(live&&ball.y>H){ live=false; vx=0; vy=0; msg.textContent='Ball lost — press New level.'; }
       bricks.forEach(function(b){
         if(b.hit) return;
         if(ball.x>b.x&&ball.x<b.x+b.w&&ball.y>b.y&&ball.y<b.y+b.h){
           b.hit=true; vy*=-1;
         }
       });
-      if(bricks.every(b=>b.hit)){ live=false; msg.textContent='You cleared the bricks!'; }
+      if(live&&bricks.every(b=>b.hit)){ live=false; vx=0; vy=0; msg.textContent='You cleared the bricks!'; }
     }
     draw();
     requestAnimationFrame(step);
   }
-  c.addEventListener('mousemove',function(e){
+  function setPaddle(clientX){
     const r=c.getBoundingClientRect();
-    px=(e.clientX-r.left)*(W/r.width)-40;
+    px=(clientX-r.left)*(W/r.width)-40;
     px=Math.max(0,Math.min(W-80,px));
-  });
+  }
+  c.addEventListener('mousemove',function(e){ setPaddle(e.clientX); });
+  c.addEventListener('touchmove',function(e){ setPaddle(e.touches[0].clientX); },{passive:true});
   c.addEventListener('click',function(){
     if(!live) return;
     if(!vx&&!vy){ vx=3*(Math.random()>0.5?1:-1); vy=-4; msg.textContent=''; }
