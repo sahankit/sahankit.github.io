@@ -614,7 +614,7 @@ function buildHomeMain(locale = DEFAULT_LOCALE) {
 <h1>${t(locale, "heroTitle")}</h1>
 <p class="hero-lead">${t(locale, "heroLead")}</p>
 ${toolFinderHtml(locale)}
-<ul class="trust-strip" aria-label="How it works">
+<ul class="trust-strip" aria-label="${escapeMeta(t(locale, "trustAria"))}">
 <li>${t(locale, "trust1")}</li>
 <li>${t(locale, "trust2")}</li>
 <li>${t(locale, "trust3")}</li>

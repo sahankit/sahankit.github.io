@@ -260,10 +260,28 @@
 
   /* ---------- Recent tools ---------- */
 
+  function canonicalToolPath(pathname) {
+    const p = String(pathname).replace(/\.html$/, "/");
+    const m = p.match(LOCALE_PREFIX);
+    if (!m) return p;
+    const rest = p.slice(m[0].length);
+    if (!rest || rest === "/") return "/";
+    return rest.startsWith("/") ? rest : `/${rest}`;
+  }
+
+  function localizedToolHref(canonical) {
+    const loc = currentLocale();
+    if (canonical === "/") return loc === "en" ? "/" : `/${loc}/`;
+    if (loc === "en") return canonical;
+    return `/${loc}${canonical}`;
+  }
+
   function readRecent() {
     try {
       const list = JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
-      return Array.isArray(list) ? list.filter((x) => x && typeof x.href === "string" && typeof x.name === "string") : [];
+      return Array.isArray(list)
+        ? list.filter((x) => x && typeof x.href === "string").map((x) => ({ href: canonicalToolPath(x.href), name: x.name }))
+        : [];
     } catch {
       return [];
     }
@@ -273,9 +291,9 @@
   const h1 = document.querySelector("main h1");
   if (panel && h1) {
     try {
-      const href = location.pathname.replace(/\.html$/, "/");
-      const list = readRecent().filter((x) => x.href !== href);
-      list.unshift({ href, name: h1.textContent.trim().slice(0, 60) });
+      const canon = canonicalToolPath(location.pathname);
+      const list = readRecent().filter((x) => x.href !== canon);
+      list.unshift({ href: canon });
       localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 6)));
     } catch {
       /* storage blocked */
@@ -284,12 +302,25 @@
 
   const recentHost = document.querySelector("[data-recent-tools]");
   if (recentHost) {
-    const list = readRecent();
-    if (list.length) {
-      recentHost.querySelector("[data-recent-list]").innerHTML = list
-        .map((x) => `<a class="recent-chip" href="${escapeHtml(x.href)}">${escapeHtml(x.name)}</a>`)
-        .join("");
-      recentHost.hidden = false;
+    const raw = readRecent();
+    if (raw.length) {
+      loadIndex()
+        .then((index) => {
+          const byHref = new Map(index.map((item) => [item.href, item]));
+          const chips = raw.map((x) => {
+            const href = localizedToolHref(x.href);
+            const item = byHref.get(href);
+            const name = item?.name || x.name || x.href.replace(/^\/|\/$/g, "").split("/").pop() || x.href;
+            return { href, name };
+          });
+          recentHost.querySelector("[data-recent-list]").innerHTML = chips
+            .map((x) => `<a class="recent-chip" href="${escapeHtml(x.href)}">${escapeHtml(x.name)}</a>`)
+            .join("");
+          recentHost.hidden = false;
+        })
+        .catch(() => {
+          /* index unavailable — keep section hidden */
+        });
     }
   }
 
