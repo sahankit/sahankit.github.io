@@ -241,6 +241,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://thetoolhq.com/image-compress/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/image-compress/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://thetoolhq.com/pdf-merge/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/pdf-merge/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/pdf-merge/" />
@@ -659,5 +679,45 @@
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/guides/india-income-tax-slabs-fy-2025-26/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/guides/india-income-tax-slabs-fy-2025-26/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/guides/india-income-tax-slabs-fy-2025-26/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/guides/india-gst-rates-reference/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/guides/india-gst-rates-reference/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/guides/india-gst-rates-reference/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

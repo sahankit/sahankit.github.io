@@ -1,6 +1,426 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://thetoolhq.com/bn/uuid-generator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/uuid-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/uuid-generator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/password-generator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/password-generator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/qr-code-generator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/qr-code-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/qr-code-generator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/typing-test/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/typing-test/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/typing-test/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/color-picker/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/color-picker/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/color-picker/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/gradient-generator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/gradient-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/gradient-generator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/image-compress/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/image-compress/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/image-compress/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/pdf-merge/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/pdf-merge/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/pdf-merge/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/meeting-planner/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/meeting-planner/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/meeting-planner/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/cron-helper/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/cron-helper/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/cron-helper/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/india-invoice/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/india-invoice/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/india-invoice/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/inr-words/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/inr-words/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/inr-words/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/compound-interest/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/compound-interest/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/compound-interest/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/fd-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/fd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/fd-calculator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/rd-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/rd-calculator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/rd-calculator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/cgpa-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/cgpa-calculator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/cgpa-calculator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/fuel-cost-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/fuel-cost-calculator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/fuel-cost-calculator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/salary-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/salary-calculator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/salary-calculator/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/free-online-chat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/free-online-chat/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/free-online-chat/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/hindi-chat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/hindi-chat/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/hindi-chat/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thetoolhq.com/bn/study-chat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/study-chat/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/study-chat/" />
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thetoolhq.com/bn/lorem-ipsum/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/lorem-ipsum/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/lorem-ipsum/" />
@@ -2576,426 +2996,6 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/sql-string-escape/" />
     <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/sql-string-escape/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/sql-string-escape/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/semver-compare/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/semver-compare/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/semver-compare/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/netmask-to-cidr/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/netmask-to-cidr/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/netmask-to-cidr/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/mbps-to-mbs/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/mbps-to-mbs/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/mbps-to-mbs/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/json-minifier/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/json-minifier/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/json-minifier/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/sha1-hash/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/sha1-hash/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/sha1-hash/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/telegram-link/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/telegram-link/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/telegram-link/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/twitter-intent/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/twitter-intent/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/twitter-intent/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/income-tax-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/income-tax-calculator/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/income-tax-calculator/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/salary-breakup-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/salary-breakup-calculator/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/salary-breakup-calculator/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/osint-search/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/osint-search/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/osint-search/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/grammar-checker/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/grammar-checker/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/grammar-checker/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/sentence-splitter/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/sentence-splitter/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/sentence-splitter/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/paragraph-splitter/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/paragraph-splitter/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/paragraph-splitter/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/text-summarizer/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/text-summarizer/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/text-summarizer/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/text-rewriter/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/text-rewriter/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/text-rewriter/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/ai-writer/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/ai-writer/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/ai-writer/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/language-detector/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/language-detector/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/language-detector/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/pdf-to-word/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/pdf-to-word/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/pdf-to-word/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/word-to-pdf/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/word-to-pdf/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/word-to-pdf/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/image-converter/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/image-converter/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/image-converter/" />
-    <lastmod>2026-11-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thetoolhq.com/bn/resume-builder/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thetoolhq.com/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://thetoolhq.com/es/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://thetoolhq.com/ar/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://thetoolhq.com/fr/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://thetoolhq.com/pt/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://thetoolhq.com/ru/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="bn" href="https://thetoolhq.com/bn/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://thetoolhq.com/ja/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/resume-builder/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/resume-builder/" />
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
