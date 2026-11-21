@@ -14,7 +14,7 @@ export const batch39PageSeo = {
     related: [
       { href: "/hourly-wage-calculator/", label: "Hourly wage calculator" },
       { href: "/salary-calculator/", label: "Salary calculator" },
-      { href: "/calculators/", label: "All calculators" },
+      { href: "/finance/", label: "All calculators" },
     ],
   },
   "amortization-calculator.html": {
@@ -65,8 +65,8 @@ export const batch39PageSeo = {
     sitemapPriority: "0.8",
     related: [
       { href: "/401k-calculator/", label: "401(k) calculator" },
-      { href: "/compound-interest-calculator/", label: "Compound interest" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/compound-interest/", label: "Compound interest" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "coast-fire-calculator.html": {
@@ -99,7 +99,7 @@ export const batch39PageSeo = {
     related: [
       { href: "/amortization-calculator/", label: "Amortization calculator" },
       { href: "/home-loan-calculator/", label: "Home loan calculator" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "car-payment-calculator.html": {
@@ -111,7 +111,7 @@ export const batch39PageSeo = {
     related: [
       { href: "/car-loan-calculator/", label: "Car loan calculator" },
       { href: "/amortization-calculator/", label: "Amortization calculator" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "hourly-wage-calculator.html": {
@@ -135,7 +135,7 @@ export const batch39PageSeo = {
     related: [
       { href: "/discount-calculator/", label: "Discount calculator" },
       { href: "/percentage-calculator/", label: "Percentage calculator" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "final-grade-calculator.html": {
@@ -172,9 +172,9 @@ export const batch39PageSeo = {
       { q: "Is this medical advice?", a: "No. This is math for learning. Follow a clinician and pharmacy instructions for real dosing." },
     ],
     related: [
-      { href: "/dosage-calculator/", label: "Dosage calculator" },
+      { href: "/peptide-calculator/", label: "Peptide calculator" },
       { href: "/health/", label: "Health tools" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "bill-split-calculator.html": {
@@ -186,7 +186,7 @@ export const batch39PageSeo = {
     related: [
       { href: "/tip-calculator/", label: "Tip calculator" },
       { href: "/gratuity-calculator/", label: "Gratuity calculator" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
 };

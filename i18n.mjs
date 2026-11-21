@@ -1,4 +1,4 @@
-/** Site locales — top languages by speakers and web use. Tools stay English; homes and chrome are localized. */
+/** Site locales — top languages by speakers and web use. Prefixed pages get visible UI translated. */
 
 export const DEFAULT_LOCALE = "en";
 
@@ -20,19 +20,93 @@ export const LOCALES = [
   { code: "vi", hreflang: "vi", dir: "ltr", nativeName: "Tiếng Việt", ogLocale: "vi_VN" },
 ];
 
+export const PREFIX_LOCALES = LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => l.code);
+const PREFIX_RE = new RegExp(`^/(${PREFIX_LOCALES.join("|")})(?=/|$)`);
+
 export function localeHomePath(code) {
   return code === DEFAULT_LOCALE ? "/" : `/${code}/`;
+}
+
+export function stripLocalePrefix(pathname) {
+  const raw = String(pathname || "/");
+  const hashIdx = raw.indexOf("#");
+  const hash = hashIdx >= 0 ? raw.slice(hashIdx) : "";
+  let p = hashIdx >= 0 ? raw.slice(0, hashIdx) : raw;
+  const qIdx = p.indexOf("?");
+  const query = qIdx >= 0 ? p.slice(qIdx) : "";
+  p = qIdx >= 0 ? p.slice(0, qIdx) : p;
+  const m = p.match(PREFIX_RE);
+  if (m) {
+    p = p.slice(m[1].length + 1) || "/";
+    if (!p.startsWith("/")) p = `/${p}`;
+  }
+  if (!p) p = "/";
+  return `${p}${query}${hash}`;
+}
+
+export function localePath(locale, pathname) {
+  const raw = String(pathname || "/");
+  const hashIdx = raw.indexOf("#");
+  const hash = hashIdx >= 0 ? raw.slice(hashIdx) : "";
+  const noHash = hashIdx >= 0 ? raw.slice(0, hashIdx) : raw;
+  const qIdx = noHash.indexOf("?");
+  const query = qIdx >= 0 ? noHash.slice(qIdx) : "";
+  let p = stripLocalePrefix(qIdx >= 0 ? noHash.slice(0, qIdx) : noHash);
+  if (!p.startsWith("/")) p = `/${p}`;
+  if (locale && locale !== DEFAULT_LOCALE) {
+    p = p === "/" ? `/${locale}/` : `/${locale}${p}`;
+  }
+  return `${p}${query}${hash}`;
+}
+
+export function localeFile(locale, englishPath) {
+  const p = stripLocalePrefix(englishPath).split("#")[0].split("?")[0];
+  const rel = p === "/" ? "index.html" : `${p.replace(/^\//, "").replace(/\/$/, "")}/index.html`;
+  return locale && locale !== DEFAULT_LOCALE ? `${locale}/${rel}` : rel;
+}
+
+export function localeHref(locale, href) {
+  if (!href) return href;
+  if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("javascript:")) {
+    return href;
+  }
+  if (/^https?:\/\//i.test(href)) {
+    const base = "https://thetoolhq.com";
+    if (href === base || href.startsWith(`${base}/`)) {
+      return localeHref(locale, href.slice(base.length) || "/");
+    }
+    return href;
+  }
+  if (href.startsWith("//")) return href;
+  let pathOnly = href.split("?")[0].split("#")[0];
+  const suffix = href.slice(pathOnly.length);
+  if (pathOnly.endsWith(".html") && !pathOnly.includes("://")) {
+    pathOnly = `/${pathOnly.replace(/^\//, "").replace(/\.html$/, "")}/`;
+    href = `${pathOnly}${suffix}`;
+  }
+  if (
+    pathOnly.startsWith("/assets/") ||
+    pathOnly === "/sitemap.xml" ||
+    pathOnly === "/robots.txt" ||
+    pathOnly === "/favicon.ico" ||
+    pathOnly.startsWith("/y-chat") ||
+    /\.(css|js|xml|svg|json|png|jpe?g|gif|webp|ico|woff2?|txt)$/i.test(pathOnly)
+  ) {
+    return href;
+  }
+  return localePath(locale, href);
 }
 
 export function localeMeta(code) {
   return LOCALES.find((l) => l.code === code) || LOCALES[0];
 }
 
-export function hreflangHeadTags(base) {
+export function hreflangHeadTags(base, englishPath = "/") {
+  const path = stripLocalePrefix(englishPath).split("#")[0].split("?")[0] || "/";
   const lines = LOCALES.map(
-    (l) => `  <link rel="alternate" hreflang="${l.hreflang}" href="${base}${localeHomePath(l.code)}" />`,
+    (l) => `  <link rel="alternate" hreflang="${l.hreflang}" href="${base}${localePath(l.code, path)}" />`,
   );
-  lines.push(`  <link rel="alternate" hreflang="x-default" href="${base}/" />`);
+  lines.push(`  <link rel="alternate" hreflang="x-default" href="${base}${localePath(DEFAULT_LOCALE, path)}" />`);
   return lines.join("\n");
 }
 
@@ -60,6 +134,8 @@ const STR = {
     about: "About",
     privacy: "Privacy policy",
     sitemap: "Sitemap",
+    related: "Related tools",
+    advertisement: "Advertisement",
     footerBlurb: "free calculators and utilities. Most tools run entirely in your browser—no signup.",
     footerNote:
       "Estimates are for information only—not financial, tax, legal, or medical advice. Not affiliated with Google or Yahoo.",
@@ -82,15 +158,15 @@ const STR = {
     finderSr: "Find a tool",
     searchPlaceholder: "Search {n} tools — EMI, PDF, GST…",
     searchEmpty: "Type to search {n} tools by name or topic.",
-    toolsNote: "Tool pages are in English. Use hubs below or search.",
+    toolsNote: "",
     indexTitle: "Free Online Calculators & Tools — {n}+ Utilities",
     indexDesc:
       "{n}+ free online tools: income tax, GST, EMI, PDF merge, word counter, QR codes, and more. Fast, private, no signup—works in your browser.",
     langSelect: "Language",
     languagesPageTitle: "Languages — ToolHQ in 15 languages",
-    languagesPageDesc: "Choose your language for the ToolHQ home page. Calculators and tools open in English with the same URLs.",
+    languagesPageDesc: "Choose your language for ToolHQ. Homes, hubs, and tools are translated; URLs keep English slugs.",
     languagesHeading: "Choose your language",
-    languagesLead: "Localized home pages. Individual tools use English interface text today.",
+    languagesLead: "Homes, hubs, and tools in your language. Slugs stay in English.",
     cat_writing: "Text & writing",
     cat_calculators: "Calculators",
     cat_india: "India utilities",
@@ -990,6 +1066,26 @@ const STR = {
   },
 };
 
+const EXTRA_KEYS = {
+  zh: { europe: "欧洲", health: "健康", related: "相关工具", advertisement: "广告", toolsNote: "", languagesLead: "首页、专题和工具均已翻译。网址仍用英文。" },
+  hi: { europe: "यूरोप", health: "स्वास्थ्य", related: "संबंधित टूल", advertisement: "विज्ञापन", toolsNote: "", languagesLead: "होम, विषय और टूल आपकी भाषा में। URL अंग्रेज़ी में रहते हैं।" },
+  es: { europe: "Europa", health: "Salud", related: "Herramientas relacionadas", advertisement: "Publicidad", toolsNote: "", languagesLead: "Inicio, temas y herramientas en tu idioma. Las URLs siguen en inglés." },
+  ar: { europe: "أوروبا", health: "صحة", related: "أدوات ذات صلة", advertisement: "إعلان", toolsNote: "", languagesLead: "الصفحات والأدوات بلغتك. الروابط تبقى بالإنجليزية." },
+  fr: { europe: "Europe", health: "Santé", related: "Outils liés", advertisement: "Publicité", toolsNote: "", languagesLead: "Accueil, thèmes et outils dans votre langue. Les URLs restent en anglais." },
+  pt: { europe: "Europa", health: "Saúde", related: "Ferramentas relacionadas", advertisement: "Publicidade", toolsNote: "", languagesLead: "Início, temas e ferramentas no seu idioma. URLs em inglês." },
+  ru: { europe: "Европа", health: "Здоровье", related: "Похожие инструменты", advertisement: "Реклама", toolsNote: "", languagesLead: "Главная, разделы и инструменты на вашем языке. URL остаются на английском." },
+  bn: { europe: "ইউরোপ", health: "স্বাস্থ্য", related: "সম্পর্কিত টুল", advertisement: "বিজ্ঞাপন", toolsNote: "", languagesLead: "হোম, বিষয় এবং টুল আপনার ভাষায়। URL ইংরেজি থাকে।" },
+  ja: { europe: "ヨーロッパ", health: "健康", related: "関連ツール", advertisement: "広告", toolsNote: "", languagesLead: "ホーム・ハブ・ツールを翻訳。URL は英語のままです。" },
+  de: { europe: "Europa", health: "Gesundheit", related: "Verwandte Tools", advertisement: "Anzeige", toolsNote: "", languagesLead: "Start, Themen und Tools in deiner Sprache. URLs bleiben englisch." },
+  ko: { europe: "유럽", health: "건강", related: "관련 도구", advertisement: "광고", toolsNote: "", languagesLead: "홈, 허브, 도구가 번역됩니다. URL은 영어입니다." },
+  id: { europe: "Eropa", health: "Kesehatan", related: "Alat terkait", advertisement: "Iklan", toolsNote: "", languagesLead: "Beranda, hub, dan alat dalam bahasa Anda. URL tetap bahasa Inggris." },
+  tr: { europe: "Avrupa", health: "Sağlık", related: "İlgili araçlar", advertisement: "Reklam", toolsNote: "", languagesLead: "Ana sayfa, konular ve araçlar dilinizde. URL'ler İngilizce kalır." },
+  vi: { europe: "Châu Âu", health: "Sức khỏe", related: "Công cụ liên quan", advertisement: "Quảng cáo", toolsNote: "", languagesLead: "Trang chủ, chủ đề và công cụ theo ngôn ngữ của bạn. URL vẫn tiếng Anh." },
+};
+for (const [loc, extra] of Object.entries(EXTRA_KEYS)) {
+  if (STR[loc]) Object.assign(STR[loc], extra);
+}
+
 export function t(locale, key, vars = {}) {
   const bag = STR[locale] || STR.en;
   const en = STR.en;
@@ -1000,10 +1096,11 @@ export function t(locale, key, vars = {}) {
   return s;
 }
 
-export function languageSwitcherHtml(currentLocale) {
+export function languageSwitcherHtml(currentLocale, currentPath = "/") {
   const opts = LOCALES.map((l) => {
     const sel = l.code === currentLocale ? " selected" : "";
-    return `<option value="${localeHomePath(l.code)}"${sel}>${escapeHtml(l.nativeName)}</option>`;
+    const href = localePath(l.code, currentPath);
+    return `<option value="${href}"${sel}>${escapeHtml(l.nativeName)}</option>`;
   }).join("");
   return `<div class="lang-switcher"><label class="sr-only" for="lang-select">${escapeHtml(t(currentLocale, "langSelect"))}</label><select id="lang-select" class="lang-select" data-lang-select aria-label="${escapeHtml(t(currentLocale, "langSelect"))}">${opts}</select></div>`;
 }

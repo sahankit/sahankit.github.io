@@ -105,12 +105,92 @@ export const batch11PageSeo = {
     ],
     related: [
       { href: "/finance/", label: "India finance tools hub" },
+      { href: "/salary-breakup-calculator.html", label: "Salary breakup for tax" },
       { href: "/salary-calculator.html", label: "Salary in-hand (before tax)" },
       { href: "/gst-calculator.html", label: "GST calculator" },
       { href: "/ppf-calculator.html", label: "PPF maturity estimate" },
       { href: "/gratuity-calculator.html", label: "Gratuity calculator (India)" },
       { href: "/sip-calculator.html", label: "SIP calculator" },
       { href: "/pan-format.html", label: "PAN format checker" },
+    ],
+  },
+  "salary-breakup-calculator.html": {
+    metaTitle: "Salary Breakup Calculator India — Tax-Saving CTC Structure FY 2025-26",
+    metaDescription:
+      "Free salary breakup calculator for India. Enter CTC and rent to get Basic, HRA, PF, employer NPS, and allowance split vs a flat structure. Estimates old & new regime tax.",
+    ogLocale: "en_IN",
+    sitemapPriority: "0.88",
+    sitemapChangefreq: "monthly",
+    keywords:
+      "salary breakup calculator, ctc breakup for tax saving, salary structure india, basic hra pf nps, tax optimized salary structure, in hand salary breakup",
+    howTo: {
+      name: "How to plan a tax-friendly salary breakup in India",
+      description: "Use CTC, rent, and deductions to get a suggested salary structure for lower tax.",
+      steps: [
+        {
+          name: "Enter annual CTC",
+          text: "Type your yearly cost-to-company in rupees.",
+        },
+        {
+          name: "Add rent and deductions",
+          text: "Enter monthly rent, metro city, 80D premium, and any 80C beyond PF. Choose employer NPS if your company offers it.",
+        },
+        {
+          name: "Compare optimized vs flat split",
+          text: "Click Suggest breakup to see component-wise annual amounts, estimated tax, and in-hand under old and new regime.",
+        },
+      ],
+    },
+    sections: [
+      {
+        h2: "Why salary breakup matters for tax in India",
+        paragraphs: [
+          "CTC is not the same as taxable salary. How pay is split into Basic, HRA, special allowance, employer PF, and employer NPS changes exemptions under the old tax regime and deductions such as 80CCD(2) even in the new regime. A structure heavy on fully taxable special allowance often pays more TDS than one that uses eligible HRA, PF (80C), and employer NPS within company policy.",
+        ],
+      },
+      {
+        h2: "What this calculator suggests",
+        paragraphs: [
+          "Given your CTC, the tool searches a practical Basic percentage, sets HRA up to 50% of Basic (capped by CTC), includes optional exempt meal and phone perks, employer statutory costs in CTC, and employer NPS when selected. It compares that mix to a flat allowance-style split without employer NPS. Tax uses the same FY 2025–26 slabs as our income tax calculator.",
+        ],
+        list: [
+          "<strong>Old regime</strong> — Uses HRA exemption, employee PF toward 80C, your extra 80C and 80D, and employer NPS under 80CCD(2).",
+          "<strong>New regime</strong> — Shows tax without HRA/80C benefits; employer NPS deduction still applies.",
+          "<strong>Not payroll</strong> — Does not replace Form 16, perquisites, surcharge, or HR policy caps.",
+        ],
+      },
+      {
+        h2: "Disclaimer",
+        paragraphs: [
+          "Illustration for negotiation and planning only. Confirm final breakup and regime with your employer and a qualified tax professional.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the best Basic salary percentage for tax saving?",
+        a: "There is no single answer: it depends on CTC, rent, metro city, and whether your employer offers NPS and reimbursements. This tool tests a range of Basic percentages and picks a lower old-regime tax estimate for your inputs.",
+      },
+      {
+        q: "Does HRA save tax in the new regime?",
+        a: "No. HRA exemption is generally not available in the new tax regime. The breakup table still shows HRA for old-regime planning.",
+      },
+      {
+        q: "Is employer NPS part of CTC?",
+        a: "Yes, employer contributions are usually part of CTC but can reduce taxable income under section 80CCD(2) subject to limits in law.",
+      },
+      {
+        q: "Can I use this for offer letter negotiation?",
+        a: "Yes, as a starting point. Share the suggested table with HR and adjust for company salary structure rules.",
+      },
+    ],
+    related: [
+      { href: "/income-tax-calculator.html", label: "Income tax (new vs old)" },
+      { href: "/hra-calculator.html", label: "HRA exemption" },
+      { href: "/salary-calculator.html", label: "In-hand salary estimate" },
+      { href: "/epf-calculator.html", label: "EPF calculator" },
+      { href: "/gratuity-calculator.html", label: "Gratuity calculator" },
+      { href: "/finance/", label: "India finance hub" },
     ],
   },
 };

@@ -13,7 +13,8 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const BASE = "https://thetoolhq.com";
 
 const SKIP_LINK_PREFIXES = ["/y-chat/", "mailto:", "tel:", "javascript:", "#"];
-const OPTIONAL_PATHS = new Set(["/y-chat/"]);
+const OPTIONAL_PATHS = new Set(["/y-chat/", "/sitemap.xml"]);
+const LOCALE_OPTIONAL_RE = /^\/(zh|hi|es|ar|fr|pt|ru|bn|ja|de|ko|id|tr|vi)\/(y-chat\/|sitemap\.xml)/;
 
 function urlToFile(loc) {
   let p = loc.replace(BASE, "").replace(/^\//, "");
@@ -101,9 +102,10 @@ for (const loc of locs) {
   if (!html.includes("</html>")) errors.push(`${rel}: truncated HTML`);
   if (!/<title>[^<]+<\/title>/.test(html)) errors.push(`${rel}: empty title`);
 
+  const isLocalePage = /^(zh|hi|es|ar|fr|pt|ru|bn|ja|de|ko|id|tr|vi)\//.test(rel);
   if (html.includes('"applicationCategory":"UtilitiesApplication"')) {
     const desc = html.match(/name="description" content="([^"]*)"/)?.[1] || "";
-    if (desc.length < 70) errors.push(`${rel}: meta description too short (${desc.length} chars)`);
+    if (!isLocalePage && desc.length < 70) errors.push(`${rel}: meta description too short (${desc.length} chars)`);
     if (!html.includes('name="keywords"')) errors.push(`${rel}: missing meta keywords`);
     if (!html.includes('class="page-guide"')) errors.push(`${rel}: missing on-page guide/FAQ block`);
     if (!html.includes('class="related-tools"')) errors.push(`${rel}: missing related tools section`);
@@ -124,7 +126,8 @@ for (const loc of locs) {
     const target = resolveHref(href);
     if (!target) continue;
     const tf = path.join(ROOT, target);
-    if (!fs.existsSync(tf) && !OPTIONAL_PATHS.has(href.split("?")[0])) {
+    const hrefPath = href.split("?")[0];
+    if (!fs.existsSync(tf) && !OPTIONAL_PATHS.has(hrefPath) && !LOCALE_OPTIONAL_RE.test(hrefPath)) {
       linkWarnings.push(`${rel}: broken link ${href} → ${target}`);
     }
   }

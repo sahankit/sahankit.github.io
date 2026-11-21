@@ -124,12 +124,18 @@ import {
 import {
   DEFAULT_LOCALE,
   LOCALES,
+  PREFIX_LOCALES,
   localeHomePath,
+  localePath,
+  localeFile,
+  localeHref,
   localeMeta,
   hreflangHeadTags,
   t,
   languageSwitcherHtml,
 } from "./i18n.mjs";
+import { extractTextStrings, localizeHtml } from "./i18n-html.mjs";
+import { ensureTranslations, dictFor } from "./i18n-translate.mjs";
 
 const pageSeo = {
   ...corePageSeo,
@@ -200,17 +206,21 @@ function applyAnalyticsEnv() {
 
 applyAnalyticsEnv();
 
-const headerSearchHtml = `
-    <form class="header-search" role="search" action="/" method="get" data-tool-finder>
-      <label class="sr-only" for="header-search-input">Search tools</label>
-      <input type="search" id="header-search-input" name="q" placeholder="Search tools…  ( / )" autocomplete="off" enterkeyhint="search" />
+function headerSearchHtml(locale = DEFAULT_LOCALE) {
+  const home = localeHomePath(locale);
+  return `
+    <form class="header-search" role="search" action="${home}" method="get" data-tool-finder>
+      <label class="sr-only" for="header-search-input">${t(locale, "searchTools")}</label>
+      <input type="search" id="header-search-input" name="q" placeholder="${escapeMeta(t(locale, "searchTools"))}…  ( / )" autocomplete="off" enterkeyhint="search" />
       <div class="search-results search-results--pop" data-results aria-label="Matching tools"></div>
     </form>
-    <button type="button" class="header-search-toggle" aria-label="Search tools" aria-expanded="false" aria-controls="header-search-input">${iconSvg("search")}</button>`;
+    <button type="button" class="header-search-toggle" aria-label="${escapeMeta(t(locale, "searchTools"))}" aria-expanded="false" aria-controls="header-search-input">${iconSvg("search")}</button>`;
+}
 
-function navHtml(isHome = false, locale = DEFAULT_LOCALE) {
+function navHtml(isHome = false, locale = DEFAULT_LOCALE, pagePath = "/") {
   const home = localeHomePath(locale);
-  const hubsHash = locale === DEFAULT_LOCALE ? "/#hubs" : `${home}#hubs`;
+  const lp = (p) => localePath(locale, p);
+  const hubsHash = `${home}#hubs`;
   return `
 <a class="skip-link" href="#main">${t(locale, "skip")}</a>
 <header class="site-header">
@@ -219,20 +229,20 @@ function navHtml(isHome = false, locale = DEFAULT_LOCALE) {
     <nav class="site-nav" aria-label="Main">
       ${isHome ? `<a href="#find-tool">${t(locale, "search")}</a>` : ""}
       <a href="${hubsHash}">${t(locale, "hubs")}</a>
-      <a href="/finance/">${t(locale, "finance")}</a>
-      <a href="/india/">${t(locale, "india")}</a>
-      <a href="/eu/">${t(locale, "europe")}</a>
-      <a href="/health/">${t(locale, "health")}</a>
-      <a href="/dev/">${t(locale, "developer")}</a>
-      <a href="/design/">${t(locale, "design")}</a>
-      <a href="/games/">${t(locale, "games")}</a>
-      <a href="/online-tests/">${t(locale, "tests")}</a>
-      <a href="/quiz/">${t(locale, "quiz")}</a>
-      <a href="/brief/">${t(locale, "news")}</a>
-      <a href="/languages/">${t(locale, "languages")}</a>
+      <a href="${lp("/finance/")}">${t(locale, "finance")}</a>
+      <a href="${lp("/india/")}">${t(locale, "india")}</a>
+      <a href="${lp("/eu/")}">${t(locale, "europe")}</a>
+      <a href="${lp("/health/")}">${t(locale, "health")}</a>
+      <a href="${lp("/dev/")}">${t(locale, "developer")}</a>
+      <a href="${lp("/design/")}">${t(locale, "design")}</a>
+      <a href="${lp("/games/")}">${t(locale, "games")}</a>
+      <a href="${lp("/online-tests/")}">${t(locale, "tests")}</a>
+      <a href="${lp("/quiz/")}">${t(locale, "quiz")}</a>
+      <a href="${lp("/brief/")}">${t(locale, "news")}</a>
+      <a href="${lp("/languages/")}">${t(locale, "languages")}</a>
     </nav>
-    ${languageSwitcherHtml(locale)}
-    ${isHome ? "" : headerSearchHtml}
+    ${languageSwitcherHtml(locale, pagePath)}
+    ${isHome ? "" : headerSearchHtml(locale)}
   </div>
 </header>`;
 }
@@ -247,7 +257,8 @@ const FOOTER_POPULAR = [
 ];
 
 function footerHtml(locale = DEFAULT_LOCALE) {
-  const list = (items) => items.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("");
+  const lp = (p) => localeHref(locale, p);
+  const list = (items) => items.map(([href, label]) => `<li><a href="${lp(href)}">${label}</a></li>`).join("");
   const hubs = micrositeDefs.slice(0, 8).map((s) => [`/${s.slug}/`, s.hero]);
   const home = localeHomePath(locale);
   return `
@@ -307,7 +318,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta property="og:description" content="${d}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:locale" content="${opts.ogLocale || "en_US"}" />
-  ${opts.hreflangHome ? hreflangHeadTags(BASE) : ""}
+  ${opts.hreflangPath || opts.hreflangHome ? hreflangHeadTags(BASE, opts.hreflangPath || "/") : ""}
   <meta property="og:image" content="${ogImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -372,13 +383,14 @@ function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
   const canonicalPath = opts.canonical || urlPath;
   const lang = opts.lang || DEFAULT_LOCALE;
   const dir = opts.dir || "ltr";
+  const pagePath = opts.pagePath || canonicalPath;
   return `<!DOCTYPE html>
 <html lang="${lang}"${dir === "rtl" ? ' dir="rtl"' : ""}>
 <head>${headCommon(title, desc, canonicalPath, opts.keywords || "", opts)}
 ${buildJsonLd(title, desc, canonicalPath, opts)}
 </head>
 <body>
-${navHtml(opts.isHome, lang)}
+${navHtml(opts.isHome, lang, pagePath)}
 <main class="wrap" id="main">
 ${breadcrumb}
 ${mainHtml}
@@ -502,13 +514,13 @@ function relatedCardsHtml(related, self) {
         `<a class="card tool-card" href="${r.href}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${r.label}</h3><p>Guide</p></span></a>`,
       );
     } else {
-      cards.push(toolCardHtml({ href: r.href, title: r.label, desc: t?.cardDesc || "", category: t?.category }));
+      cards.push(toolCardHtml({ href: r.href, title: t?.card || r.label, desc: t?.cardDesc || "", category: t?.category }));
     }
     if (cards.length >= 6) break;
   }
   if (!cards.length) return "";
   return `<section class="related-tools" aria-labelledby="related-heading">
-<h2 id="related-heading">Related tools</h2>
+<h2 id="related-heading">${t(DEFAULT_LOCALE, "related")}</h2>
 <div class="grid grid--compact">${cards.join("")}</div>
 </section>`;
 }
@@ -609,22 +621,28 @@ function buildHomePage(locale) {
   const urlPath = localeHomePath(locale);
   const title = t(locale, "indexTitle", { n: tools.length });
   const desc = t(locale, "indexDesc", { n: tools.length });
+  const dict = locale === DEFAULT_LOCALE ? null : dictFor(locale);
   const indexItemList = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
     .filter(Boolean)
     .slice(0, 12)
-    .map((t) => ({ name: t.card, url: canonicalFromFile(t.file) }));
-  const html = page(urlPath, title, desc, buildHomeMain(locale), "", {
+    .map((tool) => ({
+      name: dict ? dict.get(tool.card) || tool.card : tool.card,
+      url: localePath(locale, canonicalFromFile(tool.file)),
+    }));
+  let html = page(urlPath, title, desc, buildHomeMain(locale), "", {
     keywords: locale === DEFAULT_LOCALE ? indexSeo.keywords : "",
     faqs: locale === DEFAULT_LOCALE ? indexSeo.faqs : undefined,
     isHome: true,
     canonical: urlPath,
     lang: locale,
     dir: meta.dir,
-    hreflangHome: true,
+    hreflangPath: "/",
     ogLocale: meta.ogLocale,
+    pagePath: urlPath,
     breadcrumbs: [{ name: t(locale, "home"), url: urlPath }],
     itemList: indexItemList,
   });
+  if (dict) html = localizeHtml(html, locale, dict);
   const rel = locale === DEFAULT_LOCALE ? "index.html" : `${locale}/index.html`;
   write(rel, html);
 }
@@ -1598,6 +1616,91 @@ function write(rel, content) {
   fs.writeFileSync(full, rel.endsWith(".html") ? canonicalizeLinks(content) : content);
 }
 
+function writeLocaleCopies(englishPath, title, desc, main, breadcrumb, opts = {}) {
+  for (const code of PREFIX_LOCALES) {
+    const meta = localeMeta(code);
+    const urlPath = localePath(code, englishPath);
+    const dict = dictFor(code);
+    const locTitle = dict.get(title) || title;
+    const locDesc = dict.get(desc) || desc;
+    const html = localizeHtml(
+      page(urlPath, locTitle, locDesc, main, breadcrumb, {
+        ...opts,
+        lang: code,
+        dir: meta.dir,
+        canonical: urlPath,
+        ogLocale: meta.ogLocale,
+        hreflangPath: englishPath,
+        pagePath: urlPath,
+      }),
+      code,
+      dict,
+    );
+    write(localeFile(code, englishPath), html);
+  }
+}
+
+function collectTranslatableStrings() {
+  const bag = new Set();
+  const add = (s) => {
+    if (typeof s !== "string") return;
+    const core = s.replace(/\s+/g, " ").trim();
+    if (core.length >= 2 && /[A-Za-z]/.test(core) && core.length <= 500) bag.add(core);
+  };
+  const addHtml = (html) => {
+    if (html) extractTextStrings(html).forEach(add);
+  };
+  for (const tool of tools) {
+    add(tool.card);
+    add(tool.cardDesc);
+    add(tool.title);
+    add(tool.desc);
+    addHtml(tool.body);
+    const seo = pageSeo[tool.file];
+    add(seo?.metaTitle);
+    add(seo?.metaDescription);
+    for (const f of seo?.faqs || []) {
+      add(f.q);
+      add(f.a);
+      add(f.question);
+      add(f.answer);
+    }
+    for (const step of seo?.howTo?.steps || []) {
+      add(step.name);
+      add(step.text);
+    }
+    for (const r of seo?.related || []) add(r.label);
+  }
+  for (const g of guides) {
+    add(g.title);
+    add(g.desc);
+    addHtml(g.body);
+  }
+  for (const s of micrositeDefs) {
+    add(s.hero);
+    add(s.title);
+    add(s.desc);
+    add(s.blurb);
+  }
+  add("Related tools");
+  add("Search tools");
+  add("Matching tools");
+  add("Home");
+  add("Guides");
+  add("News brief");
+  add("Page not found");
+  add("Advertisement");
+  add("India utilities");
+  add("Finance calculators");
+  add("How to use the GST calculator");
+  add("Guide");
+  add("All calculators");
+  add("Calculators");
+  return [...bag];
+}
+
+await ensureTranslations(collectTranslatableStrings());
+
 const hubCards = tools.map((t) =>
   `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
 ).join("\n");
@@ -1626,13 +1729,33 @@ write(
     ]),
     {
       canonical: "/languages/",
-      hreflangHome: true,
+      hreflangPath: "/languages/",
+      pagePath: "/languages/",
       breadcrumbs: [
         { name: t(DEFAULT_LOCALE, "home"), url: "/" },
         { name: t(DEFAULT_LOCALE, "languages"), url: "/languages/" },
       ],
     },
   ),
+);
+writeLocaleCopies(
+  "/languages/",
+  t(DEFAULT_LOCALE, "languagesPageTitle"),
+  t(DEFAULT_LOCALE, "languagesPageDesc"),
+  languagesPageHtml(),
+  breadcrumbHtml([
+    { name: t(DEFAULT_LOCALE, "home"), url: "/" },
+    { name: t(DEFAULT_LOCALE, "languages") },
+  ]),
+  {
+    canonical: "/languages/",
+    hreflangPath: "/languages/",
+    pagePath: "/languages/",
+    breadcrumbs: [
+      { name: t(DEFAULT_LOCALE, "home"), url: "/" },
+      { name: t(DEFAULT_LOCALE, "languages"), url: "/languages/" },
+    ],
+  },
 );
 
 write(
@@ -1656,19 +1779,32 @@ function searchKeywords(t) {
   return words.slice(0, 14).join(" ");
 }
 
-const searchIndex = tools.map((t) => {
-  const kw = searchKeywords(t);
-  const popIdx = POPULAR_TOOL_FILES.indexOf(t.file);
-  return {
-    name: t.card,
-    desc: t.cardDesc,
-    href: canonicalFromFile(t.file),
-    cat: HUB_CATEGORIES.find((c) => c.id === t.category)?.title || t.category,
-    ...(kw ? { kw } : {}),
-    ...(popIdx >= 0 ? { pop: POPULAR_TOOL_FILES.length - popIdx } : {}),
-  };
-});
-write("assets/tools-search.json", `${JSON.stringify(searchIndex)}\n`);
+function buildSearchIndex(locale) {
+  const dict = locale === DEFAULT_LOCALE ? null : dictFor(locale);
+  return tools.map((tool) => {
+    const kw = searchKeywords(tool);
+    const popIdx = POPULAR_TOOL_FILES.indexOf(tool.file);
+    const name = dict ? dict.get(tool.card) || tool.card : tool.card;
+    const desc = dict ? dict.get(tool.cardDesc) || tool.cardDesc : tool.cardDesc;
+    const cat =
+      t(locale, `cat_${tool.category}`) !== `cat_${tool.category}`
+        ? t(locale, `cat_${tool.category}`)
+        : HUB_CATEGORIES.find((c) => c.id === tool.category)?.title || tool.category;
+    const extraKw = locale === DEFAULT_LOCALE ? kw : [tool.card, kw].filter(Boolean).join(" ");
+    return {
+      name,
+      desc,
+      href: localePath(locale, canonicalFromFile(tool.file)),
+      cat,
+      ...(extraKw ? { kw: extraKw } : {}),
+      ...(popIdx >= 0 ? { pop: POPULAR_TOOL_FILES.length - popIdx } : {}),
+    };
+  });
+}
+write("assets/tools-search.json", `${JSON.stringify(buildSearchIndex(DEFAULT_LOCALE))}\n`);
+for (const code of PREFIX_LOCALES) {
+  write(`assets/tools-search-${code}.json`, `${JSON.stringify(buildSearchIndex(code))}\n`);
+}
 
 function resolveSeo(file, toolOrGuide) {
   let seo = pageSeo[file] ? { ...pageSeo[file] } : null;
@@ -1750,9 +1886,12 @@ for (const t of tools) {
     ...pageOpts(t.file, t),
     canonical,
     breadcrumbs: crumbs,
+    hreflangPath: canonical,
+    pagePath: canonical,
   };
   write(t.file, redirectPage(canonical));
   write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, title, desc, main, bc, opts));
+  writeLocaleCopies(canonicalFromFile(t.file), title, desc, main, bc, opts);
 }
 
 for (const g of guides) {
@@ -1776,8 +1915,11 @@ for (const g of guides) {
   };
   const gTitle = formatDocumentTitle(g.title);
   const gDesc = buildMetaDescription(g.desc, g.title.split("—")[0].trim());
+  opts.hreflangPath = canonical;
+  opts.pagePath = canonical;
   write(g.file, redirectPage(canonical));
   write(`${g.file.replace(/\.html$/, "")}/index.html`, page(canonical, gTitle, gDesc, main, bc, opts));
+  writeLocaleCopies(canonical, gTitle, gDesc, main, bc, opts);
 }
 
 const micrositeUrls = [];
@@ -1798,15 +1940,17 @@ for (const def of micrositeDefs) {
     keywords: seo.keywords,
     faqs: seo.faqs,
     canonical: urlPath,
+    hreflangPath: urlPath,
+    pagePath: urlPath,
     breadcrumbs: [
       { name: "Home", url: "/" },
       { name: def.hero, url: urlPath },
     ],
   };
-  write(
-    file,
-    page(urlPath, formatDocumentTitle(def.title), buildMetaDescription(def.desc, def.hero), main, bc, opts),
-  );
+  const mTitle = formatDocumentTitle(def.title);
+  const mDesc = buildMetaDescription(def.desc, def.hero);
+  write(file, page(urlPath, mTitle, mDesc, main, bc, opts));
+  writeLocaleCopies(urlPath, mTitle, mDesc, main, bc, opts);
 }
 
 {
@@ -1819,19 +1963,22 @@ for (const def of micrositeDefs) {
   const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: "News brief" }]);
   const briefSeo = enrichContentSeo(pageSeo[file], { title, desc, faqs: pageSeo[file]?.faqs });
   const main = briefSiteBody(ad) + renderSeoHtml(briefSeo);
-  write(
-    file,
-    page(urlPath, title, buildMetaDescription(desc, "news brief"), main, bc, {
+  const briefOpts = {
       keywords: briefSeo.keywords,
       faqs: briefSeo.faqs,
       softwareApp: false,
       canonical: urlPath,
+      hreflangPath: urlPath,
+      pagePath: urlPath,
       breadcrumbs: [
         { name: "Home", url: "/" },
         { name: "News brief", url: urlPath },
       ],
-    }),
-  );
+    };
+  const briefTitle = title;
+  const briefDesc = buildMetaDescription(desc, "news brief");
+  write(file, page(urlPath, briefTitle, briefDesc, main, bc, briefOpts));
+  writeLocaleCopies(urlPath, briefTitle, briefDesc, main, bc, briefOpts);
 }
 
 {
@@ -1843,19 +1990,21 @@ for (const def of micrositeDefs) {
   const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: "Quiz" }]);
   const quizSeo = enrichContentSeo(pageSeo[file], { title, desc, faqs: pageSeo[file]?.faqs });
   const main = quizSiteBody(ad) + renderSeoHtml(quizSeo);
-  write(
-    file,
-    page(urlPath, title, buildMetaDescription(desc, "online quiz"), main, bc, {
+  const quizOpts = {
       keywords: quizSeo.keywords,
       faqs: quizSeo.faqs,
       softwareApp: false,
       canonical: urlPath,
+      hreflangPath: urlPath,
+      pagePath: urlPath,
       breadcrumbs: [
         { name: "Home", url: "/" },
         { name: "Quiz", url: urlPath },
       ],
-    }),
-  );
+    };
+  const quizDesc = buildMetaDescription(desc, "online quiz");
+  write(file, page(urlPath, title, quizDesc, main, bc, quizOpts));
+  writeLocaleCopies(urlPath, title, quizDesc, main, bc, quizOpts);
 }
 
 const infoPages = [
@@ -1909,17 +2058,19 @@ const infoPages = [
 
 for (const p of infoPages) {
   const urlPath = `/${p.slug}/`;
-  write(
-    `${p.slug}/index.html`,
-    page(urlPath, p.title, p.desc, p.body, breadcrumbHtml([{ name: "Home", url: "/" }, { name: p.name }]), {
+  const bc = breadcrumbHtml([{ name: "Home", url: "/" }, { name: p.name }]);
+  const opts = {
       canonical: urlPath,
       softwareApp: false,
+      hreflangPath: urlPath,
+      pagePath: urlPath,
       breadcrumbs: [
         { name: "Home", url: "/" },
         { name: p.name, url: urlPath },
       ],
-    }),
-  );
+    };
+  write(`${p.slug}/index.html`, page(urlPath, p.title, p.desc, p.body, bc, opts));
+  writeLocaleCopies(urlPath, p.title, p.desc, p.body, bc, opts);
 }
 
 const notFound = page(
@@ -1940,11 +2091,21 @@ const notFound = page(
 write("404.html", notFound);
 write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirect</title></head><body><p><a href="/">Go to ${SITE_NAME}</a></p></body></html>`);
 
-const localeSitemap = LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
-  loc: localeHomePath(l.code),
-  priority: "0.95",
-  changefreq: "weekly",
-}));
+const localeSitemap = PREFIX_LOCALES.flatMap((code) => {
+  const home = { loc: localeHomePath(code), priority: "0.95", changefreq: "weekly" };
+  const rest = [
+    ...micrositeUrls,
+    ...tools.map((t) => canonicalFromFile(t.file)),
+    ...guides.map((g) => canonicalFromFile(g.file)),
+    ...infoPages.map((p) => `/${p.slug}/`),
+    "/languages/",
+  ].map((loc) => ({
+    loc: localePath(code, loc),
+    priority: loc === "/" ? "0.95" : "0.7",
+    changefreq: "monthly",
+  }));
+  return [home, ...rest];
+});
 
 const sitemapEntries = [
   { loc: "/", priority: "1.0", changefreq: "weekly" },

@@ -203,6 +203,7 @@ export const micrositeDefs = [
     blurb: "Tax, IDs, invoices, and savings calculators for India—browser-only, not government official.",
     toolPaths: [
       "/income-tax-calculator.html",
+      "/salary-breakup-calculator.html",
       "/hra-calculator.html",
       "/home-loan-calculator.html",
       "/step-up-sip-calculator.html",

@@ -12,9 +12,19 @@
 
   /* ---------- Search ---------- */
 
+  const LOCALE_PREFIX = /^\/(zh|hi|es|ar|fr|pt|ru|bn|ja|de|ko|id|tr|vi)(?=\/|$)/;
+  function currentLocale() {
+    const m = location.pathname.match(LOCALE_PREFIX);
+    return m ? m[1] : "en";
+  }
+  function searchIndexUrl() {
+    const loc = currentLocale();
+    return loc === "en" ? "/assets/tools-search.json" : `/assets/tools-search-${loc}.json`;
+  }
+
   let indexPromise = null;
   function loadIndex() {
-    indexPromise ??= fetch("/assets/tools-search.json")
+    indexPromise ??= fetch(searchIndexUrl())
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((data) =>
         data.map((item) => ({
@@ -33,9 +43,7 @@
   function normalize(s) {
     return String(s || "")
       .toLowerCase()
-      .normalize("NFKD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9₹%+#.\s-]/g, " ")
+      .replace(/[^\p{L}\p{N}₹%+#.\s-]/gu, " ")
       .replace(/\s+/g, " ")
       .trim();
   }

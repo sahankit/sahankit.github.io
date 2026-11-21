@@ -146,5 +146,192 @@ document.getElementById('go').onclick=()=>{
 document.getElementById('go').click();
 </script>`,
     },
+    {
+      path: "/salary-breakup-calculator.html",
+      file: "salary-breakup-calculator.html",
+      category: "india",
+      title: "Salary Breakup Calculator — Tax-Optimized CTC Structure India",
+      desc: "Get a suggested annual CTC salary breakup for tax savings: Basic, HRA, PF, employer NPS, and allowances. Compare with a flat structure.",
+      card: "Salary breakup (tax)",
+      cardDesc: "CTC split for HRA, PF & NPS.",
+      body: `
+<h1>Salary breakup calculator — tax-friendly CTC (India)</h1>
+<p class="prose">Enter your <strong>annual CTC</strong>, rent, and deductions to see a suggested pay structure (Basic, HRA, employer NPS, PF, reimbursements) that lowers tax versus a flat allowance-heavy split. Pairs with our <a href="/income-tax-calculator/">income tax calculator</a> and <a href="/hra-calculator/">HRA calculator</a>.</p>
+<p class="prose" style="font-size:0.9rem">FY 2025–26 illustration · old regime breakup focus · not payroll or legal advice.</p>
+${ad}
+<div class="tool-panel">
+  <label for="ctc">Annual CTC (₹)</label>
+  <input id="ctc" type="number" value="2000000" step="10000" />
+
+  <label for="rent">Rent paid per month (₹, 0 if not renting)</label>
+  <input id="rent" type="number" value="25000" step="500" />
+
+  <label><input id="metro" type="checkbox" checked /> Metro city (Delhi, Mumbai, Kolkata, Chennai)</label>
+
+  <label for="c80d">80D — health insurance (annual ₹)</label>
+  <input id="c80d" type="number" value="25000" />
+
+  <label for="extra80c">Extra 80C beyond PF (ELSS, PPF, etc. ₹)</label>
+  <input id="extra80c" type="number" value="50000" />
+
+  <label><input id="perks" type="checkbox" checked /> Include typical exempt perks (meal ₹26,400 + phone/internet ₹24,000 / year)</label>
+
+  <label for="nps">Employer NPS (80CCD(2))</label>
+  <select id="nps"><option value="10" selected>10% of Basic (max tax benefit)</option><option value="0">None</option></select>
+
+  <button type="button" class="primary" id="go">Suggest breakup</button>
+
+  <p id="verdict" class="ok" style="margin-top:12px;font-size:1.05rem"></p>
+
+  <table class="prose" style="width:100%;margin-top:16px;border-collapse:collapse;font-size:0.92rem" aria-label="Suggested CTC breakup">
+    <thead>
+      <tr><th style="text-align:left;border-bottom:1px solid #ccc;padding:6px">Component (annual)</th><th style="border-bottom:1px solid #ccc;padding:6px;text-align:right">Optimized</th><th style="border-bottom:1px solid #ccc;padding:6px;text-align:right">Flat split</th></tr>
+    </thead>
+    <tbody id="tbl"></tbody>
+  </table>
+
+  <p id="taxline" class="prose" style="margin-top:12px"></p>
+  <p id="hint" class="prose" style="font-size:0.85rem"></p>
+</div>
+<script>
+const STD_NEW = 75000, STD_OLD = 50000, CESS = 0.04;
+const NEW_SLABS = [[300000,0],[700000,0.05],[1000000,0.10],[1200000,0.15],[1500000,0.20],[Infinity,0.30]];
+const OLD_SLABS = [[250000,0],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
+const MEAL = 26400, PHONE = 24000, HRA_OF_BASIC = 0.5;
+const EMP_PF = 0.12, GRAT = 15/26, EMP_NPS_MAX = 0.10;
+
+function slabTax(taxable, slabs){
+  if(taxable<=0) return 0;
+  let tax=0, lower=0;
+  for(const [upper, rate] of slabs){
+    if(taxable<=lower) break;
+    tax += (Math.min(taxable, upper)-lower)*rate;
+    lower=upper;
+    if(taxable<=upper) break;
+  }
+  return tax;
+}
+function rebate87A(tax, incomeForRebate, regime){
+  if(regime==='new'){ return incomeForRebate<=700000 ? tax : 0; }
+  return incomeForRebate<=500000 ? Math.min(tax, 12500) : 0;
+}
+function totalTax(taxable, regime){
+  const raw = slabTax(taxable, regime==='new'?NEW_SLABS:OLD_SLABS);
+  const reb = rebate87A(raw, taxable, regime);
+  const after = Math.max(0, raw-reb);
+  return after + after*CESS;
+}
+function hraExempt(basic, hra, rentAnnual, metro){
+  const cap = metro ? 0.5*basic : 0.4*basic;
+  const rentRule = Math.max(0, rentAnnual - 0.1*basic);
+  return Math.min(hra, rentRule, cap);
+}
+function fmt(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+
+function buildStruct(ctc, basicPct, rentAnnual, metro, perksOn, npsPct){
+  const perks = perksOn ? MEAL+PHONE : 0;
+  const basic = Math.max(0, ctc * basicPct);
+  const empLoad = basic * (EMP_PF + GRAT + npsPct);
+  const hra = Math.min(basic * HRA_OF_BASIC, Math.max(0, ctc - basic - empLoad - perks));
+  const special = Math.max(0, ctc - basic - hra - empLoad - perks);
+  if(special < 0) return null;
+  const empPf = basic * EMP_PF;
+  const empNps = basic * npsPct;
+  const grat = basic * GRAT;
+  const exHra = hraExempt(basic, hra, rentAnnual, metro);
+  const grossSalary = basic + hra + special;
+  return {
+    basic, hra, special, perks, empPf, empNps, grat, empLoad, exHra,
+    grossSalary,
+    employeeCash: basic + hra + special + perks,
+  };
+}
+
+function taxForStruct(s, regime, ded, perksOn){
+  const std = regime==='new'?STD_NEW:STD_OLD;
+  let gross = s.grossSalary + (regime==='new' && perksOn ? s.perks : 0);
+  let taxable = gross - std;
+  if(regime==='old'){
+    const pf80 = Math.min(150000, s.empPf + Math.max(0, ded.extra80c));
+    taxable -= pf80 + s.empNps + Math.max(0, ded.d80d) + s.exHra;
+  } else {
+    taxable -= s.empNps;
+  }
+  return totalTax(Math.max(0, taxable), regime);
+}
+
+function flatBaseline(ctc, rentAnnual, metro, perksOn, npsPct){
+  const perks = perksOn ? MEAL+PHONE : 0;
+  const guessBasic = Math.max(0, (ctc - perks) / (1 + HRA_OF_BASIC + EMP_PF + GRAT + npsPct));
+  return buildStruct(ctc, guessBasic / ctc, rentAnnual, metro, perksOn, npsPct) || buildStruct(ctc, 0.4, rentAnnual, metro, perksOn, npsPct);
+}
+
+function optimize(ctc, rentAnnual, metro, perksOn, npsPct, ded){
+  let best = null, bestTax = Infinity;
+  for(let pct = 0.30; pct <= 0.52; pct += 0.005){
+    const s = buildStruct(ctc, pct, rentAnnual, metro, perksOn, npsPct);
+    if(!s) continue;
+    const tax = taxForStruct(s, 'old', ded, perksOn);
+    if(tax < bestTax){ bestTax = tax; best = s; }
+  }
+  return best || buildStruct(ctc, 0.4, rentAnnual, metro, perksOn, npsPct);
+}
+
+function row(label, a, b){
+  return '<tr><td style="padding:6px;border-bottom:1px solid #eee">'+label+'</td><td style="padding:6px;border-bottom:1px solid #eee;text-align:right">'+a+'</td><td style="padding:6px;border-bottom:1px solid #eee;text-align:right">'+b+'</td></tr>';
+}
+
+document.getElementById('go').onclick=()=>{
+  const ctc = +document.getElementById('ctc').value;
+  const rentAnnual = Math.max(0, +document.getElementById('rent').value) * 12;
+  const metro = document.getElementById('metro').checked;
+  const ded = { d80d: +document.getElementById('c80d').value, extra80c: +document.getElementById('extra80c').value };
+  const perksOn = document.getElementById('perks').checked;
+  const npsPct = Number(document.getElementById('nps').value)/100;
+
+  const opt = optimize(ctc, rentAnnual, metro, perksOn, npsPct, ded);
+  const flat = flatBaseline(ctc, rentAnnual, metro, perksOn, 0);
+
+  const taxOptOld = taxForStruct(opt, 'old', ded, perksOn);
+  const taxFlatOld = taxForStruct(flat, 'old', ded, perksOn);
+  const taxOptNew = taxForStruct(opt, 'new', ded, perksOn);
+  const taxFlatNew = taxForStruct(flat, 'new', ded, perksOn);
+
+  const save = taxFlatOld - taxOptOld;
+  const v = document.getElementById('verdict');
+  if(save > 500){
+    v.textContent = 'Optimized breakup may save about '+fmt(save)+'/year vs flat split (old regime, before your 80D/extra 80C).';
+  } else {
+    v.textContent = 'Optimized and flat splits are close on tax—still compare in-hand and employer policy.';
+  }
+
+  document.getElementById('tbl').innerHTML =
+    row('Basic', fmt(opt.basic), fmt(flat.basic)) +
+    row('HRA', fmt(opt.hra), fmt(flat.hra)) +
+    row('HRA exempt (est.)', fmt(opt.exHra), fmt(flat.exHra)) +
+    row('Special / flexi allowance', fmt(opt.special), fmt(flat.special)) +
+    row('Exempt perks (meal + phone)', fmt(opt.perks), fmt(flat.perks)) +
+    row('Employee PF (12% Basic)', fmt(opt.empPf), fmt(flat.empPf)) +
+    row('Employer PF + Gratuity + NPS (in CTC)', fmt(opt.empLoad), fmt(flat.empLoad)) +
+  row('<strong>Cash to you (before tax)</strong>', '<strong>'+fmt(opt.employeeCash)+'</strong>', '<strong>'+fmt(flat.employeeCash)+'</strong>');
+
+  const handOpt = opt.employeeCash - opt.empPf - taxOptOld;
+  const handFlat = flat.employeeCash - flat.empPf - taxFlatOld;
+
+  document.getElementById('taxline').innerHTML =
+    '<strong>Old regime tax (with your 80D/80C):</strong> optimized '+fmt(taxOptOld)+' vs flat '+fmt(taxFlatOld)+'. '+
+    '<strong>Est. annual in-hand (old):</strong> '+fmt(handOpt)+' vs '+fmt(handFlat)+'. '+
+    'New regime taxes: '+fmt(taxOptNew)+' vs '+fmt(taxFlatNew)+' (no HRA/80C).';
+
+  const bp = ctc>0 ? (opt.basic/ctc*100).toFixed(1) : '0';
+  let hint = 'Suggested Basic is about '+bp+'% of CTC so employer PF, HRA, and ';
+  hint += npsPct>0 ? 'employer NPS (80CCD(2)) ' : '';
+  hint += 'fit inside CTC. Share this table with HR as a starting point—actual breakup depends on company policy.';
+  if(rentAnnual<=0) hint += ' With no rent, HRA tax benefit is limited; consider negotiating reimbursements or employer NPS instead.';
+  document.getElementById('hint').textContent = hint;
+};
+document.getElementById('go').click();
+</script>`,
+    },
   ];
 }

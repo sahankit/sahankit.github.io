@@ -20,9 +20,17 @@ async function main() {
   }
 
   const sitemap = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
-  const paths = [...sitemap.matchAll(/<loc>[^<]+<\/loc>/g)].map((m) =>
+  const allPaths = [...sitemap.matchAll(/<loc>[^<]+<\/loc>/g)].map((m) =>
     m[0].replace("<loc>", "").replace("</loc>", "").replace(BASE, ""),
   );
+  const localeRe = /^\/(zh|hi|es|ar|fr|pt|ru|bn|ja|de|ko|id|tr|vi)(\/|$)/;
+  const paths = [
+    ...allPaths.filter((p) => !localeRe.test(p)),
+    "/hi/",
+    "/hi/gst-calculator/",
+    "/ar/",
+    "/ar/gst-calculator/",
+  ].filter((p, i, arr) => arr.indexOf(p) === i);
 
   const server = startStaticServer(PORT);
   await new Promise((r) => server.once("listening", r));

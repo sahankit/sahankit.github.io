@@ -58,7 +58,7 @@ export const batch41PageSeo = {
     related: [
       { href: "/shoe-size-converter/", label: "Shoe size converter" },
       { href: "/unit-converter/", label: "Unit converter" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "ring-size-calculator.html": {
@@ -70,7 +70,7 @@ export const batch41PageSeo = {
     related: [
       { href: "/shoe-size-converter/", label: "Shoe sizes" },
       { href: "/unit-converter/", label: "Unit converter" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "eu-to-us-shoe-size.html": {
@@ -81,7 +81,7 @@ export const batch41PageSeo = {
     related: [
       { href: "/uk-to-us-shoe-size/", label: "UK to US shoe size" },
       { href: "/shoe-size-converter/", label: "Shoe size converter" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "uk-to-us-shoe-size.html": {
@@ -92,7 +92,7 @@ export const batch41PageSeo = {
     related: [
       { href: "/eu-to-us-shoe-size/", label: "EU to US shoe size" },
       { href: "/shoe-size-converter/", label: "Shoe size converter" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "hat-size-calculator.html": {
@@ -103,7 +103,7 @@ export const batch41PageSeo = {
     related: [
       { href: "/shoe-size-converter/", label: "Size tools" },
       { href: "/unit-converter/", label: "Unit converter" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
   "semester-gpa-calculator.html": {

@@ -80,7 +80,7 @@ export const batch42PageSeo = {
     keywords: "cd calculator, certificate of deposit calculator, cd interest calculator",
     sitemapPriority: "0.85",
     related: [
-      { href: "/compound-interest-calculator/", label: "Compound interest" },
+      { href: "/compound-interest/", label: "Compound interest" },
       { href: "/savings-goal-calculator/", label: "Savings goal" },
       { href: "/finance/", label: "Finance" },
     ],
@@ -225,7 +225,7 @@ export const batch42PageSeo = {
     related: [
       { href: "/hourly-wage-calculator/", label: "Hourly wage" },
       { href: "/inflation-calculator/", label: "Inflation calculator" },
-      { href: "/calculators/", label: "Calculators" },
+      { href: "/finance/", label: "Calculators" },
     ],
   },
 };
