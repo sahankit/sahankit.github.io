@@ -536,7 +536,7 @@ document.getElementById('go').click();
   <label for="pf">Employee PF (% of basic, approx)</label><input id="pf" type="number" value="12" />
   <button type="button" class="primary" id="go">Estimate</button>
   <p id="out" class="ok"></p>
-  <p class="prose" style="font-size:0.85rem">Assumes 40% basic, employee PF, and FY 2026–27 new-regime income tax (same slabs as the <a href="/income-tax-calculator/">income tax calculator</a>).</p>
+  <p class="prose" style="font-size:0.85rem">Assumes 40% basic, employee PF, and FY 2026–27 new-regime income tax (same engine as the <a href="/income-tax-calculator/">income tax calculator</a>). For HRA, 80C, and regime comparison, use the <a href="/salary-breakup-calculator/">salary breakup calculator</a>.</p>
 </div>
 <script src="/assets/india-tax.js"></script>
 <script>

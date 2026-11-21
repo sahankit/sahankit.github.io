@@ -23,7 +23,7 @@ export const batch11PageSeo = {
     howTo: {
       name: "How to compare new and old income tax regime online",
       description:
-        "Use Sahankit's free calculator to estimate Indian income tax under both regimes for salaried income.",
+        "Use this free calculator to estimate Indian income tax under both regimes for salaried income.",
       steps: [
         {
           name: "Enter annual gross salary",

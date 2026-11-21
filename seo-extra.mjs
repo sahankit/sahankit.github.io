@@ -151,10 +151,20 @@ export const extraPageSeo = {
   ),
   "salary-calculator.html": toolSeo(
     "in hand salary calculator India, CTC to in hand estimate",
-    "Rough salary illustration",
-    "Real payslips include HRA, tax, bonuses, and variable PF bases—this is a simple placeholder.",
-    [{ q: "Does it calculate TDS?", a: "No. It only subtracts a simplified PF estimate from monthly CTC." }],
-    [{ href: "/emi-calculator.html", label: "EMI calculator" }],
+    "Quick in-hand salary estimate",
+    "A lightweight monthly estimate from CTC with PF and new-regime tax. For full CTC structure, HRA, old vs new regime, and 87A, use the salary breakup calculator.",
+    [
+      {
+        q: "How is this different from the salary breakup calculator?",
+        a: "This page is a rough in-hand estimate. The salary breakup calculator models CTC components, HRA, deductions, and tax-optimized structure.",
+      },
+      { q: "Does it calculate TDS?", a: "It uses the shared FY 2026–27 new-regime tax engine—not a payroll TDS ledger." },
+    ],
+    [
+      { href: "/salary-breakup-calculator.html", label: "Salary breakup (tax)" },
+      { href: "/income-tax-calculator.html", label: "Income tax calculator" },
+      { href: "/ctc-to-in-hand-calculator.html", label: "CTC to in-hand" },
+    ],
   ),
   "free-online-chat.html": toolSeo(
     "free online chat, chat rooms no download, Y-Chat, free chat rooms browser",

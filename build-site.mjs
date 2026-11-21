@@ -268,9 +268,11 @@ const FOOTER_POPULAR = [
 ];
 
 function footerHtml(locale = DEFAULT_LOCALE) {
+  const dict = locale === DEFAULT_LOCALE ? null : dictFor(locale);
+  const lbl = (s) => (dict ? trDict(dict, s) : s);
   const lp = (p) => localeHref(locale, p);
-  const list = (items) => items.map(([href, label]) => `<li><a href="${lp(href)}">${label}</a></li>`).join("");
-  const hubs = micrositeDefs.slice(0, 5).map((s) => [`/${s.slug}/`, s.hero]);
+  const list = (items) => items.map(([href, label]) => `<li><a href="${lp(href)}">${lbl(label)}</a></li>`).join("");
+  const hubs = micrositeDefs.slice(0, 5).map((s) => [`/${s.slug}/`, lbl(s.hero)]);
   const home = localeHomePath(locale);
   return `
 <footer class="site-footer">
@@ -604,6 +606,15 @@ function trDict(dict, s) {
   return dict.get(core) || dict.get(s) || s;
 }
 
+function resolvedHowToName(dict, code, howTo, opts) {
+  if (!howTo?.name) return howTo?.name;
+  const hit = trDict(dict, howTo.name);
+  if (hit && hit !== howTo.name) return hit;
+  const tool = opts.seoLabel ? trDict(dict, opts.seoLabel) : "";
+  if (tool) return t(code, "howToJsonLdName", { name: tool });
+  return hit;
+}
+
 function micrositeCardLocalized(s, locale, dict) {
   const href = localePath(locale, `/${s.slug}/`);
   const title = dict ? trDict(dict, s.hero) : s.hero;
@@ -638,7 +649,7 @@ function toolFinderHtml(locale = DEFAULT_LOCALE) {
 </section>`;
 }
 
-function buildHomeMain(locale = DEFAULT_LOCALE, homeCards = {}) {
+function buildHomeMain(locale = DEFAULT_LOCALE, homeCards = {}, dict = null) {
   const { popularHtml = "", featuredHubsHtml = "", otherHubsHtml = "" } = homeCards;
   const note = t(locale, "toolsNote");
   const toolsNote = locale !== DEFAULT_LOCALE && note ? `<p class="tools-locale-note">${note}</p>` : "";
@@ -689,7 +700,15 @@ ${otherHubsHtml ? `<details class="more-hubs"><summary>${t(locale, "moreHubs")}<
 </section>
 <section class="home-section" aria-labelledby="guides-heading">
 <h2 id="guides-heading">${t(locale, "guidesHeading")}</h2>
-<div class="grid grid--compact">${guides.map((g) => `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc}</p></span></a>`).join("")}</div>
+<div class="grid grid--compact">${guides
+    .map((g) => {
+      const gt = g.title.split("—")[0].trim();
+      const title = dict ? trDict(dict, gt) : gt;
+      const gdesc = dict ? trDict(dict, g.desc) : g.desc;
+      const href = dict ? localePath(locale, canonicalFromFile(g.file)) : canonicalFromFile(g.file);
+      return `<a class="card tool-card" href="${href}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${title}</h3><p>${gdesc}</p></span></a>`;
+    })
+    .join("")}</div>
 </section>
 ${locale === DEFAULT_LOCALE ? renderSeoHtml(indexSeo) : ""}`;
 }
@@ -717,7 +736,7 @@ function buildHomePage(locale) {
       name: dict ? trDict(dict, tool.card) : tool.card,
       url: localePath(locale, canonicalFromFile(tool.file)),
     }));
-  let html = page(urlPath, title, desc, buildHomeMain(locale, { popularHtml, featuredHubsHtml, otherHubsHtml }), "", {
+  let html = page(urlPath, title, desc, buildHomeMain(locale, { popularHtml, featuredHubsHtml, otherHubsHtml }, dict), "", {
     keywords: locale === DEFAULT_LOCALE ? indexSeo.keywords : "",
     faqs: locale === DEFAULT_LOCALE ? indexSeo.faqs : undefined,
     isHome: true,
@@ -1816,7 +1835,7 @@ function localizePageOpts(opts, dict, code) {
     howTo: opts.howTo
       ? {
           ...opts.howTo,
-          name: trDict(dict, opts.howTo.name),
+          name: resolvedHowToName(dict, code, opts.howTo, opts),
           description:
             trDict(dict, opts.howTo.description) !== opts.howTo.description
               ? trDict(dict, opts.howTo.description)
@@ -1871,6 +1890,7 @@ function writeLocaleCopies(englishPath, title, desc, main, breadcrumb, opts = {}
         pagePath: englishPath,
         noindex: opts.noindex,
         appName: opts.seoLabel ? trDict(dict, opts.seoLabel) : undefined,
+        keywords: "",
       }),
       code,
       dict,
@@ -1904,6 +1924,8 @@ function collectTranslatableStrings() {
       add(f.q);
       add(f.a);
     }
+    add(seo?.howTo?.name);
+    add(seo?.howTo?.description);
     for (const step of seo?.howTo?.steps || []) {
       add(step.name);
       add(String(step.text || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());

@@ -196,6 +196,7 @@ const STR = {
     relatedFree: "Related free tools",
     faqFreeQ: "Is this {name} free?",
     faqFreeA: "Yes. The {name} is free to use in your browser with no account required.",
+    howToJsonLdName: "How to use {name}",
     toolsNote: "",
     indexTitle: "Free Online Calculators & Tools — {n}+ Utilities",
     indexDesc:

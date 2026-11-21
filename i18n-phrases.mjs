@@ -19,6 +19,10 @@ const DOMAIN = {
     "Word counter": "字数统计",
     "GST calculator": "GST 计算器",
     "LTCG": "长期资本利得",
+    "How to compare new and old income tax regime online":
+      "如何在线比较印度新旧所得税制度",
+    "How to plan a tax-friendly salary breakup in India":
+      "如何规划印度节税型薪资结构",
   },
   hi: {
     "EMI calculator": "EMI कैलकुलेटर",
