@@ -1,6 +1,7 @@
 /** SEO helpers used by build-site.mjs (meta escaping, canonicals, JSON-LD). */
 
 import { workflowRelatedFor } from "./seo-workflows.mjs";
+import { toolGuideLinks, validatorRefSection } from "./seo-tool-guides.mjs";
 
 export const OG_IMAGE = "/assets/og.png";
 /** Site brand shown in header, meta, and JSON-LD. Matches thetoolhq.com. */
@@ -335,7 +336,16 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
   ensureDirectAnswer(base, tool);
   boostThinToolSeo(base, tool);
 
+  const refSection = validatorRefSection[tool.file];
+  if (refSection && !base.sections.some((s) => s.h2 === refSection.h2)) {
+    base.sections = [refSection, ...base.sections];
+  }
+
   const workflow = workflowRelatedFor(tool.file, self);
+  const guideLinks = (toolGuideLinks[tool.file] || []).map((r) => ({
+    ...r,
+    href: normalizeHref(r.href),
+  }));
   const hasWorkflow = workflow.links.length > 0;
   const hasExplicitRelated = Boolean(seo?.related?.length);
   const related = [...workflow.links];
@@ -351,7 +361,7 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
   }
 
   if (!base.related?.length) {
-    base.related = related.slice(0, 6);
+    base.related = [...guideLinks, ...related].slice(0, 6);
     base.relatedWorkflow = workflow.workflow;
   } else {
     const merged = [];
@@ -362,6 +372,7 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
       seen.add(href);
       merged.push({ ...r, href });
     };
+    for (const r of guideLinks) push(r);
     for (const r of workflow.links) push(r);
     for (const r of base.related) push(r);
     if (!hasExplicitRelated && !hasWorkflow) {

@@ -1640,6 +1640,20 @@ span.ok { color: #047857; font-weight: 700; }
 
 .page-guide .seo-content { margin-top: 0; }
 .page-guide .seo-content > h2:first-child { margin-top: 18px; }
+.page-guide .ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 12px 0 16px;
+}
+.page-guide .ref-table th,
+.page-guide .ref-table td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.page-guide .ref-table th { background: var(--surface-2, var(--surface)); }
 
 .faq { margin-top: 28px; }
 .faq > h2 { font-size: 1.3rem; margin: 0 0 12px; }

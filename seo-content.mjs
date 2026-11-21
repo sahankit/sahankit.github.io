@@ -12,6 +12,18 @@ export function renderSeoHtml(seo, { showDirectAnswer = false } = {}) {
     for (const s of seo.sections) {
       html += `<h2>${s.h2}</h2>`;
       for (const p of s.paragraphs || []) html += `<p>${p}</p>`;
+      if (s.table?.rows?.length) {
+        const headers = s.table.headers || [];
+        html += '<table class="ref-table"><thead><tr>';
+        for (const h of headers) html += `<th scope="col">${h}</th>`;
+        html += "</tr></thead><tbody>";
+        for (const row of s.table.rows) {
+          html += "<tr>";
+          for (const cell of row) html += `<td>${cell}</td>`;
+          html += "</tr>";
+        }
+        html += "</tbody></table>";
+      }
       if (s.list) {
         const tag = s.ordered ? "ol" : "ul";
         html += `<${tag}>`;

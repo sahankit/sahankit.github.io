@@ -300,6 +300,21 @@ export const micrositeDefs = [
           "/pincode-format.html",
         ],
       },
+      {
+        title: "Savings & retirement",
+        paths: [
+          "/ppf-calculator.html",
+          "/epf-calculator.html",
+          "/gratuity-calculator.html",
+          "/sukanya-samriddhi-calculator.html",
+          "/fd-calculator.html",
+          "/rd-calculator.html",
+          "/sip-calculator.html",
+          "/step-up-sip-calculator.html",
+          "/swp-calculator.html",
+          "/lumpsum-investment-calculator.html",
+        ],
+      },
     ],
     toolPaths: [
       "/income-tax-calculator.html",
