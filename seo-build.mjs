@@ -40,19 +40,19 @@ export function formatDocumentTitle(raw) {
   return `${t} | ${SITE_NAME}`;
 }
 
-export function webSiteLd(base) {
+export function webSiteLd(base, { homePath = "/", description } = {}) {
+  const home = homePath.endsWith("/") ? homePath : `${homePath}/`;
   return {
     "@type": "WebSite",
     "@id": `${base}/#website`,
     name: SITE_NAME,
-    url: `${base}/`,
-    description:
-      "Free online calculators, India finance tools, developer utilities, and browser-based text tools.",
+    url: `${base}${home}`,
+    ...(description ? { description } : { description: "Free online calculators, India finance tools, developer utilities, and browser-based text tools." }),
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${base}/?q={search_term_string}`,
+        urlTemplate: `${base}${home}?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
@@ -92,13 +92,14 @@ export function breadcrumbLd(crumbs, base, pageUrl) {
   };
 }
 
-export function webPageNode(title, desc, canonicalPath, base) {
+export function webPageNode(title, desc, canonicalPath, base, inLanguage = "en") {
   return {
     "@type": "WebPage",
     "@id": `${base}${canonicalPath}#webpage`,
     name: title,
     description: desc,
     url: `${base}${canonicalPath}`,
+    inLanguage,
     isPartOf: { "@id": `${base}/#website` },
   };
 }

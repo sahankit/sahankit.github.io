@@ -131,9 +131,14 @@ import {
   localeHref,
   localeMeta,
   hreflangHeadTags,
+  ogLocaleAlternateTags,
+  sitemapHreflangXml,
+  HREFLANG_LOCALES,
   t,
   languageSwitcherHtml,
 } from "./i18n.mjs";
+
+const THIN_LOCALE_CODES = new Set(["tr", "vi"]);
 import { extractTextStrings, localizeHtml } from "./i18n-html.mjs";
 import { ensureTranslations, dictFor } from "./i18n-translate.mjs";
 
@@ -285,7 +290,7 @@ function footerHtml(locale = DEFAULT_LOCALE) {
 }
 
 const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
-  const t = escapeMeta(title);
+  const safeTitle = escapeMeta(title);
   const d = escapeMeta(desc);
   const k = keywords ? escapeMeta(keywords) : "";
   const canonical = `${BASE}${canonicalPath}`;
@@ -304,7 +309,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
   <script id="cookieyes" type="text/javascript" src="${COOKIEYES_SCRIPT}"></script>
-  <title>${t}</title>
+  <title>${safeTitle}</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
@@ -314,17 +319,19 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <link rel="sitemap" type="application/xml" title="Sitemap" href="${BASE}/sitemap.xml" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="${SITE_NAME}" />
-  <meta property="og:title" content="${t}" />
+  <meta property="og:title" content="${safeTitle}" />
   <meta property="og:description" content="${d}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:locale" content="${opts.ogLocale || "en_US"}" />
-  ${opts.hreflangPath || opts.hreflangHome ? hreflangHeadTags(BASE, opts.hreflangPath || "/") : ""}
+  ${opts.lang && opts.lang !== DEFAULT_LOCALE ? ogLocaleAlternateTags(opts.lang) : ""}
+  ${opts.hreflang !== false && (opts.hreflangPath || opts.hreflangHome) ? hreflangHeadTags(BASE, opts.hreflangPath || "/") : ""}
+  ${opts.lang ? `<meta http-equiv="content-language" content="${escapeMeta(localeMeta(opts.lang).hreflang)}" />` : ""}
   <meta property="og:image" content="${ogImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="${SITE_NAME} — free online calculators and utilities" />
+  <meta property="og:image:alt" content="${escapeMeta(t(opts.lang || DEFAULT_LOCALE, "ogImageAlt"))}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${t}" />
+  <meta name="twitter:title" content="${safeTitle}" />
   <meta name="twitter:description" content="${d}" />
   <meta name="twitter:image" content="${ogImage}" />
   <link rel="stylesheet" href="/assets/site.css" />
@@ -337,12 +344,17 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
 };
 
 function buildJsonLd(title, desc, canonicalPath, opts = {}) {
+  const lang = opts.lang || DEFAULT_LOCALE;
+  const inLanguage = localeMeta(lang).hreflang;
   const graph = [];
-  if (opts.isHome) graph.push(webSiteLd(BASE));
+  if (opts.isHome) {
+    graph.push(webSiteLd(BASE, { homePath: canonicalPath, description: desc }));
+  }
   if (opts.isHome && opts.itemList?.length) {
     graph.push({
       "@type": "ItemList",
-      name: "Popular free online tools",
+      name: opts.itemListName || "Popular free online tools",
+      inLanguage,
       itemListElement: opts.itemList.map((item, i) => ({
         "@type": "ListItem",
         position: i + 1,
@@ -351,14 +363,15 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
       })),
     });
   }
-  graph.push(webPageNode(title, desc, canonicalPath, BASE));
+  graph.push(webPageNode(title, desc, canonicalPath, BASE, inLanguage));
   const bc = breadcrumbLd(opts.breadcrumbs, BASE, canonicalPath);
   if (bc) graph.push(bc);
   const faq = faqLd(opts.faqs);
   if (faq) graph.push(faq);
   if (opts.softwareApp) {
+    const appName = opts.appName || title;
     graph.push({
-      ...softwareAppLd(title, desc, canonicalPath, BASE),
+      ...softwareAppLd(appName, desc, canonicalPath, BASE),
       url: `${BASE}${canonicalPath}`,
     });
   }
@@ -367,11 +380,12 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
       "@type": "HowTo",
       name: opts.howTo.name || title,
       description: opts.howTo.description || desc,
+      inLanguage,
       step: opts.howTo.steps.map((s, i) => ({
         "@type": "HowToStep",
         position: i + 1,
         name: s.name,
-        text: String(s.text).replace(/<[^>]+>/g, ""),
+        text: String(s.text).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(),
       })),
     });
   }
@@ -656,6 +670,7 @@ function buildHomePage(locale) {
     pagePath: urlPath,
     breadcrumbs: [{ name: t(locale, "home"), url: urlPath }],
     itemList: indexItemList,
+    itemListName: t(locale, "popularHeading"),
   });
   if (dict) html = localizeHtml(html, locale, dict);
   const rel = locale === DEFAULT_LOCALE ? "index.html" : `${locale}/index.html`;
@@ -1676,7 +1691,10 @@ function localizePageOpts(opts, dict, code) {
       ? {
           ...opts.howTo,
           name: trDict(dict, opts.howTo.name),
-          description: trDict(dict, opts.howTo.description),
+          description:
+            trDict(dict, opts.howTo.description) !== opts.howTo.description
+              ? trDict(dict, opts.howTo.description)
+              : opts.jsonDesc || trDict(dict, opts.leadEnglish) || opts.howTo.description,
           steps: (opts.howTo.steps || []).map((s) => ({
             ...s,
             name: trDict(dict, s.name),
@@ -1687,23 +1705,44 @@ function localizePageOpts(opts, dict, code) {
   };
 }
 
+function localizedMetaDescription(dict, desc, opts) {
+  const hit = dict.get(desc);
+  if (hit && hit !== desc && hit.length >= 70) return hit;
+  const body =
+    dict.get(opts.leadEnglish) ||
+    dict.get(opts.leadFallback) ||
+    dict.get(opts.metaRaw) ||
+    (hit && hit !== desc ? hit : "");
+  if (body) {
+    let out = String(body).replace(/\s+/g, " ").trim();
+    if (!out.endsWith(".")) out += ".";
+    if (out.length > 165) out = `${out.slice(0, 162).replace(/\s+\S*$/, "")}…`;
+    return out;
+  }
+  return hit || desc;
+}
+
 function writeLocaleCopies(englishPath, title, desc, main, breadcrumb, opts = {}) {
   for (const code of PREFIX_LOCALES) {
     const meta = localeMeta(code);
     const urlPath = localePath(code, englishPath);
     const dict = dictFor(code);
     const locTitle = dict.get(titleKey(title)) || dict.get(title) || titleKey(title);
-    const locDesc = dict.get(desc) || dict.get(opts.leadEnglish) || dict.get(opts.leadFallback) || desc;
+    const locDesc = localizedMetaDescription(dict, desc, opts);
     const locMain = withLeadFallback(main, opts, dict);
+    const thin = THIN_LOCALE_CODES.has(code);
     const html = localizeHtml(
       page(urlPath, locTitle, locDesc, locMain, breadcrumb, {
-        ...localizePageOpts(opts, dict, code),
+        ...localizePageOpts({ ...opts, jsonDesc: locDesc }, dict, code),
         lang: code,
         dir: meta.dir,
         canonical: urlPath,
         ogLocale: meta.ogLocale,
+        hreflang: thin ? false : undefined,
         hreflangPath: englishPath,
         pagePath: urlPath,
+        noindex: thin || opts.noindex,
+        appName: opts.seoLabel ? trDict(dict, opts.seoLabel) : undefined,
       }),
       code,
       dict,
@@ -1975,8 +2014,10 @@ for (const t of tools) {
   write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, title, desc, main, bc, opts));
   writeLocaleCopies(canonicalFromFile(t.file), title, desc, main, bc, {
     ...opts,
+    seoLabel: t.card,
     leadEnglish: t.desc,
     leadFallback: t.cardDesc,
+    metaRaw: buildMetaDescription(seo?.metaDescription || t.desc, t.card),
   });
 }
 
@@ -2216,19 +2257,29 @@ const sitemapUnique = sitemapEntries.filter((e) => {
   sitemapSeen.add(e.loc);
   return true;
 });
+const sitemapIndexable = sitemapUnique.filter((e) => {
+  const m = e.loc.match(/^\/(tr|vi)(\/|$)/);
+  return !m;
+});
 
 const urlsetXml = (entries) => `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries
-  .map(
-    (e) =>
-      `  <url><loc>${BASE}${e.loc}</loc><lastmod>${BUILD_DATE}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
-  )
+  .map((e) => {
+    const hreflang = sitemapHreflangXml(BASE, e.loc);
+    return `  <url>
+    <loc>${BASE}${e.loc}</loc>
+${hreflang}
+    <lastmod>${BUILD_DATE}</lastmod>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+  </url>`;
+  })
   .join("\n")}
 </urlset>
 `;
 
-write("sitemap.xml", urlsetXml(sitemapUnique));
+write("sitemap.xml", urlsetXml(sitemapIndexable));
 
 /** Small file for GSC — some *.github.io properties fail on the full sitemap fetch. */
 const seedPaths = new Set([
@@ -2267,15 +2318,15 @@ const seedPaths = new Set([
   "/passport-size-photo/",
   "/pdf-to-jpg/",
 ]);
-const sitemapSeedEntries = sitemapUnique.filter((e) => seedPaths.has(e.loc));
+const sitemapSeedEntries = sitemapIndexable.filter((e) => seedPaths.has(e.loc));
 write("sitemap-seed.xml", urlsetXml(sitemapSeedEntries));
 
 const SITEMAP_CHUNK = 150;
 const sitemapPartPaths = [];
-for (let i = 0; i < sitemapUnique.length; i += SITEMAP_CHUNK) {
+for (let i = 0; i < sitemapIndexable.length; i += SITEMAP_CHUNK) {
   const part = Math.floor(i / SITEMAP_CHUNK) + 1;
   const name = `sitemap-part-${part}.xml`;
-  write(name, urlsetXml(sitemapUnique.slice(i, i + SITEMAP_CHUNK)));
+  write(name, urlsetXml(sitemapIndexable.slice(i, i + SITEMAP_CHUNK)));
   sitemapPartPaths.push(`/${name}`);
 }
 

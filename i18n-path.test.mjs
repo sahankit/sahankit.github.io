@@ -7,6 +7,9 @@ import {
   localeFile,
   stripLocalePrefix,
   hreflangHeadTags,
+  sitemapHreflangXml,
+  HREFLANG_LOCALES,
+  LOCALES,
 } from "./i18n.mjs";
 
 assert.equal(localeHomePath("en"), "/");
@@ -44,5 +47,11 @@ const tags = hreflangHeadTags("https://thetoolhq.com", "/gst-calculator/");
 assert.match(tags, /hreflang="hi" href="https:\/\/thetoolhq.com\/hi\/gst-calculator\/"/);
 assert.match(tags, /hreflang="en" href="https:\/\/thetoolhq.com\/gst-calculator\/"/);
 assert.match(tags, /hreflang="x-default" href="https:\/\/thetoolhq.com\/gst-calculator\/"/);
+assert.doesNotMatch(tags, /hreflang="tr"/);
+
+const alt = sitemapHreflangXml("https://thetoolhq.com", "/hi/gst-calculator/");
+assert.match(alt, /hreflang="hi"/);
+assert.match(alt, /hreflang="x-default"/);
+assert.equal(HREFLANG_LOCALES.length, LOCALES.length - 2);
 
 console.log("i18n-path tests passed");

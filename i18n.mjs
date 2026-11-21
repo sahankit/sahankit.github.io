@@ -101,12 +101,34 @@ export function localeMeta(code) {
   return LOCALES.find((l) => l.code === code) || LOCALES[0];
 }
 
-export function hreflangHeadTags(base, englishPath = "/") {
+/** Locales included in hreflang clusters and locale sitemap URLs (exclude thin MT locales). */
+export const HREFLANG_LOCALES = LOCALES.filter((l) => l.code !== "tr" && l.code !== "vi");
+
+export function hreflangHeadTags(base, englishPath = "/", locales = HREFLANG_LOCALES) {
   const path = stripLocalePrefix(englishPath).split("#")[0].split("?")[0] || "/";
-  const lines = LOCALES.map(
+  const lines = locales.map(
     (l) => `  <link rel="alternate" hreflang="${l.hreflang}" href="${base}${localePath(l.code, path)}" />`,
   );
   lines.push(`  <link rel="alternate" hreflang="x-default" href="${base}${localePath(DEFAULT_LOCALE, path)}" />`);
+  return lines.join("\n");
+}
+
+export function ogLocaleAlternateTags(currentCode) {
+  const current = localeMeta(currentCode).ogLocale;
+  return LOCALES.filter((l) => l.code !== currentCode)
+    .map((l) => `  <meta property="og:locale:alternate" content="${l.ogLocale}" />`)
+    .join("\n");
+}
+
+export function sitemapHreflangXml(base, locPath, locales = HREFLANG_LOCALES) {
+  const englishPath = stripLocalePrefix(locPath).split("#")[0].split("?")[0] || "/";
+  const lines = locales.map(
+    (l) =>
+      `    <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${base}${localePath(l.code, englishPath)}" />`,
+  );
+  lines.push(
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${base}${localePath(DEFAULT_LOCALE, englishPath)}" />`,
+  );
   return lines.join("\n");
 }
 
@@ -181,6 +203,7 @@ const STR = {
     languagesPageDesc: "Choose your language for ToolHQ. Homes, hubs, and tools are translated; URLs keep English slugs.",
     languagesHeading: "Choose your language",
     languagesLead: "Homes, hubs, and tools in your language. Slugs stay in English.",
+    ogImageAlt: "ToolHQ — free online calculators and utilities",
     cat_writing: "Text & writing",
     cat_calculators: "Calculators",
     cat_india: "India utilities",
@@ -1099,7 +1122,7 @@ const UI_KEYS = {
 
 const EXTRA_KEYS = {
   zh: { europe: "欧洲", health: "健康", related: "相关工具", advertisement: "广告", toolsNote: "", languagesLead: "首页、专题和工具均已翻译。网址仍用英文。", ...UI_KEYS.zh },
-  hi: { europe: "यूरोप", health: "स्वास्थ्य", related: "संबंधित टूल", advertisement: "विज्ञापन", toolsNote: "", languagesLead: "होम, विषय और टूल आपकी भाषा में। URL अंग्रेज़ी में रहते हैं।", ...UI_KEYS.hi },
+  hi: { europe: "यूरोप", health: "स्वास्थ्य", related: "संबंधित टूल", advertisement: "विज्ञापन", toolsNote: "", languagesLead: "होम, विषय और टूल आपकी भाषा में। URL अंग्रेज़ी में रहते हैं।", ogImageAlt: "ToolHQ — मुफ़्त ऑनलाइन कैलकुलेटर और उपयोगिताएँ", ...UI_KEYS.hi },
   es: { europe: "Europa", health: "Salud", related: "Herramientas relacionadas", advertisement: "Publicidad", toolsNote: "", languagesLead: "Inicio, temas y herramientas en tu idioma. Las URLs siguen en inglés.", ...UI_KEYS.es },
   ar: { europe: "أوروبا", health: "صحة", related: "أدوات ذات صلة", advertisement: "إعلان", toolsNote: "", languagesLead: "الصفحات والأدوات بلغتك. الروابط تبقى بالإنجليزية.", ...UI_KEYS.ar },
   fr: { europe: "Europe", health: "Santé", related: "Outils liés", advertisement: "Publicité", toolsNote: "", languagesLead: "Accueil, thèmes et outils dans votre langue. Les URLs restent en anglais.", ...UI_KEYS.fr },
