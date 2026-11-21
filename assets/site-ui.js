@@ -40,8 +40,14 @@
     return indexPromise;
   }
 
+  function ui(name, fallback) {
+    return document.documentElement.getAttribute(`data-ui-${name}`) || fallback;
+  }
+
   function normalize(s) {
     return String(s || "")
+      .normalize("NFKD")
+      .replace(/\p{M}/gu, "")
       .toLowerCase()
       .replace(/[^\p{L}\p{N}₹%+#.\s-]/gu, " ")
       .replace(/\s+/g, " ")
@@ -143,19 +149,22 @@
       results.appendChild(frag);
     }
 
+    const idleMsg = empty?.getAttribute("data-idle") || empty?.textContent || ui("search-type", "Type to search tools by name or topic.");
+    const noneMsg = empty?.getAttribute("data-none") || ui("search-none", "No match—try GST, PDF, loan, word, image, or tax.");
+
     function run() {
       const q = input.value;
       if (!index) return;
       if (!normalize(q)) {
         render([], []);
-        setEmpty(empty ? "Type to search tools by name or topic." : "");
+        setEmpty(empty ? idleMsg : "");
         return;
       }
       const { hits, tokens } = search(index, q);
       render(hits, tokens);
-      setEmpty(hits.length ? "" : "No match—try GST, PDF, loan, word, image, or tax.");
+      setEmpty(hits.length ? "" : noneMsg);
       if (!hits.length && !empty) {
-        results.innerHTML = `<p class="search-none">No tools match “${escapeHtml(q)}”.</p>`;
+        results.innerHTML = `<p class="search-none">${escapeHtml(noneMsg)}</p>`;
       }
     }
 
@@ -165,7 +174,7 @@
           index = data;
           run();
         })
-        .catch(() => setEmpty("Search is unavailable right now—browse the categories below."));
+        .catch(() => setEmpty(ui("search-unavailable", "Search is unavailable right now—browse the categories below.")));
     }
 
     input.addEventListener("input", () => (index ? run() : ensureIndex()));
@@ -288,13 +297,16 @@
 
   if (!panel) return;
 
-  const LIVE_ACTION = /^\s*(calculate|estimate|convert|compute|total|split|find|get|show|check bmi|annual|entropy|mpg)/i;
+  const SKIP_ACTION = /^\s*(copy|reset|clear|download|print)\b/i;
   const BAD_VALUE = /(^|[^A-Za-z])(NaN|-?Infinity)([^A-Za-z]|$)/;
 
   function primaryAction(scope) {
-    return [...scope.querySelectorAll("button.primary")].find(
-      (b) => !b.disabled && !/^\s*(copy|reset|clear|download|print)\b/i.test(b.textContent),
-    );
+    return [...scope.querySelectorAll("button.primary")].find((b) => {
+      if (b.disabled) return false;
+      if (b.hasAttribute("data-copy") || b.classList.contains("copy-mini")) return false;
+      if (SKIP_ACTION.test(b.textContent) || SKIP_ACTION.test(b.getAttribute("data-action") || "")) return false;
+      return true;
+    });
   }
 
   function guardOutputs(scope) {
@@ -303,7 +315,7 @@
       const text = el.textContent;
       if (text.length > 160 || !(BAD_VALUE.test(text) || text.trim() === "undefined")) return;
       const inTile = el.closest(".stat, td, output");
-      el.textContent = inTile ? "—" : "Enter valid numbers to see a result.";
+      el.textContent = inTile ? "—" : ui("enter-valid", "Enter valid numbers to see a result.");
       if (!inTile && el.classList.contains("ok")) {
         el.classList.remove("ok");
         el.classList.add("error");
@@ -376,7 +388,10 @@
   document.querySelectorAll("main .tool-panel").forEach((p) => {
     if (p.querySelector('input[type="file"]') || p.hasAttribute("data-no-live")) return;
     const btn = primaryAction(p);
-    if (!btn || !LIVE_ACTION.test(btn.textContent)) return;
+    const liveFields = p.querySelector(
+      'input[type="number"], input[type="range"], input[type="date"], input[type="time"], input[type="month"], select',
+    );
+    if (!btn || (!btn.hasAttribute("data-live-action") && !liveFields)) return;
     let timer = 0;
     const onChange = (e) => {
       const el = e.target;
@@ -419,7 +434,7 @@
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "game-hint-btn";
-    btn.textContent = "Hint";
+    btn.textContent = ui("hint", "Hint");
     btn.setAttribute("aria-expanded", "false");
     const reveal = document.createElement("p");
     reveal.className = "tool-hint game-hint-reveal";
@@ -433,7 +448,7 @@
       if (text) {
         const show = reveal.hidden;
         reveal.hidden = !show;
-        btn.textContent = show ? "Hide hint" : "Hint";
+        btn.textContent = show ? ui("hide-hint", "Hide hint") : ui("hint", "Hint");
         btn.setAttribute("aria-expanded", show ? "true" : "false");
       } else if (!hasAction) {
         panel.dispatchEvent(new CustomEvent("game:hint", { bubbles: false }));
@@ -473,23 +488,27 @@
   }
 
   document.querySelectorAll("main .tool-panel").forEach((p) => {
-    const hasCopy = [...p.querySelectorAll("button")].some((b) => /^\s*copy\b/i.test(b.textContent));
+    const hasCopy = [...p.querySelectorAll("button")].some(
+      (b) => b.hasAttribute("data-copy") || b.classList.contains("copy-mini") || /^\s*copy\b/i.test(b.textContent),
+    );
     if (hasCopy) return;
+    const copyLabel = ui("copy", "Copy");
     const targets = p.querySelectorAll('textarea[readonly], input[readonly][type="text"], input[readonly]:not([type]), pre[id]');
     targets.forEach((el) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "copy-mini";
-      btn.textContent = "Copy";
-      btn.setAttribute("aria-label", "Copy result");
+      btn.textContent = copyLabel;
+      btn.setAttribute("data-copy", "");
+      btn.setAttribute("aria-label", ui("copy-result", "Copy result"));
       btn.addEventListener("click", async () => {
         const text = "value" in el && el.tagName !== "PRE" ? el.value : el.textContent;
         if (!text.trim()) return;
         const ok = await copyText(text);
-        btn.textContent = ok ? "Copied ✓" : "Copy failed";
+        btn.textContent = ok ? ui("copied", "Copied ✓") : ui("copy-failed", "Copy failed");
         btn.classList.toggle("is-copied", ok);
         setTimeout(() => {
-          btn.textContent = "Copy";
+          btn.textContent = copyLabel;
           btn.classList.remove("is-copied");
         }, 1400);
       });

@@ -212,7 +212,7 @@ function headerSearchHtml(locale = DEFAULT_LOCALE) {
     <form class="header-search" role="search" action="${home}" method="get" data-tool-finder>
       <label class="sr-only" for="header-search-input">${t(locale, "searchTools")}</label>
       <input type="search" id="header-search-input" name="q" placeholder="${escapeMeta(t(locale, "searchTools"))}…  ( / )" autocomplete="off" enterkeyhint="search" />
-      <div class="search-results search-results--pop" data-results aria-label="Matching tools"></div>
+      <div class="search-results search-results--pop" data-results aria-label="${escapeMeta(t(locale, "matchingTools"))}"></div>
     </form>
     <button type="button" class="header-search-toggle" aria-label="${escapeMeta(t(locale, "searchTools"))}" aria-expanded="false" aria-controls="header-search-input">${iconSvg("search")}</button>`;
 }
@@ -378,6 +378,24 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
   return jsonLdGraph([{ "@context": "https://schema.org", "@graph": graph }]);
 }
 
+function uiDataAttrs(locale) {
+  const pairs = [
+    ["copy", "copy"],
+    ["copied", "copied"],
+    ["copy-failed", "copyFailed"],
+    ["copy-result", "copyResult"],
+    ["hint", "hint"],
+    ["hide-hint", "hideHint"],
+    ["enter-valid", "enterValid"],
+    ["search-type", "searchEmpty"], // n filled below
+    ["search-none", "searchNone"],
+    ["search-unavailable", "searchUnavailable"],
+  ];
+  return pairs
+    .map(([attr, key]) => `data-ui-${attr}="${escapeMeta(t(locale, key, key === "searchEmpty" ? { n: tools.length } : {}))}"`)
+    .join(" ");
+}
+
 function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
   title = formatDocumentTitle(title);
   const canonicalPath = opts.canonical || urlPath;
@@ -385,7 +403,7 @@ function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
   const dir = opts.dir || "ltr";
   const pagePath = opts.pagePath || canonicalPath;
   return `<!DOCTYPE html>
-<html lang="${lang}"${dir === "rtl" ? ' dir="rtl"' : ""}>
+<html lang="${lang}"${dir === "rtl" ? ' dir="rtl"' : ""} ${uiDataAttrs(lang)}>
 <head>${headCommon(title, desc, canonicalPath, opts.keywords || "", opts)}
 ${buildJsonLd(title, desc, canonicalPath, opts)}
 </head>
@@ -558,8 +576,7 @@ ${panels}
 }
 
 function micrositeCard(s) {
-  const blurb = s.blurb.length > 100 ? `${s.blurb.slice(0, 97)}…` : s.blurb;
-  return hubCardHtml({ slug: s.slug, title: s.hero, desc: blurb });
+  return hubCardHtml({ slug: s.slug, title: s.hero, desc: s.blurb });
 }
 
 function toolFinderHtml(locale = DEFAULT_LOCALE) {
@@ -569,17 +586,15 @@ function toolFinderHtml(locale = DEFAULT_LOCALE) {
 <form id="tool-finder" role="search" action="${home}" method="get" data-tool-finder>
 <label class="sr-only" for="tool-search-input">${t(locale, "searchTools")}</label>
 <input type="search" id="tool-search-input" name="q" placeholder="${escapeMeta(t(locale, "searchPlaceholder", { n: tools.length }))}" autocomplete="off" enterkeyhint="search" />
-<div class="search-results" data-results aria-label="Matching tools"></div>
-<p class="search-empty" data-empty hidden aria-live="polite">${t(locale, "searchEmpty", { n: tools.length })}</p>
+<div class="search-results" data-results aria-label="${escapeMeta(t(locale, "matchingTools"))}"></div>
+<p class="search-empty" data-empty data-idle="${escapeMeta(t(locale, "searchEmpty", { n: tools.length }))}" data-none="${escapeMeta(t(locale, "searchNone"))}" hidden aria-live="polite">${t(locale, "searchEmpty", { n: tools.length })}</p>
 </form>
 </section>`;
 }
 
 function buildHomeMain(locale = DEFAULT_LOCALE) {
-  const toolsNote =
-    locale !== DEFAULT_LOCALE
-      ? `<p class="tools-locale-note">${t(locale, "toolsNote")}</p>`
-      : "";
+  const note = t(locale, "toolsNote");
+  const toolsNote = locale !== DEFAULT_LOCALE && note ? `<p class="tools-locale-note">${note}</p>` : "";
   return `<div class="hero">
 <p class="hero-kicker">${tools.length} ${t(locale, "heroKicker")}</p>
 <h1>${t(locale, "heroTitle")}</h1>
@@ -611,7 +626,7 @@ ${otherHubCards ? `<details class="more-hubs"><summary>${t(locale, "moreHubs")}<
 ${hubSectionsHtml(locale)}
 <section class="home-section" aria-labelledby="guides-heading">
 <h2 id="guides-heading">${t(locale, "guidesHeading")}</h2>
-<div class="grid grid--compact">${guides.map((g) => `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc.slice(0, 80)}…</p></span></a>`).join("")}</div>
+<div class="grid grid--compact">${guides.map((g) => `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc}</p></span></a>`).join("")}</div>
 </section>
 ${locale === DEFAULT_LOCALE ? renderSeoHtml(indexSeo) : ""}`;
 }
@@ -1616,16 +1631,73 @@ function write(rel, content) {
   fs.writeFileSync(full, rel.endsWith(".html") ? canonicalizeLinks(content) : content);
 }
 
+function titleKey(title) {
+  return String(title || "").replace(/\s*\|\s*ToolHQ\s*$/i, "").trim();
+}
+
+function trDict(dict, s) {
+  if (!s) return s;
+  const core = String(s).replace(/\s+/g, " ").trim();
+  return dict.get(core) || dict.get(s) || s;
+}
+
+function withLeadFallback(main, opts, dict) {
+  const en = opts.leadEnglish;
+  if (!en || dict.get(en)) return main;
+  const fb = opts.leadFallback && dict.get(opts.leadFallback);
+  if (!fb) return main;
+  const from = `<p class="page-lead">${escapeMeta(en)}</p>`;
+  if (!main.includes(from)) return main;
+  return main.replace(from, `<p class="page-lead">${escapeMeta(fb)}</p>`);
+}
+
+function localizeFaqPair(dict, locale, f) {
+  const strip = (s) => String(s || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  let q = trDict(dict, f.q);
+  let a = trDict(dict, strip(f.a));
+  const qMatch = /^Is this (.+) free\?$/.exec(String(f.q || "").trim());
+  if (qMatch) q = t(locale, "faqFreeQ", { name: trDict(dict, qMatch[1]) });
+  const aMatch = /^Yes\. The (.+) is free to use in your browser with no account required\.$/.exec(strip(f.a));
+  if (aMatch) a = t(locale, "faqFreeA", { name: trDict(dict, aMatch[1]) });
+  return { q, a };
+}
+
+function localizePageOpts(opts, dict, code) {
+  const strip = (s) => String(s || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return {
+    ...opts,
+    breadcrumbs: (opts.breadcrumbs || []).map((c) => ({
+      ...c,
+      name: trDict(dict, c.name),
+      url: c.url ? localePath(code, c.url) : c.url,
+    })),
+    faqs: (opts.faqs || []).map((f) => localizeFaqPair(dict, code, f)),
+    howTo: opts.howTo
+      ? {
+          ...opts.howTo,
+          name: trDict(dict, opts.howTo.name),
+          description: trDict(dict, opts.howTo.description),
+          steps: (opts.howTo.steps || []).map((s) => ({
+            ...s,
+            name: trDict(dict, s.name),
+            text: trDict(dict, strip(s.text)),
+          })),
+        }
+      : opts.howTo,
+  };
+}
+
 function writeLocaleCopies(englishPath, title, desc, main, breadcrumb, opts = {}) {
   for (const code of PREFIX_LOCALES) {
     const meta = localeMeta(code);
     const urlPath = localePath(code, englishPath);
     const dict = dictFor(code);
-    const locTitle = dict.get(title) || title;
-    const locDesc = dict.get(desc) || desc;
+    const locTitle = dict.get(titleKey(title)) || dict.get(title) || titleKey(title);
+    const locDesc = dict.get(desc) || dict.get(opts.leadEnglish) || dict.get(opts.leadFallback) || desc;
+    const locMain = withLeadFallback(main, opts, dict);
     const html = localizeHtml(
-      page(urlPath, locTitle, locDesc, main, breadcrumb, {
-        ...opts,
+      page(urlPath, locTitle, locDesc, locMain, breadcrumb, {
+        ...localizePageOpts(opts, dict, code),
         lang: code,
         dir: meta.dir,
         canonical: urlPath,
@@ -1655,19 +1727,24 @@ function collectTranslatableStrings() {
     add(tool.cardDesc);
     add(tool.title);
     add(tool.desc);
-    addHtml(tool.body);
-    const seo = pageSeo[tool.file];
+    add(titleKey(tool.title));
+    addHtml(fullMain(tool.file, tool));
+    const seo = resolveSeo(tool.file, tool);
     add(seo?.metaTitle);
     add(seo?.metaDescription);
+    add(buildMetaDescription(seo?.metaDescription || tool.desc, tool.card));
     for (const f of seo?.faqs || []) {
       add(f.q);
       add(f.a);
-      add(f.question);
-      add(f.answer);
     }
     for (const step of seo?.howTo?.steps || []) {
       add(step.name);
-      add(step.text);
+      add(String(step.text || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
+    }
+    for (const section of seo?.sections || []) {
+      add(section.h2);
+      for (const p of section.paragraphs || []) add(p);
+      for (const li of section.list || []) add(String(li).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
     }
     for (const r of seo?.related || []) add(r.label);
   }
@@ -1696,6 +1773,11 @@ function collectTranslatableStrings() {
   add("Guide");
   add("All calculators");
   add("Calculators");
+  add("Frequently asked questions");
+  add("Related free tools");
+  add("Does my data leave my device?");
+  add("Runs in your browser—no signup and no install.");
+  add("All tools");
   return [...bag];
 }
 
@@ -1891,7 +1973,11 @@ for (const t of tools) {
   };
   write(t.file, redirectPage(canonical));
   write(`${t.file.replace(/\.html$/, "")}/index.html`, page(canonical, title, desc, main, bc, opts));
-  writeLocaleCopies(canonicalFromFile(t.file), title, desc, main, bc, opts);
+  writeLocaleCopies(canonicalFromFile(t.file), title, desc, main, bc, {
+    ...opts,
+    leadEnglish: t.desc,
+    leadFallback: t.cardDesc,
+  });
 }
 
 for (const g of guides) {

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { PREFIX_LOCALES } from "./i18n.mjs";
+import { phraseDict } from "./i18n-phrases.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const CACHE_DIR = path.join(ROOT, "i18n", "cache");
@@ -48,28 +49,41 @@ function saveCache(locale) {
   fs.writeFileSync(cachePath(locale), `${JSON.stringify(ordered, null, 0)}\n`);
 }
 
+function mergedMap(locale) {
+  return { ...loadCache(locale), ...phraseDict(locale) };
+}
+
 export function lookup(locale, english) {
   if (!english || locale === "en") return english;
-  const map = loadCache(locale);
+  const map = mergedMap(locale);
   return map[english] || english;
 }
 
 export function dictFor(locale) {
-  const map = loadCache(locale);
-  return new Map(Object.entries(map));
+  return new Map(Object.entries(mergedMap(locale)));
+}
+
+const KEEP = /\b(GST|EMI|PDF|JSON|CSV|HTML|CSS|SEO|API|URL|FAQ|ToolHQ|Y-Chat)\b/g;
+
+function protectKeep(s) {
+  return String(s).replace(KEEP, (m) => `⟦${m}⟧`);
+}
+
+function restoreKeep(s) {
+  return String(s).replace(/⟦([^⟧]+)⟧/g, "$1");
 }
 
 async function translateBatch(locale, strings) {
   const tl = GTX[locale];
   if (!tl || !strings.length) return [];
   const sep = "\n§\n";
-  const q = strings.join(sep);
+  const q = strings.map(protectKeep).join(sep);
   const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${encodeURIComponent(tl)}&dt=t&q=${encodeURIComponent(q)}`;
   const res = await fetch(url, { headers: { "User-Agent": "ToolHQ-i18n/1.0" } });
   if (!res.ok) throw new Error(`translate ${locale} HTTP ${res.status}`);
   const data = await res.json();
-  const joined = (data[0] || []).map((row) => row[0] || "").join("");
-  const parts = joined.split("§").map((s) => s.replace(/^\n+|\n+$/g, "").trim());
+  const joined = restoreKeep((data[0] || []).map((row) => row[0] || "").join(""));
+  const parts = joined.split("§").map((s) => restoreKeep(s.replace(/^\n+|\n+$/g, "").trim()));
   if (parts.length !== strings.length) {
     if (strings.length === 1) return [joined.trim() || strings[0]];
     const out = [];
@@ -79,29 +93,37 @@ async function translateBatch(locale, strings) {
   return parts;
 }
 
+function keepTranslation(en, tr) {
+  if (!tr) return false;
+  if (tr === en && /[a-z]/.test(en) && en.length > 24) return false;
+  return true;
+}
+
 async function fillLocale(locale, strings) {
   const map = loadCache(locale);
-  const missing = strings.filter((s) => map[s] == null);
+  const phrases = phraseDict(locale);
+  const missing = strings.filter((s) => map[s] == null && phrases[s] == null);
   if (!missing.length) return 0;
-  const chunkSize = 40;
+  const chunkSize = 12;
   let filled = 0;
   let rateLimited = 0;
   for (let i = 0; i < missing.length; i += chunkSize) {
     const chunk = missing.slice(i, i + chunkSize);
     let tries = 0;
-    while (tries < 4) {
+    while (tries < 3) {
       try {
         const out = await translateBatch(locale, chunk);
         for (let j = 0; j < chunk.length; j++) {
-          map[chunk[j]] = out[j] || chunk[j];
+          if (!keepTranslation(chunk[j], out[j])) continue;
+          map[chunk[j]] = out[j];
+          filled += 1;
         }
-        filled += chunk.length;
         break;
       } catch (err) {
         tries += 1;
-        const wait = /429/.test(String(err.message)) ? 8000 * tries : 500 * tries;
+        const wait = /429/.test(String(err.message)) ? 15000 * tries : 400 * tries;
         if (/429/.test(String(err.message))) rateLimited += 1;
-        if (tries >= 3 || rateLimited >= 4) {
+        if (tries >= 3 || rateLimited >= 3) {
           console.warn(`translate ${locale} backing off (${err.message})`);
           saveCache(locale);
           return filled;
@@ -109,7 +131,7 @@ async function fillLocale(locale, strings) {
         await new Promise((r) => setTimeout(r, wait));
       }
     }
-    await new Promise((r) => setTimeout(r, 80));
+    await new Promise((r) => setTimeout(r, 120));
     if ((i / chunkSize) % 10 === 0 && i) process.stdout.write(`  ${locale} ${i}/${missing.length}\n`);
   }
   saveCache(locale);
@@ -118,16 +140,25 @@ async function fillLocale(locale, strings) {
 
 export async function ensureTranslations(strings) {
   const unique = [...new Set(strings.filter(Boolean))];
-  console.log(`i18n: ${unique.length} unique English strings × ${PREFIX_LOCALES.length} locales`);
-  for (const locale of PREFIX_LOCALES) {
+  const locales = process.env.I18N_LOCALES
+    ? process.env.I18N_LOCALES.split(",").map((s) => s.trim()).filter((s) => PREFIX_LOCALES.includes(s))
+    : PREFIX_LOCALES;
+  console.log(`i18n: ${unique.length} unique English strings × ${locales.length} locales`);
+  if (process.env.SKIP_TRANSLATE === "1") {
+    for (const locale of locales) {
+      const map = loadCache(locale);
+      const phrases = phraseDict(locale);
+      const cached = unique.filter((s) => map[s] || phrases[s]).length;
+      console.log(`i18n: ${locale} skip-fill (${Math.round((cached / Math.max(unique.length, 1)) * 100)}% cached)`);
+    }
+    return;
+  }
+  for (const locale of locales) {
     const map = loadCache(locale);
-    const cached = unique.filter((s) => map[s]).length;
+    const phrases = phraseDict(locale);
+    const cached = unique.filter((s) => map[s] || phrases[s]).length;
     const coverage = cached / Math.max(unique.length, 1);
     const missing = unique.length - cached;
-    if (Object.keys(map).length < 10) {
-      console.log(`i18n: ${locale} skipped (empty cache, chrome-only)`);
-      continue;
-    }
     if (!missing) {
       console.log(`i18n: ${locale} cache hit (100%)`);
       continue;

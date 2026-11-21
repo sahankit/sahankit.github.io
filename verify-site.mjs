@@ -71,7 +71,11 @@ function checkScriptSyntax(code, file) {
 }
 
 console.log("→ node build-site.mjs");
-execSync("node build-site.mjs", { cwd: ROOT, stdio: "inherit" });
+execSync("node build-site.mjs", {
+  cwd: ROOT,
+  stdio: "inherit",
+  env: { ...process.env, SKIP_TRANSLATE: process.env.SKIP_TRANSLATE || "1" },
+});
 
 console.log("→ node osint-username.test.mjs");
 execSync("node osint-username.test.mjs", { cwd: ROOT, stdio: "inherit" });

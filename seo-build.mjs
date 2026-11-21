@@ -276,7 +276,7 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
       {
         h2: `How to use the ${inSentence(card)}`,
         ordered: true,
-        list: base.howTo.steps.map((s) => `<strong>${s.name}.</strong> ${s.text}`),
+        list: base.howTo.steps.map((s) => `<strong>${s.name}.</strong> ${stripTags(s.text)}`),
       },
     ];
   }

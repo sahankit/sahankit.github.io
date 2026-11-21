@@ -232,7 +232,9 @@ function buildStruct(ctc, basicPct, rentAnnual, metro, perksOn, npsPct){
   const perks = perksOn ? MEAL+PHONE : 0;
   const basic = Math.max(0, ctc * basicPct);
   const empLoad = basic * (EMP_PF + GRAT + npsPct);
-  const hra = Math.min(basic * HRA_OF_BASIC, Math.max(0, ctc - basic - empLoad - perks));
+  const room = ctc - basic - empLoad - perks;
+  let hra = basic * HRA_OF_BASIC;
+  if (room < hra) hra = Math.max(0, room);
   const special = Math.max(0, ctc - basic - hra - empLoad - perks);
   if(special < 0) return null;
   const empPf = basic * EMP_PF;
