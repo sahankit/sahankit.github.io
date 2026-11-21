@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://thetoolhq.com/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://thetoolhq.com/zh/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/hi/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/es/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/ar/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/fr/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/pt/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/ru/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/bn/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/ja/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/de/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/ko/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/id/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/tr/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/vi/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://thetoolhq.com/languages/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.55</priority></url>
   <url><loc>https://thetoolhq.com/finance/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://thetoolhq.com/dev/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://thetoolhq.com/seo-lab/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://thetoolhq.com/osint/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://thetoolhq.com/india/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thetoolhq.com/eu/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://thetoolhq.com/security/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://thetoolhq.com/design/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://thetoolhq.com/student/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -134,20 +150,4 @@
   <url><loc>https://thetoolhq.com/anagram-checker/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thetoolhq.com/pincode-format/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thetoolhq.com/loan-comparison/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/amortization-schedule/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/world-clock/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/salary-to-hourly/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/break-even-calculator/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/sales-tax-calculator/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/download-time-calculator/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/string-case-converter/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/duplicate-word-finder/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/acronym-generator/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/api-key-generator/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/wifi-qr-generator/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/md5-hash/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/hmac-generator/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/image-resizer/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/date-add-days/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thetoolhq.com/time-difference/</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

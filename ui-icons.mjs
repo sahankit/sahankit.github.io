@@ -51,6 +51,7 @@ export const HUB_ICON = {
   brief: ["news", "red"],
   quiz: ["help", "green"],
   india: ["rupee", "orange"],
+  eu: ["calculator", "blue"],
   design: ["palette", "pink"],
   security: ["shield", "slate"],
   "online-tests": ["monitor", "teal"],

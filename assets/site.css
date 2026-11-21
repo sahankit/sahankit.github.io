@@ -158,6 +158,46 @@ code {
 }
 .site-nav a:hover { background: var(--brand-100); color: var(--brand-700); }
 
+.lang-switcher {
+  flex-shrink: 0;
+}
+.lang-select {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  max-width: 11rem;
+  background: #fff;
+  cursor: pointer;
+}
+.lang-select:hover,
+.lang-select:focus-visible {
+  border-color: var(--brand-200);
+  color: var(--brand-700);
+  outline: none;
+}
+
+.tools-locale-note {
+  margin: 12px 0 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+html[dir="rtl"] .site-nav {
+  margin-left: 0;
+  margin-right: auto;
+  -webkit-mask-image: linear-gradient(270deg, #000 88%, transparent);
+  mask-image: linear-gradient(270deg, #000 88%, transparent);
+}
+html[dir="rtl"] .breadcrumb ol {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
 @media (min-width: 900px) {
   .site-nav { -webkit-mask-image: none; mask-image: none; padding-right: 0; }
 }

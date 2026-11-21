@@ -391,6 +391,13 @@
     p.addEventListener("change", onChange);
   });
 
+  document.querySelectorAll("[data-lang-select]").forEach((sel) => {
+    sel.addEventListener("change", () => {
+      const href = sel.value;
+      if (href) window.location.assign(href);
+    });
+  });
+
   /* Copy buttons for read-only results that lack one. */
   async function copyText(text) {
     try {

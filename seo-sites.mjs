@@ -59,6 +59,25 @@ export const sitePageSeo = {
       { href: "/seo-lab/", label: "SEO lab" },
     ],
   },
+  "eu/index.html": {
+    keywords: "eu vat calculator hub, uk stamp duty mortgage, europe tax calculator",
+    sections: [
+      {
+        h2: "VAT, UK pay, and EU country estimates",
+        paragraphs: [
+          "Standard VAT by EU member state, UK SDLT stamp duty, mortgage payments in GBP or EUR, take-home pay after tax and NI, and simplified income tax for France, Germany, Spain, and Ireland.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Do tools include reduced VAT rates?", a: "Most pages use standard VAT. Food, books, and cross-border B2B supplies have special rules." },
+    ],
+    related: [
+      { href: "/eu-vat-calculator/", label: "EU VAT by country" },
+      { href: "/uk-stamp-duty-calculator/", label: "UK stamp duty" },
+      { href: "/finance/", label: "Finance hub" },
+    ],
+  },
   "india/index.html": {
     keywords: "India online tools hub, tax GST UPI PAN calculator",
     sections: [

@@ -88,6 +88,10 @@ import { batch41Tools } from "./tools-batch41.mjs";
 import { batch41PageSeo } from "./seo-batch41.mjs";
 import { batch42Tools } from "./tools-batch42.mjs";
 import { batch42PageSeo } from "./seo-batch42.mjs";
+import { batch43Tools } from "./tools-batch43.mjs";
+import { batch43PageSeo } from "./seo-batch43.mjs";
+import { batch44Tools } from "./tools-batch44.mjs";
+import { batch44PageSeo } from "./seo-batch44.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -108,6 +112,15 @@ import {
   buildMetaDescription,
   formatDocumentTitle,
 } from "./seo-build.mjs";
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  localeHomePath,
+  localeMeta,
+  hreflangHeadTags,
+  t,
+  languageSwitcherHtml,
+} from "./i18n.mjs";
 
 const pageSeo = {
   ...corePageSeo,
@@ -150,6 +163,8 @@ const pageSeo = {
   ...batch40PageSeo,
   ...batch41PageSeo,
   ...batch42PageSeo,
+  ...batch43PageSeo,
+  ...batch44PageSeo,
   ...sitePageSeo,
 };
 
@@ -184,25 +199,30 @@ const headerSearchHtml = `
     </form>
     <button type="button" class="header-search-toggle" aria-label="Search tools" aria-expanded="false" aria-controls="header-search-input">${iconSvg("search")}</button>`;
 
-function navHtml(isHome = false) {
+function navHtml(isHome = false, locale = DEFAULT_LOCALE) {
+  const home = localeHomePath(locale);
+  const hubsHash = locale === DEFAULT_LOCALE ? "/#hubs" : `${home}#hubs`;
   return `
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">${t(locale, "skip")}</a>
 <header class="site-header">
   <div class="site-header-inner">
-    <a class="brand" href="/" aria-label="${SITE_NAME} home"><span class="brand-mark" aria-hidden="true">T</span><span>${SITE_NAME}</span></a>
+    <a class="brand" href="${home}" aria-label="${SITE_NAME} home"><span class="brand-mark" aria-hidden="true">T</span><span>${SITE_NAME}</span></a>
     <nav class="site-nav" aria-label="Main">
-      ${isHome ? `<a href="#find-tool">Search</a>` : ""}
-      <a href="/#hubs">Hubs</a>
-      <a href="/finance/">Finance</a>
-      <a href="/india/">India</a>
-      <a href="/dev/">Developer</a>
-      <a href="/design/">PDF &amp; images</a>
-      <a href="/games/">Games</a>
-      <a href="/games/">Games</a>
-      <a href="/online-tests/">Tests</a>
-      <a href="/quiz/">Quiz</a>
-      <a href="/brief/">News</a>
-    </nav>${isHome ? "" : headerSearchHtml}
+      ${isHome ? `<a href="#find-tool">${t(locale, "search")}</a>` : ""}
+      <a href="${hubsHash}">${t(locale, "hubs")}</a>
+      <a href="/finance/">${t(locale, "finance")}</a>
+      <a href="/india/">${t(locale, "india")}</a>
+      <a href="/eu/">${t(locale, "europe")}</a>
+      <a href="/dev/">${t(locale, "developer")}</a>
+      <a href="/design/">${t(locale, "design")}</a>
+      <a href="/games/">${t(locale, "games")}</a>
+      <a href="/online-tests/">${t(locale, "tests")}</a>
+      <a href="/quiz/">${t(locale, "quiz")}</a>
+      <a href="/brief/">${t(locale, "news")}</a>
+      <a href="/languages/">${t(locale, "languages")}</a>
+    </nav>
+    ${languageSwitcherHtml(locale)}
+    ${isHome ? "" : headerSearchHtml}
   </div>
 </header>`;
 }
@@ -216,28 +236,30 @@ const FOOTER_POPULAR = [
   ["/qr-code-generator/", "QR code generator"],
 ];
 
-function footerHtml() {
+function footerHtml(locale = DEFAULT_LOCALE) {
   const list = (items) => items.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("");
   const hubs = micrositeDefs.slice(0, 8).map((s) => [`/${s.slug}/`, s.hero]);
+  const home = localeHomePath(locale);
   return `
 <footer class="site-footer">
   <div class="site-footer-inner">
     <div class="footer-brand">
-      <a class="brand" href="/" aria-label="${SITE_NAME} home"><span class="brand-mark" aria-hidden="true">T</span><span>${SITE_NAME}</span></a>
-      <p>${tools.length}+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
+      <a class="brand" href="${home}" aria-label="${SITE_NAME} home"><span class="brand-mark" aria-hidden="true">T</span><span>${SITE_NAME}</span></a>
+      <p>${tools.length}+ ${t(locale, "footerBlurb")}</p>
     </div>
-    <nav class="footer-col" aria-label="Popular tools"><h2>Popular</h2><ul>${list(FOOTER_POPULAR)}</ul></nav>
-    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul>${list(hubs)}</ul></nav>
-    <nav class="footer-col" aria-label="Site"><h2>Site</h2><ul>${list([
-      ["/guides/writing-tools/", "Guides"],
-      ["/about/", "About"],
-      ["/privacy/", "Privacy policy"],
+    <nav class="footer-col" aria-label="Popular tools"><h2>${t(locale, "popular")}</h2><ul>${list(FOOTER_POPULAR)}</ul></nav>
+    <nav class="footer-col" aria-label="Topic hubs"><h2>${t(locale, "hubs")}</h2><ul>${list(hubs)}</ul></nav>
+    <nav class="footer-col" aria-label="Site"><h2>${t(locale, "site")}</h2><ul>${list([
+      ["/guides/writing-tools/", t(locale, "guides")],
+      ["/about/", t(locale, "about")],
+      ["/privacy/", t(locale, "privacy")],
+      ["/languages/", t(locale, "languages")],
       ["/y-chat/", "Y-Chat"],
-      ["/sitemap.xml", "Sitemap"],
+      ["/sitemap.xml", t(locale, "sitemap")],
     ])}</ul></nav>
   </div>
   <p class="footer-owner">Site owned by ${escapeMeta(siteOwnerLine())}</p>
-  <p class="footer-note">Estimates are for information only—not financial, tax, legal, or medical advice. Not affiliated with Google or Yahoo.</p>
+  <p class="footer-note">${t(locale, "footerNote")}</p>
 </footer>`;
 }
 
@@ -275,6 +297,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta property="og:description" content="${d}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:locale" content="${opts.ogLocale || "en_US"}" />
+  ${opts.hreflangHome ? hreflangHeadTags(BASE) : ""}
   <meta property="og:image" content="${ogImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -337,18 +360,20 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
 function page(urlPath, title, desc, mainHtml, breadcrumb = "", opts = {}) {
   title = formatDocumentTitle(title);
   const canonicalPath = opts.canonical || urlPath;
+  const lang = opts.lang || DEFAULT_LOCALE;
+  const dir = opts.dir || "ltr";
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${lang}"${dir === "rtl" ? ' dir="rtl"' : ""}>
 <head>${headCommon(title, desc, canonicalPath, opts.keywords || "", opts)}
 ${buildJsonLd(title, desc, canonicalPath, opts)}
 </head>
 <body>
-${navHtml(opts.isHome)}
+${navHtml(opts.isHome, lang)}
 <main class="wrap" id="main">
 ${breadcrumb}
 ${mainHtml}
 </main>
-${footerHtml()}
+${footerHtml(lang)}
 </body>
 </html>`;
 }
@@ -400,7 +425,7 @@ const CATEGORY_HUB = {
   chat: { href: "/chat/", label: "Free chat (Y-Chat)" },
 };
 
-const FEATURED_HUB_SLUGS = ["finance", "india", "dev", "games", "online-tests", "osint", "ai-writing", "student", "brief", "quiz"];
+const FEATURED_HUB_SLUGS = ["finance", "india", "eu", "health", "dev", "games", "online-tests", "osint", "ai-writing", "student", "brief", "quiz"];
 
 const POPULAR_TOOL_FILES = [
   "word-counter.html",
@@ -478,11 +503,18 @@ function relatedCardsHtml(related, self) {
 </section>`;
 }
 
-function hubSectionsHtml() {
-  const blocks = HUB_CATEGORIES.map(({ id, title }) => {
+function categoryTitle(locale, id) {
+  const key = `cat_${id}`;
+  const localized = t(locale, key);
+  if (localized !== key) return localized;
+  return HUB_CATEGORIES.find((c) => c.id === id)?.title || id;
+}
+
+function hubSectionsHtml(locale = DEFAULT_LOCALE) {
+  const blocks = HUB_CATEGORIES.map(({ id }) => {
     const list = tools.filter((t) => t.category === id);
     if (!list.length) return null;
-    return { id, title, list };
+    return { id, title: categoryTitle(locale, id), list };
   }).filter(Boolean);
   const panels = blocks
     .map(({ id, title, list }) => {
@@ -497,8 +529,8 @@ function hubSectionsHtml() {
     })
     .join("\n");
   return `<section id="all-tools" class="catalog" aria-labelledby="catalog-heading">
-<h2 id="catalog-heading">All tools by topic</h2>
-<p class="section-hint">Open a category below, or use search above to jump straight to a tool.</p>
+<h2 id="catalog-heading">${t(locale, "catalogHeading")}</h2>
+<p class="section-hint">${t(locale, "catalogHint")}</p>
 ${panels}
 </section>`;
 }
@@ -508,15 +540,95 @@ function micrositeCard(s) {
   return hubCardHtml({ slug: s.slug, title: s.hero, desc: blurb });
 }
 
-function toolFinderHtml() {
+function toolFinderHtml(locale = DEFAULT_LOCALE) {
+  const home = localeHomePath(locale);
   return `<section id="find-tool" class="tool-finder" aria-labelledby="finder-heading">
-<h2 id="finder-heading" class="sr-only">Find a tool</h2>
-<form id="tool-finder" role="search" action="/" method="get" data-tool-finder>
-<label class="sr-only" for="tool-search-input">Search tools</label>
-<input type="search" id="tool-search-input" name="q" placeholder="Search ${tools.length} tools — EMI, PDF, GST…" autocomplete="off" enterkeyhint="search" />
+<h2 id="finder-heading" class="sr-only">${t(locale, "finderSr")}</h2>
+<form id="tool-finder" role="search" action="${home}" method="get" data-tool-finder>
+<label class="sr-only" for="tool-search-input">${t(locale, "searchTools")}</label>
+<input type="search" id="tool-search-input" name="q" placeholder="${escapeMeta(t(locale, "searchPlaceholder", { n: tools.length }))}" autocomplete="off" enterkeyhint="search" />
 <div class="search-results" data-results aria-label="Matching tools"></div>
-<p class="search-empty" data-empty hidden aria-live="polite">Type to search ${tools.length} tools by name or topic.</p>
+<p class="search-empty" data-empty hidden aria-live="polite">${t(locale, "searchEmpty", { n: tools.length })}</p>
 </form>
+</section>`;
+}
+
+function buildHomeMain(locale = DEFAULT_LOCALE) {
+  const toolsNote =
+    locale !== DEFAULT_LOCALE
+      ? `<p class="tools-locale-note">${t(locale, "toolsNote")}</p>`
+      : "";
+  return `<div class="hero">
+<p class="hero-kicker">${tools.length} ${t(locale, "heroKicker")}</p>
+<h1>${t(locale, "heroTitle")}</h1>
+<p class="hero-lead">${t(locale, "heroLead")}</p>
+${toolFinderHtml(locale)}
+<ul class="trust-strip" aria-label="How it works">
+<li>${t(locale, "trust1")}</li>
+<li>${t(locale, "trust2")}</li>
+<li>${t(locale, "trust3")}</li>
+</ul>
+${toolsNote}
+</div>
+<section class="recent-tools" data-recent-tools hidden aria-labelledby="recent-heading">
+<h2 id="recent-heading">${t(locale, "recent")}</h2>
+<div class="recent-list" data-recent-list></div>
+</section>
+${ad}
+<section id="hubs" class="home-section" aria-labelledby="hubs-heading">
+<h2 id="hubs-heading">${t(locale, "hubsHeading")}</h2>
+<p class="section-hint">${t(locale, "hubsHint")}</p>
+<div class="grid grid--scroll">${featuredHubCards}</div>
+${otherHubCards ? `<details class="more-hubs"><summary>${t(locale, "moreHubs")}</summary><div class="grid grid--compact">${otherHubCards}</div></details>` : ""}
+</section>
+<section class="home-section" aria-labelledby="popular-heading">
+<h2 id="popular-heading">${t(locale, "popularHeading")}</h2>
+<p class="section-hint">${t(locale, "popularHint")}</p>
+<div class="grid grid--compact">${popularCards}</div>
+</section>
+${hubSectionsHtml(locale)}
+<section class="home-section" aria-labelledby="guides-heading">
+<h2 id="guides-heading">${t(locale, "guidesHeading")}</h2>
+<div class="grid grid--compact">${guides.map((g) => `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc.slice(0, 80)}…</p></span></a>`).join("")}</div>
+</section>
+${locale === DEFAULT_LOCALE ? renderSeoHtml(indexSeo) : ""}`;
+}
+
+function buildHomePage(locale) {
+  const meta = localeMeta(locale);
+  const urlPath = localeHomePath(locale);
+  const title = t(locale, "indexTitle", { n: tools.length });
+  const desc = t(locale, "indexDesc", { n: tools.length });
+  const indexItemList = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
+    .filter(Boolean)
+    .slice(0, 12)
+    .map((t) => ({ name: t.card, url: canonicalFromFile(t.file) }));
+  const html = page(urlPath, title, desc, buildHomeMain(locale), "", {
+    keywords: locale === DEFAULT_LOCALE ? indexSeo.keywords : "",
+    faqs: locale === DEFAULT_LOCALE ? indexSeo.faqs : undefined,
+    isHome: true,
+    canonical: urlPath,
+    lang: locale,
+    dir: meta.dir,
+    hreflangHome: true,
+    ogLocale: meta.ogLocale,
+    breadcrumbs: [{ name: t(locale, "home"), url: urlPath }],
+    itemList: indexItemList,
+  });
+  const rel = locale === DEFAULT_LOCALE ? "index.html" : `${locale}/index.html`;
+  write(rel, html);
+}
+
+function languagesPageHtml() {
+  const cards = LOCALES.map(
+    (l) =>
+      `<a class="card tool-card" href="${localeHomePath(l.code)}"><span class="card-body"><h3 class="card-title">${l.nativeName}</h3><p>${localeMeta(l.code).hreflang}</p></span></a>`,
+  ).join("");
+  return `<header class="page-hero"><h1>${t(DEFAULT_LOCALE, "languagesHeading")}</h1>
+<p class="page-lead">${t(DEFAULT_LOCALE, "languagesLead")}</p></header>
+<section class="home-section" aria-labelledby="languages-grid">
+<h2 id="languages-grid" class="sr-only">${t(DEFAULT_LOCALE, "languagesHeading")}</h2>
+<div class="grid grid--compact languages-grid">${cards}</div>
 </section>`;
 }
 
@@ -1383,6 +1495,8 @@ document.getElementById('go').click();
   ...batch40Tools(ad),
   ...batch41Tools(ad),
   ...batch42Tools(ad),
+  ...batch43Tools(ad),
+  ...batch44Tools(ad),
 ]);
 
 const guides = [
@@ -1487,65 +1601,34 @@ const popularCards = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file =
   .map((t) => toolCardHtml({ href: canonicalFromFile(t.file), title: t.card, desc: t.cardDesc, category: t.category }))
   .join("\n");
 
-const indexMain = `<div class="hero">
-<p class="hero-kicker">${tools.length} free tools · no signup</p>
-<h1>Free online calculators &amp; tools</h1>
-<p class="hero-lead">India finance, PDF, writing, developer and everyday calculators. Most tools run entirely in your browser, so your data stays on your device.</p>
-${toolFinderHtml()}
-<ul class="trust-strip" aria-label="How it works">
-<li>Free forever</li>
-<li>No account</li>
-<li>Works on mobile</li>
-</ul>
-</div>
-<section class="recent-tools" data-recent-tools hidden aria-labelledby="recent-heading">
-<h2 id="recent-heading">Recently used</h2>
-<div class="recent-list" data-recent-list></div>
-</section>
-${ad}
-<section id="hubs" class="home-section" aria-labelledby="hubs-heading">
-<h2 id="hubs-heading">Start with a topic hub</h2>
-<p class="section-hint">Curated collections—easier than scrolling the full list.</p>
-<div class="grid grid--scroll">${featuredHubCards}</div>
-${otherHubCards ? `<details class="more-hubs"><summary>More topic hubs</summary><div class="grid grid--compact">${otherHubCards}</div></details>` : ""}
-</section>
-<section class="home-section" aria-labelledby="popular-heading">
-<h2 id="popular-heading">Popular tools</h2>
-<p class="section-hint">Most-used pages—open one and start typing.</p>
-<div class="grid grid--compact">${popularCards}</div>
-</section>
-${hubSectionsHtml()}
-<section class="home-section" aria-labelledby="guides-heading">
-<h2 id="guides-heading">Guides</h2>
-<div class="grid grid--compact">${guides.map((g) => `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc.slice(0, 80)}…</p></span></a>`).join("")}</div>
-</section>
-${renderSeoHtml(indexSeo)}`;
+for (const loc of LOCALES) buildHomePage(loc.code);
 
-const indexTitle = formatDocumentTitle(
-  `Free Online Calculators & Tools — ${tools.length}+ Utilities`,
-);
-const indexItemList = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
-  .filter(Boolean)
-  .slice(0, 12)
-  .map((t) => ({ name: t.card, url: canonicalFromFile(t.file) }));
-
-const indexHtml = page(
-  "/",
-  indexTitle,
-  `${tools.length}+ free online tools: income tax, GST, EMI, PDF merge, word counter, QR codes, and more. Fast, private, no signup—works in your browser.`,
-  indexMain,
-  "",
-  {
-    keywords: indexSeo.keywords,
-    faqs: indexSeo.faqs,
-    isHome: true,
-    canonical: "/",
-    breadcrumbs: [{ name: "Home", url: "/" }],
-    itemList: indexItemList,
-  },
+write(
+  "languages/index.html",
+  page(
+    "/languages/",
+    t(DEFAULT_LOCALE, "languagesPageTitle"),
+    t(DEFAULT_LOCALE, "languagesPageDesc"),
+    languagesPageHtml(),
+    breadcrumbHtml([
+      { name: t(DEFAULT_LOCALE, "home"), url: "/" },
+      { name: t(DEFAULT_LOCALE, "languages") },
+    ]),
+    {
+      canonical: "/languages/",
+      hreflangHome: true,
+      breadcrumbs: [
+        { name: t(DEFAULT_LOCALE, "home"), url: "/" },
+        { name: t(DEFAULT_LOCALE, "languages"), url: "/languages/" },
+      ],
+    },
+  ),
 );
 
-write("index.html", indexHtml);
+write(
+  "assets/locales.json",
+  `${JSON.stringify(LOCALES.map((l) => ({ code: l.code, hreflang: l.hreflang, dir: l.dir, nativeName: l.nativeName, home: localeHomePath(l.code) })))}\n`,
+);
 
 /** Extra search terms: SEO keywords minus words already in the name/description. */
 function searchKeywords(t) {
@@ -1832,8 +1915,16 @@ const notFound = page(
 write("404.html", notFound);
 write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirect</title></head><body><p><a href="/">Go to ${SITE_NAME}</a></p></body></html>`);
 
+const localeSitemap = LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({
+  loc: localeHomePath(l.code),
+  priority: "0.95",
+  changefreq: "weekly",
+}));
+
 const sitemapEntries = [
   { loc: "/", priority: "1.0", changefreq: "weekly" },
+  ...localeSitemap,
+  { loc: "/languages/", priority: "0.55", changefreq: "monthly" },
   ...micrositeUrls.map((u) => ({ loc: u, priority: "0.9", changefreq: "weekly" })),
   ...tools.map((t) => ({
     loc: canonicalFromFile(t.file),
@@ -1874,6 +1965,13 @@ const seedPaths = new Set([
   "/dev/",
   "/seo-lab/",
   "/india/",
+  "/eu/",
+  "/vat-calculator/",
+  "/uk-stamp-duty-calculator/",
+  "/uk-take-home-pay-calculator/",
+  "/calorie-calculator/",
+  "/bmr-calculator/",
+  "/margin-calculator/",
   "/word-counter/",
   "/income-tax-calculator/",
   "/gst-calculator/",

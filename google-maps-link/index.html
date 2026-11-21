@@ -27,6 +27,7 @@
   <meta property="og:description" content="Build a Google Maps URL from coordinates or a place query. Free maps link in your browser—no signup or install." />
   <meta property="og:url" content="https://thetoolhq.com/google-maps-link/" />
   <meta property="og:locale" content="en_US" />
+  
   <meta property="og:image" content="https://thetoolhq.com/assets/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -55,14 +56,17 @@
       <a href="/#hubs">Hubs</a>
       <a href="/finance/">Finance</a>
       <a href="/india/">India</a>
+      <a href="/eu/">Europe</a>
       <a href="/dev/">Developer</a>
-      <a href="/design/">PDF &amp; images</a>
-      <a href="/games/">Games</a>
+      <a href="/design/">PDF & images</a>
       <a href="/games/">Games</a>
       <a href="/online-tests/">Tests</a>
       <a href="/quiz/">Quiz</a>
       <a href="/brief/">News</a>
+      <a href="/languages/">Languages</a>
     </nav>
+    <div class="lang-switcher"><label class="sr-only" for="lang-select">Language</label><select id="lang-select" class="lang-select" data-lang-select aria-label="Language"><option value="/" selected>English</option><option value="/zh/">简体中文</option><option value="/hi/">हिन्दी</option><option value="/es/">Español</option><option value="/ar/">العربية</option><option value="/fr/">Français</option><option value="/pt/">Português</option><option value="/ru/">Русский</option><option value="/bn/">বাংলা</option><option value="/ja/">日本語</option><option value="/de/">Deutsch</option><option value="/ko/">한국어</option><option value="/id/">Bahasa Indonesia</option><option value="/tr/">Türkçe</option><option value="/vi/">Tiếng Việt</option></select></div>
+    
     <form class="header-search" role="search" action="/" method="get" data-tool-finder>
       <label class="sr-only" for="header-search-input">Search tools</label>
       <input type="search" id="header-search-input" name="q" placeholder="Search tools…  ( / )" autocomplete="off" enterkeyhint="search" />
@@ -106,11 +110,11 @@ document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(docume
   <div class="site-footer-inner">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="ToolHQ home"><span class="brand-mark" aria-hidden="true">T</span><span>ToolHQ</span></a>
-      <p>528+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
+      <p>548+ free calculators and utilities. Most tools run entirely in your browser—no signup.</p>
     </div>
     <nav class="footer-col" aria-label="Popular tools"><h2>Popular</h2><ul><li><a href="/word-counter/">Word counter</a></li><li><a href="/income-tax-calculator/">Income tax calculator</a></li><li><a href="/gst-calculator/">GST calculator</a></li><li><a href="/emi-calculator/">EMI calculator</a></li><li><a href="/pdf-merge/">Merge PDF</a></li><li><a href="/qr-code-generator/">QR code generator</a></li></ul></nav>
-    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/security/">Security & crypto tools</a></li><li><a href="/design/">Design & media</a></li><li><a href="/student/">Student toolkit</a></li></ul></nav>
-    <nav class="footer-col" aria-label="Site"><h2>Site</h2><ul><li><a href="/guides/writing-tools/">Guides</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy policy</a></li><li><a href="/y-chat/">Y-Chat</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Topic hubs"><h2>Hubs</h2><ul><li><a href="/finance/">Finance calculators</a></li><li><a href="/dev/">Developer utilities</a></li><li><a href="/seo-lab/">SEO lab</a></li><li><a href="/osint/">OSINT research hub</a></li><li><a href="/india/">India utilities</a></li><li><a href="/eu/">Europe calculators</a></li><li><a href="/security/">Security & crypto tools</a></li><li><a href="/design/">Design & media</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Site"><h2>Site</h2><ul><li><a href="/guides/writing-tools/">Guides</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy policy</a></li><li><a href="/languages/">Languages</a></li><li><a href="/y-chat/">Y-Chat</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></nav>
   </div>
   <p class="footer-owner">Site owned by Useless engineer · Sah Technologies · Bangalore</p>
   <p class="footer-note">Estimates are for information only—not financial, tax, legal, or medical advice. Not affiliated with Google or Yahoo.</p>
