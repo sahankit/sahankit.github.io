@@ -263,6 +263,7 @@ document.getElementById('go').click();
     {
       path: "/english-number-to-words.html",
       file: "english-number-to-words.html",
+      skipHomeCatalog: true,
       category: "writing",
       title: "Number to Words — English (International)",
       desc: "Convert numbers to English words for cheques and documents. For INR rupee words use the rupee amount tool.",

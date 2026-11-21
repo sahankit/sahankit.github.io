@@ -370,6 +370,8 @@ const chips=[...document.querySelectorAll('#chips .chip')];
 function markChip(){ chips.forEach(x=>x.classList.toggle('is-on',x.dataset.kb===String(+$('target').value))); }
 chips.forEach(b=>b.onclick=()=>{ $('target').value=b.dataset.kb; markChip(); });
 $('target').addEventListener('input',markChip);
+const qKb=new URLSearchParams(location.search).get('kb');
+if(qKb){ $('target').value=Math.min(10000,Math.max(2,+qKb||50)); markChip(); }
 function clearOut(){ $('dl').hidden=true; $('stats').hidden=true; $('preview').hidden=true; }
 $('file').onchange=()=>{
   const f=$('file').files[0]; clearOut(); $('go').disabled=!f;

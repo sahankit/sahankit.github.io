@@ -99,6 +99,7 @@ import { batch45PageSeo } from "./seo-batch45.mjs";
 import { batch46Tools } from "./tools-batch46.mjs";
 import { batch46PageSeo } from "./seo-batch46.mjs";
 import { GAME_PLAY_HINTS } from "./game-hints.mjs";
+import { IMAGE_KB_PRESETS, kbPresetPageSeo } from "./seo-kb-presets.mjs";
 
 const GAME_HINT_ACTION_FILES = new Set([
   "sudoku-game.html",
@@ -193,6 +194,7 @@ const pageSeo = {
   ...batch44PageSeo,
   ...batch45PageSeo,
   ...batch46PageSeo,
+  ...kbPresetPageSeo,
   ...sitePageSeo,
   ...referencePageSeo,
 };
@@ -642,7 +644,23 @@ ${otherHubCards ? `<details class="more-hubs"><summary>${t(locale, "moreHubs")}<
 <p class="section-hint">${t(locale, "popularHint")}</p>
 <div class="grid grid--compact">${popularCards}</div>
 </section>
-${hubSectionsHtml(locale)}
+<section class="home-section" aria-labelledby="catalog-heading">
+<h2 id="catalog-heading">${t(locale, "catalogHeading")}</h2>
+<p class="section-hint">Use search above, or open a topic hub below for the full list in each category.</p>
+<div class="grid grid--compact">${HUB_CATEGORIES.map(({ id }) => {
+    const hub = CATEGORY_HUB[id];
+    const count = tools.filter((x) => x.category === id && !x.skipHomeCatalog).length;
+    if (!hub || !count) return "";
+    return toolCardHtml({
+      href: hub.href,
+      title: categoryTitle(locale, id),
+      desc: `${count} tools`,
+      category: id,
+    });
+  })
+    .filter(Boolean)
+    .join("")}</div>
+</section>
 <section class="home-section" aria-labelledby="guides-heading">
 <h2 id="guides-heading">${t(locale, "guidesHeading")}</h2>
 <div class="grid grid--compact">${guides.map((g) => `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc}</p></span></a>`).join("")}</div>
@@ -2058,6 +2076,48 @@ for (const t of tools) {
 write("guides/india-income-tax-slabs-fy-2025-26.html", redirectPage(INDIA_INCOME_TAX_FY.slabsGuidePath));
 write("guides/india-income-tax-slabs-fy-2025-26/index.html", redirectPage(INDIA_INCOME_TAX_FY.slabsGuidePath));
 
+function kbPresetMain(p) {
+  const toolHref = p.toolHref || `/reduce-image-size-in-kb/?kb=${p.kb}`;
+  const cta = p.kb ? `Open compressor (${p.kb} KB preset)` : "Open PDF compressor";
+  return `<header class="page-hero"><h1>${p.h1}</h1><p class="page-lead">${p.lead}</p></header>
+${ad}
+<div class="tool-panel">
+<p class="prose">This shortcut opens our main tool with your target size ready. All processing stays on your device.</p>
+<p><a class="primary" href="${toolHref}" style="display:inline-block;padding:0.65rem 1.25rem;text-decoration:none">${cta}</a></p>
+</div>`;
+}
+
+for (const preset of IMAGE_KB_PRESETS) {
+  const canonical = preset.path;
+  const raw = kbPresetPageSeo[preset.file];
+  const seo = enrichContentSeo(raw, {
+    title: preset.metaTitle,
+    desc: preset.metaDescription,
+    keywords: raw.keywords,
+    faqs: raw.faqs,
+  });
+  const title = formatDocumentTitle(preset.metaTitle);
+  const desc = buildMetaDescription(preset.metaDescription, preset.h1);
+  const main = kbPresetMain(preset) + renderSeoHtml(seo);
+  const opts = {
+    keywords: seo.keywords,
+    faqs: seo.faqs,
+    canonical,
+    softwareApp: true,
+    hreflangPath: canonical,
+    pagePath: canonical,
+    breadcrumbs: [
+      { name: "Home", url: "/" },
+      { name: preset.h1, url: canonical },
+    ],
+  };
+  write(preset.file, redirectPage(canonical));
+  write(
+    `${preset.file.replace(/\.html$/, "")}/index.html`,
+    page(canonical, title, desc, main, breadcrumbHtml(opts.breadcrumbs), opts),
+  );
+}
+
 for (const g of guides) {
   const canonical = canonicalFromFile(g.file);
   const short = g.title.split("—")[0].trim();
@@ -2287,6 +2347,11 @@ const sitemapEntries = [
     changefreq: "monthly",
   })),
   ...infoPages.map((p) => ({ loc: `/${p.slug}/`, priority: "0.3", changefreq: "yearly" })),
+  ...IMAGE_KB_PRESETS.map((p) => ({
+    loc: p.path,
+    priority: kbPresetPageSeo[p.file]?.sitemapPriority || "0.82",
+    changefreq: kbPresetPageSeo[p.file]?.sitemapChangefreq || "monthly",
+  })),
 ];
 const sitemapSeen = new Set();
 const sitemapUnique = sitemapEntries.filter((e) => {
@@ -2352,6 +2417,10 @@ const seedPaths = new Set([
   "/internet-speed-test/",
   "/compress-pdf/",
   "/reduce-image-size-in-kb/",
+  "/compress-photo-to-20kb/",
+  "/compress-photo-to-50kb/",
+  "/compress-signature-10-20kb/",
+  "/compress-pdf-under-200kb/",
   "/passport-size-photo/",
   "/pdf-to-jpg/",
   "/image-compress/",

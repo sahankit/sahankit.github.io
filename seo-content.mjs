@@ -561,8 +561,9 @@ export const pageSeo = {
     related: [
       { href: "/gst-inclusive-calculator/", label: "GST inclusive (reverse) calculator" },
       { href: "/reverse-gst-calculator/", label: "Reverse GST calculator" },
+      { href: "/gstin-validator/", label: "GSTIN format checker" },
+      { href: "/india-invoice/", label: "GST invoice template" },
       { href: "/guides/india-gst-rates-reference/", label: "GST rates reference" },
-      rel.india,
     ],
   },
   "sip-calculator.html": {

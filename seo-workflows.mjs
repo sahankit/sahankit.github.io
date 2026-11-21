@@ -76,8 +76,9 @@ export const WORKFLOW_CLUSTERS = {
   ],
   "gst-calculator.html": [
     h("gst-inclusive-calculator", "GST inclusive / exclusive"),
+    h("reverse-gst-calculator", "Reverse GST calculator"),
+    h("gstin-validator", "GSTIN format checker"),
     h("india-invoice", "GST invoice template"),
-    h("inr-words", "Amount in words (INR)"),
     G.gstRates,
   ],
   "gst-inclusive-calculator.html": [

@@ -158,6 +158,7 @@ document.getElementById('go').click();
     {
       path: "/text-summarizer.html",
       file: "text-summarizer.html",
+      skipHomeCatalog: true,
       category: "writing",
       title: "Text Summarizer — Chrome AI Summarizer",
       desc: "Summarize long text with Chrome’s built-in Summarizer API. Key points stay on your device.",

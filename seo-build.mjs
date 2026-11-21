@@ -336,20 +336,22 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
   boostThinToolSeo(base, tool);
 
   const workflow = workflowRelatedFor(tool.file, self);
+  const hasWorkflow = workflow.links.length > 0;
+  const hasExplicitRelated = Boolean(seo?.related?.length);
   const related = [...workflow.links];
   const hub = categoryHub[tool.category];
   if (hub && !related.some((r) => r.href === hub.href)) related.push({ href: hub.href, label: hub.label });
-  for (const t of allTools) {
-    if (t.file === tool.file) continue;
-    if (workflow.workflow && t.category !== tool.category) continue;
-    if (!workflow.workflow && t.category !== tool.category) continue;
-    related.push({ href: canonicalFromFile(t.file), label: t.card });
-    if (related.length >= 6) break;
+  if (!hasExplicitRelated && !hasWorkflow) {
+    for (const t of allTools) {
+      if (t.file === tool.file) continue;
+      if (t.category !== tool.category) continue;
+      related.push({ href: canonicalFromFile(t.file), label: t.card });
+      if (related.length >= 6) break;
+    }
   }
-  if (!related.some((r) => r.href === "/")) related.push({ href: "/", label: "All tools" });
 
   if (!base.related?.length) {
-    base.related = related.slice(0, 5);
+    base.related = related.slice(0, 6);
     base.relatedWorkflow = workflow.workflow;
   } else {
     const merged = [];
@@ -362,12 +364,15 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
     };
     for (const r of workflow.links) push(r);
     for (const r of base.related) push(r);
-    for (const r of related) {
-      if (merged.length >= 5) break;
-      push(r);
+    if (!hasExplicitRelated && !hasWorkflow) {
+      for (const r of related) {
+        if (merged.length >= 6) break;
+        push(r);
+      }
     }
-    base.related = merged;
-    base.relatedWorkflow = workflow.workflow || merged.some((r) => workflow.links.some((w) => w.href === r.href));
+    base.related = merged.slice(0, 6);
+    base.relatedWorkflow =
+      workflow.workflow || merged.some((r) => workflow.links.some((w) => w.href === r.href));
   }
   base.related = base.related.map((r) => ({ ...r, href: normalizeHref(r.href) }));
 
