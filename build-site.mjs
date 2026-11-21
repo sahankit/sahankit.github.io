@@ -76,6 +76,10 @@ import { batch35Tools } from "./tools-batch35.mjs";
 import { batch35PageSeo } from "./seo-batch35.mjs";
 import { batch36Tools } from "./tools-batch36.mjs";
 import { batch36PageSeo } from "./seo-batch36.mjs";
+import { batch37Tools } from "./tools-batch37.mjs";
+import { batch37PageSeo } from "./seo-batch37.mjs";
+import { batch38Tools } from "./tools-batch38.mjs";
+import { batch38PageSeo } from "./seo-batch38.mjs";
 import { micrositeDefs, micrositeMain, quizSiteBody, briefSiteBody } from "./sites.mjs";
 import { buildBriefFeedsJson } from "./fetch-brief-feeds.mjs";
 import { CATEGORY_ICON, iconSvg, iconTile, toolCardHtml, hubCardHtml } from "./ui-icons.mjs";
@@ -132,6 +136,8 @@ const pageSeo = {
   ...batch34PageSeo,
   ...batch35PageSeo,
   ...batch36PageSeo,
+  ...batch37PageSeo,
+  ...batch38PageSeo,
   ...sitePageSeo,
 };
 
@@ -179,6 +185,8 @@ function navHtml(isHome = false) {
       <a href="/india/">India</a>
       <a href="/dev/">Developer</a>
       <a href="/design/">PDF &amp; images</a>
+      <a href="/games/">Games</a>
+      <a href="/games/">Games</a>
       <a href="/online-tests/">Tests</a>
       <a href="/quiz/">Quiz</a>
       <a href="/brief/">News</a>
@@ -359,6 +367,7 @@ const HUB_CATEGORIES = [
   { id: "developer", title: "Developer utilities" },
   { id: "security", title: "Security & passwords" },
   { id: "student", title: "Student tools" },
+  { id: "games", title: "Free online games" },
   { id: "tests", title: "Online tests (webcam, mic, keyboard)" },
   { id: "chat", title: "Free chat (Y-Chat)" },
 ];
@@ -374,11 +383,12 @@ const CATEGORY_HUB = {
   developer: { href: "/dev/", label: "Developer utilities" },
   security: { href: "/security/", label: "Security & crypto tools" },
   student: { href: "/student/", label: "Student toolkit" },
+  games: { href: "/games/", label: "Free online games" },
   tests: { href: "/online-tests/", label: "Online tests" },
   chat: { href: "/chat/", label: "Free chat (Y-Chat)" },
 };
 
-const FEATURED_HUB_SLUGS = ["finance", "india", "dev", "online-tests", "osint", "ai-writing", "student", "brief", "quiz"];
+const FEATURED_HUB_SLUGS = ["finance", "india", "dev", "games", "online-tests", "osint", "ai-writing", "student", "brief", "quiz"];
 
 const POPULAR_TOOL_FILES = [
   "word-counter.html",
@@ -1355,6 +1365,8 @@ document.getElementById('go').click();
   ...batch34Tools(ad),
   ...batch35Tools(ad),
   ...batch36Tools(ad),
+  ...batch37Tools(ad),
+  ...batch38Tools(ad),
 ]);
 
 const guides = [

@@ -19,6 +19,8 @@ const PATHS = {
   help: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
   shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>',
   monitor: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  gamepad:
+    '<line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><path d="M17 6H7a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V10a4 4 0 0 0-4-4Z"/>',
   book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
 };
 
@@ -34,6 +36,7 @@ export const CATEGORY_ICON = {
   developer: ["code", "slate"],
   security: ["shield", "slate"],
   student: ["cap", "blue"],
+  games: ["gamepad", "indigo"],
   tests: ["monitor", "teal"],
   chat: ["chat", "indigo"],
 };
@@ -53,6 +56,7 @@ export const HUB_ICON = {
   "online-tests": ["monitor", "teal"],
   writing: ["pen", "violet"],
   productivity: ["clock", "green"],
+  games: ["gamepad", "indigo"],
   chat: ["chat", "indigo"],
 };
 
