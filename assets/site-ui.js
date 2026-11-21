@@ -324,6 +324,13 @@
     }
   }
 
+  document.querySelectorAll("[data-lang-select]").forEach((sel) => {
+    sel.addEventListener("change", () => {
+      const href = sel.value;
+      if (href) window.location.assign(href);
+    });
+  });
+
   /* ---------- Tool page helpers ---------- */
 
   if (!panel) return;
@@ -443,13 +450,6 @@
     };
     p.addEventListener("input", onChange);
     p.addEventListener("change", onChange);
-  });
-
-  document.querySelectorAll("[data-lang-select]").forEach((sel) => {
-    sel.addEventListener("change", () => {
-      const href = sel.value;
-      if (href) window.location.assign(href);
-    });
   });
 
   /** Games: Hint button shows how-to or dispatches game:hint for puzzle help. */
