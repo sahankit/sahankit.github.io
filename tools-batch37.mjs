@@ -15,7 +15,7 @@ export function batch37Tools(ad) {
       body: `<h1>2048 game</h1>${ad}
 <div class="tool-panel">
 <p id="score">Score: 0</p>
-<div id="board" class="game-2048" tabindex="0" aria-label="2048 board"></div>
+<div id="board" class="game-2048" tabindex="0" aria-label="2048 board" role="application"></div>
 <p class="prose" style="font-size:0.85rem">Arrow keys or swipe. Press R to restart.</p>
 <button type="button" class="primary" id="reset">New game</button>
 <p id="msg" class="tool-feedback" role="status"></p>
@@ -120,6 +120,7 @@ export function batch37Tools(ad) {
     else act(dy>0?'down':'up');
   },{passive:true});
   document.getElementById('reset').onclick=newGame;
+  board.addEventListener('click',function(){ board.focus(); });
   newGame();
   board.focus();
 })();
@@ -277,12 +278,13 @@ export function batch37Tools(ad) {
   const solution=[[5,3,4,6,7,8,9,1,2],[6,7,2,1,9,5,3,4,8],[1,9,8,3,4,2,5,6,7],[8,5,9,7,6,1,4,2,3],[4,2,6,8,5,3,7,9,1],[7,1,3,9,2,4,8,5,6],[9,6,1,5,3,7,2,8,4],[2,8,7,4,1,9,6,3,5],[3,4,5,2,8,6,1,7,9]];
   const box=document.getElementById('su');
   const msg=document.getElementById('su-msg');
+  const clues=puzzle.flat();
   function render(){
     box.innerHTML='';
-    puzzle.forEach(function(v,i){
+    clues.forEach(function(v,i){
       const inp=document.createElement('input');
       inp.inputMode='numeric'; inp.maxLength=1;
-      if(v){ inp.value=v; inp.className='fixed'; inp.readOnly=true; }
+      if(v){ inp.value=String(v); inp.className='fixed'; inp.readOnly=true; }
       else inp.addEventListener('input',function(){ inp.value=inp.value.replace(/[^1-9]/g,'').slice(0,1); ${done}; });
       inp.dataset.i=i;
       box.appendChild(inp);

@@ -14,14 +14,16 @@ export function batch38Tools(ad) {
       cardDesc: "Four in a row against the CPU.",
       body: `<h1>Connect four</h1>${ad}
 <div class="tool-panel">
+<div id="c4-drop" class="c4-drop"></div>
 <div id="c4" class="c4-board"></div>
 <p id="c4-msg" class="tool-feedback" role="status">Your turn (red)</p>
 <button type="button" class="primary" id="c4-new">New game</button>
 </div>
-<style>.c4-board{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:350px;padding:10px;background:#1e40af;border-radius:12px}.c4-board button{aspect-ratio:1;border-radius:50%;border:2px solid #1e3a8a;background:#fff;cursor:pointer}.c4-board button.r{background:#ef4444}.c4-board button.y{background:#eab308}.c4-board button:disabled{cursor:default}</style>
+<style>.c4-drop,.c4-board{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:350px}.c4-drop{margin-bottom:6px}.c4-board{padding:10px;background:#1e40af;border-radius:12px}.c4-drop button,.c4-board button{aspect-ratio:1;border-radius:50%;border:2px solid #1e3a8a;background:#fff;cursor:pointer;font-size:0.85rem}.c4-board button{cursor:default}.c4-board button.r{background:#ef4444}.c4-board button.y{background:#eab308}.c4-drop button:disabled{cursor:default;opacity:0.5}</style>
 <script>
 (function(){
   const R=6,C=7; let grid, human, over;
+  const dropRow=document.getElementById('c4-drop');
   const board=document.getElementById('c4');
   const msg=document.getElementById('c4-msg');
   function empty(){ return Array.from({length:R},()=>Array(C).fill(0)); }
@@ -43,7 +45,7 @@ export function batch38Tools(ad) {
     return false;
   }
   function undo(col,p){
-    for(let r=0;r<R;r++) if(grid[r][col]===p){ grid[r][col]=0; break; }
+    for(let r=R-1;r>=0;r--) if(grid[r][col]===p){ grid[r][col]=0; break; }
   }
   function cpu(){
     for(let c=0;c<C;c++){
@@ -53,7 +55,7 @@ export function batch38Tools(ad) {
     for(let c=0;c<C;c++){
       const r=drop(c,1);
       if(r!==-1){
-        if(win(1)){ drop(c,2); return; }
+        if(win(1)){ undo(c,1); drop(c,2); return; }
         undo(c,1);
       }
     }
@@ -61,8 +63,9 @@ export function batch38Tools(ad) {
     for(const c of cols) if(drop(c,2)!==-1) return;
   }
   function render(){
+    dropRow.innerHTML='';
     board.innerHTML='';
-    const top=Array(C).fill(0).map((_,c)=>{
+    for(let c=0;c<C;c++){
       const b=document.createElement('button');
       b.textContent='↓'; b.title='Drop in column '+(c+1);
       b.disabled=over||!human||grid[0][c];
@@ -82,9 +85,8 @@ export function batch38Tools(ad) {
         }, 400);
         render();
       };
-      return b;
-    });
-    top.forEach(b=>board.appendChild(b));
+      dropRow.appendChild(b);
+    }
     for(let r=0;r<R;r++) for(let c=0;c<C;c++){
       const b=document.createElement('button');
       b.disabled=true;
@@ -156,7 +158,7 @@ export function batch38Tools(ad) {
 <style>.wm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:280px}.wm-grid button{aspect-ratio:1;border-radius:12px;border:2px solid var(--line);background:#dcfce7;font-size:2rem;cursor:pointer}.wm-grid button.up{background:#86efac}</style>
 <script>
 (function(){
-  const N=9; let score, timeLeft, timer, mole, running;
+  const N=9; let score, timeLeft, moleTimer, clockTimer, mole, running;
   const grid=document.getElementById('wm-grid');
   const stat=document.getElementById('wm');
   function render(){
@@ -176,15 +178,14 @@ export function batch38Tools(ad) {
   function start(){
     score=0; timeLeft=30; running=true; mole=-1;
     ${done}
-    clearInterval(timer);
-    timer=setInterval(function(){
-      tick();
-    }, 750);
-    const clock=setInterval(function(){
+    clearInterval(moleTimer);
+    clearInterval(clockTimer);
+    moleTimer=setInterval(tick, 750);
+    clockTimer=setInterval(function(){
       timeLeft--;
       stat.textContent='Score: '+score+' · Time: '+timeLeft+'s';
       if(timeLeft<=0){
-        clearInterval(clock); clearInterval(timer); running=false; mole=-1; render();
+        clearInterval(clockTimer); clearInterval(moleTimer); running=false; mole=-1; render();
         stat.textContent='Finished! Score: '+score;
       }
     }, 1000);
@@ -215,13 +216,13 @@ export function batch38Tools(ad) {
 <script>
 (function(){
   const colors=['red','green','blue','yellow'];
-  let seq=[], step, playing, input;
+  let seq=[], playing, input, dead;
   const pad=document.getElementById('sim');
   const msg=document.getElementById('sim-msg');
   colors.forEach(function(c,i){
     const b=document.createElement('button');
     b.title=c;
-    b.onclick=function(){ if(playing) return; playerHit(i); };
+    b.onclick=function(){ if(playing||dead) return; playerHit(i); };
     pad.appendChild(b);
   });
   function flash(i){
@@ -240,7 +241,7 @@ export function batch38Tools(ad) {
   function playerHit(i){
     if(playing) return;
     flash(i);
-    if(i!==seq[input]){ msg.textContent='Wrong! You reached level '+seq.length+'.'; input=0; return; }
+    if(i!==seq[input]){ dead=true; msg.textContent='Wrong! You reached level '+seq.length+'. Press Start to try again.'; input=0; return; }
     input++;
     if(input===seq.length){
       seq.push(Math.floor(Math.random()*4));
@@ -252,7 +253,7 @@ export function batch38Tools(ad) {
   }
   function start(){
     seq=[Math.floor(Math.random()*4)];
-    input=0; ${done}
+    input=0; dead=false; ${done}
     document.getElementById('sim-lvl').textContent='Level: 1';
     msg.textContent='Watch the pattern…';
     setTimeout(playSeq, 400);
@@ -403,7 +404,6 @@ export function batch38Tools(ad) {
     ctx.beginPath(); ctx.arc(ball.x,ball.y,8,0,Math.PI*2); ctx.fillStyle='#f8fafc'; ctx.fill();
   }
   function step(){
-    if(!live) return;
     if(vx||vy){
       ball.x+=vx; ball.y+=vy;
       if(ball.x<8||ball.x>W-8) vx*=-1;
@@ -413,23 +413,25 @@ export function batch38Tools(ad) {
         vx+=(ball.x-(px+40))*0.08;
         if(!started){ started=true; ${done} }
       }
-      if(ball.y>H){ live=false; msg.textContent='Ball lost — press New level.'; return; }
+      if(live&&ball.y>H){ live=false; vx=0; vy=0; msg.textContent='Ball lost — press New level.'; }
       bricks.forEach(function(b){
         if(b.hit) return;
         if(ball.x>b.x&&ball.x<b.x+b.w&&ball.y>b.y&&ball.y<b.y+b.h){
           b.hit=true; vy*=-1;
         }
       });
-      if(bricks.every(b=>b.hit)){ live=false; msg.textContent='You cleared the bricks!'; }
+      if(live&&bricks.every(b=>b.hit)){ live=false; vx=0; vy=0; msg.textContent='You cleared the bricks!'; }
     }
     draw();
     requestAnimationFrame(step);
   }
-  c.addEventListener('mousemove',function(e){
+  function setPaddle(clientX){
     const r=c.getBoundingClientRect();
-    px=(e.clientX-r.left)*(W/r.width)-40;
+    px=(clientX-r.left)*(W/r.width)-40;
     px=Math.max(0,Math.min(W-80,px));
-  });
+  }
+  c.addEventListener('mousemove',function(e){ setPaddle(e.clientX); });
+  c.addEventListener('touchmove',function(e){ setPaddle(e.touches[0].clientX); },{passive:true});
   c.addEventListener('click',function(){
     if(!live) return;
     if(!vx&&!vy){ vx=3*(Math.random()>0.5?1:-1); vy=-4; msg.textContent=''; }
@@ -457,6 +459,7 @@ export function batch38Tools(ad) {
 <script>
 (function(){
   const c=document.getElementById('fb'); const ctx=c.getContext('2d');
+  const bx=70, br=14, pipeW=52, gapH=120;
   let bird, pipes, score, alive, started, frame;
   function reset(){
     bird={y:200,vy:0}; pipes=[]; score=0; alive=true; started=false; frame=0;
@@ -467,34 +470,38 @@ export function batch38Tools(ad) {
     if(!started){ started=true; ${done} }
     bird.vy=-6;
   }
+  function pipeHit(p){
+    if(bx+br<=p.x||bx-br>=p.x+pipeW) return false;
+    if(bird.y-br>=p.gap&&bird.y+br<=p.gap+gapH) return false;
+    return true;
+  }
   function draw(){
     ctx.fillStyle='#7dd3fc'; ctx.fillRect(0,0,c.width,c.height);
     pipes.forEach(function(p){
       ctx.fillStyle='#22c55e';
-      ctx.fillRect(p.x,0,52,p.gap);
-      ctx.fillRect(p.x,p.gap+120,52,c.height);
+      ctx.fillRect(p.x,0,pipeW,p.gap);
+      ctx.fillRect(p.x,p.gap+gapH,pipeW,c.height);
     });
-    ctx.fillStyle='#facc15'; ctx.beginPath(); ctx.arc(70,bird.y,14,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle='#000'; ctx.fillRect(78,bird.y-3,8,6);
+    ctx.fillStyle='#facc15'; ctx.beginPath(); ctx.arc(bx,bird.y,br,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#000'; ctx.fillRect(bx+8,bird.y-3,8,6);
   }
   function step(){
     if(!alive){ draw(); requestAnimationFrame(step); return; }
     frame++;
     bird.vy+=0.35; bird.y+=bird.vy;
-    if(frame%90===0){
-      const gap=110+Math.random()*50;
-      pipes.push({x:c.width,gap:80+Math.random()*(c.height-gap-160)});
+    if(frame%95===0){
+      const top=70+Math.random()*(c.height-gapH-140);
+      pipes.push({x:c.width,gap:top,scored:false});
     }
     pipes.forEach(function(p){ p.x-=2.5; });
-    pipes=pipes.filter(p=>p.x>-60);
     pipes.forEach(function(p){
-      if(p.x<90&&p.x>40){
-        if(bird.y<p.gap||bird.y>p.gap+120){
-          alive=false;
-        } else if(p.x>55&&p.x<58){ score++; document.getElementById('fb-score').textContent='Score: '+score; }
+      if(pipeHit(p)) alive=false;
+      if(!p.scored&&p.x+pipeW<bx-br){
+        p.scored=true; score++; document.getElementById('fb-score').textContent='Score: '+score;
       }
     });
-    if(bird.y>c.height-10||bird.y<0) alive=false;
+    pipes=pipes.filter(function(p){ return p.x>-pipeW; });
+    if(bird.y>c.height-br||bird.y<br) alive=false;
     draw();
     requestAnimationFrame(step);
   }
