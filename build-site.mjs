@@ -92,6 +92,8 @@ import { batch43Tools } from "./tools-batch43.mjs";
 import { batch43PageSeo } from "./seo-batch43.mjs";
 import { batch44Tools } from "./tools-batch44.mjs";
 import { batch44PageSeo } from "./seo-batch44.mjs";
+import { batch45Tools } from "./tools-batch45.mjs";
+import { batch45PageSeo } from "./seo-batch45.mjs";
 import { GAME_PLAY_HINTS } from "./game-hints.mjs";
 
 const GAME_HINT_ACTION_FILES = new Set([
@@ -185,6 +187,7 @@ const pageSeo = {
   ...batch42PageSeo,
   ...batch43PageSeo,
   ...batch44PageSeo,
+  ...batch45PageSeo,
   ...sitePageSeo,
 };
 
@@ -1555,6 +1558,7 @@ document.getElementById('go').click();
   ...batch42Tools(ad),
   ...batch43Tools(ad),
   ...batch44Tools(ad),
+  ...batch45Tools(ad),
 ]);
 
 const guides = [
