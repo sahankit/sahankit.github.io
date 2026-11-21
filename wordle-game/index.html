@@ -119,6 +119,7 @@
     if(over) return;
     const w=document.getElementById('wl-in').value.toUpperCase().replace(/[^A-Z]/g,'');
     if(w.length!==5){ msg.textContent='Enter exactly 5 letters.'; return; }
+    if(words.indexOf(w)<0){ msg.textContent='That word is not on the game list. Try another.'; return; }
     window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
     guesses++;
     const res=score(w); paintRow(w,res);

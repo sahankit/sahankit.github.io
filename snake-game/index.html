@@ -104,7 +104,10 @@
   function step(){
     if(!alive) return;
     const head=[snake[0][0]+dir[0], snake[0][1]+dir[1]];
-    if(head[0]<0||head[1]<0||head[0]>=N||head[1]>=N|| snake.some(s=>s[0]===head[0]&&s[1]===head[1])){
+    if(head[0]<0||head[1]<0||head[0]>=N||head[1]>=N){
+      alive=false; msg.textContent='Game over. Score '+score+'.'; clearInterval(tick); return;
+    }
+    if(snake.some(function(s){ return s[0]===head[0]&&s[1]===head[1]; })){
       alive=false; msg.textContent='Game over. Score '+score+'.'; clearInterval(tick); return;
     }
     snake.unshift(head);

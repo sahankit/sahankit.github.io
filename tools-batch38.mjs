@@ -231,7 +231,7 @@ export function batch38Tools(ad) {
     setTimeout(function(){ b.classList.remove('lit'); }, 350);
   }
   function playSeq(){
-    playing=true; step=0;
+    playing=true;
     let i=0;
     const t=setInterval(function(){
       flash(seq[i]); i++;
@@ -361,6 +361,11 @@ export function batch38Tools(ad) {
     py=(t.clientY-r.top)*(c.height/r.height)-ph/2;
     py=Math.max(0,Math.min(c.height-ph,py));
   },{passive:true});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowUp'){ e.preventDefault(); py-=14; }
+    if(e.key==='ArrowDown'){ e.preventDefault(); py+=14; }
+    py=Math.max(0,Math.min(c.height-ph,py));
+  });
   document.getElementById('pg-new').onclick=function(){ score=[0,0]; serve(Math.random()>0.5); };
   serve(true);
   loop();
@@ -460,10 +465,11 @@ export function batch38Tools(ad) {
 (function(){
   const c=document.getElementById('fb'); const ctx=c.getContext('2d');
   const bx=70, br=14, pipeW=52, gapH=120;
-  let bird, pipes, score, alive, started, frame;
+  let bird, pipes, score, alive, started, frame, showedOver;
+  const scoreEl=document.getElementById('fb-score');
   function reset(){
-    bird={y:200,vy:0}; pipes=[]; score=0; alive=true; started=false; frame=0;
-    document.getElementById('fb-score').textContent='Score: 0';
+    bird={y:200,vy:0}; pipes=[]; score=0; alive=true; started=false; frame=0; showedOver=false;
+    scoreEl.textContent='Score: 0';
   }
   function flap(){
     if(!alive) return;
@@ -497,18 +503,22 @@ export function batch38Tools(ad) {
     pipes.forEach(function(p){
       if(pipeHit(p)) alive=false;
       if(!p.scored&&p.x+pipeW<bx-br){
-        p.scored=true; score++; document.getElementById('fb-score').textContent='Score: '+score;
+        p.scored=true; score++; scoreEl.textContent='Score: '+score;
       }
     });
     pipes=pipes.filter(function(p){ return p.x>-pipeW; });
     if(bird.y>c.height-br||bird.y<br) alive=false;
+    if(!alive&&started&&!showedOver){
+      showedOver=true;
+      scoreEl.textContent='Game over — score '+score+'. Tap Restart.';
+    }
     draw();
     requestAnimationFrame(step);
   }
   c.addEventListener('click',flap);
   c.addEventListener('touchstart',function(e){ e.preventDefault(); flap(); },{passive:false});
   document.addEventListener('keydown',function(e){ if(e.code==='Space'){ e.preventDefault(); flap(); } });
-  document.getElementById('fb-new').onclick=function(){ reset(); };
+  document.getElementById('fb-new').onclick=reset;
   reset(); step();
 })();
 </script>`,

@@ -137,14 +137,16 @@
         e.target._hold=setTimeout(function(){ b.oncontextmenu(e); e.target._hold=null; }, 500);
       },{passive:true});
       b.addEventListener('touchend',function(e){ if(e.target._hold){ clearTimeout(e.target._hold); e.target._hold=null; } });
-      b.onclick=function(){
-        if(over||isFlag||isRev) return;
-        if(first){ first=false; place(x,y); window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete')); }
-        if(mines.has(id)){ over=true; msg.textContent='Boom! Mine hit.'; render(); return; }
-        flood(x,y);
-        if(revealed.size===S*S-M){ over=true; msg.textContent='You cleared the board!'; }
-        render();
-      };
+      (function(cx,cy,cellId){
+        b.onclick=function(){
+          if(over||flags.has(cellId)||revealed.has(cellId)) return;
+          if(first){ first=false; place(cx,cy); window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete')); }
+          if(mines.has(cellId)){ over=true; msg.textContent='Boom! Mine hit.'; render(); return; }
+          flood(cx,cy);
+          if(revealed.size===S*S-M){ over=true; msg.textContent='You cleared the board!'; }
+          render();
+        };
+      })(x,y,id);
       grid.appendChild(b);
     }
   }

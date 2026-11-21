@@ -88,25 +88,28 @@
   function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
   function render(){
     board.innerHTML='';
-    cards.forEach(function(v,i){
+    for(let i=0;i<cards.length;i++){
       const b=document.createElement('button');
-      b.textContent=matched.has(i)||open.includes(i)?icons[v]:'?';
+      const face=cards[i];
+      b.textContent=matched.has(i)||open.includes(i)?icons[face]:'?';
       b.disabled=lock||matched.has(i)||open.includes(i);
-      b.onclick=function(){
-        if(lock||matched.has(i)) return;
-        open.push(i); b.textContent=icons[v]; b.disabled=true;
-        if(open.length===2){
-          moves++; document.getElementById('mg-stat').textContent='Moves: '+moves;
-          window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
-          lock=true;
-          const [a,c]=open;
-          if(cards[a]===cards[c]){ matched.add(a); matched.add(c); open=[]; lock=false; render();
-            if(matched.size===cards.length) document.getElementById('mg-stat').textContent='You won in '+moves+' moves!';
-          } else setTimeout(function(){ open=[]; lock=false; render(); }, 650);
-        }
-      };
+      (function(idx){
+        b.onclick=function(){
+          if(lock||matched.has(idx)) return;
+          open.push(idx); b.textContent=icons[cards[idx]]; b.disabled=true;
+          if(open.length===2){
+            moves++; document.getElementById('mg-stat').textContent='Moves: '+moves;
+            window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
+            lock=true;
+            const a=open[0], c=open[1];
+            if(cards[a]===cards[c]){ matched.add(a); matched.add(c); open=[]; lock=false; render();
+              if(matched.size===cards.length) document.getElementById('mg-stat').textContent='You won in '+moves+' moves!';
+            } else setTimeout(function(){ open=[]; lock=false; render(); }, 650);
+          }
+        };
+      })(i);
       board.appendChild(b);
-    });
+    }
   }
   function reset(){
     cards=[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7]; shuffle(cards);

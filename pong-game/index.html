@@ -122,6 +122,11 @@
     py=(t.clientY-r.top)*(c.height/r.height)-ph/2;
     py=Math.max(0,Math.min(c.height-ph,py));
   },{passive:true});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowUp'){ e.preventDefault(); py-=14; }
+    if(e.key==='ArrowDown'){ e.preventDefault(); py+=14; }
+    py=Math.max(0,Math.min(c.height-ph,py));
+  });
   document.getElementById('pg-new').onclick=function(){ score=[0,0]; serve(Math.random()>0.5); };
   serve(true);
   loop();

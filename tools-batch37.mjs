@@ -165,7 +165,10 @@ export function batch37Tools(ad) {
   function step(){
     if(!alive) return;
     const head=[snake[0][0]+dir[0], snake[0][1]+dir[1]];
-    if(head[0]<0||head[1]<0||head[0]>=N||head[1]>=N|| snake.some(s=>s[0]===head[0]&&s[1]===head[1])){
+    if(head[0]<0||head[1]<0||head[0]>=N||head[1]>=N){
+      alive=false; msg.textContent='Game over. Score '+score+'.'; clearInterval(tick); return;
+    }
+    if(snake.some(function(s){ return s[0]===head[0]&&s[1]===head[1]; })){
       alive=false; msg.textContent='Game over. Score '+score+'.'; clearInterval(tick); return;
     }
     snake.unshift(head);
@@ -220,35 +223,51 @@ export function batch37Tools(ad) {
   }
   function cpu(){
     const b=cells.slice();
-    const empty=b.map((v,i)=>v?-1:i).filter(i=>i>=0);
-    for(const i of empty){ b[i]='O'; if(winner(b)==='O'){ cells[i]='O'; return i; } b[i]=''; }
-    for(const i of empty){ b[i]='X'; if(winner(b)==='X'){ cells[i]='O'; return i; } b[i]=''; }
-    if(empty.includes(4)) return 4;
-    return empty[Math.floor(Math.random()*empty.length)];
+    const empty=b.map((v,i)=>v?-1:i).filter(function(i){ return i>=0; });
+    for(let k=0;k<empty.length;k++){
+      const i=empty[k];
+      b[i]='O';
+      if(winner(b)==='O'){ cells[i]='O'; return; }
+      b[i]='';
+    }
+    for(let k=0;k<empty.length;k++){
+      const i=empty[k];
+      b[i]='X';
+      if(winner(b)==='X'){ cells[i]='O'; return; }
+      b[i]='';
+    }
+    if(empty.indexOf(4)>=0){ cells[4]='O'; return; }
+    const corners=[0,2,6,8].filter(function(i){ return !cells[i]; });
+    if(corners.length){ cells[corners[Math.floor(Math.random()*corners.length)]]='O'; return; }
+    const pick=empty[Math.floor(Math.random()*empty.length)];
+    if(pick!==undefined) cells[pick]='O';
   }
   function render(){
     board.innerHTML='';
-    cells.forEach(function(v,i){
+    for(let i=0;i<9;i++){
       const btn=document.createElement('button');
-      btn.textContent=v;
-      btn.disabled=!!v||over||!human;
-      btn.onclick=function(){
-        if(v||over) return;
-        cells[i]='X'; ${done}
-        const w=winner(cells);
-        if(w){ over=true; status.textContent=w==='draw'?'Draw.':(w==='X'?'You win!':'Computer wins.'); render(); return; }
-        human=false; status.textContent='Computer thinking…';
-        setTimeout(function(){
-          cpu(); human=true;
-          const w2=winner(cells);
-          if(w2){ over=true; status.textContent=w2==='draw'?'Draw.':(w2==='X'?'You win!':'Computer wins.'); }
-          else status.textContent='Your turn (X)';
+      btn.textContent=cells[i];
+      btn.disabled=!!cells[i]||over||!human;
+      (function(idx){
+        btn.onclick=function(){
+          if(cells[idx]||over||!human) return;
+          cells[idx]='X'; ${done}
+          const w=winner(cells);
+          if(w){ over=true; status.textContent=w==='draw'?'Draw.':(w==='X'?'You win!':'Computer wins.'); render(); return; }
+          human=false; status.textContent='Computer thinking…';
+          setTimeout(function(){
+            cpu();
+            human=true;
+            const w2=winner(cells);
+            if(w2){ over=true; status.textContent=w2==='draw'?'Draw.':(w2==='X'?'You win!':'Computer wins.'); }
+            else status.textContent='Your turn (X)';
+            render();
+          }, 350);
           render();
-        }, 350);
-        render();
-      };
+        };
+      })(i);
       board.appendChild(btn);
-    });
+    }
   }
   function reset(){ cells=Array(9).fill(''); over=false; human=true; status.textContent='Your turn (X)'; render(); }
   document.getElementById('ttt-new').onclick=reset;
@@ -356,6 +375,7 @@ export function batch37Tools(ad) {
     if(over) return;
     const w=document.getElementById('wl-in').value.toUpperCase().replace(/[^A-Z]/g,'');
     if(w.length!==5){ msg.textContent='Enter exactly 5 letters.'; return; }
+    if(words.indexOf(w)<0){ msg.textContent='That word is not on the game list. Try another.'; return; }
     ${done}
     guesses++;
     const res=score(w); paintRow(w,res);
@@ -394,25 +414,28 @@ export function batch37Tools(ad) {
   function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
   function render(){
     board.innerHTML='';
-    cards.forEach(function(v,i){
+    for(let i=0;i<cards.length;i++){
       const b=document.createElement('button');
-      b.textContent=matched.has(i)||open.includes(i)?icons[v]:'?';
+      const face=cards[i];
+      b.textContent=matched.has(i)||open.includes(i)?icons[face]:'?';
       b.disabled=lock||matched.has(i)||open.includes(i);
-      b.onclick=function(){
-        if(lock||matched.has(i)) return;
-        open.push(i); b.textContent=icons[v]; b.disabled=true;
-        if(open.length===2){
-          moves++; document.getElementById('mg-stat').textContent='Moves: '+moves;
-          ${done}
-          lock=true;
-          const [a,c]=open;
-          if(cards[a]===cards[c]){ matched.add(a); matched.add(c); open=[]; lock=false; render();
-            if(matched.size===cards.length) document.getElementById('mg-stat').textContent='You won in '+moves+' moves!';
-          } else setTimeout(function(){ open=[]; lock=false; render(); }, 650);
-        }
-      };
+      (function(idx){
+        b.onclick=function(){
+          if(lock||matched.has(idx)) return;
+          open.push(idx); b.textContent=icons[cards[idx]]; b.disabled=true;
+          if(open.length===2){
+            moves++; document.getElementById('mg-stat').textContent='Moves: '+moves;
+            ${done}
+            lock=true;
+            const a=open[0], c=open[1];
+            if(cards[a]===cards[c]){ matched.add(a); matched.add(c); open=[]; lock=false; render();
+              if(matched.size===cards.length) document.getElementById('mg-stat').textContent='You won in '+moves+' moves!';
+            } else setTimeout(function(){ open=[]; lock=false; render(); }, 650);
+          }
+        };
+      })(i);
       board.appendChild(b);
-    });
+    }
   }
   function reset(){
     cards=[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7]; shuffle(cards);
@@ -553,14 +576,16 @@ export function batch37Tools(ad) {
         e.target._hold=setTimeout(function(){ b.oncontextmenu(e); e.target._hold=null; }, 500);
       },{passive:true});
       b.addEventListener('touchend',function(e){ if(e.target._hold){ clearTimeout(e.target._hold); e.target._hold=null; } });
-      b.onclick=function(){
-        if(over||isFlag||isRev) return;
-        if(first){ first=false; place(x,y); ${done} }
-        if(mines.has(id)){ over=true; msg.textContent='Boom! Mine hit.'; render(); return; }
-        flood(x,y);
-        if(revealed.size===S*S-M){ over=true; msg.textContent='You cleared the board!'; }
-        render();
-      };
+      (function(cx,cy,cellId){
+        b.onclick=function(){
+          if(over||flags.has(cellId)||revealed.has(cellId)) return;
+          if(first){ first=false; place(cx,cy); ${done} }
+          if(mines.has(cellId)){ over=true; msg.textContent='Boom! Mine hit.'; render(); return; }
+          flood(cx,cy);
+          if(revealed.size===S*S-M){ over=true; msg.textContent='You cleared the board!'; }
+          render();
+        };
+      })(x,y,id);
       grid.appendChild(b);
     }
   }

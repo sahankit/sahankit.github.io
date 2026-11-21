@@ -92,35 +92,51 @@
   }
   function cpu(){
     const b=cells.slice();
-    const empty=b.map((v,i)=>v?-1:i).filter(i=>i>=0);
-    for(const i of empty){ b[i]='O'; if(winner(b)==='O'){ cells[i]='O'; return i; } b[i]=''; }
-    for(const i of empty){ b[i]='X'; if(winner(b)==='X'){ cells[i]='O'; return i; } b[i]=''; }
-    if(empty.includes(4)) return 4;
-    return empty[Math.floor(Math.random()*empty.length)];
+    const empty=b.map((v,i)=>v?-1:i).filter(function(i){ return i>=0; });
+    for(let k=0;k<empty.length;k++){
+      const i=empty[k];
+      b[i]='O';
+      if(winner(b)==='O'){ cells[i]='O'; return; }
+      b[i]='';
+    }
+    for(let k=0;k<empty.length;k++){
+      const i=empty[k];
+      b[i]='X';
+      if(winner(b)==='X'){ cells[i]='O'; return; }
+      b[i]='';
+    }
+    if(empty.indexOf(4)>=0){ cells[4]='O'; return; }
+    const corners=[0,2,6,8].filter(function(i){ return !cells[i]; });
+    if(corners.length){ cells[corners[Math.floor(Math.random()*corners.length)]]='O'; return; }
+    const pick=empty[Math.floor(Math.random()*empty.length)];
+    if(pick!==undefined) cells[pick]='O';
   }
   function render(){
     board.innerHTML='';
-    cells.forEach(function(v,i){
+    for(let i=0;i<9;i++){
       const btn=document.createElement('button');
-      btn.textContent=v;
-      btn.disabled=!!v||over||!human;
-      btn.onclick=function(){
-        if(v||over) return;
-        cells[i]='X'; window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
-        const w=winner(cells);
-        if(w){ over=true; status.textContent=w==='draw'?'Draw.':(w==='X'?'You win!':'Computer wins.'); render(); return; }
-        human=false; status.textContent='Computer thinking…';
-        setTimeout(function(){
-          cpu(); human=true;
-          const w2=winner(cells);
-          if(w2){ over=true; status.textContent=w2==='draw'?'Draw.':(w2==='X'?'You win!':'Computer wins.'); }
-          else status.textContent='Your turn (X)';
+      btn.textContent=cells[i];
+      btn.disabled=!!cells[i]||over||!human;
+      (function(idx){
+        btn.onclick=function(){
+          if(cells[idx]||over||!human) return;
+          cells[idx]='X'; window.__toolCompleteFired=true;document.dispatchEvent(new CustomEvent('tool:complete'));
+          const w=winner(cells);
+          if(w){ over=true; status.textContent=w==='draw'?'Draw.':(w==='X'?'You win!':'Computer wins.'); render(); return; }
+          human=false; status.textContent='Computer thinking…';
+          setTimeout(function(){
+            cpu();
+            human=true;
+            const w2=winner(cells);
+            if(w2){ over=true; status.textContent=w2==='draw'?'Draw.':(w2==='X'?'You win!':'Computer wins.'); }
+            else status.textContent='Your turn (X)';
+            render();
+          }, 350);
           render();
-        }, 350);
-        render();
-      };
+        };
+      })(i);
       board.appendChild(btn);
-    });
+    }
   }
   function reset(){ cells=Array(9).fill(''); over=false; human=true; status.textContent='Your turn (X)'; render(); }
   document.getElementById('ttt-new').onclick=reset;
