@@ -476,11 +476,12 @@ export const micrositeDefs = [
   {
     slug: "games",
     title: "Free Online Games — 2048, Snake, Wordle, Sudoku & Arcade",
-    desc: "Play free browser games: 2048, snake, Wordle, sudoku, tic tac toe, minesweeper, pong, flappy bird, and more. No download.",
-    keywords: "free online games, play games online, 2048 game, snake game, wordle online, sudoku game, browser games unblocked",
+    desc: "Play free browser games: chess, 2048, snake, Wordle, sudoku, tic tac toe, minesweeper, pong, flappy bird, and more. No download.",
+    keywords: "free online games, play games online, chess game online, 2048 game, snake game, wordle online, sudoku game, browser games unblocked",
     hero: "Free online games",
     blurb: "Puzzle, arcade, and casual games that run in your browser. No app install.",
     toolPaths: [
+      "/chess-game.html",
       "/2048-game.html",
       "/snake-game.html",
       "/wordle-game.html",
