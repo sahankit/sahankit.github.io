@@ -2178,3 +2178,16 @@ span.ok { color: #047857; font-weight: 700; }
 .pixel-tip { position: absolute; left: 50%; bottom: 24px; padding: 8px 14px; font-size: 0.9rem; font-weight: 600; white-space: nowrap; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
 .pixel-tip.is-show { opacity: 0.85; }
 @media (max-width: 560px) { .pixel-tip { white-space: normal; width: 90%; text-align: center; } }
+
+/* Embeddable iframe widget */
+html.embed-mode .site-header,
+html.embed-mode .site-footer,
+html.embed-mode .breadcrumb,
+html.embed-mode .ad-slot,
+html.embed-mode .page-guide,
+html.embed-mode .related-tools,
+html.embed-mode .embed-cite,
+html.embed-mode .lang-switcher,
+html.embed-mode .skip-link { display: none !important; }
+html.embed-mode body { background: #fff; }
+html.embed-mode .wrap { max-width: 720px; padding: 12px; }

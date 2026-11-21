@@ -282,18 +282,19 @@ document.getElementById('go').click();
       cardDesc: "Tax vs TDS paid.",
       body: `<h1>Form 16 tax summary (illustration)</h1>${ad}
 <div class="tool-panel">
-<label for="inc">Taxable income (₹)</label><input id="inc" type="number" value="900000" />
+<label for="inc">Gross salary (₹)</label><input id="inc" type="number" value="900000" />
 <label for="tds">TDS already deducted (₹)</label><input id="tds" type="number" value="75000" />
-<label for="rate">Effective tax rate (%)</label><input id="rate" type="number" value="15" />
 <button type="button" class="primary" id="go">Compare</button>
 <p id="out" class="ok"></p>
+<p class="tool-hint">New-regime FY 2026–27 tax (87A + 4% cess), same engine as the <a href="/income-tax-calculator/">income tax calculator</a>.</p>
 </div>
+<script src="/assets/india-tax.js"></script>
 <script>
 document.getElementById('go').onclick=()=>{
-  const tax=+document.getElementById('inc').value*(+document.getElementById('rate').value/100);
+  const tax=IndiaTax.fromGross(+document.getElementById('inc').value,'new',{}).total;
   const tds=+document.getElementById('tds').value;
   const diff=tax-tds;
-  document.getElementById('out').textContent='Est. tax ₹'+tax.toFixed(0)+' · TDS ₹'+tds+' · '+(diff>=0?'Pay ₹'+diff.toFixed(0):'Refund ₹'+Math.abs(diff).toFixed(0));
+  document.getElementById('out').textContent='Est. tax ₹'+Math.round(tax).toLocaleString('en-IN')+' · TDS ₹'+tds.toLocaleString('en-IN')+' · '+(diff>=0?'Pay ₹'+Math.round(diff).toLocaleString('en-IN'):'Refund ₹'+Math.round(Math.abs(diff)).toLocaleString('en-IN'));
 };
 document.getElementById('go').click();
 </script>`,

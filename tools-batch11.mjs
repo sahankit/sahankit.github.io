@@ -47,54 +47,12 @@ ${ad}
     </thead>
     <tbody id="tbl"></tbody>
   </table>
-  <p id="hint" class="prose" style="font-size:0.85rem;margin-top:12px"></p>
+  <p id="hint" class="prose" style="font-size:0.85rem;margin-top:12px">Presets: <a href="/income-tax-calculator/?salary=1275000">₹12.75 LPA</a> · <a href="/guides/india-87a-marginal-relief/">87A / section 156 rebate</a> · <a href="/guides/india-new-vs-old-regime-breakeven/">regime breakeven</a>.</p>
 </div>
+<script src="/assets/india-tax.js"></script>
 <script>
-const STD_NEW = 75000;
-const STD_OLD = 50000;
-const CESS = 0.04;
-
-const NEW_SLABS = [[300000,0],[700000,0.05],[1000000,0.10],[1200000,0.15],[1500000,0.20],[Infinity,0.30]];
-const OLD_SLABS = [[250000,0],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
-
-function slabTax(taxable, slabs){
-  if(taxable<=0) return 0;
-  let tax=0, lower=0;
-  for(const [upper, rate] of slabs){
-    if(taxable<=lower) break;
-    tax += (Math.min(taxable, upper)-lower)*rate;
-    lower=upper;
-    if(taxable<=upper) break;
-  }
-  return tax;
-}
-
-function rebate87A(tax, incomeForRebate, regime){
-  if(regime==='new'){
-    if(incomeForRebate<=700000) return tax;
-    return 0;
-  }
-  if(incomeForRebate<=500000) return Math.min(tax, 12500);
-  return 0;
-}
-
 function calcRegime(gross, regime, ded){
-  const std = regime==='new' ? STD_NEW : STD_OLD;
-  let taxable = gross - std;
-  if(regime==='old'){
-    const cap80c = Math.min(Math.max(ded.c80c,0), 150000);
-    const capNps = Math.min(Math.max(ded.nps,0), 50000);
-    taxable -= cap80c + capNps + Math.max(ded.d80d,0) + Math.max(ded.hra,0) + Math.max(ded.other,0);
-  }
-  taxable = Math.max(0, taxable);
-  const incomeForRebate = taxable;
-  const slabs = regime==='new' ? NEW_SLABS : OLD_SLABS;
-  const raw = slabTax(taxable, slabs);
-  const reb = rebate87A(raw, incomeForRebate, regime);
-  const afterReb = Math.max(0, raw - reb);
-  const cessAmt = afterReb * CESS;
-  const total = afterReb + cessAmt;
-  return { taxable, raw, reb, afterReb, cessAmt, total };
+  return IndiaTax.fromGross(gross, regime, ded);
 }
 
 function fmt(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
@@ -198,34 +156,12 @@ ${ad}
   <p id="taxline" class="prose" style="margin-top:12px"></p>
   <p id="hint" class="prose" style="font-size:0.85rem"></p>
 </div>
+<script src="/assets/india-tax.js"></script>
 <script>
-const STD_NEW = 75000, STD_OLD = 50000, CESS = 0.04;
-const NEW_SLABS = [[300000,0],[700000,0.05],[1000000,0.10],[1200000,0.15],[1500000,0.20],[Infinity,0.30]];
-const OLD_SLABS = [[250000,0],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
+const STD_NEW = IndiaTax.STD_NEW, STD_OLD = IndiaTax.STD_OLD;
 const MEAL = 26400, PHONE = 24000, HRA_OF_BASIC = 0.5;
 const EMP_PF = 0.12, GRAT = 15/26, EMP_NPS_MAX = 0.10;
-
-function slabTax(taxable, slabs){
-  if(taxable<=0) return 0;
-  let tax=0, lower=0;
-  for(const [upper, rate] of slabs){
-    if(taxable<=lower) break;
-    tax += (Math.min(taxable, upper)-lower)*rate;
-    lower=upper;
-    if(taxable<=upper) break;
-  }
-  return tax;
-}
-function rebate87A(tax, incomeForRebate, regime){
-  if(regime==='new'){ return incomeForRebate<=700000 ? tax : 0; }
-  return incomeForRebate<=500000 ? Math.min(tax, 12500) : 0;
-}
-function totalTax(taxable, regime){
-  const raw = slabTax(taxable, regime==='new'?NEW_SLABS:OLD_SLABS);
-  const reb = rebate87A(raw, taxable, regime);
-  const after = Math.max(0, raw-reb);
-  return after + after*CESS;
-}
+function totalTax(taxable, regime){ return IndiaTax.totalTax(taxable, regime); }
 function hraExempt(basic, hra, rentAnnual, metro){
   const cap = metro ? 0.5*basic : 0.4*basic;
   const rentRule = Math.max(0, rentAnnual - 0.1*basic);

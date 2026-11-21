@@ -53,21 +53,25 @@ document.getElementById('go').click();
       file: "ctc-to-in-hand-calculator.html",
       category: "india",
       title: "CTC to In-Hand Salary Calculator India",
-      desc: "Rough in-hand salary from annual CTC with basic, HRA, and deduction percent. Planning illustration only.",
+      desc: "In-hand salary from annual CTC using FY 2026–27 new-regime tax (87A rebate, ₹75,000 standard deduction) plus a simple PF placeholder.",
       card: "CTC to in-hand",
       cardDesc: "Monthly take-home est.",
       body: `<h1>CTC to in-hand calculator</h1>${ad}
 <div class="tool-panel">
 <label for="ctc">Annual CTC (₹)</label><input id="ctc" type="number" value="1200000" />
-<label for="ded">Total deductions (% of CTC)</label><input id="ded" type="number" value="18" />
+<label for="ded">Employee PF (% of basic; basic assumed 40% of CTC)</label><input id="ded" type="number" value="12" />
 <button type="button" class="primary" id="go">Estimate</button>
 <p id="out" class="ok"></p>
+<p class="tool-hint">Uses the same FY 2026–27 new-regime engine as the <a href="/income-tax-calculator/">income tax calculator</a>.</p>
 </div>
+<script src="/assets/india-tax.js"></script>
 <script>
 document.getElementById('go').onclick=()=>{
   const ctc=+document.getElementById('ctc').value;
-  const net=ctc*(1-+document.getElementById('ded').value/100);
-  document.getElementById('out').textContent='Est. in-hand ₹'+(net/12).toFixed(0)+'/month · ₹'+net.toFixed(0)+'/year';
+  const pf=ctc*0.4*(+document.getElementById('ded').value/100);
+  const tax=IndiaTax.fromGross(ctc,'new',{}).total;
+  const net=Math.max(0,ctc-pf-tax);
+  document.getElementById('out').textContent='Est. in-hand ₹'+Math.round(net/12).toLocaleString('en-IN')+'/month · tax ₹'+Math.round(tax).toLocaleString('en-IN')+' · PF ₹'+Math.round(pf).toLocaleString('en-IN');
 };
 document.getElementById('go').click();
 </script>`,
@@ -77,19 +81,25 @@ document.getElementById('go').click();
       file: "advance-tax-calculator.html",
       category: "india",
       title: "Advance Tax Calculator India — Quarterly Installments",
-      desc: "Split estimated annual tax into four advance tax installments (25% each). Illustration—not filing software.",
+      desc: "Split estimated annual tax into the four statutory advance-tax instalments (15%, 45%, 75%, 100% cumulative). Illustration—not filing software.",
       card: "Advance tax",
       cardDesc: "Quarterly tax split.",
       body: `<h1>Advance tax calculator</h1>${ad}
 <div class="tool-panel">
+<label for="income">Optional gross salary (₹) to estimate tax</label><input id="income" type="number" value="" placeholder="Leave blank to use tax below" />
 <label for="tax">Estimated annual tax (₹)</label><input id="tax" type="number" value="200000" />
 <button type="button" class="primary" id="go">Split</button>
 <p id="out" class="ok"></p>
+<p class="tool-hint">15 Jun 15% · 15 Sep 45% · 15 Dec 75% · 15 Mar 100%. <a href="/guides/india-advance-tax-calendar/">Due dates</a>.</p>
 </div>
+<script src="/assets/india-tax.js"></script>
 <script>
 document.getElementById('go').onclick=()=>{
-  const q=(+document.getElementById('tax').value)/4;
-  document.getElementById('out').textContent='Each installment ≈ ₹'+q.toFixed(0)+' (4 equal parts—due dates vary by FY rules)';
+  const inc=+document.getElementById('income').value;
+  let tax=+document.getElementById('tax').value;
+  if(inc>0){ tax=IndiaTax.fromGross(inc,'new',{}).total; document.getElementById('tax').value=Math.round(tax); }
+  const r=p=>'₹'+Math.round(tax*p).toLocaleString('en-IN');
+  document.getElementById('out').textContent='15 Jun '+r(0.15)+' · 15 Sep '+r(0.45)+' cum. · 15 Dec '+r(0.75)+' cum. · 15 Mar '+r(1);
 };
 document.getElementById('go').click();
 </script>`,

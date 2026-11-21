@@ -12,7 +12,7 @@
   <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js"></script>
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js" defer></script>
   <title>Security Tools — Hash, JWT, Password &amp; Crypto Utilities | ToolHQ</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -26,8 +26,21 @@
   <meta property="og:title" content="Security Tools — Hash, JWT, Password &amp; Crypto Utilities | ToolHQ" />
   <meta property="og:description" content="Security utilities in the browser: SHA-256, SHA-1, MD5, HMAC, JWT decode, password generator, Luhn, and API keys." />
   <meta property="og:url" content="https://thetoolhq.com/security/" />
-  <meta property="og:locale" content="en_US" />
-  
+  <meta property="og:locale" content="en_IN" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+  <meta property="og:locale:alternate" content="hi_IN" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:locale:alternate" content="ar_SA" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="pt_BR" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:locale:alternate" content="bn_BD" />
+  <meta property="og:locale:alternate" content="ja_JP" />
+  <meta property="og:locale:alternate" content="de_DE" />
+  <meta property="og:locale:alternate" content="ko_KR" />
+  <meta property="og:locale:alternate" content="id_ID" />
+  <meta property="og:locale:alternate" content="tr_TR" />
+  <meta property="og:locale:alternate" content="vi_VN" />
     <link rel="alternate" hreflang="en" href="https://thetoolhq.com/security/" />
   <link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/security/" />
   <link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/security/" />
@@ -41,6 +54,8 @@
   <link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/security/" />
   <link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/security/" />
   <link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/security/" />
+  <link rel="alternate" hreflang="tr" href="https://thetoolhq.com/tr/security/" />
+  <link rel="alternate" hreflang="vi" href="https://thetoolhq.com/vi/security/" />
   <link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/security/" />
   
   <meta property="og:image" content="https://thetoolhq.com/assets/og.png" />
@@ -73,6 +88,7 @@
       <a href="/india/">India</a>
       <a href="/dev/">Developer</a>
       <a href="/design/">PDF & images</a>
+      <a href="/guides/">Guides</a>
     </nav>
     <div class="lang-switcher"><label class="sr-only" for="lang-select">Language</label><select id="lang-select" class="lang-select" data-lang-select aria-label="Language" onchange="if(this.value)location.assign(this.value)"><option value="/security/" selected>English</option><option value="/zh/security/">简体中文</option><option value="/hi/security/">हिन्दी</option><option value="/es/security/">Español</option><option value="/ar/security/">العربية</option><option value="/fr/security/">Français</option><option value="/pt/security/">Português</option><option value="/ru/security/">Русский</option><option value="/bn/security/">বাংলা</option><option value="/ja/security/">日本語</option><option value="/de/security/">Deutsch</option><option value="/ko/security/">한국어</option><option value="/id/security/">Bahasa Indonesia</option><option value="/tr/security/">Türkçe</option><option value="/vi/security/">Tiếng Việt</option></select></div>
     
@@ -92,6 +108,7 @@
 <p class="page-lead">Hash, encode, and audit strings locally. Secrets stay on your device unless you paste them elsewhere.</p>
 </header>
 <aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>
+
 <section class="home-section" aria-labelledby="hub-tools-heading">
 <h2 id="hub-tools-heading">Tools in this hub</h2>
 <div class="grid grid--compact"><a class="card tool-card" href="/hash-generator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">SHA-256 hash</h3><p>Hash text with Web Crypto.</p></span></a><a class="card tool-card" href="/sha1-hash/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">SHA-1 hash</h3><p>Web Crypto SHA-1.</p></span></a><a class="card tool-card" href="/md5-hash/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">MD5 hash</h3><p>MD5 hex digest.</p></span></a><a class="card tool-card" href="/hmac-generator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">HMAC-SHA256</h3><p>Keyed hash.</p></span></a><a class="card tool-card" href="/jwt-decoder/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">JWT decoder</h3><p>View JWT claims locally.</p></span></a><a class="card tool-card" href="/password-generator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Password generator</h3><p>Strong random passwords.</p></span></a><a class="card tool-card" href="/passphrase-generator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Passphrase generator</h3><p>Random word phrases.</p></span></a><a class="card tool-card" href="/password-strength/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Password strength</h3><p>Strength meter.</p></span></a><a class="card tool-card" href="/api-key-generator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">API key generator</h3><p>Random secret strings.</p></span></a><a class="card tool-card" href="/luhn-checker/"><span class="icon-tile tone-orange"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12"/><path d="M6 8h12"/><path d="m6 13 8.5 8"/><path d="M6 13h3"/><path d="M9 13c6.67 0 6.67-10 0-10"/></svg></span><span class="card-body"><h3 class="card-title">Luhn checker</h3><p>Card number checksum.</p></span></a><a class="card tool-card" href="/base64-encoder/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Base64 encode/decode</h3><p>Encode and decode Base64 text.</p></span></a><a class="card tool-card" href="/base32-encoder/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Base32</h3><p>Base32 encode/decode.</p></span></a><a class="card tool-card" href="/rot13-encoder/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">ROT13</h3><p>Rotate letters 13.</p></span></a><a class="card tool-card" href="/hex-encoder/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Text ↔ hex</h3><p>UTF-8 hex bytes.</p></span></a><a class="card tool-card" href="/random-token-generator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span><span class="card-body"><h3 class="card-title">Random token</h3><p>Secure hex token.</p></span></a><a class="card tool-card" href="/password-entropy-calculator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span><span class="card-body"><h3 class="card-title">Password entropy</h3><p>Bits of entropy.</p></span></a></div></section>

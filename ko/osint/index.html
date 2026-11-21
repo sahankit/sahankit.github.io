@@ -12,7 +12,7 @@
   <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js"></script>
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js" defer></script>
   <title>OSINT 도구 — 사용자 이름, 도메인 및 공개 검색 링크 | ToolHQ</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -27,7 +27,7 @@
   <meta property="og:description" content="무료 OSINT 허브: 사용자 이름 링크, 도메인 인증서, DNS, IP 조회, Google dorks 및 침해 색인 링크. 공개 소스에만 해당됩니다." />
   <meta property="og:url" content="https://thetoolhq.com/ko/osint/" />
   <meta property="og:locale" content="ko_KR" />
-    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="en_IN" />
   <meta property="og:locale:alternate" content="zh_CN" />
   <meta property="og:locale:alternate" content="hi_IN" />
   <meta property="og:locale:alternate" content="es_ES" />
@@ -54,6 +54,8 @@
   <link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/osint/" />
   <link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/osint/" />
   <link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/osint/" />
+  <link rel="alternate" hreflang="tr" href="https://thetoolhq.com/tr/osint/" />
+  <link rel="alternate" hreflang="vi" href="https://thetoolhq.com/vi/osint/" />
   <link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/osint/" />
   <meta http-equiv="content-language" content="ko" />
   <meta property="og:image" content="https://thetoolhq.com/assets/og.png" />
@@ -86,6 +88,7 @@
       <a href="/ko/india/">인도</a>
       <a href="/ko/dev/">개발자</a>
       <a href="/ko/design/">PDF·이미지</a>
+      <a href="/ko/guides/">가이드</a>
     </nav>
     <div class="lang-switcher"><label class="sr-only" for="lang-select">언어</label><select id="lang-select" class="lang-select" data-lang-select aria-label="언어" onchange="if(this.value)location.assign(this.value)"><option value="/osint/">English</option><option value="/zh/osint/">简体中文</option><option value="/hi/osint/">हिन्दी</option><option value="/es/osint/">Español</option><option value="/ar/osint/">العربية</option><option value="/fr/osint/">Français</option><option value="/pt/osint/">Português</option><option value="/ru/osint/">Русский</option><option value="/bn/osint/">বাংলা</option><option value="/ja/osint/">日本語</option><option value="/de/osint/">Deutsch</option><option value="/ko/osint/" selected>한국어</option><option value="/id/osint/">Bahasa Indonesia</option><option value="/tr/osint/">Türkçe</option><option value="/vi/osint/">Tiếng Việt</option></select></div>
     
@@ -105,6 +108,7 @@
 <p class="page-lead">공개 OSINT 소스에 대한 링크를 구축하세요. 승인된 보안 연구 및 실사에만 해당됩니다.</p>
 </header>
 <aside class="ad-slot ad-slot--top" data-ad hidden aria-label="광고"></aside>
+
 <section class="home-section" aria-labelledby="hub-tools-heading">
 <h2 id="hub-tools-heading">Tools in this hub</h2>
 <div class="grid grid--compact"><a class="card tool-card" href="/ko/osint-search/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">OSINT 검색</h3><p>공개 조회 링크.</p></span></a><a class="card tool-card" href="/ko/domain-age/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">도메인 연령 검사기</h3><p>공개 RDAP를 통한 등록 날짜 및 연령.</p></span></a><a class="card tool-card" href="/ko/extract-urls/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">URL 추출</h3><p>텍스트에 링크를 나열합니다.</p></span></a><a class="card tool-card" href="/ko/extract-emails/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">이메일 추출</h3><p>이메일을 텍스트로 나열하세요.</p></span></a><a class="card tool-card" href="/ko/extract-phone-numbers/"><span class="icon-tile tone-violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span class="card-body"><h3 class="card-title">전화 추출</h3><p>정규식 추출.</p></span></a><a class="card tool-card" href="/ko/url-parser/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">URL 파서</h3><p>URL을 분석하세요.</p></span></a><a class="card tool-card" href="/ko/cidr-calculator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">CIDR 계산기</h3><p>IPv4 서브넷 정보.</p></span></a><a class="card tool-card" href="/ko/netmask-to-cidr/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">마스크 → CIDR</h3><p>접두사 길이.</p></span></a><a class="card tool-card" href="/ko/ipv4-to-decimal/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">IPv4 ⇔ 십진수</h3><p>IP를 정수로 표현합니다.</p></span></a><a class="card tool-card" href="/ko/user-agent/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">사용자 에이전트</h3><p>브라우저 UA 문자열.</p></span></a></div></section>

@@ -12,7 +12,7 @@
   <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js"></script>
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js" defer></script>
   <title>أدوات OSINT - اسم المستخدم والمجال وروابط البحث العامة | ToolHQ</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -27,7 +27,7 @@
   <meta property="og:description" content="مركز OSINT مجاني: روابط اسم المستخدم، وشهادات المجال، وDNS، وعمليات البحث عن IP، وGoogle dorks، وروابط فهرس الاختراق. المصادر العامة فقط." />
   <meta property="og:url" content="https://thetoolhq.com/ar/osint/" />
   <meta property="og:locale" content="ar_SA" />
-    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="en_IN" />
   <meta property="og:locale:alternate" content="zh_CN" />
   <meta property="og:locale:alternate" content="hi_IN" />
   <meta property="og:locale:alternate" content="es_ES" />
@@ -54,6 +54,8 @@
   <link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/osint/" />
   <link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/osint/" />
   <link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/osint/" />
+  <link rel="alternate" hreflang="tr" href="https://thetoolhq.com/tr/osint/" />
+  <link rel="alternate" hreflang="vi" href="https://thetoolhq.com/vi/osint/" />
   <link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/osint/" />
   <meta http-equiv="content-language" content="ar" />
   <meta property="og:image" content="https://thetoolhq.com/assets/og.png" />
@@ -86,6 +88,7 @@
       <a href="/ar/india/">الهند</a>
       <a href="/ar/dev/">المطور</a>
       <a href="/ar/design/">PDF والصور</a>
+      <a href="/ar/guides/">أدلة</a>
     </nav>
     <div class="lang-switcher"><label class="sr-only" for="lang-select">اللغة</label><select id="lang-select" class="lang-select" data-lang-select aria-label="اللغة" onchange="if(this.value)location.assign(this.value)"><option value="/osint/">English</option><option value="/zh/osint/">简体中文</option><option value="/hi/osint/">हिन्दी</option><option value="/es/osint/">Español</option><option value="/ar/osint/" selected>العربية</option><option value="/fr/osint/">Français</option><option value="/pt/osint/">Português</option><option value="/ru/osint/">Русский</option><option value="/bn/osint/">বাংলা</option><option value="/ja/osint/">日本語</option><option value="/de/osint/">Deutsch</option><option value="/ko/osint/">한국어</option><option value="/id/osint/">Bahasa Indonesia</option><option value="/tr/osint/">Türkçe</option><option value="/vi/osint/">Tiếng Việt</option></select></div>
     
@@ -105,6 +108,7 @@
 <p class="page-lead">بناء روابط لمصادر OSINT العامة. للأبحاث الأمنية المعتمدة والعناية الواجبة فقط.</p>
 </header>
 <aside class="ad-slot ad-slot--top" data-ad hidden aria-label="إعلان"></aside>
+
 <section class="home-section" aria-labelledby="hub-tools-heading">
 <h2 id="hub-tools-heading">Tools in this hub</h2>
 <div class="grid grid--compact"><a class="card tool-card" href="/ar/osint-search/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">بحث OSINT</h3><p>روابط البحث العامة.</p></span></a><a class="card tool-card" href="/ar/domain-age/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">مدقق عمر المجال</h3><p>تاريخ التسجيل والعمر عبر RDAP العام.</p></span></a><a class="card tool-card" href="/ar/extract-urls/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">استخراج عناوين URL</h3><p>قائمة الروابط في النص.</p></span></a><a class="card tool-card" href="/ar/extract-emails/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">استخراج رسائل البريد الإلكتروني</h3><p>قائمة رسائل البريد الإلكتروني في النص.</p></span></a><a class="card tool-card" href="/ar/extract-phone-numbers/"><span class="icon-tile tone-violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span class="card-body"><h3 class="card-title">استخراج الهواتف</h3><p>استخراج ريجكس.</p></span></a><a class="card tool-card" href="/ar/url-parser/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">محلل URL</h3><p>قم بتقسيم أي عنوان URL.</p></span></a><a class="card tool-card" href="/ar/cidr-calculator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">حاسبة CIDR</h3><p>معلومات الشبكة الفرعية IPv4.</p></span></a><a class="card tool-card" href="/ar/netmask-to-cidr/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">قناع → CIDR</h3><p>طول البادئة.</p></span></a><a class="card tool-card" href="/ar/ipv4-to-decimal/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">IPv4 ↔ عشري</h3><p>IP كعدد صحيح.</p></span></a><a class="card tool-card" href="/ar/user-agent/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">وكيل المستخدم</h3><p>سلسلة UA للمتصفح.</p></span></a></div></section>

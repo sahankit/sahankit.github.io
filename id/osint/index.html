@@ -12,7 +12,7 @@
   <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js"></script>
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js" defer></script>
   <title>OSINT Tools — Username, Domain &amp; Public Search Links | ToolHQ</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -27,7 +27,7 @@
   <meta property="og:description" content="Free OSINT hub: username links, domain certs, DNS, IP lookups, Google dorks, and breach index links. Public sources only." />
   <meta property="og:url" content="https://thetoolhq.com/id/osint/" />
   <meta property="og:locale" content="id_ID" />
-    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="en_IN" />
   <meta property="og:locale:alternate" content="zh_CN" />
   <meta property="og:locale:alternate" content="hi_IN" />
   <meta property="og:locale:alternate" content="es_ES" />
@@ -54,6 +54,8 @@
   <link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/osint/" />
   <link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/osint/" />
   <link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/osint/" />
+  <link rel="alternate" hreflang="tr" href="https://thetoolhq.com/tr/osint/" />
+  <link rel="alternate" hreflang="vi" href="https://thetoolhq.com/vi/osint/" />
   <link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/osint/" />
   <meta http-equiv="content-language" content="id" />
   <meta property="og:image" content="https://thetoolhq.com/assets/og.png" />
@@ -86,6 +88,7 @@
       <a href="/id/india/">India</a>
       <a href="/id/dev/">Pengembang</a>
       <a href="/id/design/">PDF & gambar</a>
+      <a href="/id/guides/">Panduan</a>
     </nav>
     <div class="lang-switcher"><label class="sr-only" for="lang-select">Bahasa</label><select id="lang-select" class="lang-select" data-lang-select aria-label="Bahasa" onchange="if(this.value)location.assign(this.value)"><option value="/osint/">English</option><option value="/zh/osint/">简体中文</option><option value="/hi/osint/">हिन्दी</option><option value="/es/osint/">Español</option><option value="/ar/osint/">العربية</option><option value="/fr/osint/">Français</option><option value="/pt/osint/">Português</option><option value="/ru/osint/">Русский</option><option value="/bn/osint/">বাংলা</option><option value="/ja/osint/">日本語</option><option value="/de/osint/">Deutsch</option><option value="/ko/osint/">한국어</option><option value="/id/osint/" selected>Bahasa Indonesia</option><option value="/tr/osint/">Türkçe</option><option value="/vi/osint/">Tiếng Việt</option></select></div>
     
@@ -105,6 +108,7 @@
 <p class="page-lead">Build links to public OSINT sources. For authorized security research and due diligence only.</p>
 </header>
 <aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Iklan"></aside>
+
 <section class="home-section" aria-labelledby="hub-tools-heading">
 <h2 id="hub-tools-heading">Tools in this hub</h2>
 <div class="grid grid--compact"><a class="card tool-card" href="/id/osint-search/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">Pencarian OSINT</h3><p>Tautan pencarian publik.</p></span></a><a class="card tool-card" href="/id/domain-age/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">Pemeriksa usia domain</h3><p>Tanggal dan usia pendaftaran melalui RDAP publik.</p></span></a><a class="card tool-card" href="/id/extract-urls/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Ekstrak URL</h3><p>Daftar tautan dalam teks.</p></span></a><a class="card tool-card" href="/id/extract-emails/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Ekstrak email</h3><p>Daftar email dalam teks.</p></span></a><a class="card tool-card" href="/id/extract-phone-numbers/"><span class="icon-tile tone-violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span class="card-body"><h3 class="card-title">Ekstrak ponsel</h3><p>Ekstrak regex.</p></span></a><a class="card tool-card" href="/id/url-parser/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">pengurai URL</h3><p>Hancurkan URL apa pun.</p></span></a><a class="card tool-card" href="/id/cidr-calculator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Kalkulator CIDR</h3><p>Informasi subnet IPv4.</p></span></a><a class="card tool-card" href="/id/netmask-to-cidr/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Masker → CIDR</h3><p>Panjang awalan.</p></span></a><a class="card tool-card" href="/id/ipv4-to-decimal/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">IPv4 ↔ desimal</h3><p>IP sebagai bilangan bulat.</p></span></a><a class="card tool-card" href="/id/user-agent/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">Agen pengguna</h3><p>Rangkaian UA peramban.</p></span></a></div></section>

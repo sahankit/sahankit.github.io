@@ -7,6 +7,29 @@
  *    calculators, NaN/Infinity guard, copy buttons for read-only output, recent tools
  */
 (function () {
+  try {
+    const params = new URLSearchParams(location.search);
+    if (params.has("embed")) document.documentElement.classList.add("embed-mode");
+    const aliases = { salary: ["gross", "ctc", "income", "inc"], ctc: ["ctc", "gross"], hra: ["hra"], target: ["kb"] };
+    let filled = false;
+    params.forEach((val, key) => {
+      if (key === "embed") return;
+      const ids = aliases[key] || [key];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.type === "checkbox") el.checked = val === "1" || val === "true";
+        else el.value = val;
+        filled = true;
+        break;
+      }
+    });
+    if (filled) {
+      const go = document.getElementById("go");
+      if (go) queueMicrotask(() => go.click());
+    }
+  } catch (_) {}
+
   function goLang(href) {
     if (href) window.location.assign(href);
   }

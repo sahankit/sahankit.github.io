@@ -536,15 +536,16 @@ document.getElementById('go').click();
   <label for="pf">Employee PF (% of basic, approx)</label><input id="pf" type="number" value="12" />
   <button type="button" class="primary" id="go">Estimate</button>
   <p id="out" class="ok"></p>
-  <p class="prose" style="font-size:0.85rem">Very rough: assumes 40% basic, standard PF slice only. Excludes tax, HRA, and benefits.</p>
+  <p class="prose" style="font-size:0.85rem">Assumes 40% basic, employee PF, and FY 2026–27 new-regime income tax (same slabs as the <a href="/income-tax-calculator/">income tax calculator</a>).</p>
 </div>
+<script src="/assets/india-tax.js"></script>
 <script>
 document.getElementById('go').onclick=()=>{
   const ctc=Number(document.getElementById('ctc').value);
-  const monthly=ctc/12, basic=monthly*0.4;
-  const pf=basic*(Number(document.getElementById('pf').value)/100);
-  const hand=monthly-pf;
-  document.getElementById('out').textContent='≈ ₹'+Math.round(hand).toLocaleString('en-IN')+' / month in-hand before income tax';
+  const pf=ctc*0.4*(Number(document.getElementById('pf').value)/100);
+  const tax=IndiaTax.fromGross(ctc,'new',{}).total;
+  const hand=(ctc-pf-tax)/12;
+  document.getElementById('out').textContent='≈ ₹'+Math.round(hand).toLocaleString('en-IN')+' / month in-hand after PF and new-regime tax';
 };
 document.getElementById('go').click();
 </script>`,

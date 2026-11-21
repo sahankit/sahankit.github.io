@@ -13,6 +13,41 @@ export const micrositeDefs = [
     keywords: "mortgage calculator, vat calculator, uk stamp duty calculator, finance calculator, India GST SIP EMI calculator",
     hero: "Finance calculators",
     blurb: "US and India money math in your browser. Estimates only—not tax or financial advice.",
+    groups: [
+      {
+        title: "India tax & salary",
+        paths: [
+          "/income-tax-calculator.html",
+          "/old-vs-new-tax-regime-calculator.html",
+          "/hra-calculator.html",
+          "/salary-calculator.html",
+        ],
+      },
+      {
+        title: "Loans & EMI",
+        paths: [
+          "/emi-calculator.html",
+          "/home-loan-calculator.html",
+          "/mortgage-calculator.html",
+          "/uk-mortgage-calculator.html",
+          "/home-loan-prepayment-calculator.html",
+        ],
+      },
+      {
+        title: "GST & invoicing",
+        paths: ["/gst-calculator.html", "/gst-inclusive-calculator.html", "/india-invoice.html"],
+      },
+      {
+        title: "Investing & savings",
+        paths: [
+          "/sip-calculator.html",
+          "/step-up-sip-calculator.html",
+          "/fd-calculator.html",
+          "/rd-calculator.html",
+          "/xirr-calculator.html",
+        ],
+      },
+    ],
     toolPaths: [
       "/mortgage-calculator.html",
       "/vat-calculator.html",
@@ -79,6 +114,26 @@ export const micrositeDefs = [
     keywords: "developer tools online, hash generator, base64 encoder, uuid generator, json formatter",
     hero: "Developer utilities",
     blurb: "Encode, hash, and generate identifiers locally—nothing sent to a server.",
+    groups: [
+      {
+        title: "Hash, JWT & crypto",
+        paths: ["/hash-generator.html", "/jwt-decoder.html", "/jwt-generator.html", "/password-generator.html"],
+      },
+      {
+        title: "JSON, XML & data",
+        paths: [
+          "/json-formatter.html",
+          "/csv-to-json.html",
+          "/json-to-csv.html",
+          "/json-to-xml-converter.html",
+          "/xml-to-json-converter.html",
+        ],
+      },
+      {
+        title: "Generators",
+        paths: ["/uuid-generator.html", "/base64-encoder.html", "/otp-generator.html", "/mock-data-generator.html"],
+      },
+    ],
     toolPaths: [
       "/what-is-my-ip.html",
       "/regex-builder.html",
@@ -201,6 +256,51 @@ export const micrositeDefs = [
     keywords: "India tools online, income tax India, GST calculator, UPI PAN IFSC",
     hero: "India utilities",
     blurb: "Tax, IDs, invoices, and savings calculators for India—browser-only, not government official.",
+    groups: [
+      {
+        title: "Tax & salary",
+        paths: [
+          "/income-tax-calculator.html",
+          "/salary-breakup-calculator.html",
+          "/hra-calculator.html",
+          "/ctc-to-in-hand-calculator.html",
+          "/advance-tax-calculator.html",
+          "/tds-calculator.html",
+          "/section-80c-calculator.html",
+        ],
+      },
+      {
+        title: "Loans & EMI",
+        paths: [
+          "/emi-calculator.html",
+          "/home-loan-calculator.html",
+          "/personal-loan-calculator.html",
+          "/education-loan-calculator.html",
+          "/bike-loan-calculator.html",
+          "/gold-loan-calculator.html",
+        ],
+      },
+      {
+        title: "GST & invoicing",
+        paths: [
+          "/gst-calculator.html",
+          "/gst-inclusive-calculator.html",
+          "/india-invoice.html",
+          "/gstin-format-checker.html",
+          "/e-way-bill-format-checker.html",
+        ],
+      },
+      {
+        title: "ID & format validators",
+        paths: [
+          "/pan-format.html",
+          "/ifsc-format.html",
+          "/upi-id-format.html",
+          "/aadhaar-format-checker.html",
+          "/pincode-format.html",
+        ],
+      },
+    ],
     toolPaths: [
       "/income-tax-calculator.html",
       "/salary-breakup-calculator.html",
@@ -252,6 +352,13 @@ export const micrositeDefs = [
       "/kmpl-calculator.html",
       "/passport-size-photo.html",
       "/reduce-image-size-in-kb.html",
+    ],
+    guidePaths: [
+      "/guides/india-income-tax-slabs-fy-2026-27.html",
+      "/guides/india-new-vs-old-regime-breakeven.html",
+      "/guides/india-87a-marginal-relief.html",
+      "/guides/gst-inclusive-vs-exclusive.html",
+      "/guides/india-advance-tax-calendar.html",
     ],
     faqs: [
       { q: "Are PAN or UPI checks official?", a: "No. Format and pattern helpers only—not NPCI or Income Tax verification." },
@@ -612,15 +719,22 @@ export const micrositeDefs = [
   },
 ];
 
+function hubToolCard(t) {
+  return toolCardHtml({ href: canonicalFromFile(t.file), title: t.card, desc: t.cardDesc, category: t.category });
+}
+
 export function micrositeMain(def, ad, tools, guides) {
   const byPath = (p) => tools.find((t) => t.path === p);
-  const cards = [...new Set(def.toolPaths || [])]
-    .map(byPath)
-    .filter(Boolean)
-    .map((t) =>
-      toolCardHtml({ href: canonicalFromFile(t.file), title: t.card, desc: t.cardDesc, category: t.category }),
-    )
-    .join("");
+  const seen = new Set();
+  const resolvePaths = (paths) =>
+    [...new Set(paths || [])]
+      .map(byPath)
+      .filter(Boolean)
+      .filter((t) => {
+        if (seen.has(t.file)) return false;
+        seen.add(t.file);
+        return true;
+      });
   const extra = (def.extraLinks || [])
     .map((l) => toolCardHtml({ href: l.href, title: l.card, desc: l.cardDesc, category: "chat" }))
     .join("");
@@ -632,6 +746,26 @@ export function micrositeMain(def, ad, tools, guides) {
         `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc.slice(0, 72)}…</p></span></a>`,
     )
     .join("");
+  const groups = def.groups?.length
+    ? def.groups
+        .map((g, i) => {
+          const list = resolvePaths(g.paths);
+          if (!list.length) return "";
+          const id = `hub-group-${i}`;
+          return `<section class="home-section" aria-labelledby="${id}">
+<h2 id="${id}">${g.title}</h2>
+<div class="grid grid--compact">${list.map(hubToolCard).join("")}</div></section>`;
+        })
+        .join("")
+    : "";
+  const rest = resolvePaths(def.toolPaths);
+  const restSection = rest.length
+    ? `<section class="home-section" aria-labelledby="hub-tools-heading">
+<h2 id="hub-tools-heading">${groups ? "More tools" : "Tools in this hub"}</h2>
+<div class="grid grid--compact">${rest.map(hubToolCard).join("")}${extra}</div></section>`
+    : extra
+      ? `<section class="home-section"><div class="grid grid--compact">${extra}</div></section>`
+      : "";
   const tone = (HUB_ICON[def.slug] || ["book", "violet"])[1];
   return `<header class="page-hero hub-hero">
 <span class="eyebrow tone-${tone}">${iconSvg((HUB_ICON[def.slug] || ["book"])[0])}Topic hub · ${new Set(def.toolPaths || []).size} tools</span>
@@ -639,9 +773,8 @@ export function micrositeMain(def, ad, tools, guides) {
 <p class="page-lead">${def.blurb}</p>
 </header>
 ${ad}
-<section class="home-section" aria-labelledby="hub-tools-heading">
-<h2 id="hub-tools-heading">Tools in this hub</h2>
-<div class="grid grid--compact">${cards}${extra}</div></section>
+${groups}
+${restSection}
 ${gcards ? `<section class="home-section" aria-labelledby="hub-guides-heading"><h2 id="hub-guides-heading">Guides</h2><div class="grid grid--compact">${gcards}</div></section>` : ""}`;
 }
 

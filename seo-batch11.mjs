@@ -1,4 +1,9 @@
-import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+import {
+  INDIA_INCOME_TAX_FY,
+  NEW_REGIME_SLAB_SUMMARY,
+  OLD_REGIME_SLAB_SUMMARY,
+  REBATE_87A_NEW_TAXABLE_MAX,
+} from "./india-tax-fy.mjs";
 
 const FY = INDIA_INCOME_TAX_FY.fyShort;
 const FY_DISP = INDIA_INCOME_TAX_FY.fyLabel;
@@ -48,7 +53,7 @@ export const batch11PageSeo = {
           "The new regime is the default for many salaried taxpayers but you can opt for the old regime if it reduces your tax. The new regime allows a higher standard deduction on salary (₹75,000) and simpler slabs, but most deductions under Chapter VI-A (including 80C and HRA) are not available. The old regime uses a ₹50,000 standard deduction and the traditional slabs, but you can claim 80C, HRA, 80D, extra NPS, and other eligible deductions.",
         ],
         list: [
-          "<strong>New regime</strong> — Often better when you have few deductions (no or low HRA, minimal 80C/80D). Middle incomes may benefit from section 87A rebate when total income after standard deduction is up to ₹7 lakh.",
+          `<strong>New regime</strong> — Often better when you have few deductions (no or low HRA, minimal 80C/80D). Salaried taxpayers may pay nil tax when taxable income (after the ₹75,000 standard deduction) is up to ₹12 lakh via section 87A, subject to current law.`,
           "<strong>Old regime</strong> — Often better when HRA exemption is large (metros), you use full 80C, pay health premiums (80D), or have substantial housing loan interest and other VI-A deductions.",
           "<strong>Which is advantageous?</strong> — There is no fixed cutoff salary: run this calculator with your real deduction numbers. A ₹12 lakh package with high HRA may favour the old regime; the same salary with zero HRA may favour the new regime.",
         ],
@@ -57,9 +62,9 @@ export const batch11PageSeo = {
         h2: `FY ${FY_DISP} income tax slab rates (reference)`,
         paragraphs: ["Slab rates used in this calculator for resident individuals below 60 years:"],
         list: [
-          "<strong>New regime</strong> (on taxable income): 0–₹3L nil; ₹3–7L 5%; ₹7–10L 10%; ₹10–12L 15%; ₹12–15L 20%; above ₹15L 30%.",
-          "<strong>Old regime</strong> (on taxable income): 0–₹2.5L nil; ₹2.5–5L 5%; ₹5–10L 20%; above ₹10L 30%.",
-          "Health and education cess: 4% on tax after rebate. Section 87A rebate applied where eligible (new: income up to ₹7L; old: taxable up to ₹5L).",
+          `<strong>New regime</strong> (on taxable income): ${NEW_REGIME_SLAB_SUMMARY}`,
+          `<strong>Old regime</strong> (on taxable income): ${OLD_REGIME_SLAB_SUMMARY}`,
+          "Health and education cess: 4% on tax after rebate. Section 87A rebate applied where eligible (new: taxable up to ₹12L; old: taxable up to ₹5L).",
         ],
       },
       {
@@ -71,7 +76,7 @@ export const batch11PageSeo = {
       {
         h2: "Disclaimer",
         paragraphs: [
-          "This calculator is for education and planning only. It does not handle surcharge, marginal relief, senior citizen slabs, capital gains, business income, or perquisite rules. Always confirm regime choice and TDS with your employer and a qualified tax professional or the Income Tax Department portal.",
+          "This calculator is for education and planning only. It applies FY 2026–27 new-regime slabs, the ₹75,000 salary standard deduction, section 87A rebate (Income-tax Act, 2025 rebate — often cited as section 156) with marginal relief just above ₹12 lakh taxable, and 4% cess. It does not handle surcharge, senior citizen slabs, capital gains, business income, or perquisite rules. Always confirm regime choice and TDS with your employer and a qualified tax professional or the Income Tax Department portal.",
         ],
       },
     ],
@@ -82,7 +87,7 @@ export const batch11PageSeo = {
       },
       {
         q: `What is the income tax slab for FY ${FY} new regime?`,
-        a: "This tool uses the post–Budget 2024 style new regime slabs: nil up to ₹3 lakh taxable, then 5%, 10%, 15%, 20%, and 30% on higher bands, plus standard deduction on salary and eligible 87A rebate.",
+        a: `This tool uses FY ${FY_DISP} new regime slabs (Budget 2025 update): nil up to ₹4 lakh taxable, then 5%, 10%, 15%, 20%, 25%, and 30% on higher bands, plus ₹75,000 standard deduction on salary and section 87A when taxable income is up to ₹12 lakh.`,
       },
       {
         q: "Can I claim 80C in the new tax regime?",
@@ -93,12 +98,16 @@ export const batch11PageSeo = {
         a: "No. HRA under section 10(13A) applies only in the old regime. Enter your annual HRA exemption in the old-regime deductions section.",
       },
       {
-        q: "Why is tax zero when salary is around ₹7 lakh in the new regime?",
-        a: "Section 87A can rebate tax to nil for eligible residents when total income (after standard deduction) does not exceed ₹7 lakh under the new regime, subject to current law.",
+        q: "Why is tax zero when salary is around ₹12.75 lakh in the new regime?",
+        a: `Section 87A (rebate under the Income-tax Act, 2025, often searched as section 156) can rebate tax to nil when taxable income after the ₹75,000 salary standard deduction does not exceed ₹${REBATE_87A_NEW_TAXABLE_MAX / 100000} lakh. A gross salary of about ₹12.75 lakh can therefore show nil tax. Just above ₹12 lakh taxable, marginal relief caps extra tax at the rupees by which you crossed that limit (before 4% cess).`,
       },
       {
         q: "Can salaried employees switch between regimes every year?",
         a: "Salaried individuals can generally choose the regime each financial year through employer declaration or return filing, subject to current Income Tax rules. Business taxpayers have different lock-in rules.",
+      },
+      {
+        q: "Is section 87A the same as section 156 of the Income-tax Act, 2025?",
+        a: "Searchers still use the familiar 87A / 115BAC / 80C numbers. The 2025 Act recasts the rebate (often cited as section 156) and the new-regime default. This page names both so FY 2026–27 (tax year 2026–27) queries match.",
       },
       {
         q: "Does this calculator include 4% cess?",

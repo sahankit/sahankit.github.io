@@ -1,7 +1,11 @@
 /** SEO for linkable India reference guides (citation-friendly). */
 
 import { SITE_NAME } from "./seo-build.mjs";
-import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+import {
+  INDIA_INCOME_TAX_FY,
+  NEW_REGIME_SLAB_SUMMARY,
+  REBATE_87A_NEW_TAXABLE_MAX,
+} from "./india-tax-fy.mjs";
 
 const FY = INDIA_INCOME_TAX_FY.fyLabel;
 const FY_S = INDIA_INCOME_TAX_FY.fyShort;
@@ -13,20 +17,21 @@ export const referencePageSeo = {
     metaTitle: `India Income Tax Slabs FY ${FY} — New & Old Regime Reference`,
     metaDescription: `Current income tax slab rates for FY ${FY} (AY ${AY}): new regime vs old regime for residents below 60. Quick reference—confirm on Income Tax portal.`,
     keywords: `income tax slabs ${FY_S}, new tax regime slabs, old tax regime slabs India, FY ${FY_S} tax rates, section 87A rebate`,
-    directAnswer: `For FY ${FY}, the new regime uses stepped slabs from nil up to ₹3 lakh through 30% above ₹15 lakh taxable income, with a higher salary standard deduction. The old regime keeps the classic 5%/20%/30% slabs and allows Chapter VI-A deductions such as 80C and HRA.`,
+    directAnswer: `For FY ${FY}, the new regime uses stepped slabs from nil up to ₹4 lakh through 30% above ₹24 lakh taxable income, with a ₹75,000 salary standard deduction and section 87A up to ₹12 lakh taxable income. The old regime keeps the classic 5%/20%/30% slabs and allows Chapter VI-A deductions such as 80C and HRA.`,
     sections: [
       {
         h2: "New tax regime slabs (resident &lt; 60)",
         list: [
-          "₹0–3 lakh: nil",
-          "₹3–7 lakh: 5%",
-          "₹7–10 lakh: 10%",
-          "₹10–12 lakh: 15%",
-          "₹12–15 lakh: 20%",
-          "Above ₹15 lakh: 30%",
+          "₹0–4 lakh: nil",
+          "₹4–8 lakh: 5%",
+          "₹8–12 lakh: 10%",
+          "₹12–16 lakh: 15%",
+          "₹16–20 lakh: 20%",
+          "₹20–24 lakh: 25%",
+          "Above ₹24 lakh: 30%",
         ],
         paragraphs: [
-          "Standard deduction on salary is ₹75,000 in the new regime. Section 87A can zero out tax when total income (after standard deduction) does not exceed ₹7 lakh, subject to current law.",
+          `Standard deduction on salary is ₹75,000 in the new regime. Section 87A can zero out tax when taxable income (after standard deduction) does not exceed ₹${REBATE_87A_NEW_TAXABLE_MAX / 100000} lakh, subject to current law. Slab summary: ${NEW_REGIME_SLAB_SUMMARY}`,
         ],
       },
       {

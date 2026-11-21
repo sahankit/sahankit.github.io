@@ -1,21 +1,20 @@
 /** Unit tests for income tax slab + rebate logic (mirrors tools-batch11). */
-const STD_NEW = 75000;
-const STD_OLD = 50000;
-const CESS = 0.04;
-const NEW_SLABS = [
-  [300000, 0],
-  [700000, 0.05],
-  [1000000, 0.1],
-  [1200000, 0.15],
-  [1500000, 0.2],
-  [Infinity, 0.3],
-];
-const OLD_SLABS = [
-  [250000, 0],
-  [500000, 0.05],
-  [1000000, 0.2],
-  [Infinity, 0.3],
-];
+import {
+  CESS_RATE,
+  NEW_REGIME_SLABS,
+  OLD_REGIME_SLABS,
+  REBATE_87A_NEW_TAXABLE_MAX,
+  REBATE_87A_OLD_CAP,
+  REBATE_87A_OLD_TAXABLE_MAX,
+  STD_DED_NEW,
+  STD_DED_OLD,
+} from "./india-tax-fy.mjs";
+
+const STD_NEW = STD_DED_NEW;
+const STD_OLD = STD_DED_OLD;
+const CESS = CESS_RATE;
+const NEW_SLABS = NEW_REGIME_SLABS;
+const OLD_SLABS = OLD_REGIME_SLABS;
 
 function slabTax(taxable, slabs) {
   if (taxable <= 0) return 0;
@@ -32,10 +31,11 @@ function slabTax(taxable, slabs) {
 
 function rebate87A(tax, incomeForRebate, regime) {
   if (regime === "new") {
-    if (incomeForRebate <= 700000) return tax;
-    return 0;
+    if (incomeForRebate <= REBATE_87A_NEW_TAXABLE_MAX) return tax;
+    const cap = Math.max(0, incomeForRebate - REBATE_87A_NEW_TAXABLE_MAX);
+    return tax > cap ? tax - cap : 0;
   }
-  if (incomeForRebate <= 500000) return Math.min(tax, 12500);
+  if (incomeForRebate <= REBATE_87A_OLD_TAXABLE_MAX) return Math.min(tax, REBATE_87A_OLD_CAP);
   return 0;
 }
 
@@ -58,15 +58,21 @@ function calcRegime(gross, regime, ded) {
 }
 
 let failed = 0;
-const neu7 = calcRegime(700000, "new", {});
-if (neu7 > 1) {
-  console.error("Expected ~0 tax for 7L new regime, got", neu7);
+const neu1275 = calcRegime(1275000, "new", {});
+if (neu1275 > 1) {
+  console.error("Expected ~0 tax for 12.75L gross new regime (12L taxable), got", neu1275);
   failed++;
 }
-const t8 = calcRegime(800000, "new", {});
-const t10 = calcRegime(1000000, "new", {});
-if (t10 <= t8) {
-  console.error("Tax should increase with income in new regime");
+const neu13 = calcRegime(1350000, "new", {});
+const neu11 = calcRegime(1150000, "new", {});
+if (neu13 <= neu11) {
+  console.error("Tax should increase with income above 87A limit in new regime");
+  failed++;
+}
+const justOver = calcRegime(1280000, "new", {});
+const excess = 1280000 - 75000 - 1200000;
+if (justOver > excess * 1.04 + 1) {
+  console.error("Marginal relief should cap tax near excess over 12L taxable, got", justOver);
   failed++;
 }
 const oldNoDed = calcRegime(500000, "old", { c80c: 0, nps: 0, d80d: 0, hra: 0, other: 0 });

@@ -12,7 +12,7 @@
   <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js"></script>
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js" defer></script>
   <title>Health Calculators — BMI, Calories, BMR, TDEE &amp; Pregnancy | ToolHQ</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -26,8 +26,21 @@
   <meta property="og:title" content="Health Calculators — BMI, Calories, BMR, TDEE &amp; Pregnancy | ToolHQ" />
   <meta property="og:description" content="Free health calculators: daily calories, BMR, BMI, body fat, TDEE, pregnancy due date, water intake, and macro estimates. Not medical advice." />
   <meta property="og:url" content="https://thetoolhq.com/health/" />
-  <meta property="og:locale" content="en_US" />
-  
+  <meta property="og:locale" content="en_IN" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+  <meta property="og:locale:alternate" content="hi_IN" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:locale:alternate" content="ar_SA" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="pt_BR" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta property="og:locale:alternate" content="bn_BD" />
+  <meta property="og:locale:alternate" content="ja_JP" />
+  <meta property="og:locale:alternate" content="de_DE" />
+  <meta property="og:locale:alternate" content="ko_KR" />
+  <meta property="og:locale:alternate" content="id_ID" />
+  <meta property="og:locale:alternate" content="tr_TR" />
+  <meta property="og:locale:alternate" content="vi_VN" />
     <link rel="alternate" hreflang="en" href="https://thetoolhq.com/health/" />
   <link rel="alternate" hreflang="zh-Hans" href="https://thetoolhq.com/zh/health/" />
   <link rel="alternate" hreflang="hi" href="https://thetoolhq.com/hi/health/" />
@@ -41,6 +54,8 @@
   <link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/health/" />
   <link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/health/" />
   <link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/health/" />
+  <link rel="alternate" hreflang="tr" href="https://thetoolhq.com/tr/health/" />
+  <link rel="alternate" hreflang="vi" href="https://thetoolhq.com/vi/health/" />
   <link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/health/" />
   
   <meta property="og:image" content="https://thetoolhq.com/assets/og.png" />
@@ -73,6 +88,7 @@
       <a href="/india/">India</a>
       <a href="/dev/">Developer</a>
       <a href="/design/">PDF & images</a>
+      <a href="/guides/">Guides</a>
     </nav>
     <div class="lang-switcher"><label class="sr-only" for="lang-select">Language</label><select id="lang-select" class="lang-select" data-lang-select aria-label="Language" onchange="if(this.value)location.assign(this.value)"><option value="/health/" selected>English</option><option value="/zh/health/">简体中文</option><option value="/hi/health/">हिन्दी</option><option value="/es/health/">Español</option><option value="/ar/health/">العربية</option><option value="/fr/health/">Français</option><option value="/pt/health/">Português</option><option value="/ru/health/">Русский</option><option value="/bn/health/">বাংলা</option><option value="/ja/health/">日本語</option><option value="/de/health/">Deutsch</option><option value="/ko/health/">한국어</option><option value="/id/health/">Bahasa Indonesia</option><option value="/tr/health/">Türkçe</option><option value="/vi/health/">Tiếng Việt</option></select></div>
     
@@ -92,6 +108,7 @@
 <p class="page-lead">Calorie, weight, and pregnancy estimators in your browser—for planning only, not diagnosis.</p>
 </header>
 <aside class="ad-slot ad-slot--top" data-ad hidden aria-label="Advertisement"></aside>
+
 <section class="home-section" aria-labelledby="hub-tools-heading">
 <h2 id="hub-tools-heading">Tools in this hub</h2>
 <div class="grid grid--compact"><a class="card tool-card" href="/calorie-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Calorie calculator</h3><p>Daily maintenance calories.</p></span></a><a class="card tool-card" href="/bmr-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">BMR calculator</h3><p>Daily calories at rest.</p></span></a><a class="card tool-card" href="/bmi-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">BMI calculator</h3><p>Body mass index from height & weight.</p></span></a><a class="card tool-card" href="/tdee-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">TDEE calculator</h3><p>Daily calories & BMR.</p></span></a><a class="card tool-card" href="/calorie-deficit-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Calorie deficit</h3><p>Daily calories to lose weight.</p></span></a><a class="card tool-card" href="/body-fat-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Body fat %</h3><p>Navy method estimate.</p></span></a><a class="card tool-card" href="/water-intake-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Water intake</h3><p>Daily hydration estimate.</p></span></a><a class="card tool-card" href="/protein-intake-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Protein intake</h3><p>g protein per day.</p></span></a><a class="card tool-card" href="/pregnancy-due-date-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Pregnancy due date</h3><p>EDD from LMP date.</p></span></a><a class="card tool-card" href="/blood-alcohol-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Blood alcohol (BAC)</h3><p>Estimated BAC.</p></span></a><a class="card tool-card" href="/calories-burned-walking-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Walking calories</h3><p>Calories burned walking.</p></span></a><a class="card tool-card" href="/calories-burned-running-calculator/"><span class="icon-tile tone-blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span class="card-body"><h3 class="card-title">Running calories</h3><p>Calories on a run.</p></span></a></div></section>

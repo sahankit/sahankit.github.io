@@ -116,7 +116,7 @@ document.getElementById('go').onclick=function(){
       file: "old-vs-new-tax-regime-calculator.html",
       category: "india",
       title: "Old vs New Tax Regime Calculator — India Income Tax",
-      desc: "Compare estimated income tax under India's old and new personal tax regimes for FY 2025-26. Includes standard deduction and common 80C/HRA inputs for the old regime.",
+      desc: "Compare estimated income tax under India's old and new personal tax regimes for FY 2026-27. Includes standard deduction, 87A rebate, and common 80C/HRA inputs for the old regime.",
       card: "Old vs new tax regime",
       cardDesc: "Which regime saves more tax.",
       body: `<h1>Old vs new tax regime calculator</h1>${ad}
@@ -126,40 +126,21 @@ document.getElementById('go').onclick=function(){
 <label for="hra">HRA + other exemptions (₹, old regime)</label><input id="hra" type="number" min="0" value="0" />
 <button type="button" class="primary" id="go">Compare tax</button>
 <p id="out" class="tool-feedback" role="status"></p>
-<p class="tool-hint">Simplified slabs for resident individuals under 60 (FY 2025-26). Standard deduction ₹75,000 in both regimes in recent rules; this tool applies ₹75,000. Surcharge, cess, special rates and deductions not listed are ignored.</p>
+<p class="tool-hint">FY 2026–27 slabs with section 87A (Income-tax Act 2025 rebate) and 4% cess. Old regime uses ₹50,000 standard deduction; new regime uses ₹75,000. Surcharge and special incomes are ignored.</p>
 </div>
+<script src="/assets/india-tax.js"></script>
 <script>
-function taxSlab(taxable,slabs){
-  var tax=0, prev=0;
-  for(var i=0;i<slabs.length;i++){
-    var limit=slabs[i][0], rate=slabs[i][1];
-    if(taxable<=prev) break;
-    var band=Math.min(taxable,limit)-prev;
-    if(band>0) tax+=band*rate;
-    prev=limit;
-  }
-  return tax;
-}
-function taxOld(t){
-  return taxSlab(t,[[250000,0],[500000,0.05],[1000000,0.2],[Infinity,0.3]]);
-}
-function taxNew(t){
-  return taxSlab(t,[[400000,0],[800000,0.05],[1200000,0.1],[1600000,0.15],[2000000,0.2],[2400000,0.25],[Infinity,0.3]]);
-}
 document.getElementById('go').onclick=function(){
   const inc=Number(document.getElementById('income').value)||0;
   const d80=Number(document.getElementById('ded80c').value)||0;
   const hra=Number(document.getElementById('hra').value)||0;
-  const std=75000;
-  const oldTaxable=Math.max(0,inc-std-d80-hra);
-  const newTaxable=Math.max(0,inc-std);
-  const oldT=Math.round(taxOld(oldTaxable)*1.04);
-  const newT=Math.round(taxNew(newTaxable)*1.04);
-  const save=oldT-newT;
-  const inr=function(n){return '₹'+n.toLocaleString('en-IN');};
-  let pick=newT<oldT?'New regime is lower by '+inr(Math.abs(save))+'.':'Old regime is lower by '+inr(Math.abs(save))+'.';
-  if(oldT===newT) pick='Tax is about the same in both regimes.';
-  document.getElementById('out').textContent='Old '+inr(oldTaxable)+' taxable → '+inr(oldT)+' · New '+inr(newTaxable)+' taxable → '+inr(newT)+'. '+pick;
+  const neu=IndiaTax.fromGross(inc,'new',{});
+  const old=IndiaTax.fromGross(inc,'old',{c80c:d80,hra:hra});
+  const save=old.total-neu.total;
+  const inr=function(n){return '₹'+Math.round(n).toLocaleString('en-IN');};
+  let pick=neu.total<old.total?'New regime is lower by '+inr(Math.abs(save))+'.':'Old regime is lower by '+inr(Math.abs(save))+'.';
+  if(Math.abs(save)<1) pick='Tax is about the same in both regimes.';
+  document.getElementById('out').textContent='Old '+inr(old.taxable)+' taxable → '+inr(old.total)+' · New '+inr(neu.taxable)+' taxable → '+inr(neu.total)+'. '+pick;
   ${done}
 };
 </script>`,

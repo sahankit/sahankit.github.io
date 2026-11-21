@@ -68,14 +68,15 @@ export function faqLd(faqs) {
   };
 }
 
-export function softwareAppLd(title, desc, urlPath, base) {
+export function softwareAppLd(title, desc, urlPath, base, { category } = {}) {
+  const finance = category === "india" || category === "calculators";
   return {
     "@type": ["WebApplication", "SoftwareApplication"],
     name: title.split("—")[0].trim(),
-    applicationCategory: "UtilitiesApplication",
-    operatingSystem: "Web",
+    applicationCategory: finance ? "FinanceApplication" : "UtilitiesApplication",
+    operatingSystem: "Any",
     browserRequirements: "Requires JavaScript",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    offers: { "@type": "Offer", price: "0", priceCurrency: finance ? "INR" : "USD" },
     description: desc,
     url: `${base}${urlPath}`,
   };

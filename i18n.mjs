@@ -3,7 +3,7 @@
 export const DEFAULT_LOCALE = "en";
 
 export const LOCALES = [
-  { code: "en", hreflang: "en", dir: "ltr", nativeName: "English", ogLocale: "en_US" },
+  { code: "en", hreflang: "en", dir: "ltr", nativeName: "English", ogLocale: "en_IN" },
   { code: "zh", hreflang: "zh-Hans", dir: "ltr", nativeName: "简体中文", ogLocale: "zh_CN" },
   { code: "hi", hreflang: "hi", dir: "ltr", nativeName: "हिन्दी", ogLocale: "hi_IN" },
   { code: "es", hreflang: "es", dir: "ltr", nativeName: "Español", ogLocale: "es_ES" },
@@ -101,8 +101,8 @@ export function localeMeta(code) {
   return LOCALES.find((l) => l.code === code) || LOCALES[0];
 }
 
-/** Locales included in hreflang clusters and locale sitemap URLs (exclude thin MT locales). */
-export const HREFLANG_LOCALES = LOCALES.filter((l) => l.code !== "tr" && l.code !== "vi");
+/** Locales included in hreflang clusters and locale sitemap URLs — same set as the language switcher. */
+export const HREFLANG_LOCALES = LOCALES;
 
 export function hreflangHeadTags(base, englishPath = "/", locales = HREFLANG_LOCALES) {
   const path = stripLocalePrefix(englishPath).split("#")[0].split("?")[0] || "/";
@@ -399,7 +399,7 @@ const STR = {
     languagesLead: "本地化首页。各工具页面仍为英文。",
     cat_writing: "文本与写作",
     cat_calculators: "计算器",
-    cat_india: "印度工具",
+    cat_india: "印度实用工具",
     cat_productivity: "效率",
     cat_design: "设计与颜色",
     cat_documents: "PDF 与图片",
@@ -1029,7 +1029,7 @@ const STR = {
     languagesLead: "Ana sayfa, konular ve araçlar dilinizde. URL'ler İngilizce kalır.",
     cat_writing: "Yazı",
     cat_calculators: "Hesap",
-    cat_india: "Hindistan",
+    cat_india: "Hindistan araçları",
     cat_productivity: "Üretkenlik",
     cat_design: "Tasarım",
     cat_documents: "PDF",

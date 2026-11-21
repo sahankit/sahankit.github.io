@@ -85,6 +85,7 @@ export function toolCardHtml({ href, title, desc, category, kind = "" }, heading
   return `<a class="card tool-card" href="${href}">${categoryTile(category)}<span class="card-body">${kind ? `<span class="card-kind">${kind}</span>` : ""}<${headingTag} class="card-title">${title}</${headingTag}>${desc ? `<p>${desc}</p>` : ""}</span></a>`;
 }
 
-export function hubCardHtml({ slug, title, desc }, headingTag = "h3") {
-  return `<a class="card tool-card hub-card" href="/${slug}/">${hubTile(slug)}<span class="card-body"><${headingTag} class="card-title">${title}</${headingTag}>${desc ? `<p>${desc}</p>` : ""}</span></a>`;
+export function hubCardHtml({ slug, title, desc, href }, headingTag = "h3") {
+  const link = href || `/${slug}/`;
+  return `<a class="card tool-card hub-card" href="${link}">${hubTile(slug)}<span class="card-body"><${headingTag} class="card-title">${title}</${headingTag}>${desc ? `<p>${desc}</p>` : ""}</span></a>`;
 }

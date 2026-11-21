@@ -12,7 +12,7 @@
   <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js"></script>
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js" defer></script>
   <title>OSINT 工具 — 用户名、域名和公共搜索链接 | ToolHQ</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -27,7 +27,7 @@
   <meta property="og:description" content="免费 OSINT 中心：用户名链接、域证书、DNS、IP 查找、Google dorks 和违规索引链接。仅公开来源。." />
   <meta property="og:url" content="https://thetoolhq.com/zh/osint/" />
   <meta property="og:locale" content="zh_CN" />
-    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="en_IN" />
   <meta property="og:locale:alternate" content="hi_IN" />
   <meta property="og:locale:alternate" content="es_ES" />
   <meta property="og:locale:alternate" content="ar_SA" />
@@ -54,6 +54,8 @@
   <link rel="alternate" hreflang="de" href="https://thetoolhq.com/de/osint/" />
   <link rel="alternate" hreflang="ko" href="https://thetoolhq.com/ko/osint/" />
   <link rel="alternate" hreflang="id" href="https://thetoolhq.com/id/osint/" />
+  <link rel="alternate" hreflang="tr" href="https://thetoolhq.com/tr/osint/" />
+  <link rel="alternate" hreflang="vi" href="https://thetoolhq.com/vi/osint/" />
   <link rel="alternate" hreflang="x-default" href="https://thetoolhq.com/osint/" />
   <meta http-equiv="content-language" content="zh-Hans" />
   <meta property="og:image" content="https://thetoolhq.com/assets/og.png" />
@@ -86,6 +88,7 @@
       <a href="/zh/india/">印度</a>
       <a href="/zh/dev/">开发</a>
       <a href="/zh/design/">PDF 与图片</a>
+      <a href="/zh/guides/">指南</a>
     </nav>
     <div class="lang-switcher"><label class="sr-only" for="lang-select">语言</label><select id="lang-select" class="lang-select" data-lang-select aria-label="语言" onchange="if(this.value)location.assign(this.value)"><option value="/osint/">English</option><option value="/zh/osint/" selected>简体中文</option><option value="/hi/osint/">हिन्दी</option><option value="/es/osint/">Español</option><option value="/ar/osint/">العربية</option><option value="/fr/osint/">Français</option><option value="/pt/osint/">Português</option><option value="/ru/osint/">Русский</option><option value="/bn/osint/">বাংলা</option><option value="/ja/osint/">日本語</option><option value="/de/osint/">Deutsch</option><option value="/ko/osint/">한국어</option><option value="/id/osint/">Bahasa Indonesia</option><option value="/tr/osint/">Türkçe</option><option value="/vi/osint/">Tiếng Việt</option></select></div>
     
@@ -105,6 +108,7 @@
 <p class="page-lead">建立公共 OSINT 来源的链接。仅用于授权的安全研究和尽职调查。</p>
 </header>
 <aside class="ad-slot ad-slot--top" data-ad hidden aria-label="广告"></aside>
+
 <section class="home-section" aria-labelledby="hub-tools-heading">
 <h2 id="hub-tools-heading">Tools in this hub</h2>
 <div class="grid grid--compact"><a class="card tool-card" href="/zh/osint-search/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">开源情报搜索</h3><p>公共查找链接。</p></span></a><a class="card tool-card" href="/zh/domain-age/"><span class="icon-tile tone-teal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="card-body"><h3 class="card-title">域名年龄检查器</h3><p>通过公共 RDAP 注册日期和年龄。</p></span></a><a class="card tool-card" href="/zh/extract-urls/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">提取网址</h3><p>列出文本中的链接。</p></span></a><a class="card tool-card" href="/zh/extract-emails/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">提取电子邮件</h3><p>以文本形式列出电子邮件。</p></span></a><a class="card tool-card" href="/zh/extract-phone-numbers/"><span class="icon-tile tone-violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span class="card-body"><h3 class="card-title">提取电话</h3><p>正则表达式提取。</p></span></a><a class="card tool-card" href="/zh/url-parser/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">网址解析器</h3><p>分解任何 URL。</p></span></a><a class="card tool-card" href="/zh/cidr-calculator/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">CIDR计算器</h3><p>IPv4 子网信息。</p></span></a><a class="card tool-card" href="/zh/netmask-to-cidr/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">掩码 → CIDR</h3><p>前缀长度。</p></span></a><a class="card tool-card" href="/zh/ipv4-to-decimal/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">IPv4 ↔ 十进制</h3><p>IP 作为整数。</p></span></a><a class="card tool-card" href="/zh/user-agent/"><span class="icon-tile tone-slate"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span><span class="card-body"><h3 class="card-title">用户代理</h3><p>浏览器 UA 字符串。</p></span></a></div></section>
@@ -117,8 +121,8 @@
       <a class="brand" href="/zh/" aria-label="ToolHQ home"><span class="brand-mark" aria-hidden="true">T</span><span>ToolHQ</span></a>
       <p>585+ 免费计算器与工具，多数在浏览器中运行，无需注册。</p>
     </div>
-    <nav class="footer-col" aria-label="Popular tools"><h2>热门</h2><ul><li><a href="/zh/word-counter/">字数计数器</a></li><li><a href="/zh/income-tax-calculator/">所得税计算器</a></li><li><a href="/zh/gst-calculator/">商品及服务税计算器</a></li><li><a href="/zh/emi-calculator/">电磁干扰计算器</a></li><li><a href="/zh/pdf-merge/">合并PDF</a></li><li><a href="/zh/qr-code-generator/">二维码生成器</a></li></ul></nav>
-    <nav class="footer-col" aria-label="Topic hubs"><h2>专题</h2><ul><li><a href="/zh/finance/">金融计算器</a></li><li><a href="/zh/dev/">开发者实用程序</a></li><li><a href="/zh/seo-lab/">SEO实验室</a></li><li><a href="/zh/osint/">开源情报研究中心</a></li><li><a href="/zh/india/">印度公用事业</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Popular tools"><h2>热门</h2><ul><li><a href="/zh/word-counter/">字数统计</a></li><li><a href="/zh/income-tax-calculator/">所得税计算器</a></li><li><a href="/zh/gst-calculator/">GST 计算器</a></li><li><a href="/zh/emi-calculator/">等额本息贷款计算器</a></li><li><a href="/zh/pdf-merge/">合并PDF</a></li><li><a href="/zh/qr-code-generator/">二维码生成器</a></li></ul></nav>
+    <nav class="footer-col" aria-label="Topic hubs"><h2>专题</h2><ul><li><a href="/zh/finance/">金融计算器</a></li><li><a href="/zh/dev/">开发者工具</a></li><li><a href="/zh/seo-lab/">SEO实验室</a></li><li><a href="/zh/osint/">开源情报研究中心</a></li><li><a href="/zh/india/">印度实用工具</a></li></ul></nav>
     <nav class="footer-col" aria-label="Site"><h2>网站</h2><ul><li><a href="/zh/guides/writing-tools/">指南</a></li><li><a href="/zh/about/">关于</a></li><li><a href="/zh/privacy/">隐私政策</a></li><li><a href="/zh/languages/">语言</a></li><li><a href="/y-chat/">Y-聊天</a></li><li><a href="/sitemap.xml">网站地图</a></li></ul></nav>
   </div>
   <p class="footer-owner">Site owned by Useless engineer · Sah Technologies · Bangalore</p>

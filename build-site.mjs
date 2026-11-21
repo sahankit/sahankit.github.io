@@ -12,7 +12,7 @@ import {
 import { extraPageSeo } from "./seo-extra.mjs";
 import { sitePageSeo } from "./seo-sites.mjs";
 import { referencePageSeo } from "./seo-reference.mjs";
-import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+import { INDIA_INCOME_TAX_FY, indiaTaxEngineJs } from "./india-tax-fy.mjs";
 import { extraTools } from "./tools-extra.mjs";
 import { moreTools } from "./tools-more.mjs";
 import { morePageSeo } from "./seo-more.mjs";
@@ -141,11 +141,11 @@ import {
   ogLocaleAlternateTags,
   sitemapHreflangXml,
   HREFLANG_LOCALES,
+  stripLocalePrefix,
   t,
   languageSwitcherHtml,
 } from "./i18n.mjs";
 
-const THIN_LOCALE_CODES = new Set(["tr", "vi"]);
 import { extractTextStrings, localizeHtml } from "./i18n-html.mjs";
 import { ensureTranslations, dictFor } from "./i18n-translate.mjs";
 
@@ -202,6 +202,7 @@ const pageSeo = {
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const BASE = "https://thetoolhq.com";
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
+const STABLE_LASTMOD = "2026-11-04";
 /** CookieYes consent banner — load before analytics/ads (configure tags in CookieYes dashboard). */
 const COOKIEYES_SCRIPT = "https://cdn-cookieyes.com/client_data/dc1fa4cdfcacd6155e83e1e8/script.js";
 const ANALYTICS_CONFIG_PATH = path.join(ROOT, "assets/analytics.json");
@@ -249,6 +250,7 @@ function navHtml(isHome = false, locale = DEFAULT_LOCALE, pagePath = "/") {
       <a href="${lp("/india/")}">${t(locale, "india")}</a>
       <a href="${lp("/dev/")}">${t(locale, "developer")}</a>
       <a href="${lp("/design/")}">${t(locale, "design")}</a>
+      <a href="${lp("/guides/")}">${t(locale, "guides")}</a>
     </nav>
     ${languageSwitcherHtml(locale, pagePath)}
     ${isHome ? "" : headerSearchHtml(locale)}
@@ -312,7 +314,7 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
-  <script id="cookieyes" type="text/javascript" src="${COOKIEYES_SCRIPT}"></script>
+  <script id="cookieyes" type="text/javascript" src="${COOKIEYES_SCRIPT}" defer></script>
   <title>${safeTitle}</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -326,8 +328,8 @@ const headCommon = (title, desc, canonicalPath, keywords = "", opts = {}) => {
   <meta property="og:title" content="${safeTitle}" />
   <meta property="og:description" content="${d}" />
   <meta property="og:url" content="${canonical}" />
-  <meta property="og:locale" content="${opts.ogLocale || "en_US"}" />
-  ${opts.lang && opts.lang !== DEFAULT_LOCALE ? ogLocaleAlternateTags(opts.lang) : ""}
+  <meta property="og:locale" content="${opts.ogLocale || localeMeta(opts.lang || DEFAULT_LOCALE).ogLocale}" />
+  ${ogLocaleAlternateTags(opts.lang || DEFAULT_LOCALE)}
   ${opts.hreflang !== false && (opts.hreflangPath || opts.hreflangHome) ? hreflangHeadTags(BASE, opts.hreflangPath || "/") : ""}
   ${opts.lang ? `<meta http-equiv="content-language" content="${escapeMeta(localeMeta(opts.lang).hreflang)}" />` : ""}
   <meta property="og:image" content="${ogImage}" />
@@ -375,7 +377,7 @@ function buildJsonLd(title, desc, canonicalPath, opts = {}) {
   if (opts.softwareApp) {
     const appName = opts.appName || title;
     graph.push({
-      ...softwareAppLd(appName, desc, canonicalPath, BASE),
+      ...softwareAppLd(appName, desc, canonicalPath, BASE, { category: opts.appCategory }),
       url: `${BASE}${canonicalPath}`,
     });
   }
@@ -573,7 +575,7 @@ function categoryTitle(locale, id) {
 
 function hubSectionsHtml(locale = DEFAULT_LOCALE) {
   const blocks = HUB_CATEGORIES.map(({ id }) => {
-    const list = tools.filter((t) => t.category === id);
+    const list = tools.filter((t) => t.category === id && !t.skipHomeCatalog);
     if (!list.length) return null;
     return { id, title: categoryTitle(locale, id), list };
   }).filter(Boolean);
@@ -596,8 +598,31 @@ ${panels}
 </section>`;
 }
 
-function micrositeCard(s) {
-  return hubCardHtml({ slug: s.slug, title: s.hero, desc: s.blurb });
+function trDict(dict, s) {
+  if (!s) return s;
+  const core = String(s).replace(/\s+/g, " ").trim();
+  return dict.get(core) || dict.get(s) || s;
+}
+
+function micrositeCardLocalized(s, locale, dict) {
+  const href = localePath(locale, `/${s.slug}/`);
+  const title = dict ? trDict(dict, s.hero) : s.hero;
+  const desc = dict ? trDict(dict, s.blurb) : s.blurb;
+  return hubCardHtml({ slug: s.slug, title, desc, href });
+}
+
+function popularToolsGrid(locale, dict) {
+  return POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
+    .filter(Boolean)
+    .map((t) =>
+      toolCardHtml({
+        href: localePath(locale, canonicalFromFile(t.file)),
+        title: dict ? trDict(dict, t.card) : t.card,
+        desc: dict ? trDict(dict, t.cardDesc) : t.cardDesc,
+        category: t.category,
+      }),
+    )
+    .join("\n");
 }
 
 function toolFinderHtml(locale = DEFAULT_LOCALE) {
@@ -613,11 +638,12 @@ function toolFinderHtml(locale = DEFAULT_LOCALE) {
 </section>`;
 }
 
-function buildHomeMain(locale = DEFAULT_LOCALE) {
+function buildHomeMain(locale = DEFAULT_LOCALE, homeCards = {}) {
+  const { popularHtml = "", featuredHubsHtml = "", otherHubsHtml = "" } = homeCards;
   const note = t(locale, "toolsNote");
   const toolsNote = locale !== DEFAULT_LOCALE && note ? `<p class="tools-locale-note">${note}</p>` : "";
   return `<div class="hero">
-<p class="hero-kicker">${tools.length} ${t(locale, "heroKicker")}</p>
+<p class="hero-kicker">${tools.length}+ ${t(locale, "heroKicker")}</p>
 <h1>${t(locale, "heroTitle")}</h1>
 <p class="hero-lead">${t(locale, "heroLead")}</p>
 ${toolFinderHtml(locale)}
@@ -636,17 +662,17 @@ ${ad}
 <section id="hubs" class="home-section" aria-labelledby="hubs-heading">
 <h2 id="hubs-heading">${t(locale, "hubsHeading")}</h2>
 <p class="section-hint">${t(locale, "hubsHint")}</p>
-<div class="grid grid--scroll">${featuredHubCards}</div>
-${otherHubCards ? `<details class="more-hubs"><summary>${t(locale, "moreHubs")}</summary><div class="grid grid--compact">${otherHubCards}</div></details>` : ""}
+<div class="grid grid--scroll">${featuredHubsHtml}</div>
+${otherHubsHtml ? `<details class="more-hubs"><summary>${t(locale, "moreHubs")}</summary><div class="grid grid--compact">${otherHubsHtml}</div></details>` : ""}
 </section>
 <section class="home-section" aria-labelledby="popular-heading">
 <h2 id="popular-heading">${t(locale, "popularHeading")}</h2>
 <p class="section-hint">${t(locale, "popularHint")}</p>
-<div class="grid grid--compact">${popularCards}</div>
+<div class="grid grid--compact">${popularHtml}</div>
 </section>
 <section class="home-section" aria-labelledby="catalog-heading">
 <h2 id="catalog-heading">${t(locale, "catalogHeading")}</h2>
-<p class="section-hint">Use search above, or open a topic hub below for the full list in each category.</p>
+<p class="section-hint">${t(locale, "catalogHint")}</p>
 <div class="grid grid--compact">${HUB_CATEGORIES.map(({ id }) => {
     const hub = CATEGORY_HUB[id];
     const count = tools.filter((x) => x.category === id && !x.skipHomeCatalog).length;
@@ -674,14 +700,24 @@ function buildHomePage(locale) {
   const title = t(locale, "indexTitle", { n: tools.length });
   const desc = t(locale, "indexDesc", { n: tools.length });
   const dict = locale === DEFAULT_LOCALE ? null : dictFor(locale);
+  const featuredHubSet = new Set(FEATURED_HUB_SLUGS);
+  const featuredHubsHtml = micrositeDefs
+    .filter((s) => featuredHubSet.has(s.slug))
+    .map((s) => micrositeCardLocalized(s, locale, dict))
+    .join("\n");
+  const otherHubsHtml = micrositeDefs
+    .filter((s) => !featuredHubSet.has(s.slug))
+    .map((s) => micrositeCardLocalized(s, locale, dict))
+    .join("\n");
+  const popularHtml = popularToolsGrid(locale, dict);
   const indexItemList = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
     .filter(Boolean)
     .slice(0, 12)
     .map((tool) => ({
-      name: dict ? dict.get(tool.card) || tool.card : tool.card,
+      name: dict ? trDict(dict, tool.card) : tool.card,
       url: localePath(locale, canonicalFromFile(tool.file)),
     }));
-  let html = page(urlPath, title, desc, buildHomeMain(locale), "", {
+  let html = page(urlPath, title, desc, buildHomeMain(locale, { popularHtml, featuredHubsHtml, otherHubsHtml }), "", {
     keywords: locale === DEFAULT_LOCALE ? indexSeo.keywords : "",
     faqs: locale === DEFAULT_LOCALE ? indexSeo.faqs : undefined,
     isHome: true,
@@ -749,6 +785,11 @@ ${ad}
     <div class="stat"><strong id="paras">0</strong>Paragraphs</div>
   </div>
 </div>
+<details class="embed-cite prose"><summary>Embed this calculator</summary>
+<p>Paste this snippet (keep the ToolHQ link). Canonical URL stays <code>/word-counter/</code>.</p>
+<textarea readonly rows="4" onclick="this.select()">&lt;iframe src="https://thetoolhq.com/word-counter/?embed=1" title="Word counter" width="100%" height="420" loading="lazy" style="border:0;max-width:720px"&gt;&lt;/iframe&gt;
+&lt;p&gt;Calculator by &lt;a href="https://thetoolhq.com/word-counter/"&gt;ToolHQ&lt;/a&gt;&lt;/p&gt;</textarea>
+</details>
 <script>
 const t=document.getElementById('text');
 function upd(){
@@ -1057,6 +1098,10 @@ calc();
   <details class="schedule" id="schedWrap" hidden><summary>Year-by-year repayment schedule</summary><div id="sched"></div></details>
 </div>
 <p class="prose" style="font-size:0.88rem">Need every month? Use the <a href="/amortization-schedule.html">amortization schedule</a> or compare offers with the <a href="/loan-comparison.html">loan comparison</a> tool.</p>
+<details class="embed-cite prose"><summary>Embed this calculator</summary>
+<textarea readonly rows="4" onclick="this.select()">&lt;iframe src="https://thetoolhq.com/emi-calculator/?embed=1" title="EMI calculator" width="100%" height="480" loading="lazy" style="border:0;max-width:720px"&gt;&lt;/iframe&gt;
+&lt;p&gt;Calculator by &lt;a href="https://thetoolhq.com/emi-calculator/"&gt;ToolHQ&lt;/a&gt;&lt;/p&gt;</textarea>
+</details>
 <script>
 (function(){
 const $=id=>document.getElementById(id);
@@ -1278,7 +1323,12 @@ document.getElementById('go').onclick=()=>{
   document.getElementById('total').textContent=fmt(total);
 };
 document.getElementById('go').click();
-</script>`,
+</script>
+<details class="embed-cite prose"><summary>Embed this calculator</summary>
+<p>Keep the ToolHQ attribution. Canonical URL is <code>/gst-calculator/</code>.</p>
+<textarea readonly rows="4" onclick="this.select()">&lt;iframe src="https://thetoolhq.com/gst-calculator/?embed=1" title="GST calculator" width="100%" height="480" loading="lazy" style="border:0;max-width:720px"&gt;&lt;/iframe&gt;
+&lt;p&gt;Calculator by &lt;a href="https://thetoolhq.com/gst-calculator/"&gt;ToolHQ&lt;/a&gt;&lt;/p&gt;</textarea>
+</details>`,
   },
   {
     path: "/sip-calculator.html",
@@ -1317,7 +1367,11 @@ document.getElementById('go').onclick=()=>{
   document.getElementById('gain').textContent=fmt(fv-inv);
 };
 document.getElementById('go').click();
-</script>`,
+</script>
+<details class="embed-cite prose"><summary>Embed this calculator</summary>
+<textarea readonly rows="4" onclick="this.select()">&lt;iframe src="https://thetoolhq.com/sip-calculator/?embed=1" title="SIP calculator" width="100%" height="420" loading="lazy" style="border:0;max-width:720px"&gt;&lt;/iframe&gt;
+&lt;p&gt;Calculator by &lt;a href="https://thetoolhq.com/sip-calculator/"&gt;ToolHQ&lt;/a&gt;&lt;/p&gt;</textarea>
+</details>`,
   },
   {
     path: "/domain-age.html",
@@ -1652,6 +1706,34 @@ const guides = [
 <p>Use the <a href="/gst-calculator/">GST calculator</a> and <a href="/hsn-gst-rate-finder/">HSN GST rate finder</a> for invoice math. <a href="/india-invoice/">Invoice template</a> for print-ready layouts.</p>`,
   },
   {
+    path: "/guides/india-new-vs-old-regime-breakeven.html",
+    file: "guides/india-new-vs-old-regime-breakeven.html",
+    title: `New vs Old Tax Regime Breakeven FY ${INDIA_INCOME_TAX_FY.fyLabel} — Salary & HRA`,
+    desc: "When the new tax regime beats the old regime for salaried income, and how HRA and 80C change the breakeven.",
+    body: `<h1>New vs old tax regime breakeven (FY ${INDIA_INCOME_TAX_FY.fyLabel})</h1>${ad}
+<p>Use the <a href="/income-tax-calculator/?salary=1275000">₹12.75 LPA preset</a> (nil tax in the new regime after ₹75,000 standard deduction) or the <a href="/income-tax-calculator/">full income tax calculator</a>. Pair with the <a href="/hra-calculator/">HRA calculator</a> if you pay rent.</p>
+<p>Rule of thumb: low deductions (little HRA or 80C) usually favour the new regime. Large metro HRA plus full ₹1.5 lakh 80C often favours the old regime. There is no single salary cutoff—run both columns with your numbers.</p>`,
+  },
+  {
+    path: "/guides/india-87a-marginal-relief.html",
+    file: "guides/india-87a-marginal-relief.html",
+    title: "Section 87A Rebate & Marginal Relief Above ₹12 Lakh — FY 2026–27",
+    desc: "How the new-regime rebate (section 87A / Income-tax Act 2025 rebate) zeros tax up to ₹12 lakh taxable, and how marginal relief works just above that.",
+    body: `<h1>How 87A rebate and marginal relief work above ₹12 lakh</h1>${ad}
+<p>Under the new regime for FY ${INDIA_INCOME_TAX_FY.fyLabel}, section 87A (rebate under the Income-tax Act, 2025 — often cited as section 156 in the new Act) can reduce tax to nil when taxable income after the ₹75,000 salary standard deduction is up to ₹12 lakh. That is why a ₹12.75 lakh gross salary often shows <strong>zero tax</strong>.</p>
+<p>Just above ₹12 lakh taxable, <strong>marginal relief</strong> caps tax so you never pay more extra tax than the rupees by which you crossed ₹12 lakh (before 4% cess). Try <a href="/income-tax-calculator/?salary=1280000">₹12.80 LPA</a> in the <a href="/income-tax-calculator/">income tax calculator</a>.</p>`,
+  },
+  {
+    path: "/guides/gst-inclusive-vs-exclusive.html",
+    file: "guides/gst-inclusive-vs-exclusive.html",
+    title: "Inclusive vs Exclusive GST — Calculation Formulas",
+    desc: "How to add GST to a base amount and how to back-calculate GST from an inclusive price at 5%, 12%, 18%, and 28%.",
+    body: `<h1>Inclusive vs exclusive GST formulas</h1>${ad}
+<p><strong>Exclusive (add GST):</strong> GST = amount × rate; total = amount + GST. Example: ₹1,000 at 18% → GST ₹180, total ₹1,180.</p>
+<p><strong>Inclusive (remove GST):</strong> base = total ÷ (1 + rate); GST = total − base. Example: ₹1,180 including 18% → base ₹1,000, GST ₹180.</p>
+<p>Open the <a href="/gst-calculator/">GST calculator</a> (exclusive/inclusive toggle) or the <a href="/gst-inclusive-calculator/">GST inclusive split</a> tool. Rate list: <a href="/guides/india-gst-rates-reference/">GST rates reference</a>.</p>`,
+  },
+  {
     path: "/guides/india-advance-tax-calendar.html",
     file: "guides/india-advance-tax-calendar.html",
     title: "Advance Tax Due Dates India — FY Instalment Calendar",
@@ -1700,12 +1782,6 @@ function titleKey(title) {
   return String(title || "").replace(/\s*\|\s*ToolHQ\s*$/i, "").trim();
 }
 
-function trDict(dict, s) {
-  if (!s) return s;
-  const core = String(s).replace(/\s+/g, " ").trim();
-  return dict.get(core) || dict.get(s) || s;
-}
-
 function withLeadFallback(main, opts, dict) {
   const en = opts.leadEnglish;
   if (!en || dict.get(en)) return main;
@@ -1752,6 +1828,10 @@ function localizePageOpts(opts, dict, code) {
           })),
         }
       : opts.howTo,
+    itemList: (opts.itemList || []).map((item) => ({
+      ...item,
+      name: trDict(dict, item.name),
+    })),
   };
 }
 
@@ -1780,7 +1860,6 @@ function writeLocaleCopies(englishPath, title, desc, main, breadcrumb, opts = {}
     const locTitle = dict.get(titleKey(title)) || dict.get(title) || titleKey(title);
     const locDesc = localizedMetaDescription(dict, desc, opts);
     const locMain = withLeadFallback(main, opts, dict);
-    const thin = THIN_LOCALE_CODES.has(code);
     const html = localizeHtml(
       page(urlPath, locTitle, locDesc, locMain, breadcrumb, {
         ...localizePageOpts({ ...opts, jsonDesc: locDesc }, dict, code),
@@ -1788,10 +1867,9 @@ function writeLocaleCopies(englishPath, title, desc, main, breadcrumb, opts = {}
         dir: meta.dir,
         canonical: urlPath,
         ogLocale: meta.ogLocale,
-        hreflang: thin ? false : undefined,
         hreflangPath: englishPath,
         pagePath: englishPath,
-        noindex: thin || opts.noindex,
+        noindex: opts.noindex,
         appName: opts.seoLabel ? trDict(dict, opts.seoLabel) : undefined,
       }),
       code,
@@ -1871,19 +1949,11 @@ function collectTranslatableStrings() {
 }
 
 await ensureTranslations(collectTranslatableStrings());
+write("assets/india-tax.js", `${indiaTaxEngineJs()}\n`);
 
 const hubCards = tools.map((t) =>
   `<a class="card" href="${t.path}"><h2>${t.card}</h2><p>${t.cardDesc}</p></a>`,
 ).join("\n");
-
-const featuredHubSet = new Set(FEATURED_HUB_SLUGS);
-const featuredHubCards = micrositeDefs.filter((s) => featuredHubSet.has(s.slug)).map(micrositeCard).join("\n");
-const otherHubCards = micrositeDefs.filter((s) => !featuredHubSet.has(s.slug)).map(micrositeCard).join("\n");
-
-const popularCards = POPULAR_TOOL_FILES.map((file) => tools.find((t) => t.file === file))
-  .filter(Boolean)
-  .map((t) => toolCardHtml({ href: canonicalFromFile(t.file), title: t.card, desc: t.cardDesc, category: t.category }))
-  .join("\n");
 
 for (const loc of LOCALES) buildHomePage(loc.code);
 
@@ -1952,7 +2022,7 @@ function searchKeywords(t) {
 
 function buildSearchIndex(locale) {
   const dict = locale === DEFAULT_LOCALE ? null : dictFor(locale);
-  return tools.map((tool) => {
+  return tools.filter((tool) => !tool.skipHomeCatalog).map((tool) => {
     const kw = searchKeywords(tool);
     const popIdx = POPULAR_TOOL_FILES.indexOf(tool.file);
     const name = dict ? dict.get(tool.card) || tool.card : tool.card;
@@ -2003,6 +2073,7 @@ function pageOpts(file, entity) {
     howTo: seo?.howTo,
     ogLocale: seo?.ogLocale,
     softwareApp: !file.startsWith("guides/"),
+    appCategory: entity?.category,
     seoBlock: seo,
   };
 }
@@ -2178,6 +2249,41 @@ for (const def of micrositeDefs) {
 }
 
 {
+  const urlPath = "/guides/";
+  const title = formatDocumentTitle("Guides — Tax, GST, Writing & SEO");
+  const desc = buildMetaDescription(
+    "Short reference guides for India income tax, GST, ID formats, writing tools, and SEO. Each guide links to the matching calculator.",
+    "guides",
+  );
+  const cards = guides
+    .map(
+      (g) =>
+        `<a class="card tool-card" href="${canonicalFromFile(g.file)}">${iconTile(["book", "violet"])}<span class="card-body"><h3 class="card-title">${g.title.split("—")[0].trim()}</h3><p>${g.desc}</p></span></a>`,
+    )
+    .join("");
+  const main = `<header class="page-hero hub-hero"><h1>Guides</h1>
+<p class="page-lead">Reference pages that sit next to the calculators: tax slabs, GST formulas, ID formats, and how-to checklists.</p></header>
+${ad}
+<section class="home-section" aria-labelledby="guides-list-heading">
+<h2 id="guides-list-heading">All guides</h2>
+<div class="grid grid--compact">${cards}</div>
+</section>`;
+  const opts = {
+    canonical: urlPath,
+    hreflangPath: urlPath,
+    pagePath: urlPath,
+    softwareApp: false,
+    breadcrumbs: [
+      { name: "Home", url: "/" },
+      { name: "Guides", url: urlPath },
+    ],
+  };
+  const bc = breadcrumbHtml(opts.breadcrumbs);
+  write("guides/index.html", page(urlPath, title, desc, main, bc, opts));
+  writeLocaleCopies(urlPath, title, desc, main, bc, opts);
+}
+
+{
   const file = "brief/index.html";
   const urlPath = "/brief/";
   micrositeUrls.push(urlPath);
@@ -2315,43 +2421,59 @@ const notFound = page(
 write("404.html", notFound);
 write("tools/index.html", `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirect</title></head><body><p><a href="/">Go to ${SITE_NAME}</a></p></body></html>`);
 
+const FRESH_LASTMOD = new Set([
+  "/",
+  "/india/",
+  "/finance/",
+  "/dev/",
+  "/guides/",
+  "/income-tax-calculator/",
+  "/salary-breakup-calculator/",
+  "/old-vs-new-tax-regime-calculator/",
+  "/ctc-to-in-hand-calculator/",
+  "/form-16-calculator/",
+  "/advance-tax-calculator/",
+  "/hra-calculator/",
+  "/salary-calculator/",
+  "/gst-calculator/",
+  "/emi-calculator/",
+  "/sip-calculator/",
+  "/word-counter/",
+  INDIA_INCOME_TAX_FY.slabsGuidePath,
+]);
+
+function lastmodFor(loc) {
+  const path = stripLocalePrefix(loc).split("?")[0] || "/";
+  if (FRESH_LASTMOD.has(path) || path.startsWith("/guides/")) return BUILD_DATE;
+  return STABLE_LASTMOD;
+}
+
 const localeSitemap = PREFIX_LOCALES.flatMap((code) => {
-  const home = { loc: localeHomePath(code), priority: "0.95", changefreq: "weekly" };
+  const home = { loc: localeHomePath(code) };
   const rest = [
     ...micrositeUrls,
     ...tools.map((t) => canonicalFromFile(t.file)),
     ...guides.map((g) => canonicalFromFile(g.file)),
     ...infoPages.map((p) => `/${p.slug}/`),
     "/languages/",
-  ].map((loc) => ({
-    loc: localePath(code, loc),
-    priority: loc === "/" ? "0.95" : "0.7",
-    changefreq: "monthly",
-  }));
+    "/guides/",
+  ].map((loc) => ({ loc: localePath(code, loc) }));
   return [home, ...rest];
 });
 
 const sitemapEntries = [
-  { loc: "/", priority: "1.0", changefreq: "weekly" },
+  { loc: "/" },
   ...localeSitemap,
-  { loc: "/languages/", priority: "0.55", changefreq: "monthly" },
-  ...micrositeUrls.map((u) => ({ loc: u, priority: "0.9", changefreq: "weekly" })),
+  { loc: "/languages/" },
+  { loc: "/guides/" },
+  ...micrositeUrls.map((u) => ({ loc: u })),
   ...tools.map((t) => ({
     loc: canonicalFromFile(t.file),
-    priority: pageSeo[t.file]?.sitemapPriority || "0.8",
-    changefreq: pageSeo[t.file]?.sitemapChangefreq || "monthly",
+    category: t.category,
   })),
-  ...guides.map((g) => ({
-    loc: canonicalFromFile(g.file),
-    priority: "0.7",
-    changefreq: "monthly",
-  })),
-  ...infoPages.map((p) => ({ loc: `/${p.slug}/`, priority: "0.3", changefreq: "yearly" })),
-  ...IMAGE_KB_PRESETS.map((p) => ({
-    loc: p.path,
-    priority: kbPresetPageSeo[p.file]?.sitemapPriority || "0.82",
-    changefreq: kbPresetPageSeo[p.file]?.sitemapChangefreq || "monthly",
-  })),
+  ...guides.map((g) => ({ loc: canonicalFromFile(g.file), bucket: "guides" })),
+  ...infoPages.map((p) => ({ loc: `/${p.slug}/`, bucket: "hubs" })),
+  ...IMAGE_KB_PRESETS.map((p) => ({ loc: p.path, bucket: "tools" })),
 ];
 const sitemapSeen = new Set();
 const sitemapUnique = sitemapEntries.filter((e) => {
@@ -2359,10 +2481,20 @@ const sitemapUnique = sitemapEntries.filter((e) => {
   sitemapSeen.add(e.loc);
   return true;
 });
-const sitemapIndexable = sitemapUnique.filter((e) => {
-  const m = e.loc.match(/^\/(tr|vi)(\/|$)/);
-  return !m;
-});
+const sitemapIndexable = sitemapUnique;
+
+function sitemapBucket(e) {
+  if (e.bucket) return e.bucket;
+  const loc = e.loc;
+  if (/^\/(zh|hi|es|ar|fr|pt|ru|bn|ja|de|ko|id|tr|vi)(\/|$)/.test(loc)) return "locales";
+  if (loc === "/" || loc === "/languages/" || loc === "/guides/" || micrositeUrls.includes(loc)) return "hubs";
+  if (loc.startsWith("/guides/")) return "guides";
+  const cat = e.category;
+  if (cat === "india") return "india";
+  if (cat === "calculators") return "finance";
+  if (cat === "developer" || cat === "writing" || cat === "seo") return "dev-writing";
+  return "tools";
+}
 
 const urlsetXml = (entries) => `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -2372,16 +2504,14 @@ ${entries
     return `  <url>
     <loc>${BASE}${e.loc}</loc>
 ${hreflang}
-    <lastmod>${BUILD_DATE}</lastmod>
-    <changefreq>${e.changefreq}</changefreq>
-    <priority>${e.priority}</priority>
+    <lastmod>${lastmodFor(e.loc)}</lastmod>
   </url>`;
   })
   .join("\n")}
 </urlset>
 `;
 
-write("sitemap.xml", urlsetXml(sitemapIndexable));
+write("sitemap.xml", urlsetXml(sitemapIndexable.filter((e) => sitemapBucket(e) !== "locales")));
 
 /** Small file for GSC — some *.github.io properties fail on the full sitemap fetch. */
 const seedPaths = new Set([
@@ -2430,13 +2560,22 @@ const seedPaths = new Set([
 const sitemapSeedEntries = sitemapIndexable.filter((e) => seedPaths.has(e.loc));
 write("sitemap-seed.xml", urlsetXml(sitemapSeedEntries));
 
-const SITEMAP_CHUNK = 150;
+const SITEMAP_FILES = [
+  "hubs",
+  "india",
+  "finance",
+  "dev-writing",
+  "guides",
+  "tools",
+  "locales",
+];
 const sitemapPartPaths = [];
-for (let i = 0; i < sitemapIndexable.length; i += SITEMAP_CHUNK) {
-  const part = Math.floor(i / SITEMAP_CHUNK) + 1;
-  const name = `sitemap-part-${part}.xml`;
-  write(name, urlsetXml(sitemapIndexable.slice(i, i + SITEMAP_CHUNK)));
-  sitemapPartPaths.push(`/${name}`);
+for (const name of SITEMAP_FILES) {
+  const entries = sitemapIndexable.filter((e) => sitemapBucket(e) === name);
+  if (!entries.length) continue;
+  const file = `sitemap-${name}.xml`;
+  write(file, urlsetXml(entries));
+  sitemapPartPaths.push(`/${file}`);
 }
 
 const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
@@ -2450,6 +2589,12 @@ ${sitemapPartPaths
 </sitemapindex>
 `;
 write("sitemap-index.xml", sitemapIndex);
+
+for (const name of fs.readdirSync(ROOT)) {
+  if (/^sitemap-part-\d+\.xml$/.test(name)) {
+    fs.unlinkSync(path.join(ROOT, name));
+  }
+}
 
 write(
   "robots.txt",

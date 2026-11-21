@@ -1,5 +1,73 @@
 /** Hand-written UI phrases so chrome stays translated even when GTX is rate-limited. */
 
+/** Domain terms GTX routinely mistranslates (EMI ≠ electromagnetic interference). */
+const DOMAIN = {
+  zh: {
+    "Character counter": "字符计数器",
+    "Income tax calculator": "所得税计算器",
+    "Personal loan EMI": "个人贷款月供",
+    "LTCG tax (India)": "印度长期资本利得税",
+    "Home loan EMI": "住房贷款月供",
+    "EMI calculator": "等额本息贷款计算器",
+    "Calculate EMI": "计算月供",
+    "Current EMI": "当前月供",
+    "India utilities": "印度实用工具",
+    "Finance calculators": "金融计算器",
+    "Developer utilities": "开发者工具",
+    "OSINT research hub": "开源情报研究中心",
+    "Health calculators": "健康计算器",
+    "Word counter": "字数统计",
+    "GST calculator": "GST 计算器",
+    "LTCG": "长期资本利得",
+  },
+  hi: {
+    "EMI calculator": "EMI कैलकुलेटर",
+    "India utilities": "भारत के उपयोगी टूल",
+    "Finance calculators": "वित्त कैलकुलेटर",
+    "Developer utilities": "डेवलपर टूल",
+    "OSINT research hub": "OSINT शोध हब",
+    "Health calculators": "स्वास्थ्य कैलकुलेटर",
+    "Word counter": "शब्द गणक",
+    "GST calculator": "GST कैलकुलेटर",
+  },
+  tr: {
+    "Character counter": "Karakter sayacı",
+    "Income tax calculator": "Gelir vergisi hesaplayıcısı",
+    "Personal loan EMI": "Bireysel kredi taksiti (EMI)",
+    "LTCG tax (India)": "Hindistan uzun vadeli sermaye kazancı vergisi",
+    "Home loan EMI": "Konut kredisi taksiti",
+    "EMI calculator": "EMI hesaplayıcı",
+    "India utilities": "Hindistan araçları",
+    "Finance calculators": "Finans hesaplayıcıları",
+    "Developer utilities": "Geliştirici araçları",
+    "OSINT research hub": "OSINT araştırma merkezi",
+    "Health calculators": "Sağlık hesaplayıcıları",
+    "Word counter": "Kelime sayacı",
+    "GST calculator": "GST hesaplayıcı",
+    "Topic hub": "Konu merkezi",
+    "Tools in this hub": "Bu merkezdeki araçlar",
+    "Popular tools": "Popüler araçlar",
+  },
+  vi: {
+    "Character counter": "Bộ đếm ký tự",
+    "Income tax calculator": "Máy tính thuế thu nhập",
+    "Personal loan EMI": "EMI khoản vay cá nhân",
+    "LTCG tax (India)": "Thuế LTCG (Ấn Độ)",
+    "Home loan EMI": "EMI vay mua nhà",
+    "EMI calculator": "Máy tính EMI",
+    "India utilities": "Công cụ Ấn Độ",
+    "Finance calculators": "Máy tính tài chính",
+    "Developer utilities": "Công cụ lập trình",
+    "OSINT research hub": "Trung tâm nghiên cứu OSINT",
+    "Health calculators": "Máy tính sức khỏe",
+    "Word counter": "Đếm từ",
+    "GST calculator": "Máy tính GST",
+    "Topic hub": "Trung tâm chủ đề",
+    "Tools in this hub": "Công cụ trong trung tâm này",
+    "Popular tools": "Công cụ phổ biến",
+  },
+};
+
 export const PHRASES = {
   zh: {
     "Frequently asked questions": "常见问题",
@@ -326,5 +394,5 @@ export const PHRASES = {
 };
 
 export function phraseDict(locale) {
-  return PHRASES[locale] || {};
+  return { ...(DOMAIN[locale] || {}), ...(PHRASES[locale] || {}) };
 }
