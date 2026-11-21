@@ -28,6 +28,9 @@ export function renderSeoHtml(seo, { showDirectAnswer = false } = {}) {
     });
     html += "</div>";
   }
+  if (seo.embedCite?.url) {
+    html += `<details class="embed-cite prose"><summary>Cite or deep-link this tool</summary><p>Share this URL in blogs, syllabi, or team wikis: <a href="${seo.embedCite.url}">${seo.embedCite.url}</a></p></details>`;
+  }
   if (seo.related?.length) {
     html += '<div class="prose"><h2>Related free tools</h2><ul class="link-list">';
     for (const r of seo.related) html += `<li><a href="${r.href}">${r.label}</a></li>`;
@@ -168,6 +171,9 @@ export const indexSeo = {
 export const pageSeo = {
   "word-counter.html": {
     keywords: "word counter, word count, character count, paragraph counter, free word counter online",
+    directAnswer:
+      "Paste or type text to get live counts of words, characters (with and without spaces), sentences, and paragraphs—useful for essays, meta descriptions, and API limits.",
+    embedCite: { url: "https://thetoolhq.com/word-counter/" },
     sections: [
       {
         h2: "What does this word counter count?",
@@ -317,6 +323,9 @@ export const pageSeo = {
       "Free EMI calculator for India: enter loan amount, interest rate and tenure to see monthly EMI, total interest, total payment and a year-wise repayment schedule.",
     keywords:
       "EMI calculator, loan EMI calculator, home loan EMI calculator, personal loan EMI calculator, car loan EMI, EMI formula, loan repayment schedule",
+    directAnswer:
+      "EMI is the fixed monthly payment on a reducing-balance loan: higher principal or rate raises EMI; longer tenure lowers EMI but increases total interest.",
+    embedCite: { url: "https://thetoolhq.com/emi-calculator/" },
     sections: [
       {
         h2: "EMI formula",
@@ -393,31 +402,45 @@ export const pageSeo = {
   },
   "ifsc-format.html": {
     keywords: "IFSC code format, IFSC validator, check IFSC pattern India",
+    directAnswer:
+      "An IFSC is 11 characters: 4 bank letters + 0 + 6 branch characters (e.g. SBIN0001234). This tool checks pattern only—not whether the branch exists.",
     sections: [
       {
         h2: "IFSC structure (format only)",
         paragraphs: [
           "Indian Financial System Codes are 11 characters: four bank letters, a zero, then six branch characters. This checker validates shape only. To confirm a live branch, use your bank or RBI sources.",
         ],
+        list: [
+          "<strong>Example (pattern):</strong> <code>HDFC0000123</code> — HDFC bank, branch segment 000123",
+          "<strong>Common mistake:</strong> using 10 characters or swapping the 5th character (must be 0 in standard codes)",
+        ],
       },
     ],
     faqs: [
       { q: "Does this verify the branch exists?", a: "No. It only checks that the code matches the usual pattern." },
+      { q: "Is IFSC the same as SWIFT?", a: "No. IFSC is for domestic NEFT/RTGS/IMPS in India. SWIFT/BIC is used for international wires." },
     ],
     related: [rel.pan, rel.india],
   },
   "pan-format.html": {
     keywords: "PAN format check, PAN validator pattern, PAN card format India",
+    directAnswer:
+      "A valid PAN has 10 characters: five letters, four digits, one letter (e.g. ABCDE1234F). This checker validates format only—not Income Tax database status.",
     sections: [
       {
         h2: "Permanent Account Number layout",
         paragraphs: [
           "PANs are 10 characters: five letters, four digits, one letter. This tool checks format only. It does not query the Income Tax Department or prove a PAN is active.",
         ],
+        list: [
+          "<strong>4th character (entity type):</strong> P = individual, C = company, H = HUF, F = firm, etc.",
+          "<strong>Example:</strong> <code>AAAPL1234C</code> — pattern only; do not use real PANs from samples in forms",
+        ],
       },
     ],
     faqs: [
       { q: "Can I use this for KYC?", a: "Use official verification channels. This is a typing helper, not KYC." },
+      { q: "Why did validation fail on a real PAN?", a: "Check for confusing characters (O vs 0, I vs 1) and that length is exactly 10." },
     ],
     related: [rel.ifsc, rel.india],
   },
@@ -511,23 +534,40 @@ export const pageSeo = {
     related: [rel.word, rel.char, rel.writing],
   },
   "gst-calculator.html": {
-    keywords: "GST calculator India, add GST, remove GST, 18 percent GST calculator",
+    keywords:
+      "GST calculator India, add GST to amount, remove GST from inclusive price, 18 percent GST calculator, CGST SGST split",
+    directAnswer:
+      "To add GST on an exclusive price, multiply by the rate (e.g. ₹1,000 + 18% GST = ₹1,180). To split an inclusive MRP, use the GST inclusive or reverse GST calculator linked below.",
+    embedCite: { url: "https://thetoolhq.com/gst-calculator/" },
     sections: [
       {
         h2: "Exclusive vs inclusive GST",
         paragraphs: [
           "If your amount excludes GST, the tool adds tax on top. If the amount already includes GST, it backs out the taxable value and tax component—useful for invoices marked GST-inclusive.",
         ],
+        list: [
+          "<strong>Exclusive ₹1,000 @ 18%:</strong> GST ₹180 → total ₹1,180",
+          "<strong>Inclusive ₹1,180 @ 18%:</strong> taxable ≈ ₹1,000, GST ≈ ₹180",
+          "<strong>Intra-state B2B:</strong> often shown as CGST + SGST (half the rate each)—inter-state uses IGST",
+        ],
       },
     ],
     faqs: [
       { q: "Which GST rates are supported?", a: "Quick presets for 5%, 12%, 18%, and 28%—common slab rates in India." },
+      { q: "How do I remove GST from an inclusive price?", a: "Open the GST inclusive calculator or reverse GST calculator for the same rate presets." },
       { q: "Is this for filing returns?", a: "No. Use official GST portals and your CA for compliance; this is a quick math helper." },
+      { q: "Does this validate my GSTIN?", a: "No. Use the GSTIN format checker for pattern validation only." },
     ],
-    related: [rel.emi, rel.sip, rel.india],
+    related: [
+      { href: "/gst-inclusive-calculator/", label: "GST inclusive (reverse) calculator" },
+      { href: "/reverse-gst-calculator/", label: "Reverse GST calculator" },
+      { href: "/guides/india-gst-rates-reference/", label: "GST rates reference" },
+      rel.india,
+    ],
   },
   "sip-calculator.html": {
     keywords: "SIP calculator, mutual fund SIP, monthly SIP returns India",
+    embedCite: { url: "https://thetoolhq.com/sip-calculator/" },
     sections: [
       {
         h2: "How SIP maturity is estimated",

@@ -1,16 +1,19 @@
 /** SEO for linkable India reference guides (citation-friendly). */
 
 import { SITE_NAME } from "./seo-build.mjs";
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+
+const FY = INDIA_INCOME_TAX_FY.fyLabel;
+const FY_S = INDIA_INCOME_TAX_FY.fyShort;
+const AY = INDIA_INCOME_TAX_FY.ayLabel;
+const SLABS = INDIA_INCOME_TAX_FY.slabsGuidePath;
 
 export const referencePageSeo = {
-  "guides/india-income-tax-slabs-fy-2025-26.html": {
-    metaTitle: "India Income Tax Slabs FY 2025–26 — New & Old Regime Reference",
-    metaDescription:
-      "Current income tax slab rates for FY 2025–26 (AY 2026–27): new regime vs old regime for residents below 60. Quick reference—confirm on Income Tax portal.",
-    keywords:
-      "income tax slabs 2025-26, new tax regime slabs, old tax regime slabs India, FY 2025-26 tax rates, section 87A rebate",
-    directAnswer:
-      "For FY 2025–26, the new regime uses stepped slabs from nil up to ₹3 lakh through 30% above ₹15 lakh taxable income, with a higher salary standard deduction. The old regime keeps the classic 5%/20%/30% slabs and allows Chapter VI-A deductions such as 80C and HRA.",
+  "guides/india-income-tax-slabs-fy-2026-27.html": {
+    metaTitle: `India Income Tax Slabs FY ${FY} — New & Old Regime Reference`,
+    metaDescription: `Current income tax slab rates for FY ${FY} (AY ${AY}): new regime vs old regime for residents below 60. Quick reference—confirm on Income Tax portal.`,
+    keywords: `income tax slabs ${FY_S}, new tax regime slabs, old tax regime slabs India, FY ${FY_S} tax rates, section 87A rebate`,
+    directAnswer: `For FY ${FY}, the new regime uses stepped slabs from nil up to ₹3 lakh through 30% above ₹15 lakh taxable income, with a higher salary standard deduction. The old regime keeps the classic 5%/20%/30% slabs and allows Chapter VI-A deductions such as 80C and HRA.`,
     sections: [
       {
         h2: "New tax regime slabs (resident &lt; 60)",
@@ -101,10 +104,10 @@ export const referencePageSeo = {
     ],
   },
   "guides/india-advance-tax-calendar.html": {
-    metaTitle: "Advance Tax Due Dates India FY 2025–26 — Instalment Calendar",
+    metaTitle: `Advance Tax Due Dates India FY ${FY} — Instalment Calendar`,
     metaDescription:
       "Advance tax instalment due dates for individuals and companies in India: 15 June, 15 Sept, 15 Dec, 15 March. Penalty notes under Sections 234B and 234C.",
-    keywords: "advance tax due date, advance tax instalments India, 15 june advance tax, section 234C, FY 2025-26 advance tax",
+    keywords: `advance tax due date, advance tax instalments India, 15 june advance tax, section 234C, FY ${FY_S} advance tax`,
     directAnswer:
       "Advance tax is paid in four instalments—typically 15% by 15 June, 45% by 15 September, 75% by 15 December, and 100% by 15 March for the financial year.",
     sections: [
@@ -133,7 +136,7 @@ export const referencePageSeo = {
     ],
     related: [
       { href: "/income-tax-calculator/", label: "Income tax calculator" },
-      { href: "/guides/india-income-tax-slabs-fy-2025-26/", label: "Tax slabs FY 2025–26" },
+      { href: SLABS, label: `Tax slabs FY ${FY}` },
       { href: "/finance/", label: "Finance hub" },
     ],
   },

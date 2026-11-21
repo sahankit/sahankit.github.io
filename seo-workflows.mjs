@@ -1,13 +1,17 @@
 /** Workflow clusters: contextual internal links (3–5 per tool) for topical authority. */
 
 import { canonicalFromFile } from "./seo-build.mjs";
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
 
 function h(slug, label) {
   return { href: canonicalFromFile(`${slug}.html`), label };
 }
 
 const G = {
-  slabs: { href: "/guides/india-income-tax-slabs-fy-2025-26/", label: "FY 2025–26 income tax slabs (reference)" },
+  slabs: {
+    href: INDIA_INCOME_TAX_FY.slabsGuidePath,
+    label: `FY ${INDIA_INCOME_TAX_FY.fyLabel} income tax slabs (reference)`,
+  },
   gstRates: { href: "/guides/india-gst-rates-reference/", label: "India GST rates reference" },
   advanceTax: { href: "/guides/india-advance-tax-calendar/", label: "Advance tax instalment dates" },
   idGuide: { href: "/guides/india-id-formats/", label: "PAN, IFSC & GSTIN formats" },
@@ -18,9 +22,45 @@ export const WORKFLOW_CLUSTERS = {
   "income-tax-calculator.html": [
     h("hra-calculator", "HRA exemption calculator"),
     h("old-vs-new-tax-regime-calculator", "Old vs new tax regime"),
-    h("salary-calculator", "CTC to in-hand salary"),
-    h("sip-calculator", "SIP calculator"),
+    h("salary-breakup-calculator", "Salary breakup (CTC)"),
+    h("ctc-to-in-hand-calculator", "CTC to in-hand salary"),
     G.slabs,
+  ],
+  "salary-breakup-calculator.html": [
+    h("income-tax-calculator", "Income tax (new vs old)"),
+    h("hra-calculator", "HRA exemption"),
+    h("epf-calculator", "EPF calculator"),
+    h("gratuity-calculator", "Gratuity (15/26 formula)"),
+    h("ctc-to-in-hand-calculator", "CTC to in-hand"),
+  ],
+  "ctc-to-in-hand-calculator.html": [
+    h("salary-breakup-calculator", "Salary breakup"),
+    h("income-tax-calculator", "Income tax calculator"),
+    h("epf-calculator", "EPF calculator"),
+    h("advance-tax-calculator", "Advance tax instalments"),
+  ],
+  "gratuity-calculator.html": [
+    h("leave-encashment-calculator", "Leave encashment"),
+    h("epf-calculator", "EPF / PF calculator"),
+    h("salary-breakup-calculator", "Salary breakup"),
+    h("income-tax-calculator", "Income tax"),
+  ],
+  "leave-encashment-calculator.html": [
+    h("gratuity-calculator", "Gratuity calculator"),
+    h("salary-breakup-calculator", "Salary breakup"),
+    h("income-tax-calculator", "Income tax"),
+  ],
+  "advance-tax-calculator.html": [
+    h("income-tax-calculator", "Income tax estimate"),
+    G.advanceTax,
+    G.slabs,
+    h("tds-calculator", "TDS calculator"),
+  ],
+  "reverse-gst-calculator.html": [
+    h("gst-inclusive-calculator", "GST inclusive split"),
+    h("gst-calculator", "Add GST (exclusive)"),
+    G.gstRates,
+    h("india-invoice", "GST invoice template"),
   ],
   "hra-calculator.html": [
     h("income-tax-calculator", "Income tax (new vs old regime)"),

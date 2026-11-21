@@ -380,18 +380,20 @@ document.getElementById('go').click();
       path: "/gratuity-calculator.html",
       file: "gratuity-calculator.html",
       category: "india",
-      title: "Gratuity Calculator India — Payment of Gratuity Act",
-      desc: "Estimate gratuity for eligible employees (simplified formula).",
+      title: "Gratuity Calculator India — 15/26 Formula & 5 Year Rule",
+      desc: "Estimate gratuity using (15/26) × basic+DA × years of service. Illustrates Payment of Gratuity Act math—not legal advice.",
       card: "Gratuity (India)",
-      cardDesc: "Gratuity estimate.",
+      cardDesc: "15/26 × basic × years.",
       body: `
-<h1>Gratuity calculator (India)</h1>${ad}
+<h1>Gratuity calculator (India) — 15/26 formula</h1>
+<p class="prose">Estimate statutory gratuity for eligible employees: <strong>(15 ÷ 26) × (monthly basic + DA) × years of service</strong>. Usually requires <strong>5+ years</strong> of service unless an exception applies. See also <a href="/leave-encashment-calculator/">leave encashment</a> and <a href="/epf-calculator/">EPF</a>.</p>
+${ad}
 <div class="tool-panel">
   <label for="sal">Last drawn basic + DA (₹ monthly)</label><input id="sal" type="number" value="30000" />
-  <label for="y">Years of service</label><input id="y" type="number" value="7" />
+  <label for="y">Years of service</label><input id="y" type="number" value="7" step="0.5" />
   <button type="button" class="primary" id="go">Estimate</button>
   <p id="out" class="ok"></p>
-  <p class="prose" style="font-size:0.85rem">Uses common formula (15/26)×months—verify with HR/statute.</p>
+  <p class="prose" style="font-size:0.85rem">Illustration only—employer rounding, caps, and tax differ. Verify with HR.</p>
 </div>
 <script>
 document.getElementById('go').onclick=()=>{

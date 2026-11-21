@@ -12,6 +12,7 @@ import {
 import { extraPageSeo } from "./seo-extra.mjs";
 import { sitePageSeo } from "./seo-sites.mjs";
 import { referencePageSeo } from "./seo-reference.mjs";
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
 import { extraTools } from "./tools-extra.mjs";
 import { moreTools } from "./tools-more.mjs";
 import { morePageSeo } from "./seo-more.mjs";
@@ -244,15 +245,8 @@ function navHtml(isHome = false, locale = DEFAULT_LOCALE, pagePath = "/") {
       <a href="${hubsHash}">${t(locale, "hubs")}</a>
       <a href="${lp("/finance/")}">${t(locale, "finance")}</a>
       <a href="${lp("/india/")}">${t(locale, "india")}</a>
-      <a href="${lp("/eu/")}">${t(locale, "europe")}</a>
-      <a href="${lp("/health/")}">${t(locale, "health")}</a>
       <a href="${lp("/dev/")}">${t(locale, "developer")}</a>
       <a href="${lp("/design/")}">${t(locale, "design")}</a>
-      <a href="${lp("/games/")}">${t(locale, "games")}</a>
-      <a href="${lp("/online-tests/")}">${t(locale, "tests")}</a>
-      <a href="${lp("/quiz/")}">${t(locale, "quiz")}</a>
-      <a href="${lp("/brief/")}">${t(locale, "news")}</a>
-      <a href="${lp("/languages/")}">${t(locale, "languages")}</a>
     </nav>
     ${languageSwitcherHtml(locale, pagePath)}
     ${isHome ? "" : headerSearchHtml(locale)}
@@ -272,7 +266,7 @@ const FOOTER_POPULAR = [
 function footerHtml(locale = DEFAULT_LOCALE) {
   const lp = (p) => localeHref(locale, p);
   const list = (items) => items.map(([href, label]) => `<li><a href="${lp(href)}">${label}</a></li>`).join("");
-  const hubs = micrositeDefs.slice(0, 8).map((s) => [`/${s.slug}/`, s.hero]);
+  const hubs = micrositeDefs.slice(0, 5).map((s) => [`/${s.slug}/`, s.hero]);
   const home = localeHomePath(locale);
   return `
 <footer class="site-footer">
@@ -1624,11 +1618,11 @@ const guides = [
 <p>SEO landing pages: <a href="/free-online-chat.html">free online chat</a>, <a href="/hindi-chat.html">Hindi chat</a>, <a href="/study-chat.html">study chat</a>.</p>`,
   },
   {
-    path: "/guides/india-income-tax-slabs-fy-2025-26.html",
-    file: "guides/india-income-tax-slabs-fy-2025-26.html",
-    title: "India Income Tax Slabs FY 2025–26 — New & Old Regime",
-    desc: "Reference table for new vs old income tax slab rates for FY 2025–26 (AY 2026–27). Illustration only.",
-    body: `<h1>Income tax slabs FY 2025–26</h1>${ad}
+    path: "/guides/india-income-tax-slabs-fy-2026-27.html",
+    file: "guides/india-income-tax-slabs-fy-2026-27.html",
+    title: `India Income Tax Slabs FY ${INDIA_INCOME_TAX_FY.fyLabel} — New & Old Regime`,
+    desc: `Reference table for new vs old income tax slab rates for FY ${INDIA_INCOME_TAX_FY.fyLabel} (AY ${INDIA_INCOME_TAX_FY.ayLabel}). Illustration only.`,
+    body: `<h1>Income tax slabs FY ${INDIA_INCOME_TAX_FY.fyLabel}</h1>${ad}
 <p>Compare regimes with the <a href="/income-tax-calculator/">income tax calculator</a> and <a href="/hra-calculator/">HRA calculator</a>. See also <a href="/guides/india-advance-tax-calendar/">advance tax due dates</a>.</p>`,
   },
   {
@@ -1645,9 +1639,10 @@ const guides = [
     title: "Advance Tax Due Dates India — FY Instalment Calendar",
     desc: "Four advance tax instalment dates: June, September, December, and March.",
     body: `<h1>Advance tax calendar</h1>${ad}
-<p>Estimate liability with the <a href="/income-tax-calculator/">income tax calculator</a>. Slab reference: <a href="/guides/india-income-tax-slabs-fy-2025-26/">FY 2025–26 slabs</a>.</p>`,
+<p>Estimate liability with the <a href="/income-tax-calculator/">income tax calculator</a>. Slab reference: <a href="${INDIA_INCOME_TAX_FY.slabsGuidePath}">FY ${INDIA_INCOME_TAX_FY.fyLabel} slabs</a>.</p>`,
   },
 ];
+
 
 let canonicalHtmlFiles = null;
 
@@ -2060,6 +2055,9 @@ for (const t of tools) {
   });
 }
 
+write("guides/india-income-tax-slabs-fy-2025-26.html", redirectPage(INDIA_INCOME_TAX_FY.slabsGuidePath));
+write("guides/india-income-tax-slabs-fy-2025-26/index.html", redirectPage(INDIA_INCOME_TAX_FY.slabsGuidePath));
+
 for (const g of guides) {
   const canonical = canonicalFromFile(g.file);
   const short = g.title.split("—")[0].trim();
@@ -2357,7 +2355,7 @@ const seedPaths = new Set([
   "/passport-size-photo/",
   "/pdf-to-jpg/",
   "/image-compress/",
-  "/guides/india-income-tax-slabs-fy-2025-26/",
+  "/guides/india-income-tax-slabs-fy-2026-27/",
   "/guides/india-gst-rates-reference/",
 ]);
 const sitemapSeedEntries = sitemapIndexable.filter((e) => seedPaths.has(e.loc));

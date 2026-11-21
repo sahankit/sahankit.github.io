@@ -1,5 +1,10 @@
 /** SEO for microsites and quiz. Keys match virtual file paths used in build. */
 
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+
+const SLABS = INDIA_INCOME_TAX_FY.slabsGuidePath;
+const FY = INDIA_INCOME_TAX_FY.fyLabel;
+
 export const sitePageSeo = {
   "finance/index.html": {
     keywords: "India finance hub, GST EMI SIP calculators, income tax",
@@ -10,14 +15,14 @@ export const sitePageSeo = {
         h2: "India finance in one place",
         paragraphs: [
           "Calculators for GST, income tax (new vs old regime), loans, FD/RD/SIP, salary, and invoices—all linked from this hub. Each tool runs in your browser.",
-          'Reference: <a href="/guides/india-income-tax-slabs-fy-2025-26/">FY 2025–26 tax slabs</a>, <a href="/guides/india-gst-rates-reference/">GST rates</a>, <a href="/guides/india-advance-tax-calendar/">advance tax dates</a>.',
+          `Reference: <a href="${SLABS}">FY ${FY} tax slabs</a>, <a href="/guides/india-gst-rates-reference/">GST rates</a>, <a href="/guides/india-advance-tax-calendar/">advance tax dates</a>.`,
         ],
       },
     ],
     faqs: [{ q: "Is this investment advice?", a: "No. Illustrations only." }],
     related: [
       { href: "/income-tax-calculator/", label: "Income tax calculator" },
-      { href: "/guides/india-income-tax-slabs-fy-2025-26/", label: "Tax slabs reference" },
+      { href: SLABS, label: "Tax slabs reference" },
       { href: "/india/", label: "India utilities hub" },
       { href: "/gst-calculator/", label: "GST calculator" },
     ],
@@ -108,7 +113,7 @@ export const sitePageSeo = {
         h2: "Tools for India — tax, money, and IDs",
         paragraphs: [
           "Compare new vs old income tax regime, estimate GST, PPF, and gratuity, validate UPI/PAN/IFSC/pincode patterns, and use invoice and rupee-in-words helpers. Not affiliated with the Government of India.",
-          'Linkable references: <a href="/guides/india-income-tax-slabs-fy-2025-26/">income tax slabs FY 2025–26</a>, <a href="/guides/india-gst-rates-reference/">GST rates</a>, <a href="/guides/india-advance-tax-calendar/">advance tax calendar</a>, <a href="/guides/india-id-formats/">PAN & IFSC formats</a>.',
+          `Linkable references: <a href="${SLABS}">income tax slabs FY ${FY}</a>, <a href="/guides/india-gst-rates-reference/">GST rates</a>, <a href="/guides/india-advance-tax-calendar/">advance tax calendar</a>, <a href="/guides/india-id-formats/">PAN & IFSC formats</a>.`,
         ],
       },
     ],
@@ -117,7 +122,7 @@ export const sitePageSeo = {
     ],
     related: [
       { href: "/income-tax-calculator/", label: "Income tax (new vs old)" },
-      { href: "/guides/india-income-tax-slabs-fy-2025-26/", label: "Tax slabs reference" },
+      { href: SLABS, label: "Tax slabs reference" },
       { href: "/guides/india-gst-rates-reference/", label: "GST rates reference" },
       { href: "/finance/", label: "Finance calculators" },
     ],

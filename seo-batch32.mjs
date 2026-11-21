@@ -17,13 +17,40 @@ export const batch32PageSeo = {
     metaTitle: "CTC to In-Hand Salary Calculator India",
     metaDescription: "Estimate monthly in-hand salary from annual CTC and deductions. Free CTC calculator India.",
     keywords: "ctc to in hand calculator, in hand salary calculator, ctc calculator india",
-    related: [{ href: "/salary-calculator.html", label: "Salary estimator" }, { href: "/income-tax-calculator/", label: "Income tax" }],
+    directAnswer:
+      "CTC minus employee PF, professional tax, and estimated income tax gives a rough monthly in-hand figure—exact Form 16 numbers will differ.",
+    related: [
+      { href: "/salary-breakup-calculator/", label: "Salary breakup (CTC split)" },
+      { href: "/income-tax-calculator/", label: "Income tax" },
+      { href: "/epf-calculator/", label: "EPF calculator" },
+    ],
   },
   "advance-tax-calculator.html": {
     metaTitle: "Advance Tax Calculator India — Quarterly Tax",
     metaDescription: "Split estimated annual tax into advance tax installments. Free India advance tax calculator.",
     keywords: "advance tax calculator india, quarterly tax payment, advance tax installment",
-    related: [{ href: "/income-tax-calculator/", label: "Income tax" }, { href: "/tds-calculator/", label: "TDS calculator" }],
+    directAnswer:
+      "Advance tax is usually paid in four instalments: 15% by 15 Jun, 45% by 15 Sep, 75% by 15 Dec, and 100% by 15 Mar (cumulative).",
+    sections: [
+      {
+        h2: "Instalment schedule",
+        list: [
+          "15 June — 15% of estimated annual tax",
+          "15 September — 45% cumulative",
+          "15 December — 75% cumulative",
+          "15 March — 100% cumulative",
+        ],
+        paragraphs: ['See the <a href="/guides/india-advance-tax-calendar/">advance tax calendar</a> for dates and penalties overview.'],
+      },
+    ],
+    faqs: [
+      { q: "Does employer TDS reduce advance tax?", a: "Yes. Advance tax covers tax due after TDS/TCS on other income." },
+    ],
+    related: [
+      { href: "/income-tax-calculator/", label: "Income tax" },
+      { href: "/guides/india-advance-tax-calendar/", label: "Advance tax calendar" },
+      { href: "/tds-calculator/", label: "TDS calculator" },
+    ],
   },
   "section-80c-calculator.html": {
     metaTitle: "Section 80C Calculator — ₹1.5 Lakh Deduction",

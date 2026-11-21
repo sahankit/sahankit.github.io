@@ -1,5 +1,11 @@
 /** SEO metadata for batch 41 — India finance, sizes, student. */
 
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+
+const FY = INDIA_INCOME_TAX_FY.fyShort;
+const FY_DISP = INDIA_INCOME_TAX_FY.fyLabel;
+const SLABS = INDIA_INCOME_TAX_FY.slabsGuidePath;
+
 export const batch41PageSeo = {
   "lta-calculator.html": {
     metaTitle: "LTA Calculator — Leave Travel Allowance Tax Exemption",
@@ -30,6 +36,8 @@ export const batch41PageSeo = {
     metaDescription:
       "Split a GST-inclusive MRP into taxable value and GST for 5%, 12%, 18% or 28% rates.",
     keywords: "reverse gst calculator, gst inclusive to exclusive, gst backwards calculator, remove gst from amount",
+    directAnswer:
+      "Enter an MRP that includes GST and pick the rate—the tool shows taxable value and tax portion (e.g. ₹1,180 @ 18% → ₹1,000 + ₹180 GST).",
     sitemapPriority: "0.85",
     related: [
       { href: "/gst-calculator/", label: "GST calculator" },
@@ -38,9 +46,8 @@ export const batch41PageSeo = {
     ],
   },
   "old-vs-new-tax-regime-calculator.html": {
-    metaTitle: "Old vs New Tax Regime Calculator — India FY 2025-26",
-    metaDescription:
-      "Compare income tax under old and new personal tax regimes with standard deduction and 80C/HRA for old regime.",
+    metaTitle: `Old vs New Tax Regime Calculator — India FY ${FY}`,
+    metaDescription: `Compare income tax under old and new personal tax regimes for FY ${FY_DISP} with standard deduction and 80C/HRA for old regime.`,
     keywords: "old vs new tax regime calculator, new tax regime calculator india, old tax regime vs new, which tax regime is better",
     sitemapPriority: "0.9",
     related: [

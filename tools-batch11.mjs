@@ -1,4 +1,9 @@
 /** Batch 11 — India income tax and related. */
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+
+const FY = INDIA_INCOME_TAX_FY.fyLabel;
+const FY_AY = INDIA_INCOME_TAX_FY.fyAyLine;
+
 export function batch11Tools(ad) {
   return [
     {
@@ -8,10 +13,10 @@ export function batch11Tools(ad) {
       title: "Income Tax Calculator India — New vs Old Regime",
       desc: "Compare tax under India's new and old regimes for salaried income. See which regime saves more.",
       card: "Income tax calculator",
-      cardDesc: "FY 2025-26 · new vs old regime.",
+      cardDesc: `FY ${FY} · new vs old regime.`,
       body: `
-<h1>Income tax calculator India — new vs old regime (FY 2025–26)</h1>
-<p class="prose">Compare <strong>new tax regime</strong> and <strong>old tax regime</strong> side by side for salaried income. Enter gross salary, 80C, HRA, and 80D to see estimated tax, monthly in-hand, and <strong>which regime saves more money</strong>. Part of our <a href="/finance/">India finance tools</a>.</p>
+<h1>Income tax calculator India — new vs old regime (${FY_AY})</h1>
+<p class="prose"><strong>Active financial year:</strong> ${FY_AY}. Compare <strong>new tax regime</strong> and <strong>old tax regime</strong> side by side for salaried income. Enter gross salary, 80C, HRA, and 80D to see estimated tax, monthly in-hand, and <strong>which regime saves more money</strong>. Part of our <a href="/finance/">India finance tools</a>.</p>
 <p class="prose" style="font-size:0.9rem">Resident individual below 60 · Illustration only—not tax or legal advice.</p>
 ${ad}
 <div class="tool-panel">
@@ -157,7 +162,7 @@ document.getElementById('go').click();
       body: `
 <h1>Salary breakup calculator — tax-friendly CTC (India)</h1>
 <p class="prose">Enter your <strong>annual CTC</strong>, rent, and deductions to see a suggested pay structure (Basic, HRA, employer NPS, PF, reimbursements) that lowers tax versus a flat allowance-heavy split. Pairs with our <a href="/income-tax-calculator/">income tax calculator</a> and <a href="/hra-calculator/">HRA calculator</a>.</p>
-<p class="prose" style="font-size:0.9rem">FY 2025–26 illustration · old regime breakup focus · not payroll or legal advice.</p>
+<p class="prose" style="font-size:0.9rem">${FY_AY} illustration · old regime breakup focus · not payroll or legal advice.</p>
 ${ad}
 <div class="tool-panel">
   <label for="ctc">Annual CTC (₹)</label>

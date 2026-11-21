@@ -1,14 +1,20 @@
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+
+const FY = INDIA_INCOME_TAX_FY.fyShort;
+const FY_DISP = INDIA_INCOME_TAX_FY.fyLabel;
+const AY_DISP = INDIA_INCOME_TAX_FY.ayLabel;
+const SLABS = INDIA_INCOME_TAX_FY.slabsGuidePath;
+
 export const batch11PageSeo = {
   "income-tax-calculator.html": {
-    metaTitle:
-      "Income Tax Calculator India 2025-26 — New vs Old Regime | Which Is Better?",
-    metaDescription:
-      "Free income tax calculator for FY 2025-26. Compare new vs old tax regime with 80C, HRA, 80D. See total tax, cess, monthly in-hand, and which regime saves more.",
+    metaTitle: `Income Tax Calculator India ${FY} — New vs Old Regime | Which Is Better?`,
+    metaDescription: `Free income tax calculator for FY ${FY_DISP} (AY ${AY_DISP}). Compare new vs old tax regime with 80C, HRA, 80D. See total tax, cess, monthly in-hand, and which regime saves more.`,
+    directAnswer: `For FY ${FY_DISP}, estimate salaried income tax under India's new and old regimes side by side—standard deduction, 87A rebate, 80C/HRA in the old column only—then see monthly in-hand and which regime is lower for your numbers.`,
     ogLocale: "en_IN",
     sitemapPriority: "0.9",
     sitemapChangefreq: "weekly",
     keywords:
-      "income tax calculator india, new tax regime vs old regime, which tax regime is better, FY 2025-26 tax slabs, 80C HRA calculator, section 115BAC, salaried tax comparison, 87A rebate, standard deduction 75000",
+      `income tax calculator india, new tax regime vs old regime, which tax regime is better, FY ${FY} tax slabs, 80C HRA calculator, section 115BAC, salaried tax comparison, 87A rebate, standard deduction 75000`,
     howTo: {
       name: "How to compare new and old income tax regime online",
       description:
@@ -32,7 +38,7 @@ export const batch11PageSeo = {
       {
         h2: "Free income tax calculator for salaried employees in India",
         paragraphs: [
-          "Use this page to estimate how much income tax you may pay under the new tax regime (section 115BAC) versus the old regime for financial year 2025–26 (assessment year 2026–27). Enter your gross salary and deductions such as 80C investments, HRA, and 80D medical insurance. The tool shows side-by-side tax, health and education cess, annual take-home, and monthly in-hand so you can decide which regime is better for you before talking to your employer or chartered accountant.",
+          `Use this page to estimate how much income tax you may pay under the new tax regime (section 115BAC) versus the old regime for financial year ${FY_DISP} (assessment year ${AY_DISP}). Enter your gross salary and deductions such as 80C investments, HRA, and 80D medical insurance. The tool shows side-by-side tax, health and education cess, annual take-home, and monthly in-hand so you can decide which regime is better for you before talking to your employer or chartered accountant.`,
           "Everything runs in your browser. We do not store salary or PAN data on a server.",
         ],
       },
@@ -48,7 +54,7 @@ export const batch11PageSeo = {
         ],
       },
       {
-        h2: "FY 2025–26 income tax slab rates (reference)",
+        h2: `FY ${FY_DISP} income tax slab rates (reference)`,
         paragraphs: ["Slab rates used in this calculator for resident individuals below 60 years:"],
         list: [
           "<strong>New regime</strong> (on taxable income): 0–₹3L nil; ₹3–7L 5%; ₹7–10L 10%; ₹10–12L 15%; ₹12–15L 20%; above ₹15L 30%.",
@@ -75,7 +81,7 @@ export const batch11PageSeo = {
         a: "It depends on your gross income and deductions. Low deductions usually favour the new regime; high HRA, 80C, 80D, and housing interest usually favour the old regime. Use this calculator with your actual numbers to see estimated tax under both.",
       },
       {
-        q: "What is the income tax slab for FY 2025-26 new regime?",
+        q: `What is the income tax slab for FY ${FY} new regime?`,
         a: "This tool uses the post–Budget 2024 style new regime slabs: nil up to ₹3 lakh taxable, then 5%, 10%, 15%, 20%, and 30% on higher bands, plus standard deduction on salary and eligible 87A rebate.",
       },
       {
@@ -109,13 +115,13 @@ export const batch11PageSeo = {
       { href: "/salary-calculator.html", label: "Salary in-hand (before tax)" },
       { href: "/gst-calculator.html", label: "GST calculator" },
       { href: "/ppf-calculator.html", label: "PPF maturity estimate" },
-      { href: "/gratuity-calculator.html", label: "Gratuity calculator (India)" },
+      { href: "/gratuity-calculator/", label: "Gratuity calculator (India)" },
       { href: "/sip-calculator.html", label: "SIP calculator" },
       { href: "/pan-format.html", label: "PAN format checker" },
     ],
   },
   "salary-breakup-calculator.html": {
-    metaTitle: "Salary Breakup Calculator India — Tax-Saving CTC Structure FY 2025-26",
+    metaTitle: `Salary Breakup Calculator India — Tax-Saving CTC Structure FY ${FY}`,
     metaDescription:
       "Free salary breakup calculator for India. Enter CTC and rent to get Basic, HRA, PF, employer NPS, and allowance split vs a flat structure. Estimates old & new regime tax.",
     ogLocale: "en_IN",
@@ -151,7 +157,7 @@ export const batch11PageSeo = {
       {
         h2: "What this calculator suggests",
         paragraphs: [
-          "Given your CTC, the tool searches a practical Basic percentage, sets HRA up to 50% of Basic (capped by CTC), includes optional exempt meal and phone perks, employer statutory costs in CTC, and employer NPS when selected. It compares that mix to a flat allowance-style split without employer NPS. Tax uses the same FY 2025–26 slabs as our income tax calculator.",
+          `Given your CTC, the tool searches a practical Basic percentage, sets HRA up to 50% of Basic (capped by CTC), includes optional exempt meal and phone perks, employer statutory costs in CTC, and employer NPS when selected. It compares that mix to a flat allowance-style split without employer NPS. Tax uses the same FY ${FY_DISP} slabs as our income tax calculator. Slab reference: <a href="${SLABS}">FY ${FY_DISP} tax slabs</a>.`,
         ],
         list: [
           "<strong>Old regime</strong> — Uses HRA exemption, employee PF toward 80C, your extra 80C and 80D, and employer NPS under 80CCD(2).",

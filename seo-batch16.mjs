@@ -1,8 +1,13 @@
 /** SEO metadata for batch 16 tools. */
 
+import { INDIA_INCOME_TAX_FY } from "./india-tax-fy.mjs";
+
+const FY = INDIA_INCOME_TAX_FY.fyShort;
+const FY_DISP = INDIA_INCOME_TAX_FY.fyLabel;
+
 export const batch16PageSeo = {
   "hra-calculator.html": {
-    metaTitle: "HRA Calculator India 2025 — House Rent Allowance Exemption",
+    metaTitle: `HRA Calculator India ${FY} — House Rent Allowance Exemption`,
     metaDescription:
       "Free HRA exemption calculator for salaried taxpayers in India. Enter basic salary, HRA received, rent paid, and metro city to estimate exempt HRA under the old regime.",
     keywords:
@@ -64,7 +69,28 @@ export const batch16PageSeo = {
     metaDescription:
       "Split a GST-inclusive price into taxable value and GST amount. India rates 5%, 12%, 18%, 28%—reverse GST calculator for invoices.",
     keywords: "gst inclusive calculator, reverse gst calculator, remove gst from price, mrp gst split india",
-    related: [{ href: "/gst-calculator/", label: "GST calculator" }, { href: "/india-invoice/", label: "GST invoice" }],
+    directAnswer:
+      "If MRP already includes GST, taxable value = inclusive ÷ (1 + rate%). Example: ₹1,180 inclusive @ 18% → about ₹1,000 taxable + ₹180 GST.",
+    sections: [
+      {
+        h2: "Inclusive vs exclusive quick examples",
+        list: [
+          "₹1,050 inclusive @ 5% → taxable ≈ ₹1,000",
+          "₹1,120 inclusive @ 12% → taxable ≈ ₹1,000",
+          "₹1,180 inclusive @ 18% → taxable ≈ ₹1,000",
+          "₹1,280 inclusive @ 28% → taxable ≈ ₹1,000",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "CGST and SGST vs IGST?", a: "This tool splits total GST; your invoice still needs correct CGST/SGST or IGST labels per place of supply." },
+      { q: "Difference from reverse GST calculator?", a: "Both back out tax from inclusive amounts. Use whichever page matches your workflow." },
+    ],
+    related: [
+      { href: "/gst-calculator/", label: "Add GST (exclusive)" },
+      { href: "/reverse-gst-calculator/", label: "Reverse GST" },
+      { href: "/guides/india-gst-rates-reference/", label: "GST rates reference" },
+    ],
   },
   "meta-description-checker.html": {
     metaTitle: "Meta Description Length Checker — SEO Title & Snippet Tool",
