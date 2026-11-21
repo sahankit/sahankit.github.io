@@ -7,6 +7,15 @@
  *    calculators, NaN/Infinity guard, copy buttons for read-only output, recent tools
  */
 (function () {
+  function goLang(href) {
+    if (href) window.location.assign(href);
+  }
+
+  document.addEventListener("change", (e) => {
+    const sel = e.target;
+    if (sel instanceof HTMLSelectElement && sel.matches("[data-lang-select]")) goLang(sel.value);
+  });
+
   const RECENT_KEY = "tools:recent";
   const MAX_HITS = 12;
 
@@ -323,13 +332,6 @@
         });
     }
   }
-
-  document.querySelectorAll("[data-lang-select]").forEach((sel) => {
-    sel.addEventListener("change", () => {
-      const href = sel.value;
-      if (href) window.location.assign(href);
-    });
-  });
 
   /* ---------- Tool page helpers ---------- */
 

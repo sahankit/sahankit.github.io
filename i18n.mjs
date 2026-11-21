@@ -1158,7 +1158,7 @@ export function languageSwitcherHtml(currentLocale, currentPath = "/") {
     const href = localePath(l.code, currentPath);
     return `<option value="${href}"${sel}>${escapeHtml(l.nativeName)}</option>`;
   }).join("");
-  return `<div class="lang-switcher"><label class="sr-only" for="lang-select">${escapeHtml(t(currentLocale, "langSelect"))}</label><select id="lang-select" class="lang-select" data-lang-select aria-label="${escapeHtml(t(currentLocale, "langSelect"))}">${opts}</select></div>`;
+  return `<div class="lang-switcher"><label class="sr-only" for="lang-select">${escapeHtml(t(currentLocale, "langSelect"))}</label><select id="lang-select" class="lang-select" data-lang-select aria-label="${escapeHtml(t(currentLocale, "langSelect"))}" onchange="if(this.value)location.assign(this.value)">${opts}</select></div>`;
 }
 
 function escapeHtml(s) {
