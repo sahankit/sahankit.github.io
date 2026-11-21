@@ -3,17 +3,21 @@
 export const sitePageSeo = {
   "finance/index.html": {
     keywords: "India finance hub, GST EMI SIP calculators, income tax",
+    directAnswer:
+      "Open India tax, loan, and savings calculators from one hub—income tax (new vs old), GST, EMI, SIP, FD/RD—with linkable slab and GST reference sheets.",
     sections: [
       {
         h2: "India finance in one place",
         paragraphs: [
           "Calculators for GST, income tax (new vs old regime), loans, FD/RD/SIP, salary, and invoices—all linked from this hub. Each tool runs in your browser.",
+          'Reference: <a href="/guides/india-income-tax-slabs-fy-2025-26/">FY 2025–26 tax slabs</a>, <a href="/guides/india-gst-rates-reference/">GST rates</a>, <a href="/guides/india-advance-tax-calendar/">advance tax dates</a>.',
         ],
       },
     ],
     faqs: [{ q: "Is this investment advice?", a: "No. Illustrations only." }],
     related: [
       { href: "/income-tax-calculator/", label: "Income tax calculator" },
+      { href: "/guides/india-income-tax-slabs-fy-2025-26/", label: "Tax slabs reference" },
       { href: "/india/", label: "India utilities hub" },
       { href: "/gst-calculator/", label: "GST calculator" },
     ],
@@ -97,11 +101,14 @@ export const sitePageSeo = {
   },
   "india/index.html": {
     keywords: "India online tools hub, tax GST UPI PAN calculator",
+    directAnswer:
+      "India-focused calculators and format checkers for tax, GST, salary, IDs, and invoices—plus citation-friendly slab, GST, and advance tax reference pages.",
     sections: [
       {
         h2: "Tools for India — tax, money, and IDs",
         paragraphs: [
           "Compare new vs old income tax regime, estimate GST, PPF, and gratuity, validate UPI/PAN/IFSC/pincode patterns, and use invoice and rupee-in-words helpers. Not affiliated with the Government of India.",
+          'Linkable references: <a href="/guides/india-income-tax-slabs-fy-2025-26/">income tax slabs FY 2025–26</a>, <a href="/guides/india-gst-rates-reference/">GST rates</a>, <a href="/guides/india-advance-tax-calendar/">advance tax calendar</a>, <a href="/guides/india-id-formats/">PAN & IFSC formats</a>.',
         ],
       },
     ],
@@ -110,8 +117,9 @@ export const sitePageSeo = {
     ],
     related: [
       { href: "/income-tax-calculator/", label: "Income tax (new vs old)" },
+      { href: "/guides/india-income-tax-slabs-fy-2025-26/", label: "Tax slabs reference" },
+      { href: "/guides/india-gst-rates-reference/", label: "GST rates reference" },
       { href: "/finance/", label: "Finance calculators" },
-      { href: "/guides/india-id-formats.html", label: "India ID formats guide" },
     ],
   },
   "security/index.html": {
@@ -133,9 +141,23 @@ export const sitePageSeo = {
   },
   "design/index.html": {
     keywords: "design tools hub, color gradient PDF image",
-    sections: [{ h2: "Design and documents", paragraphs: ["Colors, gradients, QR, PDF merge, and images."] }],
+    directAnswer:
+      "PDF merge/split/compress, image resize and compress-to-KB, passport photos, and color tools—mostly on-device with no upload.",
+    sections: [
+      {
+        h2: "Design and documents",
+        paragraphs: [
+          "Colors, gradients, QR, PDF merge, and images.",
+          'High-intent starters: <a href="/compress-pdf/">compress PDF under 200 KB</a>, <a href="/reduce-image-size-in-kb/">compress photo to 50 KB</a>, <a href="/split-pdf/">split PDF by page range</a>, <a href="/passport-size-photo/">passport size photo</a>.',
+        ],
+      },
+    ],
     faqs: [],
-    related: [{ href: "/color-picker/", label: "Color picker" }],
+    related: [
+      { href: "/compress-pdf/", label: "Compress PDF" },
+      { href: "/reduce-image-size-in-kb/", label: "Reduce image size in KB" },
+      { href: "/color-picker/", label: "Color picker" },
+    ],
   },
   "student/index.html": {
     keywords: "student tools hub, CGPA typing test",

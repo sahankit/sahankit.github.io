@@ -1,9 +1,12 @@
 /** SEO prose, FAQs, and keywords per page (used by build-site.mjs). */
 import { SITE_NAME } from "./seo-build.mjs";
 
-export function renderSeoHtml(seo) {
+export function renderSeoHtml(seo, { showDirectAnswer = false } = {}) {
   if (!seo) return "";
   let html = '<section class="page-guide" aria-label="Guide and FAQ">';
+  if (showDirectAnswer && seo.directAnswer) {
+    html += `<p class="page-lead">${seo.directAnswer}</p>`;
+  }
   if (seo.sections?.length) {
     html += '<div class="prose seo-content">';
     for (const s of seo.sections) {
@@ -64,10 +67,11 @@ export function faqLd(faqs) {
 
 export function softwareAppLd(title, desc, urlPath, base) {
   return {
-    "@type": "SoftwareApplication",
+    "@type": ["WebApplication", "SoftwareApplication"],
     name: title.split("—")[0].trim(),
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Web",
+    browserRequirements: "Requires JavaScript",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: desc,
     url: `${base}${urlPath}`,

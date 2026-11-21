@@ -11,6 +11,7 @@ import {
 } from "./seo-content.mjs";
 import { extraPageSeo } from "./seo-extra.mjs";
 import { sitePageSeo } from "./seo-sites.mjs";
+import { referencePageSeo } from "./seo-reference.mjs";
 import { extraTools } from "./tools-extra.mjs";
 import { moreTools } from "./tools-more.mjs";
 import { morePageSeo } from "./seo-more.mjs";
@@ -94,6 +95,8 @@ import { batch44Tools } from "./tools-batch44.mjs";
 import { batch44PageSeo } from "./seo-batch44.mjs";
 import { batch45Tools } from "./tools-batch45.mjs";
 import { batch45PageSeo } from "./seo-batch45.mjs";
+import { batch46Tools } from "./tools-batch46.mjs";
+import { batch46PageSeo } from "./seo-batch46.mjs";
 import { GAME_PLAY_HINTS } from "./game-hints.mjs";
 
 const GAME_HINT_ACTION_FILES = new Set([
@@ -188,7 +191,9 @@ const pageSeo = {
   ...batch43PageSeo,
   ...batch44PageSeo,
   ...batch45PageSeo,
+  ...batch46PageSeo,
   ...sitePageSeo,
+  ...referencePageSeo,
 };
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
@@ -511,13 +516,13 @@ const POPULAR_TOOL_FILES = [
   "osint-search.html",
 ];
 
-function normalizeToolBody(body, t) {
+function normalizeToolBody(body, t, leadOverride) {
   const hub = CATEGORY_HUB[t.category];
   const icon = CATEGORY_ICON[t.category];
   const eyebrow = hub
     ? `<a class="eyebrow tone-${icon?.[1] || "violet"}" href="${hub.href}">${iconSvg(icon?.[0])}${hub.label}</a>`
     : "";
-  const lead = escapeMeta(t.desc || t.cardDesc);
+  const lead = escapeMeta(leadOverride || t.desc || t.cardDesc);
   if (!/<h1>/.test(body)) return body;
   return body.replace(
     /<h1>([^<]*)<\/h1>/,
@@ -536,7 +541,7 @@ function breadcrumbHtml(items) {
   return `<nav class="breadcrumb" aria-label="Breadcrumb"><ol>${lis}</ol></nav>`;
 }
 
-function relatedCardsHtml(related, self) {
+function relatedCardsHtml(related, self, locale, { workflow = false } = {}) {
   const cards = [];
   for (const r of related || []) {
     if (!r?.href || r.href === "/" || r.href === self) continue;
@@ -554,8 +559,11 @@ function relatedCardsHtml(related, self) {
     if (cards.length >= 6) break;
   }
   if (!cards.length) return "";
+  const loc = locale || DEFAULT_LOCALE;
+  const headingKey = workflow ? "relatedWorkflow" : "related";
+  const heading = t(loc, headingKey);
   return `<section class="related-tools" aria-labelledby="related-heading">
-<h2 id="related-heading">${t(DEFAULT_LOCALE, "related")}</h2>
+<h2 id="related-heading">${heading === headingKey ? (workflow ? "Related in this workflow" : "Related tools") : heading}</h2>
 <div class="grid grid--compact">${cards.join("")}</div>
 </section>`;
 }
@@ -1559,6 +1567,7 @@ document.getElementById('go').click();
   ...batch43Tools(ad),
   ...batch44Tools(ad),
   ...batch45Tools(ad),
+  ...batch46Tools(ad),
 ]);
 
 const guides = [
@@ -1613,6 +1622,30 @@ const guides = [
     body: `<h1>Y-Chat guide</h1>${ad}
 <p><a href="/y-chat/">Y-Chat</a> is free browser chat with public rooms and private IM. You must accept 18+ terms before use.</p>
 <p>SEO landing pages: <a href="/free-online-chat.html">free online chat</a>, <a href="/hindi-chat.html">Hindi chat</a>, <a href="/study-chat.html">study chat</a>.</p>`,
+  },
+  {
+    path: "/guides/india-income-tax-slabs-fy-2025-26.html",
+    file: "guides/india-income-tax-slabs-fy-2025-26.html",
+    title: "India Income Tax Slabs FY 2025–26 — New & Old Regime",
+    desc: "Reference table for new vs old income tax slab rates for FY 2025–26 (AY 2026–27). Illustration only.",
+    body: `<h1>Income tax slabs FY 2025–26</h1>${ad}
+<p>Compare regimes with the <a href="/income-tax-calculator/">income tax calculator</a> and <a href="/hra-calculator/">HRA calculator</a>. See also <a href="/guides/india-advance-tax-calendar/">advance tax due dates</a>.</p>`,
+  },
+  {
+    path: "/guides/india-gst-rates-reference.html",
+    file: "guides/india-gst-rates-reference.html",
+    title: "India GST Rates Reference — Common Goods & Services",
+    desc: "Indicative GST rate bands for India. Confirm on the GST portal before filing.",
+    body: `<h1>India GST rates reference</h1>${ad}
+<p>Use the <a href="/gst-calculator/">GST calculator</a> and <a href="/hsn-gst-rate-finder/">HSN GST rate finder</a> for invoice math. <a href="/india-invoice/">Invoice template</a> for print-ready layouts.</p>`,
+  },
+  {
+    path: "/guides/india-advance-tax-calendar.html",
+    file: "guides/india-advance-tax-calendar.html",
+    title: "Advance Tax Due Dates India — FY Instalment Calendar",
+    desc: "Four advance tax instalment dates: June, September, December, and March.",
+    body: `<h1>Advance tax calendar</h1>${ad}
+<p>Estimate liability with the <a href="/income-tax-calculator/">income tax calculator</a>. Slab reference: <a href="/guides/india-income-tax-slabs-fy-2025-26/">FY 2025–26 slabs</a>.</p>`,
   },
 ];
 
@@ -1988,10 +2021,12 @@ function fullMain(file, entity) {
   const seo = resolveSeo(file, entity);
   let body = entity.body;
   if (entity.category === "games") body = injectGamePanelHints(body, file, entity.category);
-  if (entity.card && entity.category) body = normalizeToolBody(body, entity);
-  if (!entity.card) return body + (seo ? renderSeoHtml(seo) : "");
+  if (entity.card && entity.category) body = normalizeToolBody(body, entity, seo?.directAnswer);
+  if (!entity.card) return body + (seo ? renderSeoHtml(seo, { showDirectAnswer: true }) : "");
   body = ensureToolAds(body);
-  const related = relatedCardsHtml(seo?.related, canonicalFromFile(file));
+  const related = relatedCardsHtml(seo?.related, canonicalFromFile(file), DEFAULT_LOCALE, {
+    workflow: seo?.relatedWorkflow,
+  });
   return body + related + (seo ? renderSeoHtml({ ...seo, related: [] }) : "");
 }
 
@@ -2321,6 +2356,9 @@ const seedPaths = new Set([
   "/reduce-image-size-in-kb/",
   "/passport-size-photo/",
   "/pdf-to-jpg/",
+  "/image-compress/",
+  "/guides/india-income-tax-slabs-fy-2025-26/",
+  "/guides/india-gst-rates-reference/",
 ]);
 const sitemapSeedEntries = sitemapIndexable.filter((e) => seedPaths.has(e.loc));
 write("sitemap-seed.xml", urlsetXml(sitemapSeedEntries));

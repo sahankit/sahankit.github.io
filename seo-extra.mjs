@@ -40,16 +40,41 @@ export const extraPageSeo = {
     [],
     [{ href: "/color-picker.html", label: "Color picker" }],
   ),
-  "image-compress.html": toolSeo(
-    "compress image online, reduce jpg size, image optimizer browser",
-    "Private image compression",
-    "Images never leave your device—we draw to a canvas and export JPEG at your chosen quality.",
-    [{ q: "PNG support?", a: "Output is JPEG for smaller size; upload PNG or JPG sources." }],
-    [
-      { href: "/image-converter.html", label: "Image converter" },
-      { href: "/pdf-merge.html", label: "Merge PDF" },
+  "image-compress.html": {
+    metaTitle: "Image Compressor — Compress JPG/PNG Under 50KB, 100KB Online",
+    metaDescription:
+      "Compress a photo in your browser: lower JPEG quality or resize for form uploads (50 KB, 100 KB). No upload—private image compressor for JPG and PNG.",
+    keywords:
+      "compress image online, compress photo under 50kb, reduce jpg size, image compressor, shrink image for form upload, compress jpeg, image optimizer browser",
+    directAnswer:
+      "Drag a JPG or PNG, set JPEG quality with the slider, and download a smaller file. For an exact KB cap (e.g. 20 KB signature or 50 KB exam photo), use the reduce image size in KB tool linked below.",
+    sections: [
+      {
+        h2: "Compress image under 50 KB or 100 KB for forms",
+        paragraphs: [
+          "Government and exam portals often cap photo uploads at 20–50 KB while keeping minimum dimensions. This compressor reduces file size by re-encoding to JPEG at your chosen quality—start around 0.6–0.75 for portraits.",
+          "Need a precise target? Open <a href=\"/reduce-image-size-in-kb/\">Reduce image size in KB</a> to hit 20 KB, 50 KB, or 100 KB with optional width × height limits.",
+        ],
+      },
+      {
+        h2: "Private compression (no cloud upload)",
+        paragraphs: [
+          "The image is drawn to a canvas and exported as JPEG in your browser. Nothing is sent to ToolHQ servers—suitable for ID proofs, signatures, and coursework scans.",
+        ],
+      },
     ],
-  ),
+    faqs: [
+      { q: "How do I compress a photo under 50 KB?", a: "Lower the quality slider and download. If still too large, use Reduce image size in KB with target 50 and crop excess background first." },
+      { q: "PNG support?", a: "You can upload PNG; output is JPEG for smaller size. Transparency becomes white in the JPEG." },
+      { q: "Will compression change width and height?", a: "This tool keeps original pixels and only changes JPEG quality. To resize dimensions, use the image resizer or reduce image size in KB tool." },
+    ],
+    related: [
+      { href: "/reduce-image-size-in-kb/", label: "Reduce image size in KB" },
+      { href: "/image-cropper/", label: "Crop image" },
+      { href: "/passport-size-photo/", label: "Passport size photo" },
+      { href: "/compress-pdf/", label: "Compress PDF" },
+    ],
+  },
   "pdf-merge.html": toolSeo(
     "merge pdf online, combine pdf free, pdf join browser",
     "Merge PDFs without uploading to a cloud",

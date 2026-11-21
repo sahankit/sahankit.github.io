@@ -157,6 +157,7 @@ const STR = {
     privacy: "Privacy policy",
     sitemap: "Sitemap",
     related: "Related tools",
+    relatedWorkflow: "Related in this workflow",
     advertisement: "Advertisement",
     footerBlurb: "free calculators and utilities. Most tools run entirely in your browser—no signup.",
     footerNote:

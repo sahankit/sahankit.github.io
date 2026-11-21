@@ -173,8 +173,8 @@ upd();
       path: "/image-compress.html",
       file: "image-compress.html",
       category: "documents",
-      title: "Image Compressor — JPEG Quality Online",
-      desc: "Compress JPG/PNG images in the browser. Adjust quality and download. Files stay on your device.",
+      title: "Image Compressor — Compress Photo Under 50KB & 100KB",
+      desc: "Compress JPG/PNG in the browser—lower JPEG quality or pair with our KB target tool for form uploads (50 KB, 100 KB). Files stay on your device.",
       card: "Image compressor",
       cardDesc: "Resize JPEG quality locally.",
       body: `

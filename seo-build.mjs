@@ -1,5 +1,7 @@
 /** SEO helpers used by build-site.mjs (meta escaping, canonicals, JSON-LD). */
 
+import { workflowRelatedFor } from "./seo-workflows.mjs";
+
 export const OG_IMAGE = "/assets/og.png";
 /** Site brand shown in header, meta, and JSON-LD. Matches thetoolhq.com. */
 export const SITE_NAME = "ToolHQ";
@@ -250,11 +252,54 @@ function defaultHowTo(tool) {
   };
 }
 
+function seoBodyWordCount(seo) {
+  let n = 0;
+  for (const s of seo.sections || []) {
+    for (const p of s.paragraphs || []) n += stripTags(p).split(/\s+/).filter(Boolean).length;
+    for (const li of s.list || []) n += stripTags(li).split(/\s+/).filter(Boolean).length;
+  }
+  for (const f of seo.faqs || []) n += stripTags(f.q).split(/\s+/).length + stripTags(f.a).split(/\s+/).length;
+  return n;
+}
+
+function ensureDirectAnswer(base, tool) {
+  if (base.directAnswer?.trim()) return;
+  const fromSection = base.sections?.[0]?.paragraphs?.[0];
+  base.directAnswer = stripTags(fromSection || tool.desc || tool.cardDesc || "");
+}
+
+function boostThinToolSeo(base, tool) {
+  if (seoBodyWordCount(base) >= 220) return;
+  const name = inSentence(tool.card);
+  const hasAbout = base.sections.some((s) => /about|when to use|quick answer/i.test(s.h2 || ""));
+  if (!hasAbout) {
+    base.sections.push({
+      h2: `When to use the ${name}`,
+      paragraphs: [
+        `${tool.desc} Use it when you need a fast answer without installing software or creating an account.`,
+        "Everything runs locally in your browser where the tool supports it—useful for forms, invoices, study, and quick checks on the go.",
+      ],
+    });
+  }
+  const extraFaqs = [
+    {
+      q: `Does the ${name} work on mobile?`,
+      a: "Yes. Pages are responsive and tools run in mobile browsers the same way as on desktop.",
+    },
+    {
+      q: `How is this different from a generic ${name} search result?`,
+      a: "This page combines the calculator or utility with short answers, FAQs, and links to the next step in the same workflow.",
+    },
+  ];
+  base.faqs = uniqueFaqs(base.faqs, extraFaqs);
+}
+
 /** Fill gaps in per-tool SEO (FAQs, related links, keywords, HowTo). */
 export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {}) {
   const base = { ...(seo || fallbackToolSeo(tool)) };
   const card = tool.card;
   const key = card.toLowerCase();
+  const self = canonicalFromFile(tool.file);
 
   if (!base.keywords?.trim()) {
     base.keywords = `${key}, free ${key} online, ${key} tool, ${SITE_NAME}`;
@@ -287,24 +332,42 @@ export function enrichToolSeo(seo, tool, { allTools = [], categoryHub = {} } = {
     base.faqs = uniqueFaqs(base.faqs, defaultToolFaqs(card));
   }
 
-  const related = [];
+  ensureDirectAnswer(base, tool);
+  boostThinToolSeo(base, tool);
+
+  const workflow = workflowRelatedFor(tool.file, self);
+  const related = [...workflow.links];
   const hub = categoryHub[tool.category];
-  if (hub) related.push({ href: hub.href, label: hub.label });
+  if (hub && !related.some((r) => r.href === hub.href)) related.push({ href: hub.href, label: hub.label });
   for (const t of allTools) {
-    if (t.file === tool.file || t.category !== tool.category) continue;
+    if (t.file === tool.file) continue;
+    if (workflow.workflow && t.category !== tool.category) continue;
+    if (!workflow.workflow && t.category !== tool.category) continue;
     related.push({ href: canonicalFromFile(t.file), label: t.card });
-    if (related.length >= 4) break;
+    if (related.length >= 6) break;
   }
   if (!related.some((r) => r.href === "/")) related.push({ href: "/", label: "All tools" });
-  if (!base.related?.length) base.related = related;
-  else {
-    const merged = [...base.related];
+
+  if (!base.related?.length) {
+    base.related = related.slice(0, 5);
+    base.relatedWorkflow = workflow.workflow;
+  } else {
+    const merged = [];
+    const seen = new Set();
+    const push = (r) => {
+      const href = normalizeHref(r.href);
+      if (seen.has(href) || href === self) return;
+      seen.add(href);
+      merged.push({ ...r, href });
+    };
+    for (const r of workflow.links) push(r);
+    for (const r of base.related) push(r);
     for (const r of related) {
       if (merged.length >= 5) break;
-      const href = normalizeHref(r.href);
-      if (!merged.some((x) => normalizeHref(x.href) === href)) merged.push(r);
+      push(r);
     }
     base.related = merged;
+    base.relatedWorkflow = workflow.workflow || merged.some((r) => workflow.links.some((w) => w.href === r.href));
   }
   base.related = base.related.map((r) => ({ ...r, href: normalizeHref(r.href) }));
 
